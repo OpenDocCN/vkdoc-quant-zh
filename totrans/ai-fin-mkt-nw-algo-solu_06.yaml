@@ -779,73 +779,93 @@
   id: totrans-95
   prefs: []
   type: TYPE_NORMAL
+  zh: '**if** ![$$G\left({N}_{j}^{i}\right)\ge G\left({A}_{i}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq44.png)
+    **then**'
 - en: '![$$G\left({A}_{i}\right)=G\left({A}_{i}\right)\cdot \left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq45.png)'
   id: totrans-96
   prefs: []
   type: TYPE_IMG
+  zh: '![$$G\left({A}_{i}\right)=G\left({A}_{i}\right)\cdot \left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq45.png)'
 - en: '**else**'
   id: totrans-97
   prefs: []
   type: TYPE_NORMAL
+  zh: '**else**'
 - en: '![$$G\left({A}_{i}\right)=\frac{G\left({A}_{i}\right)}{\left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq46.png)'
   id: totrans-98
   prefs: []
   type: TYPE_IMG
+  zh: '![$$G\left({A}_{i}\right)=\frac{G\left({A}_{i}\right)}{\left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq46.png)'
 - en: '**end if**'
   id: totrans-99
   prefs: []
   type: TYPE_NORMAL
+  zh: '**end if**'
 - en: '**if** ![$$T\left({N}_{j}^{i}\right)\ge T\left({A}_{i}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq47.png)
     **then**'
   id: totrans-100
   prefs: []
   type: TYPE_NORMAL
+  zh: '**if** ![$$T\left({N}_{j}^{i}\right)\ge T\left({A}_{i}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq47.png)
+    **then**'
 - en: '![$$T\left({A}_{i}\right)=T\left({A}_{i}\right)\cdot \left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq48.png)'
   id: totrans-101
   prefs: []
   type: TYPE_IMG
+  zh: '![$$T\left({A}_{i}\right)=T\left({A}_{i}\right)\cdot \left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq48.png)'
 - en: '**else**'
   id: totrans-102
   prefs: []
   type: TYPE_NORMAL
+  zh: '**else**'
 - en: '![$$T\left({A}_{i}\right)=\frac{T\left({A}_{i}\right)}{\left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq49.png)'
   id: totrans-103
   prefs: []
   type: TYPE_IMG
+  zh: '![$$T\left({A}_{i}\right)=\frac{T\left({A}_{i}\right)}{\left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq49.png)'
 - en: '**end if**'
   id: totrans-104
   prefs: []
   type: TYPE_NORMAL
+  zh: '**end if**'
 - en: '**if** ![$$D\left({N}_{j}^{i}\right)\ge D\left({A}_{i}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq50.png)
     **then**'
   id: totrans-105
   prefs: []
   type: TYPE_NORMAL
+  zh: '**if** ![$$D\left({N}_{j}^{i}\right)\ge D\left({A}_{i}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq50.png)
+    **then**'
 - en: '![$$D\left({A}_{i}\right)=D\left({A}_{i}\right)\cdot \left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq51.png)'
   id: totrans-106
   prefs: []
   type: TYPE_IMG
+  zh: '![$$D\left({A}_{i}\right)=D\left({A}_{i}\right)\cdot \left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq51.png)'
 - en: '**else**'
   id: totrans-107
   prefs: []
   type: TYPE_NORMAL
+  zh: '**else**'
 - en: '![$$D\left({A}_{i}\right)=\frac{D\left({A}_{i}\right)}{\left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq52.png)'
   id: totrans-108
   prefs: []
   type: TYPE_IMG
+  zh: '![$$D\left({A}_{i}\right)=\frac{D\left({A}_{i}\right)}{\left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq52.png)'
 - en: '**end if**'
   id: totrans-109
   prefs: []
   type: TYPE_NORMAL
+  zh: '**end if**'
 - en: '**end if**'
   id: totrans-110
   prefs: []
   type: TYPE_NORMAL
+  zh: '**end if**'
 - en: 6.3.6 Results and Comments
   id: totrans-111
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 6.3.6 结果和评论
 - en: When looking at the mean value of both decisional parameters (Truesight and
     Trendsight), we observed that in certain moments the population prefers to follow
     a pricing strategy where the fundamental value (truevalue) of a stock has more
@@ -858,6 +878,7 @@
   id: totrans-112
   prefs: []
   type: TYPE_NORMAL
+  zh: 当观察决策参数的平均值（真视力和趋势视力）时，我们注意到在某些时刻，人口更倾向于遵循一种定价策略，其中股票的基本价值（真实价值）在决策过程中的权重大于趋势（趋势价值），反之亦然。这相当于说，在采用的策略方面不存在收敛。然而，当我们抑制模仿或学习机制中的任何一个时，这种现象完全消失。这使我们认为，要获得非平凡的模型，我们需要同时使用这两种机制，以观察投资者类型的出现。
 - en: Other interesting results came from performing a K-Mean Cluster analysis over
     the time series of the behavioural parameters. We found that there are 3 main
     distinct behavioural clusters over time, this was the objective of the whole simulation,
@@ -868,11 +889,13 @@
   id: totrans-113
   prefs: []
   type: TYPE_NORMAL
+  zh: 从对行为参数时间序列进行 K 均值聚类分析中得到的其他有趣结果。我们发现随着时间的推移，存在 3 个主要不同的行为集群，这是整个模拟的目标，找到动态投资者类型。转化为现实世界，这就像是确定在其中参与交互（模仿机制）并根据以前的表现改变其策略的市场变化中类似反应的投资者群体。
 - en: 6.4 Conclusions
   id: totrans-114
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 6.4 结论
 - en: ABM is a powerful and innovative tool which ideal use is to tackle problems
     hard to face with a top-down approach. Thinking about financial markets as complex
     systems makes them an obvious area of application for ABM. However, unlike ML,

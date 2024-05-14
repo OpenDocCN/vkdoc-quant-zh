@@ -1,19 +1,29 @@
 - en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2023F.
     Cecconi (ed.)AI in the Financial Markets Computational Social Sciences[https://doi.org/10.1007/978-3-031-26518-1_7](https://doi.org/10.1007/978-3-031-26518-1_7)
+  id: totrans-0
   prefs: []
   type: TYPE_NORMAL
+  zh: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2023F.
+    Cecconi (ed.)AI in the Financial Markets Computational Social Sciences[https://doi.org/10.1007/978-3-031-26518-1_7](https://doi.org/10.1007/978-3-031-26518-1_7)
 - en: 7. ML Application to the Financial Market
+  id: totrans-1
   prefs:
   - PREF_H1
   type: TYPE_NORMAL
+  zh: 7. ML 应用于金融市场
 - en: 'Riccardo Vasellini^([1](#Aff16) [ ](#ContactOfAuthor1))(1)Universitá di Siena,
     Siena, ItalyRiccardo VaselliniEmail: [r.vasellini@student.unisi.it](mailto:r.vasellini@student.unisi.it)'
+  id: totrans-2
   prefs: []
   type: TYPE_NORMAL
+  zh: 'Riccardo Vasellini^([1](#Aff16) [ ](#ContactOfAuthor1))(1)Universitá di Siena,
+    Siena, ItalyRiccardo VaselliniEmail: [r.vasellini@student.unisi.it](mailto:r.vasellini@student.unisi.it)'
 - en: Abstract
+  id: totrans-3
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 摘要
 - en: The globe is being swamped by data, and the rate of fresh data gathering is
     increasing exponentially. This was not the case only two decades ago, and even
     if there were technological constraints to the use of machine learning, the lack
@@ -26,11 +36,16 @@
     unrelated to anything else. A strategy may be based purely on freely available
     data from search engines, which ML systems could then correlate to some financial
     occurrence.
+  id: totrans-4
   prefs: []
   type: TYPE_NORMAL
+  zh: 全球正在被数据淹没，并且新数据收集的速度呈指数级增长。这在仅仅二十年前还不是这样的情况，即使存在于机器学习使用的技术限制，缺乏用于喂养算法的数据也构成了额外的障碍。此外，如果获取精确和有意义的数据导致成本过高，那么获取与我们需要分析的金融现象不直接相关的数据可能更具成本效益，即所谓的替代数据集。替代数据的最终目的是为交易员提供信息优势，以寻找产生阿尔法或与其他任何事情无关的良好投资回报的交易信号。一种策略可能仅基于搜索引擎中免费提供的数据，然后
+    ML 系统可以将其与某些金融事件相关联。
 - en: KeywordsAIMachine learningRiccardo Vasellini
+  id: totrans-5
   prefs: []
   type: TYPE_NORMAL
+  zh: 关键词AI机器学习Riccardo Vasellini
 - en: PhD candidate with a background in civil, environmental, and management engineering.
     I’m currently studying at the University of Siena’s Department of Information
     Science, majoring in the topic of Complex Systems. In the scientific world, my
@@ -39,39 +54,53 @@
     Dynamics is vital for making sound decisions. While studying on my Doctorate,
     I work as a Project Manager in a variety of industries, including Real Estate
     Development, Real Estate Portfolio Management, Renewable Energies, and Tourism.
+  id: totrans-6
   prefs: []
   type: TYPE_NORMAL
+  zh: 拥有土木、环境和管理工程背景的博士研究生。我目前在意大利锡耶纳大学信息科学系就读，专攻复杂系统。在科学界，我的目标是利用基于代理的建模和人工智能来获得对复杂系统的重要见解。我认为研究新兴现象和系统动态对做出明智的决策至关重要。在攻读博士学位期间，我在多个行业担任项目经理，包括房地产开发、房地产投资组合管理、可再生能源和旅游业。
 - en: 7.1 Introduction
+  id: totrans-7
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 7.1 引言
 - en: The last decade has witnessed a significant increase in data storage and collection
     in numerous industries, including the financial sector. This enabled financial
     institutions, investors, insurance companies, and anybody with an interest in
     the movement of stocks, derivatives, and interest rates to use Machine Learning
     techniques that previously lacked the computational capacity and data to be utilized
     effectively.
+  id: totrans-8
   prefs: []
   type: TYPE_NORMAL
+  zh: 过去的十年见证了数据存储和收集在许多行业中的显着增加，包括金融领域。这使得金融机构、投资者、保险公司以及任何对股票、衍生品和利率变动感兴趣的人都能够利用以前缺乏计算能力和数据的机器学习技术。
 - en: AI and ML can be applied to a wide variety of financial sectors, including portfolio
     strategy formulation, fraud and unlawful activity detection, risk assessment and
     management, legal compliance, algorithmic trading, etc.
+  id: totrans-9
   prefs: []
   type: TYPE_NORMAL
+  zh: AI 和 ML 可以应用于各种金融领域，包括投资组合战略制定、欺诈和非法活动检测、风险评估和管理、法律合规、算法交易等。
 - en: In this chapter we will presents examples of applications found in literature.,
     modelling techniques and paradigms of ML in finance. We will conclude assessing
     the limits and dangers of using these techniques and what the future ahead looks
     like.
+  id: totrans-10
   prefs: []
   type: TYPE_NORMAL
+  zh: 在本章中，我们将介绍文献中找到的应用示例，金融中的建模技术和 ML 范例。我们将总结使用这些技术的限制和危险，以及未来的展望。
 - en: 7.2 Fundamentals
+  id: totrans-11
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 7.2 基础知识
 - en: 'Machine Learning can be grouped in three main area: Supervised, Unsupervised
     and Reinforcement Learning.'
+  id: totrans-12
   prefs: []
   type: TYPE_NORMAL
+  zh: 机器学习可以分为三个主要领域：监督学习、无监督学习和强化学习。
 - en: Supervised learning is probably the simplest form of ML, linear regression is
     an example of one of its algorithms and it has been used for decades before the
     terms “AI” or “ML” even appeared. Other than linear regression, supervised learning
@@ -84,8 +113,10 @@
     answers we are looking for. Once trained and tested the map found by the algorithm
     can be used on unlabelled data. This can be done either for classification or
     regression problems.
+  id: totrans-13
   prefs: []
   type: TYPE_NORMAL
+  zh: 监督学习可能是机器学习中最简单的形式，线性回归是其中的一个算法示例，早在“人工智能”或“机器学习”这些术语出现之前就已经被使用了几十年。除了线性回归，监督学习还包括其他算法，例如逻辑回归、决策树、K-最近邻算法、支持向量机、神经网络等。其主要特点是使用包含数据点特征的标签数据集。整个目的是找到一个能够在对算法进行训练后将数据点特征映射到它们相应标签的函数。这种范式假设我们对正在寻找的答案有所了解。一旦训练并测试了算法找到的映射，就可以将其应用于未标记的数据。这可以用于分类或回归问题。
 - en: Unsupervised learning involves recognising patterns within data. It usually
     entails searching for clusters, or groupings of similar findings. ML algorithms,
     in practice, associate similar things together, where the similarity is often
@@ -94,8 +125,10 @@
     such as z-score normalization or min–max methods. The most used clustering technique
     is the k-means clustering, however other techniques such as distribution based,
     density based or hierarchical clustering are used.
+  id: totrans-14
   prefs: []
   type: TYPE_NORMAL
+  zh: 无监督学习涉及在数据中识别模式。通常需要搜索簇或相似发现的分组。在实践中，机器学习算法将相似的事物聚集在一起，其中相似性通常以与簇中心的距离表达。一个好的算法对数据的规模是不可知的，因此通常会采用特征缩放技术，如z-分数归一化或最小-最大方法。最常用的聚类技术是k均值聚类，但也使用其他技术，如基于分布、基于密度或层次聚类。
 - en: Reinforcement learning revolves around multi step decision making. An agent
     takes actions based its estimate of rewards and costs taken in the environment
     he is in, which is described by a series of states, typically as a Markov Decision
@@ -105,8 +138,10 @@
     to perform a random action, this is done in order to not get stuck into exploiting
     a state that provides rewards without exploring different states that might lead
     to better outcomes. The agent doesn’t need labelled data.
+  id: totrans-15
   prefs: []
   type: TYPE_NORMAL
+  zh: 强化学习围绕着多步决策制定展开。一个代理根据其对所处环境中收益和成本的估计而采取行动，该环境由一系列状态描述，通常为马尔可夫决策过程。奖励（减去成本）是使用Q函数计算的，如果某个行动导致具有最高Q值的状态，则该行动是最佳的。一个重要的概念是探索，一个“智能代理”总是有可能执行随机动作，这样做是为了不陷入仅利用提供奖励而不探索可能导致更好结果的不同状态。代理不需要标记数据。
 - en: What is fuelling the adoption of ML is not only the access to these new techniques
     presented. The world is being submerged by data, and the rate of acquisition of
     new data grows exponentially. This was not the case only two decades ago, and
@@ -121,21 +156,30 @@
     on freely available data from search engines, which might be correlated to some
     financial phenomenon by ML algorithms. As an example, think of the hedge fund
     Cumulus, which simply used weather data to trade farming companies.
+  id: totrans-16
   prefs: []
   type: TYPE_NORMAL
+  zh: 推动机器学习应用的不仅仅是对这些新技术的获取。世界正被数据淹没，新数据的获取速度呈指数增长。这在仅仅二十年前还不是这样，即使机器学习的应用存在技术限制，缺乏用于训练算法的数据也构成了一道额外的障碍。此外，当收集准确和有价值的数据成本过高时，获得与我们需要分析的金融现象没有直接联系的数据可能更具成本效益，即所谓的替代性数据集。替代性数据的最终目标是为交易者提供信息优势，以寻找产生阿尔法或与其他任何因素无关的正收益的交易信号（Jensen
+    [2018](#CR8)）。一个策略可能完全基于来自搜索引擎的免费可用数据，这些数据可能通过机器学习算法与某些金融现象相关联。例如，想象一下对冲基金Cumulus，它只使用天气数据来交易农业公司。
 - en: Finally, by combining ML algorithms, contemporary computer power, and a massive
     quantity of data It is possible to construct strong applications for the financial
     sector, which we will now explore.
+  id: totrans-17
   prefs: []
   type: TYPE_NORMAL
+  zh: 最后，通过结合机器学习算法、当代计算能力和大量数据，我们可以构建出金融领域的强大应用程序，现在我们将进行探讨。
 - en: 7.3 Applications
+  id: totrans-18
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 7.3 应用领域
 - en: 7.3.1 Portfolio Management
+  id: totrans-19
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 7.3.1 投资组合管理
 - en: 'Since being presented by Markowitz in 1952, the mean–variance optimization
     (MVO) has been the main paradigm upon which build portfolios. MVO success is strictly
     linked to that of quadratic programming (QP), that makes solving MVO straightforward
@@ -152,8 +196,11 @@
     and delve into a whole new set of models not limited by linearity. The future
     of PO is to use these ML algorithms to develop new PO models, or simply use already
     developed ones which are now computationally more approachable then in the past.'
+  id: totrans-20
   prefs: []
   type: TYPE_NORMAL
+  zh: 自从Markowitz在1952年提出以来，均值-方差优化（MVO）一直是构建投资组合的主要范式。MVO的成功与二次规划（QP）的成功紧密相连，这使得解决MVO变得简单(Jensen
+    [2018](#CR8))。提出的一种替代方法是风险预算方法，简单来说，投资组合为每种资产类型分配风险预算，我们试图根据这些预算分配资产风险。这种方法在PO的各个领域中占主导地位。不幸的是，它通常涉及处理非线性，使得难以解决。然而，就像机器学习在最近几年发展一样，PO也在发展，虽然QP被选择为其简单的计算方法，但如今使用了一整套更消耗计算资源的新算法。其中包括为大规模机器学习问题开发的算法：坐标下降、交替方向乘子法、近端梯度和Dykstra算法。使用这些算法可以超越QP范式，并深入研究一整套不受线性限制的模型。PO的未来是利用这些机器学习算法开发新的PO模型，或者简单地使用已经开发的模型，这些模型现在在计算上比过去更容易接近。
 - en: As an example, for this approach, Ban, El Karoui and Lim (Perrin [2019](#CR11))
     proposed in 2018 a performance-based regularization (PBR) and performance based
     cross-validation models to solve portfolios optimizations problems in order to
@@ -165,16 +212,20 @@
     zero. Thus, it prevents the risk of overfitting, by discouraging the learning
     of a more complicated model. In practice reduces the variance of the model without
     increasing too much its bias.
+  id: totrans-21
   prefs: []
   type: TYPE_NORMAL
+  zh: 作为这种方法的一个示例，Ban，El Karoui 和 Lim（Perrin [2019](#CR11)）在2018年提出了一种基于绩效的正则化（PBR）和基于绩效的交叉验证模型，以解决投资组合优化问题，以超越应用经典方法到真实数据时产生的估计问题。正则化是几十年来解决围绕线性问题的问题的一种技术，但实际上，问题的常数的微小变化会导致解的巨大偏差。在实践中，它是一种约束或减少估计系数为零的回归。因此，它通过阻止学习更复杂的模型来防止过拟合的风险。在实践中，它减少了模型的方差，而不会增加太多其偏差。
 - en: The authors regularize a portfolio optimization problem with the purpose of
     improving the out-of-sample performance of the solution. To achieve this, they
     constrain the sample variances of the portfolio risk and mean. The goal is to
     create a model which find a solution to the portfolio problem (whether it is the
     traditional problem or the CVaR one) with very low bias and high out-of-sample
     performance.
+  id: totrans-22
   prefs: []
   type: TYPE_NORMAL
+  zh: 作者们对投资组合优化问题进行正则化，目的是改善解的样本外表现。为了实现这一点，他们限制了投资组合风险和平均值的样本方差。目标是创建一个模型，能够找到一个解决投资组合问题的解（无论是传统问题还是CVaR问题），其偏差非常低，而且在样本外表现良好。
 - en: 'On another paper (Jensen [2018](#CR8)), Perrin and Roncalli, individuate what
     can be considered the four most important algorithms for portfolio optimizations:
     coordinate descent, alternating direction method of multipliers, the proximal
@@ -183,8 +234,10 @@
     reasons individuated are hard to estimate parameters and complex objective functions,
     using a combination of the four-algorithm mentioned allows for framework able
     to consider allocation models outside of the QP form.'
+  id: totrans-23
   prefs: []
   type: TYPE_NORMAL
+  zh: 在另一篇论文中（Jensen [2018](#CR8)），Perrin 和 Roncalli 确定了可以被视为投资组合优化中最重要的四种算法：坐标下降法，交替方向乘子法，近端梯度法和迪杰斯特拉算法。作者们评估了MVO范式的成功在于缺乏竞争的可实施模型。确定的原因包括难以估计参数和复杂的目标函数，使用提到的四种算法的组合可以构建一个能够考虑QP形式之外的分配模型的框架。
 - en: Finally, an innovative approach is presented by Ban et al. ([2018](#CR1)). The
     authors try to tackle the problem of data heterogeneity and environmental uncertainty
     in portfolio management. They do so using Reinforcement Learning. Specifically,
@@ -194,26 +247,36 @@
     nontraditional sources such as news. Tested against historical data for Bitcoin
     prices and High-Tech stock market they validate this method showing simulated
     results for both total and risk adjusted profits.
+  id: totrans-24
   prefs: []
   type: TYPE_NORMAL
+  zh: 最后，Ban 等人（Ban et al. [2018](#CR1)）提出了一种创新的方法。作者们试图解决投资组合管理中的数据异质性和环境不确定性问题。他们使用强化学习来做到这一点。具体来说，为了包含异构数据并提高对环境不确定性的韧性，他们的模型（增强状态强化学习，SARL）使用价格变动预测来增强资产信息，这些预测可能仅基于金融数据或来自新闻等非传统来源。通过对比特币价格和高科技股票市场的历史数据进行测试，他们验证了这种方法，展示了总体和风险调整利润的模拟结果。
 - en: In general, ML paired with computing power advances, is allowing scientists
     and professional to test model less bounded by quantitative restrictions, solutions
     once impractical are becoming within reach.
+  id: totrans-25
   prefs: []
   type: TYPE_NORMAL
+  zh: 一般来说，机器学习与计算能力的进步使得科学家和专业人员能够测试不受数量限制的模型，一度不切实际的解决方案正变得可以实现。
 - en: 7.3.2 Risk Management
+  id: totrans-26
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 7.3.2 风险管理
 - en: Risk Management (RM) has seen an increase in the adoption of both new and old
     models that deal with a large number of variables and data thanks to the use of
     ML algorithms which now can find answers in an acceptable amount of time.
+  id: totrans-27
   prefs: []
   type: TYPE_NORMAL
+  zh: 风险管理（RM）由于机器学习算法的使用，对处理大量变量和数据的新旧模型的采用增加了，并且现在这些算法能够在可接受的时间内找到答案。
 - en: Risk permeates the world of finance and beyond. We will examine how machine
     learning is used to some of its most prevalent declinations.
+  id: totrans-28
   prefs: []
   type: TYPE_NORMAL
+  zh: 风险贯穿金融世界及其他领域。我们将探讨机器学习如何用于其最常见的一些形式。
 - en: When dealing with credit risk knowing the probability that a debtor will repay
     is crucial knowledge for financial institutes (or a lender in general). This is
     particularly hard when dealing with SME or retail investors for which the data
@@ -221,24 +284,30 @@
     models that can be found in literature is that using ML is possible to find patterns
     in the behavior of these small borrowers using data which are not traditionally
     linked to predicting credit risk (Ban et al. [2018](#CR1)).
+  id: totrans-29
   prefs: []
   type: TYPE_NORMAL
+  zh: 在处理信用风险时，了解债务人偿还债务的概率对金融机构（或一般的出借人）来说是至关重要的知识。这在处理中小企业或零售投资者时尤其困难，因为可用数据稀缺且有时不准确。文献中可以找到的各种模型的一般思想是，使用机器学习可以在不传统地与预测信用风险相关联的数据中找到这些小额借款人行为的模式（Ban等人，[2018](#CR1)）。
 - en: Another area where ML is thriving, is assessing the credit risk of a complex
     derivate object such as credit default swap (CDS). For these objects a deep learning
     approach has shown better results than traditional, in their research Son, Byun
     and Lee models (Ye et al. [2020](#CR19)) showed the parametric models they used
     consistently had better prediction performance than the benchmark models and,
     among all the models used, ANN showed the best results.
+  id: totrans-30
   prefs: []
   type: TYPE_NORMAL
+  zh: 另一个机器学习蓬勃发展的领域是评估复杂衍生品的信用风险，例如信用违约互换（CDS）。对于这些对象，深度学习方法显示出比传统方法更好的结果，在研究中，Son、Byun和Lee模型（Ye等人，[2020](#CR19)）显示他们所使用的参数模型在预测性能方面一直比基准模型更好，并且在所有使用的模型中，人工神经网络（ANN）显示出最佳结果。
 - en: Currently, the primary use of machine learning for managing risk when trading
     in markets is the validation of proposed models via back testing on vast amounts
     of data. Another key application is understanding how trading will affect an illiquid
     market, hence altering the price of the traded asset. The difficulty of high-volume
     trading of a single asset can be circumvented by employing machine learning algorithms
     to identify similar assets.
+  id: totrans-31
   prefs: []
   type: TYPE_NORMAL
+  zh: 目前，机器学习在市场交易风险管理中的主要用途是通过在大量数据上进行回溯测试来验证提出的模型。另一个关键应用是了解交易将如何影响不流动的市场，从而改变所交易资产的价格。通过使用机器学习算法来识别类似资产，可以避免单一资产的高交易量带来的困难。
 - en: An interesting application within this framework is from Chandrinos, Sakkas
     and Lagaros (Lynn et al. [2019](#CR10)). These researches developed a tool that
     uses ML as a risk management tool for investments. Specifically, the investigation
@@ -250,8 +319,10 @@
     rather then increasing the gains. In their back tests not only did the two methods
     employed (DT and ANN) boosted the profitability of the portfolios, but they also
     significantly improved their sharpe ratio by decreasing their standard deviation.
+  id: totrans-32
   prefs: []
   type: TYPE_NORMAL
+  zh: 在此框架内的一个有趣的应用来自Chandrinos、Sakkas和Lagaros（Lynn等人，[2019](#CR10)）。这些研究开发了一个工具，将机器学习作为投资风险管理工具。具体而言，该调查集中于通过使用人工神经网络（ANN）和决策树（DT）将交易策略生成的信号分类为成功和不赚钱的信号。为此，他们使用了两个先前提出的货币组合，并利用他们的人工智能风险管理系统（AIRMS）通过减少损失而不是增加收益来提高其性能。在他们的回测中，不仅所采用的两种方法（DT和ANN）提高了投资组合的盈利能力，而且还通过减少标准偏差显着改善了它们的夏普比率。
 - en: Another application is that of Sirignano, Sadhwani and Giesecke (Son and Lee
     [2016](#CR15)), who used a deep learning model to analyse data of over 120 millions
     mortgages issued in the US between 1995 and 2014\. Trying to understand the probabilities
@@ -260,12 +331,16 @@
     able to conclude that one of the most relevant factors in predicting the success
     of a mortgage is the unemployment rate of the zip code in which the mortgage was
     issued, highlighting the link between housing finance markets and macroeconomy.
+  id: totrans-33
   prefs: []
   type: TYPE_NORMAL
+  zh: 另一个应用是由Sirignano、Sadhwani和Giesecke提出的（Son和Lee [2016](#CR15)）。他们使用深度学习模型分析了美国在1995年至2014年间发放的超过1.2亿笔抵押贷款数据。试图理解某些借款人行为的概率以及产生不良贷款风险，他们查看了各种变量，包括金融和宏观经济因素。他们得出的结论是，预测抵押贷款成功的最重要因素之一是抵押贷款发放地区的失业率，突显了住房金融市场与宏观经济之间的联系。
 - en: 7.3.3 PropTech
+  id: totrans-34
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 7.3.3 房地产科技
 - en: PropTech is the widespread adoption of emerging technologies within the real
     estate industry. Such technologies include home matching tools, drones, virtual
     reality, building information modelling (BIM), data analytics tools, artificial
@@ -276,21 +351,29 @@
     market especially when it comes to listed Real Estate Investments Trusts (REIT)
     which in the US have more than 1 trillion USD market capitalization (Sirignano
     et al. [2018](#CR14)).
+  id: totrans-35
   prefs: []
   type: TYPE_NORMAL
+  zh: 房地产科技是房地产行业内新兴技术的广泛应用。这些技术包括房屋匹配工具、无人机、虚拟现实、建筑信息模型（BIM）、数据分析工具、人工智能（AI）、物联网（IoT）和区块链、智能合同、房地产行业的众筹、与房地产相关的金融技术（fintech）、智能城市和地区、智能家居以及共享经济（Spyros等人
+    [2018](#CR16)） 。房地产行业与金融市场密切相关，特别是在涉及到上市的房地产投资信托基金（REIT）方面，在美国，这些基金的市值已经超过1万亿美元（Sirignano等人
+    [2018](#CR14)）。
 - en: In this context being able to accurately predict home prices has clear relevance.
     Unfortunately to do so accurately requires deep knowledge of the local market
     and of the surroundings, a type of knowledge which is impractical to obtain for
     big REITs operating with great amount of properties or credit institution pricing
     hundreds of collaterals every day.
+  id: totrans-36
   prefs: []
   type: TYPE_NORMAL
+  zh: 在这种情况下，准确预测房价具有明显的相关性。不幸的是，要做到这一点准确性需要对当地市场和周围环境有深入的了解，这种类型的知识对于运营大量房产或每天定价数百份抵押品的大型房地产投资信托基金或信贷机构是难以获取的。
 - en: A solution is proposed by Siniak et al. ([2020](#CR13)). The authors argues
     that commonly used indexes scarcely accurately depict real estate markets at a
     granular level. In fact, they try, using over 16 years of home sale data, to arrive
     at a pricing prediction accuracy of a single house.
+  id: totrans-37
   prefs: []
   type: TYPE_NORMAL
+  zh: Siniak等人提出了一个解决方案（[2020](#CR13)）。作者认为，通常使用的指数很少准确地描绘了房地产市场的细粒度情况。事实上，他们试图利用超过16年的房屋销售数据，得出对单一房屋的定价预测准确性。
 - en: The method proposed is called gradient boosted home price index, which uses
     the ML technique of gradient boosted regression trees algorithm, which constructs
     multiple decision trees and recursively fit a model. In practice they reverse
@@ -302,81 +385,107 @@
     that this method is able to predict home prices at a singular level in a better
     way than the classical indexes available, which would be of great use for financial
     institutions and real estate funds.
+  id: totrans-38
   prefs: []
   type: TYPE_NORMAL
+  zh: 所提出的方法称为梯度增强房价指数，它使用了梯度增强回归树算法的机器学习技术，该算法构建了多个决策树并递归拟合模型。实际上，他们颠倒了多个决策树构建过程，这将导致过度拟合的分类树（每个房屋一个叶子节点），构建一个低复杂度的决策树（弱学习器），然后在发生糟糕预测时构建其他低复杂度的树。最终获得的树被称为强学习器，并且可以被看作是弱学习器的加权平均值。作者认为，这种方法能够以比现有的经典指数更好的方式预测房价，对金融机构和房地产基金将会非常有用。
 - en: 7.3.4 Asset Return Prediction
+  id: totrans-39
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 7.3.4 资产回报预测
 - en: 'Predicting the exact right price of an asset is the holy grail of finance.
     Being able to do so would translate in riches and wealth, therefore asking how
     to do it with a small as possible error is certainly a non-trivial question. In
     fact, one of the most important results of financial sciences, the Black–Scholes
     model, is used for exactly this reason: pricing a form of asset, specifically,
     an option (Caporin et al. [2021](#CR5)).'
+  id: totrans-40
   prefs: []
   type: TYPE_NORMAL
+  zh: 预测资产的确切正确价格是金融界的圣杯。能够做到这一点将会带来财富和财富，因此问如何用尽可能小的误差来做到这一点肯定是一个非平凡的问题。事实上，金融科学最重要的结果之一，布莱克-斯科尔斯模型，就是用于这个原因：定价一种资产，具体地说，是一个期权（卡波林等人[2021](#CR5)）。
 - en: Asset prices follow a highly non-linear behaviour, suffer from feedback loops
     and, sometimes, boom and bust cycles (Barr et al. [2016](#CR2)), a powerful tool
     to deal with these features is certainly deep learning. The problem of predicting
     the price of an asset is equivalent to that of predicting the behaviour of a time
     series and in economics and finance this is often done using Dynamic Factor Models
     (DFM). DFM can be thought as models of the co-movement of multiple timeseries.
+  id: totrans-41
   prefs: []
   type: TYPE_NORMAL
+  zh: 资产价格遵循高度非线性的行为，受到反馈回路的影响，有时会出现繁荣和萧条周期（巴尔等人[2016](#CR2)），应对这些特征的强大工具当然是深度学习。预测资产价格的问题等同于预测时间序列的行为，在经济学和金融学中，这通常是使用动态因子模型（DFM）完成的。DFM可以被视为多个时间序列的联动模型。
 - en: Deep learning can be used to integrate these models. As an example, we can look
     at Feng, He and Polson (Black and Scholes [1973](#CR3)). To anticipate assets
     returns, the authors developed dynamic factor models trained using deep learning.
     Using stochastic gradient descent, both hidden components and regression coefficients
     are computed simultaneously, thus leading to increased out-of-sample performance
     compared to traditional models.
+  id: totrans-42
   prefs: []
   type: TYPE_NORMAL
+  zh: 深度学习可用于整合这些模型。例如，我们可以看一下冯、何和波尔森（布莱克和斯科尔斯[1973](#CR3)）。为了预测资产回报，作者开发了使用深度学习训练的动态因子模型。使用随机梯度下降，同时计算隐藏成分和回归系数，从而提高了与传统模型相比的样本外性能。
 - en: 7.3.5 Algorithmic Trading
+  id: totrans-43
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 7.3.5 算法交易
 - en: Algorithmic Trading consist in the automation, through a computer, of all, or
     part of, the steps needed to execute a certain trading strategy. It can be seen
     as a fundamental part of quantitative trading, and, according to Wall Street data,
     Algorithmic trading accounts for around 60–73% of the overall US equity trading.
     (Feng et al. [1804](#CR6)).
+  id: totrans-44
   prefs: []
   type: TYPE_NORMAL
+  zh: 算法交易通过计算机的自动化，执行执行某种交易策略所需的全部或部分步骤。它可以被视为量化交易的基本部分，并且根据华尔街的数据，算法交易占美国股票交易总量的约60-73%。（冯等人[1804](#CR6)）。
 - en: 'The way quantitative trading has evolved can be synthetized into three main
     phases:'
+  id: totrans-45
   prefs: []
   type: TYPE_NORMAL
+  zh: 量化交易的发展可以总结为三个主要阶段：
 - en: In the first era (’80s–’90s), quantitative firms would use signals derived from
     academic research, often using a single or very few inputs coming from the market
     or fundamental data. Strategy where then pretty simple, the difficulty lied in
     obtaining the right data quickly.
+  id: totrans-46
   prefs: []
   type: TYPE_NORMAL
+  zh: 在第一个时代（80年代至90年代），量化公司会使用从学术研究中得出的信号，通常使用来自市场或基本数据的单个或极少量的输入。策略通常相当简单，困难在于迅速获取正确的数据。
 - en: In the second phase (2000s), to explore arbitrage opportunities, funds employed
     algorithms to identify assets vulnerable to risk variables such as value or momentum.
     In this phase factor-based investing was mostly employed, and it’s the factor-based
     industry to have caused the quant quake of August 2007.
+  id: totrans-47
   prefs: []
   type: TYPE_NORMAL
+  zh: 在第二阶段（2000年代），为了探索套利机会，基金采用算法来识别受到价值或动量等风险变量影响的资产。在这个阶段，主要采用基于因子的投资，这是导致2007年8月量化领域动荡的因子行业。
 - en: The last phase it’s the one we are living, in which funds are using investments
     in machine learning and alternative data to develop effective trading signals
     for recurring trading methods. In this extremely competitive environment, once
     a valuable anomaly is uncovered, it swiftly disappears owing to competition. (Intelligence
     [2022](#CR7)).
+  id: totrans-48
   prefs: []
   type: TYPE_NORMAL
+  zh: 最后一个阶段就是我们正在经历的阶段，基金正在利用机器学习和替代数据进行投资，以开发有效的交易信号用于循环交易方法。在这个极其竞争的环境中，一旦发现有价值的异常情况，它就会迅速消失，因为竞争激烈。（情报[2022](#CR7)）。
 - en: The primary objective of using machine learning to trading is to forecast asset
     fundamentals, price movements, or market circumstances. A strategy may use numerous
     machine learning (ML) algorithms to achieve this. By incorporating forecasts about
     the prospects of individual assets, capital market expectations, and the connection
     across securities, downstream models may provide portfolio-level signals.
+  id: totrans-49
   prefs: []
   type: TYPE_NORMAL
+  zh: 使用机器学习进行交易的主要目标是预测资产基本面、价格走势或市场情况。 一种策略可能使用多种机器学习（ML）算法来实现这一点。 通过结合有关个别资产前景、资本市场预期以及证券之间关系的预测，下游模型可以提供组合级别的信号。
 - en: Many trading algorithms use technical indicators from the markets to adjust
     a portfolio composition increasing it’s expected return or reducing its risk.
+  id: totrans-50
   prefs: []
   type: TYPE_NORMAL
+  zh: 许多交易算法使用市场上的技术指标来调整投资组合构成，增加其预期收益或减少其风险。
 - en: As application example we can look at the use of Deep Learning by Lei, Peng
     and Shen to improve a commonly used indicator in technical analysis, the Moving
     Average Convergence/Divergence (MACD) (Lei et al. [2020](#CR9)). The authors start
@@ -390,21 +499,31 @@
     a kurtosis higher than 0 (meaning a higher steepness of the curve than a normal
     distribution), the algorithm will trust the trading point indicated and perform
     a trade, otherwise it will ignore it and hold the position.
+  id: totrans-51
   prefs: []
   type: TYPE_NORMAL
+  zh: 作为应用示例，我们可以看一下雷、彭和沈利用深度学习改进了技术分析中常用的指标——移动平均收敛/发散（MACD）（雷等人 [2020](#CR9)）。 作者首先指出，传统的MACD技术无法理解趋势变化的幅度，这可能会导致算法在实际上没有大的趋势变化但只是波动时发出交易信号。
+    这将导致由于交易成本而造成不必要的损失。 因此，通过残差网络，可以估计代表所交易股票的时间序列的某些特征，特别是作者关注的MACD指标将发出交易信号的时间序列的局部峰度。
+    如果残差网络估计的峰度高于0（意味着曲线的陡度高于正态分布），则算法将相信所指示的交易点并执行交易，否则将忽略它并保持持仓。
 - en: Tested on the CSI300 stock index the algorithm proposed outperformed the classic
     one employing only the MACD, showing how existing algorithmic trading strategies
     can be improved by ML.
+  id: totrans-52
   prefs: []
   type: TYPE_NORMAL
+  zh: 在CSI300股票指数上进行测试，所提出的算法优于仅使用MACD的经典算法，显示了通过ML可以改进现有的算法交易策略。
 - en: 7.4 Risks and Challenges
+  id: totrans-53
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 7.4 风险与挑战
 - en: While providing many advantages, the use of ML in Finance is not immune to its
     common pitfalls.
+  id: totrans-54
   prefs: []
   type: TYPE_NORMAL
+  zh: 尽管提供了许多优势，但在金融领域使用ML也无法免受其常见缺陷的影响。
 - en: In all fields, including finance, the complexity of a machine learning model
     is the primary factor contributing to its riskiness. The algorithms for machine
     learning are fundamentally quite difficult since they operate on massive and sometimes
@@ -414,8 +533,11 @@
     [2021](#CR12)). Moreover, complexity might make the algorithms hard to be implemented
     by final users, which could have computing infrastructures not apt to render an
     answer within the time constrains imposed by the task.
+  id: totrans-55
   prefs: []
   type: TYPE_NORMAL
+  zh: 在所有领域中，包括金融领域，机器学习模型的复杂性是导致其风险性的主要因素。 机器学习的算法基本上相当困难，因为它们操作的是大规模且有时结构不清的数据，例如文本、照片和声音。
+    因此，对这些算法的训练需要复杂的计算基础设施，以及模型构建者方面的高度专业知识和理解（Sen等人 [2021](#CR12)）。 此外，复杂性可能会使算法难以被最终用户实施，这可能是因为计算基础设施不适合在任务规定的时间限制内提供答案。
 - en: Most of ML models are *black boxes,* this means that the user might know what
     the answer to the posed problem is, but have no idea of how it was found. This
     can lead to several problems and legal disputes. Consider, as an example, an insurance
@@ -426,8 +548,10 @@
     many applications (think of suggesting a product to a customer) do not need model
     interpretability, many others do, and the inability to do so may hinder the progress
     in applying ML to the financial world.
+  id: totrans-56
   prefs: []
   type: TYPE_NORMAL
+  zh: 大多数机器学习模型都是*黑盒子*，这意味着用户可能知道问题的答案是什么，但不知道它是如何找到的。这可能导致几个问题和法律纠纷。例如，考虑一个依赖机器学习来评估合同保费的保险公司。如果无法解释保险公司是如何估算价值的，客户可能会犹豫是否与承保人签订合同。同样，如果银行拒绝客户访问信用而不提供原因，银行可能会面临后果。虽然许多应用程序（比如向客户推荐产品）不需要模型可解释性，但许多其他应用程序需要，而无法做到这一点可能会阻碍机器学习在金融界的应用进展。
 - en: Another challenge is presented by biases. The way data is collected might affect
     the answers provided by the ML algorithms employed. The readily available data
     is intrinsically biased towards replicating existing practices. Think of data
@@ -438,8 +562,10 @@
     an ethical problem and exposing the user to discrimination lawsuits. To avoid
     such biases is essential to perform accurate data cleaning, feature selection
     and extraction.
+  id: totrans-57
   prefs: []
   type: TYPE_NORMAL
+  zh: 另一个挑战是偏见。数据收集的方式可能会影响所使用的机器学习算法提供的答案。现成的数据本质上偏向于复制现有做法。想象一下来自信用机构的数据，客户根据他们接受（或未接受）的贷款类型进行分类。使用机器学习，我们可能只是不断地复制过去使用的相同决策过程，而没有创新任何东西，实际上是在重新发明轮子。偏见可能出现在性别或种族方面，造成道德问题，并使用户面临歧视诉讼。为了避免这种偏见，进行准确的数据清洗、特征选择和提取至关重要。
 - en: Ulterior risks arise from adversarial ML, which is the practice of feeding erroneous
     data to a ML algorithm in order to fool it towards certain results. Famous is
     the case of Navinder Sarao (Wang [2015](#CR17)), a young Briton who contributed
@@ -449,45 +575,61 @@
     against adversarial ML is human monitoring, however, when the algorithm is a black
     box, this becomes challenging and more interpretability is required in order to
     be successful.
+  id: totrans-58
   prefs: []
   type: TYPE_NORMAL
+  zh: 来自对抗性机器学习的进一步风险，是向机器学习算法提供错误数据以欺骗其朝向某些结果的做法。著名的案例是纳文德·萨拉奥（Wang [2015](#CR17)），一个年轻的英国人通过创建大量订单然后取消它们（一种称为操纵的做法）而触发了2010年闪电市场崩盘，从而诱使算法交易机器人修改其策略并人为修改市场。对抗性机器学习的最佳解决方案是人工监控，然而，当算法是黑盒子时，这变得具有挑战性，并且需要更多的可解释性才能成功。
 - en: Finally, another major concern is certainly how to not breach data privacy,
     this is especially true when it comes to sensible financial information. Many
     governments are making steps forward in tackling the issues coming from handling
     personal data, the most notable action is arguably the EU GDPR which became effective
     in May 2018.
+  id: totrans-59
   prefs: []
   type: TYPE_NORMAL
+  zh: 最后，另一个主要关注点无疑是如何不违反数据隐私，特别是涉及敏感的财务信息时。许多政府正在采取措施解决处理个人数据带来的问题，最值得注意的行动无疑是于2018年5月生效的欧盟GDPR。
 - en: 7.5 Conclusions
+  id: totrans-60
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 7.5 结论
 - en: Nowadays, ML permeates every industry in a way or another. Finance has both,
     an industry and a research field, has always been inclined to computational approaches
     and using ML can only be seen as a natural progression of this attitude.
+  id: totrans-61
   prefs: []
   type: TYPE_NORMAL
+  zh: 如今，机器学习以某种方式渗透到每个行业。金融作为一个行业和一个研究领域，一直倾向于计算方法，使用机器学习只能被视为这种态度的自然发展。
 - en: We explored various applications, notably most of them seems to be revolving
     around portfolio management and optimization. In fact, even when we are talking
     about risk management we might as well be talking about a sub-field of portfolio
     optimization, while algorithmic trading can be seen as an automatic implementation
     of portfolio management rules and models.
+  id: totrans-62
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们探讨了各种应用，特别是大部分似乎都围绕着投资组合管理和优化展开。实际上，即使我们在谈论风险管理，我们也可能正在谈论投资组合优化的一个子领域，而算法交易可以被视为投资组合管理规则和模型的自动实施。
 - en: Other important fields are those of pricing assets and categorizing customers.
     What seems to be crucial is not only the type of model used, but the cleanness
     of the data acquired. Using the right data is fundamental to avoid biases and
     to obtain innovative insights. However, it is a delicate process since it’s easy
     to breach personal privacy when handling financial data.
+  id: totrans-63
   prefs: []
   type: TYPE_NORMAL
+  zh: 其他重要领域包括资产定价和客户分类。关键似乎不仅是所使用模型的类型，而且还包括所获取数据的清洁度。使用正确的数据对于避免偏见并获得创新性见解至关重要。然而，这是一个微妙的过程，因为在处理金融数据时很容易侵犯个人隐私。
 - en: Major concerns come from the fragility of complex models, which often are black
     boxes to their users whom, not understanding the model used, might be prone to
     be exploited, an example of it is the practice of “spoofing”.
+  id: totrans-64
   prefs: []
   type: TYPE_NORMAL
+  zh: 主要关注点来自于复杂模型的脆弱性，这些模型通常对于不了解所使用模型的用户来说是黑匣子，这些用户可能容易受到剥削，其中一个例子就是“欺骗”的实践。
 - en: In conclusion, ML is declining a great wave of innovation into the financial
     world, and as always with big industry changes, monitoring and regulating is essential
     to avoid speculations and exploitations.
+  id: totrans-65
   prefs: []
   type: TYPE_NORMAL
+  zh: 总之，机器学习正在为金融世界带来一场巨大的创新浪潮，而且正如所有重大产业变革一样，监管和规范是避免投机和剥削的关键。
