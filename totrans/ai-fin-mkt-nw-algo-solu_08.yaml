@@ -1,0 +1,786 @@
+- en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2023F.
+    Cecconi (ed.)AI in the Financial Markets Computational Social Sciences[https://doi.org/10.1007/978-3-031-26518-1_8](https://doi.org/10.1007/978-3-031-26518-1_8)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 8. AI Tools for Pricing of Distressed Asset UTP and NPL Loan Portfolios
+  prefs:
+  - PREF_H1
+  type: TYPE_NORMAL
+- en: 'Alessandro Barazzetti^([1](#Aff16) [ ](#ContactOfAuthor1)) and Rosanna Pilla^([2](#Aff17) [ ](#ContactOfAuthor2))(1)QBT
+    Sagl, Via E. Bossi 4, 6830 Chiasso, Switzerland(2)Reacorp Sagl, Via E. Bossi 4,
+    6830 Chiasso, CH, SwitzerlandAlessandro Barazzetti (Corresponding author)Email:
+    [alessandro.barazzetti@qbt.ch](mailto:alessandro.barazzetti@qbt.ch)Rosanna PillaEmail:
+    [rosanna.pilla@reacorp.ch](mailto:rosanna.pilla@reacorp.ch)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Abstract
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: The Non- Performing Exposures are an asset financial class that sees large volumes
+    of credits of banking origin traded on the free market through assignment operations.
+    The issue of credit enhancement therefore acquires a central role in the credit
+    purchase process. In this study we describe an approach to the issue of valuing
+    Non Performing Exposures based on AI algorithms and calculation methods rather
+    than traditional econometrics. The following approach has been studied for the
+    Italian NPE market, as it has unique characteristics in terms of size, legal and
+    technical-real estate aspects.
+  prefs: []
+  type: TYPE_NORMAL
+- en: KeywordsNPELoan evaluationAIFintechBusiness planCluster tree analysisExpert
+    systemCash flowAlessandro Barazzetti
+  prefs: []
+  type: TYPE_NORMAL
+- en: Aeronautical Engineer at the Politecnico di Milano, Professor at Ludes Off-Campus
+    Semmelweis University and pilot is the owner of QBT Sagl, a company operating
+    in the development of Algorithms and Software in the Fintech and Proptech sector
+    and of Science Adventure Sagl, a company specialized in the development of applied
+    AI solutions to Health & Care and advanced projects in the Aerospace sector. Alessandro
+    is also founder of SST srl, a company devoted to sustainability studies and certification
+    and Reacorp Sagl a company devoted to Fintech and Proptech services.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Rosanna Pilla
+  prefs: []
+  type: TYPE_NORMAL
+- en: is a Lawyer; she has chosen to consolidate her skills in banking and finance
+    law, credit restructuring, executive and repossess procedures. Expert in the active
+    management and enhancement of real estate guarantees, in due diligence and securitisations,
+    credit transfers, preparation and implementation of business plans of secured
+    and unsecured credit portfolios, NPL and UTP credits. Team leader of a group,
+    in constant and dynamic growth, of young professionals who already have various
+    due diligence activities in the in the sale of NPLS credit portfolios, and the
+    establishment of FIA funds. She follows with interest the development and application
+    of new technologies for data analysis and enhancement. Rosanna is a Member of
+    the TSEI Association—Study Table of Italian Executions and founder of Reacorp
+    Sagl, a Swiss company devoted to Fintech and Proptech Services
+  prefs: []
+  type: TYPE_NORMAL
+- en: 8.1 Non-performing Loans
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: NPE (Regulation (EU) [2013](#CR1)) refers to a credit position of banking origin,
+    for which the debtor has no longer been able to honor payments. The debtor enters
+    a state of insolvency and the credit is classified as non-performing becoming
+    a Non Performing Exposure or NPE. Three different types of NPE are identified
+    based on the number of months that have passed since the last payment made by
+    the debtor to the institution that granted the credit.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Each type corresponds to a precise accounting fulfillment and calculation of
+    interest and expenses up to the judicial procedure for the compulsory recovery
+    of the credit through the judicial auction mechanism.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The types of NPE are identified as follows, in order of time since the last
+    payment made:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '1.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: Overdrawn and/or past-due exposures
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: '2.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: Unlikely-to-pay exposures (UTP)
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: '3.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: Non-performing loans (Bad loans).
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: The classification of NPE positions was defined by the European Union through
+    a regulation issued by the European Banking Authority (EBA) (European Central
+    Bank [2017](#CR2)) pursuant to a European Regulation (EBA/GL [2016](#CR3)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The NPE positions are also distinguished by the type of guarantee linked to
+    the credit: therefore we have non-performing positions of loans with a mortgage
+    guarantee (Secured loans) and loans without a mortgage guarantee (Unsecured).'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Secured positions, the mortgage guarantee is made up of the debtor''s real
+    estate assets: therefore, these are non-performing loans whose recovery is facilitated
+    by the possibility of proceeding through the courts at the property auction.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Unsecured loans, on the other hand, are distinguished on the basis of the type
+    of credit disbursed: we have credits of a financial, commercial and banking nature.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Another important distinction concerns the type of debtor. The credits can
+    be disbursed to individuals or legal entities. The type of debtor has an impact
+    above all in the recovery legal action: for legal persons, the judicial recovery
+    of the amounts due takes place through a bankruptcy executive procedure (ie bankruptcy)
+    compared to individual execution (ie attachment) for natural persons.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Furthermore, the credit amounts for legal entities are usually higher than for
+    natural persons.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The study will focus on the Italian NPE credit market since it is a large market
+    as well as being particularly complex in relation to the legal credit recovery
+    activities and the particularity of the properties placed as collateral for the
+    credit.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 8.2 The Size of the NPE Market
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: The market for bank credit positions classified as NPE has a considerable size
+    in terms of both overall volumes and number of credit positions.
+  prefs: []
+  type: TYPE_NORMAL
+- en: At the end of 2021, the stock of NPEs in Italy amounted to €330 billion, of
+    which €250 billion in NPL positions and €80 billion in positions classified as
+    UTP (Market Watch [2021](#CR4)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: is expected in consideration of the current economic crisis, with strong repercussions
+    in the three-year period 2023–2026 in relation to the high rate of inflation,
+    which is affecting the real economy of the country.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Of the figures previously indicated, 75% regards loans to companies and 70%
+    loans with real estate guarantees (secured).
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'NPE transactions in 2021 amounted to approximately 36 billion euros for 34
+    billion euros of NPLS and 2 billion euros of UTP divided as follows: 80% of loans
+    to companies and 50% of loans secured by real estate (Fig. [8.1](#Fig1)).![](../images/524458_1_En_8_Chapter/524458_1_En_8_Fig1_HTML.png)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: A grouped bar graph of U T P and N P L sales in billions of euros in 2019 to
+    2021\. The data of U T P in all 3 years are 8, 9, and 2\. The data of N P L in
+    all 3 years are 38, 34, and 34.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 8.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: NPE portfolio sales in the last three years in billions of Euros
+  prefs: []
+  type: TYPE_NORMAL
+- en: 8.3 The Valuation of Credits and Credit Portfolios
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Non-performing loans or NPEs are purchased by investment funds through Special
+    Purposes Vehicle (SPV) through the credit securitization process (Bank of Italy
+    [2017](#CR5)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: The purchase of credits takes place through a non-recourse assignment by the
+    assignor bank according to a price that is negotiated between the parties at the
+    time of purchase.
+  prefs: []
+  type: TYPE_NORMAL
+- en: An alternative to the non-recourse transfer is represented by the Contribution
+    Funds or FIAs, which allow the banking institutions that transfer the credits
+    to transfer the NPE positions in a closed fund. In exchange, the assignors receive
+    the units of the fund in proportion to the amount of impaired loans transferred.
+    AIFs are not speculative in nature.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In both cases, banks can assign or contribute single positions or single names
+    to the AIFs or entire loan portfolios which also group together a large number
+    of debtors.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The purchase price of the credit or of the specular contribution value for the
+    AIFs is determined by estimating a credit recovery forecast, known as the Business
+    Plan of the transfer transaction.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The activity that allows the buyer to arrive at the determination of the recovery
+    forecast and therefore the drafting of the Business Plan takes the name of credit
+    due diligence and consists in the analysis of the single NPE positions.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The set of information collected by the buyer and made available by the seller
+    is then used by the econometric models to elaborate the recovery forecast or Business
+    Plan.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Usually the buyer relies on companies specialized in technical-legal advisory
+    to carry out the due credit due diligence: these companies have staff who are
+    experts in legal, financial and real estate analyses.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: In the case of AIFs, on the other hand, the contributing institutions rely on
+    the figure of the Independent Credit Expert.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The purchase price of receivables or the contribution value, whether single
+    names or entire portfolios of receivables, is determined by discounting the cash
+    flows included in the Business plan, which represents the forecast of credit recovery,
+    according to the rate of return expected or IRR.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The rate of return represents the investor's expectation for the sale transaction.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The expected return rates or market IRRs differ according to the type of credit
+    but we can indicate a range between 11 and 15% as a benchmark for Secured credit
+    portfolios, with a highly speculative investor approach.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Of particular importance is the definition of the rate of return for FIA contribution
+    operations, which we remind you do not have a speculative purpose.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'For this type of transaction, the expected rate of return is set at ~ 3%: the
+    rate is defined on the basis of a series of objective market parameters linked
+    to the ten-year average of the Euribor and the average of the savings deposit
+    rates of the main banking operators.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: The econometric methods for determining the purchase price of credit or credit
+    portfolios are essentially statistical in nature based on the analysis of the
+    correlations between the descriptive attributes of the debtor and the nature of
+    the credit in relation to the historical trend of collections.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Alternatively, we have implemented a method for determining recovery forecasts
+    for UTP credits based on an AI approach.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 8.4 Description of an AI Valuation Method of UTP Credits
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: In this chapter we describe a credit valorisation method based on an AI approach
+    based on the construction of an Expert System (Bazzocchi [1988](#CR6)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: With Expert System we mean a program able to replicate the behavior of one or
+    more expert people (Iacono [1991](#CR7)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The founding principle of the Expert Systems is the writing of “rules” which
+    constitute the basis of the knowledge of the program: these rules are built thanks
+    to interviews with experts in the sector, thanks to statistical analysis of data
+    to extrapolate regularities identified by means of Decision Trees^([1](#Fn1))
+    or using a Machine Learning solution (Woolery and Grzymala-Busse [1994](#CR9)).'
+  prefs: []
+  type: TYPE_NORMAL
+- en: We focus our study on UTP Secured and Unsecured credits, disbursed to both individuals
+    and legal entities.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'UTP credits are defined as credits that have not yet become non-performing:
+    for this type of credit, the debtor has stopped paying his debt but the bank has
+    not yet classified it as actual insolvency. The UTP condition has a legally limited
+    duration over time and has two potential exit conditions: the position becomes
+    a real non-performing loan or NPL or, through a specific recovery strategy, it
+    returns to the performing condition.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Both exit conditions determine a credit recovery forecast and a related recovery
+    time frame.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Our program or algorithm for determining the valuation of UTP credits includes
+    the following flow chart, which we will analyze in detail:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: The UTP position is initially distinguished between a natural person and a legal
+    person.
+  prefs: []
+  type: TYPE_NORMAL
+- en: If the position is a natural person the information that is used is of a commercial
+    nature.
+  prefs: []
+  type: TYPE_NORMAL
+- en: If the position is instead a legal person, the information, in addition to the
+    legal ones, concerns the company's balance sheet data and sector analysis.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Here is the information used in the model, which represents the input of the
+    program (Tables [8.1](#Tab1) and [8.2](#Tab2)).Table 8.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: List of variables used in the algorithm for individuals
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Input parameters | Input type | Description |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| GBV | Amount | A Due credit |'
+  prefs: []
+  type: TYPE_TB
+- en: '| How much did he pay | Amount | B Credits already paid |'
+  prefs: []
+  type: TYPE_TB
+- en: '| How much disbursed | Amount | C Credit disbursed |'
+  prefs: []
+  type: TYPE_TB
+- en: '| When last payment | At your place |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Property location | String |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Real estate value | Amount |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Other Warranties | Yes   No |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Guarantors | Yes   No |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Average installation amount | Amount |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Collections from utp | Yes   No | Collections after switching to UTP |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Work | Yes   No |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Salary | Amount | F amount of salary |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Work type | Drop down menu |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Profession | Drop down menu |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Marital status | Drop down menu |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Bride works | Yes   No |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Sons | Yes   No |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Available | Yes   No |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Special | Yes   No |   |'
+  prefs: []
+  type: TYPE_TB
+- en: Table 8.2
+  prefs: []
+  type: TYPE_NORMAL
+- en: List of variables used in the algorithm for legal entities
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Input parameters | Input type | Description |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| GBV | Amount | A Due credit |'
+  prefs: []
+  type: TYPE_TB
+- en: '| How much did he pay | Amount | B Credits already paid |'
+  prefs: []
+  type: TYPE_TB
+- en: '| How much disbursed | Amount | C Credit disbursed |'
+  prefs: []
+  type: TYPE_TB
+- en: '| When last payment | At your place |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Property location | String |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Real estate value | Amount | d |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Other Warranties | Yes   No |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Guarantors | Yes   No |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Average installation amount | Amount | AND |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Collections from utp | Yes   No |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Sector | Drop down menu | Merchandise sector of the company |'
+  prefs: []
+  type: TYPE_TB
+- en: '| active | Amount | Budget items |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Passive | Amount | Budget items |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Members | Yes   No |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Activate | Yes   No |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Refundable | Yes   No |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Special | Yes   No |   |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Refinancing analysis | Drop down menu | Index from 1 to 10 |'
+  prefs: []
+  type: TYPE_TB
+- en: Following the scheme in Fig. [8.2](#Fig2), the first analysis consists in determining
+    whether the position remains UTP or will become NPL.![](../images/524458_1_En_8_Chapter/524458_1_En_8_Fig2_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: A flowchart in 6 steps. 1, The U T P borrower divided into company and individual.
+    2, The company is divided into legal, balance sheet, and market analysis. The
+    individual flows personal analysis. 3, All the analysis are clubbed in recovery
+    strategy. 4, Recovery strategy is divided into N P L judicial and U T P performing.
+    5, U T P is divided into 7 category. 6, N P L and U T P categories are clubbed
+    as business plan.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 8.2
+  prefs: []
+  type: TYPE_NORMAL
+- en: Flowchart
+  prefs: []
+  type: TYPE_NORMAL
+- en: Using the Input parameters, the two UTP credit portfolios were analyzed as follows,
+    through a Cluster Tree Analysis (Table [8.3](#Tab3)).Table 8.3
+  prefs: []
+  type: TYPE_NORMAL
+- en: Portfolios used to analyze NPL vs UTP positions
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Portfolio ID | GBV € (~) | Borrower number (~) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Portfolio A | 12,000,000.00 | 30 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Portfolio B | 55,000,000.00 | 25 |'
+  prefs: []
+  type: TYPE_TB
+- en: The result of the analysis made it possible to assign the correct weight to
+    each parameter in determining the probability of switching from UTP to NPL.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In the event that the position becomes an NPL, the valuation becomes judicial
+    and involves the application of a haircut on the value of the receivable equal
+    to 80% of the value with a recovery time quantified as an average of 5.3 years
+    (Study of the Times of the Courts Ed. [2022](#CR10)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: In the event that the position remains UTP, it becomes necessary to define what
+    is the most probable exit strategy from the UTP condition towards a return to
+    performing or in any case an out-of-court settlement.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In this case, to determine the recovery forecast, it is necessary to calculate
+    the most probable strategy of non-judicial UTP solutions which can be classified
+    as follows (Table [8.4](#Tab4)).Table 8.4
+  prefs: []
+  type: TYPE_NORMAL
+- en: UTP exit strategies for legal entities
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Exit strategy | Description |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Asset sale | Consensual asset sale |'
+  prefs: []
+  type: TYPE_TB
+- en: '| DPO | Voluntary disposal even with a post or gradual return plan |'
+  prefs: []
+  type: TYPE_TB
+- en: '| DPO Ex Article 67 | Recovery plan with a DPO |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Article 67 lf—recovery plan | Recovery plans |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Article 182 bis. restructuring | Legal restructuring plan |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Article 160 lf—legal agreement | Legal agreement |'
+  prefs: []
+  type: TYPE_TB
+- en: For the determination of the recovery strategies of Table [8.5](#Tab5), for
+    the positions that remain UTP we used a set of rules inserted in the calculation
+    program of the credit recovery forecast.Table 8.5
+  prefs: []
+  type: TYPE_NORMAL
+- en: Strategies for exiting the UTP condition for individuals
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Exit strategy | Description |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Asset sale | Consensual asset sale |'
+  prefs: []
+  type: TYPE_TB
+- en: '| DPO | Voluntary disposal even with a DPO or gradual return plan |'
+  prefs: []
+  type: TYPE_TB
+- en: 'The Expert System was defined by a group of credit specialists with different
+    backgrounds: we created a team made up of two lawyers, an economist expert in
+    budget analysis and a real estate technical expert.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: The working group formulated the rules that define the activation conditions
+    of the various strategies in relation to the input variables.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Particular mention should be made of the parameter relating to sector analysis.
+    By sector we mean the belonging of the company to a precise product category defined
+    through the ATECO codes (ATECO [2007](#CR11)). Through the analysis of sector
+    studies (ISTAT [2021](#CR12)), the group of experts assigned a positive score
+    to each product group in the case of sectors capable of generating GDP, differently
+    a negative score for sectors with recession prospects in relation to macroeconomic
+    conditions current.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In the same way, a company financeability scale linked to specific rules deduced
+    from the analysis of the financial statements of the companies belonging to the
+    portfolios in Table [8.3](#Tab3) was defined.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The analysis of financial statements for legal entities represents the most
+    important element in drafting the rules for determining the most probable credit
+    recovery strategy.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The rules thus determined apply to the parameters entered as input and take
+    the following form (Table [8.6](#Tab6)).Table 8.6
+  prefs: []
+  type: TYPE_NORMAL
+- en: Example of rules
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Rules | Strategy |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| If FIRST MORTGAGE (SUBSTANTIAL) = YES AND D > A | Consensual asset sale |'
+  prefs: []
+  type: TYPE_TB
+- en: '| IF (FIRST MORTGAGE (SUBSTANTIAL) = NO (OR NULL) OR UNSECURED = YES) AND ACTIVE > PASSIVE
+    AND ACTIVATE = YES | Voluntary disposal even with a post or gradual return plan
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| IF ACTIVE > (PASSIVE + Tolerance * PASSIVE) AND D > 0 | Consensual asset
+    sale |'
+  prefs: []
+  type: TYPE_TB
+- en: '| IF ACTIVE > (PASSIVE + Tolerance * PASSIVE) | Voluntary disposal even with
+    a post or gradual return plan |'
+  prefs: []
+  type: TYPE_TB
+- en: '| IF ACTIVE <  = A AND ACTIVE > PASSIVE | Dpo ex art 67 lf recovery plan |'
+  prefs: []
+  type: TYPE_TB
+- en: '| IF PASSIVE > ACTIVE AND (A < PASSIVE + Tolerance * PASSIVE AND A > PASSIVE—Tolerance
+    * PASSIVE) | Art 160 lf—legal agreement |'
+  prefs: []
+  type: TYPE_TB
+- en: '| … | … |'
+  prefs: []
+  type: TYPE_TB
+- en: Each strategy is then associated with a recovery forecast based on rules (Table
+    [8.7](#Tab7)).Table 8.7
+  prefs: []
+  type: TYPE_NORMAL
+- en: Enhancement of the strategy for legal entities
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Exit strategy | UTP recovery amount |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Asset sale | Amount = (min A; D) * % Discount 1 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| DPO | Amount = A * % Discount 2 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| … | … |'
+  prefs: []
+  type: TYPE_TB
+- en: The percentages indicated as DiscountN were determined through the statistical
+    analysis of the credit portfolio database in Table [8.3](#Tab3), which have already
+    generated receipts over the years.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The result is highlighted in Table [8.8](#Tab8).Table 8.8
+  prefs: []
+  type: TYPE_NORMAL
+- en: Recovery values in percentages and in years associated with individual strategies
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Strategy | Tolerance (%) | Discount as percentage (%) | Years for recovery
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Consensual asset sale | 10 | 90 | 3 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Voluntary disposal even with a post or gradual return plan |   | 80 | 5 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Dpo ex art 67 lf recovery plan | 10 | 80 | 4 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Article 67 lf—recovery plan | 10 | 70 | 3 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Article 182 bis.—legal restructuring plan | 20 | 50 | 5 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Art 160 lf—legal agreement | 30 | 60 | 4 |'
+  prefs: []
+  type: TYPE_TB
+- en: 'The credit valorisation thus elaborated makes it possible to generate a business
+    plan of the credit portfolio, assigning to each position:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Attribution of transition to NPL or permanence in UTP
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: If NPL then Strategy is Judicial
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: If UTP then the rules are applied to determine the Most Probable Recovery Strategy
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: For the selected Strategy, the recovery forecast is determined based on the
+    valuation rules with the application of the Discount percentages calculated statistically
+    as well as the recovery time in years.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: The result is a business plan as shown in Fig. [8.3](#Fig3).![](../images/524458_1_En_8_Chapter/524458_1_En_8_Fig3_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: A table of 11 columns and 8 rows of data. The column headers are mentioned in
+    foreign text and 4 dates in 2022 are March 31, June 30, September 30, and December
+    31.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 8.3
+  prefs: []
+  type: TYPE_NORMAL
+- en: Example of UTP credit portfolio business plan
+  prefs: []
+  type: TYPE_NORMAL
+- en: Each line of the document represents a debt position for which the credit value
+    or GBV is presented, the legal nature, the exit condition as NPL or UTP and the
+    recovery strategy with the related forecast of cash flows over time and the price
+    of purchase or contribution value calculated as discounting of the cash flow at
+    the reference rate.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 8.5 Model Verification
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: The results of the credit portfolio valuation processing carried out with the
+    program based on the algorithm described were validated by means of a valuation
+    test conducted in parallel and manually with the specialists of the group of experts
+    on the same credit portfolios. This activity has made it possible to consolidate
+    the valorisation rules.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Subsequently, back tests were carried out on the valuation of loan portfolios
+    whose strategy and recovery of the single position was already known. The degree
+    of reliability both in terms of determination of the NPL or UTP conditions and
+    of the exit strategies from the UTP condition has proved to be extremely high
+    as shown in Table [8.9](#Tab9).Table 8.9
+  prefs: []
+  type: TYPE_NORMAL
+- en: Errors of the model compared to real cases
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| PortfolioID | GBV € (~) | Borrower number (~) | Error NPL Vs UTP (%) | Error
+    in strategy det (%) | Error in recovery amount det (%) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| P tf1 | 24,000,000.00 | 1 | 0 | 0 | 15 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| ptf2 | 20,000,000.00 | 20 | 10 | 11 | 9 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| ptf3 | 6,000,000.00 | 2 | 0 | 50 | 20 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| ptf4 | 30,000,000.00 | 40 | 6 | 7 | 6 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| ptf5 | 8,000,000.00 | 20 | 4 | 6 | 5 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| ptf6 | 14,000,000.00 | 15 | 9 | 9 | 8 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| ptf7 | 60,000,000.00 | 25 | 11 | 10 | 9 |'
+  prefs: []
+  type: TYPE_TB
+- en: 8.6 Conclusion
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: The use of a credit enhancement system based on the use of an Expert System
+    has the advantage of explaining the physical phenomenon underlying the credit
+    recovery process in a transparent and verifiable way. Rules can be subjected to
+    empirical testing over time to check adherence to the physical reality they describe.
+    Furthermore, new rules can be added over time as environmental conditions change.
+    In particular, new regulatory obligations or considerations on the application
+    of macroeconomic parameters.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The application of the model on real credit portfolios allowed us to test the
+    method and verify its correctness on various transactions, with satisfactory results.
+  prefs: []
+  type: TYPE_NORMAL

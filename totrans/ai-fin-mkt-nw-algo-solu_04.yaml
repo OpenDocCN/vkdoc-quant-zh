@@ -1,0 +1,441 @@
+- en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2023F.
+    Cecconi (ed.)AI in the Financial Markets Computational Social Sciences[https://doi.org/10.1007/978-3-031-26518-1_4](https://doi.org/10.1007/978-3-031-26518-1_4)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4. The AI's Role in the Great Reset
+  prefs:
+  - PREF_H1
+  type: TYPE_NORMAL
+- en: 'Federico Cecconi^([1](#Aff16) [ ](#ContactOfAuthor1))(1)LABSS-ISTC-CNR, Via
+    Palestro 32, 00185 Rome, ItalyFederico CecconiEmail: [federico.cecconi@istc.cnr.it](mailto:federico.cecconi@istc.cnr.it)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Abstract
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'The phrase “Great Reset” is now in the public domain and appears in a number
+    of analyses and discussions. However, we often remain ambiguous in this regard.
+    It may be helpful to read the World Economic Forum''s so-called white paper, Resetting
+    the Future of Work Agenda in a Post-Covid World, to understand what theorists
+    of this epochal maneuver are aiming for. This 31-page document describes how to
+    run (or, as they say these days, implement) the software included in the CoViD-19
+    book. World Economic Forum founder Klaus Schwab and Thierry Malleret co-wrote
+    The Great Reset (Schwab and Malleret in COVID-19: The Big Reset, [2020](#CR1);
+    Umbrello in The Journal Value Inquiry:1–8, [2021](#CR2); Roth in European Management
+    Journal 39.5:538–544, [2021](#CR3)). Why devote an entire chapter to this topic
+    in a book about AI and its applications in finance? It’s simple: updating the
+    financial world to make it safer, more understandable, and more manageable necessitates
+    extensive use of AI technologies. These technologies can be harmful up to a point.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: KeywordsThe great resetCOVID-19MicrotrendsCreditESGFederico Cecconi
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'is R&D manager for QBT Sagl ([https://​www.​qbt.​ch](https://www.qbt.ch)),
+    responsible for the LABSS (CNR) of the computer network management and computational
+    resources for simulation, and consultant for Arcipelago Software Srl. He develops
+    computational and mathematical models for the Labss’s issues (social dynamics,
+    reputation, normative dynamics). For Labss performs both the dissemination that
+    training. His current research interest is twofold: on the one hand, the study
+    of socio-economic phenomena, typically using computational models and databases.
+    The second is the development of AI model for fintech and proptech.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4.1 To Summarize the Great Reset
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'The Great Reset could be the first great revolution with IT (AI as a main pillar)
+    at its core: resetting the Future covers the decade from 2021 to 2030 (Fig. [4.1](#Fig1)).![](../images/524458_1_En_4_Chapter/524458_1_En_4_Fig1_HTML.png)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: A display page of the World Economic Forum has the title The Great Reset. Below,
+    a text is written June tenth highlights.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 4.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: Depicts the great reset, a World economic forum initiative
+  prefs: []
+  type: TYPE_NORMAL
+- en: First and foremost, digitized work processes will be accelerated, with 84% of
+    all work processes required to be digitized or made via video. To achieve complete
+    social separation, approximately 83% of people will be required to work remotely,
+    with no human interaction. At least half of all activities are expected to be
+    automated, implying that direct human input, even in the same remote activity,
+    will be drastically reduced, and upskilling and reskilling activities will also
+    need to be computerized. Upskilling is the acquisition of new skills that allow
+    a person to become more effective and qualified in their field. The acquisition
+    of significantly different abilities in order for a person to perform a different
+    function is referred to as reskilling. In other words, the imperative in this
+    scenario is to avoid human touch and achieve everything through computers, artificial
+    intelligence, and algorithms.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Accelerate the implementation of retraining programs so that at least 35% of
+    skills are “retrained,” implying that the acquired skills must be abandoned.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Accelerate the reform of organizational structures. It is proposed that 34%
+    of current organizational structures be “restructured,” declaring them obsolete.
+    The goal is to make room for new organizational frameworks in order to maintain
+    complete control over all activities, including digitization.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Temporarily reassign people to different jobs: this is likely to affect around
+    30% of the workforce. This includes an examination of the pay scales.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Temporarily reduce the workforce: this fate is expected to affect 28% of the
+    population. It is an unemployment issue because it is unclear what the phrase
+    “temporary” means.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: In addition, the Great Reset includes a credit plan in which a personal debt
+    may be “forgiven” in exchange for the surrender of all personal assets to an administrative
+    body or agency.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The previous COVID-19 spread is the most pressing reason to pursue a Great Reset.
+    The pandemic is one of the deadliest public-health crises in recent memory, with
+    hundreds of thousands of deaths already recorded. The war is far from over, with
+    casualties still being reported in many parts of the world.
+  prefs: []
+  type: TYPE_NORMAL
+- en: As a result, long-term economic growth, public debt, employment, and human well-being
+    will all suffer. The Financial Times reports that global government debt has already
+    reached an all-time high. Furthermore, unemployment is skyrocketing in many countries;
+    for example, in the United States, one out of every four workers has filed for
+    unemployment benefits since mid-March, with new weekly claims far exceeding historic
+    highs. According to the International Monetary Fund, the global economy will contract
+    by 3% this year, a 6.3 percentage point drop in just four months.
+  prefs: []
+  type: TYPE_NORMAL
+- en: All of this will exacerbate existing climate and social crises. Some countries
+    have already used the COVID-19 crisis to weaken environmental protections and
+    enforcement. And discontent with social ills like rising inequality—the combined
+    wealth of US billionaires has increased during the crisis—is growing.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In reality, there was already a requirement that can be summed up in one word:
+    stability. We are currently witnessing a significant amount of skepticism in our
+    societies and around the world. The main requirement, however, is stability. While
+    the majority of this chapter will continue to concentrate on COVID and its consequences,
+    it is important to remember that the need is much greater.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: These crises, along with COVID-19, will worsen if not addressed, making the
+    world less sustainable, unequal, and fragile. Incremental measures and ad hoc
+    fixes will not suffice to avoid this scenario. Our economic and social systems
+    must be completely rebuilt.
+  prefs: []
+  type: TYPE_NORMAL
+- en: This necessitates unprecedented levels of collaboration and ambition. It is,
+    however, not an impossible dream. One silver lining of the pandemic is that it
+    has shown how quickly we can make radical lifestyle changes. Almost immediately,
+    the crisis forced businesses and individuals to abandon long-held essential practices,
+    such as frequent air travel and office work.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Similarly, populations have shown a strong willingness to make sacrifices for
+    health-care and other essential workers, as well as vulnerable populations such
+    as the elderly. And, in a shift toward the kind of stakeholder capitalism to which
+    they had previously paid lip service, many corporations have stepped up to support
+    their employees, customers, and local communities.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Clearly, there is a desire to create a better society. We must use it to secure
+    the much-needed Great Reset. This will necessitate more powerful and effective
+    governments, though this does not imply an ideological push for larger ones. And
+    it will necessitate private-sector participation at every stage.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4.2 The Elements
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: The Great Reset agenda would consist of three major components. The first would
+    steer the market toward more equitable outcomes. Governments should improve coordination
+    (for example, in tax, regulatory, and fiscal policy), upgrade trade agreements,
+    and create the conditions for a “stakeholder economy” to achieve this goal. Governments
+    have a strong incentive to pursue such action in an era of shrinking tax bases
+    and soaring public debt.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Furthermore, governments should carry out long-overdue reforms that promote
+    more equitable outcomes. These may include changes to wealth taxes, the elimination
+    of fossil-fuel subsidies, and new rules governing intellectual property, trade,
+    and competition, depending on the country.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The second component of a Great Reset agenda would be to ensure that investments
+    advance common goals like equality and sustainability. The large-scale spending
+    programs that many governments are implementing represent a significant opportunity
+    for progress in this area. The European Commission, for example, has proposed
+    a €750 billion ($826 billion) recovery fund. The United States, China, and Japan
+    all have aggressive economic stimulus plans.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Instead of using these funds, as well as investments from private entities and
+    pension funds, to patch up the old system, we should use them to build a new one
+    that is more resilient, equitable, and long-term sustainable. This includes, for
+    example, the construction of “green” urban infrastructure and the creation of
+    incentives for industries to improve their performance on environmental, social,
+    and governance (ESG) metrics.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The third and final priority of a Great Reset agenda is to use Fourth Industrial
+    Revolution innovations to benefit the public good, particularly by addressing
+    health and social challenges. Companies, universities, and others banded together
+    during the COVID-19 crisis to develop diagnostics, therapeutics, and possible
+    vaccines; establish testing centers; develop mechanisms for tracing infections;
+    and provide telemedicine. Consider what could be accomplished if similar coordinated
+    efforts were made in every sector.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4.3 Microtrends
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'The Great Reset will entail a long and complex series of changes and adaptations
+    at the micro level, that of industries and businesses. When confronted with this,
+    some industry leaders and senior executives may be tempted to equate recovery
+    with reboot, hoping to return to the old normal and restore what worked in the
+    past: traditions, tried and true procedures, and familiar ways of doing things—in
+    short, a return to business as usual. This will not occur because it cannot occur.
+    In most cases, “business as usual” has died (or been infected with) COVID-19\.
+    Economic hibernation caused by blockades and social distancing measures has devastated
+    some sectors. Others will struggle to recoup lost revenue before embarking on
+    an increasingly narrow path to profitability as a result of the global economic
+    downturn. However, for most businesses entering the post-coronavirus era, the
+    key question will be striking the right balance between what worked in the past
+    and what is required now to thrive in the new normal. For these businesses, the
+    pandemic represents a once-in-a-lifetime opportunity to rethink their operations
+    and implement positive, long-term change.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: What will define the post-coronavirus business landscape’s new normal?
+  prefs: []
+  type: TYPE_NORMAL
+- en: How will businesses strike the best balance possible between past successes
+    and the fundamentals now required to succeed in the post-pandemic era?
+  prefs: []
+  type: TYPE_NORMAL
+- en: The response is obviously dependent and specific to each sector, as well as
+    the severity of the pandemic. Aside from the few industries where companies will
+    benefit on average from strong favorable winds (particularly technology, health
+    and wellness), the journey will be difficult and at times treacherous in the post-COVID-19
+    era. For some industries, such as entertainment, travel, and hospitality, a return
+    to pre-pandemic conditions is unthinkable in the near future (and perhaps never
+    in some cases …). Others, particularly in manufacturing and food, are more concerned
+    with adapting to the shock and leveraging new trends (such as digital) to thrive
+    in the post-pandemic era. Size makes a difference as well. Small businesses face
+    more challenges because they have smaller cash reserves and lower profit margins
+    than larger businesses.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Most of them will have to deal with cost-to-income ratios that put them at a
+    disadvantage in comparison to their larger competitors in the future. However,
+    being small has some advantages in today’s world, where flexibility and speed
+    can make or break adaptation. Being agile is easier for a small structure than
+    it is for a massive industrial structure.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'That being said, regardless of their industry or the specific situation in
+    which they find themselves, almost every single business decision maker around
+    the world will face similar problems and will be required to answer some common
+    questions and challenges. The following are the most obvious:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Should I encourage those who can (roughly 30% of the total US workforce) to
+    work from home?
+  prefs: []
+  type: TYPE_NORMAL
+- en: Will I reduce my business's reliance on air travel, and how many face-to-face
+    meetings can I significantly replace with virtual interactions?
+  prefs: []
+  type: TYPE_NORMAL
+- en: How can I make the business and our decision-making process more agile, allowing
+    us to move faster and more decisively?
+  prefs: []
+  type: TYPE_NORMAL
+- en: How can I accelerate digitization and digital solution adoption?
+  prefs: []
+  type: TYPE_NORMAL
+- en: We are still in the early stages of the post-pandemic era, but there are already
+    new or accelerating trends at work. For some industries, this will be a boon;
+    for others, it will be a major challenge. However, it will be up to each company
+    to capitalize on these new trends by adapting quickly and decisively across all
+    industries. Companies that demonstrate the most agility and flexibility will emerge
+    stronger.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4.4 Digitization is Being Accelerated
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: The buzzword of “digital transformation” was the mantra of most executive boards
+    and committees prior to the pandemic. Digital was “critical,” it had to be implemented
+    “decisively,” and it was regarded as a “prerequisite for success”! Since then,
+    the mantra has become a must, even in the case of some businesses, a matter of
+    life and death. This is simple to explain and comprehend. During our incarceration,
+    we were completely reliant on the Internet for everything, from work and education
+    to socializing. It is online services that have allowed us to maintain a semblance
+    of normalcy, and it is natural that “online” has benefited the most from the pandemic,
+    providing a huge boost to technologies and processes that allow us to do things
+    remotely, such as universal Internet to broadband, mobile and remote payments,
+    and viable e-government services, among others. As a result, businesses that already
+    operate online will have a long-term competitive advantage. Businesses in industries
+    as diverse as e-commerce, contactless operations, digital content, robots, and
+    drone deliveries (to name a few) will thrive as more and more things and services
+    are delivered to us via our cell phones and computers. It is no coincidence that
+    companies such as Alibaba, Amazon, Netflix, and Zoom have emerged as “winners”
+    as a result of the lockdown.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In general, the consumer sector was the first and fastest to move. From the
+    required contactless experience imposed on many food and retail businesses during
+    lockdowns to virtual showrooms in the manufacturing industry that allow customers
+    to browse and select the products they prefer, most business-to-consumer companies
+    have quickly recognized the need to provide their customers with a digital journey
+    “from start to finish.”
+  prefs: []
+  type: TYPE_NORMAL
+- en: With the end of some lockdowns and the recovery of some economies, similar opportunities
+    arose in business-to-business applications, particularly in the manufacturing
+    sector, where physical distancing rules had to be implemented quickly, often in
+    difficult environments. (For example, an assembly line.)
+  prefs: []
+  type: TYPE_NORMAL
+- en: As a result, the Internet of Things has made significant progress. Some companies
+    that were slow to adopt IoT prior to the lockdown are now embracing it in large
+    numbers with the specific goal of doing as many things remotely as possible. All
+    of these different activities, such as equipment maintenance, inventory management,
+    supplier relationships, and security strategies, can now be performed (to a large
+    extent) by a computer. The Internet of Things provides businesses with the ability
+    to not only execute and comply with social distancing rules, but also to reduce
+    costs and implement more agile operations.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Because of the inherent fragility of global supply chains, discussions about
+    shortening have been ongoing for years. They are often intricate and difficult
+    to manage. They are also difficult to monitor in terms of environmental and labor
+    law compliance, potentially exposing companies to reputational risks and brand
+    damage. In light of this troubled history, the pandemic has put the final nail
+    in the coffin of the principle that companies should optimize supply chains based
+    on the cost of individual components and on a single source of supply for critical
+    materials. In the post-pandemic era, “end-to-end value optimization”—a concept
+    that includes resilience, efficiency, and cost—will be dominant. The formula states
+    that “just-in-case” will eventually replace “just-in-time.”
+  prefs: []
+  type: TYPE_NORMAL
+- en: The shocks to global supply chains discussed in the macro section will affect
+    both large and small businesses. But, in practice, what does “just in case” mean?
+    The globalization model conceived and built at the end of the last century by
+    global manufacturing companies in search of low-cost labor, products, and components
+    has reached its limits. It has fragmented international production into ever more
+    intricate fragments, resulting in a system managed on an intimate scale that has
+    proven extremely lean and efficient, but also extremely complex and, as a result,
+    extremely vulnerable (complexity brings fragility and often provokes instability).
+    As a result, simplification is the antidote, which should result in increased
+    resilience. As a result, the “global value chains,” which account for roughly
+    three-quarters of all global trade, will inevitably decline. This decline will
+    be exacerbated by the new reality that companies that rely on complex just-in-time
+    supply chains can no longer assume that the World Trade Organization's tariff
+    commitments will protect them from a sudden wave of protectionism from somewhere
+    part.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'As a result, they will be forced to prepare for a prolonged outage by reducing
+    or localizing their supply chain and devising alternative production or supply
+    plans. Any business whose profitability is dependent on the just-in-time global
+    supply chain principle will have to rethink how it operates and will almost certainly
+    have to sacrifice the idea of maximizing efficiency and profits for the sake of
+    “supply security” and resilience. Resilience will then become the primary consideration
+    for any business serious about protecting itself from disruption, whether that
+    disruption is caused by a specific supplier, a potential change in trade policy,
+    or a specific country or region. In practice, this will force businesses to diversify
+    their supplier base, even at the expense of stockpiling and creating redundancy.
+    It will also compel these companies to ensure that the same is true within their
+    own supply chain: they will assess resilience throughout the entire supply chain,
+    all the way down to their final supplier and possibly even their supplier’s suppliers.
+    Costs of production will inevitably rise, but this will be the cost of building
+    resilience. At first glance, the automotive, electronics, and industrial machinery
+    sectors will be the most affected because they will be the first to change production
+    models.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4.5 ESG and Stakeholder Capitalism
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: The fundamental changes that have occurred in each of the five macro categories
+    examined in Chap. [1](524458_1_En_1_Chapter.xhtml) over the last decade or so
+    have profoundly changed the environment in which companies operate. They have
+    increased the importance of stakeholder capitalism and environmental, social,
+    and governance (ESG) considerations in creating long-term value (ESG can be considered
+    the benchmark for stakeholder capitalism) (Puaschunder [2021](#CR4)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The pandemic struck at a time when many issues, from activism to climate change
+    and growing inequalities to gender diversity and #MeToo scandals, had already
+    begun to raise awareness and increase the importance of stakeholder capitalism
+    and ESG considerations in today’s interdependent world. Whether they are openly
+    married or not, no one can deny that the fundamental purpose of businesses can
+    no longer be the unbridled pursuit of financial profit; they must now serve all
+    of their stakeholders, not just those who hold shares. This is supported by early
+    anecdotal evidence pointing to an even brighter future for ESG in the post-pandemic
+    era. This is explained in three ways:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '1.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: The crisis will have instilled or reinforced a strong sense of responsibility
+    and urgency in most ESG issues, the most important of which is climate change.
+    Others, however, such as consumer behavior, the future of work and mobility, and
+    supply chain responsibility, will rise to the top of the investment agenda and
+    become an essential component of due diligence.
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: '2.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: The pandemic has shown that the absence of ESG considerations has the potential
+    to destroy significant value and even threaten a company's profitability. After
+    that, ESG will be more fully integrated and internalized into a company’s core
+    strategy and governance. It will also alter investor’s perceptions of corporate
+    governance. Tax returns, dividend payments, and wages will be scrutinized more
+    closely for fear of incurring a reputational cost if a problem arises or becomes
+    public.
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: '3.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: Promoting employee and community goodwill will be critical to improving a brand's
+    reputation.
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: 4.6 And Now for the Big Reveal…
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'As a result, if the world chose to go down this road, defend and pursue these
+    goals, and even partially embrace these theses, we would almost certainly end
+    up in a situation where AI algorithms would manage what we simply cannot manage
+    without them. A truly historic revolution. When discussing digitization, many
+    people focus on the more immediate consequences, such as job loss. On the contrary,
+    the opposite thesis is supported here for the first time: intelligent IT technologies
+    will be able to assist us in managing complexity. A truly intriguing challenge:
+    AI in exchange for stability (Da Silva Vieira [2020](#CR5); Murmann [2003](#CR6)).'
+  prefs: []
+  type: TYPE_NORMAL

@@ -1,0 +1,1200 @@
+- en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2022T.
+    Barrau, R. DouadyArtificial Intelligence for Financial MarketsFinancial Mathematics
+    and Fintech[https://doi.org/10.1007/978-3-030-97319-3_3](https://doi.org/10.1007/978-3-030-97319-3_3)
+  prefs: []
+  type: TYPE_NORMAL
+- en: '3. Estimation Method: The Linear Non-Linear Mixed Model'
+  prefs:
+  - PREF_H1
+  type: TYPE_NORMAL
+- en: Thomas Barrau^([1](#Aff5)  ) and Raphael Douady^([2](#Aff6))(1)AXA Investment
+    Managers Chorus Ltd, Hong Kong, Hong Kong S.A.R.(2)Economic Center, University
+    Paris 1 Sorbonne, Paris, France
+  prefs: []
+  type: TYPE_NORMAL
+- en: Abstract
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: We introduce the Linear Non-Linear Mixed (LNLM) model as an effective method
+    to produce non-linear univariate models, with the primary concern of reducing
+    overfitting. We show using numerical simulations that the LNLM model is able to
+    successfully detect patterns in noisy data, with an accuracy similar to or better
+    than data-driven modeling alternatives. We find that our algorithm is computationally
+    efficient, an essential characteristic for machine learning applications often
+    involving a large number of estimations.
+  prefs: []
+  type: TYPE_NORMAL
+- en: KeywordsNon-Linear modelingPolynomial regressionPolymodel theoryRegularizationOverfittingData-drivenNon-parametricUnivariate
+    regression
+  prefs: []
+  type: TYPE_NORMAL
+- en: 3.1 Introduction
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: As explained in Chap. [2](519851_1_En_2_Chapter.xhtml), one of the most powerful
+    advantages of a polymodel over a classical multi-factor model is the possibility
+    of more accurately fitting the target variable, without restricting ourselves
+    to simple linear functional forms. Plenty of alternatives are available in the
+    domain of data-driven modeling, but for most of the techniques, the estimation
+    process may be heavy in terms of computational resources, which is a particularly
+    important point in the polymodels framework. Indeed, even simple applications
+    of Polymodel Theory may involve millions to billions of fits. For example, one
+    may want to fit a polymodel using a thousand factors updated daily for a simulation
+    of 20 years, which directly leads to 1,000 * 252 * 20 = 5,040,000 fits. It is
+    easy to imagine that we may have several target variables and/or a higher frequency
+    in our data. The computational time thus matters a lot in the big data framework
+    that polymodels involve.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The simple solution that practitioners originally used to estimate an elementary
+    model was to use a weighted sum of polynomials. Douady, along with Molchanov and
+    Cherny ([2010](#CR1)), introduced the use of Hermite polynomials, which exhibit
+    interesting properties that limit the correlations among the polynomials when
+    used together in a regression.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Recall that the Hermite polynomials are defined as:![$$ {H}_h(x)\stackrel{\scriptscriptstyle\mathrm{def}}{=}{\left(-1\right)}^h{e}^{\frac{x^2}{2}}\frac{d^h}{d{x}^h}{e}^{\frac{-{x}^2}{2}}.
+    $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ1.png)(3.1)We
+    then simply use the following non-linear model to estimate the elementary models:![$$
+    {\varphi}_i\left({X}_i\right)=\sum \limits_{h=1}^u{\beta}_{h,i}{H}_h\left({X}_i\right)+{\varepsilon}_i.
+    $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ2.png)(3.2)Here
+    the betas are the estimates obtained from OLS (4 polynomial terms are usually
+    enough to reach a sufficient level of accuracy in practice), i.e.:![$$ {\hat{\beta}}^{OLS}={\left[{X}^{\prime
+    }X\right]}^{-1}{X}^{\prime }Y. $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ3.png)(3.3)The
+    polynomial solution has many advantages, since OLS just requires matrix inversions,
+    a task that can be done efficiently nowadays, and that can be easily parallelized.
+    Indeed, parallel computing is one of the keys to an efficient use of Polymodel
+    Theory by the practitioner. Also, polynomial combinations can capture in a smooth
+    and data-driven functional form the underlying link between the independent and
+    the target variables.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'However, these advantages come at a cost: overfitting. Using the polynomial
+    model leads one to re-introduce several artificial exogenous variables in the
+    elementary models, and because of their non-linear nature, which is particularly
+    adaptive, this creates a favorable ground for overfitting.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: The Linear Non-Linear Mixed model comes as an answer to this concern. On one
+    hand, a weighted sum of polynomials models the data so well that it fits some
+    noise along with the underlying relation between variables. On the other hand,
+    a linear model would provide a more robust fit, but at the very high cost of offering
+    only a naïve and simplistic representation of reality. The LNLM model proposes
+    to mix both models and only retain their advantages.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Such a regularized fit may of course be achieved using other techniques.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The polynomial model may be regularized using Ridge estimates to get the betas
+    of the model, which simply consists in adding a penalization on the diagonal of
+    the covariance matrix of the predictors:![$$ {\hat{\beta}}^{OLS}={\left[{X}^{\prime
+    }X\right]}^{-1}{X}^{\prime }Y\Rightarrow {\hat{\beta}}^{Ridge}={\left[{X}^{\prime
+    }X+\lambda I\right]}^{-1}{X}^{\prime }Y. $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ4.png)(3.4)A
+    proper value for the parameter *λ* can be obtained using cross-validation (see
+    Golub et al., [1979](#CR2)), a process which is achieved numerically, by testing
+    different values of *λ* and their associated (pseudo-) out-of-sample goodness
+    of fit. The problem with such a method is that it requires the penalized covariance
+    matrix to be inverted each time a value of *λ* is tested. Hence, performing a
+    10-fold cross-validation while evaluating 10 different *λ* leads to 100 matrix
+    inversions, which may be of low performance in terms of computational time.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Of course, other techniques may be appropriate to propose a data-driven fit
+    which is less over-fitted than a polynomial model estimated with OLS. Among them,
+    we retain the Nadaraya–Watson estimator (Nadaraya, [1964](#CR5); Watson, [1964](#CR8))
+    as a standard benchmark that we use to compare the performance of the LNLM model.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The aim of this chapter is thus to present the LNLM model, and to show its interest
+    in terms of improving out-of-sample goodness of fit as well as in terms of computational
+    time. As for many other artificial intelligence techniques (see Chap. [2](519851_1_En_2_Chapter.xhtml)),
+    our approach is focused on the effectiveness of the model when it is used (here
+    to produce non-overfitted predictions), more than on a deep understanding of its
+    statistical properties, which are consequently not analyzed in the present chapter.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'We thus organize the chapter as follows:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: First, we present the LNLM model, through a formal definition, and we give an
+    explanation of the fitting procedure.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: We then present a methodology designed to evaluate the efficiency of the model
+    using a large panel of simulations.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: The results of the simulations are presented and discussed, and we eventually
+    conclude the chapter.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: 3.2 Presentation of the LNLM Model
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 3.2.1 Definition
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The LNLM model aims to represent a target variable as follows:![$$ Y= LNLM(X).
+    $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ5.png)(3.5)This
+    representation is done using the following definition:![$$ LNLM(X)\stackrel{\scriptscriptstyle\mathrm{def}}{=}\overline{y}+\mu
+    \sum \limits_{h=1}^u{\hat{\beta}}_h^{NonLin}{H}_h(X)+\left(1-\mu \right){\hat{\beta}}^{Lin}X+\varepsilon
+    . $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ6.png)(3.6)*Here*
+    0 ≤ *μ* ≤ 1 *is the parameter that allows one to control for the potential*^([1](#Fn1))
+    *non-linearity, and is thus called the non-linearity propensity parameter, and*
+    ![$$ \overline{y} $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_IEq1.png)
+    *is the mean of the target variable.*
+  prefs: []
+  type: TYPE_NORMAL
+- en: The LNLM model thus simply consists of a regularization of a polynomial model^([2](#Fn2))
+    by a linear one. This point is very important, and creates a significant difference
+    with a classical shrinkage of the parameters using a Ridge regression^([3](#Fn3))
+    (Hoerl & Kennard, [1988](#CR3)). Indeed a natural idea that would first come to
+    mind to reduce the overfitting induced by the use of the polynomials would be
+    to simply shrink the OLS estimates of the model, as done by Zhang ([2019](#CR9)).
+    Other recognized alternatives would be the LASSO (Tibshirani, [1996](#CR7)) or
+    the Elastic Net (Zou & Hastie, [2005](#CR10)) approaches, however these two methods
+    includes a penalty of the L¹-norm, which often leads one to discard some of the
+    covariates. This makes a lot of sense in a parsimonious selection of different
+    independent variables, but in our case, where we only use different variations
+    of the same independent variable, we expect that keeping all the polynomial terms
+    would result in a more balanced aggregated function.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The motivation for using the LNLM model instead of the Ridge model is primarily
+    theoretical. Our prior belief is that the over-fitting of the polynomial model
+    comes from the non-linear terms of the model only. In other words, we never expect
+    the linear part of the model to over-fit the data. In Ridge regression, shrinking
+    the linear term cannot be avoided. Recall that the estimates of the Ridge regression
+    are defined as:![$$ {\hat{\beta}}^{Ridge}={\left[{X}^{\prime }X+\lambda I\right]}^{-1}{X}^{\prime
+    }Y,\kern0.75em s.t.\kern0.75em \lambda \ge 0 $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ7.png)(3.7)*Here
+    λ is an integer, the shrinkage parameter, and “I” is the u × u identity matrix.*In
+    the case of the polynomial model, the matrix *X′X* would be 4 × 4, so we may replace
+    the 4 × 4 identity matrix *I* by the matrix *J* ^([4](#Fn4)):![$$ J=\left[\begin{array}{cc}\begin{array}{cc}0&amp;
+    0\\ {}0&amp; 1\end{array}&amp; \begin{array}{cc}0&amp; 0\\ {}0&amp; 0\end{array}\\
+    {}\begin{array}{cc}0&amp; 0\\ {}0&amp; 0\end{array}&amp; \begin{array}{cc}1&amp;
+    0\\ {}0&amp; 1\end{array}\end{array}\right] $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ8.png)(3.8)This
+    solution is tempting, since we may expect that the linear term will no longer
+    be penalized using the matrix *J*. However, we still have to invert the matrix
+    *[X′X + λJ]*, which is equivalent to solving a four equation system. In such a
+    system, only the second, third and fourth equations are modified, and the first
+    equation stays unchanged after the addition of the penalty term in the covariance
+    matrix. But when solving the system, the solution of each equation depends on
+    the solution of all others, thus the solution of the first equation of the system
+    is also modified, and as a result, the linear coefficient is changed.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The LNLM model is thus a response to the limit of the Ridge regression in the
+    very special case of the fitting of a univariate polynomial model (maintaining
+    the assumption that the overfitting only comes from non-linearity).
+  prefs: []
+  type: TYPE_NORMAL
+- en: 3.2.2 Fitting Procedure
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The structure of the LNLM model prevents a global direct fit using OLS, first
+    because the result would just be a large overfitted polynomial model, secondly
+    because the perfect correlation of the linear terms in the model would preclude
+    matrix inversion.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Therefore, we design a three-step fitting procedure, where we first choose the
+    value of *μ*, the non-linearity-propensity parameter, then separately estimate
+    the non-linear model and the linear model and finally combine all the ingredients
+    of the LNLM to get the final fit. Steps 2 and 3 are trivial, hence we focus on
+    detailing step 1 in what follows.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The aim of our approach being to reduce overfitting, we structure our methodology
+    around the concept of cross-validation. More precisely, we use a variation of
+    k-fold cross-validation to numerically approach the value of *μ* that minimizes
+    the overfitting, i.e. the out-of-sample error. The choice of cross-validation
+    is motivated by its proven ability to reduce overfitting (Moore, [2001](#CR4)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: In order to do this, we first split the target variable data into *k* sub-samples,
+    called “folds”. Stratified K-Folds encompasses several techniques that aim to
+    keep sub-samples representative of the global distribution of the target variable.
+    If we have *q* observations available, we split the data into ⌈q/k⌉ quantiles.
+    Thus, each of the quantile buckets contains exactly *k* observations (except the
+    last one if *q/k* is not an integer). If we take the example of a 5-fold cross-validation
+    performed over 50 observations, we get a distribution split into 10 quantiles
+    of 5 observations (Fig. [3.1](#Fig1)):![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig1_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 3.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: Stylized representation of the quantile split for stratified cross-validation
+  prefs: []
+  type: TYPE_NORMAL
+- en: In each complete quantile, we then randomly assign a fold identifier to each
+    observation. All the fold identifiers are assigned with equal probability, and
+    the same identifier cannot appear more than once in the same quantile bucket.
+    The potentially incomplete quantile is the only one in which not all of the *k*
+    identifiers may be represented. We finally just group the observations by fold
+    identifier, and we get *k* folds, each containing observations from all the quantiles
+    previously defined. Hence, all the folds contain data that is representative of
+    the full sample distribution of the target variable. In our previous example,
+    we get 5 folds, each of which include 10 observations drawn from the 10 quantiles
+    of the initial distribution (Fig. [3.2](#Fig2)):![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig2_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 3.2
+  prefs: []
+  type: TYPE_NORMAL
+- en: Stylized representation of the folds distributions for stratified cross-validation
+  prefs: []
+  type: TYPE_NORMAL
+- en: Once the splitting of the data into folds is performed, we fit the linear model
+    and the non-linear model separately using the last *k*−1 folds. Then we use the
+    first fold, which hasn’t been used to estimate the OLS parameters, to numerically
+    compute the value of *μ* that minimizes the root mean squared error (RMSE) inside
+    this pseudo out-of-sample fold:![$$ \underset{\mu_1}{\mathit{\min}}\sqrt{\frac{1}{q}{\sum}_{d=1}^q{\left({y}_{1,d}-\left[{\overline{y}}_{2,3,\dots,
+    k}+{\mu}_1\sum \limits_{h=1}^u{\hat{\beta}}_{2,3,\dots, k,h}^{NonLin}{H}_h\left({x}_{1,d}\right)+\left(1-{\mu}_1\right){\hat{\beta}}_{2,3,\dots,
+    k}^{Lin}{x}_{d,1}\right]\right)}^2} $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ9.png)(3.9)This
+    numerical choice is repeated *k* times, each time changing the pseudo out-of-sample
+    fold that is used to determine *μ*:![$$ \left\{\begin{array}{c}\underset{\mu_1}{\mathit{\min}}\sqrt{\frac{1}{q}{\sum}_{d=1}^q{\left({y}_{1,d}-\left[{\overline{y}}_{2,3,\dots,
+    k}+{\mu}_1\sum \limits_{h=1}^u{\hat{\beta}}_{2,3,\dots, k,h}^{NonLin}{H}_h\left({x}_{1,d}\right)+\left(1-{\mu}_1\right){\hat{\beta}}_{2,3,\dots,
+    k}^{Lin}{x}_{1,d}\right]\right)}^2}\\ {}\underset{\mu_2}{\mathit{\min}}\sqrt{\frac{1}{q}{\sum}_{d=1}^q{\left({y}_{2,d}-\left[{\overline{y}}_{1,3,\dots,
+    k}+{\mu}_2\sum \limits_{h=1}^u{\hat{\beta}}_{1,3,\dots, k,h}^{NonLin}{H}_h\left({x}_{2,d}\right)+\left(1-{\mu}_2\right){\hat{\beta}}_{1,3,\dots,
+    k}^{Lin}{x}_{2,d}\right]\right)}^2}\\ {}\begin{array}{c}\begin{array}{c}\dots
+    \\ {}\dots \\ {}\dots \end{array}\\ {}\underset{\mu_k}{\mathit{\min}}\sqrt{\frac{1}{q}{\sum}_{d=1}^q{\left({y}_{k,d}-\left[{\overline{y}}_{1,2,\dots,
+    k-1}+{\mu}_k\sum \limits_{h=1}^u{\hat{\beta}}_{1,2,\dots, k-1,h}^{NonLin}{H}_h\left({x}_{k,d}\right)+\left(1-{\mu}_k\right){\hat{\beta}}_{1,2,\dots,
+    k-1}^{Lin}{x}_{k,d}\right]\right)}^2}\end{array}\end{array}\right. $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ10.png)(3.10)We
+    thus get *k* different values of optimal *μ* for which the simplest aggregation
+    method would be to take the mean. However, the value of *μ* will have a different
+    importance inside each fold. In some folds, the choice of the optimal value^([5](#Fn5))
+    of *μ* leads to a dramatic decrease of the RMSE, whereas in some others, the RMSE
+    is less sensitive to the choice of the optimum. In order to take this into account,
+    for each of the *k* folds we compute the following metric:![$$ {\xi}_l=\sqrt{E\left[{\left({\mathfrak{R}}_l-{\mathfrak{r}}_l^{\ast}\right)}^2\right]}.
+    $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ11.png)(3.11)*Here*
+    ![$$ {\mathfrak{R}}_l $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_IEq2.png)
+    *is the vector of the root mean squared errors computed for all the values of
+    μ tested for the fold “ l” (about 100), and* ![$$ {\mathfrak{r}}_l^{\ast } $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_IEq3.png)
+    *is the RMSE value at the optimum.*
+  prefs: []
+  type: TYPE_NORMAL
+- en: Thus the metric *ξ* measures the dispersion of the errors obtained around the
+    optimum. It can be understood as the standard deviation from the minimum RMSE.
+    The larger the value of *ξ*, the larger the increase of the error when we deviate
+    from the optimum, the more important the choice of this particular value of *μ*.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We integrate this measure of the importance of the choice of the optimum per
+    fold by computing the final aggregated value of *μ* as an average of the optimal
+    values obtained from the k-folds, weighted by their associated standard deviation
+    from the minimum:![$$ {\mu}^{\ast }=\sum \limits_{l=1}^k{\mu}_l\frac{\xi_l}{\sum_{l=1}^k{\xi}_l}.
+    $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ12.png)(3.12)Such
+    a weighting is quite intuitive, as our standard deviation to the minimum is strongly
+    related to the notion of standard error.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Note that the procedure described above leads to two OLS fits (one for the linear
+    and one for the non-linear model) per fold, and two final OLS fits with the full
+    data available. Hence, in the case of a 10-fold cross-validation, only 22 matrix
+    inversions are performed, which should be compared with the 100 matrix inversions
+    required in the same case for the Ridge regularization. This difference allows
+    us to anticipate a lower computational time for the LNLM model.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 3.3 Evaluation Methodology
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'We propose to evaluate the interest of the LNLM model using simulations reflecting
+    real-life cases. In our context, the point of modeling is to identify a relation
+    between two variables for which we only have access to noisy observations. Thus
+    we follow the methodology below:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: First simulate a variable *X*, distributed similarly to stock returns.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: We then associate to this variable a particular reaction function *ϕ*(*X*) that
+    models the relation between a target and our independent variable.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: '![$$ Y=\phi (X). $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ13.png)(3.13)'
+  prefs: []
+  type: TYPE_IMG
+- en: 'Then, we associate to the output of this function a noise term, thus defining
+    the observed target variable *Y*, such as:'
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: '![$$ \overset{\sim }{Y}=\phi (X)+\varepsilon . $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ14.png)(3.14)'
+  prefs: []
+  type: TYPE_IMG
+- en: We assume that it is possible to observe the values of *X* and ![$$ \overset{\sim
+    }{\mathrm{Y}} $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_IEq4.png),
+    but that the functional form, as well as the stochastic part of the model, are
+    unknown by an external observer. Putting ourselves in the position of this external
+    observer, we try to fit the mean equation using several modeling techniques.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Once the fits using these different models are performed, we generate new values
+    of *X* using the same distribution as before, and see how well the estimated models
+    fit their original target,^([6](#Fn6)) ϕ(*X*), using these new values of *X*.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: This experiment design thus captures the *out-of-sample predictive power* of
+    each modeling technique, i.e. its ability to tackle the problem of overfitting.
+  prefs: []
+  type: TYPE_NORMAL
+- en: '*X* is drawn from a Student’s t distribution with 4 degrees of freedom, as
+    this distribution has been found to appropriately model the distribution of stock
+    returns in a wide range of cases (Platen & Rendek, [2008](#CR6)). For convenience,
+    in the definition of the reaction functions, values drawn outside of the interval
+    [−6, +6] are winsorized.^([7](#Fn7))'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Modeling financial markets is often a difficult task because the data used is
+    extremely noisy. Our concern is to test the accuracy of different modeling techniques
+    in the presence of a large amount of noise, thus the values of ε are also to be
+    drawn from a Student’s t distribution with 4 degrees of freedom.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'We use several base functions to generate different target variables. Our goal
+    is to obtain a representative set of plausible real-life functions. We thus define
+    the thirteen functions below, still in the interval [−6, +6]:![$$ {\phi}_1(x)\stackrel{\scriptscriptstyle\mathrm{def}}{=}0.33x
+    $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ15.png)(3.15)![$$
+    {\phi}_2(x)\stackrel{\scriptscriptstyle\mathrm{def}}{=}0.8+0.8x $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ16.png)(3.16)![$$
+    {\phi}_3(x)\stackrel{\scriptscriptstyle\mathrm{def}}{=}-2+0.75x+0.2{x}^2 $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ17.png)(3.17)![$$
+    {\phi}_4(x)\stackrel{\scriptscriptstyle\mathrm{def}}{=}2+\mathit{\cos}\left(\frac{x}{2}\right)+0.5x
+    $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ18.png)(3.18)![$$
+    {\phi}_5(x)\stackrel{\scriptscriptstyle\mathrm{def}}{=}0.01\ {e}^x-0.1{x}^2 $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ19.png)(3.19)![$$
+    {\phi}_6(x)\stackrel{\scriptscriptstyle\mathrm{def}}{=}0.1+0.1x+0.02{x}^2+0.03{x}^3
+    $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ20.png)(3.20)![$$
+    {\phi}_7(x)\stackrel{\scriptscriptstyle\mathrm{def}}{=}0.1+0.1\mathit{\sin}(x)-0.3x
+    $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ21.png)(3.21)![$$
+    {\phi}_8(x)\stackrel{\scriptscriptstyle\mathrm{def}}{=}-3-0.5x+0.05{x}^2 $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ22.png)(3.22)![$$
+    {\phi}_9(x)\stackrel{\scriptscriptstyle\mathrm{def}}{=}0.1-0.01x+0.002{x}^2-0.001{x}^3+0.001{x}^4
+    $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ23.png)(3.23)![$$
+    {\phi}_{10}(x)\stackrel{\scriptscriptstyle\mathrm{def}}{=}3+\mathit{\tanh}(x)+0.5x
+    $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ24.png)(3.24)![$$
+    {\phi}_{11}(x)\stackrel{\scriptscriptstyle\mathrm{def}}{=}-0.4+0.5\left|x\right|\Big)
+    $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ25.png)(3.25)![$$
+    {\phi}_{12}(x)\stackrel{\scriptscriptstyle\mathrm{def}}{=}0.5\mathit{\sinh}(0.01x)-0.005{x}^3
+    $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ26.png)(3.26)![$$
+    {\phi}_{13}(x)\stackrel{\scriptscriptstyle\mathrm{def}}{=}3\. $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ27.png)(3.27)The
+    different sub-functions and numerical values used to calibrate the base functions
+    have been selected according to several criteria:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The function must behave smoothly on its interval of definition, reflecting
+    the plausibility of observing such functions in the real-life cases for which
+    the LNLM model is designed. Below are the graphical representations of the functions
+    (Fig. [3.3](#Fig3)):'
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: 'The slope of the function must be not too sharp. The synthetic observations
+    are created by adding noise to the fitted values, which results in creating a
+    vertical distance between the noisy data and the true data. If we take the extreme
+    case of an infinite slope, a vertical line, any noisy data would be part of the
+    original curve, making the fitting too easy. One can get a good intuitive idea
+    of what is happening here by displaying the noisy observations for the second
+    function (Fig. [3.4](#Fig4)):'
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: '![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig3_HTML.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: Fig. 3.3
+  prefs: []
+  type: TYPE_NORMAL
+- en: Graphical representations of functions used for simulations
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig4_HTML.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: Fig. 3.4
+  prefs: []
+  type: TYPE_NORMAL
+- en: Noisy observations for the second function (slope = 0.8)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Increasing the slope from 0.8 to 3 leads, *ceteris paribus*, to the following
+    noisy data (Fig. [3.5](#Fig5)):'
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: '![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig5_HTML.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: Fig. 3.5
+  prefs: []
+  type: TYPE_NORMAL
+- en: Noisy observations for the second function (slope = 3)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Thus, restricting the sharpness of the functions is important to avoid revealing
+    the obvious nature of the underlying functions.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: The sub-functions must be selected in order to represent a wide range of possible
+    functional forms. We particularly take care to include the simplistic constant,
+    linear and quadratic functions, but we also integrate a lot of sub-functions that
+    are not included in the LNLM model itself (these represent roughly half of the
+    functions). This last point is very important if we are concerned with intellectual
+    honesty, since in the real-life cases for which the LNLM model is designed, the
+    true function that links the independent and the target variable is not composed
+    of polynomials.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: 'The resulting noisy target variables are fitted using the following modeling
+    techniques:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: A simple linear model estimated with OLS. The estimation is performed using
+    the python library statsmodels 0.6.1.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: A polynomial model of the same degree (4) as the LNLM model, estimated with
+    OLS. This model is also estimated with statsmodels.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: A polynomial model of the same degree as the LNLM model, estimated by a Ridge
+    regularization of least squares. The estimation uses the “RidgeCV” function of
+    the library scikit-learn 0.22.2 for python, which allows us to cross-validate
+    the regularization parameter. We search numerically using a 10-fold cross-validation
+    for 13 different values of *λ* from 1e−8 to 1e+4.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: The LNLM Model, estimated with our variation of stratified k-fold cross-validation.
+    The number of folds used to compute the value of the *μ* in the LNLM model is
+    set to 10\. OLS fits are directly coded in python, using numpy 1.10.4 to invert
+    the covariance matrices of the OLS estimates.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: A naive version of the LNLM Model, estimated with *μ* set to 0.5\. This fit
+    allows us to control for the relevance of the algorithm of choice of *μ*.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: A non-parametric model, namely the Nadaraya–Watson estimator (again, see Nadaraya
+    ([1964](#CR5)), Watson ([1964](#CR8)) for a formal definition). The most important
+    parameter of the non-parametric fit, i.e. the bandwidth, is also selected using
+    a cross-validation methodology. The estimation is performed using the kernel regression
+    module of statsmodels.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: We also use a different number of observations in the vector *X*, as with the
+    same simulated noise, it may be much more difficult to identify the underlying
+    function with a small dataset than with a large one. Keeping the same concern
+    for realism, for the vector *X* we use lengths of 126, 252, 756 and 1,260 observations.
+    These numbers come from the frequent use of rolling windows to estimate polymodels.^([8](#Fn8))
+  prefs: []
+  type: TYPE_NORMAL
+- en: In each of the simulations, the data for the values of *X* used for the estimations,
+    the data for the noise values, and the data of the values of *X* used for the
+    predictions are generated from different random seeds (from the numpy library).
+  prefs: []
+  type: TYPE_NORMAL
+- en: To give the reader a graphical impression of the realism and difficulty of the
+    fit, we present below a few examples of the noisy data we generated (Figs. [3.6](#Fig6),
+    [3.7](#Fig7), [3.8](#Fig8), and [3.9](#Fig9)):![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig6_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 3.6
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Synthetic noisy data example: Function 8 with 126 observations'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig7_HTML.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: Fig. 3.7
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Synthetic noisy data example: Function 6 with 252 observations'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig8_HTML.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: Fig. 3.8
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Synthetic noisy data example: Function 11 with 756 observations'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig9_HTML.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: Fig. 3.9
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Synthetic noisy data example: Function 5 with 1,260 observations'
+  prefs: []
+  type: TYPE_NORMAL
+- en: These plots show the fact that, as in real-life cases, the fits are relatively
+    difficult because of the large amount of noise in the simulated data.
+  prefs: []
+  type: TYPE_NORMAL
+- en: For each of these lengths of *X*, we run 1,000 simulations with different random
+    seeds for each of the 13 functions defined above, reaching in this way a total
+    of 52,000 simulations.^([9](#Fn9))
+  prefs: []
+  type: TYPE_NORMAL
+- en: We compute the root mean squared error of the out-of-sample predictions for
+    all of these cases, which is our indicator of out-of-sample goodness of fit.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We also record the average computation time for each model, composed of the
+    time used to perform the estimations plus the time used to perform the predictions.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 3.4 Results
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Below we present the tables of results, for each of the four lengths of *X*.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We first present the summary statistics of the RMSE, that aggregate all the
+    fits for a particular length of *X*.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We then display the average results for each function, in order to see the ability
+    of each model to fit particular functional forms.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We conclude by presenting the average computation time.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 3.4.1 For 126 Observations (Tables [3.1](#Tab1) and [3.2](#Tab2))
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Table 3.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: Summary statistics of the root mean square error, for 126 observations
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | Mean | Std | Median | Min | Max |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Linear | 2.82E−01 | 1.49E−01 | 2.70E−01 | 4.30E−03 | 1.08E+00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| LNLM | 3.18E−01 | 3.21E−01 | 2.53E−01 | 8.37E−03 | 7.66E+00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Naive LNLM | 3.51E−01 | 3.34E−01 | 2.66E−01 | 1.76E−02 | 6.18E+00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Non-Parametric | 2.94E−01 | 1.52E−01 | 2.77E−01 | 2.34E−04 | 2.05E+00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Polynomial by OLS | 5.43E−01 | 6.82E−01 | 3.22E−01 | 3.00E−02 | 1.20E+01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Polynomial by Ridge | 5.63E−01 | 5.34E−01 | 4.08E−01 | 2.87E−03 | 1.01E+01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: Table 3.2
+  prefs: []
+  type: TYPE_NORMAL
+- en: Average root mean square error per function fitted, for 126 observations
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | Linear | LNLM | Naive LNLM | Non-Parametric | Polynomial by OLS | Polynomial
+    by Ridge |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #1* | 1.54E−01 | 2.15E−01 | 3.05E−01 | 2.77E−01 | 5.13E−01 | 5.05E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #2* | 1.54E−01 | 2.25E−01 | 3.05E−01 | 3.60E−01 | 5.13E−01 | 7.93E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #3* | 4.11E−01 | 5.14E−01 | 5.09E−01 | 3.84E−01 | 7.48E−01 | 9.67E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #4* | 3.54E−01 | 3.58E−01 | 3.51E−01 | 3.28E−01 | 5.13E−01 | 6.80E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #5* | 3.44E−01 | 3.52E−01 | 3.51E−01 | 2.79E−01 | 5.18E−01 | 3.96E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #6* | 4.60E−01 | 3.94E−01 | 3.74E−01 | 3.96E−01 | 5.13E−01 | 4.84E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #7* | 1.66E−01 | 2.30E−01 | 3.08E−01 | 2.62E−01 | 5.15E−01 | 4.42E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #8* | 2.57E−01 | 2.97E−01 | 3.22E−01 | 3.17E−01 | 5.13E−01 | 6.48E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #9* | 1.95E−01 | 2.42E−01 | 3.10E−01 | 1.93E−01 | 5.13E−01 | 2.65E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #10* | 3.36E−01 | 3.82E−01 | 3.86E−01 | 3.68E−01 | 6.14E−01 | 1.09E+00
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #11* | 5.00E−01 | 4.77E−01 | 4.33E−01 | 3.18E−01 | 5.62E−01 | 5.24E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #12* | 1.74E−01 | 2.34E−01 | 3.08E−01 | 1.84E−01 | 5.13E−01 | 2.68E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #13* | 1.54E−01 | 2.17E−01 | 3.05E−01 | 1.58E−01 | 5.13E−01 | 2.59E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Mean | 2.82E−01 | 3.18E−01 | 3.51E−01 | 2.94E−01 | 5.43E−01 | 5.63E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Std | 1.26E−01 | 1.03E−01 | 6.20E−02 | 7.80E−02 | 6.84E−02 | 2.64E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Median | 2.57E−01 | 2.97E−01 | 3.22E−01 | 3.17E−01 | 5.13E−01 | 5.05E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Min | 1.54E−01 | 2.15E−01 | 3.05E−01 | 1.58E−01 | 5.13E−01 | 2.59E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Max | 5.00E−01 | 5.14E−01 | 5.09E−01 | 3.96E−01 | 7.48E−01 | 1.09E+00 |'
+  prefs: []
+  type: TYPE_TB
+- en: 3.4.2 For 252 Observations (Tables [3.3](#Tab3) and [3.4](#Tab4))
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Table 3.3
+  prefs: []
+  type: TYPE_NORMAL
+- en: Summary statistics of the root mean square error, for 252 observations
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | Mean | Std | Median | Min | Max |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Linear | 2.49E−01 | 1.42E−01 | 2.37E−01 | 4.43E−03 | 8.19E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| LNLM | 2.19E−01 | 1.59E−01 | 1.90E−01 | 4.28E−03 | 3.40E+00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Naive LNLM | 2.25E−01 | 1.39E−01 | 2.02E−01 | 1.61E−02 | 2.75E+00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Non-Parametric | 2.30E−01 | 1.02E−01 | 2.24E−01 | 1.61E−04 | 8.07E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Polynomial by OLS | 2.87E−01 | 2.61E−01 | 2.27E−01 | 2.33E−02 | 5.36E+00
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Polynomial by Ridge | 4.21E−01 | 3.28E−01 | 3.29E−01 | 7.52E−03 | 5.14E+00
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: Table 3.4
+  prefs: []
+  type: TYPE_NORMAL
+- en: Average root mean square error per function fitted, for 252 observations
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | Linear | LNLM | Naive LNLM | Non-Parametric | Polynomial by OLS | Polynomial
+    by Ridge |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #1* | 1.10E−01 | 1.39E−01 | 1.69E−01 | 2.21E−01 | 2.61E−01 | 3.75E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #2* | 1.10E−01 | 1.41E−01 | 1.69E−01 | 2.75E−01 | 2.61E−01 | 5.47E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #3* | 3.93E−01 | 3.92E−01 | 3.67E−01 | 2.98E−01 | 4.35E−01 | 7.97E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #4* | 3.33E−01 | 2.43E−01 | 2.33E−01 | 2.54E−01 | 2.60E−01 | 5.10E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #5* | 3.22E−01 | 2.46E−01 | 2.33E−01 | 2.24E−01 | 2.67E−01 | 2.91E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #6* | 4.32E−01 | 2.54E−01 | 2.67E−01 | 2.95E−01 | 2.61E−01 | 2.89E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #7* | 1.25E−01 | 1.51E−01 | 1.74E−01 | 2.10E−01 | 2.64E−01 | 3.27E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #8* | 2.25E−01 | 2.05E−01 | 1.96E−01 | 2.50E−01 | 2.61E−01 | 4.73E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #9* | 1.56E−01 | 1.69E−01 | 1.78E−01 | 1.56E−01 | 2.61E−01 | 1.69E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #10* | 3.09E−01 | 2.98E−01 | 2.71E−01 | 2.86E−01 | 3.68E−01 | 9.62E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #11* | 4.77E−01 | 3.16E−01 | 3.21E−01 | 2.52E−01 | 3.12E−01 | 3.95E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #12* | 1.34E−01 | 1.55E−01 | 1.73E−01 | 1.48E−01 | 2.61E−01 | 1.73E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #13* | 1.10E−01 | 1.39E−01 | 1.69E−01 | 1.20E−01 | 2.61E−01 | 1.66E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Mean | 2.49E−01 | 2.19E−01 | 2.25E−01 | 2.30E−01 | 2.87E−01 | 4.21E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Std | 1.35E−01 | 8.08E−02 | 6.52E−02 | 5.80E−02 | 5.45E−02 | 2.41E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Median | 2.25E−01 | 2.05E−01 | 1.96E−01 | 2.50E−01 | 2.61E−01 | 3.75E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Min | 1.10E−01 | 1.39E−01 | 1.69E−01 | 1.20E−01 | 2.60E−01 | 1.66E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Max | 4.77E−01 | 3.92E−01 | 3.67E−01 | 2.98E−01 | 4.35E−01 | 9.62E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: 3.4.3 For 756 Observations (Tables [3.5](#Tab5) and [3.6](#Tab6))
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Table 3.5
+  prefs: []
+  type: TYPE_NORMAL
+- en: Summary statistics of the root mean square error, for 756 observations
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | Mean | Std | Median | Min | Max |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Linear | 2.18E−01 | 1.41E−01 | 1.96E−01 | 2.30E−03 | 5.47E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| LNLM | 1.29E−01 | 7.41E−02 | 1.10E−01 | 4.22E−03 | 6.40E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Naive LNLM | 1.53E−01 | 8.08E−02 | 1.39E−01 | 1.67E−02 | 4.95E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Non-Parametric | 1.52E−01 | 6.37E−02 | 1.50E−01 | 7.60E−05 | 7.02E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Polynomial by OLS | 1.41E−01 | 7.18E−02 | 1.23E−01 | 1.72E−02 | 7.95E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Polynomial by Ridge | 3.08E−01 | 3.00E−01 | 1.81E−01 | 1.43E−02 | 1.24E+00
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: Table 3.6
+  prefs: []
+  type: TYPE_NORMAL
+- en: Average root mean square error per function fitted, for 756 observations
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | Linear | LNLM | Naive LNLM | Non-Parametric | Polynomial by OLS | Polynomial
+    by Ridge |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #1* | 6.53E−02 | 7.55E−02 | 8.19E−02 | 1.50E−01 | 1.14E−01 | 2.71E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #2* | 6.53E−02 | 7.64E−02 | 8.19E−02 | 1.83E−01 | 1.14E−01 | 3.04E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #3* | 3.79E−01 | 2.98E−01 | 3.08E−01 | 2.01E−01 | 2.95E−01 | 8.21E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #4* | 3.12E−01 | 1.19E−01 | 1.74E−01 | 1.70E−01 | 1.14E−01 | 3.53E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #5* | 3.00E−01 | 1.29E−01 | 1.72E−01 | 1.48E−01 | 1.22E−01 | 1.66E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #6* | 4.00E−01 | 1.19E−01 | 2.13E−01 | 1.73E−01 | 1.14E−01 | 1.50E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #7* | 8.57E−02 | 8.98E−02 | 9.07E−02 | 1.44E−01 | 1.19E−01 | 2.28E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #8* | 1.97E−01 | 1.15E−01 | 1.24E−01 | 1.68E−01 | 1.14E−01 | 3.30E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #9* | 1.20E−01 | 1.01E−01 | 9.57E−02 | 1.07E−01 | 1.14E−01 | 9.11E−02
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #10* | 2.88E−01 | 2.12E−01 | 2.15E−01 | 1.94E−01 | 2.13E−01 | 8.83E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #11* | 4.59E−01 | 1.72E−01 | 2.63E−01 | 1.72E−01 | 1.68E−01 | 2.36E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #12* | 9.51E−02 | 9.11E−02 | 8.82E−02 | 1.01E−01 | 1.14E−01 | 8.91E−02
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #13* | 6.53E−02 | 7.56E−02 | 8.19E−02 | 7.06E−02 | 1.14E−01 | 8.71E−02
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Mean | 2.18E−01 | 1.29E−01 | 1.53E−01 | 1.52E−01 | 1.41E−01 | 3.08E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Std | 1.44E−01 | 6.46E−02 | 7.72E−02 | 3.85E−02 | 5.50E−02 | 2.58E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Median | 1.97E−01 | 1.15E−01 | 1.24E−01 | 1.68E−01 | 1.14E−01 | 2.36E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Min | 6.53E−02 | 7.55E−02 | 8.19E−02 | 7.06E−02 | 1.14E−01 | 8.71E−02 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Max | 4.59E−01 | 2.98E−01 | 3.08E−01 | 2.01E−01 | 2.95E−01 | 8.83E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: 3.4.4 For 1,260 Observations (Tables [3.7](#Tab7) and [3.8](#Tab8))
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Table 3.7
+  prefs: []
+  type: TYPE_NORMAL
+- en: Summary statistics of the root mean square error, for 1,260 observations
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | Mean | Std | Median | Min | Max |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Linear | 2.09E−01 | 1.40E−01 | 1.88E−01 | 2.94E−03 | 5.12E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| LNLM | 1.16E−01 | 6.61E−02 | 9.58E−02 | 1.12E−02 | 4.38E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Naive LNLM | 1.43E−01 | 7.97E−02 | 1.22E−01 | 2.14E−02 | 3.83E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Non-Parametric | 1.37E−01 | 5.17E−02 | 1.38E−01 | 2.95E−03 | 5.46E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Polynomial by OLS | 1.26E−01 | 6.25E−02 | 1.08E−01 | 2.77E−02 | 4.88E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Polynomial by Ridge | 2.58E−01 | 2.70E−01 | 1.40E−01 | 1.20E−02 | 1.08E+00
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: Table 3.8
+  prefs: []
+  type: TYPE_NORMAL
+- en: Average root mean square error per function fitted, for 1,260 observations
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | Linear | LNLM | Naive LNLM | Non-Parametric | Polynomial by OLS | Polynomial
+    by Ridge |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #1* | 5.63E−02 | 7.02E−02 | 7.14E−02 | 1.38E−01 | 9.92E−02 | 2.28E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #2* | 5.63E−02 | 7.07E−02 | 7.14E−02 | 1.64E−01 | 9.92E−02 | 2.06E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #3* | 3.77E−01 | 2.84E−01 | 3.03E−01 | 1.77E−01 | 2.83E−01 | 7.89E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #4* | 3.05E−01 | 1.02E−01 | 1.68E−01 | 1.54E−01 | 9.94E−02 | 3.22E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #5* | 2.92E−01 | 1.10E−01 | 1.66E−01 | 1.34E−01 | 1.06E−01 | 1.31E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #6* | 3.80E−01 | 1.01E−01 | 2.02E−01 | 1.50E−01 | 9.92E−02 | 1.33E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #7* | 7.80E−02 | 8.27E−02 | 8.02E−02 | 1.26E−01 | 1.04E−01 | 1.90E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #8* | 1.89E−01 | 9.78E−02 | 1.12E−01 | 1.45E−01 | 9.92E−02 | 2.61E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #9* | 1.10E−01 | 8.87E−02 | 8.29E−02 | 9.91E−02 | 9.92E−02 | 7.85E−02
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #10* | 2.81E−01 | 1.93E−01 | 2.07E−01 | 1.74E−01 | 1.94E−01 | 6.78E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #11* | 4.52E−01 | 1.53E−01 | 2.53E−01 | 1.53E−01 | 1.54E−01 | 1.83E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #12* | 8.58E−02 | 8.19E−02 | 7.69E−02 | 9.41E−02 | 9.92E−02 | 7.70E−02
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Function #13* | 5.63E−02 | 6.97E−02 | 7.14E−02 | 7.87E−02 | 9.92E−02 | 7.52E−02
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Mean | 2.09E−01 | 1.16E−01 | 1.43E−01 | 1.37E−01 | 1.26E−01 | 2.58E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Std | 1.44E−01 | 6.17E−02 | 7.89E−02 | 3.07E−02 | 5.52E−02 | 2.25E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Median | 1.89E−01 | 9.78E−02 | 1.12E−01 | 1.45E−01 | 9.92E−02 | 1.90E−01
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Min | 5.63E−02 | 6.97E−02 | 7.14E−02 | 7.87E−02 | 9.92E−02 | 7.52E−02 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Max | 4.52E−01 | 2.84E−01 | 3.03E−01 | 1.77E−01 | 2.83E−01 | 7.89E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: 3.4.5 Computation Time (Table [3.9](#Tab9))
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Table 3.9
+  prefs: []
+  type: TYPE_NORMAL
+- en: Average computation time per model
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | 126 observations | 252 observations | 756 observations | 1,260 observations
+    | Average |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Linear* | *1.00E*−*02* | *1.11E*−*02* | *8.83E*−*03* | *1.01E*−*02* | *1.00E*−*02*
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Naive LNLM* | *1.31E*−*02* | *1.60E*−*02* | *1.43E*−*02* | *1.55E*−*02*
+    | *1.47E*−*02* |'
+  prefs: []
+  type: TYPE_TB
+- en: '| *Polynomial by OLS* | *2.16E*−*02* | *2.25E*−*02* | *1.98E*−*02* | *1.78E*−*02*
+    | *2.04E*−*02* |'
+  prefs: []
+  type: TYPE_TB
+- en: '| LNLM | 8.88E−01 | 9.65E−01 | 8.48E−01 | 9.00E−01 | 9.00E−01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Polynomial by Ridge | 1.51E+00 | 1.60E+00 | 1.62E+00 | 1.36E+00 | 1.52E+00
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Non-Parametric | 1.52E+00 | 2.60E+00 | 9.07E+00 | 1.75E+01 | 7.67E+00 |'
+  prefs: []
+  type: TYPE_TB
+- en: 3.4.6 Interpretations
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: There are various and interesting conclusions that can be drawn from the previous
+    tables.
+  prefs: []
+  type: TYPE_NORMAL
+- en: First, the most obvious finding is the out-of-sample quality of the fits provided
+    by the LNLM model, which over-perform all the other modeling techniques in terms
+    of Median RMSE in each of the 4 different window lengths, and which is still better
+    in terms of Average RMSE in 3 out of 4 different window lengths.
+  prefs: []
+  type: TYPE_NORMAL
+- en: As expected, we note that, on average, the naive version of the LNLM brings
+    results that are always worse than the LNLM estimated with Stratified K-folds,
+    which gives some credibility to this algorithm and to the relevance of its choice
+    of the non-linearity propensity parameter. Still concerning regularization methods,
+    we also see that it is not clear that Ridge regularization can improve the polynomial
+    model estimated by OLS. However, this can be due to the lack of accuracy of the
+    values of *λ* evaluated in the cross-validation, since we progress from one *λ* to
+    another by a factor 10.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Remarkably, the LNLM model does not often beat the other modeling techniques
+    in each particular functional form, it is even beaten most of the time. The other
+    modeling techniques tend to dominate only in particular cases, the most obvious
+    example being the linear model that achieves the best results when the underlying
+    function is indeed linear, i.e. for functions 1, 2 and 13\. The emergence of the
+    over-performance of the LNLM model only at the aggregated level is a good sign
+    of its robustness to identify unknown (and various) functional forms.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The kernel estimator achieved good results, especially for small windows. Notably,
+    the standard deviation of its RMSEs is most of the time the smallest one. However,
+    the computation time for this model grows linearly with the number of observations,
+    leading to poor computational time on average.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Apart from this model, all the other computation times are relatively independent
+    of the number of observations. Regularized polynomials using Ridge takes more
+    time than LNLM to be estimated, however, the computation time directly depends
+    on the number of values tested for *λ* by the cross-validation algorithm. Still,
+    by testing only 13 different values of *λ*, we have a low level of accuracy for
+    the numerical optimization of this parameter (100 values of *μ* are tested for
+    LNLM in the current setting). This finding may easily be linked with the number
+    of matrix inversions required for LNLM versus cross-validated Ridge (which is
+    22 versus 130 in our case), which sheds light on the differences of computational
+    performance. Hence, among the sophisticated methods that are presented, namely
+    the non-parametric fit, the polynomial regularized model, and the LNLM, all using
+    the same principle of cross-validation, the LNLM model appears to be a convincing
+    alternative in terms of computation time.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The performance of the linear model is excellent with a small window of 126
+    observations, because it is not fooled by the large quantity of noise, unlike
+    the other models, but it becomes worse and worse as the window increases, allowing
+    non-linear techniques to more accurately identify the underlying functional forms.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The inverse phenomenon appears for the polynomial model, which is totally fooled
+    by the noise for small windows, but performs relatively well for large windows,
+    when the underlying function becomes easier to capture, as errors compensate each
+    other more frequently.
+  prefs: []
+  type: TYPE_NORMAL
+- en: For very small or very large windows, outside the scope of the present study,
+    these two models can be interesting, but for the windows that may reasonably be
+    assumed to be used by researchers working on daily financial data, the LNLM model
+    appears to be a convincing alternative.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 3.5 Conclusions
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: We have presented the motivations as well as a complete fitting procedure for
+    the LNLM model, and explained its particular interest compared to other methods
+    of regularization, such as Ridge regression.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The present chapter demonstrates, using a realistic simulation framework, that
+    the LNLM model can successfully reduce over-fitting compared to several alternatives.
+    Of course, there is no guarantee that this will be the case in all possible applications,
+    but it still emphasizes the interest of the model for finance.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Furthermore, the model has the advantage of having a data-driven functional
+    form. Also, the estimated underlying function is always smooth, which can be an
+    advantage for several computational applications, as well as for the realism of
+    the representation of the underlying function (for example, the non-parametric
+    methods can exhibit some disruptions that never occur with LNLM).
+  prefs: []
+  type: TYPE_NORMAL
+- en: The estimations are especially fast, which greatly improves the computation
+    time compared to non-parametric methods, as well as the Ridge-regularized polynomial
+    model (to a lesser extent), which uses recent python libraries, for which the
+    computational time has been optimized. This point is of great importance in the
+    context of big data, which polymodels frequently involve.
+  prefs: []
+  type: TYPE_NORMAL
+- en: All these properties of the LNLM model open a door for applications that the
+    alternative modeling methods may have left closed.
+  prefs: []
+  type: TYPE_NORMAL

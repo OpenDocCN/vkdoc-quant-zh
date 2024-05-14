@@ -1,0 +1,898 @@
+- en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2022T.
+    Barrau, R. DouadyArtificial Intelligence for Financial MarketsFinancial Mathematics
+    and Fintech[https://doi.org/10.1007/978-3-030-97319-3_7](https://doi.org/10.1007/978-3-030-97319-3_7)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7. Genetic Algorithm-Based Combination of Predictions
+  prefs:
+  - PREF_H1
+  type: TYPE_NORMAL
+- en: Thomas Barrau^([1](#Aff5)  ) and Raphael Douady^([2](#Aff6))(1)AXA Investment
+    Managers Chorus Ltd, Hong Kong, Hong Kong S.A.R.(2)Economic Center, University
+    Paris 1 Sorbonne, Paris, France
+  prefs: []
+  type: TYPE_NORMAL
+- en: Abstract
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: We propose a function allowing us to combine predictions of the market, industry,
+    and idiosyncratic components of the stock returns in a single portfolio. The combination
+    is made through a double nested optimization, using numerical and genetic optimizations
+    in order to take into account the transaction costs. The resulting aggregated
+    trading strategy reaches a Sharpe ratio of 0.94, net of transaction costs, versus
+    only 0.43 for the market portfolio. The genetic optimization proposed also outperforms
+    a simple risk parity benchmark.
+  prefs: []
+  type: TYPE_NORMAL
+- en: KeywordsGenetic algorithmPolymodel theoryArtificial intelligenceMachine learningAlpha
+    combinationTransaction costsCross-section of stock returnsMarket timingTrading
+    strategyTrading signalStock returns predictionsRisk parity
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.1 Introduction
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: The purpose of the present chapter is to propose a combination method for the
+    predictions obtained in Chaps. [4](519851_1_En_4_Chapter.xhtml), [5](519851_1_En_5_Chapter.xhtml)
+    and [6](519851_1_En_6_Chapter.xhtml). These predictions are made by different
+    means on the market, the industry, and the specific part of the stock returns.
+    As presented in the introduction, the returns of a portfolio which aggregates
+    such predictions can be expressed as a function of the returns of the sub-portfolios
+    made with these different predictions:![$$ {r}_P={\varOmega}_p\left({r}_M,{\mathcal{F}}_I,{\mathcal{F}}_S\right).
+    $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_Equ1.png)(7.1)*Here
+    Ω*[*p*] *is the aggregation function of the sub-portfolios returns, r*[*M*]*is
+    the returns of the market factor portfolio,* ![$$ {\mathcal{F}}_I $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_IEq1.png)*is
+    the returns of a portfolio composed with the set of the industry factors, and*
+    ![$$ {\mathcal{F}}_S $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_IEq2.png)
+    *is the returns of a portfolio composed with the set of the specific factors.*In
+    our case, since we only have one industry and one specific factor in their respective
+    sets, Eq. ([7.1](#Equ1)) can be simplified by simply setting:![$$ {r}_P={\varOmega}_p\left({r}_M,{r}_{AFI,I},{r}_{PP,S}\right).
+    $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_Equ2.png)(7.2)*Here
+    r*[*AFI*, *I*] *is the returns of the AntiFragility Indicator Industry portfolio,
+    and r*[*PP*, *S*]*is the returns of the Polymodel Predictions Specific portfolio.*
+  prefs: []
+  type: TYPE_NORMAL
+- en: Thus, the aim of this chapter is to propose a first, scalable definition of
+    omega.
+  prefs: []
+  type: TYPE_NORMAL
+- en: First, we note that omega is already partly defined by the signal elaborated
+    in Chap. [4](519851_1_En_4_Chapter.xhtml), dedicated to market timing. Indeed,
+    since it is a function of the raw factor returns, omega includes the market and
+    factor timing elements of the aggregated portfolio performance. But this point
+    is of less importance, being just a matter of definition. More interestingly,
+    we should observe that mixing cross-sectional predictions of the specific and
+    industry returns with time-series predictions of the market returns does not result
+    in an intuitive portfolio construction. Hence, since they are finally defined
+    by positions taken on the same investment universe, we decide to directly aggregate
+    portfolio positions (and not signals) of the different predictions, for the sake
+    of simplicity.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Machine learning methods, and especially neural networks, have recently shown
+    great improvements for the combination of predictors, compared to classical alternatives
+    such as linear regression (as shown by Gu et al., [2018](#CR9)). However, since
+    we only have three predictions to combine, defining omega in a non-linear manner
+    seems to be an overkill. Hence, we choose to define omega by a linear weighting
+    of the sub-portfolios.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Still, we shouldn’t be over simplistic. Indeed, as is highlighted later in the
+    present chapter, even in our simple case, the transaction costs matter a lot for
+    the performance of the final implementation of the strategy. We thus incorporate
+    into omega the management of the transaction costs in order to produce superior
+    *net* returns.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The management of the transaction costs is made through partial execution of
+    the trades, and appropriated weighting of the sub-portfolios. The weights associated
+    to each of the sub-portfolios are determined by a genetic algorithm designed for
+    this purpose. The main proposal of the current chapter is thus to use a genetic
+    algorithm to maximize the net Sharpe ratio of a portfolio through an optimal combination
+    of predictions of different components of the stock returns.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Genetic algorithms have already been used to combine different predictors. Zhang
+    and Maringer ([2016](#CR21)) proposed a genetic algorithm to combine cross-sectional
+    predictors, that can be understood as factors. Although they did not take into
+    account transaction costs in their algorithm design, the application of their
+    genetic algorithm is still similar to ours. Allen and Karjalainen ([1999](#CR1))
+    used a genetic algorithm mainly to discover technical trading rules (in/out the
+    market signals based on predictors), but also to combine them. Again, the transaction
+    costs are not introduced into their algorithm. In their [2012](#CR16) paper, Sefiane
+    & Benbouziane showed the efficiency of a genetic algorithm to construct a 5-asset
+    portfolio, optimal in the mean-variance sense. Such a problem is also close to
+    our current one, since we are looking to optimally combine a portfolio of three
+    sub-portfolios, which may be considered as three assets. Sinha et al. ([2015](#CR17))
+    also proposed a genetic algorithm for portfolio optimization, without transaction
+    costs.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Genetic algorithms have also been used to limit transaction costs. Indeed, Lin
+    and Wang ([2002](#CR12)) proposed a genetic algorithm for mean-variance optimization
+    with transaction costs, however their setting is slightly different (they use
+    fixed transaction costs and round lots, while we use proportional transaction
+    costs, which we consider to be more realistic).
+  prefs: []
+  type: TYPE_NORMAL
+- en: Of course, the question of combining different predictors (or alphas) while
+    reducing transaction costs has already been discussed in the seminal paper of
+    Gârleanu and Pedersen ([2013](#CR7)), who proposed to use dynamic programming
+    to reduce trading fees. We re-use a part of their framework in the current chapter,
+    which may be understood as an empirical implementation of the theoretical case
+    mentioned in their part V (“Theoretical Applications”), Example 2 (“Relative-value
+    trades based on security characteristics”). Apart from their study, a few other
+    approaches have been developed to reduce transaction costs. For example, Ruf and
+    Xie ([2019](#CR15)) proposed a method to limit the impact of transaction costs
+    on systematically generated portfolios, though they did not use a genetic algorithm
+    for this purpose.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Thus, to the best of our knowledge, a genetic algorithm-based method which allows
+    us to combine alphas regarding their performance net of transaction costs does
+    not seem to exist in the literature, hence our proposal.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The rest of the chapter is organized as follows:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: In the first section we present the different predictions we are about to aggregate,
+    with their definition, portfolio construction method and economic rationale.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: In the second section we propose a very simple combination method, standard
+    in the literature, that is the benchmark for the genetic algorithm to outperform.
+    We introduce here the question of the transaction costs along with a method “a
+    la Gârleanu–Pedersen” to reduce them.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: In the third section we present the genetic algorithm used to weight the sub-portfolios
+    corresponding to the different predictions.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: We finally perform a series of robustness tests and conclude the chapter.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: 7.2 Analysis of Strategies
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 7.2.1 Predictions of Market Returns
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The predictions of market returns are those developed in Chap. [4](519851_1_En_4_Chapter.xhtml).
+    The signal used for the predictions is built by estimating a polymodel of the
+    S&P 500\. The RMSE of each of the elementary models is measured in order to form
+    a distribution of RMSEs. This distribution captures the strength of the links
+    the market maintains with its whole economic environment. Following a rolling
+    method, the signal then learns the distribution of the RMSE that occurred before
+    a bear phase. This distribution is compared to the current distribution to form
+    a prediction of the direction of the market returns in the next month.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Hence, the signal is an on/off investment signal which is implemented by investing
+    in the market portfolio with a dynamic leverage, equal to 0.5 (short position)
+    when the risk is off and +2 (long position) when the risk is on. The resulting
+    portfolio is relatively slow, with a half-life^([1](#Fn1)) of 47 days. On average,
+    the portfolio has a leverage of 1.37\. Below is the cumulative performance^([2](#Fn2))
+    of this market timed portfolio, from 2005-01-01 to 2018-28-09 (Fig. [7.1](#Fig1)).
+    The Sharpe ratio over the period is 0.92.![](../images/519851_1_En_7_Chapter/519851_1_En_7_Fig1_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 7.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: Performance of the portfolio based on the predictions of market returns
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.2.2 Predictions of Industry Returns
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The predictions of industry returns are those developed in Chap. [5](519851_1_En_5_Chapter.xhtml).
+    The signal used for the predictions is built using LNLM models with each industry
+    return as the target variable, and the market returns as the explanatory variable.
+    A measure of the fragility (in the sense of Taleb’s antifragility concept (see
+    Taleb, [2012](#CR19))) is then computed, based on the concavity/convexity to the
+    market of each industry. The signal then indicates the fragility of the industry,
+    a large positive signal corresponding to a highly fragile industry. Indeed, fragile
+    industries seem to benefit from a risk premium, since their exposure to extreme
+    market deviations is compensated by superior returns.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The signal is then implemented in a long-short manner, expected to have a small
+    market exposure on average. The positions of the portfolio are obtained using
+    a characteristic portfolio (Grinold & Kahn, [2000](#CR8)), which is essentially
+    a mean-variance optimization of the signal, implemented with a target volatility
+    of 10%. The resulting portfolio is also a (very) slow portfolio, with a half-life
+    of around 400 days, but, with an average leverage reaching 8.31, is more leveraged
+    than the market portfolio. Note that such a level of leverage is less problematic
+    for a long-short portfolio than for a long only portfolio, since the cost of the
+    long position can be partly financed by the short position. Below is the cumulative
+    performance of the industry portfolio, from 2005-01-01 to 2018-28-09 (Fig. [7.2](#Fig2)).
+    The Sharpe ratio achieved is 0.96.![](../images/519851_1_En_7_Chapter/519851_1_En_7_Fig2_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 7.2
+  prefs: []
+  type: TYPE_NORMAL
+- en: Performance of the portfolio based on the predictions of industry returns
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.2.3 Predictions of Specific Returns
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: 'The predictions of specific returns are those developed in Chap. [6](519851_1_En_6_Chapter.xhtml).
+    The signal is obtained from a straightforward application of polymodels: making
+    predictions. For each company of the cross-section of stock returns, we estimate
+    a polymodel using a large number of market variables (stock indices, currencies,
+    commodities, etc…), the target variable being the specific returns of the company.
+    This polymodel is then used to make predictions. After applying a selection and
+    an aggregation method on the predictions, a combined prediction is obtained for
+    each firm, thus forming a prediction for the entire cross-section of stock returns.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Similarly to the industry predictions, the signal is then implemented through
+    a long-short characteristic portfolio with a target volatility of 10%. The resulting
+    portfolio changes quickly, with a half-life of 9 days, and has a similar leverage
+    to the industry portfolio (8.27 on average), due to the portfolio construction
+    we choose. Below is the cumulative performance of the specific portfolio, from
+    2005-01-01 to 2018-28-09 (Fig. [7.3](#Fig3)). The Sharpe ratio achieved is 1.07.![](../images/519851_1_En_7_Chapter/519851_1_En_7_Fig3_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 7.3
+  prefs: []
+  type: TYPE_NORMAL
+- en: Performance of the portfolio based on the predictions of specific returns
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.2.4 Correlation Analysis
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: An analysis of the correlation of the returns of the different portfolios among
+    themselves, and with the market portfolio, allows us to understand the potential
+    diversification benefit of combining them. Below is the correlation matrix of
+    the daily returns (Fig. [7.4](#Fig4)):![](../images/519851_1_En_7_Chapter/519851_1_En_7_Fig4_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 7.4
+  prefs: []
+  type: TYPE_NORMAL
+- en: Correlation matrix of the daily returns of the trading strategies
+  prefs: []
+  type: TYPE_NORMAL
+- en: Unsurprisingly, the market portfolio (the benchmark) and the market timed portfolio
+    are correlated, but the correlation is only 30%, which appears to be relatively
+    low considering the method of implementation of the signal. The specific portfolio
+    appears to be a great diversifier, while the industry predictions show some correlations
+    to the market portfolio. These findings hold if we consider correlations using
+    weekly returns, presented below (Fig. [7.5](#Fig5)):![](../images/519851_1_En_7_Chapter/519851_1_En_7_Fig5_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 7.5
+  prefs: []
+  type: TYPE_NORMAL
+- en: Correlation matrix of the weekly returns of the trading strategies
+  prefs: []
+  type: TYPE_NORMAL
+- en: Using monthly returns, the market timed portfolio appears to be a bit more correlated
+    to the benchmark, while the industry predictions are clearly less correlated (Fig.
+    [7.6](#Fig6)):![](../images/519851_1_En_7_Chapter/519851_1_En_7_Fig6_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 7.6
+  prefs: []
+  type: TYPE_NORMAL
+- en: Correlation matrix of the monthly returns of the trading strategies
+  prefs: []
+  type: TYPE_NORMAL
+- en: The relatively high (23%) correlation of the industry predictions we observed
+    in the daily table (Fig. [7.4](#Fig4)) is mainly explained by its tail correlation
+    to the market portfolio. Indeed, keeping only the 1% most extreme market returns
+    on both tails to compute the correlation leads to a tail correlation of 41% between
+    the market and the industry portfolio. The industry portfolio is thus more correlated
+    to the market during extreme moves. Since the returns of the industry portfolio
+    come from an exposure to extreme market risk, it is expected that even a long/short
+    portfolio construction is unable to entirely remove the market exposure.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In the aggregate portfolio we are about to construct, this negative feature
+    is compensated by the negative tail correlations that the specific portfolio (−12%)
+    and the market timed portfolio (−31%) exhibit with the benchmark.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.3 Risk Parity Combination
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 7.3.1 Introducing Risk Parity
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The combination of the three different portfolios may be done using 1/3 weights.
+    Following this 1/N approach has been shown to be a robust method of aggregating
+    predictions, difficult to beat in many cases (see Rapach et al., [2010](#CR14);
+    Timmermann, [2006](#CR20)). However, the predictions we used, even if considering
+    the same assets, are distorted by different portfolio construction methods, making
+    it more appropriate to aggregate sub-portfolios than predictions. Also, sub-portfolios
+    are sufficiently uncorrelated to be considered as different assets. The 1/N method
+    has also been found to be robust when composing a portfolio of several assets
+    (DeMiguel et al., [2009](#CR6)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: However, in our setting it is not clear what 1/N should be. Giving the same
+    capital to portfolios with very different leverages, ranging from 1 to 8, seems
+    unfair. A solution may be to scale the capital invested in the different portfolios,
+    so that all the portfolios have the same amount of money effectively invested
+    (which equals capital × leverage). But we directly encounter the problem that
+    the market timing strategy is performing thanks to a dynamic leverage. A scaling
+    of the capital thus does not seem appropriate to create a 1/N strategy.
+  prefs: []
+  type: TYPE_NORMAL
+- en: An alternative is to give to each strategy the same volatility budget, leading
+    to 1/volatility weights. This approach, called ‘Risk Parity’ has been implemented
+    in various formats, both in academic works and empirical portfolios, and has shown
+    good results (Clarke et al., [2013](#CR5)). We use it as a starting point to define
+    an aggregation method benchmark. The weights obtained using a rolling 5-year window^([3](#Fn3))
+    to compute the volatility are as follows (Fig. [7.7](#Fig7)):![](../images/519851_1_En_7_Chapter/519851_1_En_7_Fig7_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 7.7
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Risk Parity combination: Strategies’ weights over time'
+  prefs: []
+  type: TYPE_NORMAL
+- en: We observe that the weights are very stable, which is an interesting property,
+    since unstable weights would result in more turnover of the portfolio, and thus,
+    more transaction costs. We also notice the relatively small volatility of the
+    specific predictions portfolio, which results in a higher weight for the Risk
+    Parity weighted portfolio.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Below is the performance over time of the aggregated portfolio obtained with
+    this method (Fig. [7.8](#Fig8)):![](../images/519851_1_En_7_Chapter/519851_1_En_7_Fig8_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 7.8
+  prefs: []
+  type: TYPE_NORMAL
+- en: Risk Parity portfolio gross performance
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In addition to being very stable over time, the performance obtained showed
+    very enviable metrics: the Sharpe ratio achieved is 1.58, an average annual return
+    of 18%, 10% of realized volatility and a worst drawdown of 9%.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.3.2 Transaction Costs Matter
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: We have presented a first, straightforward implementation of an aggregate portfolio,
+    for which we saw a high *gross* performance. However, more than being a useful
+    indicator of the predictive power of trading strategies, a simulated portfolio
+    performance indirectly implies that the strategy may be profitable. Such a profitability,
+    to be effective, must pass the final test of being implemented in the real world.
+    Although this is out of the scope of the academic work we are conducting here,
+    we can still reduce the distance between a real-world P&L and our simulation by
+    introducing the transaction costs in our modeling.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The transaction costs of the equity market are composed of several elements:
+    broker fees, different taxes, and of course the market impact of the trades. Proportional
+    aggregated transaction costs, which encompass these different kinds of costs,
+    have historically been found to be around 10 bips to 25 bips per unit of turnover^([4](#Fn4))
+    (Sweeney, [1988](#CR18); Allen & Karjalainen, [1999](#CR1)). More recently Guo
+    ([2006](#CR10)) found a value of 25 bips, which seems to be in line with the latest
+    studies (see for example Brière et al. ([2019](#CR3)), who conducted a study using
+    data from a large asset manager, making their results particularly relevant in
+    our context of trading strategy implementation).'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Being conservative, we choose to consider an amount of 25 bips of proportional
+    transaction costs, which we added to the gross returns of the risk parity portfolio
+    to form the net returns of the portfolio. Let us call “w” the vector of positions
+    taken by the portfolio inside our investment universe of 500 stocks. At date t:![$$
+    {w}_t=\left({w}_{1,t},{w}_{2,t},\dots, {w}_{500,t}\right). $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_Equ3.png)(7.3)The
+    trades “Δ” are given by the difference of the positions between two dates:![$$
+    {\varDelta}_t={w}_t-{w}_{t-1} $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_Equ4.png)(7.4)and
+    thus the portfolio performance net of transaction costs is:![$$ {r}_{P,t}=\sum
+    \limits_{a=1}^{500}{w}_{a,t}\times {r}_{a,t}-\left|{\varDelta}_{a,t}\right|\times
+    0.0025\. $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_Equ5.png)(7.5)The
+    performance is dramatically reduced by the addition of transaction costs, since
+    the Sharpe ratio becomes equal to −4.88, which emphasizes the importance of the
+    reduction of the gap between a theoretical and a real implementation of the strategy.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.3.3 Ex-ante Optimal Reduction of the Transaction Costs
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The impressive decrease of the performance observed while integrating the transaction
+    costs can be greatly reduced by a less naive portfolio construction. Indeed, the
+    trades are clearly inducing excessive costs.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Gârleanu and Pedersen ([2013](#CR7)) popularized the usage of dynamic programming
+    in finance. Their proposal to reduce the transaction costs of a portfolio is based
+    on two core principles: aim in front of the target, and trade partially toward
+    the aim. We focus here on the second principle, which is reflected in their paper
+    by Eq. ([7.6](#Equ6)):![$$ {w}_t=\left(1-\theta \right){w}_{t-1}+\theta\ {aim}_t.
+    $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_Equ6.png)(7.6)*Here
+    w is the cross-section of the positions taken by the portfolio, aim is the portfolio
+    we would like to achieve in a world without transaction costs, and θ is the optimal
+    trading rate, i.e. the percentage of the total trades to the aim portfolio which
+    maximizes the net returns.*We implement this principle by numerically computing
+    the ex-ante optimal trading rate, using a 5-year rolling window (the window is
+    again expanding at the beginning of the simulation). θ thus becomes a time-dependent
+    parameter:![$$ {w}_t=\left(1-{\theta}_t\right){w}_{t-1}+{\theta}_t\ {aim}_t. $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_Equ7.png)(7.7)Below
+    is the value taken by θ over time (Fig. [7.9](#Fig9)):![](../images/519851_1_En_7_Chapter/519851_1_En_7_Fig9_HTML.png)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 7.9
+  prefs: []
+  type: TYPE_NORMAL
+- en: Ex-ante optimal trading rate over time
+  prefs: []
+  type: TYPE_NORMAL
+- en: Although these values may seem small, considering the relatively high level
+    of transaction costs (recall that the net Sharpe of the basic portfolio was −4.88),
+    it is not totally surprising. Moreover, higher values quickly lead to lower returns,
+    as Table [7.1](#Tab1) shows:^([5](#Fn5))Table 7.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: Annual net returns for different trading rates
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Trading rate (%) | Average annual net return (%) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 1.0 | 9.42 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 1.5 | 9.07 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 2.0 | 8.37 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 2.5 | 7.54 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 3.0 | 6.67 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 4.0 | 4.98 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 5.0 | 3.42 |'
+  prefs: []
+  type: TYPE_TB
+- en: From this table, it is clear that exploring higher values of the trading rate
+    is not worth it.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Using our ex-ante rolling optimal strategy the net returns reach 9.10%, which
+    makes the results of the rolling method comparable with the best ex-post trading
+    rate performances. These honest results should be considered together with the
+    Sharpe ratio that we now achieve considering the net returns: 0.81\. Below is
+    the net cumulative performance of the signal (Fig. [7.10](#Fig10)):![](../images/519851_1_En_7_Chapter/519851_1_En_7_Fig10_HTML.png)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 7.10
+  prefs: []
+  type: TYPE_NORMAL
+- en: Risk Parity portfolio net performance, with dynamic programming smoothing
+  prefs: []
+  type: TYPE_NORMAL
+- en: The performance achieved undoubtedly shows that an appropriate portfolio construction
+    is essential to declare that the strategy may be profitable if implemented. As
+    it has been previously shown in the literature (Ciliberti & Gualdi, [2020](#CR4)),
+    the question of portfolio construction is thus an important determinant of the
+    economic performance of a trading strategy.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.4 Genetic Algorithm-Based Combinations
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 7.4.1 Methodology
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: We saw that Risk Parity allows us to reach a significant gross performance while
+    combining portfolios, which can be partly preserved when transaction costs are
+    introduced, by an important reduction of the amount traded. However, the presence
+    of transaction costs raises uncertainty about the appropriateness of the choice
+    of Risk Parity as a combination method. In particular, the analysis of the strategies
+    showed that the predictions of specific returns correspond to the sub-portfolio
+    that changes the most (by far), making it the potential principal contributor
+    to the transaction costs of the aggregated portfolio. Parallelly, the specific
+    portfolio is the one with the lower volatility, making a Risk Parity allocation
+    to this portfolio of 50%. Thus, net of transaction costs, using Risk Parity may
+    be a sub-optimal weighting choice.
+  prefs: []
+  type: TYPE_NORMAL
+- en: A proper weighting algorithm should balance gross performance, transaction costs
+    and risk, measured as portfolio’s volatility. It would hence result in a superior
+    net Sharpe ratio, which can be taken as a metric to optimize. Still, if we keep
+    the rolling optimal trading rate mechanism presented before, the sub-portfolios
+    weighting optimization problem would be nested in the trading rate optimization
+    problem. The use of a numerical optimization algorithm may thus be appropriate
+    to keep our final setting relatively simple.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Genetic algorithms would be a suitable candidate for this task. Introduced by
+    Holland in 1975 (see Holland ([1992](#CR11)) for a more recent version of the
+    original paper), genetic algorithms have been widely applied in finance to various
+    optimization problems (see Pereira ([2000](#CR13)) for an introduction and a review
+    of applications of genetic algorithms in finance). Being an optimization algorithm,
+    it is indeed suitable for the sub-portfolios weighting problem.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Genetic algorithms represent the optimization problem in the form of a population
+    of individuals (or chromosomes) which evolves while following mechanisms mimicking
+    natural selection. We describe below how the population of chromosomes evolves
+    until it reaches a final state, solving the optimization problem for date t, using
+    a classical algorithm adapted to our current optimization problem.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The use of a genetic algorithm implies that the optimization is represented
+    in the form of a set of competitive individuals. Each of these individuals is
+    the representation of a solution of the optimization problem. An individual is
+    characterized by its genotype, usually represented by a vector of 0s and 1s. In
+    our case, the genotype of the *v* ^(*th*) individual is a vector which contains
+    the weights of each sub-portfolio (positive and floored at 15% to keep a reasonable
+    level of diversification):![$$ {g}_v=\left({\beta}_{v,M},{\beta}_{v,I},{\beta}_{v,S}\right)\kern1.5em
+    s.t.\kern1.25em {\beta}_{v,M}+{\beta}_{v,I}+{\beta}_{v,S}=1\kern1.75em s.t.\kern1.25em
+    {\beta}_{v, sub}\ge 0.15\  for\  sub\  in\ \left\{M,I,S\right\}. $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_Equ8.png)(7.8)*Here
+    β*[*v*, *M*] *is the weight of the Market sub-portfolio, β*[*v*, *I*] *is the
+    weight of the (AntiFragility Indicator) Industry sub-portfolio, and β*[*v*, *S*]
+    *is the weight of the (Polymodels Predictions) Specific sub-portfolio.*This genotype
+    evolves over time, a dynamic simply represented as:![$$ {g}_{v,t}=\left({\beta}_{v,t,M},{\beta}_{v,t,I},{\beta}_{v,t,S}\right).
+    $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_Equ9.png)(7.9)The
+    algorithm starts by generating a random initial population “IP”, i.e. a set of
+    50 individuals with genotypes randomly chosen in a uniform distribution:![$$ {IP}_t=\left\{{g}_{1,t},{g}_{2,t},\dots,
+    {g}_{50,t}\right\}. $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_Equ10.png)(7.10)These
+    individuals are then evaluated based on a fitness score. In our case, the fitness
+    score of an individual is the net Sharpe ratio achieved by the portfolio weighted
+    by its genotype, after trading rate optimization. At time t, the aggregated portfolio
+    *w*, defined as the vector of the positions corresponding to the individual *v*
+    is thus:![$$ {w}_{v,t}=\left(1-{\theta}_{v,t}\right){w}_{v,t-1}+{\theta}_{v,t}\
+    \left({\beta}_{v,t,M}\times {w}_{t,M}+{\beta}_{v,t,I}\times {w}_{t,I}+{\beta}_{v,t,S}\times
+    {w}_{t,S}\right). $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_Equ11.png)(7.11)Here,
+    the optimal trading rate is computed every day, using the procedure previously
+    described. Note that such a construction of the aggregated portfolio implies that
+    the aggregation function omega is linear, depending on the trading rate:![$$ {\varOmega}_{v,t}\left({r}_M,{r}_{AFI,I},{r}_{PP,S}\right)\Rightarrow
+    {\varOmega}_{v,t}\left({\theta}_{v,t},{\beta}_{v,t,M},{\beta}_{v,t,I},{\beta}_{v,t,S}\right).
+    $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_Equ12.png)(7.12)Hence,
+    the realized net returns of the portfolio associated with individual *v* is:![$$
+    {r}_{v,t}=\sum \limits_{a=1}^{500}{r}_{a,t}\times {w}_{a,v,t}-\left|{\varDelta}_{a,v,t}\right|\times
+    0.0025 $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_Equ13.png)(7.13)and
+    so the fitness score of the individual is simply its Sharpe ratio, which we compute
+    using the net portfolio returns over the 10 years that precede the current date:![$$
+    {S}_{v,t}=\left(\sum \limits_{s=t-252\ast 10}^t{r}_{v,s}-{risk}_{-}{free}_{-}{rate}_s\right)/{\sigma}_{v,s\to
+    t}\times \sqrt{252}. $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_Equ14.png)(7.14)*Here
+    σ*[*v*, *s* → *t*] *is the standard deviation of the excess daily returns of the
+    portfolio in the 10 years preceding date t.*Fitness scores are normalized so that
+    they are all positive, by subtracting from all fitness scores the smallest of
+    them:![$$ S{\prime}_{v,t}={S}_{v,t}-\mathit{\min}\left({S}_t\right). $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_Equ15.png)(7.15)The
+    fitness score of an individual determines its reproduction probability for the
+    next period, defined as:![$$ {rp}_{v,t}=S{\prime}_{v,t}/\sum \limits_{v=1}^{50}S{\prime}_{v,t}.
+    $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_Equ16.png)(7.16)Then
+    the reproduction phase starts, structured as follows:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Two individuals, called “parents” are drawn randomly from the initial population,
+    with a probability of being selected coming from Eq. ([7.16](#Equ16)) above.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: 'These two parents produce two children, which are obtained by an operation
+    called “cross-over”: the parents exchange a part of their genotype, which is 1
+    element (1/3 of the genotype) in our case, i.e. 1 sub-portfolio weight.'
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Each of the children have a 30% probability of mutation. If one of the children
+    mutates, a random genotype is given to it. This feature allows the population
+    to maintain a genetic diversity, i.e. it prevents the optimization algorithm from
+    converging too quickly.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: The reproduction phase is repeated 25 times so that a new population “NP” composed
+    of 50 individuals is generated. This new population will be the initial population
+    of the next “epoch”, which represents a new period of evolution of the population:![$$
+    {NP}_{t, epoch=1}={IP}_{t, epoch=2}. $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_Equ17.png)(7.17)This
+    full process, which governs how an initial population evolves to become a new
+    population, is then repeated 20 consecutive times, using the same data of the
+    last 10 years available at date t:![$$ {IP}_{t, epoch=1}\to {NP}_{t, epoch=1}={IP}_{t,
+    epoch=2}\to {NP}_{t, epoch=2}=\dots ={IP}_{t, epoch=20}\to {NP}_{t, epoch=20}.
+    $$](../images/519851_1_En_7_Chapter/519851_1_En_7_Chapter_TeX_Equ18.png)(7.18)For
+    example, starting on December 31st, 2015, we use the data from January 1st, 2006
+    to December 31th, 2015\. We create an initial random genotype and apply the reproduction/selection
+    procedures as described above, updating the initial population at each epoch by
+    making it the new population of the previous epoch. We finally average the genotypes
+    of the last generation of individuals. At this stage, the diversity of the population
+    has decreased because the selection process tends to eliminate non-fit individuals
+    over time.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The average genotype is thus given by the final sub-portfolio weights we obtained
+    at date t. These weights are then used to produce the returns of the final aggregated
+    portfolio we consider over the next year. Returning to the previous example, we
+    used the data available until 31st December 2015 to produce sub-portfolio weights.
+    The aggregated portfolio performance obtained in this way is thus only of interest
+    in 2016 and later (otherwise the performance presented suffers from in-sample
+    optimization). We consider this performance only for the year 2016, after which
+    the full process is repeated to generate the aggregated portfolio’s out-of-sample
+    performance of 2017, and so on, following this rolling methodology.^([6](#Fn6))
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.4.2 Results
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Below are the sub-portfolio weights produced by the genetic algorithm (Fig.
+    [7.11](#Fig11)):![](../images/519851_1_En_7_Chapter/519851_1_En_7_Fig11_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 7.11
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Genetic algorithm combination: Strategies’ weights over time'
+  prefs: []
+  type: TYPE_NORMAL
+- en: As expected, since the fitness score of the individuals is based on their *net*
+    returns, the algorithm tends to under-weight the specific portfolio compared to
+    risk parity, since this portfolio may be very detrimental in terms of transaction
+    costs. Apart from this point, we can see that even if the weights are changing
+    over-time, there is no extreme recombination of the sub-portfolios weighting scheme,
+    even if it seems that the market portfolio tends to be more invested as time passes.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The net Sharpe ratio of the strategy is 0.94 versus 0.81 for the Risk Parity
+    portfolio, while the annual net return is 10.40%, versus 9.10% in the Risk Parity
+    case. Below are the two cumulative P&L curves (Fig. [7.12](#Fig12)):![](../images/519851_1_En_7_Chapter/519851_1_En_7_Fig12_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 7.12
+  prefs: []
+  type: TYPE_NORMAL
+- en: Comparison of performances of Risk Parity and genetic algorithm combinations
+  prefs: []
+  type: TYPE_NORMAL
+- en: Starting from a value of 100 in 2006-01, the final value reached by both portfolios
+    on 2018-10 is 353 for the genetic algorithm combined portfolio and 295 for the
+    Risk Parity combined portfolio. The genetic algorithm portfolio seems to deliver
+    higher returns most of the time, as one can assess from the cumulative P&L difference
+    of both strategies (Fig. [7.13](#Fig13)):![](../images/519851_1_En_7_Chapter/519851_1_En_7_Fig13_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 7.13
+  prefs: []
+  type: TYPE_NORMAL
+- en: Cumulative P&L difference over time between combination methods
+  prefs: []
+  type: TYPE_NORMAL
+- en: On top of this economically significant increase of the performance, the improvement
+    is also statistically significant. This can be evaluated by modeling the genetic
+    portfolio returns using a linear model, including a constant and the Risk Parity
+    returns. Estimated with OLS, the constant parameter of such a model shows a t-stat
+    of 2.30, corresponding to a 2.2% *p*-value.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The portfolio aggregated with the genetic algorithm is also over-performing
+    the market portfolio. Below are the P&L curves of both portfolios (standardized
+    at 10% annual volatility to be comparable) (Fig. [7.14](#Fig14)):![](../images/519851_1_En_7_Chapter/519851_1_En_7_Fig14_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 7.14
+  prefs: []
+  type: TYPE_NORMAL
+- en: Comparison of performances of the genetic algorithm portfolio and the market
+    portfolio
+  prefs: []
+  type: TYPE_NORMAL
+- en: The final aggregated portfolio shows a correlation of 40% with the market portfolio.
+    However, the Sharpe ratio^([7](#Fn7)) of the genetic portfolio reaches 0.94 over
+    the period, versus only 0.43 for the market portfolio. If we consider the worst
+    drawdown^([8](#Fn8)) reached by the market portfolio, it is −55% for the market
+    portfolio, while being only −22% for the genetic portfolio.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.5 Robustness Tests
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: We provide a sensitivity analysis of the strategy’s performance with the different
+    parameters used by the genetic algorithm.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.5.1 Mutation Probability
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: 'The mutation probability used in the version of the algorithm presented above
+    is 30%. Below, we display the net Sharpe ratio of the strategy for 10%, 20%, 30%,
+    40% and 50% mutation probabilities:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: The performance seems to be relatively robust to the change in this parameter.
+    It seems to reach an optimum at 30%, a high level that make sense as the mutation
+    probability is the main defense against overfitting of the algorithm. For our
+    given number of epochs, a lower probability results in a potential early convergence
+    to “extreme” solutions, while increasing the probability progressively prevents
+    the convergence of the algorithm. Note that support for this reasoning comes more
+    from its internal validity than by inspecting the figures of Table [7.2](#Tab2),
+    as we can cast some doubts about the statistical significance of Sharpe ratio
+    differences of 0.02.Table 7.2
+  prefs: []
+  type: TYPE_NORMAL
+- en: Sensitivity of the Sharpe ratio to the mutation probability
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Mutation probability | 10% | 20% | 30% | 40% | 50% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Net sharpe ratio | 0.91 | 0.92 | 0.94 | 0.91 | 0.92 |'
+  prefs: []
+  type: TYPE_TB
+- en: 7.5.2 Number of Chromosomes
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: In the version of the algorithm presented above we use 50 chromosomes. Below,
+    we display the net Sharpe ratio of the strategy for 20, 35, 50, 75 and 100 chromosomes
+    (Table [7.3](#Tab3)):Table 7.3
+  prefs: []
+  type: TYPE_NORMAL
+- en: Sensitivity of the Sharpe ratio to the number of chromosomes
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Number of chromosomes | 20 | 35 | 50 | 75 | 100 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Net sharpe ratio | 0.92 | 0.92 | 0.94 | 0.89 | 0.92 |'
+  prefs: []
+  type: TYPE_TB
+- en: A higher number of chromosomes may provide more robust results, but it is also
+    at the cost of a higher computation time, which does not seem justified by the
+    performance. The performance achieved with 75 chromosomes seems a bit worrying.
+    An empirical implementation of the strategy should take this point into account,
+    for example by averaging the sub-portfolio weights obtained with different numbers
+    of chromosomes.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.5.3 Number of Epochs
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: In the version of the algorithm presented above we use 20 epochs. Below, we
+    display the net Sharpe ratio of the strategy for 5, 10, 20, 30 and 50 epochs (Table
+    [7.4](#Tab4)):Table 7.4
+  prefs: []
+  type: TYPE_NORMAL
+- en: Sensitivity of the Sharpe ratio to the number of epochs
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Number of epochs | 5 | 10 | 20 | 30 | 50 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Net sharpe ratio | 0.88 | 0.92 | 0.94 | 0.93 | 0.91 |'
+  prefs: []
+  type: TYPE_TB
+- en: Here, we see again that the parameter selected corresponds to an optimum, related
+    to the questions of over and under-fitting. It is plausible that other configurations
+    of the parameters, if adjusted jointly, may lead to a similar or superior performance
+    (for example, with a larger mutation probability and more epochs).
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.5.4 Seed
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: 'The seed^([9](#Fn9)) used to get replicable randomness in the version of the
+    algorithm presented above is labeled #1\. Randomness is used for selecting mutating
+    chromosomes, generating initial population weights and selecting the fittest individuals
+    for reproduction. Below, we display the net Sharpe ratio of the strategy for the
+    seeds #1, #2, #3, #4 and #5 (Table [7.5](#Tab5)):Table 7.5'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Sensitivity of the Sharpe ratio to the randomness seed
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Seed | #1 | #2 | #3 | #4 | #5 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Net Sharpe Ratio | 0.94 | 0.92 | 0.93 | 0.94 | 0.89 |'
+  prefs: []
+  type: TYPE_TB
+- en: 'Seeds other than the one selected deliver comparable performances, except for
+    seed #5\. This justifies the need to average sub-portfolio weights obtained from
+    different seeds to avoid seed sensitivity of the performance.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.5.5 Optimal Trading Rate Window
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The genetic algorithm portfolio takes into account the transaction costs thanks
+    to the usage of an ex-ante optimal trading rate, which maximizes the net Sharpe
+    ratio measured on a given rolling window. The length of the rolling window used
+    in the version of the algorithm presented above is 5 years. Below, we display
+    the net Sharpe ratio of the strategy for 3, 4, 5, 6 and 7 years (Table [7.6](#Tab6)):Table
+    7.6
+  prefs: []
+  type: TYPE_NORMAL
+- en: Sensitivity of the Sharpe ratio to the optimal trading rate window
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Optimal trading rate window | 3 years | 4 years | 5 years | 6 years | 7 years
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Net sharpe ratio | 0.92 | 0.92 | 0.94 | 0.92 | 0.93 |'
+  prefs: []
+  type: TYPE_TB
+- en: Again the performance seems to be quite insensitive to a change in this parameter.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Overall, the performance of the aggregated strategy obtained using a genetic
+    algorithm-based combination does not particularly suffer from adopting other configurations
+    of the algorithm’s parameters. Such a behavior indicates a high level of robustness
+    of the results presented above.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.6 Conclusions
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: The present chapter shows that the portfolio construction is of primary importance
+    in the implementation of a trading strategy. It proposes a solution to the problem
+    of weighting sub-portfolios reflecting different predictions of the stock returns
+    while significantly reducing the transaction costs. Such a solution is non-trivial
+    since it involves a double-nested optimization problem.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Other optimization methods may be explored, for example the (stochastic) gradient
+    descent, given its success in other machine learning applications such as neural
+    networks.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Still, the results presented show that genetic algorithms are suitable for the
+    alpha combination problem, allowing us to perform alpha combinations while efficiently
+    taking the transaction costs into account. Such a portfolio construction method
+    seems to add value on top of a classical benchmark, and to the best of our knowledge
+    it has not already been proposed in the literature. Moreover, the aggregated portfolio
+    exhibits twice the Sharpe ratio of the market in the period considered, associated
+    with a reduced correlation to the market and a significant reduction of the drawdowns.
+  prefs: []
+  type: TYPE_NORMAL
+- en: From the perspective of the aggregate predictions, this shows that the resulting
+    trading strategy may be profitable. Indeed, the current setting is fairly realistic,
+    thanks to the inclusion of transaction costs. Nevertheless, the realism of the
+    simulation presented is still imperfect, since the only way to assess the profitability
+    of a trading strategy is to implement it (this is the only solution in which all
+    the possible biases, such as look-forward bias, selection bias, technical biases
+    (…) are removed). However, we expect that the gap to such a level of realism has
+    been partly filled by the inclusion of transaction costs. Note that we indirectly
+    take into account the financing of the positions since the risk-free rate is deducted
+    from the returns in the computation of the Sharpe ratios presented. Leverage costs
+    are nevertheless not included and may be considered in a further study.
+  prefs: []
+  type: TYPE_NORMAL

@@ -1,0 +1,429 @@
+- en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2023F.
+    Cecconi (ed.)AI in the Financial Markets Computational Social Sciences[https://doi.org/10.1007/978-3-031-26518-1_9](https://doi.org/10.1007/978-3-031-26518-1_9)
+  prefs: []
+  type: TYPE_NORMAL
+- en: '9. More than Data Science: FuturICT 2.0'
+  prefs:
+  - PREF_H1
+  type: TYPE_NORMAL
+- en: 'Federico Cecconi^([1](#Aff16) [ ](#ContactOfAuthor1))(1)LABSS-ISTC-CNR, Via
+    Palestro 32, 00185 Rome, ItalyFederico CecconiEmail: [federico.cecconi@istc.cnr.it](mailto:federico.cecconi@istc.cnr.it)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Abstract
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: In an Asimov novel he imagines that ‘machines’ can receive input from all the
+    ‘facts’ that happen in the world, day after day, year after year. Machines are
+    robots in the *Asimovian* sense, and therefore they cannot let their action (or
+    inaction) harm human beings in any way, furthermore they must obey humans and
+    only ultimately protect themselves. And so day after day, year after year, they
+    suggest lines of action, modify procedures, ask for the creation of structures
+    and modify others. In order to promote the welfare of the human race. Without
+    revealing how the story ends (it ends in a very fascinating way anyway), **FuturICT
+    2.0, a 2019 EU initiative** proposes exactly this, namely the creation of decision-making
+    aid tools, which receive data from the world and propose explanations for dynamics,
+    lines of action, solutions. In this Chap. 1 describe what FuturICT is now, and
+    how this dream hides within it a challenge that is difficult to fully grasp.
+  prefs: []
+  type: TYPE_NORMAL
+- en: KeywordsForecast modelsBig dataSocial cognitionFederico Cecconi
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'is R&D manager for QBT Sagl ([https://​www.​qbt.​ch](https://www.qbt.ch)),
+    responsible for the LABSS (CNR) of the computer network management and computational
+    resources for simulation, and consultant for Arcipelago Software Srl. He develops
+    computational and mathematical models for the Labss’s issues (social dynamics,
+    reputation, normative dynamics). For Labss performs both the dissemination that
+    training. His current research interest is twofold: on the one hand, the study
+    of socio-economic phenomena, typically using computational models and databases.
+    The second is the development of AI model for fintech and proptech.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 9.1 What is Data Science?
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Starting from the beginning, data science aims to extract knowledge from a huge
+    amount of data by employing mathematics and statistics. And many different techniques
+    are employed to achieve this as good research leads to better results which lead
+    to a profit for the financial institutions. Data science has become extremely
+    relevant in the financial sector, which is mainly used for risk management and
+    risk analysis. Companies also evaluate data models using business intelligence
+    software.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Through the use of Data Science, the accuracy in identifying irregularities
+    and frauds has increased. This has helped reduce risk and scams, mitigate losses
+    and preserve the image of the financial institution. Data science and Finance
+    go hand in hand as Finance is the hub of data. Financial institutions were early
+    pioneers and adopters of data analytics.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In other words, data science is an interdisciplinary field that uses scientific
+    methods, processes, algorithms, and systems to extract knowledge rod insights
+    from a lot of structural and unstructured data. Data science is related to data
+    mining, machine learning and big data. Simply put, data science is the collection
+    of data obtained from structured and unstructured sources so as to extract valuable
+    insights. Data sources may include online or manual surveys, retail customer data,
+    and social media usage information and actions. This data is used to model the
+    actions of a network or customer base to predict future behavior and patterns.
+    This research can be extended to a specific sample community, such as retail customers
+    or consumers of social media, weather forecasting, machine learning, and a wide
+    variety of other disciplines.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 9.2 What Is the Role of Data Science, for Example, in Finance?
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Then, machine learning, big data and artificial intelligence are fascinating
+    and futuristic options for many developers, business people and corporate employees.
+    However, organizations in the financial sector, due to their security concerns,
+    often have a resistance to new technologies. Indeed, the financial world is more
+    driven by cutting-edge developments. While machine learning can streamline loan
+    processes by reducing fraud, AI-powered applications can provide users with advanced
+    recommendations.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Since its inception, data science has helped the evolution of many industries.
+    It is actually one thing that financial analysts have relied on data to derive
+    a lot of useful insights. The growth of data science and machine learning, however,
+    has led to a huge improvement in the industry. Today, automated algorithms and
+    advanced analytical methods are being used together to outpace the competition
+    more than ever before.
+  prefs: []
+  type: TYPE_NORMAL
+- en: To keep up with the latest trends and understand their usage, we will discuss
+    the value of data science in finance by giving many examples. So, data science
+    is used extensively in areas such as risk analysis, client management, fraud detection
+    and algorithmic trading. We will explore each of these and bring you applications
+    of data science in the financial industry.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Initially, data was processed in batches and not in real-time, creating problems
+    for several industries that needed real-time data to gain perspective on current
+    conditions. However, with improvements in technology and the growth of dynamic
+    data pipelines, data can now be accessed with minimal latency.
+  prefs: []
+  type: TYPE_NORMAL
+- en: With this data science in financial application, organizations are able to monitor
+    purchases, credit scores and other financial metrics without latency issues. Financial
+    firms can make assumptions about how each customer is likely to behave based on
+    past behavioral patterns. Using socio-economic apps, they can sort customers into
+    groups and make predictions about how much money each customer expects to receive
+    in the future.
+  prefs: []
+  type: TYPE_NORMAL
+- en: '9.3 More than Data Science: FutureICT 2.0'
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: With our knowledge of the universe, we have sent men to the moon. We know microscopic
+    details of objects around us and within us. And yet we know relatively little
+    about how our society works and how it reacts to changes brought upon it. Humankind
+    is now facing serious crises for which we must develop new ways to tackle the
+    global challenges of humanity in the 21st century. With connectivity between people
+    rapidly increasing, we are now able to exploit information and communication technologies
+    to achieve major breakthroughs that go beyond the step-wise improvements in other
+    areas.
+  prefs: []
+  type: TYPE_NORMAL
+- en: It is thus timely to create an ICT (Information and Communication Technology)
+    Flagship to explore social life on Earth, and everything it relates to, in the
+    same way that we have spent the last century or more understanding our physical
+    world.^([1](#Fn1))
+  prefs: []
+  type: TYPE_NORMAL
+- en: This proposal sketches out visionary scientific endeavours, forming an ambitious
+    concept that allows us to answer a whole range of challenging questions. Integrating
+    the European engineering, natural, and social science communities, this proposal
+    will release a huge potential.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The need of a socio-economic knowledge collider was first pointed out in the
+    OECD Global Science Forum on Applications of Complexity Science for Public Policy
+    in Erice from October 5 to 7, 2008\. Since then, many scientists have called for
+    a large-scale ICT-based research initiative on techno-social-economic-environmental
+    issues, sometimes phrased as a Manhattan-, Apollo-, or CERN-like project to study
+    the way our living planet works in a social dimension. Due to the connotations,
+    we use the term knowledge accelerator, here.
+  prefs: []
+  type: TYPE_NORMAL
+- en: An organizational concept for the establishment of a knowledge accelerator is
+    currently being sketched within the EU Support Action VISIONEER, see [www.​visioneer.​ethz.​ch](http://www.visioneer.ethz.ch).
+    The EU Flagship initiative is exactly the instrument to materialize this concept
+    and thereby tackle the global challenges for mankind in the 21st century.
+  prefs: []
+  type: TYPE_NORMAL
+- en: From the point of view of FuturICT initiative, we have a better understanding
+    of our universe than about the way our society and economy evolve. We have developed
+    technologies that allow ubiquitous communication and instant information access,
+    but we do not understand how this changes our society. Challenges like the financial
+    crisis, the Arab spring revolutions, global flu pandemics, terrorist networks,
+    and cybercrime are all manifestations of our ever more highly interconnected world.
+    They also demonstrate the gaps in our present understanding of techno-socio-economic-environmental
+    systems.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In fact, the pace of global and technological change, in particular in the area
+    of Information and Communication Technologies (ICTs), currently outstrips our
+    capacity to handle them. To understand and manage the dynamics of such systems,
+    we need a new kind of science and novel socially interactive ICTs, fostering transparency,
+    trust, sustainability, resilience, respect for individual rights, and opportunities
+    for participation in political and economic processes.
+  prefs: []
+  type: TYPE_NORMAL
+- en: '9.4 An Example: FIN4'
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'One of the reasons for unsustainable behavior is the long period of time between
+    our actions and the consequences they may have. For instance, people have been
+    burning coal for two centuries and driving motor vehicles for one century, while
+    carbon dioxide emissions have only recently been considered to be a serious global
+    problem. Such circumstances create cognitive dissonance, i.e., an uncomfortable
+    feeling of inconsistency. Some researchers propose an innovative way to tackle
+    this problem (see [https://​link.​springer.​com/​chapter/​10.​1007/​978-3-030-71400-0_​4](https://link.springer.com/chapter/10.1007/978-3-030-71400-0_4)
+    for details): the creation of FIN4, a socio-ecological finance system.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: FIN4 aims to create a self-organizing, highly nuanced incentive system that
+    supports the daily decision-making of people by encouraging desirable actions
+    and discouraging undesirable behaviors.
+  prefs: []
+  type: TYPE_NORMAL
+- en: To promote sustainability, it is important that the FIN4 system takes externalities
+    into account. However, the FIN4 system does this by multiple currencies, reflecting
+    different societal values. By giving externalities prices and allowing them to
+    be traded, they can be internalized to reflect costs and benefits more accurately
+    in a multi-dimensional way. Externalities can be positive (like certain kinds
+    of innovation or infrastructure) or negative (such as pollution).
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'FIN4 focuses primarily on positive action, rather than on sanctions, for the
+    following reasons:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: As an opt-in system, it would be almost impossible to motivate participants
+    to join if they would face a negative balance of tokens, taking into account negative
+    externalities. Obtaining tokens for positive action is a much better value proposition.
+    FIN4, therefore, focuses on rewards for positive actions, rather than on punishments
+    for negative actions.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Our daily choices often seem to be detached from our values. Using a smart distributed
+    incentive system, however, communities can reward what they value—by issuing new
+    types of tokens to address local needs.
+  prefs: []
+  type: TYPE_NORMAL
+- en: These positive actions can be whatever the community considers to be valuable.
+    Examples may include planting trees, using a bike rather than a car, helping a
+    person in need or recycling.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In this case, the tokens can take on any form of value for the communities.
+    They can be fully symbolic (imagine a virtual trophy representing a tree you have
+    planted), give access to a service (such as free bicycle maintenance) or even
+    have a monetary value.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Now, try to understand this by examples. Alice creates a type of token for incentivizing
+    people to pick up and dispose of litter they find in public parks. The community
+    collectively likes this idea and adopts it. While hiking, Bob finds an empty plastic
+    bottle and takes a couple of photos showing where he found it and where he disposed
+    of it. Bob uploads these pictures to the claiming platform and other users approve
+    his claim, rewarding him with a number of positive action tokens.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Sensor or mobile proofs require security measures in the hardware or software
+    to prevent cheating, such as double claiming. Social proofs need an additional
+    incentive layer that motivates other users to provide attestations in good faith,
+    while also preventing collusion.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Placing real-life data on the blockchain is a non-trivial problem and can be
+    susceptible to manipulation or mistakes. In practice, it will likely require combinations
+    of these proofs (like in our example above) in order to adequately prevent cheating.
+    After all, data may not necessarily represent the truth of real-world actions.
+    An oracle based on third-party data might be required to prove that submitted
+    data is correct, before it is irrevocably placed on an immutable blockchain. Once
+    a claim has been proven using these approaches—or indeed combinations of them—the
+    tokens are minted and transferred to the claiming user.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The prover may be the token’s creator, a dedicated group of people (such as
+    token holders) or any random user, depending on the nature of the action and type
+    of token. The most effective and useful token systems will likely be approved
+    and adopted by the community in a self-organized and self-sustaining manner.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We envision a multi-layered, multi-dimensional system of decentralized digital
+    cryptocurrencies created at different levels with different characteristics, serving
+    different purposes.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The token systems may operate at a supranational, regional or local level. The
+    different purposes may address environmental, social or other values relevant
+    for sustainability or society.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Any system that allows users to propose new token designs will have to deal
+    with the problem of spam. So, how can we ensure our ecosystem promotes useful
+    token concepts? Rather than establishing rules and barriers to restrict the creation
+    of tokens, our design leverages the innovative capacity of independent token proposals.
+    Every token idea is welcome, but acceptance as an official FIN4 token requires
+    users to vote for it with their governance (GOV) tokens. Thus, all users co-maintain
+    a list of approved positive action tokens.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The reputation tokens (REP) to facilitate social proofs do not yet exist in
+    our system. Their purpose is to help users establish trust in one another in order
+    to interact effectively on the platform. Reputation should reflect the support
+    of the system by the user (e.g., proving, voting, etc.) and not their actual positive
+    action token holdings, which could otherwise introduce bias to the reputation
+    system.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In our current design, users obtain reputation tokens by performing actions
+    that support and strengthen the entire FIN4 system. As a minimum, the actions
+    suitable for obtaining these reputation tokens include (1) the active gathering
+    of tokens (low reward), (2) participation in proof mechanisms (medium reward)
+    and (3) the acceptance of token designs by curators (high reward). Finally, users
+    should also be able to lose these reputation tokens. Also, how can we incentivize
+    entire communities that may already have their own tokens established to join
+    the larger ecosystem? The idea is to represent the additional liquidity won when
+    joining the larger FIN4 network through a “reserve currency” we call liquidity
+    token (LIQ). This token would stand for the network effects gained when enabling
+    larger networks and markets.
+  prefs: []
+  type: TYPE_NORMAL
+- en: One conceivable, yet too simplistic approach would be to create the same number
+    of FIN4 tokens for each accepted token proposal. The overall number of liquidity
+    tokens would, therefore, be commensurate with the total number of FIN4 tokens
+    in the system, thereby giving users more trust in using the different tokens and
+    some assurance that tokens can be exchanged with one another. This could be based
+    on the original idea of “Bancor” by John Maynard Keynes; however, the final design
+    has not yet been decided. Due to the nature of blockchain technology, blockchain
+    creators are unable to prevent trades beyond the confines of the system. Our approach
+    is to create strong incentives to use the platform, while preserving the freedom
+    of users to leave at any time and take their token balances with them. Furthermore,
+    a form of identity is needed when users wish to participate in the governance
+    of FIN4\. Identity (ID) here corresponds less to the idea of a scanned passport
+    and more to a concept of self-sovereignty built entirely within the FIN4 system
+    or transferred from other platforms. For example, reputation mechanims may establish
+    identity over time.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 9.5 Tackle Complexity^([2](#Fn2))
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Societies in the twenty-first century have achieved a level of complexity that
+    makes understanding them extremely difficult. Furthermore, any provisional understanding
+    we obtain is frequently surpassed by quick change and new innovations, making
+    social and political responses challenging. Information and communication technology
+    (ICT), which has created new tools for social exchange, has been a major driver
+    of change (e.g., social media, social network sites). Political decision-makers,
+    on the other hand, frequently struggle to keep up with new media developments
+    and to understand their dynamics and impact on society and its many institutions,
+    such as the family, schools and universities, political parties, banks, business
+    organizations, or financial markets. This stems not only from the reality that
+    uneducated and incorrect public policy responses to challenges such as terrorism,
+    food safety, infectious disease outbreaks, financial crises, or environmental
+    disasters kill many persons and incur tremendous financial expenses. It is also
+    necessary to maintain voters' trust and confidence in governments, as poor policies
+    can swiftly erode government legitimacy. World leaders are perplexed by the role
+    of new media in political revolutions like the Arab Spring, social disturbances
+    like the London riots, and terrorist networks. Nonetheless, stakeholders affected
+    by such interventions held decision makers accountable depending on the extent
+    to which they endeavored to make available the best and most comprehensive data
+    and applied the best and most applicable models and theories to make sense of
+    the facts. This is founded on the regulative ideal that we should avoid intervening
+    in a system that we do not fully understand and cannot foresee how it will respond
+    to our interventions. As long as this regulative ideal continues, the current
+    situation necessitates a greater understanding of society.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The reality that many crises and disasters in modern societies are characterized
+    by a lack of trustworthy real-time data and actionable understanding underscores
+    the need for enhanced understanding. Examples include the 2010 Loveparade disaster
+    in Duisburg, Germany1, an EHEC2 outbreak in numerous European nations in spring
+    2011, a terrorist attack in Norway in July 2011, and riots in the United Kingdom
+    in August 2011\. Such events frequently raise the question, “Could we have known
+    better?” And, more importantly, should we have known better? These are appropriate
+    inquiries, and regrettably, they may have a favorable answer. For example, the
+    work of Helbing and colleagues (and other FuturICT researchers) demonstrates that
+    we can enhance the design of similar events by gaining a greater knowledge of
+    crowd catastrophes.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The ethical conclusion is that a responsible organization and design of future
+    Loveparades necessitates careful consideration of the lessons learnt as well as
+    the science of the relevant phenomena. This example also demonstrates that a crucial
+    role is not only the development of data and scientific understanding, but also
+    the dissemination of this knowledge to decision-makers and players in the actual
+    world. Because ICT has become a component of many social phenomena, there is no
+    hope of understanding the modern information society and human behavior within
+    it without the technology and sciences essential to the study of computer systems
+    and networks.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Then, this is where the fundamental concept of FuturICT comes into play
+  prefs: []
+  type: TYPE_NORMAL
+- en: '1.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: 'Epistemic Responsibility: Those who are in charge of policies and actions in
+    complex systems are responsible for developing knowledge. The quality of their
+    knowledge tools (i.e., information systems, programs, and data) often determines
+    the quality of their decisions and judgements. Decision-makers'' responsibility
+    is thus crucial in terms of designing ex ante epistemic resources and information
+    infrastructures, which is a fundamental goal of FuturICT.'
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: '2.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: 'Social Knowledge as a Public Good: A wide range of information about society
+    should be available to all citizens under equal opportunity conditions. FuturICT
+    acts as a check on the private sector''s development of information monopolies
+    in critical societal domains, contributing to a just and equitable information
+    society.'
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: '3.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: 'Privacy by Design: In information societies, privacy is a necessary moral restriction
+    for gaining knowledge and comprehension of social reality. Although the phrase
+    refers to a wide variety of moral rights, wants, claims, interests, and duties
+    surrounding (knowledge about) the person, personal lives, and personal identity,
+    privacy is necessary for individual human beings to flourish. Data security technologies
+    must be developed alongside data mining techniques and Esocial science. A key
+    goal of FuturICT is the development of new types of Privacy by Design.'
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: '4.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: 'Maintaining Trust in the Information Society: Trust involves a moral relationship
+    between the truster and the trustee, a relationship that is partially formed by
+    a belief or expectation that the trustee will act morally. In complex ICT-shaped
+    environments, trust requires individuals in charge of the environment''s design
+    to be as explicit and transparent as possible about the values, principles, and
+    policies that have inspired their creation. This is a fourth guiding concept for
+    FuturICT, whose ultimate goal is a fair information society in which the values,
+    beliefs, and policies that define it are open and transparent.'
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL

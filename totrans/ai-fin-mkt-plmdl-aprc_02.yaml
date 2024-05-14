@@ -1,0 +1,1162 @@
+- en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2022T.
+    Barrau, R. DouadyArtificial Intelligence for Financial MarketsFinancial Mathematics
+    and Fintech[https://doi.org/10.1007/978-3-030-97319-3_2](https://doi.org/10.1007/978-3-030-97319-3_2)
+  prefs: []
+  type: TYPE_NORMAL
+- en: '2. Polymodel Theory: An Overview'
+  prefs:
+  - PREF_H1
+  type: TYPE_NORMAL
+- en: Thomas Barrau^([1](#Aff5)  ) and Raphael Douady^([2](#Aff6))(1)AXA Investment
+    Managers Chorus Ltd, Hong Kong, Hong Kong S.A.R.(2)Economic Center, University
+    Paris 1 Sorbonne, Paris, France
+  prefs: []
+  type: TYPE_NORMAL
+- en: Abstract
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: We present Polymodel Theory, defining a polymodel as a *collection of non-linear
+    univariate models*. A mathematical formulation as well as an epistemological foundation
+    is presented. We explain how polymodels are, in several respects, a superior alternative
+    to classical multivariate regressions estimated with OLS, Ridge and Stepwise techniques;
+    we also present the limits of the method. Although it is a regression technique,
+    we clarify how the polymodels framework is closer to artificial intelligence than
+    traditional statistics.
+  prefs: []
+  type: TYPE_NORMAL
+- en: KeywordsPolymodel theoryArtificial intelligenceMachine learningUnivariate regressionMultivariate
+    regressionNon-linear modelingHigh dimension modelingOverfitting
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.1 Introduction
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Polymodels, understood as *a collection of non-linear univariate models*, were
+    introduced in finance by Coste et al. ([2010](#CR13)). In their paper, polymodels
+    are used as a part of an overall procedure to predict hedge fund performance.
+    The concept, albeit fairly general, is thus presented concisely, since the paper
+    aims to focus on the results of its applications. The purpose of the current chapter
+    is therefore to provide a more in-depth discussion on the theory of polymodels,
+    in order to understand the pros and cons of this technique, along with the possibilities
+    of the framework it offers.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The use of a collection of univariate models must be understood as an alternative
+    to the use of a multivariate regression model. The interest of polymodels is thus
+    explained extensively, from this perspective, in the current chapter. However,
+    the way we approach modeling through polymodels somehow differs from the standard
+    perspective of statistics, as it is closer to artificial intelligence. For the
+    reader to follow the standpoint we propose, we need to go back to the question
+    of the purpose of modeling.
+  prefs: []
+  type: TYPE_NORMAL
+- en: For Aris ([1994](#CR3)), “a system of equations, Σ, is said to be a model of
+    the prototypical system, S, if it is formulated to express the laws of S and its
+    solution is intended to represent some aspect of the behavior of S”. This quite
+    static definition is complemented by Davis et al. ([2011](#CR14)), who propose
+    a list of the purposes for which models are constructed, including among others
+    “to influence further experimentation or observation”. This last goal is the key
+    to understanding our position. As it has been designed to tackle problems encountered
+    in finance, Polymodel Theory belongs to the field of applied mathematics, since
+    our focus is on “mathematics that finds applications outside of its own interest”
+    (see Davis et al. ([2011](#CR14)) again for this definition). Polymodels are a
+    tool developed not only to observe and represent (some sub-parts of) the financial
+    system, but also with the goal of acting as practitioners, traders and risk managers
+    that are a part of it, thus modifying the system. Fundamentally, our approach
+    to modeling is thus oriented by the pursuit of effective results while acting
+    in the real world.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'This objective being stated, we suggest below a simplified, caricature version
+    of the modeling process. This representation is not intended to describe the process
+    that each researcher follows, nor to outline a methodological standard; it simply
+    offers some support to the presentation of our approach to modeling. We start
+    with the problem of having one (or several) variable(s) of interest, that are
+    (partly) random, and for which we would like to produce some predictions, within
+    an environment itself composed of random variables. Let us call our variable of
+    interest *Y*, and the set of the variables that compose the environment *X*. We
+    may then follow the stylized process:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Step A: the researcher formulates a proposition of a model of the variable
+    of interest, as a conditional expectation of its environment. The purpose of this
+    step is to model the links between *Y* and *X*:'
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: '![$$ E\left[Y|X\right]=f(X). $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ1.png)(2.1)'
+  prefs: []
+  type: TYPE_IMG
+- en: 'This step, which may be very complex, can involve a discussion of the definition
+    of *Y* and *X*, and the development of some sophisticated versions of *f* ().
+    For example, it may include some dynamical representations if *Y* is a random
+    process:'
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: '![$$ E\left[{Y}_t\ |\ {\left\{{X}_s\right\}}_{s\in \left[t-\tau :t\right]}\right]=f\left({X}_t,{X}_{t-1},{X}_{t-2},\dots
+    \right). $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ2.png)(2.2)*Here
+    “t” is the current time index, “τ” is the farthest significant time-lag of X,
+    and “s” is the second time index defined between t−τ and t.*'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Step B: the statistical properties of the model are studied. This step may
+    include a study of the distribution of the variable of interest *Y* and of the
+    joint distribution of the environment variables *X*, but also a study of the distribution
+    of the parameters of the model *f* (), in order to quantify their uncertainty,
+    assess their robustness, etc.'
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: 'Step C: the model is used for a particular purpose. This may be the maximization
+    of a given utility function, or the estimation of a risk measure, or any kind
+    of goal that allows one to make a decision.'
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: 'Step D: the best models produced by steps A to C are selected. The variables
+    they include, the functional forms they use, and the methods they employ are evaluated
+    using performance and relevance measures, such as the *p*-value.'
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Some form of stress-testing of the models (for example using Monte-Carlo simulations)
+    may be introduced either in step C as a validation of the model, or in step D
+    as a selection criterion.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Since we model in order to act, our focus is entirely on the results obtained
+    in step C.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Individual researchers often focus on step A to C, while D may be considered
+    as a meta-problem which is related to how the literature evolves on a given topic.
+    When performing a polymodel analysis, the steps are completed in a different manner.
+    We first estimate a collection of univariate models, which corresponds to a repetition
+    of step A. We then select the best models, which corresponds to step D, using
+    criteria intentionally defined regarding the objective of step C. Step D itself
+    is repeated, as we use it to consider the dynamic evolution of the collection
+    of models through time. We primarily keep the information obtained in a multidimensional
+    form, which allows us to derive a variety of indicators (e.g. the StressVaR (Coste
+    et al. ([2010](#CR13))), or the Long-term Expectation (Guan, [2019](#CR20))).
+  prefs: []
+  type: TYPE_NORMAL
+- en: We perform step A repeatedly in an imprecise, simplified, and sub-optimal manner,
+    but the multiplicity of models overcome this simplification since the collection
+    of models is a very rich representation of the phenomenon we are studying. Let
+    us take a toy example to clarify this point. We can model the returns of the S&P
+    500 by a collection of non-linear univariate models obtained from financial variables.
+    Often, we assume the noise of the model to be Gaussian, which is of course quite
+    simplistic, knowing that financial markets have fatter tails (see e.g. Platen
+    and Rendek ([2008](#CR31)) on this point). However, the non-linear modeling of
+    oil, for example, may be able to partly capture the tail events of the S&P. And
+    for a high number of independent variables in the factor set, it is likely that
+    the non-linear modeling captures the tail events at some point (see Ye & Douady,
+    ([2019](#CR44)) for an example of market drawdown prediction using polymodels).
+  prefs: []
+  type: TYPE_NORMAL
+- en: Questions about the robustness of the methods still need to be asked, but in
+    a way that differs from the stylized research process presented above. Since we
+    are entirely focused on achieving results in regard to step C, part of the work
+    usually done in step B may become irrelevant. For example, we can observe that
+    there is no particular reason for the transition from step B to C to be linear,
+    it may even be highly non-linear in most of the cases. Following this reasoning,
+    the quest for unbiased estimators becomes irrelevant, since they can’t be used
+    effectively to reach to final objective of step C. Hence, the robustness of the
+    results obtained from the polymodel approach is often assessed through sensitivity
+    analysis, or particular tests developed to measure the statistical significance
+    of the results (see Chaps. [4](519851_1_En_4_Chapter.xhtml), [5](519851_1_En_5_Chapter.xhtml)
+    and [6](519851_1_En_6_Chapter.xhtml) of the present book). We thus do not discuss
+    the problems addressed by step B, as although they are interesting by themselves,
+    they are of secondary importance when considering step C as a central concern.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Note that apart from polymodels, another research field performs steps A and
+    D directly regarding the objective of step C: machine learning (Friedman et al.,
+    ([2001](#CR18)) provide a long introduction to the main techniques). From this
+    perspective, polymodels could be considered as a machine learning technique.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Now that once the breadcrumb of the modeling approach of Polymodel Theory has
+    been established, we can develop several points that will further clarify the
+    concept. In order to do so, we organize the chapter as follows:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: As a final part of the introduction, we first review the current state of the
+    literature on the topic of polymodels.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: We then formally define the notion of polymodel.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: This definition is followed by a discussion on how this object can be interpreted
+    from an epistemological point of view.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: We then review the most salient advantages that are expected when using the
+    technique, in econometrical terms. The use of a collection of univariate models
+    is an alternative to the use of a multivariate model. We thus discuss these advantages
+    with regard to standard alternatives, such as the classical linear regression
+    estimated by OLS, Ridge regression, or Stepwise regression.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: We finally consider the challenges that Polymodel Theory raises, and conclude
+    the chapter.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: 'Some of the important questions that are raised when using polymodels in practice
+    are:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: How do we estimate the univariate models?
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: How do we select the variables?
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: How do we aggregate the results?
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: The current chapter only proposes a theoretical overview of Polymodel Theory,
+    and thus provides answers to the questions “what is a polymodel?” and “why using
+    it?” but not to the question “how to use it?”. The three practical questions listed
+    above, which simply develop the more general question “how to use it?”, may be
+    approached in very different ways, that must be adapted to the empirical problem
+    being tackled. Hence, presenting any of the techniques that we can use to answer
+    these questions would cause the current chapter to lack generality. We thus restrict
+    our explanations to the objective of presenting the notion of polymodels.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The literature on Polymodel Theory is still scarce. In its current form, there
+    have been applications in finance, however the usage of collections of univariate
+    linear models also exists outside of this field.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'We first review the emerging financial literature on this topic. Apart from
+    the initial paper of Coste et al. ([2010](#CR13)), which introduces the notion,
+    Polymodel Theory has already been used in a variety of applications in finance:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Zhang ([2019](#CR45)) built a clustering algorithm based on polymodel estimations,
+    with applications to the equity market. The overall idea is that if two stocks
+    react in the same manner to different factors, they are somehow similar. The clustering
+    algorithm is used to design a statistical arbitrage trading strategy that delivers
+    superior returns compared to the benchmark. The clustering algorithm is shown
+    to outperform classic clustering methods (correlations, qualitative classification)
+    in the context of statistical arbitrage.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Ye and Douady ([2019](#CR44)), and Kuang and Douady ([2022](#CR2001)) proposed
+    some systemic risk indicators for equity indices based on polymodels. The indicators
+    are essentially focused on the increase of the statistical significance of the
+    links of a factor set with a stock index (Ye & Douady) and the concavity of the
+    elementary models (Kuang & Douady).
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Guan ([2019](#CR20)) used polymodels to produce some variations of traditional
+    risk premia. He proved that the StressVaR, which is the risk indicator tested
+    by Coste et al. ([2010](#CR13)) for distinguishing risky hedge funds, is also
+    a useful predictor of the cross-section of stock returns.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: 'The literature on Polymodel Theory is thus still sparse, which justifies our
+    proposal for a denser discussion of this framework of analysis.Constructing a
+    set of univariate models is quite an intuitive approach to modeling when the amount
+    of data is too large to handle, a case in which a multivariate linear regression
+    can bear some limitations. Indeed, having an uninvertible covariance matrix of
+    predictors because there are more predictors than observations, or finding problems
+    of multicollinearity, are concerns that are not confined to finance. Unsurprisingly,
+    some traces and precedents of Polymodel Theory have been found in several disciplines:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: In genetics, the field of Genome-Wide Association Studies (GWAS) massively relied
+    on linear versions of polymodels. GWAS encountered the problem of dealing with
+    hundreds of thousands of predictors to predict a single target variable. Furthermore,
+    there are more independent variables than observations. Classical regularization
+    techniques have been used in an attempt to solve the problem of correlation among
+    predictors, e.g. see de Vlaming and Groenen ([2015](#CR15)) for Ridge regressions,
+    Wu et al. ([2009](#CR43)) for Lasso, or Liang and Kelemen ([2008](#CR27)) for
+    a literature review.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: In an analysis of driver fatality risk factors, Bose et al. ([2013](#CR7)) used
+    a set of univariate models to benchmark the coefficients obtained with a multivariate
+    model.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: For the purpose of analysing epidemics, Bessell et al. ([2010](#CR6)) began
+    their study with a set of univariate models. They used the results of this polymodel
+    to assess the statistical significance of the predictors, in order to select the
+    most relevant of them to build a multivariate model.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Ladyzhets ([2019](#CR26)) proposed to analyse the probability space of a set
+    of regression models to model financial time series. Although close to polymodels,
+    as it represents the target variable using alternative models, the paper still
+    uses multivariate models, thus losing some of the benefits of the former.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: These last examples do not directly refer to Polymodel Theory as we present
+    it in the current chapter, however, they show that the concerns we encounter when
+    using multivariate regressions techniques are shared among several fields, making
+    polymodels potentially interesting for mathematical applications outside of finance.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.2 Mathematical Formulation
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: A polymodel can be defined as a collection of models, all equally valid and
+    significant, that can be understood as a collection of relevant points of view
+    on the same reality.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Mathematically, it can be equally formalized using Eq. ([2.3](#Equ3)) or Eq.
+    ([2.4](#Equ4)):![$$ \left\{\begin{array}{c}Y={\varphi}_1\left({X}_1\right)\\ {}Y={\varphi}_2\left({X}_2\right)\\
+    {}\dots \\ {}Y={\varphi}_n\left({X}_n\right)\end{array}\right. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ3.png)(2.3)![$$
+    \left\{Y={\varphi}_i\left({X}_i\right)\kern1em \forall i\right\}. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ4.png)(2.4)*Here,
+    Y is the target variable, X*[*i*] *and* φ[i] *are respectively the explanatory
+    variable and the function of the i*^(*th*) *model, with i ϵ[1: n], and n the number
+    of models (and factors).*
+  prefs: []
+  type: TYPE_NORMAL
+- en: The *n* models that we present here, called “elementary models”, are models
+    of a single variable. These models are all defined on the entire hyperspace of
+    the explanatory variables *ℝ*^(*n*). They do not interact with each other and
+    they are all valid simultaneously.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The noise term *ε*[*i*] is added to represent stochastic errors:^([1](#Fn1))![$$
+    \left\{\begin{array}{c}Y={\varphi}_1\left({X}_1\right)+{\varepsilon}_1\\ {}Y={\varphi}_2\left({X}_2\right)+{\varepsilon}_2\\
+    {}\dots \\ {}Y={\varphi}_n\left({X}_n\right)+{\varepsilon}_{n.}\end{array}\right.
+    $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ5.png)(2.5)Similarly,
+    from Eq. ([2.4](#Equ4)):![$$ \left\{Y={\varphi}_i\left({X}_i\right)+{\varepsilon}_i\kern1em
+    \forall i\right\}. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ6.png)(2.6)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.3 Epistemological Foundations
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Polymodel Theory can be considered from many different points of view. Even
+    if we present applications clearly focused on financial mathematics, it is important
+    to emphasize the philosophical roots that have led to the emergence of the theory.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.3.1 A Statistical Perspectivism
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The concept of perspectivism was first developed by the pre-Socratic philosopher
+    Protagoras (c. 481 B.C.E.–c. 420 B.C.E.), whose thoughts we know through the dialogues
+    of Plato (Lamb, [1967](#CR32); Taylor & Lee, [2016](#CR38)). Perspectivism, the
+    key to understanding Polymodel Theory, claims that we can’t access a single and
+    absolute truth. What we consider as true is often only true from the particular
+    perspective adopted, and the formation of this perception of reality itself is
+    dependent on the perspective in which it appears. It is an invitation to humbly
+    understand that we are biased and have limited access and a limited understanding
+    of the world.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'One can easily understand the need to use several perspectives on the same
+    question from the reflections of Pascal in his *Essay pour les coniques* (Clarke
+    & Smith, [1928](#CR12)): “By the term conic section we mean the circumference
+    of the circle, the ellipse, the hyperbola, the parabola and the rectilinear angle”.
+    All these perspectives on the same object are true and complementary, because
+    none of them is able to fully describe the nature of the cone.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Thus, in the philosophical doctrines that flow from perspectivism, reality is
+    the aggregation of all the perspectives that we have on it.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Similarly, the purpose of Polymodel Theory is to combine several descriptions
+    of the same variable in order to get as close as possible to a full understanding
+    of its nature. It provides a very rich description of reality, which is more than
+    the sum of its parts, allowing us to understand very accurately some specific
+    aspects of the considered variable. Hence, Polymodel Theory is a mathematical
+    equivalent of philosophical perspectivism.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.3.2 A Phenomenological Approach
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: 'The different elementary models that compose the polymodel are alternative
+    descriptions of its variable of interest. But these descriptions are made in a
+    particular way: they describe how the dependent variable *reacts* to each independent
+    variable.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Phenomenology can be described as follows (Smith, [2018](#CR36)): “Literally,
+    phenomenology is the study of ‘phenomena’: appearances of things, or things as
+    they appear in our experience, or the ways we experience things, thus the meanings
+    things have in our experience.”'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Thus, the point of interest of phenomenology is how the various phenomena that
+    compose our experience interact with us. Polymodel Theory proposes a similar approach,
+    by studying how various independent variables (i.e. an environment) interact with
+    a variable of interest.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Such a position is by itself extremely meaningful, because it states that there
+    is no interest given to the underlying mechanism of the dependent variable. A
+    polymodel just describes how this variable behaves in various situations, that
+    are as complete as the set of explanatory variables is. It does not explain why
+    this behavior occurs, although it can help us to understand it. Hence, Polymodel
+    Theory is closer to the physicist’s approach to studying reality than to the economist’s
+    approach, as it primarily answers the question “how?” instead of the question
+    “why?”.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.4 Comparison of Polymodels to Multivariate Models
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 2.4.1 Reducing Overfitting
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Econometric models usually admit two components, a deterministic component,
+    often called the mean equation, and a stochastic component, called the error term
+    (see the introductions to econometrics by Stock and Watson ([2015](#CR37)) and
+    Seber and Lee ([2012](#CR34)), or Alexopoulos ([2010](#CR2)) for a concise paper
+    about multivariate regression):![$$ Y=f(X)+\varepsilon . $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ7.png)(2.7)Here
+    *Y* is the random variable of interest that we would like to explain, *f(X)* is
+    the mean equation composed of a set of random variables *X* and a function *f*
+    () that produces the association between *Y* and *X*, and ε is the error term,
+    which follows some probability law usually centered at 0\. When the set of random
+    variables *X* contains only one variable, the model is called “univariate”, while
+    it is “multivariate” when it contains more than one variable. The division between
+    deterministic (*f(X)*) and stochastic (*ε*) components is justified by the natural
+    complexity of our world, in which there is usually a vast number of causes linked
+    to the phenomenon that occurs, making each event partly unpredictable, simply
+    because of the (current) inability of mathematical models to handle such a high
+    level of complexity.This way of describing reality implies that only a part of
+    the target variable’s values can be described by the predictors, while the remaining
+    part cannot and must be left unexplained. Assuming that there is an effective
+    link between the target variable and the predictors, the aim of modeling in our
+    context is to accurately represent this relation. This should be done by constructing
+    a mean equation that represents the relation of the predictors to the deterministic
+    part of the target variable, using only the information about the target variables
+    that is contained in the predictors. This relation is formalized by a functional
+    form, which is a stylized proxy for the true relation. The simplest functional
+    form to manipulate is the linear one (Stock & Watson, [2015](#CR37)):![$$ Y= X\beta
+    +\varepsilon, $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ8.png)(2.8)where
+    *β* is a column vector of linear coefficients, and *X* is a matrix that contains
+    a vector of ones when a constant is included (we assume this is always the case
+    hereafter), and the vectors of the explanatory variables.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Given a particular sample of data, the task of the scientist is to choose a
+    functional form and estimate its parameters to represent this relation. Of course,
+    the goal being to explain the target variable, the importance of the deterministic
+    part relative to the stochastic part^([2](#Fn2)) should be as high *as possible*
+    in a good model.
+  prefs: []
+  type: TYPE_NORMAL
+- en: However, the truly stochastic part of the model, i.e. the part of the target
+    variable’s values which is not related to the predictors, can always be spuriously
+    modeled using the predictors. This is just a matter of using a sufficiently complex
+    and appropriately parametrized function of the predictors. In-sample, this would
+    greatly improve the usual measures of goodness of fit of the model, but in such
+    a case, we would be modeling a link that does not exist since, by definition,
+    there is no link between the predictors and the stochastic part of the target
+    variable. Hence, after estimating the model using a particular sample of data,
+    a direct consequence of this bad practice arises when new values of the predictors
+    (outside of the original data set) are used to predict corresponding values of
+    the target variable. The accuracy of the predictions is low, revealing the weakness
+    of the initial model.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Observing a low predicting power out-of-sample of a model that exhibits a high
+    level of goodness of fit in-sample is a typical definition of overfitting (Babyak,
+    [2004](#CR4)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: Intuitively, one can see that it would be easy to find patterns in the data
+    that seem to correspond to a link that does not exist, especially because we adapt
+    these patterns to the target variable using the estimation of the functional form
+    parameters.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'This functional form, which characterizes the model, tends to adapt better
+    to these spurious patterns when it is made more complex. This complexity depends
+    on the number of parameters, and essentially comes from two sources: the complexity
+    of the functional form associated to each variable, and the number of variables
+    used in the model (Hawkins ([2004](#CR22)) discusses these points in depth).'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'This is why increasing the number of predictors in a multivariate regression
+    is well known to expose the danger of overfitting, so much so that econometricians
+    on the subject like to joke by citing John von Neumann’s famous quote: “With four
+    parameters I can fit an elephant and with five I can make him wiggle his trunk”.
+    This is especially true when the number of observations is reduced, a situation
+    which occurs frequently in real-life cases. Indeed, for a given number of observations,
+    increasing the number of predictors in a multivariate model decreases the variance
+    of the residuals, making the model ‘better’ in terms of goodness of fit, but only
+    in appearance.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: The problem becomes even worse when the number of predictors increases so much
+    that it becomes higher than the number of observations. In such a case, the covariance
+    matrix of the predictors *X′X* is not invertible, leading to a failure of the
+    usual ordinary least squares solution to the parameter’s estimation of the linear
+    model, defined as:![$$ \hat{\beta}={\left[{X}^{\prime }X\right]}^{-1}{X}^{\prime
+    }Y. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ9.png)(2.9)The
+    matrix inversion needed to compute the OLS estimator can be seen as a system of
+    equations to solve, and in our case, there is no uniqueness of the solution. The
+    problem is thus said to be “ill-posed” (Hadamard, [1902](#CR21)).A very common
+    approach to this problem is to regularize the regression using a penalty of the
+    L²-norm of the coefficient estimates (called Ridge regression (Hoerl & Kennard,
+    [1988](#CR24)) or Tikhonov regularization). Recall that in ordinary least squares,
+    the sum of the squared differences between the straight line and the data is minimized.
+    The estimate of the parameter β, called ![$$ \hat{\upbeta} $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_IEq1.png),
+    is thus the solution of the optimization problem:![$$ \underset{\beta }{\mathit{\min}}\
+    {\left\Vert Y- X\beta \right\Vert}_2^2\. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ10.png)(2.10)In
+    Ridge regression, the penalty of the L²-norm is added as follows:![$$ \underset{\beta
+    }{\mathit{\min}}\ {\left\Vert Y- X\beta \right\Vert}_2^2+\lambda {\left\Vert \beta
+    \right\Vert}_2^2, $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ11.png)(2.11)*Here,
+    “λ” is the Ridge penalty parameter*.Leading to the following shrunk estimates
+    of the parameters:![$$ {\hat{\beta}}^{Ridge}={\left[{X}^{\prime }X+\lambda I\right]}^{-1}{X}^{\prime
+    }Y. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ12.png)(2.12)*“I”
+    is the n × n identity matrix.*
+  prefs: []
+  type: TYPE_NORMAL
+- en: On top of allowing the matrix inversion, the penalization of the L²-norm automatically
+    reduces the magnitude of the coefficients estimated by OLS, leading to better
+    out-of-sample estimates (Van Dusen, [2016](#CR40)) proposes a comprehensive overview
+    of this point). It is also possible to introduce in the optimization problem a
+    penalty of both the L¹ and L²-norm, a technique called Elastic Net regularization
+    (Tibshirani, [1996](#CR39), see also Zou and Hastie, [2005](#CR46)). While adding
+    a penalization of the L¹-norm, some of the coefficients fall to zero, allowing
+    for a selection of the independent variables. Ridge and Elastic Net regressions
+    thus address the same problem as polymodels, which is an alternative when trying
+    to prevent overfitting when modeling with a large number of variables.
+  prefs: []
+  type: TYPE_NORMAL
+- en: However, in most of the applications of these approaches, the number of degrees
+    of freedom of the model stays very low even after variable selection, which always
+    raises some reservations about the resulting fit. This is a concern that is easily
+    removed by using polymodels, because the number of degrees of freedom is greatly
+    increased by the use of a single variable in each elementary model. Using a polymodel
+    thus offers a simpler and more effective approach to solving these ill-posed problems.
+  prefs: []
+  type: TYPE_NORMAL
+- en: To better understand how the multivariate models overfit compared to polymodels,
+    we propose to illustrate our reasoning with a toy example. To tackle a familiar
+    problem, we model the returns of the S&P 500 as a function of a set of *n* predictors
+    (as presented in Eq. ([2.7](#Equ7)), in which *Y* is the S&P returns).
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'To test the spuriousness of the various approaches, we build a set of predictors
+    that contains values randomly drawn from a Student’s t-distribution with 4 degrees
+    of freedom:^([3](#Fn3))![$$ X=0+\varepsilon $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equa.png)![$$
+    \varepsilon \sim {t}_{\nu =4.} $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ13.png)(2.13)Hence,
+    by construction, *there is no link between the target variable and the predictors*
+    in our experiment. There is only noise to fit in the explanatory variables. To
+    obtain *f ()*, we compare three different modeling techniques:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: The multivariate linear model described by Eq. ([2.8](#Equ8)), estimated using
+    the OLS estimator described by Eq. ([2.9](#Equ9)).
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: The same multivariate model estimated using the Ridge estimator described by
+    Eq. ([2.12](#Equ12)). The parameter λ, which is crucial for the estimation, is
+    chosen using a 5-fold cross-validation (see Golub et al., [1979](#CR19)) on the
+    use of cross-validation to choose the Ridge parameter).
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: A polymodel, as described in Eq. ([2.5](#Equ5)), with elementary models defined
+    as linear univariate models estimated with OLS.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: This simple setting does not include non-linearity or variable selection, so
+    that the results are only driven by the multivariate/univariate distinction. We
+    estimate the parameters of each of these three models using the weekly returns
+    of the S&P500 for the period from 2001-01-01 to 2003-12-31, which correspond to
+    157 observations. We then generate new values for *X* and use them with the previously
+    estimated parameters to model the S&P’s returns for the period from 2004-01-01
+    to 2006-12-31\. Of course, we don’t expect any of these predictions to be good,
+    the experiment aims to reflect the ability of the different models to be trapped
+    by fitting pure noise.Thereby, we measure the overfitting by comparing the goodness
+    of fit in-sample (the 2001–2003 period) to the goodness of fit out-of-sample (the
+    2004–2006 period). The goodness of fit is appreciated using the R², which is one
+    minus the sum of squared residuals over the total sum of squares:![$$ {R}^2=1-\frac{\sum
+    \limits_{s=1}^t{\left({y}_s-{f}_t\left({x}_s\right)\right)}^2}{\sum \limits_{s=1}^t{\left({y}_s-{\overline{y}}_t\right)}^2}.
+    $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ14.png)(2.14)*Here,
+    “t” is the current time index (i.e. end of 2003), “s” is the rolling time index
+    in the window (i.e. it takes weekly date values between 01-2001 and 12-2003),
+    “* ![$$ {\overline{y}}_t $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_IEq2.png)*”
+    is the average of the target variable between s= 1 and s=t, and “ f*[*t*]*” is
+    the fitted function obtained with data available at date t.*More precisely, to
+    assess overfitting, we measure the “Out-of-Sample R²”, which is the same formula
+    as the “In-sample R²” above, but with in-sample coefficients and out-of-sample
+    data:![$$ {R^2}_{oos}=1-\frac{\sum \limits_{s=t+1}^{t+157}{\left({y}_s-{f}_t\left({x}_s\right)\right)}^2}{\sum
+    \limits_{s=t+1}^{t+157}{\left({y}_s-{\overline{y}}_{t+157}\right)}^2}. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ15.png)(2.15)The
+    formula above reflects that new data, between *t* + 1 and *t* + 157, is used to
+    recompute the *R*^(*2*), but that the fitted function, f[t](), stays unchanged.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'We then measure the *Spread* between the “In-Sample R²” and the “Out-of-Sample
+    R²”:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$$ Spread={R^2}_{IS}-{R^2}_{OOS}. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ16.png)(2.16)For
+    the polymodel, we do not represent the spread of each elementary model but choose
+    to present the average^([4](#Fn4)) spread among elementary models, for the sake
+    of brevity.Next we observe how the spread behaves as a function of the number
+    of predictors *n*. We make this number vary between 1 and 156 (recall that there
+    are 157 observations). This overfitting measure as a function of the number of
+    predictors is compared for the three modeling techniques in Fig. [2.1](#Fig1):![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig1_HTML.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: Fig. 2.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: Spreads between In-Sample vs Out-of-Sample R² as a function of the number of
+    explanatory variables included in the regression
+  prefs: []
+  type: TYPE_NORMAL
+- en: The graph above represents the spread between the in-sample and out-of-sample
+    goodness of fit, as a function of the number of regressors (for the polymodels
+    the value displayed is the (unweighted, un-selected) average of the spreads among
+    the different elementary models). For the multivariate models, the larger the
+    number of independent variables, the larger the spread, thus the stronger the
+    overfitting.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The spread of the multivariate OLS is so explosive when the number of regressors
+    reaches the number of data points that it breaks the scale of the graph. Zooming
+    makes it understandable (see Fig. [2.2](#Fig2)):![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig2_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 2.2
+  prefs: []
+  type: TYPE_NORMAL
+- en: Spreads between In-Sample vs Out-of-Sample R² as a function of the number of
+    explanatory variables included in the regression (zoom)
+  prefs: []
+  type: TYPE_NORMAL
+- en: The Ridge estimator behaves as expected in this toy example, notably reducing
+    the overfitting compared to OLS in the multivariate case. Indeed, for the extreme
+    case where *n* = 156, the spread of the Ridge estimator is roughly 3,000 times
+    lower than that of the classical OLS estimator. However, even with regularization,
+    it is clear that the overfitting grows as a function of the number of variables
+    included in the multivariate models.
+  prefs: []
+  type: TYPE_NORMAL
+- en: This is not true in the case of the average spread in the polymodel, which is
+    (of course) asymptotically constant when the number of regressors *n* increases.
+    For *n* = 156, the spread of the polymodel is 10⁵ times lower than OLS and 34
+    times lower than Ridge in this particular case (Fig. [2.3](#Fig3)).![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig3_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 2.3
+  prefs: []
+  type: TYPE_NORMAL
+- en: Average spread between In-Sample vs Out-of-Sample R² as a function of the number
+    of explanatory variables included in the regression (polymodels only)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'This straightforward experiment also helps us to understand the nature of overfitting
+    by comparing the *In-Sample R*^(*2*) and *Out-of-Sample R*^(*2*) of the three
+    models:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: In these three graphs, we have shown the *In-Sample R*^(*2*) and the *Out-of-Sample
+    R*^(*2*) as a function of the number of independent variables, for the three fitting
+    methods. In both of the multivariate models, we see that the *Spread* is not growing
+    just because of the increase of the *In-Sample R*^(*2*). The *Out-of-Sample R*^(*2*)
+    worsens sharply, so dramatically that it quickly becomes the most important figure
+    in the Spread computation. This illustrates the fact that overfitting not only
+    results in too high expectations about the out-of-sample performance, but to a
+    significant extent it actually also contributes to its deterioration, as we act
+    only to follow past noise in that case. Note that the scale of the *R*² is quite
+    different among the figures (Figs. [2.4](#Fig4), [2.5](#Fig5) and [2.6](#Fig6)).![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig4_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 2.4
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Multivariate OLS: In-Sample vs Out-of-Sample R² as a function of the number
+    of explanatory variables included in the regression'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig5_HTML.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: Fig. 2.5
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Multivariate Ridge: In-Sample vs Out-of-Sample R² as a function of the number
+    of explanatory variables included in the regression'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig6_HTML.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: Fig. 2.6
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Polymodels (Univariate OLS): In-Sample vs Out-of-Sample R² as a function of
+    the number of explanatory variables included in the regression'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Of course, this toy example is a bit simplistic, far from the techniques we
+    actually use,^([5](#Fn5)) but it allows us to explain the phenomenon of overfitting
+    while giving a taste of the magnitude of its effects. Apart from the achieved
+    levels of overfitting reduction, which are clearly dominated by polymodels, we
+    may also question the use of a cross-validated regularized estimator when it seems
+    that a repetition of simple OLS estimates performs better. We let the supporters
+    of Occam’s razor make their choice.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Another technique commonly used to handle a large number of potential candidate
+    variables is stepwise regression. Stepwise regression builds the final model by
+    starting with all variables in the model, and then eliminates some of them (‘backward
+    elimination’), or it starts with no variable, and then progressively introduces
+    them into the model (‘forward selection’) (Hocking, [1976](#CR23)). The selection
+    of the variables is based on a particular goodness of fit criterion, which often
+    encourages a reduced number of variables in the model, such as adjusted R², the
+    Akaike Information Criterion or Bayesian Information Criterion. A step-by-step
+    procedure is then followed, in which the interest of adding/removing a variable
+    of the model is evaluated using the goodness of fit measure at each step. Such
+    a method may preserve a reasonable number of degrees of freedom (especially in
+    the forward selection procedure), and also allows one to integrate non-linear
+    variations of the independent variables more easily than Ridge regressions. However,
+    such a repeated procedure creates a bias in the statistics used to assess its
+    goodness of fit (Wilkinson & Dallal, [1981](#CR42)), and generally, the step-by-step
+    procedure leads to overfitting (Flom & Cassell, [2007](#CR17)). Polymodels may
+    be estimated in very different manners, hence one can easily avoid the trap of
+    the step-by-step procedure.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Considering the usual alternatives to stepwise selection or regularization,
+    the polymodel approach presents an effective way to reduce overfitting, since
+    it cannot really be avoided in multivariate models when the number of potential
+    independent variables is high.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.4.2 Increasing Precision
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Another concern of econometrics, though less often emphasized, is underfitting.
+    The simplest way to model a relation between two variables is a linear model,
+    however, there is no particular reason for the true reaction function to be a
+    straight line. Even if the linear model delivers acceptable results for most of
+    the cases, these results can be improved by introducing a smooth curve in place
+    of the usual straight line. Indeed, if the true underlying model is non-linear,
+    then a non-linear model should perform better than a linear one, thanks to its
+    flexibility. However, the reverse is not true, if the underlying model is linear,
+    then both linear and non-linear models have the ability to fit the straight line.^([6](#Fn6))
+    Moreover, non-linearity as a broad phenomenon has been found to be present in
+    various financial situations, such as multi-factor modeling of equity markets
+    (Caginalp & DeSantis, [2011](#CR9), [2019](#CR10)), multi-factor modeling of interest
+    rate volatility (Boudoukh et al., [1999](#CR8)), or lead-lag modeling of foreign
+    exchange rates (Serletis et al., [2012](#CR35)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: In many domains, such as finance, a relevant increase in prediction accuracy
+    can be decisive in terms of economic consequences, but the benefits that one can
+    obtain from using non-linear modeling as a standard do not necessarily restrict
+    to an increase in precision with respect to the linear model. In numerous situations,
+    linear modeling leads to wrong modeling. Even in the cases where a linear model
+    delivers good results *on average*, the events that occur in the tails of the
+    distribution of the independent variables may demonstrate a very different response
+    function with the target variable. This could have the worst consequences for
+    the practitioner, since a model that is assumed to be good, and that seems to
+    deliver consistently good results, may suddenly fail to make any accurate predictions.
+    From this point of view, non-linear modeling is not just a viable method if one
+    wants to slightly increase the accuracy of predictions, but it is a requirement
+    to avoid surprises in extreme times.
+  prefs: []
+  type: TYPE_NORMAL
+- en: A good example to illustrate this point is the perspective of fund of funds
+    managers, who can be concerned with the multi-factor modeling of hedge fund returns.
+    Hedge funds bear a significant tail risk, so their concave payoffs cannot be properly
+    described with a linear factor model (Agarwal & Naik, [2004](#CR1)). A linear
+    multi-factor model may be able to explain “normal times”, non-extreme returns
+    of hedge funds, but since the relation with their factor exposures is non-linear,
+    it would be incapable of modeling their extreme returns, justifying the development
+    of non-linear methods for this purpose (e.g. Cherny et al., [2010](#CR11)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: The use of non-linear functions in elementary models, for example polynomials,
+    if fitted properly, allows one to increase the precision of the predictions, and
+    to model extreme event^([7](#Fn7)) For example, we may define the function *φ*[*i*](*X*[*i*])
+    of Eq. ([2.6](#Equ6)) as:![$$ {\varphi}_i\left({X}_i\right)=\sum \limits_{h=0}^u{\beta}_{i,h}{X}_i^h.
+    $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ17.png)(2.17)The
+    function used above for the elementary model is a weighted sum of polynomials.
+    The weights of such a model may be estimated with OLS. However, simple polynomials
+    are highly correlated, and one of the assumptions of the OLS estimator is the
+    linear independence of the regressors. Still, this assumption can be satisfied
+    by orthogonalizing the polynomials. Assuming that the joint distribution of the
+    factors is a Gaussian copula, we are led to use Hermite polynomials (Cherny et
+    al., [2010](#CR11)). Chebyshev polynomials are known to be suitable for OLS estimations
+    in the interval [−1, 1] (Mason & Handscomb, [2002](#CR29)), an interval in which
+    most of the financial returns are included. Finally, Guan ([2019](#CR20)) proposed
+    to numerically self-orthogonalize the polynomials. All these alternative choices
+    have pros and cons, depending on the application. Note that plenty of possibilities
+    exist for non-linearly approximating the functions *φ*[*i*](*X*[*i*]). For example,
+    within the non-parametric world, the Nadaraya–Watson estimator (Nadaraya, [1964](#CR30);
+    Watson, [1964](#CR41)), also known as kernel regression, may deliver suitable
+    results. Still, polynomial regression has the advantage of being extremely easy
+    to implement, and thus may be quickly computed in real world situations.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Of course, our reasoning about the superiority of non-linear over linear techniques
+    is conditioned by the fact that the polynomial model, if used, is not blindly
+    fitted. Indeed, because the polynomial model is more complex, it is more likely
+    to result in overfitting. To tackle this question, Zhang ([2019](#CR45)) proposed
+    to use regularization to shrink the parameters of polynomial elementary models.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The use of non-linear modeling allows for a very flexible functional form that,
+    if used properly, is more data-driven than model-driven. This spirit of being
+    reasonably adaptive to the data is also reflected in the variable assumptions
+    made in the polymodels. Indeed, as we would not wish to miss a relevant perspective
+    on reality to understand it, Polymodel Theory is an invitation to include any
+    potentially important variable in the polymodel. There is virtually no limit to
+    the number of variables that can (and should) be included in a polymodel *before
+    the estimation procedure*. This exciting feature comes with the duty of systematically
+    including a *selection method* in the estimation procedure of the polymodel, so
+    that only the truly relevant variables are kept in the final estimated polymodel.
+    At this stage, there is no standard for the selection method, which is therefore
+    adapted to the various empirical examples (Chaps [4](519851_1_En_4_Chapter.xhtml)
+    and [6](519851_1_En_6_Chapter.xhtml) propose some solutions on this point). Thus,
+    on top of using weak functional assumptions, Polymodel Theory also uses weak variable
+    assumptions, which constitutes a good way to avoid model rigidity, driven by assumptions
+    that may turn out to be false (from a general point of view, assuming a linear
+    model can be seen as a strong assumption on the functional form of the model).
+  prefs: []
+  type: TYPE_NORMAL
+- en: This extremely high level of flexibility of polymodels requires a careful estimation
+    method. As stated, this estimation method should include a way to balance and/or
+    select the different elementary models, but more importantly, the fit should not
+    be too adaptive, otherwise overfitting can emerge again. Satisfying this need
+    for a reasonable algorithm to fit the elementary models is the subject of Chap.
+    [3](519851_1_En_3_Chapter.xhtml).
+  prefs: []
+  type: TYPE_NORMAL
+- en: The overall increase in precision which is introduced by non-linear modeling
+    could be achieved using a stepwise regression. Such a method would also allow
+    for automatic variable selection, however we already saw that the step-by-step
+    procedure would lead to overfitting. In the case of Ridge and Elastic Net regularizations,
+    introducing non-linear versions of predictors may overcome the lack of accuracy
+    of a linear modeling, but it would clearly be at the cost of a greater risk of
+    overfitting, since the number of coefficients in the model would necessarily increase.
+    Hence, on the particular question of accurately fitting the patterns that are
+    really present in large amounts of data, Polymodel Theory shows enviable characteristics
+    compared to the standard alternatives.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.4.3 Increasing Robustness
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: One of the most obvious benefits of using a polymodel, compared to a multivariate
+    model, is the disappearance of multicollinearity. Multicollinearity, which we
+    can expect to often appear often in large data samples, provides a non-robust
+    estimate of the parameters, in the sense that the regression coefficients are
+    highly sensitive to a small change in the data used for the estimation (see e.g.
+    Belsley, [2014](#CR5)). This may be particularly problematic in the case of repeated
+    fitting using a temporal rolling window, a technique often used in finance. Also,
+    multicollinearity can make it difficult to reliably identify the independent variables
+    that are effectively linked with the target variable that we are trying to explain.
+    As it increases the standard errors of the affected coefficients, it spuriously
+    reduces the *p*-value of the parameter if computed via the usual t-statistic.
+    While the problem of multicollinearity among predictors can be undertaken using
+    Ridge regression at the cost of accuracy (Hoerl & Kennard, [1970](#CR25)), in
+    the framework of Polymodel Theory multicollinearity just doesn’t appear, which
+    makes it more suitable for obtaining a robust estimation of the reaction function
+    of each predictor.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We propose to draw from the real world another toy example to illustrate this
+    particular point. Again, we consider the problem of fitting a multi-factor model
+    with a multivariate OLS, a multivariate Ridge and a simple linear polymodel. The
+    target variable is still the weekly returns of the S&P 500, and we continue to
+    study it over the period from 2001-01-01 to 2003-12-31 (157 observations). However,
+    the set of predictors we use to predict it is no longer composed of random draws.
+    Instead, we use 43 US equity indices, most of which are sectorial indices.^([8](#Fn8))
+    We first estimate the three different models using the 43 explanatory variables
+    and collect their associated parameters. Next, we re-estimate the three models
+    while removing one of the predictors, thus keeping 42 of them. If the initial
+    estimates were robust, they should be stable, and thus be exactly the same as
+    the coefficients estimated with 43 variables in the multi-factor model. For each
+    model, we measure the absolute change in coefficients, expected to be equal to
+    0, with the following basic metric:![$$ {\Delta}_{coeff}=\left|\frac{{\hat{\beta}}_{42}-{\hat{\beta}}_{43}}{{\hat{\beta}}_{43}}\right|.
+    $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ18.png)(2.18)This
+    procedure is then repeated 43 times, each time changing the variable that is removed
+    from the predictor set, so that we can collect 42 × 43 = 1,806 values for Δ[coeff]
+    for the three models. Here are the descriptive statistics of these values (Table
+    [2.1](#Tab1)):Table 2.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: Sensitivity of estimates to changes in the set of explanatory variables
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | Multivariate (OLS) | Multivariate (Ridge) | Polymodels (Univariate OLS)
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Count | 1,806 | 1,806 | 1,806 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Mean | 76% | 28% | 0% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Min | 0% | 0% | 0% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Quantile 25% | 2% | 1% | 0% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Quantile 50% | 10% | 5% | 0% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Quantile 75% | 39% | 18% | 0% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Max | 9.110% | 1.556% | 0% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Std | 4.12 | 0.93 | 0.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Kurtosis | 233.30 | 88.70 | 0.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Skewness | 13.83 | 8.19 | 0.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: The average absolute change in the coefficient is 76% for the multivariate OLS,
+    28% for the multivariate Ridge, and obviously 0% for the polymodel. These extremely
+    large changes in the multivariate case result from a high level of multicollinearity
+    in the predictors. Indeed, their average correlation is 56%.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Of course, there are plenty of cases where the predictors used are only lowly
+    correlated, or not correlated at all. Still, the higher the number of predictors
+    used in the model, the more likely the appearance of multicollinearity for some
+    of the explanatory variables. The simple example we presented shows that even
+    if the Ridge estimator is indeed effective at reducing parameter instability,
+    its results remain imperfect, while any multicollinearity totally disappears with
+    polymodels, which thus provide a radical tool to solve this problem.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In order to guarantee that the estimated model is reliable, one of the standard
+    hypotheses in modeling is that the variance of the residuals is constant for all
+    observations of the sample used for the fit. Homoskedasticity may be difficult
+    to ensure while working with time series, which can show clusters of volatility
+    (in finance, this phenomenon has been notably observed by Mandelbrot, [1997](#CR28);
+    Engle, [1982](#CR16)). Hence, the longer the window used for the estimation, the
+    less likely the homoskedasticity assumption is fulfilled. When this condition
+    is not fulfilled, the standard errors of the coefficients estimated by OLS are
+    biased, leading again to spurious levels of *p*-values based on t-statistics,
+    and thus potentially to a wrong identification of the most relevant variables
+    to consider in the analysis. Note that when trying to avoid overfitting, multivariate
+    models must rely on the largest temporal depth available. In contrast, polymodels
+    allow one to reduce the temporal depth of the estimations while keeping a satisfying
+    number of degrees of freedom, which is less prone to overfitting. Polymodels are
+    thus more likely to satisfy the hypothesis of constant variance in the sample
+    while trying to simultaneously prevent overfitting. Hence, in addition to avoiding
+    multicollinearity, the robustness of the modeling is also better using polymodels
+    instead of multivariate models from the particular perspective of respecting the
+    homoskedasticity assumption.
+  prefs: []
+  type: TYPE_NORMAL
+- en: When modeling with several variables, the practitioner frequently encounters
+    the problem of missing data. Missing observations in the matrix of the predictors
+    prevents estimation, thus it leads either to drop all the observations of the
+    other variables that have the same index (e.g. simply removing a date), or to
+    fully drop the entire variable itself. When using a large number of variables,
+    this question becomes more and more problematic, since a wide range of observations
+    often miss, and these observations may not miss simultaneously. Whatever the choice
+    taken, the use of any multivariate regression technique leads to the removal of
+    an important part of the available data. The robustness of the model is also linked
+    to the number of observations used to estimate its parameters. Again, polymodels
+    allow to overcome this concern. Since each variable is fitted independently using
+    its own elementary model, there is no need to remove any observations, the number
+    of observations used in each elementary model can be different. Naturally, this
+    difference should then be taken into account in the tests used to assess the statistical
+    significance of each variable. By keeping all the observations, polymodels thus
+    increase the robustness of the estimations compared to multivariate models.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Multivariate modeling techniques can only address these concerns about the robustness
+    of the estimations with difficulty. Although Ridge regressions may partly solve
+    the problem of multicollinearity, none of the multivariate techniques are able
+    to respect the raw structure of the data (dynamics of variance, missing observations)
+    as well as polymodels do. These findings position the polymodel technique as a
+    suitable one to work with large amounts of data.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.5 Considerations Raised by Polymodels
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 2.5.1 Aggregation of Predictions
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: One of the usual questions raised when Polymodel Theory is presented is which
+    method to use to aggregate the predictions.
+  prefs: []
+  type: TYPE_NORMAL
+- en: First, it is important to note that Polymodel Theory offers more than an aggregated
+    prediction. Since its purpose is to provide a quasi-exhaustive representation
+    of the links that a variable maintains with its whole environment, there is a
+    lot to learn from this representation itself. The researcher can focus on the
+    dynamics of the strength of these links, their amount of non-linearity, etc. Also,
+    the elementary models may be used to produce measures other than a prediction
+    of the target variable, such as the Value at Risk. Thus, very different measures
+    representing different aspects of the system may be produced.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The aggregation of the measures that investigate the different dimensions of
+    the polymodel can be done in very different ways. We may consider the entire distribution
+    of these measures, as well as maxima, minima or extreme quantiles that depict
+    the reactions of the system in stressed conditions. The volatility over time of
+    the measures brings information about their instability. It is also possible to
+    consider the ratio of the measure to its historical mean, in order to get a meaningful
+    value of its relative present level.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Finally, aggregating the predictions of the different elementary models together
+    raises the question of the correlations of different predictors.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In order to effectively understand the stakes of this question, we approach
+    it through the metaphor of an amphitheater.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Let us consider an amphitheater filled by students from the department of finance
+    of a university. We would like to use their knowledge to predict the future returns
+    of a financial asset. Before joining the amphitheater, the students have been
+    selected to be the most skilled in the university for this particular task. The
+    selection has been conducted using a multiple-choice questionnaire. Thus, a small
+    proportion of the bad students, who have answered the questionnaire following
+    a random guessing procedure, may have been selected by chance. The test used to
+    determine the best students is fallible, as all tests are.
+  prefs: []
+  type: TYPE_NORMAL
+- en: These spuriously selected students will not have the most common profile among
+    those we may encounter in the amphitheater. Most of the students selected are
+    skilled, however, since they all come from the same university, they share the
+    same knowledge and ideas about financial markets.
+  prefs: []
+  type: TYPE_NORMAL
+- en: However, some of the students started their studies in other universities, even
+    in different fields in a few cases, and some of them study more than others, looking
+    for complementary information outside of the lectures, hence, some original views
+    may be expressed by those students.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The predictions made by the students are anonymous, thus we can’t know who these
+    original students are. We only observe the predictions, which are repeated for
+    several rounds, trying each time to predict the return of the financial asset
+    for the next period.
+  prefs: []
+  type: TYPE_NORMAL
+- en: It is quite transparent that the amphitheater is a polymodel, and that each
+    of the students represents an elementary model. Also, we clearly understand that
+    the predictions of most of the students, even if relevant, would be correlated,
+    since the way they represent the market would be essentially the same. The question
+    is then how to distinguish the wise, the fool and the crowd. This question can
+    be addressed in several ways, and we propose to tackle it through a measure that
+    considers both originality and believability, which is presented in Chap. [6](519851_1_En_6_Chapter.xhtml).
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.5.2 Number of Variables Per Elementary Model
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The choice of including only a single variable per elementary model needs to
+    be discussed. Indeed, most of the benefits of the polymodels are preserved if
+    the elementary models are composed of several variables. Such a construction is
+    also in line with the epistemological approach of Polymodel Theory.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Nonetheless, including several variables in elementary models would not allow
+    us to have a high level of precision (i.e. non-linear modeling) without overfitting.
+    Some of the other benefits, for example the absence of multicollinearity, would
+    be lost.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Apart from statistical considerations, the use of univariate elementary models
+    simplifies a lot the analysis, since it is clear that the metrics that we measure
+    on the elementary models are associated with a single, well-identified factor.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Thus, univariate elementary models seem to be the most appropriate choice for
+    the construction of the polymodels.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.6 Conclusions
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Polymodel Theory is an intuitive approach that has been used in different fields
+    for a long time, but it has often been hastily rejected in favor of multivariate
+    modeling. However, the first applications in finance show that the method provides
+    a rich framework, particularly favorable to the non-linear modeling of big data,
+    with a large panel of applications outside of the scope of multivariate modeling.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Formalizing a tool that is increasingly used in the recent literature, we have
+    shown that the multi-univariate approach of polymodels has many favorable qualities
+    from an econometrical point of view. In particular, these advantages are in line
+    with the current stakes of finance, in which techniques that can handle large
+    amounts of data in a data-driven, robust, accurate, and non-overfitted manner
+    are required. From this perspective, Polymodel Theory can be seen as a machine
+    learning method.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Polymodel Theory also has philosophical benefits: from the point of view of
+    epistemology it seems to be a more reasonable approach than multivariate modeling,
+    since it provides several representations of the same object (that can be weighted
+    according to believability) in lieu of a single, immutable representation.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: The non-linearity of polymodels makes it possible to efficiently tackle regime
+    changes in the market dynamics that are “spatial”, that is, due to the size of
+    the moves, rather than to a random “temporal” event. This is in line with, for
+    instance, hidden Markov models in which the “beta” of stocks with respect to certain
+    indices depends on the regime.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The challenges of estimating, selecting and aggregating the predictions are
+    important topics that are addressed in the following chapters. Managing these
+    questions properly is the cornerstone of the use of polymodels. Still, if properly
+    handled, it makes Polymodel Theory a powerful modeling method, and to some extent,
+    a superior alternative to most of the traditional multivariate regression techniques.
+  prefs: []
+  type: TYPE_NORMAL

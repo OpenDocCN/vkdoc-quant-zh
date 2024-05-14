@@ -1,0 +1,409 @@
+- en: Financial Mathematics and FintechSeries EditorsZhiyong ZhengRenmin University
+    of China, Beijing, Beijing, ChinaAlan PengUniversity of Toronto, Toronto, ON,
+    Canada
+  prefs: []
+  type: TYPE_NORMAL
+- en: This series addresses the emerging advances in mathematical theory related to
+    finance and application research from all the fintech perspectives. It is a series
+    of monographs and contributed volumes focusing on the in-depth exploration of
+    financial mathematics such as applied mathematics, statistics, optimization, and
+    scientific computation, and fintech applications such as artificial intelligence,
+    block chain, cloud computing, and big data. This series is featured by the comprehensive
+    understanding and practical application of financial mathematics and fintech.
+    This book series involves cutting-edge applications of financial mathematics and
+    fintech in practical programs and companies.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The Financial Mathematics and Fintech book series promotes the exchange of emerging
+    theory and technology of financial mathematics and fintech between academia and
+    financial practitioner. It aims to provide a timely reflection of the state of
+    art in mathematics and computer science facing to the application of finance.
+    As a collection, this book series provides valuable resources to a wide audience
+    in academia, the finance community, government employees related to finance and
+    anyone else looking to expand their knowledge in financial mathematics and fintech.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The key words in this series include but are not limited to:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: a) Financial mathematics
+  prefs: []
+  type: TYPE_NORMAL
+- en: b) Fintech
+  prefs: []
+  type: TYPE_NORMAL
+- en: c) Computer science
+  prefs: []
+  type: TYPE_NORMAL
+- en: d) Artificial intelligence
+  prefs: []
+  type: TYPE_NORMAL
+- en: e) Big data
+  prefs: []
+  type: TYPE_NORMAL
+- en: Thomas Barrau and Raphael Douady
+  prefs: []
+  type: TYPE_NORMAL
+- en: Artificial Intelligence for Financial Markets
+  prefs:
+  - PREF_H1
+  type: TYPE_NORMAL
+- en: The Polymodel Approach
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: '![](../images/519851_1_En_BookFrontmatter_Figa_HTML.png)Logo of the publisherThomas BarrauAXA
+    Investment Managers Chorus Ltd, Hong Kong, Hong Kong S.A.R.Raphael DouadyEconomic
+    Center, University Paris 1 Sorbonne, Paris, FranceISSN 2662-7167e-ISSN 2662-7175Financial
+    Mathematics and FintechISBN 978-3-030-97318-6e-ISBN 978-3-030-97319-3[https://doi.org/10.1007/978-3-030-97319-3](https://doi.org/10.1007/978-3-030-97319-3)Mathematics
+    Subject Classiﬁcation (2010): 62P2062P2568T0191B0591G1091G1591G70© The Editor(s)
+    (if applicable) and The Author(s), under exclusive license to Springer Nature
+    Switzerland AG 2022This work is subject to copyright. All rights are solely and
+    exclusively licensed by the Publisher, whether the whole or part of the material
+    is concerned, specifically the rights of translation, reprinting, reuse of illustrations,
+    recitation, broadcasting, reproduction on microfilms or in any other physical
+    way, and transmission or information storage and retrieval, electronic adaptation,
+    computer software, or by similar or dissimilar methodology now known or hereafter
+    developed.The use of general descriptive names, registered names, trademarks,
+    service marks, etc. in this publication does not imply, even in the absence of
+    a specific statement, that such names are exempt from the relevant protective
+    laws and regulations and therefore free for general use.The publisher, the authors
+    and the editors are safe to assume that the advice and information in this book
+    are believed to be true and accurate at the date of publication. Neither the publisher
+    nor the authors or the editors give a warranty, expressed or implied, with respect
+    to the material contained herein or for any errors or omissions that may have
+    been made. The publisher remains neutral with regard to jurisdictional claims
+    in published maps and institutional affiliations.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: This Springer imprint is published by the registered company Springer Nature
+    Switzerland AG
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The registered company address is: Gewerbestrasse 11, 6330 Cham, Switzerland'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Foreword
+  prefs: []
+  type: TYPE_NORMAL
+- en: This book exposes a manageable approach to exploit nonlinearity for the purpose
+    of financial investment. It summarizes the research Raphael Douady and co-authors
+    have conducted for nearly two decades now. This research is expanded on multiple
+    aspects by a joint work conducted by Thomas Barrau.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In general, relationships between variables are nonlinear and noisy. When attempting
+    to relate a target variable to several explanatory variables, modeling finely
+    multi-dimensional linearity suffers from the curse of dimensionality without bringing
+    blatant benefits. Polymodels simplify this approach by retaining unidimensional
+    nonlinearities and proposing various aggregation methods according to the task
+    at hand. For instance, in the case of prediction, each one-dimensional model produces
+    a prediction. The most relevant ones are then selected, then possibly averaged
+    in case of ambiguity, to yield the final prediction. In the case of defining a
+    risk indicator, as downturns are usually associated with an increase of correlations,
+    the distribution of goodness-of-fit metrics is analyzed. It can be seen as a form
+    of ensemble learning.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The first task is to perform the one-dimensional nonlinear regressions. Several
+    methods are presented, including non-parametric kernel regressions but the method
+    of choice is linear regression on nonlinear functions (Hermite polynomials for
+    their orthogonality properties) of the explanatory variable, further regularized
+    by shrinkage to the linear component to mitigate overfitting.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Nonlinear transforms of initial factors can be used as new variables or features
+    to feed a machine learning algorithm. Another use of extracted nonlinearities
+    is to transform their convexity into an antifragility score (in the sense of N.N.
+    Taleb). These scores can then be used as a factor to build long-short portfolios.
+    The Polymodel approach can be implemented at the level of the market, industries,
+    or individual stocks. With the help of Bayesian conditioning it can combine the
+    information of hundreds of factors.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In summary, polymodels provide a very workable methodology to exploit nonlinearity
+    for the purpose of investing, forecasting and risk management. Barrau and Douady
+    describe the method and its application in this book filled with examples and
+    backtests which will certainly inspire numerous finance practitioners.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Bruno DupirePreface
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Like many innovative ideas, *polymodels* emerged from a very stressful situation.
+    Soon after we started the Riskdata venture, a new risk software aimed at the buy-side,
+    the Twin Towers in New York were hit. This event would change the face of the
+    world, and seriously put our nascent project at stake. There was no chance to
+    sign a single contract for at least a year. While we were about to abandon the
+    project and find a payroll job, a fund of hedge fund manager proposed the following
+    challenge to us: *given* only *audited monthly returns of the funds, what can
+    we reliably say about their strategy, their risks, and how they fit in a portfolio,
+    made of both liquid and alternative assets?*'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'This challenge was way beyond the mere assessment of classical performance
+    metrics, such as the Sharpe ratio, downside volatility, beta, Fama–French factor
+    analysis, etc. These measures, widely used by the industry, are known to provide
+    relevant information from the past, but nothing truly reliable for the future
+    behavior. We figured out that, if a software, however sophisticated, ignores the
+    key points addressed in a conversation between an investor and a manager, it would
+    miss the elephant in the room. So, we asked this manager to let us silently attend
+    some of his meetings with the managers he was either invested in or planning to.
+    To our surprise, the investor would spend only a few minutes talking about correlations
+    and volatility, then the rest of the hour on specific moments that were relevant
+    to the particular strategy: how did the manager weather such or such an event?;
+    when and how did he flip his positions?; and other such questions. Our challenge
+    was to put these questions into a software that was systematic enough to automatically
+    address them. The idea was *not* to strictly reproduce the questions, as the answers
+    would not explicitly be in the fund returns, but to create a statistical framework
+    that would, mechanically, provide the best answers, given the returns information.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The solution had to incorporate the financial environment in which the fund
+    evolves. A return, in itself, is not highly informative. It only becomes so when
+    related to the rest of the market. The first question to address is: which market
+    factors are statistically related to the fund, and how? Note that here, the range
+    of possible factors can be extremely broad if we don’t want to miss major risks.
+    A multilinear regression on just a few factors would definitely not address the
+    issue. The second observation is that unusually large events bear most of the
+    information. Extrapolating from the correlation of small events is limited and
+    prone to surprises from threshold effects.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Then another aspect of the challenge popped up: how can we make such a specific
+    analysis comparable across the various funds, in order to get a full vision of
+    the portfolio risks? The portfolio may contain hundreds of investment lines. Its
+    risk can be due to the blow up of one particular investment with too large a weight,
+    or, more severely, to the unexpected joint loss of a large portion of the portfolio,
+    which we could call *vanishing diversification* upon some particular event.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The solution came in the form of a thorough factor analysis of all the funds
+    in the portfolio, with two important features:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '1.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: Each risk factor should be tested against *all* the funds in the portfolio.
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: '2.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: Large events should be emphasized to anticipate predictable correlation breaks.
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: The *polymodel* approach naturally emerged as the only possible solution to
+    this problem. Traditional multifactor analysis first seeks a set of relevant factors
+    for each fund, then evaluates the importance of each factor and its “coefficient
+    of impact” (the *factor loadings*). Correlation breaks and change of regimes are
+    separately addressed, often in a very rudimentary manner, and rarely in their
+    systematicity. The *polymodel* approach, on the contrary, first looks at the impact
+    of each single factor on all the components of the portfolio, taking into account
+    systematic correlation breaks through a non-linear model, then, and only then,
+    aggregates the single factor information to answer such questions as the global
+    portfolio risks or the contribution of a particular line in the portfolio.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'One can view this analysis as a gigantic automatic generator of stress tests.
+    Instead of characterizing each fund and the entire portfolio as a proxy made of
+    a combination of risk factors, it represents each asset, each fund, and the portfolio
+    itself, by its list of responses to all these stress tests, each being identified
+    by a factor shift. Effects of vanishing diversification, for instance, are particularly
+    well anticipated, since we know that, for instance, under a sudden surge in interest
+    rates, all asset classes will be impacted: equities, credit spreads, etc.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: We are aware that no statistical method escapes the fact that it is based on
+    the past and that the future has surprises in store for us. But the room left
+    for surprises by *polymodels* is definitely much narrower than that left by traditional
+    linear multifactor analysis.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'After successfully applying the *polymodel* approach to portfolios of hedge
+    funds, major crises, such as the 2007 Subprime Crisis and the 2008 Global Financial
+    Crisis, made it obvious that this non-linear approach was relevant beyond the
+    hedge funds universe, to the entire investment space: liquid investments (equities,
+    fixed-income, derivatives…), private equity, real estate, etc. We also figured
+    out that, beyond a simple risk/return analysis, the richness of *polymodels* allowed
+    us to answer a much broader range of questions, such as the anticipated behavior
+    of a manager in a liquidity crisis, strategy and style drift, the impact of macroeconomic
+    conditions on financial markets, crisis prediction, etc. This book contains methods
+    to address several of these questions.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Changes of regime and correlation breaks systematically occur upon large events.
+    In our view, a sound mathematical model must include any observed systematic phenomenon.
+    In short, the mathematics should fit reality, and not the opposite. In this regard,
+    like any other artificial intelligence method, *polymodels* first seek to bring
+    effective solutions to empirical problems.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The organization of the present book naturally results from this aim, as it
+    is structured around the idea of solving an empirical problem. As the most generic
+    problem of finance is the prediction of the financial markets, this is the issue
+    that we chose to approach.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Therefore, we propose a simple model of the returns of a portfolio invested
+    in the stock market, decomposed into market, industry and specific returns. We
+    make predictions of these three different components using various techniques,
+    all based on non-linear modeling done with polymodels. Empirical applications
+    are complemented by a theoretical introduction to Polymodel Theory, and we propose
+    pragmatic solutions to the various challenges it raises. We finally aggregate
+    the predictions through a genetic algorithm, and the predictive power of the combined
+    forecast is assessed by the simulation of a trading strategy. The portfolio obtained
+    reaches more than twice the Sharpe ratio of the market, after transaction costs.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Although the primary aim of the present book was to support a doctoral thesis,
+    it became clear during its redaction that its interest was far beyond this purpose.
+    Being oriented to deliver applications while being simultaneously solidly grounded
+    by a self-contained theoretical presentation of *polymodels*, the book is a turnkey
+    manual to approach financial markets with artificial intelligence. It is a suitable
+    handbook for the practitioner, as it proposes novel and concrete solutions to
+    solve real-world problems. Thus, the book will be of interest to machine learners
+    searching for new prediction algorithms, quantitative traders looking for original
+    strategies, risk managers trying to avoid drawdowns, and portfolio managers dealing
+    with the question of the combination of several trading strategies.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We would like to acknowledge several people for their contributions to the book.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Charles-Albert Lehalle and Yuri Kabanov provided an excellent review of the
+    entire book, allowing improvements on various statistical and machine learning
+    aspects.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Augustin Landier provided smart perspectives on questions related to factor
+    investing, and more generally about financial economics.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Jean-Philippe Bouchaud, Jean-Paul Laurent and Alexander Lipton proposed some
+    clever improvements to the manuscript during its first public presentation.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Nassim Taleb, the Quantitative Finance team of the Stony Brook University of
+    New York (especially Robert Frey and Andrew Mullhaupt), the Riskdata research
+    team, Igmar Adlerberg, Bertrand Cabrit, Iliya Zovko, Cyril Coste, the fund of
+    hedge fund managers who trusted us, Bernad Lozé, Jeffrey Tarrant, as well as Adil
+    Abdulali, Bruno Dupire, Marco Avellaneda, Emmanuel Derman, Dominique Guégan, Shivaji
+    Rao, all the members of the Real-World Risk Institute, and Hector Chan, Gavin
+    Chan, Olivier Parent-Colombel, Pierre-Emmanuel Juillard from AXA IM Chorus shared
+    fruitful discussions and insights.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Aurelien Vallée and Omar Masmoudi greatly helped in the development of the code
+    required for the various applications of the book, and in dealing with large clusters
+    of machines to perform computations.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Finally, we acknowledge the Sorbonne Center of Economics (CES), for its material
+    support and for the discussions we had with its members.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Thomas BarrauRaphael DouadyHong Kong, Hong Kong S.A.R.Paris, FranceContents[1
+    Introduction](519851_1_En_1_Chapter.xhtml)1[1.​1 Financial Market Predictions:​
+    A Concise Literature Review](519851_1_En_1_Chapter.xhtml#Sec1)1[1.​2 A Simple
+    Model of Portfolio Returns](519851_1_En_1_Chapter.xhtml#Sec2)3[1.​3 Plan of the
+    Book](519851_1_En_1_Chapter.xhtml#Sec3)5[References](519851_1_En_1_Chapter.xhtml#Bib1)6[2
+    Polymodel Theory:​ An Overview](519851_1_En_2_Chapter.xhtml)9[2.​1 Introduction](519851_1_En_2_Chapter.xhtml#Sec1)9[2.​2
+    Mathematical Formulation](519851_1_En_2_Chapter.xhtml#Sec2)14[2.​3 Epistemological
+    Foundations](519851_1_En_2_Chapter.xhtml#Sec3)14[2.​3.​1 A Statistical Perspectivism](519851_1_En_2_Chapter.xhtml#Sec4)15[2.​3.​2
+    A Phenomenological​ Approach](519851_1_En_2_Chapter.xhtml#Sec5)15[2.​4 Comparison
+    of Polymodels to Multivariate Models](519851_1_En_2_Chapter.xhtml#Sec6)16[2.​4.​1
+    Reducing Overfitting](519851_1_En_2_Chapter.xhtml#Sec7)16[2.​4.​2 Increasing Precision](519851_1_En_2_Chapter.xhtml#Sec8)24[2.​4.​3
+    Increasing Robustness](519851_1_En_2_Chapter.xhtml#Sec9)26[2.​5 Considerations
+    Raised by Polymodels](519851_1_En_2_Chapter.xhtml#Sec10)29[2.​5.​1 Aggregation
+    of Predictions](519851_1_En_2_Chapter.xhtml#Sec11)29[2.​5.​2 Number of Variables
+    Per Elementary Model](519851_1_En_2_Chapter.xhtml#Sec12)30[2.​6 Conclusions](519851_1_En_2_Chapter.xhtml#Sec13)30[References](519851_1_En_2_Chapter.xhtml#Bib1)31[3
+    Estimation Method:​ The Linear Non-Linear Mixed Model](519851_1_En_3_Chapter.xhtml)35[3.​1
+    Introduction](519851_1_En_3_Chapter.xhtml#Sec1)35[3.​2 Presentation of the LNLM
+    Model](519851_1_En_3_Chapter.xhtml#Sec2)37[3.​2.​1 Definition](519851_1_En_3_Chapter.xhtml#Sec3)37[3.​2.​2
+    Fitting Procedure](519851_1_En_3_Chapter.xhtml#Sec4)39[3.​3 Evaluation Methodology](519851_1_En_3_Chapter.xhtml#Sec5)42[3.​4
+    Results](519851_1_En_3_Chapter.xhtml#Sec6)46[3.​4.​1 For 126 Observations](519851_1_En_3_Chapter.xhtml#Sec7)48[3.​4.​2
+    For 252 Observations](519851_1_En_3_Chapter.xhtml#Sec8)49[3.​4.​3 For 756 Observations](519851_1_En_3_Chapter.xhtml#Sec9)51[3.​4.​4
+    For 1,260 Observations](519851_1_En_3_Chapter.xhtml#Sec10)53[3.​4.​5 Computation
+    Time](519851_1_En_3_Chapter.xhtml#Sec11)55[3.​4.​6 Interpretations](519851_1_En_3_Chapter.xhtml#Sec12)55[3.​5
+    Conclusions](519851_1_En_3_Chapter.xhtml#Sec13)56[References](519851_1_En_3_Chapter.xhtml#Bib1)57[4
+    Predictions of Market Returns](519851_1_En_4_Chapter.xhtml)59[4.​1 Introduction](519851_1_En_4_Chapter.xhtml#Sec1)59[4.​2
+    Data](519851_1_En_4_Chapter.xhtml#Sec2)61[4.​3 Systemic Risk Indicator](519851_1_En_4_Chapter.xhtml#Sec3)64[4.​3.​1
+    Model Estimation](519851_1_En_4_Chapter.xhtml#Sec4)64[4.​3.​2 Systemic Risk Indicator
+    Definition](519851_1_En_4_Chapter.xhtml#Sec5)64[4.​3.​3 Primary Analysis](519851_1_En_4_Chapter.xhtml#Sec6)66[4.​3.​4
+    Roots of the Predictive Power](519851_1_En_4_Chapter.xhtml#Sec7)70[4.​4 Trading
+    Strategy](519851_1_En_4_Chapter.xhtml#Sec8)71[4.​4.​1 Methodology](519851_1_En_4_Chapter.xhtml#Sec9)72[4.​4.​2
+    Results](519851_1_En_4_Chapter.xhtml#Sec10)72[4.​5 Robustness Tests](519851_1_En_4_Chapter.xhtml#Sec11)74[4.​5.​1
+    Sensitivity to the Noise Filter](519851_1_En_4_Chapter.xhtml#Sec12)74[4.​5.​2
+    Sensitivity to Future Returns Windows](519851_1_En_4_Chapter.xhtml#Sec13)75[4.​5.​3
+    Sensitivity to Half-life](519851_1_En_4_Chapter.xhtml#Sec14)75[4.​5.​4 Sensitivity
+    to Rolling Window Length](519851_1_En_4_Chapter.xhtml#Sec15)76[4.​5.​5 Asset-Class
+    Specific Performances](519851_1_En_4_Chapter.xhtml#Sec16)78[4.​5.​6 Sensitivity
+    to Trading Strategy](519851_1_En_4_Chapter.xhtml#Sec17)78[4.​6 Conclusions](519851_1_En_4_Chapter.xhtml#Sec18)80[References](519851_1_En_4_Chapter.xhtml#Bib1)80[5
+    Predictions of Industry Returns](519851_1_En_5_Chapter.xhtml)83[5.​1 Introduction](519851_1_En_5_Chapter.xhtml#Sec1)83[5.​2
+    Data](519851_1_En_5_Chapter.xhtml#Sec2)85[5.​2.​1 Summary Statistics](519851_1_En_5_Chapter.xhtml#Sec3)86[5.​3
+    Methodology](519851_1_En_5_Chapter.xhtml#Sec4)87[5.​3.​1 Measuring Antifragility](519851_1_En_5_Chapter.xhtml#Sec5)87[5.​3.​2
+    Predicting Industry Returns](519851_1_En_5_Chapter.xhtml#Sec6)88[5.​4 Results](519851_1_En_5_Chapter.xhtml#Sec7)89[5.​4.​1
+    Long/​Short Trading Strategy](519851_1_En_5_Chapter.xhtml#Sec8)89[5.​4.​2 Regressions
+    on Future Returns](519851_1_En_5_Chapter.xhtml#Sec9)92[5.​4.​3 Comparisons to
+    Classical Factors](519851_1_En_5_Chapter.xhtml#Sec10)92[5.​4.​4 Separating Concavity
+    and Convexity](519851_1_En_5_Chapter.xhtml#Sec11)96[5.​4.​5 Separating Positive
+    and Negative Market Returns](519851_1_En_5_Chapter.xhtml#Sec12)96[5.​5 Robustness
+    Tests](519851_1_En_5_Chapter.xhtml#Sec13)98[5.​5.​1 Stability of the Signal](519851_1_En_5_Chapter.xhtml#Sec14)100[5.​5.​2
+    Sensitivity to Hyper-Parameters](519851_1_En_5_Chapter.xhtml#Sec15)102[5.​6 Conclusions](519851_1_En_5_Chapter.xhtml#Sec16)105[References](519851_1_En_5_Chapter.xhtml#Bib1)106[6
+    Predictions of Specific Returns](519851_1_En_6_Chapter.xhtml)107[6.​1 Introduction](519851_1_En_6_Chapter.xhtml#Sec1)107[6.​2
+    Methodological Foundations](519851_1_En_6_Chapter.xhtml#Sec2)109[6.​2.​1 Data](519851_1_En_6_Chapter.xhtml#Sec3)109[6.​2.​2
+    Time-series Predictions, Cross-sectional Portfolio Construction](519851_1_En_6_Chapter.xhtml#Sec4)110[6.​2.​3
+    Subtracting the Average Return](519851_1_En_6_Chapter.xhtml#Sec5)110[6.​3 Predictions
+    Selection](519851_1_En_6_Chapter.xhtml#Sec6)111[6.​3.​1 Root Mean Squared Error
+    Filter Evaluation](519851_1_En_6_Chapter.xhtml#Sec7)112[6.3.2 *p*-value Filter
+    Evaluation](519851_1_En_6_Chapter.xhtml#Sec8)113[6.​3.​3 Bayesian Information
+    Criterion Filter Evaluation](519851_1_En_6_Chapter.xhtml#Sec9)114[6.​3.​4 Selection
+    Using Dynamic Optimal Filtering](519851_1_En_6_Chapter.xhtml#Sec10)115[6.​4 Aggregation
+    of Predictions](519851_1_En_6_Chapter.xhtml#Sec11)117[6.​4.​1 Prediction Aggregation
+    Using Bayesian Model Averaging](519851_1_En_6_Chapter.xhtml#Sec12)117[6.​4.​2
+    Prediction Aggregation Using Added Value Averaging](519851_1_En_6_Chapter.xhtml#Sec13)118[6.​4.​3
+    Uncertainty of Aggregate Predictions](519851_1_En_6_Chapter.xhtml#Sec14)121[6.​5
+    Trading Strategy](519851_1_En_6_Chapter.xhtml#Sec15)122[6.​5.​1 Methodology](519851_1_En_6_Chapter.xhtml#Sec16)122[6.​5.​2
+    Performance](519851_1_En_6_Chapter.xhtml#Sec17)122[6.​5.​3 Significance of the
+    Methods](519851_1_En_6_Chapter.xhtml#Sec18)124[6.​6 Robustness Tests](519851_1_En_6_Chapter.xhtml#Sec19)127[6.​6.​1
+    Correlations with Standard Factors](519851_1_En_6_Chapter.xhtml#Sec20)127[6.​6.​2
+    Sensitivity to the Filter Regression Window](519851_1_En_6_Chapter.xhtml#Sec21)127[6.​6.​3
+    Stability of the Performance](519851_1_En_6_Chapter.xhtml#Sec22)129[6.​6.​4 Sensitivity
+    to the Believability Measure Window](519851_1_En_6_Chapter.xhtml#Sec23)130[6.​6.​5
+    Sensitivity to the Originality Measure Window](519851_1_En_6_Chapter.xhtml#Sec24)130[6.​6.​6
+    Unaccounted Parameter Sensitivities](519851_1_En_6_Chapter.xhtml#Sec25)131[6.​7
+    Conclusions](519851_1_En_6_Chapter.xhtml#Sec26)131[References](519851_1_En_6_Chapter.xhtml#Bib1)132[7
+    Genetic Algorithm-Based Combination of Predictions](519851_1_En_7_Chapter.xhtml)133[7.​1
+    Introduction](519851_1_En_7_Chapter.xhtml#Sec1)133[7.​2 Analysis of Strategies](519851_1_En_7_Chapter.xhtml#Sec2)135[7.​2.​1
+    Predictions of Market Returns](519851_1_En_7_Chapter.xhtml#Sec3)135[7.​2.​2 Predictions
+    of Industry Returns](519851_1_En_7_Chapter.xhtml#Sec4)136[7.​2.​3 Predictions
+    of Specific Returns](519851_1_En_7_Chapter.xhtml#Sec5)137[7.​2.​4 Correlation
+    Analysis](519851_1_En_7_Chapter.xhtml#Sec6)137[7.​3 Risk Parity Combination](519851_1_En_7_Chapter.xhtml#Sec7)139[7.​3.​1
+    Introducing Risk Parity](519851_1_En_7_Chapter.xhtml#Sec8)139[7.​3.​2 Transaction
+    Costs Matter](519851_1_En_7_Chapter.xhtml#Sec9)141[7.​3.​3 Ex-ante Optimal Reduction
+    of the Transaction Costs](519851_1_En_7_Chapter.xhtml#Sec10)142[7.​4 Genetic Algorithm-Based
+    Combinations](519851_1_En_7_Chapter.xhtml#Sec11)144[7.​4.​1 Methodology](519851_1_En_7_Chapter.xhtml#Sec12)144[7.​4.​2
+    Results](519851_1_En_7_Chapter.xhtml#Sec13)147[7.​5 Robustness Tests](519851_1_En_7_Chapter.xhtml#Sec14)149[7.​5.​1
+    Mutation Probability](519851_1_En_7_Chapter.xhtml#Sec15)150[7.​5.​2 Number of
+    Chromosomes](519851_1_En_7_Chapter.xhtml#Sec16)150[7.​5.​3 Number of Epochs](519851_1_En_7_Chapter.xhtml#Sec17)150[7.​5.​4
+    Seed](519851_1_En_7_Chapter.xhtml#Sec18)151[7.​5.​5 Optimal Trading Rate Window](519851_1_En_7_Chapter.xhtml#Sec19)151[7.​6
+    Conclusions](519851_1_En_7_Chapter.xhtml#Sec20)152[References](519851_1_En_7_Chapter.xhtml#Bib1)152[8
+    Conclusions](519851_1_En_8_Chapter.xhtml)155[Appendix](519851_1_En_BookBackmatter_OnlinePDF.xhtml#App1)159[Representative
+    RMSE Distributions per Stock Index](519851_1_En_BookBackmatter_OnlinePDF.xhtml#Sec2)159[Market
+    Timed Portfolio and Systemic Risk Indicator per Stock Index](519851_1_En_BookBackmatter_OnlinePDF.xhtml#Sec3)163[Industry
+    Buckets Summary Statistics](519851_1_En_BookBackmatter_OnlinePDF.xhtml#Sec4)167[AFI
+    Scores per Industry over Time](519851_1_En_BookBackmatter_OnlinePDF.xhtml#Sec5)170
+  prefs: []
+  type: TYPE_NORMAL

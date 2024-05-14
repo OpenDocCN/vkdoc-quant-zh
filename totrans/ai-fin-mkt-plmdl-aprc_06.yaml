@@ -1,0 +1,1266 @@
+- en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2022T.
+    Barrau, R. DouadyArtificial Intelligence for Financial MarketsFinancial Mathematics
+    and Fintech[https://doi.org/10.1007/978-3-030-97319-3_6](https://doi.org/10.1007/978-3-030-97319-3_6)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6. Predictions of Specific Returns
+  prefs:
+  - PREF_H1
+  type: TYPE_NORMAL
+- en: Thomas Barrau^([1](#Aff5)  ) and Raphael Douady^([2](#Aff6))(1)AXA Investment
+    Managers Chorus Ltd, Hong Kong, Hong Kong S.A.R.(2)Economic Center, University
+    Paris 1 Sorbonne, Paris, France
+  prefs: []
+  type: TYPE_NORMAL
+- en: Abstract
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: For each firm in the cross-section of stock returns we construct a prediction
+    of its future returns. Each prediction is made with a dedicated polymodel estimated
+    using a large set of explanatory variables, capturing the entire economic environment
+    of each stock. A trading strategy is built on the predictions in order to assess
+    their quality, reaching a Sharpe ratio of 0.91, being different than classical
+    factors, and resisting a large set of robustness tests. Through the implementation
+    of the trading strategy, we propose a method to tackle the problem of the aggregation
+    of the predictions of a polymodel, based on the information added by each elementary
+    model.
+  prefs: []
+  type: TYPE_NORMAL
+- en: KeywordsPolymodel theoryArtificial intelligenceMachine learningLNLM modelingCross-section
+    of stock returnsTrading strategyTrading signalStock returns predictions
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.1 Introduction
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: The usefulness of breaking down the stock returns into a market component and
+    an industry component has been known since King ([1966](#CR10)), and we have known
+    since Roll ([1988](#CR14)) that the specific component of the returns, i.e. the
+    residual movements of prices that do not depend on the market or industries, is
+    even more significant than the other two factors. After focusing on providing
+    predictions of the market returns in Chap. [4](519851_1_En_4_Chapter.xhtml) and
+    predictions of the industry returns in Chap. [5](519851_1_En_5_Chapter.xhtml),
+    we finally propose in the current chapter some predictions of the specific component
+    of stock returns.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In order to do so, we perform one of the most straightforward, but challenging
+    applications of Polymodel Theory: directly using the predictions of the target
+    variable. Such an approach is challenging for at least two reasons: the selection
+    of the predictors and the aggregation of the different predictions (see Chap.
+    [2](519851_1_En_2_Chapter.xhtml) for an in-depth, high-level discussion on these
+    topics). We address and propose solutions to these two problems in the current
+    chapter.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Showing that we can successfully predict the specific component of the returns
+    of a single stock would lack generality. Hence, we provide predictions of the
+    specific returns of 500 different stocks over a period of 15 years. These predictions
+    are obtained by estimating dynamically (using a rolling window) a polymodel for
+    each of the stock returns:![$$ \left\{{Y}_a={\varphi}_{i,a}\left({X}_i\right)\kern1em
+    \forall i\right\}\kern1.75em \forall a\ \epsilon\ \left[1:b\right]. $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ1.png)(6.1)*Here
+    a is the index of the stock and i is the index of the predictor.*All the elementary
+    models are estimated using the LNLM model:![$$ {LNLM}_a\left({X}_i\right)\stackrel{\scriptscriptstyle\mathrm{def}}{=}{\overline{y}}_a+\mu
+    \sum \limits_{h=1}^u{\hat{\beta}}_{h,a,i}^{NonLin}{H}_h\left({X}_i\right)+\left(1-\mu
+    \right){\hat{\beta}}_{a,i}^{Lin}{X}_i+{\varepsilon}_i. $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ2.png)(6.2)We
+    use a large set of predictors that includes 1,134 variables. One polymodel of
+    1,134 factors, re-estimated monthly for 15 years, represents around 200,000 elementary
+    models to fit. Since the polymodels are fitted dynamically on 500 different target
+    variables, this would result in fitting 102 million elementary models, which,
+    due to 10-fold cross-validation, means more than 2 billion ordinary least squares
+    estimations. This extremely large computation has of course been sped up using
+    programming and mathematical tricks. For example, replacing the “Y” vector of
+    the target variable in the OLS estimator formula by a matrix of *all* the target
+    variables allows us to divide the number of matrix multiplications we need to
+    perform by 500\. On the I.T. side, an extensive use of multiprocessing allowed
+    an important reduction of the computation time. Despite all these means of decreasing
+    the computation time, this ambitious use of polymodels reduced our ability to
+    perform a large number of tests, and hence made it difficult to maximize the quality
+    of the final results.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The polymodel estimations should not be done using raw returns as target variables.
+    Since we assume that the stock returns may be divided into a market, an industry
+    and a specific component, we should extract from the raw returns the specific
+    component. This is done using the residuals of a cross-sectional regression^([1](#Fn1))
+    with the industries used as categorical variables. This framework removes the
+    impact of industries on the returns, but also implicitly the market, since the
+    constant of the regression is the return of an equally weighted market portfolio.
+    Compared to other possibilities (panel, time-series regressions), the cross-sectional
+    regressions have the advantage of being instantaneous.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We estimate polymodels using a 5-year rolling window and monthly returns,^([2](#Fn2))
+    a set-up that has delivered results in the previous chapters. The use of 21 days
+    of cumulative returns is motivated by the ambition of discovering slowly changing
+    trends in the stock returns, which would be more difficult if we directly used
+    daily data. The predictors are shifted by one month to eventually generate predictions
+    for the next month. The original daily frequency of the data allows the predictions
+    we provide to be recomputed every day, yet, the elementary models’ parameters
+    are only re-estimated at the beginning of each month, to save computation time
+    keeping in mind the relatively deep window of 5 years that we use for the estimations.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Performing predictions of the specific stock returns using these techniques
+    may seem like a brutal use of polymodels, however, it requires a very careful
+    and detail-oriented design of each of the steps of the signal extraction. Therefore,
+    we present in the first section of the chapter the methodological basis on which
+    we construct our framework. We then propose a method for prediction selection,
+    by evaluating different metrics for filtering, and providing a dynamic, point-in-time
+    filter. In the third section, we propose a novel method for the aggregation of
+    the predictions in a polymodel, which we benchmark with a more standard approach
+    that is also presented. This is followed by a section dedicated to the assessment
+    of the quality of the predictions and their associated methods for selection and
+    aggregation. Such an evaluation is done using a trading strategy, which is complemented
+    in the final section by a series of robustness tests.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.2 Methodological Foundations
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: We describe below the methodological choices that have been made for the conception
+    of the signal.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.2.1 Data
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The data used is the same as that used in Chaps. [4](519851_1_En_4_Chapter.xhtml)
+    and [5](519851_1_En_5_Chapter.xhtml).
+  prefs: []
+  type: TYPE_NORMAL
+- en: Recall that our investment universe is thus composed of the 500 largest market
+    capitalizations in the US stock markets, restated monthly.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The data is split into two parts: some stock-level, cross-sectional data and
+    a diversified set of time series of financial markets data.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: As a reminder, stock-level data is composed of daily returns, market capitalizations,
+    book-to-market ratios and industry classification as defined by level 3 of the
+    GICS classification (Global Industry Classification Standard, MSCI), all measured
+    using end-of-day data in USD. Our sample covers the period from 1999-01-01 to
+    2018-09-30.^([3](#Fn3)) For more details on the data used, the reader may refer
+    to Chap. [5](519851_1_En_5_Chapter.xhtml).
+  prefs: []
+  type: TYPE_NORMAL
+- en: The other part of the data is composed of a diversified factor set of end-of-day
+    returns including 1,134 variables. This factor set has a broad geographical coverage
+    of all the developed and most of the emerging economies. Variables are defined
+    at different geographical scales, some being worldwide, some regional, and some
+    being country-related. Furthermore, all the most important asset classes are covered,
+    including stock indexes, equity factor indices (i.e. classical risk premia), currencies,
+    commodities, money market, sovereign bonds, corporate bonds, real estate, hedge
+    funds and volatility indices. The dataset is defined between 1995-01-02 and 2018-10-16.^([4](#Fn4))
+    A complete description of the factor set is available in Chap. [4](519851_1_En_4_Chapter.xhtml).
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.2.2 Time-series Predictions, Cross-sectional Portfolio Construction
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Specific returns predictions are made by the elementary models in the time-series
+    dimension. It is thus possible to assess the quality of the predictions for a
+    particular stock. However, it is clear that the analysis is more robust when considered
+    directly at an aggregated level, i.e. jointly for the 500 stock returns that are
+    our target variables. Furthermore, as we validate the economic significance of
+    the results by a trading strategy, we should also use a portfolio construction
+    based on the aggregated predictions, as it would be the simplest way to assess
+    the performance. Hence, we consider hereafter a long/short portfolio construction,
+    in which the quality of the predictions is evaluated in a relative manner inside
+    the cross-section of the stocks.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Conforming to the format that is used in the trading strategy, we always use
+    a normalized version of the signal afterwards, which is ranked and set between
+    −1 and +1\. As mentioned in Chap. [5](519851_1_En_5_Chapter.xhtml), this kind
+    of normalization is quite common in the literature. The use of ranking leads us
+    to mainly consider the ordinality of the predictions, since the normalized predictions
+    are evenly spaced over their space of definition, while non-ranked signals incorporate
+    an additional cardinality component, stating by how much one prediction is better
+    than another. Considering the difficulty of the task of predicting the cross-section
+    of stock returns, and for the purpose of robustness, we thus do not consider the
+    cardinality dimension in the current chapter.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.2.3 Subtracting the Average Return
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Since polymodels are estimated over a rolling window, the average of the estimated
+    model is equivalent to the average of the stock return inside the rolling window.
+  prefs: []
+  type: TYPE_NORMAL
+- en: However, the average stock return over the past month is a strong predictor
+    of the future returns. Jegadeesh ([1990](#CR8)) observed a short-term reversal
+    effect, in which the returns of the following month are negatively correlated
+    with the returns of the past month. With Titman ([1993](#CR9)), he also documented
+    that this correlation becomes positive with the returns of the past year, an effect
+    called momentum. Finally, the stock returns also show a form of long-term reversal
+    (De Bondt & Thaler, [1985](#CR3)). So, there is a continuum of strong positive
+    and negative correlations of the future returns with the past average returns
+    computed over different time frames.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Hence, depending on the window used to estimate the elementary models, the average
+    estimation inside the window reflects one of these effects, and thus positively
+    or negatively affects the predictive power of the predictions made by the polymodel.
+  prefs: []
+  type: TYPE_NORMAL
+- en: It is thus extremely important to subtract the average stock return from the
+    predictions. This guarantees that the results of the predictions are not just
+    a sophisticated re-invention of signals that are already well documented in the
+    literature. Throughout the chapter, we thus only consider the predictions on top
+    of this average return, and we refer to these corrected predictions simply as
+    “predictions”.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.3 Predictions Selection
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Here we compare different metrics to select the predictors. The purpose of this
+    selection is of course to remove noise, since it is not a sustainable position
+    to claim that all the 1,134 factors used for the predictions are linked with the
+    500 stock returns that we are trying to predict.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The selection may be done in several ways, but it should always be connected
+    to some evaluation of the goodness of fit or of the statistical significance of
+    the elementary models. Since there is no particular reason to select one of them
+    *a priori*, we investigate several measures that may be used for prediction selection.
+  prefs: []
+  type: TYPE_NORMAL
+- en: For a given polymodel, these measures are investigated by computing the average
+    prediction of the current stock by all the selected factors in a particular quantile
+    of the measure. For example, we may compute the average prediction for Microsoft
+    returns of the top 60% of the factors in terms of the root mean squared error
+    (RMSE). This computation is repeated among all the stocks being predicted, so
+    that we build predictions of the cross-section of stock returns at each point
+    in time. We then compute a full-sample panel regression of the stock returns of
+    the next day^([5](#Fn5)) on the average predictions for a given quantile (60%
+    in our example). The statistical significance of the predictions is simply assessed
+    using the *t*-statistic of the parameter estimated. We finally repeat this procedure
+    for several quantiles.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The regressions mentioned above between the normalized signal and the future
+    returns should not be done on raw returns. As in the estimation of the polymodels,
+    we want to measure the ability of the polymodels to predict the specific component
+    of the raw returns. We thus use the future specific returns, still defined as
+    the residuals of the cross-sectional regression.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We assume that at least a few predictors just bring noise to the average prediction.
+    Our expectation is that if a measure used for selection is able to successfully
+    distinguish the noise from the signal, then introducing more factors in the average
+    prediction (i.e., increasing the quantile of the selection) should first lead
+    to an increase in *t*-statistics, up to a point after which the newly added factors
+    carry so much noise that the significance decreases.
+  prefs: []
+  type: TYPE_NORMAL
+- en: This methodology to evaluate prediction selection metrics is clear and simple,
+    allowing for a first overall understanding of the question. Also, it makes different
+    measures comparable, since the use of quantiles leads to the use of buckets of
+    factors to compute the average predictions in a transparent manner.^([6](#Fn6))
+    This simplicity comes at the cost of making several assumptions. First, since
+    we retain a selection metric based on full sample results to build a *rolling*
+    trading strategy, we use future information. Such a practice can only be done
+    by assuming that the quality of the different selection metrics is relatively
+    constant over time, so that the current analysis may have been done with similar
+    results at the beginning of our sample using a similar sample of past data. This
+    assumption also implies that our choice of a selection metric also brings results
+    out of sample. Secondly, we assume a weak form of homogeneity among the different
+    polymodels. Indeed, since the quantile threshold used to compute the *t*-statistics
+    is the same among polymodels, the robustness of our results depends on the fact
+    that the polymodels behave approximately in the same manner at different quantiles.
+    Although this is a simplification of reality, these assumptions seem acceptable
+    as they also simplify the problem that we are facing.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.3.1 Root Mean Squared Error Filter Evaluation
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The root mean squared error (RMSE) may be the most basic measure of the goodness
+    of fit of a model. At a given point in time and for a given predictor, it is defined
+    as:![$$ {RMSE}_{a,i,t}=\sqrt{\frac{1}{\tau }{\sum}_{s=t-\tau}^t{\left({y}_{a,s}-{LNLM}_{a,i}\left({x}_{i,s}\right)\right)}^2}.
+    $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ3.png)(6.3)*Here
+    “τ” is the number of observations available in the rolling window at date t, “i”
+    is the index of the predictor, and “a” is the index of the stock (if not specified,
+    all the equations below are presented for a given polymodel).*The RMSE is computed
+    inside of its particular rolling window for each elementary model of each of the
+    polymodels. Below are the *t*-statistics that reflect the predictive power of
+    the average predictions for different quantiles of the RMSE (the smallest quantile
+    being the highest level of goodness of fit) (Fig. [6.1](#Fig1)).![](../images/519851_1_En_6_Chapter/519851_1_En_6_Fig1_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 6.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'RMSE Filter: *t-*statistic as a function of the noise filter quantile'
+  prefs: []
+  type: TYPE_NORMAL
+- en: The filter clearly shows the expected pattern for a proper filter, since we
+    can see that there is a decrease in the predictive power of the aggregated signal
+    when the worst factors in terms of RMSE are used in the prediction.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.3.2 *p*-value Filter Evaluation
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The *p*-value is perhaps the most common measure of statistical significance.
+    It may be computed from an F-test comparing the lack-of-fit sum of squares to
+    the pure error sum of squares. The ratio of these two quantities, weighted by
+    their degrees of freedom, is the F-statistic that is replaced in the cumulative
+    distribution function of a Fisher–Snedecor distribution to get the *p*-value:![$$
+    F=\frac{lack- of- fit\  sum\  of squares/ degrees\ of\ freedom}{pure- error\  sum\  of\
+    squares/ degrees\ of\ freedom}. $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ4.png)(6.4)Thus,
+    the *p*-value computed from an F-test is fundamentally different from the RMSE,
+    since in addition to considering the goodness-of-fit that is achieved, it also
+    considers the goodness-of-fit that is achievable.Below are the *t*-statistics
+    attained by the full sample regression for different quantiles of filtering (Fig.
+    [6.2](#Fig2)):![](../images/519851_1_En_6_Chapter/519851_1_En_6_Fig2_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 6.2
+  prefs: []
+  type: TYPE_NORMAL
+- en: '*p*-value Filter: *t-*statistic as a function of the noise filter quantile'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Considering this graph, the *p*-value computed from an F-test does not seem
+    to be usable as a reliable noise filter. Indeed, even the worst predictions in
+    terms of *p*-value still add value to the aggregated prediction. The mismatch
+    of the *p*-value in the context of filtering may be due to the violation of the
+    assumption that the errors of the estimated elementary models are independently
+    and normally distributed. One should also consider that the *p*-value may be a
+    more suitable metric to weight the different predictions rather than to select
+    them.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.3.3 Bayesian Information Criterion Filter Evaluation
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The Bayesian Information Criterion (BIC) is defined as:![$$ BIC=\mathit{\ln}(q)\rho
+    -2\mathit{\ln}\left(\hat{L}\right). $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ5.png)(6.5)*Here
+    “q” is the number of observations, “ ρ” is the number of parameters estimated
+    by the model, and “*![$$ \hat{L} $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_IEq1.png)*”
+    is the maximized value of the likelihood function.*
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Since the estimation of the likelihood function is a non-trivial task, and
+    considering the computational intensity of the polymodels estimation, we assume
+    the errors of the model to be independently, identically and normally distributed.
+    This Gaussian assumption leads to the following modification of the BIC formula:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$$ BIC=\mathit{\ln}(q)\rho +q\times \mathit{\ln}\left(\frac{1}{q}{\sum}_{d=1}^q{\left({y}_{a,d}-{LNLM}_{a,i}\left({x}_{i,d}\right)\right)}^2\right).
+    $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ6.png)(6.6)*Here
+    “d” is the observation index.*'
+  prefs: []
+  type: TYPE_NORMAL
+- en: We can see that under this assumption the definition of BIC becomes close to
+    that of RMSE. Still, the first term of Eq. ([6.6](#Equ6)) accounts for and penalizes
+    the number of observations available for the fit. Recall that the polymodel estimation
+    is done using elementary models that may have a different number of observations,
+    depending on the sample size of each regressor in the current window. Taking into
+    account this particular feature of the polymodels is thus an advantage of BIC
+    over RMSE to discriminate among different elementary models.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Not surprisingly, the results reached by the BIC filter are comparable to those
+    obtained using RMSE filtering (Fig. [6.3](#Fig3)):![](../images/519851_1_En_6_Chapter/519851_1_En_6_Fig3_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 6.3
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'BIC filter: *t*-statistic as a function of the noise filter quantile'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.3.4 Selection Using Dynamic Optimal Filtering
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Based on the full sample results of our assessments of various metrics for filtering,
+    it is clear that the F-test-based *p*-value should not be used to perform a selection
+    of the predictions, while RMSE and BIC have acceptable performances. Since these
+    performances, along with the mathematical definitions of these metrics, are comparable,
+    we choose to avoid any arbitrary choice by combining them. Because we ultimately
+    rely on quantiles, we can create a balanced combined metric by summing the ranked
+    values of BIC and RMSE and ranking this sum:![$$ {DFM}_t=\mathit{\operatorname{rank}}\left[\mathit{\operatorname{rank}}\left({BIC}_t\right)+\mathit{\operatorname{rank}}\left({RMSE}_t\right)\right].
+    $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ7.png)(6.7)*Here
+    DFM is the vector of “double filtering metric” for all elementary models at a
+    time t, and rank is the ranking operator.*
+  prefs: []
+  type: TYPE_NORMAL
+- en: We need to determine an appropriate quantile threshold for filtering. However,
+    although the use of full sample data is considered here as a tolerable way to
+    choose among metrics for filtering,^([7](#Fn7)) keeping a full sample approach
+    to set a threshold would induce a high risk of overfitting, since the final results
+    would reflect some form of in-sample optimization. The setting of the threshold
+    for filtering is thus only done using point-in-time data. Also, the threshold
+    is adapted to each of the polymodels, so that there is no longer a homogeneity
+    assumption among the different stock returns.
+  prefs: []
+  type: TYPE_NORMAL
+- en: For a particular polymodel, at each date we compute the average predictions
+    filtered by different quantiles of the double filtering metric. Then, each quarter,
+    we re-compute the univariate regression of the next day stock returns on the current
+    filtered/aggregated prediction, for different quantiles. For the current date,
+    we thus obtain again a *t*-statistics curve that reflects the predictive power
+    of different filtering quantiles, which may look like the Fig. [6.4](#Fig4), presented
+    as a representative example of the problem:![](../images/519851_1_En_6_Chapter/519851_1_En_6_Fig4_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 6.4
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Example of DFM filter: *t-*statistic as a function of the noise filter quantile'
+  prefs: []
+  type: TYPE_NORMAL
+- en: For the current polymodel and the current date, we obtain an assessment of the
+    predictive power of the different thresholds possible. We are thereby able to
+    choose a threshold that is optimal in some sense relative to that curve. Note
+    that since it does not seem that the selected metrics can do more than marginally
+    remove the noise, we restrict the analysis to the highest quantiles,^([8](#Fn8))
+    which helps to avoid being trapped in some drastically scarce (and spurious) optima.
+  prefs: []
+  type: TYPE_NORMAL
+- en: A simple and maybe naive approach would be to simply select the quantile that
+    corresponds to the highest *t*-statistic. We proceed differently.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'When new predictors are included by increasing the quantile, we may expect
+    the following outputs:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: If the added information is not included in the previous quantiles (so the added
+    predictors are uncorrelated) and is relevant, the average prediction should show
+    a higher *t*-statistic.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: If the added information is not included in the previous quantiles, and is only
+    weakly relevant, the overall, *unweighted* aggregated predictive power may not
+    be as good, leading to a smaller *t*-statistic.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: If this information is relevant but already partly included in the previous
+    quantiles, it may then become over-weighted in the aggregate prediction, leading
+    to a smaller *t*-statistic.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Finally, if this information is pure noise coming from spurious predictors,
+    we can expect the *t*-statistic to drop sharply.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: From these propositions describing the effect of increasing the quantile on
+    the *t*-statistic, we may consider that a decrease in the *t*-statistic does not
+    necessarily imply that the added predictors contain only noise. Since information
+    is precious, we follow a conservative approach, only removing predictions that
+    we most suspect to be pure noise. Eventually, it seems more likely that the largest
+    addition of noise after a quantile increase would occur after the largest drop
+    in *t*-statistic. Hence, we define the optimal threshold as the threshold that
+    minimizes the first derivative of the *t*-statistic curve.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The optimal threshold is then re-computed dynamically, each quarter, using regressions
+    performed with a 36-month rolling window. This procedure is applied separately
+    to each of the polymodels.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.4 Aggregation of Predictions
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Using the predictions selected by the dynamic optimal filter, we present in
+    this section several candidate techniques to aggregate the predictions.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.4.1 Prediction Aggregation Using Bayesian Model Averaging
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Bayesian Model Averaging (BMA) is a commonly used method to combine forecasts
+    (for an introduction, see Hoeting et al., [1999](#CR7) and Raftery et al., [1997](#CR13)).
+    It has been used in the context of polymodels for the combination of elementary
+    models by Guan ([2019](#CR6)). By associating a probability to each elementary
+    model, BMA proposes a combined prediction that takes into account model uncertainty.
+    For a given polymodel:![$$ E\left[{y}_{t+1}|{X}_t\right]=\sum \limits_{i=1}^n\hat{\varphi_{i,t}}\left({X}_{i,t}\right)\times
+    p\left({\varphi}_{i,t}\left({X}_{i,t}\right)|{X}_t\right) $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ8.png)(6.8)*Here
+    y*[*t* + 1] *is the variable we are trying to predict, X*[*t*] *is the factor
+    set at time t, and φ*[*i*](*X*[*i*, *t*]) *is the elementary model of factor i
+    at time t.*
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Such an approach is quite intuitive, as the different predictions are believability
+    weighted, however, it does not take into account that the different models may
+    be correlated. The (posterior) probabilities are defined by Bayes’ theorem as:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$$ p\left({\varphi}_{i,t}\left({X}_{i,t}\right)|{X}_t\right)=\frac{p\left({X}_t|{\varphi}_{i,t}\left({X}_{i,t}\right)\right)\ast
+    p\left({\varphi}_{i,t}\left({X}_{i,t}\right)\right)}{\sum_{j=1}^Ip\left({X}_t|{\varphi}_{j,t}\left({X}_{j,t}\right)\right)\ast
+    p\left({\varphi}_{j,t}\left({X}_{j,t}\right)\right)}. $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ9.png)(6.9)As
+    the posterior probability is expressed in terms of likelihood, it is related to
+    BIC, which can be used to approximate it (Raftery, [1995](#CR12)):![$$ p\left({\varphi}_{i,t}\left({X}_{i,t}\right)|{X}_t\right)\approx
+    \frac{e^{-{BIC}_i/2}}{\sum_{j=1}^n{e}^{-{BIC}_j/2}}. $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ10.png)(6.10)This
+    approximation is required in our case because of the computational intensity of
+    the polymodel estimation (recall that BIC is very easy to compute as a function
+    of the squared errors, under some assumptions).Since BIC can be very large, in
+    practice, we can subtract from it any convenient value, usually the minimum of
+    the BIC values of the different models, which does not impact the ratio. In our
+    case, the resulting dispersion of the BIC values is still very large, leading
+    to the (numerical) failure of computing reliable exponentiations. We thus approximate
+    the above ratio further by using:![$$ p\left({\varphi}_{i,t}\left({X}_{i,t}\right)|{X}_t\right)\approx
+    \frac{-{BIC}_i}{\sum_{j=1}^n-{BIC}_j}. $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ11.png)(6.11)This
+    final approximation leads to a concentration of the probabilities, which may weaken
+    the results of BMA.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.4.2 Prediction Aggregation Using Added Value Averaging
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: 'We introduce here a weighting method that aims at averaging the predictions
+    as a function of their added value. To explain what we mean by this term, let
+    us re-use the amphitheater metaphor of Chap. [2](519851_1_En_2_Chapter.xhtml).
+    We are in the amphitheater of a university, in front of selected students (filtered
+    predictors), who try to predict the future returns of an asset over several rounds.
+    We observe their repeated guesses, and we need to aggregate them to obtain a combined
+    prediction. We propose that the weights of the individual predictions should consider
+    the two following properties of the said predictions:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Believability: students who tend to provide better predictions over time should
+    have a larger weight.'
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: 'Originality: students who provide different predictions than others should
+    also have a larger weight, since someone who just repeats what is already well
+    known does not add any information.'
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Note that these two properties are not additive, but multiplicative. Someone
+    who is believable but not original should have a small weight, as their opinion
+    is repeated (if you get exactly the same prediction 10 times, you would like to
+    weight each of them at something like 1/10 before summing them). Someone who is
+    original but not believable is not someone that you want to consider and thus
+    should have a very small weight. When both of these properties are simultaneously
+    present for a predictor, then we consider the predictor to *add value* to the
+    aggregate prediction, and hence they should be associated with a large weight.When
+    thinking about believability in terms of the usual tools we use, we would like
+    to select a classical goodness of fit metric for the elementary models. But in
+    terms of the metaphor of the amphitheater, we would like to consider the accuracy
+    of each student’s prediction. Using Bayesian terms, the first perspective on the
+    problem is *a priori*, and the second one is *a posteriori*. The first perspective
+    considers in-sample goodness of fit, and the second out-of-sample results. In
+    our usual concern to fight against overfitting, we favor the second approach,
+    and propose to use an out-of-sample version of RMSE:![$$ {RMSE}_{OOS,i,t}=\sqrt{\frac{1}{\tau
+    }{\sum}_{s=t-\tau}^t{\left({y}_s-{\varphi}_{i,s-21}\left({x}_{i,s-21}\right)\right)}^2}.
+    $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ12.png)(6.12)*Here
+    “i” is the index of the elementary model considered, “t” is a given date, “ τ”
+    is the length of the window used for computation, “y*[*t*]*” is the realized stock
+    return, and “ LNLM*[*i*, *t* − 21](*x*[*i*, *t* − 21])*” is the prediction of
+    this stock return made a month ago.*
+  prefs: []
+  type: TYPE_NORMAL
+- en: In addition, to consider the effective predictive power of our factors, this
+    measure has the advantage that it can be computed on shorter time frames than
+    the window of the polymodels. Indeed, providing robust estimates of the elementary
+    models often requires deep rolling windows for the polymodel estimation, usually
+    set to 5 years (i.e. roughly 1,260 points). Such a depth makes sense if we consider
+    that we always use a 10-fold cross-validation in the estimation of the LNLM model,
+    which is thus backed by pseudo-out-of-sample selections of μ^([9](#Fn9)) performed
+    on 126 points. This 3-digit number may be a *minimum* to guarantee the reliability
+    of the estimations. Nevertheless, if we need such a window depth to provide a
+    good model of the link between the target variables and the predictors, there
+    is no reason to consider *a priori* that this window is the most suitable to assess
+    the significance of such a link. The dynamics of the links between predictors
+    and target variables may be changing more quickly, and in the current application,
+    we therefore consider a 2-year window for the computation of the out-of-sample
+    RMSE.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The smaller the RMSE, the larger the believability of the predictor. Our believability
+    measure is thus defined as:![$$ {B}_{i,t}\stackrel{\scriptscriptstyle\mathrm{def}}{=}\mathit{\log}{\left({RMSE}_{OOS,i,t}\right)}^2\.
+    $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ13.png)(6.13)Shannon
+    ([1948](#CR16)) introduced a measure of information of a message *m* named “self-information”
+    or “surprisal”, defined as a function of its probability of occurence *p*() such
+    as:![$$ Info(m)=-\mathit{\log}\left(p(m)\right). $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ14.png)(6.14)This
+    definition may not be straightforward to understand. Returning to the amphitheater
+    metaphor, let us consider the distribution of the predictions ![$$ {\hat{y}}_i
+    $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_IEq2.png) we get
+    at a certain time *t* (Fig. [6.5](#Fig5)):![](../images/519851_1_En_6_Chapter/519851_1_En_6_Fig5_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 6.5
+  prefs: []
+  type: TYPE_NORMAL
+- en: Stylized representation of the distribution of predictions
+  prefs: []
+  type: TYPE_NORMAL
+- en: Considering all the predictions to be relevant (they have been filtered), a
+    prediction equal to the mean ![$$ \frac{1}{n}\sum \limits_{i=1}^n{\hat{y}}_i $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_IEq3.png)
+    of the distribution does not contain much information because, while taking into
+    account all the other predictions, we already know that the *m* value is possible,
+    and even probable. On the other hand, the point “![$$ {\hat{y}}^{\ast } $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_IEq4.png)”
+    contains a lot of information, because if we don’t have this point, we don’t know
+    that the event “![$$ {\hat{y}}^{\ast } $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_IEq5.png)”
+    is even possible. Thus, a relevant message about an event that is already known
+    for sure (*p* = 1) does not carry any information, while a relevant message about
+    an event that is totally unexpected carries a lot of information. Hence, in the
+    amphitheater, a student, even good, that just repeats what others have already
+    said, does not bring much information, while a good student that predicts something
+    totally unexpected should be listen to carefully.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In our context, Shannon’s measure of information reflects the originality of
+    the prediction compared to the distribution of the predictions among elementary
+    models. We thus propose the following measure of originality of a prediction:![$$
+    o\left({\hat{\varphi}}_{i,t}\left({x}_{i,t}\right)\right)\stackrel{\scriptscriptstyle\mathrm{def}}{=}\mathit{\log}{\left(\
+    p\left({\hat{\varphi}}_{i,t}\left({x}_{i,t}\right)\ |\ \left\{{\hat{\varphi}}_{j,t}\left({x}_{j,t}\right)\forall
+    j\in \left[1:n\right]\right\}\ \right)\right)}^2\. $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ15.png)(6.15)We
+    replaced the use of the negation by a square to get a positive value of the logarithm
+    because it allows more extremized measures of originality, leading to a more differentiating
+    metric.To consider a student to be original, it is not sufficient to observe her
+    prediction at a single point in time, the predictions should be repeatedly original.
+    Therefore our final originality measure of a predictor is:![$$ {O}_{i,t}\stackrel{\scriptscriptstyle\mathrm{def}}{=}\frac{1}{\tau
+    }{\sum}_{s=t-\tau}^to\left({\hat{\varphi}}_{i,s}\left({x}_{i,s}\right)\right).
+    $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ16.png)(6.16)We
+    assume that the dynamics of the originality property is tied to the dynamics of
+    the elementary models’ estimations, hence we use a 5-year rolling window to compute
+    the originality measures of predictors.As stated previously, a predictor adds
+    value to the overall prediction if it is simultaneously believable and original,
+    so our added value measure is defined as:![$$ {AV}_{i,t}\stackrel{\scriptscriptstyle\mathrm{def}}{=}{B}_{i,t}\times
+    {O}_{i,t}. $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ17.png)(6.17)The
+    aggregate predictions made using Added Value Averaging (AVA) are:![$$ E\left[{y}_{t+1}|{X}_t\right]=\sum
+    \limits_{i=1}^n\hat{\varphi_{i,t}}\left({X}_{i,t}\right)\times {AV}_{i,t}. $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ18.png)(6.18)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.4.3 Uncertainty of Aggregate Predictions
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: 'This section does not directly concern the way we aggregate predictions, but
+    how we weight the cross-section of the aggregated predictions. We propose the
+    following: when there is high dispersion in the polymodels’ predictions of a given
+    stock return, it reflects an uncertainty about the aggregated prediction, which
+    should be penalized.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: We thus recommend that each of the aggregated predictions should be divided
+    by the standard deviation of the polymodels’ predictions at each date.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Note that this would not be an improvement of the predictions themselves, since
+    it relates to the confidence we have in each aggregated prediction, it would be
+    more an artefact of the cross-sectional trading strategy that we use to value
+    our predictions.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.5 Trading Strategy
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 6.5.1 Methodology
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: As for the predictions’ estimations, the investment universe used for the trading
+    strategy is roughly equivalent to the S&P 500, as we select the 500 largest market
+    capitalizations that are traded in the US stock markets, restated monthly.
+  prefs: []
+  type: TYPE_NORMAL
+- en: As in the previous chapter, we consider a long/short trading strategy. Recall
+    that we construct a score that is based on the cross-section of the aggregated
+    predictions of the polymodel of each stock. The score is sorted in ascending order,
+    ranked and normalized to be uniformly distributed between −1 and +1\. As stated
+    previously, this allows us to only consider the ability of the strategy to predict
+    the stock returns on a relative basis.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We still use the characteristic portfolio of the score to obtain the positions^([10](#Fn10))
+    of the portfolio. As a reminder, the characteristic portfolio is the minimum-variance
+    portfolio that has a unit exposure to the score *(*Grinold & Kahn, [2000](#CR5)).
+    The strategy performance is then simply the sum of the daily returns of each of
+    the individual positions in our investment universe.
+  prefs: []
+  type: TYPE_NORMAL
+- en: There is no control for the leverage of the portfolio positions, but all the
+    different variations of the strategy’s returns are normalized in order to exhibit
+    a full sample yearly volatility of 10%, which allows for their comparison (the
+    choice of a full sample volatility normalization may be less realistic than a
+    rolling normalization, however it guarantees that local spikes of volatility,
+    e.g. during drawdowns of the strategy, are not hidden by volatility smoothing).
+  prefs: []
+  type: TYPE_NORMAL
+- en: Below, we first propose a version of the strategy that combines all the steps
+    of the prediction’s computation (filtering, aggregation, controlling for stocks’
+    uncertainty). We also evaluate the statistical significance of the Sharpe ratio
+    by computing the *p*-value of this metric.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We then disentangle the different techniques used to compute the aggregate predictions
+    and assess their cumulative additivity to the strategy’s performance.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.5.2 Performance
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The final version we selected is filtered by the Dynamic Optimal Filter presented
+    above, weighted using the Added Value Averaging technique, and taking into account
+    each aggregate prediction uncertainty.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The graph below presents the cumulative performance (compounded) of the strategy,
+    displayed in log-scale (Fig. [6.6](#Fig6)):![](../images/519851_1_En_6_Chapter/519851_1_En_6_Fig6_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 6.6
+  prefs: []
+  type: TYPE_NORMAL
+- en: Polymodel’s predictions strategy performance (10% annual volatility)
+  prefs: []
+  type: TYPE_NORMAL
+- en: The strategy achieves a Sharpe ratio of 0.91, which is economically significant.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The statistical significance of this metric is evaluated by computing its *p*-value.
+    To do this, we follow the procedure described below:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: We first compute the Sharpe ratio achieved by the strategy.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Secondly, we shuffle the individual stock returns, and recompute the portfolio
+    performance, from which we deduce a Sharpe ratio. Since the returns are shuffled,
+    this new value only reflects randomness, although it preserves the autocorrelation
+    structure of the signal.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: The previous step is repeated 300 times, so that we get a distribution of random
+    Sharpe ratios.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: This distribution is smoothed using a kernel density estimate (Parzen, [1962](#CR11);
+    Rosenblatt, [1956](#CR15)), which allows us to reduce threshold effects, increase
+    the accuracy, and slightly extend the interval on which the distribution is defined.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: The Sharpe ratio of the initial portfolio is then replaced in the distribution,
+    the *p*-value of the Sharpe ratio being equal to the integral of the probabilities
+    of the random Sharpe ratios beyond that point.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Below is the distribution obtained with this methodology (Fig. [6.7](#Fig7)):![](../images/519851_1_En_6_Chapter/519851_1_En_6_Fig7_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 6.7
+  prefs: []
+  type: TYPE_NORMAL
+- en: Distribution of random Sharpe ratios
+  prefs: []
+  type: TYPE_NORMAL
+- en: The *p*-value of the Sharpe ratio of the final strategy is equal to 0.02%, which
+    is highly statistically significant.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.5.3 Significance of the Methods
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: We explore in this section the contribution of each component of the aggregated
+    prediction to the final performance and evaluate its statistical significance.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We first compare the simple mean among all the polymodel predictions to the
+    simple mean filtered using the dynamic optimal filter (Fig. [6.8](#Fig8)):![](../images/519851_1_En_6_Chapter/519851_1_En_6_Fig8_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 6.8
+  prefs: []
+  type: TYPE_NORMAL
+- en: Comparison of performances for simple mean and simple mean Filtered
+  prefs: []
+  type: TYPE_NORMAL
+- en: The filtering allows the Sharpe ratio to increase from 0.5 to 0.63\. While regressing
+    the returns of the filtered portfolio on the unfiltered portfolio, we note that
+    the constant of the model is positive, though weakly statistically significant
+    (Table [6.1](#Tab1)):Table 6.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: Regression of the simple mean filtered returns on the simple mean returns
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | Coef | Std err | *t* | *P* > &#124;*t*&#124; | [95.0% Conf. Int.] |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Constant | 6.78E−05 | 0.0000 | 1.883 | 6.00% (*) | −2.81e−06 0.000 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Simple mean | 0.9376 | 0.006 | 164.224 | 0.00% (***) | 0.926 0.949 |'
+  prefs: []
+  type: TYPE_TB
+- en: We may expect the filter used to produce a more (statistically) significant
+    increase in the performance. However, if we examine the performances above, it
+    seems to induce a reduction of the large drawdowns of the strategy. The maximum
+    drawdown of the raw strategy indeed decreases from −35% to −28%, and it is clear
+    from the graph of the underwater drawdowns that the filter provides a kind of
+    downside protection (Fig. [6.9](#Fig9)):![](../images/519851_1_En_6_Chapter/519851_1_En_6_Fig9_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 6.9
+  prefs: []
+  type: TYPE_NORMAL
+- en: Underwater drawdowns of simple mean and simple mean filtered
+  prefs: []
+  type: TYPE_NORMAL
+- en: Based on these findings, the use of the filter still seems justified.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Secondly, we compare the BMA and AVA methods, with the simple mean as a benchmark,
+    using filtered predictions in all the cases (Fig. [6.10](#Fig10)):![](../images/519851_1_En_6_Chapter/519851_1_En_6_Fig10_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 6.10
+  prefs: []
+  type: TYPE_NORMAL
+- en: Comparison of performances for AVA, BMA, and simple mean filtered
+  prefs: []
+  type: TYPE_NORMAL
+- en: The Sharpe ratios achieved are respectively 0.75, 0.63 and 0.61 for the AVA,
+    simple mean and BMA methods. Additionally, it is clear while comparing regression
+    tables (Table [6.2](#Tab2)) that the AVA provides a statistically significant
+    extra-return on top of the simple averaging, which is not the case for BMA:Table
+    6.2
+  prefs: []
+  type: TYPE_NORMAL
+- en: Regressions of AVA and BMA returns on the simple mean filtered returns
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | Variables | Coef | Std err | *t* | *P* > &#124;*t*&#124; | [95.0% Conf.
+    Int.] |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| AVA | Const | 5.30E−05 | 0.0000 | 2.548 | 1.10% (**) | 1.22e−05 9.37e−05
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Simple mean filtered | 9.80E−01 | 0.0030 | 297.134 | 0.00% (***) | 0.973 0.986
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| BMA | Const | −5.99E−06 | 0.0000 | −0.569 | 57.00% ( ) | −2.66e−05 1.47e−05
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Simple mean filtered | 9.95E−01 | 0.0020 | 595.39 | 0.00% (***) | 0.992 0.998
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: There are several possible explanations for the failure of BMA in our context.
+    First, it has been developed to merge models that include a different number of
+    parameters, which is not the case for our elementary models, for which the BIC
+    only penalizes the number of observations, this being comparable for most of the
+    models. BMA is thus not as good at discriminating among elementary models, since
+    it just focusses on the goodness of fit, while AVA also takes into account the
+    correlations among the different predictions. The BIC approximation of the posterior,
+    although unavoidable in our context, may lead to a weak estimation of the likelihood,
+    as it requires assumptions. Furthermore, the BIC is obtained using assumptions
+    on the distribution of the errors. Finally, we further approximated Raftery’s
+    BIC approximation by using the non-exponentiated ratio of the BICs. Hence, it
+    seems that the failure of the BMA in the context of extensive polymodel computations
+    is more due to practical infeasibilities than to a problem with the method itself,
+    and it would certainly not be possible to claim the opposite.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Finally, taking into account the uncertainty of the aggregate predictions in
+    the cross-sectional strategy is also adding value, the Sharpe ratio increasing
+    from 0.75 to 0.91 (Fig. [6.11](#Fig11)):![](../images/519851_1_En_6_Chapter/519851_1_En_6_Fig11_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 6.11
+  prefs: []
+  type: TYPE_NORMAL
+- en: Comparison of performances for AVA and AVA uncertainty weighted
+  prefs: []
+  type: TYPE_NORMAL
+- en: In addition to being economically significant, this last technique is also statistically
+    significant (Table [6.3](#Tab3)):Table 6.3
+  prefs: []
+  type: TYPE_NORMAL
+- en: Regression of the AVA uncertainty weighted returns on the AVA returns
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | Coef | Std err | *t* | *P* > &#124;*t*&#124; | [95.0% Conf. Int.] |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Const | 8.35E−05 | 0.0000 | 2.454 | 1.40% (**) | 1.68e−05 0.000 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| AVA | 9.45E−01 | 0.0050 | 175.133 | 0.00% (***) | 0.934 0.955 |'
+  prefs: []
+  type: TYPE_TB
+- en: These results indicate that the performance of our strategy is significant,
+    and that it is due to the combination of different techniques all of which already
+    have a certain predictive power. We thus control further for the reliability of
+    these results by performing a series of robustness tests.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.6 Robustness Tests
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 6.6.1 Correlations with Standard Factors
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Since we have adopted a cross-sectional portfolio construction, we have to control
+    for the possibility that we have simply proposed a sophisticated re-invention
+    of risk premia or factors already well documented in the literature. For this
+    purpose, we control for the Fama–French 3 factors ([1993](#CR4)), being the market,
+    the value and size,^([11](#Fn11)) the standard momentum, as defined by Carhart
+    ([1997](#CR2)), the (short-term) reversal observed by Jegadeesh ([1990](#CR8)),
+    the long-term reversal of De Bondt and Thaler ([1985](#CR3)) and the low volatility
+    anomaly (Baker et al., [2011](#CR1)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: The portfolio positions of these different anomalies are computed using the
+    same long/short portfolio construction as the polymodels’ specific predictions,
+    except for the market, for which the portfolio positions are simply equal to,
+    for a given stock “*a*”:![$$ {w}_a=\frac{MarketCapitalization_a}{\sum MarketCapitalization}
+    $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ19.png)(6.19)First,
+    we display the correlation matrix of the portfolio returns of the anomalies listed
+    above (Fig. [6.12](#Fig12)):![](../images/519851_1_En_6_Chapter/519851_1_En_6_Fig12_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 6.12
+  prefs: []
+  type: TYPE_NORMAL
+- en: Correlation matrix of the portfolio returns of several anomalies
+  prefs: []
+  type: TYPE_NORMAL
+- en: The correlations among the returns of the polymodels’ predictions and the returns
+    of the other factors being extremely low, it is unlikely that the performance
+    of our long/short strategy can be explained by the performance of other anomalies.
+    Still, we control for it using a full sample regression (Table [6.4](#Tab4)):Table
+    6.4
+  prefs: []
+  type: TYPE_NORMAL
+- en: Regression of the polymodel’s predictions returns on other factor returns
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | Coef | Std err | *t* | *P* > &#124;*t*&#124; | [95.0% Conf. Int.] |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Const | 0.0004 | 0 | 3.402 | 0.10% (***) | 0.000 0.001 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Long-term reversal | −0.0168 | 0.019 | −0.894 | 37.10% ( ) | −0.054 0.020
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Market | 0.0483 | 0.018 | 2.728 | 0.60% (***) | 0.014 0.083 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Momentum | 0.0166 | 0.018 | 0.9 | 36.80% ( ) | −0.020 0.053 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Reversal | −0.0207 | 0.017 | −1.205 | 22.80% ( ) | −0.054 0.013 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Size | −0.0281 | 0.018 | −1.596 | 11.10% ( ) | −0.063 0.006 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Value | −0.0078 | 0.019 | −0.421 | 67.40% ( ) | −0.044 0.029 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Low volatility | 0.0719 | 0.019 | 3.729 | 0.00% (***) | 0.034 0.110 |'
+  prefs: []
+  type: TYPE_TB
+- en: 'The regression shows that there is a statistically significant alpha which
+    is left unexplained by the classical factors. The value of the constant corresponds
+    roughly to a 10% abnormal return annually (as before, all the returns have been
+    standardized to 10% of annual volatility). Although significant, the coefficients
+    of the market and the low-volatility anomaly are of small magnitude. Overall,
+    the R² of the regression is 1.2%: the standard factors do not explain the main
+    part of the polymodels’ predictions returns.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.6.2 Sensitivity to the Filter Regression Window
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The dynamic optimal filter we proposed uses a *t*-statistics curve to evaluate
+    its objective function. These *t*-statistics have been obtained using some univariate
+    regression of the stock returns on the filtered aggregated predictions (with different
+    quantiles of filtering). These regressions are performed dynamically, using a
+    rolling window of 36 months. Below we control for the sensitivity of the strategy
+    performance^([12](#Fn12)) to the choice of this particular window (Table [6.5](#Tab5)):Table
+    6.5
+  prefs: []
+  type: TYPE_NORMAL
+- en: Sensitivity of the performance to the filter regression window
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Dynamic optimal filter window | Average gross return (%) | Sharpe ratio |
+    Turnover | Volatility (%) | Worst drawdown (%) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 24 months | 10.23 | 0.90 | 250.86 | 10.00 | −21.01 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 30 months | 10.31 | 0.91 | 250.86 | 10.00 | −21.89 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 36 months | 10.19 | 0.90 | 250.86 | 10.00 | −21.46 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 42 months | 10.27 | 0.91 | 250.86 | 10.00 | −21.96 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 48 months | 10.56 | 0.94 | 250.86 | 10.00 | −21.80 |'
+  prefs: []
+  type: TYPE_TB
+- en: The particular choice of a 36-month window does not really seem to impact the
+    performance. Actually, the performance of the strategy may even be improved by
+    a larger exploration of the parameter space, as the performance of the 48-month
+    window suggests.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.6.3 Stability of the Performance
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: We analyze the stability of the performance through different delays to achieve
+    the desired positions. The delay used in the rest of the chapter is of one day
+    after the computation of the signal, which is conservative, since it assumes that
+    an entire trading day is needed to reach the positions. This assumption may be
+    realistic in a variety of cases, i.e. if the execution system used only sends
+    orders at a particular time of the day (for example during the closing auction),
+    or if orders are executed during the entire trading day in order to minimize the
+    market impact. The delays used to assess the stability of the performance are
+    of 1, 2, 3, 5, 10 and 21 days, and we approach it across several metrics (Table
+    [6.6](#Tab6)):Table 6.6
+  prefs: []
+  type: TYPE_NORMAL
+- en: Performance statistics for different trading delays
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Delay | Average gross return (%) | Sharpe ratio | Turnover | Volatility (%)
+    | Worst drawdown (%) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 1 Day | 10.19 | 0.91 | 250.83 | 10.00 | −21.46 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 2 Days | 9.36 | 0.82 | 250.80 | 10.00 | −22.32 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 3 Days | 7.73 | 0.65 | 250.75 | 10.00 | −26.49 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 5 Days | 9.22 | 0.80 | 250.69 | 10.00 | −19.48 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 10 Days | 3.13 | 0.19 | 250.54 | 10.00 | −27.40 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 21 Days | 3.43 | 0.22 | 250.23 | 10.00 | −26.04 |'
+  prefs: []
+  type: TYPE_TB
+- en: The Sharpe ratio consequently decreases after only a few days of delay to reach
+    the positions. This usually indicates a fast signal, which is confirmed by the
+    high level of the turnover,^([13](#Fn13)) as well as the autocorrelogram of the
+    signal (Fig. [6.13](#Fig13)):![](../images/519851_1_En_6_Chapter/519851_1_En_6_Fig13_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 6.13
+  prefs: []
+  type: TYPE_NORMAL
+- en: Autocorrelogram of the signal
+  prefs: []
+  type: TYPE_NORMAL
+- en: Such a pattern implies that the strategy would be associated with substantial
+    transactions costs, which should encourage us to combine it with other strategies
+    in the case of an implementation.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.6.4 Sensitivity to the Believability Measure Window
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: In the computation of the weights used by the Added Value Averaging method,
+    we compute the out-of-sample RMSE to derive a believability measure. The out-of-sample
+    RMSE is obtained by comparing each of the predictions made by the predictors to
+    the value of the stock returns that is finally achieved. The RMSE is obtained
+    from the sum of the associated errors, and this sum is computed over a short-term
+    rolling window of 24 months. Below, we test the impact on performance of different
+    values of this parameter (Table [6.7](#Tab7)):Table 6.7
+  prefs: []
+  type: TYPE_NORMAL
+- en: Sensitivity of the performance to the believability measure window
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| AVA—Believability window | Average gross return (%) | Sharpe ratio | Turnover
+    | Volatility (%) | Worst drawdown (%) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 12 months | 10.08 | 0.89 | 250.86 | 10.00 | −24.38 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 18 months | 10.14 | 0.89 | 250.86 | 10.00 | −22.47 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 24 months | 10.19 | 0.90 | 250.86 | 10.00 | −21.46 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 30 months | 10.16 | 0.90 | 250.86 | 10.00 | −21.94 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 36 months | 10.02 | 0.88 | 250.86 | 10.00 | −22.02 |'
+  prefs: []
+  type: TYPE_TB
+- en: Here, if the window seems relatively well chosen, it is clear that the parameter
+    choice only has a weak impact on the strategy’s performance.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.6.5 Sensitivity to the Originality Measure Window
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The other component of the Added Value Averaging predictions’ weights is the
+    originality measure, for which we compute the average information using a rolling
+    5-year window. The length of this rolling window has a negligible impact on the
+    performance (Table [6.8](#Tab8)):Table 6.8
+  prefs: []
+  type: TYPE_NORMAL
+- en: Sensitivity of the performance to the originality measure window
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| AVA—Originality window | Average gross return (%) | Sharpe ratio | Turnover
+    | Volatility (%) | Worst drawdown (%) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 3 years | 10.20 | 0.90 | 250.86 | 10.00 | −21.49 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 4 years | 10.20 | 0.90 | 250.86 | 10.00 | −21.30 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 5 years | 10.19 | 0.90 | 250.86 | 10.00 | −21.46 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 6 years | 10.16 | 0.90 | 250.86 | 10.00 | −21.64 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 7 years | 10.10 | 0.89 | 250.86 | 10.00 | −21.85 |'
+  prefs: []
+  type: TYPE_TB
+- en: 6.6.6 Unaccounted Parameter Sensitivities
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Two parameters may be tested for their sensitivities and are left unaccounted
+    in the current series of robustness tests, because of the impossibility of re-performing
+    the polymodel estimations due to the extensive computations they require.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The window used by the polymodels estimation has been set to a default of 5
+    years. Such a choice may have an impact, as we saw in Chap. [4](519851_1_En_4_Chapter.xhtml).
+    However, both Chaps. [4](519851_1_En_4_Chapter.xhtml) and [5](519851_1_En_5_Chapter.xhtml)
+    seem to indicate that a 5-year window to estimate the polymodel is the best option.
+    As explained previously, this particular window uses 1,260 points, so 126 are
+    used in each of the pseudo-out-of-sample estimations of LNLM’s μ by stratified
+    10-fold cross-validation. The 5-year window may lead to the optimal balance between
+    a robust parameter choice and a sufficiently adaptive modeling of the asset returns
+    dynamics.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Recall that in the stratified 10-fold cross-validation of LNLM, the observations
+    are drawn randomly from each observations’ distribution layer. The impact of this
+    random drawing should be controlled by a sensitivity analysis to the seed used.
+    If it is also not possible to test for the seed sensitivity because of computational
+    resources, the results of Chap. [5](519851_1_En_5_Chapter.xhtml) show that the
+    LNLM fit does not seem very sensitive to the seed.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.7 Conclusions
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: In this chapter, we proposed reliable predictions of the specific component
+    of the stock returns. These predictions were validated by a successful trading
+    strategy, which reached a Sharpe ratio of 0.91 (*p*-value 0.02%). We also demonstrated
+    that the signal is distinct from the standard factors used to explain the cross-section
+    of the stock returns.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'These results have been achieved thanks to the development of new techniques
+    that answer the common concerns about the use of polymodel predictions: the selection
+    and the aggregation of the predictions.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: For the purpose of selection, we proposed a dynamic and point-in-time filter
+    that successfully removes the noisiest predictors and reduces the drawdowns of
+    the trading strategy.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We proposed a novel method for the aggregation that simultaneously takes into
+    account the pseudo-out-of-sample goodness of fit of the predictors and the correlations
+    among the predictions. The Added Value Averaging method has been shown to significantly
+    increase the performance of the trading strategy.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Along with the market returns forecasts of Chap. [4](519851_1_En_4_Chapter.xhtml)
+    and the industry returns forecasts of Chap. [5](519851_1_En_5_Chapter.xhtml),
+    the forecasts of the current chapter form the third base pillar of a multi-dimensional
+    prediction system for the equity markets. These results further support the reliability
+    of polymodels as a tool to analyze nodes of complex systems, make predictions,
+    and ultimately design profitable trading strategies.
+  prefs: []
+  type: TYPE_NORMAL

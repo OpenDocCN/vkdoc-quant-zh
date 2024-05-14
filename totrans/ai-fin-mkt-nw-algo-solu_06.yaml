@@ -1,0 +1,635 @@
+- en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2023F.
+    Cecconi (ed.)AI in the Financial Markets Computational Social Sciences[https://doi.org/10.1007/978-3-031-26518-1_6](https://doi.org/10.1007/978-3-031-26518-1_6)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6. ABM Applications to Financial Markets
+  prefs:
+  - PREF_H1
+  type: TYPE_NORMAL
+- en: 'Riccardo Vasellini^([1](#Aff16) [ ](#ContactOfAuthor1))(1)Universitá di Siena,
+    Siena, ItalyRiccardo VaselliniEmail: [r.vasellini@student.unisi.it](mailto:r.vasellini@student.unisi.it)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Abstract
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Traditional economic theories struggle to explain financial market volatility
+    and the macroeconomy. Traders seldom assume the role of rational optimizers, as
+    described in standard economic models, in financial markets. Boom and bust cycles
+    are widespread, as are firm values based purely on the flashy personalities of
+    CEOs, reckless speculators, and a general sense of irrationality. Clearly, this
+    is not enough to condemn old economic theories as “useless.” In reality, knowing
+    that human behavior leads in self-regulating, stable markets where prices never
+    deviate too far from equilibrium can provide exciting and practical outcomes Instead
+    of evaluating the financial system as a whole and modeling it from the top down,
+    one might examine its agents and see if system-wide characteristics emerge from
+    their interaction. This is extensively used to investigate so-called Complex Systems,
+    which exhibit significant non-linearity and unstable equilibrium states that are
+    easily disrupted by little shocks. Traditional economic theories are effective
+    in illustrating a relatively narrow system state, namely one in which the market
+    is in equilibrium. Alternative techniques, however, backed by complex system theory,
+    may allow for the portrayal of a more generic model in which equilibrium states
+    are a subfield of a larger model. ABM is a valuable approach for simulating complex
+    systems. Bottom-up modeling does not need scientists to approximate the entire
+    system to a differential equation. They could instead mimic the interactions of
+    the system’s single agents. If the agents’ behavioral assumption is right, shared
+    behaviors should “emerge” in the system.
+  prefs: []
+  type: TYPE_NORMAL
+- en: KeywordsAgent based modelingFinancial marketsCognitionRiccardo Vasellini
+  prefs: []
+  type: TYPE_NORMAL
+- en: PhD candidate with a background in civil, environmental, and management engineering.
+    I’m currently studying at the University of Siena’s Department of Information
+    Science, majoring in the topic of Complex Systems. In the scientific world, my
+    objective is to use Agent Based Modelling and Artificial Intelligence to get significant
+    insights into Complex Systems. I feel that studying Emergent Phenomena and Systems
+    Dynamics is vital for making sound decisions. While studying on my Doctorate,
+    I work as a Project Manager in a variety of industries, including Real Estate
+    Development, Real Estate Portfolio Management, Renewable Energies, and Tourism.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.1 Introduction
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Traditional economic theories have a particularly tough time explaining financial
+    market fluctuations and how they relate to the macroeconomy (LeBaron [2000](#CR1)).
+    In the financial markets, traders seldom ever play the part of the rational optimizers
+    that are frequently depicted in traditional economic models, in fact is not uncommon
+    to observe boom and bust cycles, company valuations depending only on the glitzy
+    personalities of CEOs, reckless speculators, and a great deal of irrationality
+    overall.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Obviously, this not suffice to disregard traditional economic models as “useless”,
+    in fact thinking that human behavior results in self-regulating, stable marketplaces
+    where prices never stray too far from equilibrium, can yield interesting and realistic
+    results (Iori and Porter [2012](#CR2)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'However, an alternative approach is possible: instead of evaluating the financial
+    system as a whole, and model it using a top-down approach, one might think to
+    study it by understanding the agents populating the system and observe if properties
+    common to the system emerge from their interaction. This is often the approach
+    used to study the so-called Complex Systems, i.e., systems exhibiting high degrees
+    of non-linearity, in which equilibrium states are unstable and small perturbations
+    easily disrupts them.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: One could argue that while traditional economic theories are successful at illustrating
+    a very specific system state, namely one in which the market is in equilibrium,
+    alternative approaches, supported by the theory of complex systems, may enable
+    the illustration of a more general model in which the specific instances of equilibrium
+    states are a subfield of broader model.
+  prefs: []
+  type: TYPE_NORMAL
+- en: A very good way to model complex system is to use Agent Based Modelling. In
+    this type of modelling, the bottom-up approach is king and scientists don’t have
+    to concern themselves with approximating the whole system to a differential equation.
+    Instead, they may concentrate their efforts on simulating the interactions of
+    the single agents that are intended to exist in the system. If the behavioural
+    hypothesis upon which the agents have been created is sound, one expects to see
+    the “emergence” of behaviours that are shared by the entire system.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'To those not too familiar with this type of modelling imagine the following:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: You want to describe how a balloon filled with gas behave, instead of writing
+    down the Gay-Lussac’s law, PV = nRT, thus using a top-down approach, you describe
+    how a single atom or molecule of the gas behaves when it exchanges heat, modify
+    is quantity of movement or gets hit by another atom of the gas. Then you use a
+    computer to simulate all these interaction among atoms and other atoms and atoms
+    and the environment. If you did a good job the results emerging will be coherent
+    with the Gay-Lussac’s law even though you could have known nothing about the balloon
+    as a whole.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Obviously, in the specific case of this metaphor, it seems pretty counterintuitive
+    and unnecessarily complicated to use such approach. However, there are many circumstances
+    when it might be difficult, if not impossible, to use conventional mathematical
+    models. When dealing with a large number of equations and several heterogeneous
+    variables with a lot of indices, mathematical models are often not particularly
+    effective.
+  prefs: []
+  type: TYPE_NORMAL
+- en: These compliances can, instead, be managed better if described by algorithms
+    and iterative processes. In particular when parts of the system interact frequently
+    among each other’s leading to the emergence of important features, to understand
+    the system is then usually very hard to implement traditional mathematical models.
+    What I just wrote is not entirely accurate, what would be accurate is to say that
+    when the system as whole cannot be analyzed clearly by the scientists trying to
+    describe it, then it’s very hard to implement traditional models. When a bird’s
+    eye view is not possible, like in the case of societies or economies where even
+    the people studying the system are part of it, then it’s useful to try using an
+    ABM process, starting from the bottom, from what we can understand and describe
+    in a stylized way for the purpose of a simulation. This is the true power of ABM.
+    To use another metaphor, it’s much easier to describe an ant, a very simple living
+    organism, then to describe the entire ants’ nest, whose behavior cannot be comprehended
+    by simply describing that of a single ant. However, harnessing the power of simulation
+    is possible, by setting simple behavioral rules for the single ant, describe the
+    whole nest.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Now that we’ve established what ABM is all about, we can provide some modelling
+    overview and, following that, we will present a novel model developed by the writers
+    of this book.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.2 ABM
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'ABMs present a challenge to the neoclassical idea that agents generate rational
+    expectations based on the assumption that they have full understanding of the
+    economy and limitless computing capacity (Iori and Porter [2012](#CR2)). The all-knowing
+    rational agent is substituted by one with bounded rationality (Simon [1997](#CR3)),
+    able to infer about the markets thanks to a combination of behavioural rules and
+    heuristics. In fact, we can use agents’ modelling types to classify different
+    modelling approaches:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Zero Intelligence Agents: Agents are scarcely, or not at all, able to learn
+    and that their behavioural rules are extremely simple. The point of these type
+    of models is to observe if features actually present in real financial markets
+    can emerge from the system’s structure. A very good example of this is the model
+    developed by Farmer et al. ([2005](#CR4)). The authors take the notion of a non-rational
+    agent to its final extreme, creating agents that are completely devoid of rationality.
+    In the model the agents simply place orders randomly (precisely orders arrive
+    as a Poisson random process) and participate to a continuous double auction, i.e.,
+    they can place buy or sell orders at any time they want. Therefore, the model
+    drops any ambition of describing market strategies or human behaviour and instead
+    focuses mostly on characterising the limitations that the continuous double auction
+    imposes on the system. The sole difference between agents is how frequently they
+    place orders: impatient agents will be forced to place a fixed number of orders
+    per unit time, whereas patient agents will put orders at random, not just for
+    pricing but also for time. The authors then compared and evaluated their findings
+    against real data from the London Stock Exchange Market, explaining approximately
+    96% of the spread and 75% of the variance in the price diffusion rate using a
+    single free parameter.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: What should be surprising is that just by making very simple assumption, in
+    this case the simplest possible, on the behaviour of the agents it’s possible
+    to reproduce market’s and prices’ features by focussing the modelling attention
+    on how the agents actually interact (continuous double auction).
+  prefs: []
+  type: TYPE_NORMAL
+- en: In traditional models a common feature that traders lack is the possibility
+    of being chartists. Given the rational assumption the only possibility for the
+    stock trader is to be a fundamentalist always trying to discover the real valuation
+    of a stock and trade consequently.
+  prefs: []
+  type: TYPE_NORMAL
+- en: However, when implementing agents more complex than the zero-intelligence ones
+    it’s possible to include as many behavioural rules as wanted. Within this framework
+    traders can pursue different strategies and react differently to signals, either
+    from the market or from other agents. Iori and Porter ([2012](#CR2)) differentiate
+    between heterogenous agents whose interaction is mediated by the market and those
+    who can interact directly among each other’s. The latter type can has been useful
+    to explain herding behaviour in finance (Hirshleifer and Slew [2003](#CR5)), while
+    the former has been useful to understand the role of learning (LeBaron [2000](#CR6)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.3 Our Model
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'We started developing this model starting from a fundamental idea: Markets
+    are diverse ecosystems inhabited figuratively by a myriad of different species,
+    each with their own set of interests and ambitions. Understanding how these groups
+    of people act and interact might help us understand market behaviour.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: This is precisely what Andrew Lo argues in his Adaptive Market Theory, which
+    is an attempt to incorporate the Efficient Market Theory into a broader framework
+    in which it becomes a special case. Considering financial markets in this manner
+    entails conceiving of them as complex systems; thus, to understand them, we must
+    employ the methods we use to examine complexity. We decided that the best approach
+    would have been to use AB Modelling.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Moreover, we started wondering if these “groups” living in the financial ecosystem
+    could emerge spontaneously from the interaction of multiple agents trading in
+    the market. By “groups,” we refer to clusters of agents exhibiting dynamically
+    similar behaviour. In a genuine market, this may include institutional and retail
+    investors or algorithmic and manual traders, to name a few examples. The groups
+    are limited just by the person’s defining them imagination. We decided to focus
+    only on two types of investors: Fundamentalists, and Chartists (whom we, unfortunately,
+    called “Trendists”).'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Our primary objective was to demonstrate if and how agents without any a-priori
+    configuration or bias toward being fundamentalists or chartists, nor any explicit
+    external trigger coming from the system pushing in one direction or the other,
+    could cluster into groups of investors whose behaviour follows a particular pattern
+    over time. These behaviours emerge spontaneously only through the two mechanisms
+    of adaptation available to the agents, i.e., learning and imitation. Now we will
+    proceed to describe the model into more details.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.3.1 Overview
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Each day, the traders will analyse each of the three stocks using two distinct
+    methodologies. They do a fundamental examination of the stock, simulating the
+    act of investigating the worth of the underlying corporation that issued the shares,
+    and consequently price the stock. They will also do a trend analysis, focusing
+    solely on the previous performance of the stock while neglecting the underlying
+    asset. The sequence in which these two pricing methods are executed is unimportant.
+    Then, they will weigh the two acquired prices based on their current market outlook,
+    or whether they feel it is preferable to be “fundamentalists” or “chartists.”
+    In addition, the price will be affected by how greedy or fearful market participants
+    are at the moment. Finally, following these analyses, they will determine which
+    stocks to sell or purchase and in what quantities.
+  prefs: []
+  type: TYPE_NORMAL
+- en: At this point orders are inserted in the ledger.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The market will then match orders. It will look for a purchase (if the order
+    is a sell) or a sell (if the order is a buy) order that matches the desired price
+    and quantity, beginning with the oldest order issued. Price and quantity do not
+    need to be identical; an agent might purchase fewer stocks at a cheaper price
+    than he initially desired and then purchase the remainder from another agent.
+    The day concludes when all orders that might be fulfilled have been finished.
+    Then the agents will learn, which entails upgrading their decision-making heuristics
+    depending on whether they are better off than before and how they may have been
+    had they made other judgments. They will then emulate agents with whom they are
+    associated who are wealthier than they are, adjusting their heuristics appropriately.
+    Every two weeks, the fundamental value of the stock will vary by a modest proportion.
+    This is done to imitate actual changes in the assets of the underlying firms.
+    Average stock prices and other agents’ fundamental properties will be preserved.
+    At this moment, the cycle may resume.![](../images/524458_1_En_6_Chapter/524458_1_En_6_Figa_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: A flow chart has the process; true sight mapping, trend sight mapping, total
+    price mapping, buy sell value, order creation, learning, and imitation.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.3.2 Agents and Stocks Features
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Agents behave following three main decisional parameters; Greediness, Truesight
+    and Trendsight. Moreover, they have a certain number of resources and a total
+    net worth. More details on these 5 features are in Table [6.1](#Tab1).Table 6.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: Agent properties
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Resources | Liquidity of the agents, money at their disposal. It is initially
+    distributed in the population as a Pareto distribution with α = 1.16 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Net worth | Total wealth, sum of resources and stock owned times their value
+    at the moment |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Greediness | Willingness to be in the market. Value between 0 and 1, 0 being
+    extreme fear of the market and 1 extreme F.O.M.O. from the market. It is distributed
+    in the population as a Normal distribution *N* ~ (50, 20) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Truesight | Ability to perform fundamental analysis of a stock. Value between
+    0 and 1, 0 being total inability to price a stock based on its fundamentals and
+    1 ability of perfectly doing it. It is initially distributed in the population
+    as a Normal distribution *N* ~ (50, 20) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Trendsigth | Importance given by an agent to trend analysis of a stock. Value
+    between 0 and 1, 0 being complete indifference to trends while 1 is the opposite.
+    It is initially distributed in the population as a Normal distribution *N* ~ (50,
+    20) |'
+  prefs: []
+  type: TYPE_TB
+- en: At the beginning of the simulation every agent is initialized attributing each
+    of its a random value from a certain distribution depending on the feature.
+  prefs: []
+  type: TYPE_NORMAL
+- en: These 5 features, and in particular the 3 decisional one, are used by each agent
+    to take a decision on which stock buy or sell and at what price.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The stocks present on the market are 3, they differ for their initial price
+    and how much one of their 2 fundamental proprieties (the “true value”) variates
+    in time.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The 2 fundamental proprieties are better explained in Table [6.2](#Tab2).Table
+    6.2
+  prefs: []
+  type: TYPE_NORMAL
+- en: Stock properties
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| True value | The price value one would obtain from a perfect price analysis,
+    it can be seen as the real value of a stock, not perfectly known by anyone. It
+    changes each 25 ticks, growing or decreasing by values included between 0.5 and
+    6% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Trend value | It’s simply given by a weighted average of the last 5 prices![$$\begin{aligned}\text{Trend
+    Value}&amp;= 0.4\, \mathrm{Avg}.{\mathrm{Price}}_{\mathrm{n}}\\ &amp;\quad+ 0.25\,
+    \mathrm{Avg}.{\mathrm{Price}}_{\mathrm{n}-1}\\ &amp;\quad+ 0.15\, \mathrm{Avg}.{\mathrm{Price}}_{\mathrm{n}-2}\\
+    &amp;\quad+ 0.1\, \mathrm{Avg}.{\mathrm{Price}}_{\mathrm{n}-3}\\ &amp;\quad+ 0.1\,
+    \mathrm{Avg}.{\mathrm{Price}}_{\mathrm{n}-4}\end{aligned}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq1.png)Where
+    n is the tick value |'
+  prefs: []
+  type: TYPE_TB
+- en: 6.3.3 Mapping Process
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: At each simulation iteration, the features of each agent’s order are determined
+    by the three decisional parameters of the agents and the two characteristics of
+    the stocks. In practise, an agent will establish a price as if it were only behaving
+    as a Fundamentalist, thus using only its “truesight,” a price as if it were only
+    behaving as a Chartist, thus using only its “trendsight,” and then a total price
+    weighting both prices based on their trendsight and truesight values. The agent
+    will then determine whether to buy or sell based on his own “greediness,” selling
+    when greediness is low (market fear) and buying when greediness is high (FOMO).
+  prefs: []
+  type: TYPE_NORMAL
+- en: After this process the agent will create an order, hopefully the order will
+    be matched, if not it will remain in the ledger for other 4 iterations, after
+    which it will be eliminated.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.3.4 Learning
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Each Agent will adjust its three decision parameters (Truesight, Trendsight,
+    and Greediness) at the conclusion of each time interval. It does so by determining
+    if its previous activities led to an increase in Net Worth, if that is the case
+    the Agent will most likely keep the parameters unchanged, with lower probability
+    it will repeat the previous choice made (thus if he saw a surge in its net worth
+    and in the previous iteration he decided to increase (decrease), let’s say, its
+    Greediness, it will increase (decrease) it again, and with very little probability
+    it will do the opposite of what it did at the previous iteration.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In mathematical terms:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Let
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'P: payoff of an Agent, it’s how much its Net Worth increased since the last
+    time it learned.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$$S\left[y\right]\; with\; y\in \left[{T}_{s},{D}_{s},G\right]$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq2.png):
+    Strategy the Agent is choosing at this time for the parameter y.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$${S}^{old}\left[y\right]:$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq3.png)
+    strategy with which the Agent learned at the previous loop. If ![$${S}^{old}\left[y\right]=-1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq4.png)
+    it means the agent decreased its y-decision parameter, if ![$${S}^{old}\left[y\right]=1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq5.png)
+    it increased it, if ![$${S}^{old}\left[y\right]=0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq6.png)
+    it did nothing.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$${w}_{k}^{P&gt;0}:$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq7.png)
+    Probabilities to pick a new strategy among ![$$S\left[y\right] = 1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq8.png),
+    ![$$S\left[y\right] =1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq9.png),
+    or ![$$S\left[y\right] = 0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq10.png)
+    given the previous strategy ![$${S}^{old}\left[y\right]$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq11.png)
+    ![$$=k$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq12.png)
+    and that P > 0.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$${w}_{k}^{P\le 0}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq13.png):
+    Probabilities to pick a new strategy among ![$$S\left[y\right] = 1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq14.png),
+    ![$$S\left[y\right] =1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq15.png),
+    or ![$$S\left[y\right] = 0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq16.png)
+    given the previous strategy ![$${S}^{old}\left[y\right] = k$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq17.png)
+    and that P ![$$\le$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq18.png)
+    0.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$$\Gamma \left({w}_{k}^{P}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq19.png):
+    Function outputting ![$${S}^{new}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq20.png)
+    based on the probabilities ![$${w}_{k}^{P}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq21.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: '**if** ![$${\varvec{P}}\boldsymbol{ }\le 0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq22.png)
+    **then**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**for** y in ![$$\left[{T}_{s},{D}_{s},G\right]$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq23.png)
+    **do**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**if** ![$${{\varvec{S}}}^{{\varvec{o}}{\varvec{l}}{\varvec{d}}}\left[{\varvec{y}}\right]=1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq24.png)
+    **then**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$${S}^{new}\left[y\right]=\Gamma \left({w}_{1}^{P\le 0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq25.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: '**else if** ![$${S}^{old}\left[y\right]=0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq26.png)
+    **then**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$${S}^{new}\left[y\right]=\Gamma \left({w}_{0}^{P\le 0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq27.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: '**else if** ![$${S}^{old}\left[y\right]=-1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq28.png)
+    **then**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$${S}^{new}\left[y\right]=\Gamma \left({w}_{-1}^{P\le 0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq29.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: '**end if**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**else if** ![$${\varvec{P}}\boldsymbol{ }&gt;0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq30.png)
+    **then**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**for** y in ![$$\left[{T}_{s},{D}_{s},G\right]$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq31.png)
+    **do.**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**if** ![$${{\varvec{S}}}^{{\varvec{o}}{\varvec{l}}{\varvec{d}}}\left[{\varvec{y}}\right]=1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq32.png)
+    **then**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$${S}^{new}\left[y\right]=\Gamma \left({w}_{1}^{P&gt;0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq33.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: '**else if** ![$${S}^{old}\left[y\right]=0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq34.png)
+    **then**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$${S}^{new}\left[y\right]=\Gamma \left({w}_{0}^{P&gt;0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq35.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: '**else if** ![$${S}^{old}\left[y\right]=-1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq36.png)
+    **then**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$${S}^{new}\left[y\right]=\Gamma \left({w}_{-1}^{P&gt;0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq37.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: '**end if**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**end if**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.3.5 Imitation
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: 'The imitation process is relatively simple: the agents are connected in a Barabasi-Albert
+    Graph in which the wealthier nodes are also those with a higher degree. Each tick,
+    agents will examine their first-degree neighbours and adjust their parameters
+    to resemble those of their wealthier neighbours.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Let:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$${A}_{i}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq38.png):
+    i-Agent'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$${{\varvec{N}}}^{{\varvec{i}}}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq39.png):
+    Set of the Neighbours of the i-Agent'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$${N}_{j}^{i}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq40.png):
+    j-Neighbour Agent of the i-Agent'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$$W\left(x\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq41.png):
+    Net Worth of the element × (an Agent or a Neighbour)'
+  prefs: []
+  type: TYPE_IMG
+- en: 'G(x): Greediness of the element × (an Agent or a Neighbour)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'T(x): Truesight of the element × (an Agent or a Neighbour)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'D(x): Trendsight of the element × (an Agent or a Neighbour)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'deg(x): Degree of the node associated to the element × (an Agent or a Neighbour)
+    in the Network'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'V: number of Agents in the model'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**for** ![$${N}_{j}^{i}\; in \;{\boldsymbol{ }{\varvec{N}}}^{{\varvec{i}}}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq42.png)
+    **do**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**if** ![$$\left({N}_{j}^{i}\right)&gt;W\left({A}_{i}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq43.png)
+    **then**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**if** ![$$G\left({N}_{j}^{i}\right)\ge G\left({A}_{i}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq44.png)
+    **then**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$$G\left({A}_{i}\right)=G\left({A}_{i}\right)\cdot \left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq45.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: '**else**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$$G\left({A}_{i}\right)=\frac{G\left({A}_{i}\right)}{\left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq46.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: '**end if**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**if** ![$$T\left({N}_{j}^{i}\right)\ge T\left({A}_{i}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq47.png)
+    **then**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$$T\left({A}_{i}\right)=T\left({A}_{i}\right)\cdot \left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq48.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: '**else**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$$T\left({A}_{i}\right)=\frac{T\left({A}_{i}\right)}{\left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq49.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: '**end if**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**if** ![$$D\left({N}_{j}^{i}\right)\ge D\left({A}_{i}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq50.png)
+    **then**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$$D\left({A}_{i}\right)=D\left({A}_{i}\right)\cdot \left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq51.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: '**else**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![$$D\left({A}_{i}\right)=\frac{D\left({A}_{i}\right)}{\left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq52.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: '**end if**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**end if**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.3.6 Results and Comments
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: When looking at the mean value of both decisional parameters (Truesight and
+    Trendsight), we observed that in certain moments the population prefers to follow
+    a pricing strategy where the fundamental value (truevalue) of a stock has more
+    weight in the decision process than the trend (trendvalue) and vice versa. This
+    is equivalent to say that there is no convergence when it comes to the strategy
+    adopted. However, this phenomenon completely disappears when we inhibit either
+    one among the imitation or the learning mechanism. This led us to think that to
+    obtain non trivial model, where we can observe the emergence of types of investors,
+    we need both mechanisms working at the same time.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Other interesting results came from performing a K-Mean Cluster analysis over
+    the time series of the behavioural parameters. We found that there are 3 main
+    distinct behavioural clusters over time, this was the objective of the whole simulation,
+    finding dynamic types of investors. Translated into the real world, it is like
+    to identify groups of investors who react similarly to changes in the market in
+    which they participate by interacting (imitation mechanism) and by changing their
+    strategy based on previous performance (learning mechanism).
+  prefs: []
+  type: TYPE_NORMAL
+- en: 6.4 Conclusions
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: ABM is a powerful and innovative tool which ideal use is to tackle problems
+    hard to face with a top-down approach. Thinking about financial markets as complex
+    systems makes them an obvious area of application for ABM. However, unlike ML,
+    which already shows promising real world applications, ABM for now seems providing
+    most of its results in the academic world, especially to describe social phenomena
+    happening in the markets. This leads us to think that we are still at an early
+    stage for this modelling technique, thus there is plenty of room for improvement
+    and innovation. Our model was on the same line. A very early stage research on
+    investors dynamic clustering and on the role of imitation and learning in the
+    modelling of financial markets.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In conclusion we can say that while ABM is still waiting to escape academia,
+    it’s usefulness is undeniable, and the financial world can only benefit from it.
+  prefs: []
+  type: TYPE_NORMAL

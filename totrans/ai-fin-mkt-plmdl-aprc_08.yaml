@@ -1,0 +1,176 @@
+- en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2022T.
+    Barrau, R. DouadyArtificial Intelligence for Financial MarketsFinancial Mathematics
+    and Fintech[https://doi.org/10.1007/978-3-030-97319-3_8](https://doi.org/10.1007/978-3-030-97319-3_8)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 8. Conclusions
+  prefs:
+  - PREF_H1
+  type: TYPE_NORMAL
+- en: Thomas Barrau^([1](#Aff5)  ) and Raphael Douady^([2](#Aff6))(1)AXA Investment
+    Managers Chorus Ltd, Hong Kong, Hong Kong S.A.R.(2)Economic Center, University
+    Paris 1 Sorbonne, Paris, France
+  prefs: []
+  type: TYPE_NORMAL
+- en: Abstract
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: We conclude the book by giving a summary of the answers it brings to the different
+    questions raised at the beginning. We recap how the different concerns about the
+    limits of Polymodel Theory have been addressed. Returning to the different applications
+    discussed throughout the book, we outline how polymodels successfully contribute
+    to the literature of financial market predictions, thus providing an effective
+    artificial intelligence technique when applied to financial markets.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'KeywordsPolymodel theoryArtificial intelligenceMachine learningGenetic optimizationMarket
+    timingCross-section of stock returnsCross-section of industry returnsTrading strategyTrading
+    signalStock returns predictionsIn the introduction of the book we presented a
+    simple model of portfolio returns, which is represented as a function of the market,
+    the industry and the specific components of the stock returns:![$$ {r}_P={\varOmega}_p\left({r}_M,{\mathcal{F}}_I,{\mathcal{F}}_S\right).
+    $$](../images/519851_1_En_8_Chapter/519851_1_En_8_Chapter_TeX_Equ1.png)(8.1)Still
+    in the introduction, we emphasized the fact that superior portfolio performances,
+    which add value on top of the simple portfolios such as the market portfolio,
+    may come from three sources:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Identifying unknown factors, known as “alphas”, which explains industry or specific
+    returns.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Timing the performance of the sub-portfolios, through factor or market timing.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Properly assembling the different sub-portfolios, i.e. defining the weighting
+    in omega.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: In Chap. [4](519851_1_En_4_Chapter.xhtml), we proposed a market timing signal
+    which seems to be an effective predictor of future market returns. This is a contribution
+    to the second source of superior portfolio performances. The chapter contributes
+    to the broad literature on the detection of Systematic Risk via the analysis of
+    correlation structures of the stock markets. Instead of measuring correlations,
+    we estimated a polymodel and measured the root-mean squared error of each of the
+    elementary models. The distribution of the RMSE was found to be predictive of
+    future market drawdowns in a non-trivial manner, since we observed an extremization
+    of the links, some economic variables being more correlated to the market before
+    crisis, and some others (most of them) less. Such an application of Polymodel
+    Theory shows its effectiveness as a tool to analyze a particular node of a complex
+    system. We derived a market timing strategy from our Systemic Risk indicator,
+    which had a gross Sharpe ratio of 0.68 for the S&P 500, versus 0.35 for being
+    simply invested in the market (these numbers are computed with equal volatility
+    of portfolio returns). This increase in the market portfolio performance is shown
+    to be highly statistically significant, and subsists despite a large panel of
+    robustness tests.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We contributed to the first source of over-performance in Chap. [5](519851_1_En_5_Chapter.xhtml)
+    by proposing a new industry risk premium, the antifragility factor, derived from
+    the concept of antifragility developed by Taleb. It has been shown to be a significant
+    predictor of industry returns, particularly profitable (the gross Sharpe ratio
+    achieved is 1.10). The signal survives a large array of robustness tests, and
+    regressions on well-known factors show that the alpha is different than the classical
+    Fama & French factors. Notably, it subsumes other factors that try to capture
+    the premia for extreme market risk (Downside Beta and Coskewness). Thus, this
+    chapter is another contribution to the literature which shows the importance of
+    non-linear modeling in finance.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Another contribution to this first source of superior portfolio performance
+    is brought by Chap. [6](519851_1_En_6_Chapter.xhtml), which uses polymodels as
+    a machine learning method to predict the specific component of the cross-section
+    of stock returns. For each of the 500 stocks of the cross-section we invest in,
+    we define a polymodel of 1,134 predictors, which is re-estimated dynamically.
+    Sophisticated selection and aggregation methods are developed to tackle this datamining
+    exercise. The selection is performed using a rolling double filter and the aggregation
+    takes into account both the goodness of fit and the correlation of the predictors
+    thanks to the use of Information Theory. The usage of a prediction aggregation
+    method which takes into account the correlation of the predictors is an important
+    question for Polymodel Theory (as mentioned in Chap. [2](519851_1_En_2_Chapter.xhtml)),
+    which finds a first answer in this chapter. The trading strategy implemented on
+    the base of these specific predictions showed a gross Sharpe ratio of 0.91.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The third source of portfolio over-performance consists in defining an appropriate
+    combination function “omega” for market, industry and specific predictions. This
+    problem is tackled in Chap. [7](519851_1_En_7_Chapter.xhtml), in which we combine
+    the factor portfolios obtained from the three previous chapters. Using a Risk
+    Parity combination, the aggregate trading strategy reached a gross Sharpe ratio
+    of 1.58, which shows the high and consistent predictive power of the predictions.
+    While introducing realistic (potentially conservative) values of transaction costs,
+    the performance declines, justifying the development of a combination method based
+    on a genetic algorithm, partly inspired by the dynamic programming model of Gârleanu
+    and Pedersen. The genetic algorithm aims to solve a nested optimization problem
+    which allows us to simultaneously obtain optimal weights for the three sub-portfolios
+    as well as the optimal trading rate for the strategy. It is shown to outperform
+    the Risk Parity combination from the statistical significance perspective. The
+    final aggregated portfolio has a Sharpe ratio net of transaction costs of 0.94\.
+    A natural benchmark for this portfolio would be the simple portfolio defined in
+    the introduction:![$$ {r}_{simple\_ portfolio}={\beta}_M{r}_M+{\beta}_{mom}{r}_{mom}+{\beta}_{size}{r}_{size}+{\beta}_{value}{r}_{value}.
+    $$](../images/519851_1_En_8_Chapter/519851_1_En_8_Chapter_TeX_Equ2.png)(8.2)Since
+    our aim was to produce novel alpha signals and methods, we avoided any investment
+    in the momentum, size and value factors. Hence, the portfolio against which the
+    final strategy is benchmarked is the market portfolio, which reached a Sharpe
+    ratio of 0.43 on the same period. Thus, net of transaction costs, the aggregated
+    trading strategy more than doubles the performance of the market portfolio, which
+    is the most convincing indicator of the predictive power of the predictions developed
+    throughout the book.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The book thus contributes to the three sources of superior portfolio performance
+    mentioned in the introduction. The development of these novel prediction methods
+    and alpha signals would not have been possible without Polymodel Theory, which
+    is extensively presented in Chap. [2](519851_1_En_2_Chapter.xhtml). Complementing
+    the empirical applications of polymodels made in the following chapters, this
+    second chapter highlights the theoretical benefits of using polymodels for the
+    general purpose of modeling. In particular, it shows that polymodels are especially
+    suitable for solving artificial intelligence problems which need to manage large
+    amounts of data in a data-driven, robust, accurate, and non-overfitted manner.
+  prefs: []
+  type: TYPE_NORMAL
+- en: For the particular question of the estimation of the elementary models which
+    compose the polymodels, a novel technique, the Linear-Non-Linear-Mixed model,
+    is presented in Chap. [3](519851_1_En_3_Chapter.xhtml). The LNLM model proposes
+    to regularize the non-linear part of a polynomial model by mixing it with a linear
+    model. The resulting shrinkage of non-linearity is obtained by a customized usage
+    of Stratified Cross-Validation. Simulations showed both the effectiveness of the
+    LNLM model to reduce over-fitting as well as good performances in terms of computation
+    time. This last point is particularly important since some of the applications
+    presented in the book required several billion model estimations. LNLM was thus
+    revealed to be an appropriate solution to work in a big data framework, on top
+    of being successfully used to produce the predictions of Chaps. [4](519851_1_En_4_Chapter.xhtml),
+    [5](519851_1_En_5_Chapter.xhtml) and [6](519851_1_En_6_Chapter.xhtml).
+  prefs: []
+  type: TYPE_NORMAL
+- en: Polymodels estimated by the LNLM model are shown throughout the book to be useful
+    for financial applications, however, these tools are quite general, and can be
+    used in any field in which applied mathematics find interest. The prediction methods,
+    as they ultimately capture behavioral biases which prevent market efficiency,
+    also have the potential to be applied in any financial market and are not restricted
+    to the equity market.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The simple model we presented for describing the returns of a portfolio invested
+    in the stock market should be enriched. If fed properly by incorporating the vast
+    number of predictors which exist in the literature, it can become an extremely
+    powerful framework for constructing predictions. The aggregation function omega
+    is scalable in the form presented in the book, but it should evolve in a more
+    general direction, for example by being estimated through a deep neural network
+    in order to benefit from the latter’s property of being a universal function approximator.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The results of the book again confirm the absence of market efficiency. We have
+    proved the possibility of consistently beating the market, but bearing in mind
+    the perspectives that the framework we established offers, the book is clearly
+    only a first draft of what is achievable regarding the prediction of financial
+    markets.
+  prefs: []
+  type: TYPE_NORMAL
+- en: These results strongly support the usefulness of Polymodel Theory among other
+    artificial intelligence methods for the general sake of modeling.
+  prefs: []
+  type: TYPE_NORMAL

@@ -1,0 +1,289 @@
+- en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2022T.
+    Barrau, R. DouadyArtificial Intelligence for Financial MarketsFinancial Mathematics
+    and Fintech[https://doi.org/10.1007/978-3-030-97319-3_1](https://doi.org/10.1007/978-3-030-97319-3_1)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 1. Introduction
+  prefs:
+  - PREF_H1
+  type: TYPE_NORMAL
+- en: Thomas Barrau^([1](#Aff5)  ) and Raphael Douady^([2](#Aff6))(1)AXA Investment
+    Managers Chorus Ltd, Hong Kong, Hong Kong S.A.R.(2)Economic Center, University
+    Paris 1 Sorbonne, Paris, France
+  prefs: []
+  type: TYPE_NORMAL
+- en: Abstract
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: As polymodels are introduced as an artificial intelligence technique for the
+    prediction of financial markets, we begin the book by presenting a simple framework
+    to produce these predictions. We start with a concise literature review on the
+    prediction of stock returns. A simple model is then presented, and we explain
+    how contributing to the model actually coincides with contributing to the literature.
+    We finally develop the plan of the book, which answers each of the different points
+    evocated about the literature of financial market prediction.
+  prefs: []
+  type: TYPE_NORMAL
+- en: KeywordsPolymodel theoryPrediction frameworkModelingStock marketFinancial markets
+  prefs: []
+  type: TYPE_NORMAL
+- en: '1.1 Financial Market Predictions: A Concise Literature Review'
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: The possibility of making predictions of financial markets was first suggested
+    by Bachelier ([1900](#CR4)), who used a random walk to model the price changes
+    of commodities and stocks. The modeling of financial markets following a random
+    walk implies the validity of the efficient market hypothesis (see Samuelson, [1965](#CR24)),
+    which states that asset prices reflect all available information, leading to the
+    impossibility of predicting price changes (Fama, [1965](#CR9)). These seminal
+    works, undisputed at the time, are now partly invalidated by a large literature
+    coming from different fields such as economics, applied mathematics, and the econophysics
+    of psychology, which tackle the question of the prediction of financial markets
+    from various different angles.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Although there may be several approaches to pursuing the goal of “beating the
+    market” consistently, perhaps the most obvious one is to simply predict the returns
+    of a given stock index.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Economists proposed to use various macroeconomic variables as predictors of
+    the market returns. Although their studies may suffer from some form of overfitting,
+    Rapach et al. ([2010](#CR22)) showed that combinations of the forecasts made by
+    these variables make it possible to consistently predict the market. Furthermore,
+    their results are based on out-of-sample data, thus pointing to the structural
+    stability of the macroeconomic roots of the equity premium. In a following study
+    (Neely et al., [2014](#CR19)), this macroeconomic approach is completed by the
+    use of technical indicators based on trend, momentum and volume.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Others focused on the analysis of extreme market events: the prediction of
+    crashes. Following a physics-inspired approach,^([1](#Fn1)) Sornette developed
+    a model based on the identification of a power law trend in the prices, inevitably
+    leading to an unsustainable bubble, and thus, a crash (Johansen et al., [2000](#CR17);
+    Sornette, [2009](#CR25)). Market crashes have also been predicted using a variety
+    of correlation-based methods (see for example Patro et al., [2013](#CR21); Zheng
+    et al., [2012](#CR26); Douady & Kornprobst, [2018](#CR8); Harmon et al., [2011](#CR13)).^([2](#Fn2))'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'All these prediction methods, whether they are concentrated on predicting common
+    or extreme events, even though they use very different approaches, share a common
+    aim: providing reliable predictions about the future market returns.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: However, even in-sample, the returns of the market provide an insufficient description
+    of the variance of each stock return. It has been shown that the industry component
+    also matters (King, [1966](#CR18)), and the specific component of the stock returns,
+    i.e. the part that does not depend on the market or the industry, is even more
+    important (Roll, [1988](#CR23)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: Just like the market returns, the industry returns have also been shown to be
+    predictable, for example by exploiting the momentum anomaly, which states that
+    past high (low) industry returns are followed by future high (low) industry returns
+    (O’Neal, [2000](#CR20)). Since there are several industries, it is also possible
+    to predict industry returns in a cross-sectional fashion, using industry characteristics
+    (Asness et al., [2000](#CR3)). In this paper, Asness also demonstrates that it
+    is possible to perform cross-sectional predictions of specific returns, however,
+    most of the papers dedicated to the cross-section of stock returns do not control
+    for industry exposures.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The most important milestone in this literature may be the seminal paper of
+    Fama and French ([1993](#CR10)), which introduces a three-factor linear model
+    to explain the cross-section of stock returns. This model was completed in 2015
+    by the same two authors (Fama & French, [2015](#CR11)), leading to a five-factor
+    model that takes into account the beta of the firm (its sensitivity to the market
+    returns), its size (the market capitalization), a value factor (the book to market
+    ratio), its (operating) profitability and its investment pattern (aggressive versus
+    conservative investment behavior of the firm). Although it is not included in
+    the model, the momentum anomaly is also an important explanatory factor of the
+    cross-section of stock returns (see Carhart, [1997](#CR7); Jegadeesh & Titman,
+    [1993](#CR15)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: This approach of describing the cross-section of stock returns by a linear multi-factor
+    model has been extended so much that there are now dozens to hundreds of factors
+    recognized by the literature (see, for example, Green et al. ([2014](#CR12)) and
+    Hou et al. ([2017](#CR14)) for an assessment of the reliability of the different
+    factors). It also shaped the asset management industry, in which the so-called
+    “risk premia”^([3](#Fn3)) funds tend to emerge as a new asset class, investing
+    in a passive manner into these factors (Bender et al., [2014](#CR5)). What used
+    to be called “alpha”, in the sense of Jensen ([1968](#CR16)), is now simply considered
+    as risk factors, making these strategies comparable to “beta” investing, i.e.
+    passive investing in the market. Following the approach of predicting (“timing”)
+    the market, a literature finally emerged on the question of timing the returns
+    of the risk factors (see Bender et al., [2018](#CR6); Asness et al., [2017](#CR1)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: 1.2 A Simple Model of Portfolio Returns
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Ultimately, although they rely on very different approaches, the works mentioned
+    above all aim to produce expectations about the future stock returns. However,
+    to the best of our knowledge at the time of writing, a single framework that combines
+    all these kinds of predictions does not exist in the literature. We propose such
+    a simple, descriptive model below. Note that that the goal of the model is efficiency.
+    It does not aim to propose an economic explanation of the stock returns.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'We start by returning to the distinction, proposed by Roll ([1988](#CR23)),
+    among the three main components of the stock return: a market component, an industry
+    component and a firm-specific component.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: This distinction can be formalized by the following formula:![$$ {r}_a={\omega}_a\left({r}_M,{r}_I,{r}_S\right).
+    $$](../images/519851_1_En_1_Chapter/519851_1_En_1_Chapter_TeX_Equ1.png)(1.1)*Here,
+    r*[*a*] *is the stock return of a given stock “a”, while r*[*M*]*, r*[*I*]*, and
+    r*[*S*] *are respectively the market return, the industry return and the specific
+    return for this stock. Note that the definition of the function ω*[*a*]() *has
+    been avoided at this stage for the sake of generality.*
+  prefs: []
+  type: TYPE_NORMAL
+- en: It is clear from the literature that the industry and the specific returns can
+    be explained (respectively) by the cross-sections of industry and firm characteristics
+    (size, value, quality, etc). Following Fama and French ([1993](#CR10), [2015](#CR11)),
+    for each characteristic we can form a portfolio, so that the stock returns are
+    expressed as a function of the factors’ portfolio returns.
+  prefs: []
+  type: TYPE_NORMAL
+- en: For example, we can create a portfolio that invests in the momentum anomaly.
+    This portfolio, if constructed long/short, would be long the past winners and
+    short the past losers, and to some extent may neutralize the exposure to the market
+    returns. Hereafter we refer to the returns of this momentum factor portfolio as
+    “*r*[*mom*]”. Note that the portfolio can be constructed with the same stocks
+    in order to invest on the cross-section of industry or specific returns only.
+    Indeed, we can neutralize the industry exposure of a portfolio, or its specific
+    exposure by an appropriate long/short construction (see Asness et al., [2014](#CR2))
+    for an example of such a portfolio construction). Hence, we adopt the name “*r*[*mom,I*]”
+    for the returns of the portfolio which invests in the momentum anomaly through
+    the cross-section of industries while being neutralized at the specific level.
+    Similarly, “*r*[*mom,S*]” designates the returns of the portfolio which invests
+    in the momentum anomaly through the cross-section of specific returns while being
+    neutralized at the industry level.
+  prefs: []
+  type: TYPE_NORMAL
+- en: However, there are numerous anomalies identified in the literature, both at
+    the industry and specific level. We define the industry and specific sets of *all*
+    the relevant factors (known and unknown) as follows:![$$ {\mathcal{F}}_I=\left\{{r}_{mom,I},{r}_{size,I},{r}_{value,I},{r}_{quality,I},\dots
+    \right\}, $$](../images/519851_1_En_1_Chapter/519851_1_En_1_Chapter_TeX_Equa.png)![$$
+    {\mathcal{F}}_S=\left\{{r}_{mom,S},{r}_{size,S},{r}_{value,S},{r}_{quality,S},\dots
+    \right\}. $$](../images/519851_1_En_1_Chapter/519851_1_En_1_Chapter_TeX_Equ2.png)(1.2)Assuming
+    that these factors are able to completely describe the industry and firm characteristics,
+    we can put![$$ {r}_I={\eta}_I\left({\mathcal{F}}_I\right) $$](../images/519851_1_En_1_Chapter/519851_1_En_1_Chapter_TeX_Equ3.png)(1.3)and![$$
+    {r}_S={\eta}_S\left({\mathcal{F}}_S\right), $$](../images/519851_1_En_1_Chapter/519851_1_En_1_Chapter_TeX_Equ4.png)(1.4)in
+    which ![$$ {\mathcal{F}}_{\mathrm{I}} $$](../images/519851_1_En_1_Chapter/519851_1_En_1_Chapter_TeX_IEq1.png)
+    and ![$$ {\mathcal{F}}_{\mathrm{S}} $$](../images/519851_1_En_1_Chapter/519851_1_En_1_Chapter_TeX_IEq2.png)
+    are combined using their associated functions *η*[*I*] and *η*[*S*] to form the
+    industry and specific returns. Substituting these into Eq. ([1.1](#Equ1)) leads
+    to![$$ {r}_a={\omega}_a\left({r}_M,{\eta}_I\left({\mathcal{F}}_I\right),{\eta}_S\left({\mathcal{F}}_S\right)\right).
+    $$](../images/519851_1_En_1_Chapter/519851_1_En_1_Chapter_TeX_Equ5.png)(1.5)Note
+    that if we represent each stock return as a combination of the returns of several
+    factor portfolios, we can also represent a portfolio “*P*”, composed of a total
+    number of *b* stocks, as a combination of the factor portfolios. Hence, the returns
+    of such a portfolio would be:![$$ {r}_P=\sum \limits_{a=1}^b{\omega}_a\left({r}_M,{\eta}_I\left({\mathcal{F}}_I\right),{\eta}_S\left({\mathcal{F}}_S\right)\right)\times
+    {w}_a, $$](../images/519851_1_En_1_Chapter/519851_1_En_1_Chapter_TeX_Equ6.png)(1.6)in
+    which *w*[*a*] is the weight of the stock “*a*” in the portfolio. The weighted
+    sum of individual combination functions ω[a] being just a veil, masking that we
+    ultimately invest in factor portfolios, we may reformulate the portfolio’s returns
+    as follows:![$$ {r}_P={\varOmega}_P\left({r}_M,{\mathcal{F}}_I,{\mathcal{F}}_S\right),
+    $$](../images/519851_1_En_1_Chapter/519851_1_En_1_Chapter_TeX_Equ7.png)(1.7)where
+    *Ω*[*P*] is the combination function of sub-portfolios used to construct the portfolio
+    *P*. An appropriate definition of *Ω*[*P*] would reflect to some extent the weighting
+    (potentially non-linear) among factors that are captured by the combination functions
+    *ω*[*a*], *η*[*I*] and *η*[*S*].
+  prefs: []
+  type: TYPE_NORMAL
+- en: Nevertheless, respecting the average stock decomposition would lead to a portfolio
+    statically exposed to the returns of the different factors. Maximizing *r*[*p*]
+    would require a dynamic adjustment of the exposures according to some criterion
+    in order to benefit from timing the factor performances. For example, we should
+    go short the market portfolio if we have information from a market-timing strategy
+    that the market is about to enter into a bearish period. The combination function,
+    properly defined, would thus be able to identify the proper proportions of the
+    factor portfolios as well as to time their performances.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'We propose below a basic example of what the return of a portfolio invested
+    in well-known factors would be, following a simple, linear specification of omega:![$$
+    {r}_{simple\_ portfolio}={\beta}_M{r}_M+{\beta}_{mom}{r}_{mom}+{\beta}_{size}{r}_{size}+{\beta}_{value}{r}_{value},
+    $$](../images/519851_1_En_1_Chapter/519851_1_En_1_Chapter_TeX_Equ8.png)(1.8)in
+    which the betas are some weighting coefficients, which can be obtained using a
+    linear model from historical data, for example. Such a naïve portfolio construction
+    is easily achievable nowadays by investing in “smart beta” products (Bender et
+    al., [2014](#CR5)).Following the framework we proposed, superior portfolio performances,
+    which add value on top of the simple portfolio above, may come from three sources:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Identifying unknown factors, known as “alphas”, which explain industry or specific
+    returns.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Timing the performance of the sub-portfolios, through factor or market timing.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Properly assembling the different sub-portfolios, i.e. properly defining the
+    weighting in omega.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: The present book adds to the literature of financial market predictions by proposing
+    contributions to all three of these sources using polymodels.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 1.3 Plan of the Book
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'We propose novel methods to predict the financial markets. As stated, these
+    methods are principally based on Polymodel Theory, a non-linear framework of analysis
+    classified as an artificial intelligence method. The book is composed of eight
+    chapters: an introduction; two chapters devoted to the presentation of techniques;
+    four chapters which use these techniques to produce applications; and a conclusion.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Since they have only recently appeared in the literature, polymodels are described
+    in the second chapter of the book. While staying quite general, we explain the
+    overall interest of the method, which allows one to reduce overfitting and simultaneously
+    increase precision, compared to standard multivariate alternatives.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The third chapter is dedicated to the estimation method we use for the polymodels,
+    called “Linear Non-Linear Mixed” (LNLM), which uses cross-validation to regularize
+    the non-linear part of the model. We consider in this chapter the theoretical
+    performance of the LNLM model through a large panel of simulations.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The fourth chapter describes an application of Polymodel Theory to market timing.
+    We see in this chapter that a polymodel allows one to capture the correlation
+    structure the market maintains with its economic environment in a non-trivial
+    manner, leading to a predictive signal of the direction of market returns.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The fifth chapter considers the prediction of the industry returns. Although
+    we do not directly use a polymodel, we still rely on non-linear modeling by LNLM
+    to reveal that non-linearity is priced in the cross-section of industries, in
+    the form of an antifragility factor. The factor is shown to be an investable alpha.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The sixth chapter is about the prediction of the specific returns. We propose
+    direct predictions of the specific returns using polymodels and offer techniques
+    to take into account the correlations of the predictors while aggregating the
+    multiple predictions of the polymodel. The predictions we obtain are confirmed
+    to be a significant signal.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In the seventh chapter we combine the signals which predict the market, industry
+    and specific returns into a single portfolio. The combination is performed using
+    another artificial intelligence method, namely a genetic algorithm, allowing us
+    to maximize the returns of the final portfolio, net of transaction costs.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The concluding chapter summarizes the results.
+  prefs: []
+  type: TYPE_NORMAL

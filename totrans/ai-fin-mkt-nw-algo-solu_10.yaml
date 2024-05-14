@@ -1,0 +1,909 @@
+- en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2023F.
+    Cecconi (ed.)AI in the Financial Markets Computational Social Sciences[https://doi.org/10.1007/978-3-031-26518-1_10](https://doi.org/10.1007/978-3-031-26518-1_10)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 10. Opinion Dynamics
+  prefs:
+  - PREF_H1
+  type: TYPE_NORMAL
+- en: 'Luca Marconi^([1](#Aff16) [ ](#ContactOfAuthor1))(1)Advanced School in Artificial
+    Intelligence, Brain, Mind and Society, Institute of Cognitive Sciences and Technologies,
+    Italian National Research Council, Via San Martino Della Battaglia 44, Rome, ItalyLuca MarconiEmail:
+    [luca.marc@hotmail.it](mailto:luca.marc@hotmail.it)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Abstract
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'The computational social science is a challenging interdisciplinary field of
+    study, aimed at studying social phenomena by merging the traditional research
+    of social science with the use of a computational and data-driven approach. In
+    the conceptual framework of the complex systems science the environment where
+    these phenomena live and act can be seen as a social system, composed of many
+    elements, the agents, which form a social complex network: thus, the agents can
+    be represented by the nodes of a network, whose reciprocal positions determine
+    the resulting network structure. Therefore, the complex systems science perspective
+    proves particularly useful in order to study the interactions occurring in a social
+    environment: as a matter of fact, these mechanisms give rise to emergent collective
+    behaviors at the system level. Hence, the aim of the computational social science
+    is to study the different interaction mechanisms so as to understand their role
+    in the rise of the collective social phenomena. In order to perform effective
+    and robust studies, plenty of models have been proposed, ranging from general
+    social dynamics and social spreading to crowd behavior and opinion, cultural or
+    language dynamics, or hierarchy or segregation formation. In this context, opinion
+    dynamics is definitively a fundamental social behavior to study. By everyday experience,
+    one of the most important social phenomenon is agreement: especially when it comes
+    to a discussion involving different opinions, the process of reaching at least
+    a partial agreement proved to be a basic catalyst of the evolution of the human
+    thinking during time. From the dynamics of the single individuals’ interactions
+    to the opinion dynamics in large populations, there are many situations in the
+    social and political life in which a community needs to reach a consensus. Through
+    a process of progressive agreements on different themes, some opinions spread,
+    some others disappear and some others evolve through merging and non-linear memetic
+    processes: in this way, the dominant macro-culture is formed and evolves in a
+    society. Therefore, opinion dynamics models can be seen as a sub-set of the so-called
+    consensus models. In general, a consensus model allows to understand if and how
+    a set of interacting agents can reach a consensus when choosing among several
+    options: political vote, opinions, cultural features are well-known examples of
+    them. The agent-based modelling methodology proves particularly useful to represent
+    the individuals’ behavior and analyze the population dynamics. In the literature,
+    plenty of models are aimed at studying opinion dynamics: each model proposed can
+    often be modified with various variants. In this chapter, we will present the
+    overall scenario of opinion dynamics, by showing the main challenges and approaches
+    to study and analyze consensus formation in heterogeneous settings and conditions.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: KeywordsOpinion dynamicComputational social scienceSociophysicsLuca Marconi
+  prefs: []
+  type: TYPE_NORMAL
+- en: is currently PhD Candidate in Computer Science at the University of Milano-Bicocca,
+    in the research areas of Artificial Intelligence and Decision Systems, as well
+    as Business Strategist and AI Researcher for an AI company in Milan. He also gained
+    experience as Research Advisor and Consultant for a well-known media intelligence
+    and financial communication private consultant in Milan. He holds a master of
+    science and a bachelor of science degrees in Management Engineering, from the
+    Polytechnic University of Milan, and a master of science degree in Physics of
+    Complex Systems, from the Institute of Cross-Disciplinary Physics and Complex
+    Systems of the University of the Balearic Islands (IFISC UIB-CSIC). He also holds
+    a postgraduate research diploma from the Advanced School in Artificial Intelligence,
+    Brain, Mind and Society, organized by the Institute of Cognitive Sciences and
+    Technologies of the Italian National Research Council (ISTC-CNR), where he developed
+    a research project in the Computational Social Science area, in collaboration
+    with the Laboratory of Agent Based Social Simulation of the ISTC-CNR. His research
+    interests are in the fields of artificial intelligence, cognitive science, social
+    systems dynamics, complex systems and management science.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 10.1 Introduction to Opinion Dynamics
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'Opinion dynamics aims at studying, modelling and evaluating in a formal and
+    mathematical the process of the evolution of *opinions* in the course of heterogeneous
+    social *interactions* among *agents* (Xia et al. [2011](#CR39); Zha et al. [2020](#CR40)).
+    While this field of study is definitively not recent in the literature, its popularity
+    has nowadays grown up: indeed, the increasing interest in *complex systems* and
+    *computational social science* (Lazer et al. [2009](#CR27); Conte et al. [2012](#CR12))
+    is definitively stimulating the advancement of such discipline, as well as its
+    application in a wide range of concrete real-world scenarios, e.g. in politics,
+    sociology and also in finance. In this perspective, opinion dynamics strives to
+    model the complex phenomena occurring during the interactions among agents, which
+    give rise *to emerging behaviors* at the system’s level: generally, the agents
+    are interconnected by the means of some simple or complex *social network*, allowing
+    some specific interactions, *coordination* and *information exchange* processes
+    (Patterson and Bamieh [2010](#CR32); Fotakis et al. [2018](#CR17)). Such mechanisms
+    are inherently bounded and limited in their nature, orienting the underlying dynamics
+    and thus allowing scholars and researchers to focus their study towards specific
+    phenomena and situations: in the computational social science perspective, then,
+    the challenge is to effectively model the interaction mechanisms, so as to understand
+    their role in the rise of *collective social phenomena*.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In this conceptual framework, opinion dynamics studies the opinion evolution
+    processes among groups of agents, socially and physically organized in some sort
+    of social network. By everyday experience, one of the most important social phenomenon
+    is the *agreement*, or *consensus*: especially when it comes to a discussion involving
+    different opinions, the process of reaching at least a partial agreement proved
+    to be a basic catalyst of the evolution of the human thinking during time. Its
+    importance was already pointed out by philosophy and logic, from Heraclitus to
+    Hegel, with the *thesis-antithesis* conceptualizations. There are many situations
+    in the social and political life in which a community needs to reach a consensus.
+    Through a process of progressive agreements on different themes, some opinions
+    spread, some others disappear and some others evolve through merging and non-linear
+    *memetic processes* (Mueller and Tan [2018](#CR28); Nye [2011](#CR31)): in this
+    way, the dominant macro-culture is formed and evolves in a society. Therefore,
+    the mathematical and statistical study of the different social and cultural phenomena
+    involved in the evolution of opinions in social communities proves to be significant
+    for helping practitioners, decision-makers, managers and stakeholders in heterogenous
+    organizations to improve and optimize decision-making processes under a wide range
+    of potential real-case situations.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In opinion dynamics, the process of designing, adapting, choosing and evaluating
+    the right model under specific static or evolving conditions and boundaries requires
+    a twofold view: on the one hand, it is necessary to model the single, precise,
+    *local* interactions among agents in social groups, usually physically or socially
+    *neighbors* or “similar” to some extent. The concepts of *neighborhood*, *similarity*,
+    capability or specific *thresholds* to be respected for allowing the interaction
+    should be accurately established and pre-defined. In general, the local interactions
+    among agents are modeled by the so-called *update rules*, encapsulating the specific
+    mechanisms and relationships while taking into consideration the network features
+    and structures where the agents act and interact. Simple, circumscribed local
+    interactions and knowledge exchange processes give rise to *global*, general,
+    emerging behaviors at the whole social network level (Bolzern et al. [2020](#CR5);
+    Giardini et al. [2015](#CR19)). Thus, one of the main aim of opinion dynamics
+    is to study and analyze the way and the overall time required by a social system
+    to reach the consensus, under several *boundary conditions*. Generally, the final
+    state rends to assume one of three classical *stable states*: consensus, *polarization*
+    and *fragmentation* (Zha et al. [2020](#CR40)). As everybody’s daily experience
+    suggests, in social communities or interactions, there is no guarantee that a
+    consensus is always reached: in some cases, two final opinions emerge, polarizing
+    the population to two clusters, or, in other cases, no leading opinions appear,
+    thus the population opinions are fragmented in a certain number of clusters. Therefore,
+    opinion dynamics takes into consideration some specific conceptual elements for
+    constructing effective and complete models: the opinions expression formats, i.e.
+    how the opinions are expressed and modeled (e.g. continuous, discrete, binary
+    etc.), the opinion evolution rules, namely the update rules governing the system
+    dynamics, and the opinion dynamics environment, that is the social network enclosing
+    the agents under specific, circumscribed social or physical relationships.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: In this chapter, we will present the overall scenario of opinion dynamics, by
+    showing the main challenges and approaches to study and analyze consensus formation
+    in heterogeneous settings and conditions. We will start by contextualizing the
+    general conceptual framework of computational social science, as a means to effectively
+    study and analyze social phenomena, then we will present a tentative classification
+    of the main opinion dynamics models in the literature, which is useful for our
+    scope. Thereafter, such models will be generally described, with the aim to highlight
+    the main characteristics and behaviors considered. Finally, their advantages and
+    potential applications to the financial domain will be highlighted, in order to
+    help the reader appreciate and understand this fascinating discipline’s potentialities
+    for real, concrete and current financial situations and environments.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 10.2 The Computational Social Science Perspective
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'The *computational social science* (CSS) is a challenging and promising highly-interdisciplinary
+    field of study, aimed at studying potentially any *social phenomena* by merging
+    the traditional research of social science with the use of a computational and
+    *data-driven* approach (Lazer et al. [2009](#CR27); Conte et al. [2012](#CR12)).
+    Then, CSS is focused on allowing social scientists to make use of quantitative,
+    objective, *data-centered* methodologies to integrate their classical and traditional
+    qualitative research with the incoming evidences deriving from quantitative analysis
+    of social phenomena in real-world social contexts and communities. The data exploited
+    to design and evaluate the computational models can come from heterogeneous *data
+    sources*, e.g. social media, the Internet, other digital media, or digitalized
+    archives. Then, CSS is inherently interdisciplinary and multi-faceted: it allows
+    to make inferences regarding human and social behaviors by the application of
+    a wide and evolving range of methodologies and approaches, like statistical methods,
+    *data mining* and *text analysis* techniques, as well as *multi-agent systems*
+    and *agent-based models*. On the other hand, the possible applicative fields range
+    from cultural and political sociology to social psychology, up to economics and
+    demographics.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In the conceptual framework of complex systems science, the environment where
+    these phenomena live and act can be seen as a *social complex system*, composed
+    of many elements, the *agents*, which form a *social complex network*: thus, the
+    agents can be represented by the nodes of a network, whose reciprocal positions
+    determine the resulting network structure. The creation and adaptation of the
+    “right” and most “useful” network structure proves to be a fundamental step in
+    the design and development of CSS methods and algorithms. The different relationships
+    occurring among the nodes can allow to produce some general and emerging behavior
+    in the whole network. Then, the complex systems science perspective proves particularly
+    useful in order to study the interactions generated and evolving in a social environment:
+    these mechanisms give rise to *emergent collective behaviors* at the system level.
+    Thus, some property of the whole network stems from the various relationships
+    occurring among the nodes. Being a complex system, the emergent behaviors cannot
+    be inferred from the single agent behaviors or properties, according to the Aristotle’s
+    quote “The whole is more than the sum of the parts” (Grieves and Vickers [2017](#CR23);
+    Aristotle and Armstrong [1933](#CR1)). In any social system, the interactions
+    among the agents have a pivotal role in all the social processes, ranging from
+    *decision-making* and *collaboration* in organizations, to opinion dynamics and
+    *perception* in social populations, up to *cultural evolution* and *diffusion*
+    in large human societies. Therefore, the main challenge for CSS is to recognize,
+    analyze and predict the evolution of heterogenous social behaviors and phenomena
+    deriving from the social interactions among the agents involved.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Overall, CSS has to deal with two main macro-issues: the *socio-computational*
+    and the *algorithmic-modelling* issues. The former is related to the general needs
+    and challenges related to CSS, e.g. the integration of qualitative social research
+    with data analysis and computational approaches, as well as the need to assess
+    and model the agents’ *coordination*, interactions and social processes in different
+    conditions and social situations. The interactions and coordination processes
+    can involve *information* or *knowledge production* and *sharing* among the agents,
+    exactly like in the opinion dynamics models, resulting in the presence or absence
+    of a *final state* at the network level, e.g. some consensus or *synchrony* in
+    the whole system. The latter issues, instead, are related to the specific problems
+    and algorithmic issues related to the design and modelling of the different interaction
+    mechanisms, with the aim to understand their role in the rise of the collective
+    social phenomena. Similarly, the role of information and knowledge creation and
+    exchange have to be algorithmically investigated, due to their significant role
+    in orienting the social and cultural evolution of human populations. The subsequent
+    steps to be faced is the choice, design, implementation and evaluation of the
+    right model, adapted and even extended in the specific case and social dynamics
+    involved.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In the literature, the models proposed deal with many different kinds of social
+    phenomena and processes, ranging from general *social dynamics* (González et al.
+    [2008](#CR21); Balcan et al. [2009](#CR3)) and *social spreading* (Conover et
+    al. [2011](#CR11); Gleeson et al. [2014](#CR20)), to *crowd behavior* (Helbing
+    [2001](#CR25)) and opinion dynamics (Holley and Liggett [1975](#CR26); Granovsky
+    and Madras [1995](#CR22); Vazquez et al. [2003](#CR36); Castellano et al. [2003](#CR7);
+    Vilone and Castellano [2004](#CR37); Scheucher and Spohn [1988](#CR34); Clifford
+    and Sudbury [1973](#CR10); Fernández-Gracia et al. [2014](#CR16)), *cultural dynamics*
+    (Axelrod [1997](#CR2)), *language dynamics* (Baronchelli et al. [2012](#CR4);
+    Castelló et al. [2006](#CR9)), *hierarchy* (Bonabeau et al. [1995](#CR6)) and
+    *segregation formation* in social populations. The general macro-approach involved
+    exploits the dichotomy between *micro* and *macro* levels in the complex social
+    system considered: the models generally focus on few and simple mechanisms included
+    in the system, orienting the local interactions among the agents, so as to study
+    the variation of the social dynamics in response to basic interaction rules, thus
+    eliciting the single contribution of a specific phenomenon to the collective behavior
+    of the social system. By the specific inclusion and adaptation of social mechanisms
+    at the local level, the models are able to reflect the increasing complexity of
+    real-world social situations, allowing practitioners and scholars to both focus
+    on some specific mechanism and assess the overall emerging behaviors and phenomena
+    in the global network.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: In this general perspective, now we proceed by focusing on opinion dynamics
+    and the main models presented in the literature. We will start by depicting the
+    general scenario of opinion dynamics, by showing a possible classification of
+    the different approaches in the state-of-the-art. Then, we will follow the proposed
+    classification strategy to focus on the different models and mechanisms, to make
+    the reader appreciate their relevance in social settings and, finally, in concrete
+    financial applications.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 10.3 Classification of Opinion Dynamics Models
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Opinion dynamics models are widely diffused and popular in the literature, in
+    the conceptual and disciplinary framework of computational social science, mathematical
+    and *statistical physics-based* modelling of human behavior (Castellano et al.
+    [2009](#CR8); Perc et al. [2017](#CR33)), as well as complex systems. The rise,
+    evolution, adaptation and modifications of models are definitively ongoing processes
+    in the state-of-the-art, thus providing a comprehensive and complete classification
+    is challenging. To our scope, we aim to allow reader to orient himself or herself
+    in the set of traditional, basic and fundamental models we will report in the
+    next sections. The final aim is to let the reader appreciate their specific advantages
+    or potential applications when it comes to finance and its challenges. Therefore,
+    this work is surely not intended as an exhaustive review of the models in the
+    literature.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'To provide a useful classification for our scopes, we consider two main dimensions:
+    *dimensionality* and *tipology* of opinions. Indeed, on the one hand opinions
+    can be represented by *one-dimensional or multi-dimensional* vectors (Sîrbu et
+    al. [2017](#CR35)); on the other hand, the vectors modelling the opinions can
+    be either *discrete* or *continuous* (Zha et al. [2020](#CR40); Sîrbu et al. [2017](#CR35)).
+    Multi-dimensional opinions can be useful when modelling agents characterized by
+    a set of *characteristics* or *features* of their whole opinions. This happen
+    in the case of the Axelrod model (Sîrbu et al. [2017](#CR35)), where the agents
+    are endowed with different cultural features modeling the different believes or
+    attitudes of the individuals in the population. Instead, one-dimensional, classical
+    opinion dynamics model are widely used to study opinion dynamics in different
+    conditions and population, focusing on specific kinds of opinions and on their
+    evolution according to the rules governing the system. Moreover, opinions can
+    be either discrete or continuous. In the former case the components of the opinion
+    vector can only assume discrete values, thus encapsulating a finite number of
+    possible states, while in the latter case the components of the opinion vectors
+    are continuous, assuming values in the domain of real numbers (with any specific
+    constraints, if needed). Finally, in the literature there are also hybrid models,
+    where the different possibilities are mixed according to the specific social phenomena
+    or behaviors to study and simulate, e.g. in the CODA (continuous opinions and
+    discrete actions) model (Zha et al. [2020](#CR40); Sîrbu et al. [2017](#CR35))
+    we will report.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Of course, there could be several other ways to provide a classification methodology
+    for studying and appreciating the different opinion dynamics models in the literature.
+    In particular, it could be possible to consider other significant differentiation
+    elements, specifically the types of *stable states* reached in the consensus formation
+    process, as well as the agents’ behaviors, the social phenomena studied, or even
+    the kind of social network exploited. In any case, it could be possible to construct
+    arbitrary classifications or categorizations of the many models in the literature
+    by focusing on the presence or absence of specific modelling factors. Notably,
+    the role of *information representation* and *information sharing* could be fundamental
+    to further explore the possible classifications of opinion dynamics models, especially
+    when it comes to the role of *external information*, namely deriving from information
+    sources that are external respect to the system population (e.g. mass media broadcast).
+    Nevertheless, we decided to make the classification chosen as simple as possible,
+    to focus on the main fundamental models and their application in finance, as anticipated
+    before.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In Fig. [10.1](#Fig1), we schematically represent the different models according
+    to the presented classification.![](../images/524458_1_En_10_Chapter/524458_1_En_10_Fig1_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4 quadrant illustration of dynamics models. The top is continuous, the left
+    is 1 dimensional, the bottom is discrete, and the right is multi-dimensional.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 10.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: Classification positioning map of the main opinion dynamics models
+  prefs: []
+  type: TYPE_NORMAL
+- en: 10.4 Continuous Opinion Models
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'Let us start by presenting the main opinion dynamics models with one-dimensional
+    and continuous opinions. These models are widely exploited in the literature to
+    analyze and stimulate real-world scenarios, where opinions related to a specific
+    subject (in a one-dimensional way) are not discrete or binary, but they vary on
+    a continuous scale, with specific boundaries or limitations when needed. In the
+    literature, the main models in such category are the De Groot model (Degroot [1974](#CR15);
+    Das et al. [2014](#CR13)) and the bounded confidence models: the Deffuant-Weisbuch
+    model (Weisbuch et al. [2002](#CR38); Deffuant et al. [2000](#CR14)) and the Hegselmann-Krause
+    model (Hegselmann and Krause [2002](#CR24)).'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**De Groot Model**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'This is a classical opinion dynamics models, widely studied as a basic approach
+    for more advanced models or extensions. According to De Groot, the *opinion formation*
+    process and their dynamics are defined according to a *linear combination* of
+    the initial opinions of the interacting agents. Then, let us consider the set
+    of the agents ![$$A=\{{a}_{1},{a}_{2},\dots ,{a}_{m}\}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq1.png)
+    and let ![$${o}_{i}^{t}\in R$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq2.png)
+    be the opinion of agent ![$${a}_{i}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq3.png)
+    at round ![$$t$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq4.png).
+    As the model uses a linear combination for defining the evolving opinions of the
+    agents, we introduce the weight ![$${w}_{ij}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq5.png)
+    the agent ![$${a}_{i}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq6.png)
+    assigns to agent ![$${a}_{j}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq7.png),
+    where the conditions ![$${w}_{ij}\ge 0$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq8.png)
+    and ![$${\sum }_{j=1}^{m}{w}_{ij}=1$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq9.png)
+    must be satisfied. Then, the De Groot model exploits the following update rule,
+    governing the evolution of the opinion of agent ![$${a}_{i}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq10.png):![$${o}_{i}^{t+1}={w}_{i1}{o}_{1}^{t}+{w}_{i2}{o}_{2}^{t}+\dots
+    +{w}_{\mathfrak{I}}{o}_{m}^{t}t=\mathrm{0,1},2,\dots$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_Equa.png)This
+    update rule is definitively equivalent to:![$${O}^{t+1}=W\times {O}^{t}t=\mathrm{0,1},2,\dots$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_Equb.png)Or,
+    alternatively:![$${O}^{t}=W\times {O}^{\left(t-1\right)}={W}^{2}\times {O}^{\left(t-2\right)}=\dots
+    ={W}^{t}\times {O}^{0},$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_Equc.png)where
+    ![$$W={\left({w}_{ij}\right)}_{m\times m}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq11.png)
+    is a row-stochastic weight matrix encapsulating the different weights employed
+    by the agents, where ![$${W}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq12.png)
+    is its ![$$t$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq13.png)-th
+    power, and ![$${O}^{t}={\left({o}_{1}^{t},{o}_{2}^{t},\dots ,{o}_{m}^{t}\right)}^{T}\in
+    {R}^{m}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq14.png).
+    This model is inherently linear and it is traceable over time. It is an iterative
+    averaging model and the consensus can be reached: according to De Groot, if there
+    is a time ![$$t$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq15.png)
+    such that every element in at least one column of the matrix ![$${W}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq16.png)
+    is positive, then it is possible to reach the consensus. In other words, a consensus
+    can be reached if there exists a power ![$$t$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq17.png)
+    of the weight matrix when ![$${W}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq18.png)
+    has a strictly positive column. Due to its simplicity and linearity, the De Groot
+    model presents several extensions in the literature: these are the so-called DeGrootian
+    models (Degroot [1974](#CR15); Noorazar et al. [2020](#CR30); Noorazar [2020](#CR29)).
+    One of the most diffused ones is the *Friedkin-Johnsen* model (Noorazar [2020](#CR29);
+    Friedkin and Johnsen [1990](#CR18)), which include *stubborn agents* in the system,
+    by considering a parameter representing the *susceptibility* of each individual
+    agent, namely the level of *stubbornness*.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**Bounded Confidence Models**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The bounded confidence models can be seen as extensions of the De Groot model,
+    where the agents interact according to a given *threshold* of the distance between
+    their opinions and where the weights change over time or with the opinions of
+    the agents. The main idea is the relevance of the *distance* between the opinions
+    as determining the occurrence of the interactions: if the difference between two
+    considered agents is below a given threshold, then the agents will interact and
+    their opinions will possibly change, otherwise they definitively do not consider
+    each other because the two ideas are too far from each other. If the threshold
+    assumes the same value for all the agents, then the bounded confidence model is
+    *homogeneous*; otherwise, the model is *heterogeneous*. The two main bounded confidence
+    models are the Deffuant-Weisbuch model, wich is a *pairwise* model, and the Hegselmann-Krause
+    model, which is the mostly diffused *synchronous* version.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '***Deffuant-Weisbuch Model***'
+  prefs: []
+  type: TYPE_NORMAL
+- en: In the Deffuant model, at each discrete time step two neighboring agents are
+    randomly selected from the agent set ![$$A=\{{a}_{1},{a}_{2},\dots ,{a}_{m}\}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq19.png)
+    and they interact in a pairwise manner. Only if their opinion difference is below
+    a given threshold ![$$\varepsilon$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq20.png),
+    the result of the interaction is a sort of compromise toward each other’s opinion.
+    Otherwise, there is no modification in their opinion. Then, if ![$$\left|{o}_{i}^{t}-{o}_{j}^{t}\right|\leq\varepsilon$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq21.png),
+    the agents will interact and change their opinions, otherwise they will not interact.
+    In the case the interaction happens, the update rule for the agent i is the following
+    one:![$${o}_{i}^{t+1}={o}_{i}^{t}+\mu \left({o}_{j}^{t}-{o}_{i}^{t}\right),$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_Equd.png)while
+    the update rule for the agent j is:![$${o}_{j}^{t+1}={o}_{j}^{t}+\mu \left({o}_{i}^{t}-{o}_{j}^{t}\right).$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_Eque.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Then, in this model there are two main parameters to take into consideration:
+    the *convergence parameter* ![$$\mu$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq22.png),
+    also called *cautiousness parameter*, which governs the speed of convergence,
+    or, in other words, the capability of an agent to be influenced by the opinion
+    of another agent in the population; and the *confidence radius* ![$$\varepsilon
+    ,$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq23.png) namely
+    the threshold governing the actual capability of an agent to interact with another
+    agent in the population. The Deffuant-Weisbuch model is extensively studied in
+    many conditions related to the two parameters. According to the different situations
+    and values assumed by the two parameters, the model can lead to the three possible
+    stable states: consensus, polarization and fragmentation. In particular, in the
+    special case ![$$\mu =\frac{1}{2}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq24.png),
+    the outcome of the interaction will be a complete agreement at the average of
+    their previous opinions. Several extensions are found in the literature, considering
+    aspects like the presence of *noise*, the kind of agents interacting and specific
+    boundaries or conditions on the values of the parameters.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '***Hegselmann-Krause Model***'
+  prefs: []
+  type: TYPE_NORMAL
+- en: This is the most well-known and diffused synchronous version of bounded confidence
+    model. Again, there are many versions of this model. Our aim is just to present
+    the most simple and used one, so as to allow the reader to appreciate the potentialities
+    of this approach for real-world applications. The most simple update rule here
+    is given by:![$${o}_{i}^{t+1}=\frac{1}{\left|{N}_{i}^{t}\right|}\sum\limits _{j\in
+    {N}_{i}^{t}}{o}_{j}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_Equf.png)where
+    ![$${N}_{i}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq25.png)
+    is the set of neighbor of agent ![$$i$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq26.png)
+    at time ![$$j$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq27.png),
+    including the agent ![$$i$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq28.png)
+    itself, where the condition ![$$\left|{o}_{j}^{t}-{o}_{i}^{t}\right|\le r$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq29.png)
+    is respected, namely where, again, the difference between the opinions of the
+    possibly interacting agents is below a given threshold. This model is studied
+    with specific attention to the neighbors’ opinion dynamics and their convergence
+    properties, even in an extended multi-dimensional case.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 10.5 Discrete Opinion Models
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'These models are widely used to explore and analyze real-life situations where
+    opinions assume a discrete range of possible states. In general, many models assume
+    binary opinions, at least in their initial version of the model, with several
+    extensions to multiple discrete opinions in further versions. Often such models
+    are exploited to study and simulate political scenarios, as in the case of Trump’s
+    victory. Again, our aim here is not to cover all the models designed and applied
+    in the literature of opinion dynamics, rather to present the most important and
+    basic models used as a basis for more complicated and advanced approaches: the
+    idea is to introduce the reader to the many potentialities of these approaches
+    for finance, which we will explore in the last section of this chapter.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**Voter Model**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: The voter model is one of the most classical and simplest discrete opinion dynamics
+    models. As the name suggests, it has been widely applied to the study of electoral
+    competitions and political systems. Let us consider a population of ![$$c$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq30.png)
+    agents and let ![$$A=\left\{{a}_{1},{a}_{2},\dots ,{a}_{n}\right\}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq31.png)
+    be the set of the agents in the population, with ![$${o}_{i}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq32.png)
+    is the opinion of the agent ![$$i$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq33.png)
+    at time ![$$t$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq34.png),
+    assuming a binary state, namely ![$${o}_{i}^{t}=1$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq35.png)
+    or ![$${o}_{i}^{t}=-1$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq36.png).
+    Then, at each time ![$$t$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq37.png)
+    a random agent ![$${a}_{i}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq38.png)
+    is selected. Then, a second random agent ![$${a}_{j}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq39.png)
+    is chosen and the opinion ![$${o}_{i}^{t+1}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq40.png)
+    of agent ![$${a}_{i}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq41.png)
+    will assume the value of ![$${o}_{j}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq42.png),
+    namely ![$${o}_{i}^{t+1}={o}_{j}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq43.png).
+    In this way, after the interaction the agent ![$$i$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq44.png)
+    effectively adopts the state of the randomly chosen neighbor. In this model, there
+    are two possible final consensus states and the final state reached in the population
+    depends on the initial distributions of the opinions of the agents. This model
+    has been widely and extensively studied in populations of agents located in two-dimensional
+    regular lattices. Moreover, many studies are related to ![$$d$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq45.png)-dimensional
+    hyper-cubic lattices. In an infinite system, it has been proved that consensus
+    is reached for ![$$d\le 2$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq46.png).
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**Sznajd Model**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The idea behind the Snajzd model can be effectively conveyed by the simple
+    motto “united we stand, divided we fall”. In other words, this model encapsulates
+    two specific social behaviors that can occur in social systems, at the neighborhood
+    level: *social validation* and *discord destroys*. The former regards the propagation
+    of a specific opinion among neighbors: if two (or more) agents in the neighborhood
+    share the same opinion, then their neighbors will agree with them, i.e. the opinion
+    will propagate and become dominant in this neighborhood. The former, instead,
+    regards the fragmentation of the opinions in the neighborhood: if two (or more)
+    agents disagree, namely they have opposite opinions, then their neighbors will
+    argue with them, as each agent will change their opinion until they will not agree
+    with their adjacent neighbor. In a more formal way, let ![$${o}_{i}^{t}=1$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq47.png)
+    or ![$${o}_{i}^{t}=-1$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq48.png)
+    be the opinion of the agent ![$${a}_{i}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq49.png)
+    at time ![$$t$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq50.png).
+    The update rules governing the evolution of the opinions are the following:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '1.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: At each time ![$$t$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq51.png)
+    a pair of agents ![$${a}_{i}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq52.png)
+    and ![$${a}_{i+1}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq53.png)
+    are randomly chosen and their neighbors are ![$${a}_{i-1}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq54.png)
+    and ![$${a}_{i+2}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq55.png).
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: '2.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: If ![$${a}_{i}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq56.png)
+    and ![$${a}_{i+1}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq57.png)
+    share the same opinions, it will be propagated to ![$${a}_{i-1}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq58.png)
+    and ![$${a}_{i+2}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq59.png),
+    i.e. if ![$${o}_{i}^{t}={o}_{i+1}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq60.png)
+    then ![$${o}_{i-1}^{t+1}={o}_{i+2}^{t+1}={o}_{i}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq61.png).
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: '3.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: If ![$${a}_{i}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq62.png)
+    and ![$${a}_{i+1}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq63.png)
+    do not share the same opinions, the different opinions will be propagated to the
+    agent neighbors, namely if ![$${o}_{i}^{t}={-o}_{i+1}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq64.png)
+    then ![$${o}_{i-1}^{t+1}={o}_{i+1}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq65.png)
+    and ![$${o}_{i+2}^{t+1}={o}_{i}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq66.png).
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: '**Ising Model**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: The Ising model is a well-known and extensively studied model in physics, one
+    of the most classical approaches in statistical mechanics to analyze the *phase
+    transitions* in ferromagnetic materials. In the field of opinion dynamics, it
+    has been studied to model social interactions in situations where the agents have
+    binary opinions, represented by *spins*, which can be *up* or *down*. This choice
+    can seem inherently limited, but it proved to be useful in real-life situations
+    where people have to deal with a choice between two opposite options regarding
+    a specific topic. Spin couplings are used to represent peer interactions among
+    the agents. Furthermore, the model also considers another element, which is external
+    information (e.g. media promotion), represented by the magnetic field in the model.
+    Thus, the energy of interaction, called ![$$E=-J{o}_{i}{o}_{j}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq67.png)
+    represents the degree of conflict between the agents, where ![$${o}_{i}=\pm 1$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq68.png)
+    and ![$${o}_{j}=\pm 1$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq69.png)
+    represent the agents’ spins, corresponding to states up and down, respectively,
+    and ![$$J$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq70.png)
+    is an energy coupling constant, denoting the interaction strength among agents.
+    Moreover, there is an interaction energy ![$$E=-H{o}_{i}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq71.png)
+    between the opinions and the external information. The former interaction energy
+    will be minimal when two agents share the same opinions, while the latter is minimized
+    when the opinion and the external field share the same value.
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**Majority Rule Model**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: This model was introduced by Galam to study the use of majority rule in the
+    evolution of opinion dynamics in social systems. In this case, a randomly selected
+    group of ![$$r$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq72.png)
+    agents is chosen in the agent population, with all the opinions being binary.
+    Then the majority rule is employed to update the opinions and, finally, all the
+    process starts again with other randomly chosen agents. In the literature, many
+    versions of the update rules and conditions has been studied. In the Galam version,
+    the opinion ![$${o}_{k}^{t+1}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq73.png)
+    of the agent ![$${a}_{k}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq74.png)
+    at the time ![$$t+1$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq75.png)
+    will be equal to ![$$1$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq76.png)
+    if ![$${\sum }_{i=1}^{r}{o}_{i}^{t}/r&gt;0.5$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq77.png),
+    while ![$${o}_{k}^{t+1}={o}_{k}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq78.png)
+    if ![$${\sum }_{i=1}^{r}{o}_{i}^{t}/r&lt;0.5$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq79.png)
+    and ![$${o}_{k}^{t+1}=0$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq80.png)
+    in all the other possible cases. The work by Galam was significant to enhance
+    and stimulate the study of opinion dynamics in hierarchical systems and decision-making
+    in political and electoral systems in several conditions, including the presence
+    of coalition or fragmentation between opinions among agents in the population.
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**Granovetter’s Threshold Model**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: This is one of the most famous threshold models, investigating the possible
+    presence and role of a critical threshold in the number of agreeing decision-makers,
+    which, if reached, determines the realization of a consensus. In this model, each
+    agent has a certain activation threshold determining his or her choice of actively
+    participating within a collective behavior, e.g. a specific political decision
+    or decision-making process. This threshold basically depends on the number of
+    other agents that the specific individual should observe participating before
+    deciding to join the group and the process. Then, a population of ![$$N$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq81.png)
+    agents, each individual is provided with a particular threshold defining the number
+    of participating agents needed before the considered individual decides to take
+    part to the decision-making process and collective behavior. The study of such
+    thresholds in heterogeneous conditions and populations allows to predict the final
+    state of the opinions in the population.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 10.6 Hybrid Models
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Besides discrete and continuous classical opinion dynamics models, in the literature
+    it is possible to find several hybrid approaches, mixing different kinds of opinions
+    or merging heterogeneous models, with the aim to mutually reinforce the methods
+    included and exploit their synergies. The hybridization of different model can
+    be either a way to study certain behaviors or mechanisms in a larger and more
+    comprehensive framework, also to effectively create a method able to better simulate
+    them in a real-world application or scenario. In this short section, we briefly
+    present the Continuous Opinions and Discrete Actions (CODA) model, providing a
+    explanatory approach for hybridization of discrete and continuous elements in
+    opinion dynamics.
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**CODA Model**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: In this model, the agents deal with binary decisions, thus representing the
+    (very usual) situation where an individual faces two conflicting opposite opinions
+    to choose. Then, each agent ![$$i$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq82.png)
+    has to pick one choice between two discrete (binary) opinions. In this scenario,
+    it is reasonable to assume that each agent ![$$i$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq83.png)
+    would choose one of the two alternatives with a probability ![$${p}_{i}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq84.png).
+    The CODA approach helps to model such probability, allowing to model the degree
+    of choosing a certain discrete opinion, under specific conditions. Then, we have
+    a variable representing the two opposite choices, namely ![$$x=\pm 1$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq85.png),
+    and all the agents are represented on a square lattice with a continuous probability
+    ![$${p}_{i}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq86.png)
+    denoting the degree of agreement to the opinion ![$$+1$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq87.png),
+    while the probability ![$$1-{p}_{i}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq88.png)
+    corresponds to the extent of agreement to the opinion ![$$-1$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq89.png).
+    The agents choose a discrete opinion by using a threshold ![$${\sigma }_{i}=sign\left({p}_{i}-1/2\right)$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq90.png).
+    Moreover, each agents states which choice is preferred, thus informing the others.
+    All the agents only see the discrete opinion of the others and change the corresponding
+    probability according to their neighbors, by the means of a specific Bayesian
+    update rule, with the aim to stimulating and favoring agreement in the neighborhood.
+    The interaction among the neighbors can happen according to different schemas,
+    either a Voter model one, where each agent interacts with one neighbor at each
+    step, or a Sznajd model one, where two neighbors are able to influence the other
+    ones. In any cases, the model shows the emergence of extremism even without extreme
+    opinions at the beginning. Several extensions of the model have been studied,
+    e.g. the presence of migration in the agents social network, namely the possibility
+    for the agents to move and change their position respect to the other agents in
+    the network. Other cases include the inclusion of a third possible opinion allowed,
+    as well as the possibility to provide the agents with some “awareness” of the
+    effect they produce on the other individuals. Finally, it is worth to mention
+    the possibility to include some “trust” in the system, by making each agent able
+    to judge the other ones, categorizing them into “trustworthy” and “untrustworthy”.
+    In each case, the possible emergence of consensus or polarization is studied under
+    several heterogeneous conditions.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Besides the CODA model, many other hybrid approaches have been investigated
+    and explored in the literature, ranging from models taking into account also the
+    past relationships of the agents during their interaction, to attempts of creating
+    hybrid continuous-discrete dynamics, even to models striving to include cognitive
+    or psychological phenomena or behaviors into the structure or into the interactions
+    among the agents. In order to fully exploit the potentialities of some models,
+    sometimes they are extended to multiple dimensions of opinions. Indeed, until
+    now we only considered one-dimensional models, which prove to be effective in
+    many real-world scenarios and concrete applications. Nevertheless, many situations
+    require more than one dimensions to adequately represent the full range of the
+    opinions considered: thus, it is worth to mention multi-dimensional opinion dynamics
+    models.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 10.7 Multi-dimensional Opinions
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: In the widespread scenario of opinion dynamics models and approaches, it is
+    necessary and worth to mention the multi-dimensional case, enabling the design,
+    development and application of several methods, either specifically created for
+    these situations or extended from the one-dimensional case. At a first glance,
+    such models could appear somehow strange or useless in real-world scenarios. Instead,
+    such models are particularly appliable and necessary when the opinions of the
+    agents in the population are composed and influenced by a series of heterogeneous
+    variables, representing their features or characteristics, related to different
+    sociological, political or cultural traits, influencing and composing the whole
+    opinion. Then, the use of multi-dimensional models can be even more realistic
+    or useful than for real-life complex scenarios, where agents, their opinions and
+    characteristics are complex and related to several dimensions. Consequently, plenty
+    of studies in the literature are focused on exploring such models, often extending
+    and adapting the one-dimensional classical cases, as it happens for bounded confidence
+    models. Among the aspects that are particularly studied in the literature, there
+    are the change in *confidence levels*, the model *convergence*, *robustness* and
+    *stability* in heterogeneous conditions influencing the appearance of consensus,
+    polarization or segmentations of the opinions in the population. In this short
+    section, we briefly present the main aspects of the well-known Axelrod model,
+    where the agents are endowed with different cultural features modeling their beliefs
+    or attitudes.
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**Axelrod Model**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: This model was introduced for culture dynamics, to study and simulate the culture
+    formation and evolution processes. In the population, two main sociological phenomena
+    are included, namely homophily and social influence. The former refers to the
+    preference for interacting with similar peers, thus agents characterized by a
+    set of similar features. Homophily is a common sociological phenomenon and it
+    can lead to the emergence of clusters in the population of the interacting agents,
+    in many kinds of social networks and social communities. The latter, instead,
+    refers to the tendency of the individual to become more similar after their interaction,
+    thus it is the ability to mutually influence each other in the curse of the interaction.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In the population of ![$$N$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq91.png)
+    individuals, each agent has a culture modeled by ![$$F$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq92.png)
+    variables, thus there is a vector ![$$\left({\sigma }_{1},\dots ,{\sigma }_{F}\right)$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq93.png)
+    of cultural features. Each of them can assume ![$$q$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq94.png)
+    discrete values, which are the traits of the different features, where ![$${q}_{f}=\mathrm{0,1},\dots
+    ,q-1$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq95.png).
+    This structure is definitively useful to effectively and immediately model a set
+    of different beliefs, behaviors or attitudes of the agents. An interaction between
+    two agents ![$$i$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq96.png)
+    and ![$$j$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq97.png)
+    occurs according to the probability of interaction ![$${o}_{ij}=\frac{1}{F}{\sum
+    }_{f=1}^{F}{\delta }_{{\sigma }_{f\left(i\right),}{\sigma }_{f\left(j\right),}}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq98.png)
+    where ![$$\delta$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq99.png)
+    is Kronecker’s delta. Then, according to such probability, if the interaction
+    happens, one of the features is selected and ![$${\sigma }_{f\left(j\right)}={\sigma
+    }_{f\left(i\right)}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq100.png)
+    is set. Otherwise, the interaction does not occur and the two agents maintain
+    their features, respectively. This model lead a randomly-initialized population
+    to two possible absorbing states: either a sort of consensus, namely an ordered
+    states where the agents share traits, or a sort of segmentation, where multiple
+    clusters of different traits co-exist in the population. The final state specifically
+    depends on the initial number of the possible ![$$q$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq101.png)
+    initial traits: if ![$$q$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq102.png)
+    is small, the interaction among agents with similar traits is easier, thus consensus
+    can be reached. Instead, for larger ![$$q$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq103.png),
+    there are not enough similar traits shared, thus the interaction between similar
+    agents is not ale to create and maintain growing cultural domains. Of course,
+    the study of the phase transition between the two possible states is particularly
+    significant. On regular lattices, such phase transition appears at a critical
+    ![$${q}_{C}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq104.png),
+    depending on the number ![$$F$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq105.png)
+    of the features in the population.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Of course, such model has been extensively analyzed, adapted and extended in
+    the literature. Overall, it has a simple rather significant structure for studying
+    both cultural dynamics and opinion dynamics at the presence of multi-dimensional
+    variables able to describe complex opinions or cultural features. Thus, such model
+    lends itself to many possible adaptations, modifications or even extensions to
+    more general structures. Among the possible modified versions, it is relevant
+    to mention the cases of modification of the update rule, e.g. always allowing
+    to choose a pair of interacting agents, instead of randomly selecting them. Other
+    interesting models exploit the so-called *cultural drift*, namely external *noise*
+    influencing the formation of cultural clusters and the appearance of consensus.
+    Finally, it is also possible to change the attitudes of the agents toward the
+    change in their opinion, e.g. including some threshold for the overlap, determining
+    when the agents will disagree, as well as including *committed individuals* that
+    will not change their opinion in any case.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 10.8 Applications to Finance
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Opinion dynamics is widely applied in finance, in business and organizational
+    studies. Let us remind that the financial market is inherently a complex systems,
+    where a large set of human agents interact, exchange information, trade and create
+    groups with internal dynamics. This is the basic concept to take into consideration
+    when striving to comprehend the many possible applications of opinion dynamics
+    and, in general, mathematical modeling of social behavior, to the financial domain.
+    Moreover, it is also necessary to recall that such agents are endowed with heterogeneous
+    properties, e.g. related to their *cultural*, *sociological* or *demographic*
+    features, as well as different *strategies of investments* and *risk propensity*.
+    These characteristics and behaviors at the *micro*- and *meso*-level give rise
+    to emergent phenomena, influencing the evolution of the financial market and,
+    in general, of the whole society. In this context, opinion dynamics proved to
+    be a useful methodological and mathematical tool to model the structure of social
+    networks in the financial domain, simulate the range of possible behaviors and
+    study emergent and collective phenomena in real-world situations. While in the
+    financial situations it is common to exploit binary models, allowing to study
+    the cases where the agents have to choose between two opposite actions, it is
+    generally possible to find applications of the already presented basic models
+    or their extensions, as well as newly created models, specifically designed to
+    analyze particular situations or scenarios.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Among the models presented, the Ising one is one of the most commonly applied
+    to the financial domain, both in its original version and in specifically designed
+    extensions for finance. In this case, it is necessary to limit the study to the
+    binary case, which is not a problem as this is a typical scenario in the real-world
+    applications of opinion dynamics and in finance. The Ising model can be used to
+    model the interactions and *trading strategies* among *bullish* and *bearish*
+    traders, in an environment acting with external forces influencing the interactions
+    and behaviors of the agents. Moving a step forward, there are extensions able
+    to better represent the forces at work in this case: in particular, the Ising
+    model basic elements can be extended to also take into consideration the so-called
+    *mutual influences*, namely the i*nteraction strength* or the influence of the
+    decision of a trader to some other one, but also the *external news* or other
+    possible external forces influencing the trader decisions and possible trader
+    characteristics or traits. Other possible extensions of the Ising model enlarge
+    the range of the potential trader choice, allowing the agents to decide whether
+    to buy, sell or not to act. Therefore, the Ising model proved to be useful both
+    for modeling the agents features and the forces influencing their interactions,
+    as well as to model the kind of actions the traders can perform, thus giving rise
+    to a wide set of possible simulations of financial situations and scenarios.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The Sznajd model can allow to better understand and study some specific characteristics
+    of the opinion dynamics in the case of trader groups. Indeed, such groups, as
+    many other social systems, are affected by *herding* behaviors, where some *followers*
+    emulate the decisions of a *leader*. As the Sznajd model represents the social
+    phenomena of *social validation* and *discord destroys*, this method can encapsulate
+    some common and typical social mechanism that usually are present in the financial
+    markets. Indeed, when there are some *local gurus* with the authority, the experience
+    and the communication ability and channels to influence its local neighbors, then
+    many market participants in that group are *trend followers*: they will make their
+    decisions and order placements according to the opinion of their local guru. On
+    the contrary, when such gurus are not present in the neighborhood, the trend followers
+    will act randomly and there is not a dominant opinion prevailing in the system.
+    Moreover, there could be *rational traders* added to the model: these traders
+    have an exact knowledge of the level of demand and supply in the market, thus
+    they are able to calculate the way to exactly place their orders.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Similarly, the voter model was applied to the financial domain to study the
+    social behaviors in local neighborhoods when it comes to the diffusion and evolution
+    of financial choices and actions among traders. The possible applications regard
+    the use of the voter model to study the states of the agents on the market: buy,
+    sell or no action. Other applications stud*y* the *entropy fluctuations behaviors*
+    in the financial market by the means of voter-based models. One of the most significant
+    applications of the voter model employs the so-called *social temperature*, which
+    represents the market temperature, influencing the *persuasiveness* of some agents
+    groups and, subsequently, the uncertainty of the agents’ investment strategies.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: The use of the basic models is significant to analyze the behaviors of the agents
+    in complex financial and social environments, thus allowing to simulate and understand
+    the market evolution, as well as phenomena like *market trends*, particular *bubbles*
+    or *crashes* occurring in the market history. Thus, such models are able to let
+    the researchers and scholars appreciate and examine the different kinds of *phase
+    transitions*, *stable states* and the general evolution of the markets under several
+    heterogeneous conditions. Nevertheless, there are many possible extensions of
+    the basic models, as well as specifically designed models to capture some particular
+    financial situations and mechanisms or aspects. One primary extension is the use
+    of continuous models, instead of the simple and common discrete binary opinions
+    and time. In addition, the level of complexity can be increased by considering
+    both opinion and *information exchange* among the agents. As the structure of
+    the models include more elements than in the most classical and basic methods,
+    it can be appropriate to exploit *analytical* solutions of the models, based on
+    the use of *differential equations*, instead of the numerical and computer simulations.
+    All these possibilities are generally present in the so-called *kinetic models*,
+    which are used for studying the evolution of speculative markets, or the mechanism
+    of *price formation* and changing and risk propensity. Instead, other models try
+    to merge the agent-based and classical opinion dynamics methodology to the use
+    of machine learning, in a data-driven and more computational way. Such synergy
+    gives rise to probabilistic models to study opinion dynamics by the means of the
+    use of a wide set of probabilistic parameters, which can be useful to study the
+    opinion evolution processes in complex stochastic situations. From the analytical
+    point of view, in this case often the *stochastic differential equations* are
+    employed, as well as neural network structures, to help study the nonlinear dependencies
+    and opinion dynamics in the social networks.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Overall, opinion dynamics is a highly promising methodological tool to help
+    scholars, researchers and practitioners to deeply understand the market structures
+    and evolution, to capture relevant and hidden social and financial phenomena and
+    predict the future market states in a wide range of potential applications and
+    situations. We are convinced that further studies of such methods, especially
+    in synergy with the many computational potentialities of machine learning and
+    deep learning, will shed light on many social and financial mechanisms, thus allowing
+    to take a step forward toward the comprehension of one of the more fascinating
+    complex systems, deeply affecting our everyday life.
+  prefs: []
+  type: TYPE_NORMAL

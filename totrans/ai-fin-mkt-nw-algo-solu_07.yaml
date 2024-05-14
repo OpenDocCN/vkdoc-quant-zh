@@ -1,0 +1,493 @@
+- en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2023F.
+    Cecconi (ed.)AI in the Financial Markets Computational Social Sciences[https://doi.org/10.1007/978-3-031-26518-1_7](https://doi.org/10.1007/978-3-031-26518-1_7)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7. ML Application to the Financial Market
+  prefs:
+  - PREF_H1
+  type: TYPE_NORMAL
+- en: 'Riccardo Vasellini^([1](#Aff16) [ ](#ContactOfAuthor1))(1)Universitá di Siena,
+    Siena, ItalyRiccardo VaselliniEmail: [r.vasellini@student.unisi.it](mailto:r.vasellini@student.unisi.it)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Abstract
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: The globe is being swamped by data, and the rate of fresh data gathering is
+    increasing exponentially. This was not the case only two decades ago, and even
+    if there were technological constraints to the use of machine learning, the lack
+    of data to feed the algorithms constituted an additional obstacle. Furthermore,
+    if acquiring precise and meaningful data results in too high a cost, it may be
+    more cost-effective to acquire data that is not directly related to the financial
+    phenomena we need to analyze, a so-called alternative dataset. The ultimate purpose
+    of alternative data is to provide traders with an informational advantage in their
+    search for trading signals that yield alpha, or good investment returns that are
+    unrelated to anything else. A strategy may be based purely on freely available
+    data from search engines, which ML systems could then correlate to some financial
+    occurrence.
+  prefs: []
+  type: TYPE_NORMAL
+- en: KeywordsAIMachine learningRiccardo Vasellini
+  prefs: []
+  type: TYPE_NORMAL
+- en: PhD candidate with a background in civil, environmental, and management engineering.
+    I’m currently studying at the University of Siena’s Department of Information
+    Science, majoring in the topic of Complex Systems. In the scientific world, my
+    objective is to use Agent Based Modelling and Artificial Intelligence to get significant
+    insights into Complex Systems. I feel that studying Emergent Phenomena and Systems
+    Dynamics is vital for making sound decisions. While studying on my Doctorate,
+    I work as a Project Manager in a variety of industries, including Real Estate
+    Development, Real Estate Portfolio Management, Renewable Energies, and Tourism.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.1 Introduction
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: The last decade has witnessed a significant increase in data storage and collection
+    in numerous industries, including the financial sector. This enabled financial
+    institutions, investors, insurance companies, and anybody with an interest in
+    the movement of stocks, derivatives, and interest rates to use Machine Learning
+    techniques that previously lacked the computational capacity and data to be utilized
+    effectively.
+  prefs: []
+  type: TYPE_NORMAL
+- en: AI and ML can be applied to a wide variety of financial sectors, including portfolio
+    strategy formulation, fraud and unlawful activity detection, risk assessment and
+    management, legal compliance, algorithmic trading, etc.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In this chapter we will presents examples of applications found in literature.,
+    modelling techniques and paradigms of ML in finance. We will conclude assessing
+    the limits and dangers of using these techniques and what the future ahead looks
+    like.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.2 Fundamentals
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'Machine Learning can be grouped in three main area: Supervised, Unsupervised
+    and Reinforcement Learning.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Supervised learning is probably the simplest form of ML, linear regression is
+    an example of one of its algorithms and it has been used for decades before the
+    terms “AI” or “ML” even appeared. Other than linear regression, supervised learning
+    comprehends also other algorithms, such as Logistic regression, Decision Trees,
+    K-Nearest neighbour, Support Vector Machines, Neural Networks. The main characteristic
+    is that of using a dataset containing labels associated to the features of the
+    data points. The whole point is to find a function able to map the data points
+    features to their respective labels after training the algorithm to do so with
+    part of the labelled data. This paradigm assumes that we have knowledge of the
+    answers we are looking for. Once trained and tested the map found by the algorithm
+    can be used on unlabelled data. This can be done either for classification or
+    regression problems.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Unsupervised learning involves recognising patterns within data. It usually
+    entails searching for clusters, or groupings of similar findings. ML algorithms,
+    in practice, associate similar things together, where the similarity is often
+    expressed in terms of distance from a cluster centre. A good algorithm is agnostic
+    to the scale of the data, therefore it’s common to employ feature scaling techniques
+    such as z-score normalization or min–max methods. The most used clustering technique
+    is the k-means clustering, however other techniques such as distribution based,
+    density based or hierarchical clustering are used.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Reinforcement learning revolves around multi step decision making. An agent
+    takes actions based its estimate of rewards and costs taken in the environment
+    he is in, which is described by a series of states, typically as a Markov Decision
+    Process. The reward (net of costs) is calculated using the Q-function, and a particular
+    action is the best if it lead to a state with the highest Q-value. An important
+    concept is that of exploration, an “intelligent agent” has always the possibility
+    to perform a random action, this is done in order to not get stuck into exploiting
+    a state that provides rewards without exploring different states that might lead
+    to better outcomes. The agent doesn’t need labelled data.
+  prefs: []
+  type: TYPE_NORMAL
+- en: What is fuelling the adoption of ML is not only the access to these new techniques
+    presented. The world is being submerged by data, and the rate of acquisition of
+    new data grows exponentially. This was not the case only two decades ago, and
+    even if there were technological restrictions to the application of machine learning,
+    the lack of data to feed the algorithms imposed an additional barrier. Moreover,
+    when gathering accurate and valuable data results too expensive, it might be more
+    cost-effective to acquire data that is not directly connected to the financial
+    phenomena we need to analyse, a so-called alternative dataset. The ultimate goal
+    of alternative data is to give traders an informational edge in their search for
+    trading signals that produce alpha, or positive investment returns that aren't
+    linked to anything else (Jensen [2018](#CR8)). A strategy might be entirely built
+    on freely available data from search engines, which might be correlated to some
+    financial phenomenon by ML algorithms. As an example, think of the hedge fund
+    Cumulus, which simply used weather data to trade farming companies.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Finally, by combining ML algorithms, contemporary computer power, and a massive
+    quantity of data It is possible to construct strong applications for the financial
+    sector, which we will now explore.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.3 Applications
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 7.3.1 Portfolio Management
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: 'Since being presented by Markowitz in 1952, the mean–variance optimization
+    (MVO) has been the main paradigm upon which build portfolios. MVO success is strictly
+    linked to that of quadratic programming (QP), that makes solving MVO straightforward
+    (Jensen [2018](#CR8)). One alternative proposed is that of the risk budgeting
+    approach, where, put simply, the portfolio has risk budgets for each asset type
+    and we try to allocate assets risks according to these budgets. This approach
+    dominates MVO in various field of PO. Unfortunately, it usually involves dealing
+    with non-linearities making it hard to solve. However, in the same way ML evolved
+    in the latest years, also PO evolved, while QP was chosen for its easy computational
+    approach nowadays a whole new set of algorithms, more computationally expensive,
+    are used. Among these we find algorithms developed for large scale ML problems:
+    coordinate descent, alternating direction method of multipliers, proximal gradient
+    and Dykstra’s algorithm. Using these algorithms allows for surpassing the QP paradigm
+    and delve into a whole new set of models not limited by linearity. The future
+    of PO is to use these ML algorithms to develop new PO models, or simply use already
+    developed ones which are now computationally more approachable then in the past.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: As an example, for this approach, Ban, El Karoui and Lim (Perrin [2019](#CR11))
+    proposed in 2018 a performance-based regularization (PBR) and performance based
+    cross-validation models to solve portfolios optimizations problems in order to
+    go beyond the estimation issues resulting from applying classical methods to real
+    data. Regularization is a technique used for decades to solve issues revolving
+    around problems set as linear but for which, in reality, small variations of the
+    constants of the problem lead to big deviations in the solution. In practice is
+    a type of regression that constrains or reduces the estimated coefficients to
+    zero. Thus, it prevents the risk of overfitting, by discouraging the learning
+    of a more complicated model. In practice reduces the variance of the model without
+    increasing too much its bias.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The authors regularize a portfolio optimization problem with the purpose of
+    improving the out-of-sample performance of the solution. To achieve this, they
+    constrain the sample variances of the portfolio risk and mean. The goal is to
+    create a model which find a solution to the portfolio problem (whether it is the
+    traditional problem or the CVaR one) with very low bias and high out-of-sample
+    performance.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'On another paper (Jensen [2018](#CR8)), Perrin and Roncalli, individuate what
+    can be considered the four most important algorithms for portfolio optimizations:
+    coordinate descent, alternating direction method of multipliers, the proximal
+    gradient method and the Dijkstra’s algorithm. The authors assess that the success
+    of the MVO paradigm lies in the absence of competing implementable models. The
+    reasons individuated are hard to estimate parameters and complex objective functions,
+    using a combination of the four-algorithm mentioned allows for framework able
+    to consider allocation models outside of the QP form.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Finally, an innovative approach is presented by Ban et al. ([2018](#CR1)). The
+    authors try to tackle the problem of data heterogeneity and environmental uncertainty
+    in portfolio management. They do so using Reinforcement Learning. Specifically,
+    to include heterogeneous data and improve resilience against environmental uncertainty,
+    their model (State-Augmented RL, SARL) augments asset information with price movement
+    predictions, which may be exclusively based on financial data or obtained from
+    nontraditional sources such as news. Tested against historical data for Bitcoin
+    prices and High-Tech stock market they validate this method showing simulated
+    results for both total and risk adjusted profits.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In general, ML paired with computing power advances, is allowing scientists
+    and professional to test model less bounded by quantitative restrictions, solutions
+    once impractical are becoming within reach.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.3.2 Risk Management
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Risk Management (RM) has seen an increase in the adoption of both new and old
+    models that deal with a large number of variables and data thanks to the use of
+    ML algorithms which now can find answers in an acceptable amount of time.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Risk permeates the world of finance and beyond. We will examine how machine
+    learning is used to some of its most prevalent declinations.
+  prefs: []
+  type: TYPE_NORMAL
+- en: When dealing with credit risk knowing the probability that a debtor will repay
+    is crucial knowledge for financial institutes (or a lender in general). This is
+    particularly hard when dealing with SME or retail investors for which the data
+    available are sparse and sometimes inaccurate. The general idea of the various
+    models that can be found in literature is that using ML is possible to find patterns
+    in the behavior of these small borrowers using data which are not traditionally
+    linked to predicting credit risk (Ban et al. [2018](#CR1)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: Another area where ML is thriving, is assessing the credit risk of a complex
+    derivate object such as credit default swap (CDS). For these objects a deep learning
+    approach has shown better results than traditional, in their research Son, Byun
+    and Lee models (Ye et al. [2020](#CR19)) showed the parametric models they used
+    consistently had better prediction performance than the benchmark models and,
+    among all the models used, ANN showed the best results.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Currently, the primary use of machine learning for managing risk when trading
+    in markets is the validation of proposed models via back testing on vast amounts
+    of data. Another key application is understanding how trading will affect an illiquid
+    market, hence altering the price of the traded asset. The difficulty of high-volume
+    trading of a single asset can be circumvented by employing machine learning algorithms
+    to identify similar assets.
+  prefs: []
+  type: TYPE_NORMAL
+- en: An interesting application within this framework is from Chandrinos, Sakkas
+    and Lagaros (Lynn et al. [2019](#CR10)). These researches developed a tool that
+    uses ML as a risk management tool for investments. Specifically, the investigation
+    is centred on the categorization of the signals generated by a trading strategy
+    into those that are successful and those that are not profitable through the use
+    of artificial neural networks (ANN) and decision trees (DT). To do this they use
+    two previously proposed currency portfolios and using their Artificial Intelligent
+    Risk Management System (AIRMS) improve their performance by reducing the losses
+    rather then increasing the gains. In their back tests not only did the two methods
+    employed (DT and ANN) boosted the profitability of the portfolios, but they also
+    significantly improved their sharpe ratio by decreasing their standard deviation.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Another application is that of Sirignano, Sadhwani and Giesecke (Son and Lee
+    [2016](#CR15)), who used a deep learning model to analyse data of over 120 millions
+    mortgages issued in the US between 1995 and 2014\. Trying to understand the probabilities
+    of certain borrowers behaviour and the risk of incurring in a non performing loan,
+    they looked at various variables, financial as well as macroeconomic. They were
+    able to conclude that one of the most relevant factors in predicting the success
+    of a mortgage is the unemployment rate of the zip code in which the mortgage was
+    issued, highlighting the link between housing finance markets and macroeconomy.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.3.3 PropTech
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: PropTech is the widespread adoption of emerging technologies within the real
+    estate industry. Such technologies include home matching tools, drones, virtual
+    reality, building information modelling (BIM), data analytics tools, artificial
+    intelligence (AI), Internet of Things (IoT) and blockchain, smart contracts, crowdfunding
+    in the real estate industry, financial technologies (fintechs) related to real
+    estate, smart cities and regions, smart homes, and the shared economy (Spyros
+    et al. [2018](#CR16)). The real estate industry goes hand in hand with the financial
+    market especially when it comes to listed Real Estate Investments Trusts (REIT)
+    which in the US have more than 1 trillion USD market capitalization (Sirignano
+    et al. [2018](#CR14)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: In this context being able to accurately predict home prices has clear relevance.
+    Unfortunately to do so accurately requires deep knowledge of the local market
+    and of the surroundings, a type of knowledge which is impractical to obtain for
+    big REITs operating with great amount of properties or credit institution pricing
+    hundreds of collaterals every day.
+  prefs: []
+  type: TYPE_NORMAL
+- en: A solution is proposed by Siniak et al. ([2020](#CR13)). The authors argues
+    that commonly used indexes scarcely accurately depict real estate markets at a
+    granular level. In fact, they try, using over 16 years of home sale data, to arrive
+    at a pricing prediction accuracy of a single house.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The method proposed is called gradient boosted home price index, which uses
+    the ML technique of gradient boosted regression trees algorithm, which constructs
+    multiple decision trees and recursively fit a model. In practice they reverse
+    the multiple decision tree building process, which would lead to over fitted classification
+    trees (one leaf for each house), building a low complexity decision tree (weak
+    learner), then building other low complexity trees where the splits are performed
+    when poor predictions happen. The final tree obtained is called a strong learner
+    and can be thought as the weighted average of the weak learners. The authors argue
+    that this method is able to predict home prices at a singular level in a better
+    way than the classical indexes available, which would be of great use for financial
+    institutions and real estate funds.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.3.4 Asset Return Prediction
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: 'Predicting the exact right price of an asset is the holy grail of finance.
+    Being able to do so would translate in riches and wealth, therefore asking how
+    to do it with a small as possible error is certainly a non-trivial question. In
+    fact, one of the most important results of financial sciences, the Black–Scholes
+    model, is used for exactly this reason: pricing a form of asset, specifically,
+    an option (Caporin et al. [2021](#CR5)).'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Asset prices follow a highly non-linear behaviour, suffer from feedback loops
+    and, sometimes, boom and bust cycles (Barr et al. [2016](#CR2)), a powerful tool
+    to deal with these features is certainly deep learning. The problem of predicting
+    the price of an asset is equivalent to that of predicting the behaviour of a time
+    series and in economics and finance this is often done using Dynamic Factor Models
+    (DFM). DFM can be thought as models of the co-movement of multiple timeseries.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Deep learning can be used to integrate these models. As an example, we can look
+    at Feng, He and Polson (Black and Scholes [1973](#CR3)). To anticipate assets
+    returns, the authors developed dynamic factor models trained using deep learning.
+    Using stochastic gradient descent, both hidden components and regression coefficients
+    are computed simultaneously, thus leading to increased out-of-sample performance
+    compared to traditional models.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.3.5 Algorithmic Trading
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Algorithmic Trading consist in the automation, through a computer, of all, or
+    part of, the steps needed to execute a certain trading strategy. It can be seen
+    as a fundamental part of quantitative trading, and, according to Wall Street data,
+    Algorithmic trading accounts for around 60–73% of the overall US equity trading.
+    (Feng et al. [1804](#CR6)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The way quantitative trading has evolved can be synthetized into three main
+    phases:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: In the first era (’80s–’90s), quantitative firms would use signals derived from
+    academic research, often using a single or very few inputs coming from the market
+    or fundamental data. Strategy where then pretty simple, the difficulty lied in
+    obtaining the right data quickly.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In the second phase (2000s), to explore arbitrage opportunities, funds employed
+    algorithms to identify assets vulnerable to risk variables such as value or momentum.
+    In this phase factor-based investing was mostly employed, and it’s the factor-based
+    industry to have caused the quant quake of August 2007.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The last phase it’s the one we are living, in which funds are using investments
+    in machine learning and alternative data to develop effective trading signals
+    for recurring trading methods. In this extremely competitive environment, once
+    a valuable anomaly is uncovered, it swiftly disappears owing to competition. (Intelligence
+    [2022](#CR7)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: The primary objective of using machine learning to trading is to forecast asset
+    fundamentals, price movements, or market circumstances. A strategy may use numerous
+    machine learning (ML) algorithms to achieve this. By incorporating forecasts about
+    the prospects of individual assets, capital market expectations, and the connection
+    across securities, downstream models may provide portfolio-level signals.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Many trading algorithms use technical indicators from the markets to adjust
+    a portfolio composition increasing it’s expected return or reducing its risk.
+  prefs: []
+  type: TYPE_NORMAL
+- en: As application example we can look at the use of Deep Learning by Lei, Peng
+    and Shen to improve a commonly used indicator in technical analysis, the Moving
+    Average Convergence/Divergence (MACD) (Lei et al. [2020](#CR9)). The authors start
+    by noting how classical MACD techniques fail to understand the magnitude of trend
+    changes, this can lead to signal the algorithm to trade when actually there are
+    no big trend changes on the horizon but just fluctuation. This would lead to unnecessary
+    losses due to transaction costs. Therefore, thanks to Residual Networks, is possible
+    to estimate certain characteristics of the time series representing the stock
+    traded, in particular the authors focus on the local kurtosis of the time series
+    where the MACD indicators would signal to trade. If the Residual Network estimates
+    a kurtosis higher than 0 (meaning a higher steepness of the curve than a normal
+    distribution), the algorithm will trust the trading point indicated and perform
+    a trade, otherwise it will ignore it and hold the position.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Tested on the CSI300 stock index the algorithm proposed outperformed the classic
+    one employing only the MACD, showing how existing algorithmic trading strategies
+    can be improved by ML.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.4 Risks and Challenges
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: While providing many advantages, the use of ML in Finance is not immune to its
+    common pitfalls.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In all fields, including finance, the complexity of a machine learning model
+    is the primary factor contributing to its riskiness. The algorithms for machine
+    learning are fundamentally quite difficult since they operate on massive and sometimes
+    unstructured data, such as texts, photos, and sounds. As a result, training of
+    such algorithms requires a complex computational infrastructure as well as a high
+    degree of expertise and understanding on the side of the modellers (Sen et al.
+    [2021](#CR12)). Moreover, complexity might make the algorithms hard to be implemented
+    by final users, which could have computing infrastructures not apt to render an
+    answer within the time constrains imposed by the task.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Most of ML models are *black boxes,* this means that the user might know what
+    the answer to the posed problem is, but have no idea of how it was found. This
+    can lead to several problems and legal disputes. Consider, as an example, an insurance
+    firm that relies on ML to assess the premium of a contract. Without the ability
+    to explain how the insurer estimated the value, the client may be hesitant to
+    sign the contract with the underwriter. Similarly, if a bank denies a customer
+    access to credit without providing a reason, the bank may face consequences. While
+    many applications (think of suggesting a product to a customer) do not need model
+    interpretability, many others do, and the inability to do so may hinder the progress
+    in applying ML to the financial world.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Another challenge is presented by biases. The way data is collected might affect
+    the answers provided by the ML algorithms employed. The readily available data
+    is intrinsically biased towards replicating existing practices. Think of data
+    coming from credit institutions where customers are classified based on the type
+    of loan they received (or not received). Using ML, we might simply keep replicating
+    the same decision process used in the past, without innovating anything and, in
+    fact, rediscovering the wheel. Biases can emerge for gender or race, creating
+    an ethical problem and exposing the user to discrimination lawsuits. To avoid
+    such biases is essential to perform accurate data cleaning, feature selection
+    and extraction.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Ulterior risks arise from adversarial ML, which is the practice of feeding erroneous
+    data to a ML algorithm in order to fool it towards certain results. Famous is
+    the case of Navinder Sarao (Wang [2015](#CR17)), a young Briton who contributed
+    to trigger the 2010 flash market crash by creating lots of orders and then cancelling
+    them (a practice known as spoofing), thus inducing algorithmic trading bots to
+    modify their strategies and artificially modify the market. The best solution
+    against adversarial ML is human monitoring, however, when the algorithm is a black
+    box, this becomes challenging and more interpretability is required in order to
+    be successful.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Finally, another major concern is certainly how to not breach data privacy,
+    this is especially true when it comes to sensible financial information. Many
+    governments are making steps forward in tackling the issues coming from handling
+    personal data, the most notable action is arguably the EU GDPR which became effective
+    in May 2018.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 7.5 Conclusions
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Nowadays, ML permeates every industry in a way or another. Finance has both,
+    an industry and a research field, has always been inclined to computational approaches
+    and using ML can only be seen as a natural progression of this attitude.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We explored various applications, notably most of them seems to be revolving
+    around portfolio management and optimization. In fact, even when we are talking
+    about risk management we might as well be talking about a sub-field of portfolio
+    optimization, while algorithmic trading can be seen as an automatic implementation
+    of portfolio management rules and models.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Other important fields are those of pricing assets and categorizing customers.
+    What seems to be crucial is not only the type of model used, but the cleanness
+    of the data acquired. Using the right data is fundamental to avoid biases and
+    to obtain innovative insights. However, it is a delicate process since it’s easy
+    to breach personal privacy when handling financial data.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Major concerns come from the fragility of complex models, which often are black
+    boxes to their users whom, not understanding the model used, might be prone to
+    be exploited, an example of it is the practice of “spoofing”.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In conclusion, ML is declining a great wave of innovation into the financial
+    world, and as always with big industry changes, monitoring and regulating is essential
+    to avoid speculations and exploitations.
+  prefs: []
+  type: TYPE_NORMAL

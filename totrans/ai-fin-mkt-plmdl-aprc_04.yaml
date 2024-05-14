@@ -1,0 +1,1356 @@
+- en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2022T.
+    Barrau, R. DouadyArtificial Intelligence for Financial MarketsFinancial Mathematics
+    and Fintech[https://doi.org/10.1007/978-3-030-97319-3_4](https://doi.org/10.1007/978-3-030-97319-3_4)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4. Predictions of Market Returns
+  prefs:
+  - PREF_H1
+  type: TYPE_NORMAL
+- en: Thomas Barrau^([1](#Aff5)  ) and Raphael Douady^([2](#Aff6))(1)AXA Investment
+    Managers Chorus Ltd, Hong Kong, Hong Kong S.A.R.(2)Economic Center, University
+    Paris 1 Sorbonne, Paris, France
+  prefs: []
+  type: TYPE_NORMAL
+- en: Abstract
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: We propose a Systematic Risk Indicator derived from a polymodel estimation.
+    Polymodels allow us to measure the strength of the links that a stock market maintains
+    with its economic environment. We show that these links tend to be more *extreme*
+    before a market crisis, confirming the well-known increase of correlations while
+    proposing a more subtle perspective. A fully automated and successful trading
+    strategy is implemented to assess the interest of the signal, which is shown to
+    be strongly significant, both from an economic and statistical point of view.
+    Results are robust across different time-periods, for various sets of explanatory
+    variables, and among 12 different stock markets.
+  prefs: []
+  type: TYPE_NORMAL
+- en: KeywordsPolymodel theorySystematic riskFinancial crisisSpeculative bubbleStock
+    market crashTrading strategyLNLM modelingMarket timingDrawdown prediction
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4.1 Introduction
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: In this chapter, we predict the market returns of 12 main stock indexes.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Our approach takes root in the wide literature dedicated to market crisis anticipation.
+    Quite often, this literature relies on identifying some herding behavior.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Sornette (see Johansen et al. ([2000](#CR4)) and Sornette ([2009](#CR11))) has
+    been a pioneer in the anticipation of stock market crashes with his LPPL model
+    (also well described in Geraskin and Fantazzini ([2013](#CR2))). Essentially,
+    this model describes the evolution of the stock market price during a speculative
+    bubble. The market dynamic is modeled using a combination of a power law, and
+    some decreasing periodic oscillations. The power law in the price is the result
+    of the actions of a group of rational, well-informed traders, who invest in a
+    speculative bubble because the risk of stock market crash is compensated by the
+    returns produced by the acceleration of the price increase. The oscillations are
+    produced by the random actions of a group of noise traders, who exhibit some herding
+    behavior, for example by being driven away from the rational price by an overreaction
+    to the news. The decrease in the oscillation is because when the power law strengthens,
+    approaching its final singularity, all the market participants identify the bubble
+    and behave as rational traders. Note that such a behavior by market participants
+    implies an increasing level of mimicry among traders’ actions while approaching
+    the stock market crash.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Anticipation of a financial crisis also often relies on identifying increasing
+    correlations among assets composing the markets. Patro et al. ([2013](#CR7)) propose
+    a very simple systemic risk indicator by measuring increasing correlations among
+    stock returns of banks. This kind of approach has numerous variations, see Silva
+    et al. ([2017](#CR9)) for a survey. Some other authors do not restrict their approach
+    to identifying correlations among banks. For example, Douady and Kornprobst ([2018](#CR1))
+    developed an approach based on the structure of the correlation matrix of the
+    stocks defining a market. Zheng et al. ([2012](#CR13)) use an indicator based
+    on the link among sectorial sub-components of the market index to predict the
+    market itself. Harmon et al. ([2011](#CR3)) show that the internal herding of
+    the market can also be captured by co-movement.
+  prefs: []
+  type: TYPE_NORMAL
+- en: But these increasing correlations also appear among the markets themselves,
+    which tend to behave as one during a financial crisis (Junior & Franca, [2012](#CR5)).
+    This point is especially important, because it highlights the fact that external
+    causes also matter, along with internal dynamics. Ye and Douady ([2019](#CR12))
+    use 200 external factors to estimate a non-linear polymodel, with successful results
+    in deriving a systemic risk indicator. Their indicator is based on the sum among
+    elementary models of a goodness of fit indicator, the R². Our approach also relies
+    on assessing the links between a stock market index and its environment using
+    a non-linear polymodel. However, although our systemic risk indicator is focused
+    on the goodness of fit, we do not make any assumptions about how the goodness
+    of fit should evolve during a financial crisis. In particular, we do not assume
+    that the links between the market and its environment strengthen during the crisis,
+    and we will see that this strengthening is only a part of the phenomenon’s characteristics.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In this chapter, we first present the structure of the data that we use to
+    estimate the non-linear polymodel. Next, we propose an economically agnostic and
+    point-in-time systemic risk indicator. We also analyze the indicator with respect
+    to various aspects. In a third part, we simulate a trading strategy, in order
+    to confront the indicator with its most natural real-world implementation: trying
+    to beat the market. The fourth part is dedicated to performing a wide set of robustness
+    tests. Finally, we summarize the findings and limits of the chapter in a conclusion
+    section, which is followed by the references.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4.2 Data
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: A large majority (96%) of the data used is provided by Bloomberg, in the form
+    of daily returns.^([1](#Fn1))^,^([2](#Fn2)) Since all the data is market data,
+    it is point-in-time. The data includes the returns of the 12 stock indexes that
+    are the target variables of our polymodels, and a factor set that includes 1,134
+    explanatory variables. The dataset is defined between 1995-01-02 and 2018-10-16,
+    although some variables are defined only for a part of this period. Thereafter
+    the number of variables available over time in the factor set is shown (Fig. [4.1](#Fig1)):![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig1_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 4.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: Number of variables in the factor set over time
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The target stock indexes are the following:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: S&P 500 Index
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Euro STOXX 600 Index
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: FTSE 100 Index
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Tokyo Stock Exchange Price Index (TOPIX)
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: DAX Index
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: CAC 40 Index
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Swiss Market Index
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: IBEX 35 Index
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: OMX Copenhagen Index
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: OMX Helsinki Index
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: OMX Stockholm 30 Index
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: MSCI Italy Index
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: The factor set is designed with the available data in order to reach a near-complete
+    representation of the world financial markets. However, we allow an important
+    bias in favor of the equity indices, as the target variables are themselves equities.
+    This choice is also motivated by the broader number of themes covered by this
+    asset class (regional as well as country indices, sectorial indices, factor indices…).
+    Below is the repartition in terms of asset classes of the factor set (Fig. [4.2](#Fig2)):![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig2_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 4.2
+  prefs: []
+  type: TYPE_NORMAL
+- en: Repartition in terms of asset classes of the factor set
+  prefs: []
+  type: TYPE_NORMAL
+- en: Our concern for the representativeness of the factor set also incorporates the
+    question of geographical coverage. In order to address this question from different
+    perspectives, we select some region-specific factors as well as some country-specific
+    factors.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Region-specific factors include several geographical divisions. At the most
+    inclusive level, we have some World or World ex-USA factors. The simplest division
+    is then between Developed and Emerging Markets. Finally, the region-specific factors
+    also include some continental factors. The region-specific factors represent 34%
+    of the factor set, all the other factors being country-specific. The repartitions
+    of the region-specific factors are shown in the Table [4.1](#Tab1) below:Table
+    4.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: Repartition of region-specific factors
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| World | 60.41% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| World ex-USA | 4.88% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Developed markets | 6.17% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Emerging markets | 4.88% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Europe | 5.91% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Asia/Pacific | 5.40% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Africa & Middle East | 4.37% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| South America | 4.11% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| North America | 3.86% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Total | 100.00% |'
+  prefs: []
+  type: TYPE_TB
+- en: Country-specific factors thus represent 66% of the factor set. Below is their
+    repartition (Table [4.2](#Tab2)):Table 4.2
+  prefs: []
+  type: TYPE_NORMAL
+- en: Repartition of country-specific factors
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| United States of America | 10.34% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| China | 5.50% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Japan | 3.76% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Italy | 2.82% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Swiss | 3.09% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Australia | 3.36% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Malaysia | 2.68% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| United Kingdom | 3.09% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Egypt | 2.55% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Indonesia | 2.42% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| New Zealand | 2.42% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Russia | 2.42% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Taiwan | 2.68% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Austria | 2.28% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| France | 2.55% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Korea | 2.28% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Poland | 2.28% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Spain | 2.28% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Belgium | 2.15% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Germany | 2.42% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Hong Kong | 2.15% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Mexico | 2.15% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Netherlands | 2.15% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Brazil | 2.01% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Saudi Arabia | 2.15% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| South Africa | 2.01% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Turkey | 2.01% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| United Arab Emirates | 2.01% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Canada | 2.68% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Norway | 1.88% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Sweden | 1.88% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Colombia | 1.74% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Denmark | 1.74% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Greece | 1.74% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Thailand | 1.74% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| India | 1.61% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Argentina | 1.48% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Nigeria | 1.21% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Ukraine | 1.21% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Jamaica | 0.67% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Banglasdesh | 0.27% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Iran | 0.13% |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Total | 100.00% |'
+  prefs: []
+  type: TYPE_TB
+- en: 4.3 Systemic Risk Indicator
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 4.3.1 Model Estimation
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: For each of the stock markets considered, the methodology to derive our systemic
+    risk indicator is the same.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We first estimate a polymodel:![$$ \left\{Y={\varphi}_i\left({X}_i\right)\kern1em
+    \forall i\right\}. $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_Equ1.png)(4.1)The
+    polymodel is estimated using the LNLM model, as described in Chap. [3](519851_1_En_3_Chapter.xhtml):![$$
+    LNLM(X)\stackrel{\scriptscriptstyle\mathrm{def}}{=}\overline{y}+\mu \sum \limits_{h=1}^u{\hat{\beta}}_h^{NonLin}{H}_h(X)+\left(1-\mu
+    \right){\hat{\beta}}^{Lin}X+\varepsilon \Rightarrow \left\{Y={LNLM}_i\left({X}_i\right)\kern1em
+    \forall i\right\}. $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_Equ2.png)(4.2)The
+    polymodel is estimated on a rolling basis, using a 5-year window. Although the
+    data is available at a daily frequency, we only re-perform the estimation each
+    month, due to our computational resources. We transform the daily returns in order
+    to get some monthly returns,^([3](#Fn3)) which may exhibit clearer patterns. The
+    factor set of explanatory variables is lagged by one month, in order to give us
+    a clear direction for causality (as a positive side effect, it also makes sure
+    that we avoid the use of future information due to the asynchronicity of international
+    markets):![$$ \left\{{Y}_t={LNLM}_{i,t}\left({X}_{i,t-1}\right)\kern1em \forall
+    i\right\}. $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_Equ3.png)(4.3)Once
+    the estimation is done for a given date, we compute a goodness of fit indicator,
+    the root mean square error, for each of the elementary models that compose the
+    polymodel. This indicator captures the strength of the link between a given factor
+    and the predicted stock market. In order to remove the most insignificant factors,
+    we filter the polymodel to keep only the lowest 80% RMSEs.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4.3.2 Systemic Risk Indicator Definition
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The distribution of the RMSEs is a simple representation of the links that the
+    market maintains with its whole economic environment. It is similar to having
+    a distribution of the correlations, however, it is a more general representation
+    since it allows for the links to be non-linear, thanks to the use of polymodels.
+    The foundation of our indicator is the hypothesis that a specific distribution
+    of the RMSEs exists before the crisis.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The distributions of the RMSEs are obtained using a simple kernel density estimation
+    (see Parzen, [1962](#CR6); Rosenblatt, [1956](#CR8)). The bandwidth selection
+    is done according to Silverman’s rule of thumb (Silverman, [1986](#CR10)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: First, we only select the distributions of RMSEs that are followed by a market
+    drawdown in the following 3 months. Our representation of the pre-crisis distribution
+    is a rolling average of these distributions, weighted by the square of the 3 months’
+    returns that follows (we assume that the larger the following drawdown, the more
+    representative the distribution). The rolling average follows an exponential weighting
+    scheme, with a half-life of 10 years, that allows us to slightly overweight the
+    most recent distributions, while very old representations of the pre-crisis distribution
+    are taken into account with less and less importance. Of course, this rolling
+    representation is shifted properly so that at each point in time, it does not
+    use any future information.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The ‘normal times’ distribution is represented by the average of all RMSE distributions,
+    whatever the sign of the following 3 months’ return of the market.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We thus obtain a representation of the pre-crisis distribution and a representation
+    of the normal times distribution for each of the 12 stock indexes we analyze.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Once this representation of the pre-crisis distribution is obtained, we compute
+    the Hellinger distance between this distribution and the current distribution
+    of the RMSE. The smaller the Hellinger distance, the closer the market is to a
+    pre-crisis situation. In Fig. [4.3](#Fig3) below, we display the evolution of
+    the average Hellinger distance to the Pre-Crisis Distribution:![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig3_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 4.3
+  prefs: []
+  type: TYPE_NORMAL
+- en: Average Hellinger distance to the Pre-Crisis Distribution, over time
+  prefs: []
+  type: TYPE_NORMAL
+- en: The pattern drawn by the Hellinger distance clearly reflects the speculative
+    bubble that preceded the financial crisis of 2008, as well as its burst. Assuming
+    that this pattern is indeed predictive, then a decrease in the distance would
+    be a negative signal about future market returns, and reciprocally.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Our Systematic Risk Indicator simply reproduces this reasoning, being defined
+    by the sign of the variation of the Hellinger distance:![$$ {SRI}_t\stackrel{\scriptscriptstyle\mathrm{def}}{=}\left\{\begin{array}{c}1\kern0.5em
+    if\kern0.5em \mathcal{H}\left({\mathcal{R}}_t^{Current},{\mathcal{R}}_t^{Pre-
+    Crisis}\right)&lt;\mathcal{H}\left({\mathcal{R}}_{t-1}^{Current},{\mathcal{R}}_{t-1}^{Pre-
+    Crisis}\right)\\ {}0\kern0.5em if\kern0.5em \mathcal{H}\left({\mathcal{R}}_t^{Current},{\mathcal{R}}_t^{Pre-
+    Crisis}\right)\ge \mathcal{H}\left({\mathcal{R}}_{t-1}^{Current},{\mathcal{R}}_{t-1}^{Pre-
+    Crisis}\right)\end{array}\right. $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_Equ4.png)(4.4)*Here,
+    “*![$$ {\mathcal{R}}_t^{Current} $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_IEq1.png)*”
+    is the distribution of the RMSE at the current date “t”, “* ![$$ {\mathcal{R}}_t^{Pre-
+    Crisis} $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_IEq2.png)*”
+    is the last representation of the pre-crisis distribution of the RMSE available
+    at date “t” and “* ![$$ \mathcal{H}\left(\ \right) $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_IEq3.png)*”
+    is the Hellinger distance.*The Hellinger distance is defined in our discrete framework
+    as:![$$ \mathcal{H}\left({\mathcal{R}}_t^{Current},{\mathcal{R}}_t^{Pre- Crisis}\right)\stackrel{\scriptscriptstyle\mathrm{def}}{=}\frac{1}{\sqrt{2}}\sqrt{\sum
+    \limits_{i=1}^n{\left(\sqrt{{\mathcal{R}}_{i,t}^{Current}}-\sqrt{{\mathcal{R}}_{i,t}^{Pre-
+    Crisis}}\right)}^2} $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_Equ5.png)(4.5)*Here,
+    “*![$$ {\mathcal{R}}_{i,t}^{Current} $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_IEq4.png)*”
+    is the value of the RMSE at the current date “t” for a given factor “i” and ”*
+    ![$$ {\mathcal{R}}_{i,t}^{Pre- Crisis} $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_IEq5.png)*”
+    is the value of the RMSE for the factor “i” drawn from the last representation
+    of the pre-crisis distribution of the RMSE available at date “t”.*As an example,
+    we display^([4](#Fn4)) below the indicator in the case of the Stoxx Europe 600
+    (Fig. [4.4](#Fig4)):![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig4_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 4.4
+  prefs: []
+  type: TYPE_NORMAL
+- en: Systematic Risk Indicator and Stoxx Europe 600
+  prefs: []
+  type: TYPE_NORMAL
+- en: Although the indicator is not perfect, at first glance it seems to be activated
+    during most of the drawdowns of the market, even if there are some false positives.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4.3.3 Primary Analysis
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: If our main test for the predictive power of our Systemic Risk Indicator is
+    to implement a trading strategy, we first conduct a simple analysis to better
+    understand the properties of the indicator.
+  prefs: []
+  type: TYPE_NORMAL
+- en: To begin with, we display below the t-statistics obtained by a logistic regression
+    estimated with maximum likelihood (Table [4.3](#Tab3)). Since the Pre-Crisis distribution
+    that we identified in the construction of the indicator is defined as being followed
+    by a negative 3-month market return, our variable of interest is a dummy representing
+    the sign of the 3-month future return. The explanatory variable is, of course,
+    the Systemic Risk Indicator itself:Table 4.3
+  prefs: []
+  type: TYPE_NORMAL
+- en: Summary of a logistic regression of the direction of the future market returns
+    on the systemic risk indicator
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | a. Full Sample | b. Subprime Crisis Period (2007–2009) | c. After Subprime
+    Crisis Period (2010–2018) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| DAX Index | −4.08171 (***) | −3.870322 (***) | −2.629115 (***) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| HEX Index | −7.097665 (***) | −9.184638 (***) | −6.63464 (***) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| IBEX Index | −5.653079 (***) | −7.82105 (***) | −3.826911 (***) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| KAX Index | −9.003569 (***) | −6.395333 (***) | −5.249408 (***) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| MXIT Index | −10.995961 | −11.167755 (***) | −1.806702 (*) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| NCAC Index | −5.725893 (***) | −7.115673 (***) | −0.018437 () |'
+  prefs: []
+  type: TYPE_TB
+- en: '| OMX Index | −1.126313 () | −1.793216 (*) | 0.137003 () |'
+  prefs: []
+  type: TYPE_TB
+- en: '| SMI Index | −7.651904 (***) | −8.600267 (***) | −2.39497 (**) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| SPX Index | −9.898438 (***) | −7.752158 (***) | −10.863697 (***) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| SXXP Index | −9.53557 (***) | −9.376226 (***) | −3.017459 (***) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| TPX Index | −17.485469 (***) | −5.240356 (***) | −11.043662 (***) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| UKX Index | −5.492477 (***) | −10.047277 (***) | 1.483732 () |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Mean | −**7.812337 (***)** | −**7.363689 (***)** | −**3.822022 (***)** |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Median | −7.374785 | −7.786604 | −2.823287 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Std | 4.112063 | 2.691223 | 4.024313 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Min | −17.485469 | −11.167755 | −11.043662 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Max | −1.126313 | −1.793216 | 1.483732 |'
+  prefs: []
+  type: TYPE_TB
+- en: Full sample, the Systemic Risk Indicator is highly significant in 11 markets
+    out of 12, which is a good sign of its predictive power.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Since the indicator is designed precisely to anticipate the crisis, we also
+    conduct some sub-sample regressions, in order to compare the performance of the
+    indicator during the 2008 subprime crisis, and in the decade that followed, which
+    is calmer. The results are significant at the 1% level of *p*-value for all the
+    markets except OMX, which exhibit only a 7% *p*-value in the crisis period. Although
+    the indicator is overall less significant in the second period, it continues to
+    attest to a high level of predictive power in most of the markets.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Table [4.4](#Tab4) below displays the information coefficients, which should
+    resonate with the references of the practitioners. We compute both the IC^([5](#Fn5))
+    with the sign of the future 3 months’ returns, and with their values. Interestingly,
+    predicting the sign of the future returns is not enough in all the cases, and
+    the value of the IC decrease is important for the HEX and the KAX Index, for example.Table
+    4.4
+  prefs: []
+  type: TYPE_NORMAL
+- en: Information coefficients of the systemic risk indicator
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | DAX Index (%) | HEX Index (%) | IBEX Index (%) | KAX Index (%) | MXIT
+    Index (%) | NCAC Index (%) | OMX Index (%) | SMI Index (%) | SPX Index (%) | SXXP
+    Index (%) | TPX Index (%) | UKX Index (%) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Future returns sign | −6.06 | −10.56 | −8.40 | −13.43 | −16.40 | −8.51 |
+    −1.67 | −11.39 | −14.79 | −14.22 | −26.29 | −8.16 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Future returns value | −4.80 | −0.95 | −7.40 | −4.81 | −14.08 | −9.47 | 1.63
+    | −8.40 | −9.34 | −13.42 | −27.82 | −6.71 |'
+  prefs: []
+  type: TYPE_TB
+- en: These differences of IC between sign and value can be explained by having some
+    false positives/negatives that precede very large market returns.
+  prefs: []
+  type: TYPE_NORMAL
+- en: To conclude this primary analysis, we consider the correlation matrix among
+    indicators. The matrix shows high levels of correlations among indicators, with
+    an average correlation of 58% (diagonal excluded). Such a configuration asks if
+    the Systemic Risk Indicator adapts to each of the markets, or if it just predicts
+    a kind of “average market”. Recalling that the indicator predicts the sign of
+    the next 3 months’ market returns, we compare the correlation matrix of these
+    signs to the correlation matrix of the indicator (Figs. [4.5](#Fig5) and [4.6](#Fig6)).![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig5_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 4.5
+  prefs: []
+  type: TYPE_NORMAL
+- en: Correlation matrix of the systemic risk indicator
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig6_HTML.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: Fig. 4.6
+  prefs: []
+  type: TYPE_NORMAL
+- en: Correlation matrix of the signs of the 3 months’ market returns
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Comparing these two matrices leads to the conclusion that the correlation among
+    indicators just reflects the correlations among market returns. The average correlation
+    of the second matrix is similar to that of the first matrix: 57%.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: We should also consider that some indicators which are particularity lowly correlated,
+    such as those of HEX and TPX, well perform individually in terms of t-stats. Hence,
+    we can reasonably consider that our Systemic Risk Indicator is adaptive to the
+    specificities of each of the different markets.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4.3.4 Roots of the Predictive Power
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: In order to better understand the patterns that are used by the Systemic Risk
+    Indicator to predict the future drawdowns, we conduct below an aggregated analysis
+    of the Pre-Crisis and of the Normal Times distributions of RMSEs.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Instead of using rolling averages for these two distributions, we directly compute
+    full sample averages of the distributions. These full sample average distributions
+    are then averaged again among markets, so that we obtain a single, representative
+    distribution for both the normal and the pre-crisis case.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'These representative distributions^([6](#Fn6)) allow us to understand what
+    happens before the crisis occurs:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Figure [4.7](#Fig7) seems to show a simultaneous increase of some of the RMSEs
+    and a decrease of some others. If we compute the difference of densities of these
+    two distributions, the phenomenon becomes even more obvious (Fig. [4.8](#Fig8)):![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig7_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 4.7
+  prefs: []
+  type: TYPE_NORMAL
+- en: Representative RMSE distributions
+  prefs: []
+  type: TYPE_NORMAL
+- en: '![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig8_HTML.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: Fig. 4.8
+  prefs: []
+  type: TYPE_NORMAL
+- en: Differences of previous densities between Normal Times and Pre-Crisis distributions
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Above, we separate the density differences into three areas, that correspond
+    roughly to the left tail, the center of the distribution, and the right tail.
+    In the center of the distribution it is clear that there is a decrease of density,
+    which means that the quantity of factors that are usually moderately correlated
+    to the stock index decreases before the crisis. We note that there is an increase
+    in the left tail, which corresponds to the expected increase of correlations well
+    documented in the literature. But surprisingly, most of the density that disappears
+    in the center appears in the right tail, which implies that the de-correlation
+    of some factors which are usually correlated is an important characteristic of
+    the pre-crisis time. More precisely, 69.7% of the density that disappears in the
+    center goes to the right tail and only 30.3% to the left tail. These findings,
+    based on the average representative distributions among markets, also seem to
+    be true for each of the markets, in which most of the time the right and the left
+    fat tail coexist, although the right fat tail seems to occur more frequently (see
+    Appendix: Representative RMSE Distributions per Stock Index).'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4.4 Trading Strategy
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Our principal assessment of the performance of the Systemic Risk Indicator is
+    through a simulated trading strategy.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4.4.1 Methodology
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: 'The simulated trading strategy is extremely simple: we always get the returns
+    of the market, but with a variable leverage, equal to 0.5 when the risk is off,
+    and 2 when the risk is on. Since there is a wide range of leveraged ETFs available
+    nowadays, we assume no transaction costs.^([7](#Fn7)) This is also justified by
+    the fact that since the Systemic Risk Indicator is only computed once a month,
+    the potential change of leveraged ETF also only occurs once a month.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: For each of the stock indexes, we compute the Sharpe ratio of the market, and
+    of the market timed portfolio. We then compute the average Sharpe ratio among
+    markets, and the average Sharpe ratio of market timed portfolios. The percentage
+    of improvement of this average Sharpe is the central number of our aggregated
+    analysis.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'We assess the significance of this number by computing its *p*-value. The *p*-value
+    is generated as follows:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: For each market, we compute the sign of the variation of the Hellinger distances,
+    as we do for the Systemic Risk Indicator.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: We shuffle these signs over the time period of the sample, so that they are
+    present in the same proportions as in the SRI but at different points in time.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Based on the shuffled indicator, we compute the performance of a new market
+    timed portfolio, using the same trading strategy.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: We then compute the metric we are interested in, i.e. the improvement of the
+    average Sharpe ratio among markets.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: We repeat this procedure 1,000 times, so that we get a distribution of random
+    average Sharpe improvements.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: The distribution is smoothed, using a kernel density estimation, in order to
+    avoid some threshold effects in the *p*-value computation.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Given this distribution, we simply compute the probability of randomly obtaining
+    the level of improvement we get originally.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Note that this procedure eventually only evaluates the *relevance of the moment*
+    when the signal appears and makes sure that the performance is unlikely to come
+    from random chance, or from a particular design of the trading strategy.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4.4.2 Results
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Table [4.5](#Tab5) summarizes the results of the trading strategy, by presenting
+    the Sharpe ratios of each market and their improvements:Table 4.5
+  prefs: []
+  type: TYPE_NORMAL
+- en: Improvements of the Sharpe ratios obtained from the trading strategy
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | Market | Market Timed Portfolio | Improvement (%) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| DAX Index | 0.12 | 0.31 | 148 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| HEX Index | 0.20 | 0.25 | 21 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| IBEX Index | 0.19 | 0.45 | 141 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| KAX Index | 0.38 | 0.73 | 89 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| MXIT Index | 0.02 | 0.30 | 1,275 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| NCAC Index | 0.09 | 0.47 | 394 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| OMX Index | 0.28 | 0.53 | 88 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| SMI Index | 0.14 | 0.50 | 267 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| SPX Index | 0.35 | 0.68 | 95 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| SXXP Index | 0.17 | 0.53 | 205 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| TPX Index | 0.00 | 0.35 | 12,381 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| UKX Index | 0.21 | 0.50 | 140 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Average | **0.18** | **0.47** | **157** |'
+  prefs: []
+  type: TYPE_TB
+- en: The performance of each of the markets is improved by the trading strategy,
+    and the increases of the Sharpe ratios are economically significant.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The *p*-value of the improvement of the average^([8](#Fn8)) computed with the
+    methodology mentioned previously is 0.06%, confirming that the performance is
+    also statistically significant.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We display below the distribution of the random performances (Fig. [4.9](#Fig9)):![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig9_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 4.9
+  prefs: []
+  type: TYPE_NORMAL
+- en: Distribution of randomly generated improvements of the average Sharpe
+  prefs: []
+  type: TYPE_NORMAL
+- en: Out of 1,000 simulated random portfolios, only one is better than the proposed
+    portfolio. This distribution also emphasizes the fact that beating the market
+    is extremely difficult, since its average is −14.62%.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Note that on average, the market timed portfolios are hedged 41% of the time,
+    which is a good sign of non-overfitting. Indeed, since the leverage is re-decided
+    each month, there are a lot of different bets that are done over time. Compared
+    to an indicator that only bets against the market a couple of times over 20 years
+    of simulations, it considerably decreases the chances of cherry-picking a crisis
+    indicator.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Staying with the previous example, we display below the performance of the
+    strategy for the Stoxx Europe 600^([9](#Fn9)) (full results are available in Appendix:
+    Market Timed Portfolio and Systemic Risk Indicator per Stock Index) (Fig. [4.10](#Fig10)):![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig10_HTML.png)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 4.10
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Stoxx Europe 600: Market Timed Portfolio vs Market Portfolio (equal volatility)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4.5 Robustness Tests
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: In the previous developments, we already saw that frequent changes of the indicator
+    are a good protection against overfitting, and that the indicator is still predictive
+    in sub-samples. We complement these findings with a series of robustness tests
+    that assesses the sensitivity of the performance of the trading strategy to the
+    design we made.
+  prefs: []
+  type: TYPE_NORMAL
+- en: For each of the robustness tests, we present the variation of the significance
+    of the trading strategy in statistical terms (*p*-value) and economical terms
+    (improvement of the average Sharpe ratio, number of indices for which the strategy
+    beat the market).
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4.5.1 Sensitivity to the Noise Filter
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: Recall that we removed the noisy factors from the RMSE distribution using a
+    very simple filter that only keeps the top X% of the best explanatory variables
+    in terms of RMSE. This parameter was originally set to 80%, in order to keep most
+    of the factors.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We can see in the Table [4.6](#Tab6) that this choice seems well justified:Table
+    4.6
+  prefs: []
+  type: TYPE_NORMAL
+- en: Sensitivity of the improvement of the average Sharpe ratio to the noise filter
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Filter quantile (%) | Improvement of the average (%) | *p*-value (%) | Percentage
+    of positive improvements (%) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 100 | 61.13 | 7.52 (*) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 95 | 138.78 | 0.01 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 90 | 152.77 | 0.00 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 85 | 148.82 | 0.01 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 80 | 157.49 | 0.06 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 75 | 153.45 | 0.04 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 50 | 92.54 | 0.61 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 25 | 58.08 | 3.16 (**) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 10 | −0.86 | 33.49 () | 58.33 |'
+  prefs: []
+  type: TYPE_TB
+- en: The first finding that can be extracted from Table [4.6](#Tab6) is that the
+    performance of the trading strategy is robust to the choice of a particular level
+    of filtering, except in the extreme regions.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Secondly, our approach has been to select a reasonable value for the filter.
+    Indeed, it is possible to reach a higher level of historical performance using
+    the 99% quantile, however, such a choice would have seemed dangerous with regard
+    to the performance of the 100% quantile. Some of the variables in between seem
+    to introduce a lot of noise in the RMSE distribution, and the frontier between
+    a relevant and a noisy variable is quite thin in this region.
+  prefs: []
+  type: TYPE_NORMAL
+- en: As a third point, we would like to mention that the vast majority of the factor
+    set seems to be important for the crisis prediction. This emphasizes the need
+    to select a large factor set to describe the entire economic environment of the
+    stock indices we are predicting.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4.5.2 Sensitivity to Future Returns Windows
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The indicator is designed so that it predicts the sign of the 3-month future
+    returns of the markets. This choice has been made following some practitioners’
+    heuristics, 1 month being usually considered as too noisy for the crisis prediction,
+    and the months following the next 3 months being considered as less predictable.
+    Our sensitivity analysis on this parameter confirms this opinion, while showing
+    the clear robustness of the trading strategy to this parameter (Table [4.7](#Tab7)).Table
+    4.7
+  prefs: []
+  type: TYPE_NORMAL
+- en: Sensitivity of the average improvement of the Sharpe ratio to the future returns
+    window
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Future returns window | Improvement of the average (%) | *p*-value (%) |
+    Percentage of positive improvements (%) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 1 Month | 117.11 | 0.12 (***) | 83.33 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 2 Months | 131.78 | 0.10 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 3 Months | 157.49 | 0.06 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 6 Months | 147.46 | 0.00 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 9 Months | 139.71 | 0.00 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 12 Months | 115.93 | 0.00 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: 4.5.3 Sensitivity to Half-life
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The Pre-Crisis RMSE distribution is defined on a rolling basis, using an exponential
+    weighting scheme of the past observations. The speed at which the current representation
+    of the Pre-Crisis distribution ‘forgets’ the past events is controlled by the
+    half-life of this exponential window. Our choice has been to set it to 10 years,
+    in order to have a representation that takes into account very old events while
+    focusing a bit more on the present.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The table below shows that this is a good choice (even if it is not the best).
+    Also, the robustness of the strategy performance to this parameter is still quite
+    good (Table [4.8](#Tab8)).Table 4.8
+  prefs: []
+  type: TYPE_NORMAL
+- en: Sensitivity of the average improvement of the Sharpe ratio to the half-life
+    of the exponential window
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Half-life of the exponential window | Improvement of the average (%) | *p*-value
+    (%) | Percentage of positive improvements (%) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 20 Years | 149.82 | 0.11 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 15 Years | 152.46 | 0.10 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 10 Years | 157.49 | 0.06 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 5 Years | 161.12 | 0.00 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 3 Years | 154.84 | 0.00 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 1 Year | 96.74 | 0.41 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: 4.5.4 Sensitivity to Rolling Window Length
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: The polymodel that we use to compute the RMSEs is itself estimated on a rolling
+    basis.
+  prefs: []
+  type: TYPE_NORMAL
+- en: We can see below that the length of the rolling window used for this estimation
+    is a parameter that matters (Table [4.9](#Tab9)):Table 4.9
+  prefs: []
+  type: TYPE_NORMAL
+- en: Sensitivity of the average improvement of the Sharpe ratio to the polymodels
+    estimation window
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Polymodel estimation window | Improvement of the average | *p*-value | Percentage
+    of positive improvements |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 6 Years | 27.09 | 9.01 (*) | 91.67 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 5 Years | 157.49 | 0.06 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 4 Years | 56.84 | 8.32 (*) | 75.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| 3 Years | 78.38 | 1.24 (**) | 91.67 |'
+  prefs: []
+  type: TYPE_TB
+- en: 'Although the improvement of the average and the *p*-value stays significant
+    in all cases, it is to a less extent than in other robustness tests, both economically
+    and statistically. The quality of the estimations is thus particularly tied to
+    this parameter: a shorter window includes less data points, and make the fit,
+    along with its goodness of fit indicator, less reliable, while a longer window
+    estimates a model that evolves too slowly, and is thus unable to efficiently capture
+    the relatively fast dynamics of the market. Considering this reasoning and the
+    results above, the 5-year window then seems quite justified.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: However, especially since we are measuring the performance of a trading strategy,
+    it is important to make sure that the construction of a robust trading strategy
+    is possible based on our Systemic Risk Indicator. Hence, in order to limit the
+    risk of arbitrarily picking a window parameter, we recompute the indicator and
+    the performance of the strategy using an average of the RMSEs estimated using
+    a 6-year, a 5-year, a 4-year, and a 3-year rolling window. Computing the indicator
+    using this average RMSE is a simple way to make it more robust to the choice of
+    a particular window.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The result is that this “window robust strategy” still performs quite well.
+    The improvement of the average is 95%, a figure associated with a *p*-value of
+    0.16%. In this version of the strategy, previous figures stay comparable, with
+    an average random improvement of −12.63%, an average hedging 35.96% of the time
+    within the sample, and 11 stock indexes out of 12 that over-perform the market.
+    Ultimately, even diluted by weaker versions of itself, our trading strategy delivers
+    strong results (Table [4.10](#Tab10)):Table 4.10
+  prefs: []
+  type: TYPE_NORMAL
+- en: Improvements of the Sharpe ratios for a “window robust strategy”
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | Market | Market timed portfolio | Improvement (%) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| DAX Index | 0.12 | 0.06 | −49 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| HEX Index | 0.20 | 0.29 | 41 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| IBEX Index | 0.19 | 0.33 | 73 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| KAX Index | 0.38 | 0.76 | 99 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| MXIT Index | 0.02 | 0.13 | 502 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| NCAC Index | 0.09 | 0.32 | 235 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| OMX Index | 0.28 | 0.30 | 7 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| SMI Index | 0.14 | 0.34 | 153 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| SPX Index | 0.35 | 0.62 | 76 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| SXXP Index | 0.17 | 0.43 | 149 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| TPX Index | 0.00 | 0.24 | 8,311 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| UKX Index | 0.21 | 0.40 | 93 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Average | **0.18** | **0.35** | **95** |'
+  prefs: []
+  type: TYPE_TB
+- en: 4.5.5 Asset-Class Specific Performances
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: 'For this test, we restrict the factor set to a single asset class. There are
+    two motivations to conduct this test:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Testing the contribution of each asset class to the overall crisis prediction.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: To a lesser extent, it also allows us to test if the results that we presented
+    are not conditioned to the choice of a specific dataset.
+  prefs:
+  - PREF_UL
+  type: TYPE_NORMAL
+- en: Here, our analysis is restricted to the asset classes that contains enough factors
+    to estimate a distribution, Real Estate, Hedge Funds and Volatility thus being
+    excluded.Table [4.11](#Tab11) shows that none of the asset classes dominate *per
+    se* the aggregated factor set. It proves that the diversity of factor asset classes
+    contributes to the quality of the predictions.Table 4.11
+  prefs: []
+  type: TYPE_NORMAL
+- en: Sensitivity of the average improvement of the Sharpe ratio to the asset class
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Asset class | Improvement of the average (%) | *p*-value (%) | Percentage
+    of positive improvemsents (%) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Stock markets | 104.89 | 0.33 (***) | 91.67 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Equity factors | 29.99 | 12.55 () | 66.67 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Currencies | 67.51 | 1.47 (**) | 83.33 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Commodities | 71.20 | 0.62 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Corporate bonds | 33.79 | 9.87 (*) | 83.33 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Sovereign bonds | 66.99 | 0.72 (***) | 91.67 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Money market | −32.26 | 62.51 () | 16.67 |'
+  prefs: []
+  type: TYPE_TB
+- en: According to these results, it seems clear that the Stock Markets is the most
+    important asset class, which is a natural finding. However, most of the other
+    asset classes also perform on this standalone basis, which is a strong sign that
+    the trading strategy can perform independently of the choice of a particular factor
+    set.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4.5.6 Sensitivity to Trading Strategy
+  prefs:
+  - PREF_H3
+  type: TYPE_NORMAL
+- en: We now discuss the extent to which the performances that we observe are the
+    results of our particular choices of leverage for our trading strategy. Since
+    the full sample volatility of the returns is standardized to make the market and
+    the trading strategy comparable, what controls the aggressiveness of the strategy
+    is the magnitude of the difference between the risk OFF leverage and the risk
+    ON leverage, more than the level of the leverage itself. Hence, we try some changes
+    of the risk OFF leverage, while keeping the risk ON leverage constantly equal
+    to 2.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Moreover, we try an In/Out strategy, in which the leverage is set to 0 when
+    the risk is OFF.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Finally, we also allow for short sales, making the strategy extremely aggressive
+    and dangerous, as the markets are known to go up on average.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Below are the results, for these different settings (Table [4.12](#Tab12)):Table
+    4.12
+  prefs: []
+  type: TYPE_NORMAL
+- en: Sensitivity of the average improvement of the Sharpe ratio to the leverage used
+  prefs: []
+  type: TYPE_NORMAL
+- en: '| Risk OFF leverage &#124; Risk ON leverage | Improvement of the average (%)
+    | *p*-value (%) | Percentage of positive improvements (%) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- | --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Risk OFF −1 &#124; Risk ON 2 | 201.88 | 0.14 (***) | 91.67 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Risk OFF −0.5 &#124; Risk ON 2 | 215.39 | 0.09 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Risk OFF 0 &#124; Risk ON 2 | 201.83 | 0.07 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Risk OFF 0.25 &#124; Risk ON 2 | 182.78 | 0.06 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Risk OFF 0.5 &#124; Risk ON 2 | 157.49 | 0.06 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Risk OFF 1 &#124; Risk ON 2 | 99.19 | 0.08 (***) | 100.00 |'
+  prefs: []
+  type: TYPE_TB
+- en: Remarkably, the *p*-value is quite insensitive to the level of performance,
+    which is a good indicator that the methodology we proposed for computing this
+    *p*-value is reliable.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Note that the performances are always increasing when we increase aggressiveness,
+    until the −1|2 case. It is an extremely strong sign of predictive power that the
+    strategy survives to short sales, and even gets better under this framework. However,
+    if one is going to use short sales, it should be done carefully.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Indeed, in the −0.5|2 case, the average random improvement is −49%, which clearly
+    shows that shorting the market is an extremely dangerous strategy, for which we
+    should have an extreme level of confidence in the underlying signal.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Still, if the strategy is successful, this is also to an extreme point: below,
+    we display the example of the Stoxx Europe 600, for which the −0.5|2 strategy
+    reaches a final level of 1,242.44 points (base 100 in 2001), versus a final level
+    of 165.92 points for the market (recall that both portfolio returns have the same
+    volatility) (Fig. [4.11](#Fig11)).![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig11_HTML.png)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 4.11
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Stoxx Europe 600: Market Timed Portfolio with aggressive leverage strategy,
+    vs Market Portfolio (equal volatility)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4.6 Conclusions
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: In this chapter, we presented a polymodel-based Systemic Risk Indicator and
+    its associated trading strategy.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The predictive power of the indicator was shown to be statistically and economically
+    significant across several markets and time periods. These results are found to
+    be robust in the tests that have been conducted. However, the robustness of the
+    strategy, as well as its performance, can be increased by selecting/combining
+    better/different parameters of the strategy.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In terms of improving the design of the indicator, it is possible to explore
+    different paths. Subject to computational resources, estimating the indicator
+    on a daily frequency can be a game changer since the indicator spikes sometimes
+    only a few days after the beginning of a market drawdown. The methodology developed
+    for the indicator should also be tested to see if it can predict market rallies.
+    Indeed, it is possible that some particular herding behavior may occur at the
+    beginning of speculative bubbles, for example. If this is the case, it can also
+    improve the crisis indicator by differentiating exuberant mimicry from collective
+    panic.
+  prefs: []
+  type: TYPE_NORMAL
+- en: This last point emphasizes the need to strengthen the economical foundations
+    of the indicator. It is especially important to better understand which factors
+    correlate or de-correlate the most before the crisis, and why they behave accordingly.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The indicator should also be compared with existing alternatives, to measure
+    how it can add value to a portfolio that aims at benefiting from various market
+    timing signals (for example, its performance can be compared with other market
+    stress indicators, such as Chicago Fed’s National Financial Conditions Index (NFCI)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: There are already several systemic risk indicators identified by the literature.
+    However, as far as we know, at the time of writing, all these indicators are based
+    on the increase of correlations. The present chapter adds value to the literature
+    by identifying another, simultaneous and possibly stronger phenomenon of de-correlation
+    of the factors. Considering the shape of the representative pre-Crisis distributions
+    and the results achieved by the Systemic Risk Indicator, this finding may be one
+    of the keys to understanding the financial crisis.
+  prefs: []
+  type: TYPE_NORMAL

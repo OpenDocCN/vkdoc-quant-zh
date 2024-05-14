@@ -1,0 +1,781 @@
+- en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2023F.
+    Cecconi (ed.)AI in the Financial Markets Computational Social Sciences[https://doi.org/10.1007/978-3-031-26518-1_3](https://doi.org/10.1007/978-3-031-26518-1_3)
+  prefs: []
+  type: TYPE_NORMAL
+- en: '3. Financial Markets: Values, Dynamics, Problems'
+  prefs:
+  - PREF_H1
+  type: TYPE_NORMAL
+- en: 'Juliana Bernhofer^([1](#Aff16), [2](#Aff17) [ ](#ContactOfAuthor1)) and Anna Alexander
+    Vincenzo^([3](#Aff18) [ ](#ContactOfAuthor2))(1)Department of Economics, University
+    of Modena and Reggio Emilia, “Marco Biagi”, Via Jacopo Berengario, 51, 41121 Modena,
+    Italy(2)Department of Economics, Ca’ Foscari University of Venice, Cannaregio
+    873, 30121 Venezia, Italy(3)Università degli Studi di Padova, Via del Santo 33,
+    35123 Padova, ItalyJuliana Bernhofer (Corresponding author)Email: [juliana.bernhofer@unive.it](mailto:juliana.bernhofer@unive.it)Anna Alexander
+    VincenzoEmail: [anna.alexandervincenzo@unipd.it](mailto:anna.alexandervincenzo@unipd.it)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Abstract
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'The 2020 global stock market crash triggered by the coronavirus outbreak has
+    led to an intertwined and still unfolding series of social, economic, and financial
+    consequences. We will review several aspects of the recent pandemic crisis and
+    critically compare them to extant findings on the effects of financial breaks,
+    fear, and turbulences (global financial crises, terrorism, and previous pandemics)
+    on financial markets. With the increase of uncertainty and volatility, the Covid-19
+    pandemic also affected investors’ risk attitudes, trust, and confidence. We will
+    provide insight into these behavioral aspects and how they ultimately affect financial
+    decision-making. Moreover, a unique side effect of the government restrictions
+    is the unprecedented increase of digitalization: never before have global citizen
+    of all ages been cornered into using online services and digital tools. We will
+    discuss the implications of this new phenomenon for the financial market, its
+    effect on social inequality, and the scenario of opportunities it entails.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: KeywordsFinancial marketsRiskTrustResilienceDigital literacyJuliana Bernhofer
+  prefs: []
+  type: TYPE_NORMAL
+- en: is an academic researcher at the “Marco Biagi” Department of Economics of the
+    University of Modena and Reggio Emilia, honorary research fellow at the Ca’ Foscari
+    University of Venice and co-founder of CF Applied Economics, a center for applied
+    economic analysis and research. She is an applied behavioral economist whose research
+    interests span from the development of computational decision-support tools to
+    empirical data analyses and human subject experiments in the areas of language
+    economics, education and labor economics, taxation and health economics.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Anna Alexander Vincenzo
+  prefs: []
+  type: TYPE_NORMAL
+- en: is assistant professor at the Department of Economics and Management of University
+    of Padua. Her current research interests involve financial accounting topics,
+    with a particular focus on corporate tax avoidance, corporate governance, and
+    the third sector.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 3.1 Introduction
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: In late 2019, Covid-19 had started to spread. Due to severe pneumonia, the virus
+    led to an extraordinary rate of death between the elderly and the most vulnerable
+    in society, leading to an international social distancing and home isolation of
+    more than 2 billion people worldwide, with tremendous social, political, and economic
+    consequences (Goodell [2020](#CR32); Sharif et al. [2020](#CR50)). Moreover, one
+    of the commercial effects of this virus was an unexpected disruption in the flow
+    of goods and services, commodity prices and financial conditions, creating economic
+    disasters across many countries because of its impact on the production and supply
+    chains in China, the United States, Europe, and Japan, and other important economies
+    in the world (IMF [2020](#CR35)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: The outbreak of Covid-19 was a shock to market participants (Ramelli and Wagner
+    [2020](#CR48)) and the anticipated real effects of the health crisis were amplified
+    through financial channels. In contrast to the Global Financial Crisis of 2007,
+    Covid-19 primarily was a shock to the real economy, initially unrelated to the
+    availability of external financial means though the market’s reaction anticipated
+    a potential amplification of the real shock through financial restrictions.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Analyzing the impact of this unanticipated rare disaster on financial markets,
+    we can outline three phases in the progression of the pandemic.^([1](#Fn1)) On
+    December 31, 2019, cases of pneumonia detected in Wuhan, China, were first reported
+    to the World Health Organization (WHO), and on January 1, 2020, Chinese health
+    authorities closed the Huanan Seafood Wholesale Market after it was discovered
+    that the wild animals sold there may be the source of the virus (World Health
+    Organization [2020](#CR55)a). The first trading day was January 2, hence the starting
+    point of the first period.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Second, on January 20, Chinese health authorities confirmed human-to-human transmission
+    of the coronavirus, and the following day the WHO issued the first situation report
+    on the outbreak (China’s National Health Commission [2020](#CR21); World Health
+    Organization [2020](#CR56)b). Monday, January 20 was a national holiday in the
+    United States; therefore the following day marked the beginning of the second
+    phase.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Third, on Sunday, February 23, Italy placed almost 50,000 people under strict
+    lockdown in an attempt to control the outbreak after registering its first deaths
+    from coronavirus on Saturday, February 22 (Italy’s Council of Ministers [2020](#CR36)).
+    February 24 was the first trading day in this phase and the situation plummeted
+    in the following weeks. On Monday, March 9 the Dow Jones Industrial Average (DJIA)
+    fell 2014 points, a 7.79% drop. Two days later, on March 11, the World Health
+    Organization classified Covid-19 as a pandemic. On March 12, 2020, the DJIA fell
+    2352 points to close at 21,200\. It was a 9.99% drop and the sixth-worst percentage
+    decrease in history. Finally, on March 16, the DJIA collapsed by nearly 3000 points
+    to close at 20,188, losing 12.9%. The fall in stock prices forced the New York
+    Stock Exchange to suspend trading several times during those days.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In March 2020, the world witnessed one of the most dramatic stock market crashes
+    so far. In barely four trading days, the DJIA plunged 6400 points, an equivalent
+    of roughly 26%. The sharp fall in stock market prices was caused by the authorities’
+    decision to impose strict quarantines on the population and ordered a lockdown
+    of most business activities to limit the spread of the Covid-19 virus. Lockdowns
+    imposed to business activities put on hold most of the business operations, and
+    companies reacted by adjusting their labor costs to compensate the revenue shock.
+    The layoff of employees led to a sharp reduction in consumption and economic output,
+    lowering companies’ stream of expected future cash flows.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The lowest point was hit by the DJIA on March 20 at the end of the trading week.
+    The following Monday, March 23, the Federal Reserve Board announced major interventions
+    in the corporate bond market and the index began to rise again. The evolution
+    of the index during the first quarter of 2020 is shown in Fig. [3.1](#Fig1).![](../images/524458_1_En_3_Chapter/524458_1_En_3_Fig1_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: A chart of the Dow Jones Index market for January, February, and March. The
+    chart has a downward trend.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 3.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: The Dow jones industrial average (DJIA) during the first quarter of 2020
+  prefs: []
+  type: TYPE_NORMAL
+- en: However, the Covid-19 pandemic did not affect all industries equally^([2](#Fn2))
+    and the lockdowns did not result in negative price changes across all industries.
+    Some sectors, in fact, have benefitted from the pandemic and the resulting lockdowns.
+    Mazur et al. [2021](#CR44) focused on S&P 1500 and found that firms that operate
+    in crude petroleum sector were hit hardest and lost over 60% of their market values
+    in a day. In contrast, firms in natural gas and chemicals sectors improved their
+    market valuations and earned positive returns of more than 10%, on average. Further,
+    they study industry-level patterns and show that during March 2020 stock market
+    crash, the best-performing industries include healthcare, food, software, and
+    technology, as well as natural gas, which yield a positive monthly return of over
+    20%. On the other hand, sectors including crude petroleum, real estate, hospitality,
+    and entertainment plunged over 70%.
+  prefs: []
+  type: TYPE_NORMAL
+- en: If it’s unsurprising that Covid-19 captured the attention of the financial markets,
+    it is interesting to note when market participants became more preoccupied with
+    the development of the situation. One measure used in research to gauge retail
+    investor interest in a topic was developed by Da et al. [2015](#CR25) and it uses
+    the intensity of search on Google. Ramelli and Wagner [2020](#CR48) exploit Google
+    Trends search to capture investor sentiment and show that Global Google search
+    attention on coronavirus spiked, especially after March 9, while the number of
+    conference calls of international firms and the number of conference calls covering
+    the coronavirus topic also increased, but spiked earlier on at the end of February.
+    In their study, they find that initially, as China was effectively shut down,
+    investors avoided U.S. stocks with China exposure and internationally oriented
+    companies; as the virus situation in China improved relative to the situation
+    in Europe and in the United States, investors perceived those companies more favorably
+    again. As the virus spread in Europe and the United States, leading to lockdowns
+    in these economies, markets moved feverishly.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 3.2 How Did Financial Markets React to Previous Pandemics?
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Few studies analyze the impact of epidemics or pandemics on the financial markets.
+    Recent studies put the coronavirus pandemic into perspective and analyzed its
+    consequences compared to previous pandemics of the twentieth century.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The impact of an infectious disease outbreak is characterized by high uncertainty,
+    more so when the outbreak involves a new disease with an unquantified mode and
+    rate of transmission, infectivity, and lethality (Smith [2006](#CR54)). According
+    to (Baker et al. [2020](#CR10)), the impact of Covid-19 pandemic outbreak on the
+    stock market is unprecedented.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In Fig. [3.2](#Fig2), we show the evolution over time of S&P 500 actual real
+    prices. Stock-market returns for 1918 are hard to obtain and would have been affected
+    by the end of the First World War, which took place between 1914 and 1918\. The
+    S&P 500 Index can be tracked back to 1871; it fell by 24.7% in 1918 and rose by
+    8.9% in 1919.![](../images/524458_1_En_3_Chapter/524458_1_En_3_Fig2_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: A line graph of the S and P history illustrates the price and events from the
+    year 1860 to 2020\. In 1918 was the Spanish flu pandemic, in 1956 was the Asian
+    flu pandemic, and in 1968 was the Hong Kong influenza pandemic. The threats of
+    a pandemic are also represented.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 3.2
+  prefs: []
+  type: TYPE_NORMAL
+- en: S&P500 history 1860–2020
+  prefs: []
+  type: TYPE_NORMAL
+- en: The 1957 Asian flu pandemic was the second most significant outbreak in recent
+    history with approximately 1–2 million victims worldwide. This pandemic was first
+    identified in the Far East in February 1957\. After an initial bear market phase,
+    the S&P 500 Index fully recovered by the last quarter of 1958.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In early 1968, the Hong Kong influenza pandemic was first detected in Hong Kong.
+    Deaths from this virus peaked in December 1968 and January 1969\. The S&P 500
+    Index rose by 12.5% in 1968 and by 7.4% in 1969\. In 2003—the year that the SARS
+    epidemic was first reported—the MSCI Pacific ex Japan Index fell by 12.8% from
+    14 January to 13 March. However, markets subsequently rallied strongly and, for
+    the year as a whole, the index returned 42.5%.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Another study by Correia et al. [2022](#CR24) looks at the impact of government
+    interventions such as social distancing, aimed at reducing mortality, on the economic
+    severity of the spread of a pandemic. The focus of their research is the 1918
+    Flu Pandemic that killed 675,000 people in the U.S., or about 0.66% of the population.
+    Most deaths occurred during the second wave in the fall of 1918\. In response,
+    major U.S. cities implemented a range of actions to contain the spread of the
+    virus, with different speed and stringency. These included school, theater, and
+    church closures, public gathering bans, quarantine of suspected cases, and restricted
+    business hours. Their results show no evidence that cities that enacted more stringent
+    containment measures performed worse in the years after the pandemic. In fact,
+    their findings suggest that these containment measures reduced the transmission
+    of the virus without intensifying the pandemic-induced economic downturn.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In the aftermath of the SARS outbreak, studies like (Beutels et al. [2009](#CR13);
+    Sadique et al. [2007](#CR49); Smith [2006](#CR54)) highlighted the economic implications
+    of pandemics. Outbreaks like SARS are predicted to generate immediate direct economic
+    effects from the impact of the disease itself (health sector costs related to
+    treatment of those infected), from policies to contain disease (public sector
+    and private costs related to quarantine, isolation and school closure) and from
+    the fear that is generated by the outbreak, which will affect individual behavior.
+    The presence of a health threat can influence the general expectations and behavior
+    of consumers and investors and, therefore, have an impact far beyond the direct
+    reduction in productivity from sick patients (Sadique et al. [2007](#CR49)). For
+    instance, for SARS, it has been observed that by far the largest economic impact
+    occurred by reduced local and international travel and reduced engagement in non-vital
+    consumption activities such as restaurants and bars, particularly in May 2003,
+    as well as postponement of consumption of mostly durable goods (Richard et al.
+    [2008](#CR42)). Beutels et al. [2009](#CR13) underline the importance of acknowledging
+    consumers and investors adaptation to public health emergencies to provide useful
+    economic analysis in the context of pandemics.
+  prefs: []
+  type: TYPE_NORMAL
+- en: A decade before the Covid-19 outbreak, (Keogh-Brown et al. [2010](#CR41)) studied
+    the possible economic impact on the UK economy of potential contemporary pandemics.
+    They based their estimates using epidemiological data from past pandemics, such
+    as the 1957^([3](#Fn3)) and 1968^([4](#Fn4)) influenza pandemics and applied a
+    quarterly macroeconomic model of the UK economy. They used the latter two pandemics
+    of the twentieth century as a base case to construct further disease scenarios
+    by increasing the severity of the disease parameters, thus allowing to investigate
+    what the economic effect of a more severe influenza pandemic might be.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The choice in their research to use the 1957 and 1968 influenza pandemics, in
+    place of the 1918 pandemic, is driven by the observation that given the modern
+    changes in societal behavior and public health policy, the economic impact of
+    a recurrence of the Spanish flu would be very different in the current economy.
+    However, by using the more recent pandemics as a base case for disease scenarios
+    and extrapolating beyond the severity of more serious pandemics, such as 1918,
+    they are able to generate some useful hypotheses and stimulate thinking on the
+    potential economic impact of infectious disease outbreaks (Keogh-Brown et al.
+    [2010](#CR41)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: Keogh-Brown et al.’s model provides different outputs according to the severity
+    of each scenario in terms of clinical attack rate and case fatality rate. The
+    shock to the working population is expressed as deaths, direct absenteeism (caused
+    by infection) and indirect absenteeism (caused by school closure and ‘prophylactic’
+    avoidance of work). The results of the model, of course, vary according to the
+    different values attributed to the severity of the outbreak, but provide interesting
+    conclusions in terms of GDP loss, consumption decline, and inflation. Most importantly,
+    these results clearly indicate the significance of behavioral change over disease
+    parameters.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 3.3 On Natural Disasters and Terrorist Attacks
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: While there is limited prior literature on how epidemics, let alone pandemics,
+    impact financial markets, imperfect parallels can be drawn from other forms of
+    natural disasters (Goodell [2020](#CR32)). Markets react to natural disasters
+    such as earthquakes and volcanos, as well as air disasters, and more recently
+    acts of terrorism.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Niederhoffer [1971](#CR46) was the first to analyze the price impact of various
+    crises, studying events ranging from Kennedy’s assassination to the beginning
+    of the Korean War. Niederhoffer found that these world events have a discernible
+    influence on the movement of the stock market averages. Barrett et al. [1987](#CR11)
+    examined a sample of 78 fatal commercial airline crashes that occurred in the
+    period from 1962 through 1985 and found that the immediate negative price reaction
+    to airline crashes is significant for only one full trading day after the event
+    occurs. They also analyzed market responses after the initial reaction period
+    and found no evidence of under-reaction or overreaction in the initial response
+    period, which is in line with the idea of immediate price adjustment in the market. Shelor
+    et al. [1992](#CR52) examined the impact that the earthquake that struck California
+    on October 17, 1989, had on real estate-related stock prices. Their findings indicate
+    that the earthquake conveyed new information relevant to the financial market,
+    which was manifested in statistically significant negative stock returns for firms
+    that operated in the San Francisco area. Real estate-related firms operating in
+    other areas of California were generally unaffected by the earthquake and did
+    not experience any significant price reactions. Worthington and Valadkhani [2004](#CR57)
+    measured the impact of a wide variety of natural disasters, including severe storms,
+    floods, cyclones, earthquakes, and wildfires, on the Australian capital markets.
+    Their results suggest that wildfires, cyclones, and earthquakes have a major effect
+    on market returns, whereas severe storms and floods do not.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The indirect economic consequences of terrorism on global financial markets
+    have received considerable attention in the academic literature over the past
+    few years. Several studies have examined the effects of terrorism on stock markets.
+    Research on the impact of terrorist events on financial markets might provide
+    some parallel, as terrorist events, while localized in their initial manifestation
+    are by their nature designed to create a widespread change in public mood. Negative
+    consequences can be observed on major macroeconomic variables with negative shocks
+    to consumer and investor confidence and thereby also to the economic outlook and
+    financial markets (Frey et al. [2007](#CR30); Johnston and Nedelescu [2006](#CR37)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: A number of empirical studies have analyzed the stock market effects of terrorist
+    attacks. Eldor and Melnick [2007](#CR27) used daily data to analyze how the Tel
+    Aviv Stock Exchange reacts to terror events. They focused on 639 attacks between
+    1990 and 2003 and found that suicide attacks had a permanent effect on the stock
+    market. Karolyi and Martell [2006](#CR40) looked at the stock price impact of
+    75 terrorist attacks between 1995 and 2002, focusing on publicly listed firms.
+    Their cross-sectional analysis of the firm’s abnormal stock returns suggests that
+    the impact of terrorist attacks differs according to the home country of the target
+    firm and the country in which the incident occurred. Attacks in countries that
+    are wealthier and more democratic were associated with larger negative share price
+    reactions. Furthermore, the results of their study suggested that human capital
+    losses, such as the kidnapping of company executives, are associated with larger
+    negative stock price reactions than physical losses, such as bombings of facilities
+    or buildings.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Chen and Siems [2007](#CR17) used event study methodology to assess the effects
+    of terrorism on global capital markets. They examined the US stock market's response
+    to 14 terrorist attacks dating back to 1915, and in addition analyzed the global
+    capital market's response to two more recent events—Iraq’s invasion of Kuwait
+    in 1990 and the September 11, 2001 terrorist attacks. The results of that study
+    suggest that the US capital markets are more resilient than in the past and tend
+    to recover more quickly from terrorist attacks than other global capital markets.
+    This latter finding is partially explained by a stable banking/financial sector
+    that provides adequate liquidity to encourage market stability and minimize panic.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Moreover, Drakos [2004](#CR26) and Carter and Simkins [2004](#CR16) studied
+    the specific impact of the September 11 attacks on airline stocks. The latter
+    focused on the significant emotional impact of the attacks on investor psychology
+    by testing whether the stock price reaction on September 17, the first trading
+    day after the attack, was the same for each airline or whether the market distinguished
+    among airlines based on firm characteristics. Their cross-sectional results suggest
+    that the market was concerned about the likelihood of bankruptcy in the wake of
+    the attacks and distinguished between airlines based on their ability to cover
+    short-term obligations. Drakos focused on the risk characteristics of airline
+    stocks and reported a terrorism-induced structural shift in financial risk in
+    the aftermath of the September 11 terror attacks. Drakos reported that both the
+    systematic and idiosyncratic risk of airline stocks increased substantially since
+    September 11, 2001\. Conditional systematic risk more than doubled, which could
+    have implications for both firms and investors. Portfolio managers need to reconsider
+    their allocation of money to airline stocks, and listed airlines will face higher
+    costs when raising capital.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The impact of terrorism on financial market sentiment is also examined in Burch
+    et al. [2003](#CR15) and Glaser and Weber [2005](#CR31). Burch et al. [2003](#CR15)
+    find a significant increase in closed-end mutual fund discounts in the aftermath
+    of the September 11 attacks, and thereby conclude that these attacks caused a
+    negative shift in investor sentiment. Glaser and Weber [2005](#CR31) use questionnaire
+    data to analyze the expectations of individual investors before and after the
+    September 11 attacks. Somewhat surprisingly, they find that the stock return forecasts
+    of individual investors are higher and the differences of opinion lower after
+    the terrorist attacks. Glaser and Weber [2005](#CR31), however, also report a
+    pronounced increase in investors’ volatility expectations.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Karolyi [2006](#CR39) discusses the “spillover effects” of terrorist attacks
+    and whether research on this topic suggests a broad-based or “systematic” contribution
+    of potential terrorism to overall risk. His conclusion is that the evidence is
+    quite limited, but there have been few tests that have examined volatility or
+    beta risks with asset-pricing models. Choudhry [2005](#CR22) investigated, post-September
+    11, a small number of US firms in a variety of different industries to see if
+    this terrorist event affected a shift in market betas, with mixed findings. Hon
+    et al. [2004](#CR34) find that the September 11 terrorist attacks led to an increase
+    in correlations amongst global markets with variations across global regions.
+    A number of other papers present a mixed picture of how much terrorist acts have
+    spilled over into changes in the nature of financial markets (Chesney et al. [2011](#CR18);
+    Choudhry [2005](#CR22); Corbet et al. [2018](#CR23); Nikkinen and Vähämaa [2010](#CR47)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: Some papers suggest that the downturn in markets with respect to terrorist events
+    is rather mild. According to (Brounen and Derwall [2010](#CR14)), financial markets
+    rebound within the first weeks of the aftermath of unanticipated events such as
+    earthquakes and terror attacks. In their study, they compare price reactions of
+    terror attacks to those of natural disasters and find that price declines following
+    terror attacks are more pronounced. However, in both cases prices recover shortly
+    after the event. They also compare price responses internationally and for separate
+    industries and find that reactions are strongest for local markets and for industries
+    that are directly affected by the attack. The September 11 attacks turn out to
+    be the only event that caused long-term effects on financial markets, especially
+    in terms of industry’s systematic risk.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 3.4 Risk, Trust, and Confidence in Times of Crises
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: How do risk preferences, attitudes toward trust and confidence in the government
+    affect financial decision-making? In turn, to what extent do exogenous shocks
+    such as the recent Covid-19 pandemic impact on these decisive parameters in the
+    short and in the long run?
+  prefs: []
+  type: TYPE_NORMAL
+- en: Exposure to disasters such as earthquakes, flooding, terrorist attacks and pandemics
+    has an impact not only directly on the victims and their families, but on the
+    whole society and aggregate preferences.
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**Risk preferences, Trust and Animal Spirits**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Ahsan [2014](#CR2) shows that anxiety, as a consequence of extreme events such
+    as cyclones, increases people’s risk aversion. Anxiety however affects stock market
+    performance not only through the channel of risk preferences; post-traumatic stress
+    and fear affect rationality and also introduce significant bias in interpreting
+    reality. Engelhardt et al. [2020](#CR28) analyze data from 64 countries covering
+    95% of the world’s GDP to assess whether the stock market crash in 2020 was driven
+    by rational expectations^([5](#Fn5)) or an increased attention to news. Similarly
+    to (Ramelli and Wagner [2020](#CR48)), the latter was measured by assessing abnormal
+    Google search volume within the assessed time frame. The authors find that one
+    standard deviation increase in news attention leads to a 0.279 standard deviation
+    decrease in market returns, whereas one standard deviation increase in the authors’
+    rational expectations measure leads to a decrease of 0.131 standard deviations
+    of market returns. The cost for the US stock market associated to the hype of
+    negative news was estimated to be USD 3.5 trillion until April 2020\. Also (Al-Awadhi
+    et al. [2020](#CR4)) find negative effects on stock market returns in reaction
+    to both total confirmed cases and daily Covid-19 deaths in the Chinese stock market
+    and (Albulescu [2021](#CR5)) find similar results for the financial markets in
+    the Unites States. Shear et al. [2020](#CR51) compare different cultures and their
+    level of uncertainty avoidance. The higher the tendency of trying to mitigate
+    uncertain situations, the higher the search volume for additional information.
+    The results are in line with previous reports: national culture, in association
+    with the uncertainty avoidance index, is a significant predictor of stock market
+    returns in times of crises, in that cultures who are more risk and uncertainty
+    averse tend to seek for more information, ultimately increasing their level of
+    anxiety which in turn has negative effects on stock market outcomes. Similarly,
+    also (Bernhofer et al. [2021](#CR12)) show that speakers of languages defined
+    by a more intensive use of non-indicative (*irrealis*) moods have a higher level
+    of risk aversion and invest less in risky assets. This is due to the fact that,
+    semantically, the unknown is more precisely defined, hence increasing the salience
+    of their regions of uncertainty.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: The idea that people are affected by their emotions when making financial decisions
+    was first described by John Maynard Keynes in 1936 in his prominent publication
+    *The General Theory of Employment, Interest and Money.* In what most likely represents
+    the origin of behavioral finance, he illustrates how “animal spirits”, or basic
+    instincts and emotions, affect consumer confidence. In what was observed by Hippocrates
+    from Kos in 400 B.C. and Claudius Galen from Pergamon in 200 A.D. as *pneuma psychikon*
+    (or “animal spirits”), an invisible entity located within the cerebral ventricles
+    and which moves through muscles and nerves (Herbowski [2013](#CR33); Smith et
+    al. [2012](#CR53)). This approximation however appears to be indeed the original
+    idea of the biological explanation behind the psychological reaction to crises
+    and uncertainty as a “spontaneous urge to action”. One of the reactions to shocks
+    hence appears to lie in the production of the “stress hormone”, cortisol, which
+    increases as a response to e.g. market volatility and has been shown to decrease
+    risk propensity (Kandasamy et al. [2014](#CR38)). Also measured anxiety and its
+    consequences on financial decision-making can be, at least in part, explained
+    by the surge of cortisol levels as small probabilities tend to be overweighted
+    as a response to increased levels of stress. The latter phenomenon is more commonly
+    observed in men compared to women.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Moreover, the human tendency of paying attention to news instead of following
+    data-driven models is what Christopher A. Sims in the early 2000s describes with
+    his renowned theory of rational inattention which has since been discussed and
+    applied by numerous researchers. According to Sims’ thesis, investors do not have
+    the information processing capacity in terms of data, time, and cognitive abilities
+    to run highly complex models, so they take a shortcut, relying on media reports.
+    While this is a money-saving technique on one hand, one of the major drawbacks
+    of this approach is the exposure to *negativity bias* as the result of increased
+    attention to pessimistic news. This, in turn, leads to the formation of pessimistic
+    expectations and distortive effects in financial markets.
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**Trust and Confidence in the Government**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Engelhardt et al. [2021](#CR29) address the issue of behavioral aspects in financial
+    decision-making from a slightly different angle by investigating a society’s pre-existing
+    inherent level of trust and its resilience against the effects of the pandemic.
+    The authors analyze data from the World Value Survey covering 47 countries and
+    the number of confirmed Covid-19 cases from the end of January to the end of July
+    2020\. Trust was measured with two different indices, societal trust—or trust
+    in other people—and confidence in the government. Market Volatility was calculated
+    as the 5-day moving average volatility and Covid-19 cases were adjusted by population
+    size. Stock markets were found to be significantly less affected by new Covid-19
+    case reports in those countries where societal trust and confidence in the government
+    were higher. The authors hypothesize that the transmission mechanism passes through
+    the level of uncertainty which is lowered by the confidence in the government’s
+    rules as well as the level of trust in fellow citizens obeying new rules and prescriptions.
+    The role of an active government in building trust and mediating emotional responses,
+    or “animal spirits”, to crises was underlined by Akerlof and Shiller [2010](#CR3).
+    It should therefore act as a responsible parent to the economy, mitigating its
+    reactions to critical events.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 3.5 Digital Literacy and Covid-19
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: '**The Great Surge**'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Research on the Covid-19 pandemic usually comes with a bitter aftertaste: the
+    death toll, the effects on mental health in all age groups, the loss of jobs and
+    the closure of firms. Industries relying on face-to-face interaction suffered
+    significant reductions in revenue, as opposed to realities more able to adapt
+    to a remote market, such as Zoom Video Communications, Netflix, and Amazon. Miescu
+    and Rossi [2021](#CR45) conduct some impulse response function analyses and show
+    that Covid-19-induced shocks reduced employment of poor households nearly twice
+    as much as that of rich households. Private expenditure, on the other hand dropped
+    by nearly 50% in rich households compared to poor households which is likely to
+    be due to differences in the consumption portfolio with the entertainment and
+    hospitality sector being temporarily unavailable.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: As a consequence of social distancing, school closures and other restrictions,
+    a renowned and widely discussed externality of the first lockdown was that businesses
+    of all sizes and private citizen of all age groups were forced to navigate the
+    online world in order to overcome the physical limitations. The adaptation to
+    the digital environment happened nearly overnight and has acted as a catalyst
+    (Amankwah-Amoah et al. [2021](#CR7)) for the use of a wide range of digital tools
+    previously unknown or ignored. Governments and firms alike had to swiftly move
+    from paper-based procedures to online services to reach their targets and private
+    citizens of all age groups, social backgrounds and educational categories had
+    to boost existing digital skills or acquire new knowledge to benefit from public
+    aid, and maintain access to healthcare and participate in the market. There was
+    not much space and time for resistance as the pandemic hit our entire social system.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In Fig. [3.3](#Fig3), we compare interviews conducted through the Survey of
+    Health, Ageing and Retirement in Europe (Axel Börsch-Supan [2022](#CR9)). SHARE
+    is a biennial cross-national panel database on socio-economic status, family networks,
+    individual preferences and health of individuals that are 50 years and older,
+    hence representing one of the more vulnerable age groups. The first round of questionnaires
+    (i.e., Wave 1) was conducted in 2004 and involved 11 European countries and Israel.
+    The fieldwork of the 8th wave was supposed to be finalized during spring 2020,
+    but was interrupted by the pandemic in March 2020\. In June of the same year,
+    CATI^([6](#Fn6)) questionnaires were conducted with some respondents who had already
+    been interviewed and some who had not answered yet. In the two graphs, we compare
+    the pre-covid computer skill levels in Europe among the older share of the population
+    with the post-covid self-elicited improvement of computer skills after the first
+    lockdown 2020\. By comparing countries with low pre-existing digital competencies
+    to countries that entered the crisis with a high level of computer skills, we
+    observe a tendency toward closing the digital gap as the former countries show
+    a stronger increase in their skills on average.![](../images/524458_1_En_3_Chapter/524458_1_En_3_Fig3_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2 maps of Europe. On the left is the average computer skills for ages 50 plus
+    before Covid 19\. On the right is the percentage share with improved digital skills
+    for ages 50 plus in the year 2021.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 3.3
+  prefs: []
+  type: TYPE_NORMAL
+- en: Digital skills before and after the pandemic
+  prefs: []
+  type: TYPE_NORMAL
+- en: A second econometric assessment presented in Table [3.1](#Tab1) sheds some light
+    on the social aspect. We analyze the determinants of improved digital literacy
+    after the Covid-19 pandemic, such as gender, literacy, household income level,
+    and income inequality at the country level. On one hand, women benefit nearly
+    twice as much as men and are also those who had a lower ex-ante digital literacy,
+    but on the other hand, those who have better reading skills benefit slightly more
+    from the digital transformation initiated by the pandemic. Interestingly, there
+    does not appear to be any differential effect for respondents with a monthly income
+    higher than the median of their country, but more importantly that countries characterized
+    by higher levels of income inequality are on average 7.5 times more likely to
+    have experienced an increase in digital literacy during the lockdown.Table 3.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: Some determinants of improved digital literacy
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | (1) | (2) | (3) |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Female | 1.858*** | 1.781*** | 1.809*** |'
+  prefs: []
+  type: TYPE_TB
+- en: '|   | 0.168 | 0.160 | 0.160 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Literacy | − | 1.118** | 1.105** |'
+  prefs: []
+  type: TYPE_TB
+- en: '|   | − | 0.049 | 0.049 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| High Income | − | − | 1.257 |'
+  prefs: []
+  type: TYPE_TB
+- en: '|   | − | − | 0.186 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| High Gini | − | − | 7.548*** |'
+  prefs: []
+  type: TYPE_TB
+- en: '|   | − | − | 0.054 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Constant | 0.407*** | 0.207*** | 0.189*** |'
+  prefs: []
+  type: TYPE_TB
+- en: '|   | 0.042 | 0.028 | 0.026 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| N. Observations | 1992 | 1992 | 1992 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| N. Countries | 24 | 24 | 24 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Pseudo R2 | 0.016 | 0.055 | 0.057 |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Estimation method | Logit | Logit | Logit |'
+  prefs: []
+  type: TYPE_TB
+- en: '*Notes* The dependent variable is “Has improved PC skills after Covid-19”.
+    The method of estimation is Logit with the coefficients reported as odds ratios.
+    Robust standard errors are clustered at the country level. Country fixed effects
+    have been included in all models. Literacy is measured on a scale from 0 (Fair)
+    to 4 (Excellent). Reference categories for Female is Male. High Income = 1 if
+    the respondent’s income is higher than the country median. High Gini = 1 if income
+    inequality is higher than the median of other countries in the sample'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Significance levels: * p < 0.1, ** p < 0.05, *** p < 0.01'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 3.6 The Great Reset
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Social sustainability is among the main goals of The Great Reset Initiative
+    promoted by the World Economic Forum (WEF). The aim is to rise from the Covid-19
+    setback by creating a stakeholder economy that is more resilient, equitable, and
+    sustainable. Growth should be greener, smarter, and fairer, in line with the United
+    Nations 2030 Sustainable Development Goals.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'A positive externality is provided by the digitalization process during the
+    first lockdown in 2020: as we have seen earlier, who more frequently experienced
+    increases in their digital skills during the lockdown are women and those who
+    live in countries with a higher level of inequality. Also, those who have an educational
+    level benefitted slightly more from the digitalization process, which means that
+    skills are self-reinforcing. Knowledge makes it easier to acquire more knowledge.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: However, the role of the government is fundamental not only in creating trust,
+    as described in the previous section, but also equally distributing and fostering
+    digital skill acquisition, digital inclusion, and connectivity.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'One of the drivers of wealth inequality is unequal access to traditional forms
+    of credit. Small businesses and private citizens often cannot provide the sufficient
+    proof of creditworthiness and without financial resources, a significant share
+    of the population is cut out from the market thus hindering innovation and productivity.
+    The most affected share of the population is represented by citizen with low income,
+    women, and ethnic minorities. Artificial Intelligence has the potential to overcome
+    these limitations as potential recipients can be evaluated in different domains:
+    the creditworthiness of an individual is therefore not limited to their financial
+    history but could extend, for example, to their social network activity and behavior,
+    geographical location, and online purchases. Under the condition that equal access
+    to digital technology is granted, the recent developments allow for a worldwide
+    inclusion into financial, educational, and commercial realities of disadvantaged
+    and geographically remote populations. In Bangladesh for example, iFarmer is a
+    crowdfunding platform that puts together female cattle farmers targeting potential
+    investors. Digital lending has experienced a significant increase with the onset
+    of the pandemic with the special form of Fintech, P2P (peer-to-peer) lending over
+    apps, becoming more frequently an alternative to banks or other financial intermediaries
+    (Arninda and Prasetyani [2022](#CR8)). Loans in such platforms are transferred
+    from individual to individual, cutting bureaucracy and costs in a substantial
+    way. Crowdfunding and P2P lending have already existed before the pandemic (Agur
+    et al. [2020](#CR1); Lin et al. [2017](#CR43)), but the level of digital literacy
+    acquired opens up for an unprecedented number of opportunities for targeted policy
+    interventions aimed at putting together philanthropists with who was left behind
+    during the last two years and small start-up projects with potential, but with
+    little traditional creditworthiness with small venture capitalists without geographical
+    constraints. Similar to dating apps, borrowers and lenders meet on matchmaking
+    platforms (e.g. Estateguru, PeerBerry, Mintos and Lendermarket) that are often
+    supported by Artificial Intelligence to optimize markets.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Artificial Intelligence is a powerful technology. And so far, we have only
+    scratched the surface of what may be possible as more and more AI solutions are
+    being developed. The potential of a learning algorithm able to understand and
+    reinterpret complex human needs on several levels is to overcome behavioral attitudes
+    that could impede the success of financial transactions without traditional intermediaries,
+    mitigating the negative effects of economic shocks on social equality and building
+    mutual trust in both the lender and the borrower. AI has been widely applied in
+    the area of critical infrastructures, for example in public health, transport,
+    water supply, electricity generation and telecommunications, increasing their
+    resilience in case of extreme events. The same concept of resilience should be
+    applied to financial assets of small and medium businesses and private citizens:
+    in case of extreme events such as pandemics or other disasters, financial assets
+    must be protected and able to recover quickly from such shocks. This could be
+    achieved, among other solutions, by nudging small investors into choosing stocks
+    with a higher ES (environmental and social) rating as they are shown to react
+    less to volatility in the market (Albuquerque et al. [2020](#CR6)), by increasing
+    digital and financial literacy among the population and by providing equitable
+    access to technology, regardless of socio-economic status, ethnicity, gender,
+    and age.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 3.7 Conclusions
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Wars, pandemics, terrorist attacks, and natural disasters are known to have
+    a significant impact on financial markets. We provide an overview of the main
+    economic and social shocks of the last century and how investors reacted in terms
+    of financial decision-making. We discuss what such reactions entail in terms of
+    social equality, and how these crises affect individual preferences such as the
+    propensity toward risk-taking behavior, attitudes toward trust and confidence
+    in the government.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'A particular side effect of the recent Covid-19 pandemic is that of digitalization.
+    We also dedicate part of our chapter to the phenomenon of digital literacy, which
+    has experienced an unprecedented—yet forceful—surge after the first lockdown.
+    While the costs of this process and the subsequent market instability are still
+    unevenly distributed, digitalization represents a window to developing countries
+    and classes with lower socio-economic status: it has the potential of being a
+    remarkable opportunity for education, networks, economic growth and wealth redistribution.
+    However, it is the task of global governments to actively create positive change
+    and synergies, preventing them from ultimately worsening social and economic gaps
+    among the population and between countries. This can be achieved by building up
+    trust and investing in digital infrastructure and human capital, providing training
+    and support to both private citizens and small businesses.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Social connectedness is a known predictor of upward social mobility and may
+    act as a catalyst to the creation of a new global interconnectedness that can
+    also be accessed by those who had previously been confined to an often limited
+    local set of opportunities. Chetty et al. [2022a](#CR19), [2022b](#CR20) study
+    three types of connectedness based on social media friendships and ZIP codes.
+    The first is between people with low and high socio-economic status, the second
+    type is represented by social cohesion, and the third is defined by the level
+    of civic engagement. They find the first type of (economic) connectedness to be
+    the strongest determinant of upward income mobility. We claim that this holds
+    to some extent also for global connectedness, regardless of physical proximity.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The present century is the century of complexity, as already predicted by a
+    famous physicist and as we have seen, financial markets are no exception. The
+    development of the concept of resilience is a consequence of this prophecy, as
+    complexity cannot be solved with one pill. Recovering from the unforeseen—financially
+    and socially—is however possible, with the right tools at hand. By increasing
+    financial and digital literacy, investing in education and granting access to
+    technology and by building up confidence in peers and in the government, a more
+    equitable world can be created. Finally, the idea of *stakeholder capitalism*
+    with companies acting with the common good in mind instead of immediate profits,
+    together with the creation of a resilient, egalitarian, and environmentally sustainable
+    system are the main pillars of *The Great Reset*, an initiative promoted by the
+    World Economic Forum, which will be presented more indepth in the next chapter.
+  prefs: []
+  type: TYPE_NORMAL

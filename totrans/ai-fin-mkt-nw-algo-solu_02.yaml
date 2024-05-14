@@ -1,0 +1,1174 @@
+- en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2023F.
+    Cecconi (ed.)AI in the Financial Markets Computational Social Sciences[https://doi.org/10.1007/978-3-031-26518-1_2](https://doi.org/10.1007/978-3-031-26518-1_2)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2. AI, the Overall Picture
+  prefs:
+  - PREF_H1
+  type: TYPE_NORMAL
+- en: 'Luca Marconi^([1](#Aff16) [ ](#ContactOfAuthor1))(1)Advanced School in Artificial
+    Intelligence, Brain, Mind and Society, Institute of Cognitive Sciences and Technologies,
+    Italian National Research Council, Via San Martino Della Battaglia 44, Rome, ItalyLuca MarconiEmail:
+    [luca.marc@hotmail.it](mailto:luca.marc@hotmail.it)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Abstract
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Nowadays, artificial intelligence (AI) algorithms are being designed, exploited
+    and integrated into a wide variety of software or systems for different and heterogenous
+    application domains. AI is definitively and progressively emerging as transversal
+    and powerful technological paradigm, due to its ability not only to deal with
+    big data and information, but especially because it produces, manages and exploits
+    knowledge. Researchers and scientists are starting to explore, from several perspectives,
+    the different and synergetic ways AI will transform heterogenous business models
+    and every segment of all industries.
+  prefs: []
+  type: TYPE_NORMAL
+- en: KeywordsKnowledge representationReasoningAIMachine learningCognitive scienceLuca
+    Marconi
+  prefs: []
+  type: TYPE_NORMAL
+- en: is currently PhD Candidate in Computer Science at the University of Milano-Bicocca,
+    in the research areas of Artificial Intelligence and Decision Systems, as well
+    as Business Strategist and AI Researcher for an AI company in Milan. He also gained
+    experience as Research Advisor and Consultant for a well-known media intelligence
+    and financial communication private consultant in Milan. He holds a master of
+    science and a bachelor of science degrees in Management Engineering, from the
+    Polytechnic University of Milan, and a master of science degree in Physics of
+    Complex Systems, from the Institute of Cross-Disciplinary Physics and Complex
+    Systems of the University of the Balearic Islands (IFISC UIB-CSIC). He also holds
+    a postgraduate research diploma from the Advanced School in Artificial Intelligence,
+    Brain, Mind and Society, organized by the Institute of Cognitive Sciences and
+    Technologies of the Italian National Research Council (ISTC-CNR), where he developed
+    a research project in the Computational Social Science area, in collaboration
+    with the Laboratory of Agent Based Social Simulation of the ISTC-CNR. His research
+    interests are in the fields of artificial intelligence, cognitive science, social
+    systems dynamics, complex systems and management science.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Overall, AI has the potential to generally provide higher quality, greater
+    efficiency, and better outcomes than human experts. This significant and strong
+    potential of AI is emerging in potentially every applicative domain, organizational
+    context or business field. Therefore, the impact of AI on our daily and working
+    life is constantly increasing: intelligent systems are being modelled and interconnected
+    by the application of the powerful technological paradigm of the Internet of Things,
+    autonomous vehicles are being produced and tested in heterogeneous driving conditions
+    and intelligent robots are being designed for a variety of challenges and fields.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Indeed, AI is definitively contributing to the so-called fourth industrial
+    revolution, according to Klaus Schwab, the Founder and Executive Chairman of the
+    World Economic Forum. He clearly stated that AI is a fundamental breakthrough
+    in the technological scenario, able to foster a deep transformation of the way
+    we live and interact. It suffices to mention that Andrew Ng, former chief scientist
+    at Badu and Cofounder at Coursera, said in a keynote speech at the AI Frontiers
+    conference in 2017 that AI is really the new electricity: a disruptive and pervasive
+    transversal technology, able to support and even empower technologies and processes
+    in potentially any field or domain. Therefore, AI is able to stimulate and reshape
+    the current and future evolution of human society and the comprehension of AI
+    methods and techniques is definitively crucial when it comes to depicting the
+    evolving scenario of this decisive technological paradigm.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: In this chapter, we will explore the current technological and methodological
+    scenario of AI by presenting the overall picture and the main macro-challenges,
+    approaches and present steps towards what may happen in the future of AI and society.
+    Specifically, we aim to provide readers with general conceptual instruments to
+    approach both the main symbolic and sub-symbolic AI methods. Finally, we will
+    focus on the Human-AI Interaction perspective, by reviewing to what extent humans
+    and AI actually interact and even collaborate in heterogeneous contexts, so as
+    to depict the current stages towards a hybrid and collective socio-AI systemic
+    intelligence.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.1 Introduction to AI
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'Nowadays, Artificial Intelligence (AI) is becoming crucial in the whole society:
+    it is definitively one of the main methodological, technological and algorithmic
+    protagonists of the XXI century. The proliferation of AI methods and tools is
+    definitively there to be seen by everybody: new algorithms are continuously being
+    designed, exploited and integrated into a wide variety of software or systems
+    for different and heterogeneous application domains. Practitioners are aware that
+    AI is something more than just a technological field or methodology. Indeed, AI
+    is concretely and progressively emerging as a transversal and powerful technological
+    paradigm: its power derives from its capacity to foster a widespread transformation
+    of society, due to its ability not only to deal with big data and information,
+    but especially because it produces, manages and exploits knowledge. Researchers
+    and scientists are starting to explore, from several perspectives, the different
+    deep and synergetic ways AI is already stimulating the evolution of heterogeneous
+    business models and industry fields (Haefner et al. [2021](#CR14); Brynjolfsson
+    and Mcafee [2017](#CR5); Krogh [2018](#CR34)).'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'According to DARPA (Launchbury [2017](#CR21)), a general perspective on AI
+    should take into consideration a minimum set of macro-abilities to represent the
+    way it collects, processes and manages information: *perceiving*, *learning*,
+    *abstracting* and *reasoning*. These cognitive capabilities are not equally distributed
+    into the whole landscape of AI methods. Indeed, there is still no any single formal
+    and widespread accepted definition of AI. In spite of the current challenging
+    search for such unified definition, the potentialities of the AI methods, models
+    and algorithms, as well as their multiple functions, features and potential impacts,
+    are already affecting the human society. Overall, AI has the potential to generally
+    provide higher quality, greater efficiency, and even better outcomes, compared
+    to human experts, in a wide set of tasks and conditions (Agrawal et al. [2018](#CR2)).
+    This significant and strong effects of AI are emerging in potentially every applicative
+    domain, organizational context or business field. Consequently, both academic
+    studies and empirical experience show the constantly increasing impact of AI on
+    our daily and working life: intelligent systems are being modelled and interconnected
+    by the means of the Internet of Things to connect smart devices in powerful ecosystems,
+    autonomous vehicles are being produced and tested in heterogeneous driving conditions
+    and intelligent robots are being designed for a variety of challenges and fields.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In an even broader perspective, AI is one of the main contributors to the so-called
+    *fourth industrial revolution*, according to Klaus Schwab ([2017](#CR31)), the
+    Founder and Executive Chairman of the World Economic Forum. He clearly stated
+    that AI is a fundamental breakthrough in the technological scenario, able to foster
+    a deep transformation of the way we live and interact. Its analysis show that
+    the AI is one of the driving forces of such revolution, with multiple, synergetic
+    and complex interactions among the physical, digital and biological domains. It
+    suffices to mention that Andrew Ng, former chief scientist at Badu and Cofounder
+    at Coursera, said in a keynote speech at the AI Frontiers conference in 2017 that
+    AI is really the new electricity: a disruptive and pervasive transversal technology,
+    able to support and even empower technologies and processes in potentially any
+    field or domain. Thus, AI is not just a mere tool, with a limited, yet powerful
+    effect: on the contrary, its actions and interactions in the surrounding human
+    and non-human ecosystems are directly giving rise to their new states, conditions
+    and emerging behaviors, in a complex socio-technical general perspective. Therefore,
+    AI is able to stimulate and reshape the current and future evolution of human
+    society and the comprehension of AI methods and techniques is definitively crucial
+    when it comes to depicting the evolving scenario of this decisive technological
+    paradigm.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In this chapter, we will explore the current technological and methodological
+    scenario of AI by presenting the overall picture and the main macro-challenges,
+    approaches and present steps towards what may happen in the future of AI and society.
+    In the literature, there are various classification and taxonomy approaches for
+    categorizing AI methods. This chapter is not intended to cover all the many issues
+    and approaches, nor to present a global, integrated and all-embracing review,
+    encompassing the whole scenario of the state-of-the-art. Nevertheless, it is aimed
+    at providing a general overview of the main macro-approaches and paradigms, according
+    to two broad dimensions of AI: *cognition* and *interaction*. Specifically, we
+    aim to provide readers with general conceptual instruments to approach both the
+    main symbolic and sub-symbolic AI methods. Finally, we will focus on the Human-AI
+    Interaction perspective, by reviewing to what extent humans and AI actually interact
+    and even collaborate in heterogeneous contexts, so as to depict the current stages
+    towards a hybrid and collective socio-AI systemic intelligence.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.2 An Historical Perspective
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: Despite the fundamental role of AI in the current technological scenario, the
+    initial stages of the design, development and evaluation of AI systems are not
+    actually new in the history. The official birth of the discipline dates back to
+    1956, when Marvin Minsky and John McCarthy hosted the Dartmouth Summer Research
+    Project on Artificial Intelligence (DSRPAI) at Dartmouth College in New Hampshire.
+    The Dartmouth conference involved some of the main and most important historical
+    “fathers” of AI, including Allen Newell, Herbert Simon, Nathaniel Rochester and
+    Claude Shannon. The primary aim of the Dartmouth event was to create a totally
+    new research area focused on the challenge of designing and building intelligent
+    machines. The subsequent proposal (McCarthy et al. [2006](#CR25)) set the foundations
+    for the analytical study of intelligence in computers and for identifying the
+    first basic concepts for applying relevant methodologies, e.g. information theory,
+    to the study of AI.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Nevertheless, the subsequent stages in the development of the discipline were
+    not as easy as the founding fathers supposed. Despite the further creation of
+    the first algorithms and computer programs, the Minsky’s optimistic claim that
+    AI would have soon been able to resemble and emulate human intelligence was not
+    proven, notwithstanding the efforts in that period of feverish activities. Some
+    examples of the results of such years include ELIZA (Weizenbaum [1966](#CR36)),
+    a natural language processing tool somehow anticipating the modern chatbots, and
+    the General Problem Solver (Newell et al. [1959](#CR27)), a logic-based program,
+    with the aspiration to create a universal problem solver, but actually able to
+    solve specific classes of circumscribed problems. The basic approaches exploited
+    in that period mostly relied on logic and explicit knowledge representation, in
+    a totally *symbolic* perspective, with the aim to deal with empirical and psychological
+    data by the means of deductive and linear *if–then* logical paths. Overall, the
+    ambition of the first stages of AI was to quickly and strongly give rise of the
+    so-called *strong AI*, or *Artificial General Intelligence*, namely AI systems
+    totally able to emulate and even substitute the human, natural intelligence. Though,
+    the application of the chosen purely-logical approaches gave rise to intrinsically
+    limited methods, exploiting what DARPA peculiarly called *handcrafted knowledge*
+    (Launchbury [2017](#CR21)) enabled reasoning capacities for just narrowly selected
+    and pre-defined set of limited problems. Such systems were not endowed with any
+    learning or abstracting capability, thus they did not meet the ambitious expectations
+    of the founding fathers of the discipline.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Consequently, both scholars and governments started to question the initial
+    optimistic wave and conceptual blossoming of AI. In the 70’s, the US Congress
+    and the British parliament harshly criticized the previous funds dedicated to
+    the study and design of AI systems. In the same years, the British mathematician
+    James Lighthill published the so-called *Lighthill report* (James et al. [1973](#CR17)),
+    commissioned by the British Science Research Council, after a long discussion
+    within universities and scholars: this report definitively started a hard period
+    for AI, where the optimistic outlook given by the previous AI researchers was
+    abandoned. The Lightill report collected the major reasons for disappointment,
+    including the limited capabilities of the AI systems to solve real-world problems
+    in generalized settings, though the obtained results into the simulation of circumscribed
+    psychological processes were promising. As a result, the research in the AI field
+    was partly abandoned and several support funds were ended.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Nevertheless, the advent of connectionism (McLeod et al. [1998](#CR26)) in 1986
+    marked a renewed period of flourishing interest and activity in AI, from a different
+    and somehow opposite perspective. Aside from any ambition to replace human intelligence,
+    the goal of the connectionist approach and philosophy was to study the mental
+    models and the related cognitive and behavioral phenomena as emergent processes
+    deriving from the working actions and interactions of interconnected neural units.
+    Such conceptual shift towards the brain mechanisms somehow anticipated the further
+    neuroscience involvement in AI, as well as the synergy and relationships between
+    AI and *complex systems theory* (San Miguel et al. [2012](#CR30)), where brain
+    and neural systems are actually prominent examples and case studies. The rise
+    of connectionism started the fundamental period of study and design of *artificial
+    neural networks*, trying to resemble the cognitive mechanisms on brain, while
+    basically assuming that knowledge strongly derives from the interaction between
+    the neural system and the outer environment. Even if the foundations of machine
+    learning rooted back to the work by Donald Hebb in the 1940s, with the so-called
+    *Hebbian Learning* theory (Wang and Raj [2017](#CR35)), the most significant pillars
+    for its creation and initial development were stimulated by researchers like Marvin
+    Minksy, James McClelland, David Rumelhart and Frank Rosenblatt, who conceived
+    the *perceptron* (Rosenblatt [1958](#CR28)), namely the first model of neural
+    network, thus proposing a basic method for the further studies in the *back-propagation*
+    training and in *feed-forward* neural networks.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'At the same time, the course of history lead to other significant steps for
+    the evolution of AI: first, the foundation of a broad range of Artificial Life
+    approaches, which enlarged the ambition to enable algorithms to resemble biological
+    and ethological phenomena, by the means of models like *swarms*, *cellular automata*
+    (Langton [1986](#CR19)) and *self-organization*. The application of simulations
+    and computer models to the study of self-organizing interacting agents and systems
+    was another step forward to the current awareness of the need to exploit the many
+    potentialities of the synergy between AI and complex systems, in the present and
+    future broad socio-systemic and human-AI perspective. Moreover, the involvement
+    of neuroscience approaches, as well as the rise of *developmental* and *epigenetic
+    robotics* (Lastname et al. [2001](#CR20)), added relevant contributions to understand
+    biological systems by the means of the integration between neuroscience, developmental
+    psychology and engineering sciences.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Though, it is only since the beginning of the XXI century that AI began to unfold
+    its full potential, thanks to the simultaneous exponential growth in computational
+    resources and computer power, as well as the availability of large and heterogeneous
+    set of data in a wide range of domains. The immense potentialities of the continuously
+    rising algorithms for intelligent systems is currently experiencing a period of
+    great splendour and the development of AI methods and techniques is nowadays fostering
+    unavoidable impacts and upcoming phenomena on the whole society.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.3 AI Impact on Society
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'Overall, the impact of AI on society is profoundly deep and inherently multifaceted.
+    Despite its still limited “intelligence”, as compared to the human one as a whole,
+    the main power of AI stems from its capability to be applied to potentially every
+    application field. AI represent a real quantum leap respect to other technologies,
+    due to its pervasive, disruptive and technological empowering structure: it has
+    been described as an *enabling technology* (Lee et al. [2019](#CR22); Lyu [2020](#CR23)),
+    empowering the other technologies by its ability to produce, manage and enrich
+    knowledge. These structural pillars make AI something “big” and “more” than just
+    a circumscribed and mere technological artifact. AI is known to be a technological
+    and methodological paradigm for the evolution of both technology itself and organization.
+    Thus, given the widespread set of applications, affecting our world in many situations
+    and contexts, as well as the growing interactions between AI and humans, it is
+    worth to highlight how the impact of AI in society is not marginal, rather it
+    has the potentialities to radically transform society in a *socio-technical* and
+    *socio-AI* systemic perspective.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'This process is still happening, giving rise to significant and unavoidable
+    ethical issues. In spite of the powerful nature of AI, humans cannot escape the
+    need to definitively decide whether they mean to manage it as a tool—rather, an
+    impressive methodological and technological paradigm –, namely as a means to an
+    end, or somehow as the end in itself. In another related perspective, the ethical
+    challenges have always root in the human choice about how they aim to design AI
+    and how they intend to exploit the potentialities, capabilities and structural
+    applications of AI. This choice definitively reflects the human free will: thus,
+    it is certainly a fundamental crossroad that only human intelligence and nature
+    can pass. Nevertheless, the examination of the many and relevant ethical implications
+    of AI in society is not the focus of this chapter.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'There is no doubt that the impact of AI in our society is constantly growing
+    and evolving: suffice it to consider that, according to the International Data
+    Corporation (IDC), the global investment on AI and market is expected to break
+    the $500 billion mark in 2023 (IDC [2022](#CR16)). Moreover, the statistics portal
+    Statista forecasts that size of the AI market worldwide will reach over half a
+    trillion U.S. dollars by 2024 (Statista [2022](#CR33)). Consequently, the evolution
+    of the job market is requiring workers and stakeholders to adapt their skills
+    and meta-competences to a quickly transforming scenario. According to the World
+    Economic Forum, more than 60% of children starting school today will work in jobs
+    that still do not exist (World Economic Forum [2017](#CR38)). Moreover, the Oxford
+    Martin School of Economics reports that up to the 47% of all American job functions
+    could be automated within 20 years, resulting in a very different world from the
+    one we know and we operate in Frey and Osborne ([2017](#CR10)). It is particularly
+    worth to notice that Gartner identifies AI as a basis for two complementary fundamental
+    trends among the Gartner Top 10 Strategic Technology Trends for 2022 (Gartner
+    [2021](#CR12)): *AI engineering* and *Decision Intelligence*. AI engineering is
+    focused on a complete identification and operationalization of Business Process
+    Automation by the means of synergistic technological and methodological approaches,
+    like AI, Robotic Process Automation (RPA), Business Process Management (BPM),
+    with the aim to detect and automate both business and IT processes. Instead, Decision
+    Intelligence is a systemic approach to improve the organizational decision making
+    by a powerful and pervasive use of both human and artificial intelligence, to
+    model and effectively manage highly complex situations and business conditions
+    by *connected*, *contextual* and *continuous* decision-making processes.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Thus, the impact of AI in potentially any business field is more and more crucial
+    for the evolution and digital transformation of organizations. AI is affecting
+    both the technological and organizational perspectives and processes, thus reshaping
+    organizations and re-defining the interaction between technologies, management
+    and business. Moreover, the continuous growth of AI methods and algorithms results
+    in a almost daily increasing potential to provide higher quality, greater efficiency,
+    and better outcomes than human domain experts in heterogenous fields and conditions.
+    In the organizational and business framework, that means that AI is prone to assist
+    decision-makers and technicians beyond the scope of humans, thus not as a mere
+    tool but as a decision-making assistance, also exploitable for managerial tasks.
+    As an example, AI-based solutions play important roles in Unilever’s talent acquisition
+    process (Marr [2019](#CR24)), in Netflix’s decision-making processes related to
+    movie plots, directors, and actors (Westcott Grant [2018](#CR37)), and in Pfizer’s
+    drug discovery and scientific development activities (Fleming [2018](#CR8)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: Such impact is today fostered by the recent advances in computational power
+    and resources, the exponential increase in data availability, and new machine-learning
+    techniques. Despite the relatively long history of AI, it is today that we have
+    the concurrent presence of such technological factors, enabling a fast evolution
+    of the application of AI in society. The exponential phenomena we are facing by
+    around the beginning of the XXI century—namely, the exponential growth in both
+    computer power and data availability—and the advancement of informatics in methods,
+    algorithms and infrastructures set up a synergistic system of scientific and technological
+    discoveries, market opportunities and social implications. This virtuous cycle
+    has been carefully recognized by the national and international institutions,
+    resulting in an increasing support to technology-transfer projects, involving
+    companies, start-ups, research centers and universities. The attention towards
+    valuable technology-transfer projects to foster innovation in the countries has
+    been confirmed by many institutional task-forces, work groups and especially recent
+    publications of AI national strategy documents, as in the case of Italy.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Though, let us take a step back, to effectively comprehend why and how AI is
+    having such immense impact on the current society. To deeply understand what is
+    the role of AI in producing, managing and exploiting knowledge, it is essential
+    to start thinking about what intelligence and cognitive abilities are. There is
+    a sort of conceptual progression we cannot avoid to examine, from different complementary
+    perspectives: from data to knowledge, from abilities to intelligence, and, further,
+    from society to socio-AI systems.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.4 The Cognitive Science Framework
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: In order to provide a conceptually organized overview of the current scenario
+    of AI, it is fundamental to consider the broader cognitive science perspective
+    and discipline. Indeed, the design, realization and evaluation of effective AI
+    systems, able to strongly encapsulate and exploit cognitive abilities, lead us
+    to question ourselves about the precise nature of *intelligence* as a whole. Cognitive
+    science tries to answer such question by the means of its conceptual framework
+    and categorizations of mental features and activities. The aim of this section
+    is definitively not to provide a comprehensive and complete review of the large
+    panorama of such discipline. Rather, we report a limited set of fundamental concepts
+    that prove to be useful for later understanding and appreciate the further descriptions
+    of the main reported macro-categories of AI systems and methods.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'First, we have to take into consideration a triadic conceptual framework, already
+    anticipated at the end of the previous section: from data to knowledge, from abilities
+    to intelligence, and, further, from society to socio-AI systems. While the first
+    pillar of this conceptual architecture is related to the objects of the knowledge
+    representation mechanisms, the second one allows to examine the very different
+    cognitive abilities and the structure of intelligence. Finally, the third one
+    enlarges the considered perspectives towards the interaction between human and
+    artificial cognitive systems, anticipating the essential theme of the Human-AI
+    Interaction in a cognitive science perspective.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In a *cognitivist* approach, the mind and its internal working mechanisms could
+    be represented by a cognitive system, collecting, managing and elaborating information,
+    by the means of a priorly defined internal organization and structure (Garnham
+    [2019](#CR11)). Such structure is somehow similar to a computer, exploiting a
+    set of internal cognitive features and abilities, as well as an inherently limited
+    *information processing* capability throughout its transmission channels. Then,
+    in this perspective, the mental mechanisms are theoretically analogous to the
+    ones of a software or, better, of a complete yet limited electronic brain, collecting
+    and elaborating data and information from external input sources and returning
+    information and knowledge in output, by some sort of *knowledge representation*
+    methodologies. Moreover, the progressive improvement and evolution of the elicited
+    knowledge can benefit from a set of iterative feedback, allowing both to better
+    exploit the collected data and their elaboration by the mind mechanisms. Instead,
+    the further evolution of cognitive science and psychology lead to two complementary
+    perspectives: on the one hand, the analogy between the mind and the computer was
+    deepened, by the means of the paradigms of *modularism* (Fodor [1985](#CR9)) and
+    *connectionism* (Butler [1993](#CR6)); on the other hand, the role of *experience*
+    and *social interaction* gained importance, in a more *constructivist* perspective
+    (Amineh and Asl [2015](#CR4)).'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Moreover, the nature of intelligence itself is not fixed and pre-defined in
+    a widely or formally accepted way. Similarly to what happens with AI, lacking
+    a unique official definition in the scientific community, the structure of intelligence
+    as a whole is not totally captured by a circumscribed and comprehensive concept,
+    encompassing all the possible cognitive features and characteristics. Among the
+    possible dichotomies studied by scholars, there are the so-called *fluid* and
+    *cristallized* intelligence (Ziegler et al. [2012](#CR40)*),* examining how cognitive
+    agents respectively reason over new situations and exploit previously elicited
+    knowledge, the difference between logical and *creative* intelligence, up to the
+    concept of *emotional intelligence* (Salovey and Mayer [1990](#CR29)), affecting
+    even more general psychological and sociological situations and conditions. Even
+    in the clinical practice, it is definitively and widely accepted that the current
+    *psychometric IQ tests,* exploited in diagnostic processes, are inherently limited:
+    indeed, they generally suffer from a set of limitations, related to the difficulty
+    of designing and exploiting a totally *culture-free* test (Gunderson and Siegel
+    [2001](#CR13)), as well as their intrinsic capability to just examine restricted
+    sets of cognitive abilities. Notably, the theory of *multiple intelligences* (Fasko
+    [2001](#CR7)) tries to take into consideration a broader framework, involving
+    several macro-abilities, ranging from *linguistic-verbal*, to *logical-mathematical*
+    and *visual-spatial*, and event to *kinesthetic* and *musical-harmonic* intelligence.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'To our scope, it is worth to highlight two main aspects:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '1.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: 'At present, it is functionally useful to focus on the specific cognitive abilities,
+    which are convenient to be studied for the enhancement of AI systems. The DARPA
+    classification (Launchbury [2017](#CR21)) proves to be effective to encompass
+    the wide range of possible cognitive features, by gather them into four macro-abilities
+    to represent the way a cognitive system collects, processes and manages information:
+    *perceiving*, *learning*, *abstracting* and *reasoning*.'
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: '2.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: 'It is also functionally convenient to take into consideration two main dimensions,
+    when presenting AI systems and their relation with both the human cognitive ability
+    and society: *cognition*, in the sense sketched beforehand, and *interaction*,
+    intended towards both artificial and human agents, in an extended socio-AI perspective.'
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: 'Therefore, in the next sections, we will provide the main macro-categories
+    of AI approaches, following the previously presented guidelines. The overview
+    we report is not intended to cover all the possible methods and algorithms in
+    the continously evolving AI scenario: instead, we aim to show an overview of the
+    macro-categories of approaches, from both the cognitive and socio-interaction
+    perspective. Overall, we will provide readers with general conceptual instruments
+    to approach the AI landscape, as well as to appreciate to what extent humans and
+    AI actually interact and even collaborate in heterogeneous contexts and situations,
+    so as to delineate the current stages towards a hybrid and collective socio-AI
+    systemic intelligence.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Now let us zoom in on a significant dichotomy we have to consider to effectively
+    categorize the current AI approaches and their different potentials: symbolic
+    and sub-symbolic AI. By focusing on these two macro-categories, we will acknowledge
+    the relevance of such classification to somehow recap the cognitive characteristics
+    shown, as well as to help the reader appreciate the complementary cognitive potentialities
+    of the reported methods.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.5 Symbolic and Sub-Symbolic AI
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'The dichotomy between symbolic and sub-symbolic AI already stems from the dichotomy
+    between *cognitivism* (Garnham [2019](#CR11)) and *connectionism* (Butler [1993](#CR6)):
+    such paradigms, indeed, involve two opposite conceptions of intelligence. On the
+    one hand, cognitivism assumes the mind as a computer, following logical and formal
+    pre-defined rules and mechanisms, as well as manipulating symbols, encapsulating
+    heterogeneous data and information, coming from the external environment, and
+    proceeding through an iterative process of feedback and output results. On the
+    other hand, connectionism takes into consideration the biological nature of intelligence,
+    by depicting a cognitive system based on the parallel involvement of single units—*neurons*—elaborating
+    the information perceived by the means of the interaction among the neurons. While
+    cognitivism derives its perspective by the total analogy between the human mind
+    and an artificial information processing system, working in a purely logical and
+    formalized way, connectionism is based on the idea that the cognitive potential
+    of the mind comes directly from the massive interaction among the interconnected
+    neurons, where intelligence emerges from a distributed elaboration of the information
+    and data collected.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: As a step forward, it becomes clear how symbolic and sub-symbolic AI differ.
+    The former deals with *symbols* and logical means of knowledge representation
+    and management, whereas the latter works with *numbers*, non-logical and non-formalized
+    representations of reality. Symbolic AI allows to manipulate the symbols by the
+    means of *logical rules*, formed by predicates, connected by *logical operators*.
+    In this way, all the knowledge admitted in the system can be accurately formalized
+    and constrained by the means of the formal boundaries and operations exploited.
+    Sub-symbolic AI, instead, allows to manipulate the informative elements and factors
+    it deals with by the means of *mathematical operators*, able to manage numbers
+    and data collected from the environment, and fostering further learning processes
+    by the connected neurons. Overall, then, symbolic AI works at a *high-level* perspective,
+    e.g. where the elements involved can be objects and relations among them. Instead,
+    sub-symbolic AI operates at a *low-level*, e.g. where the elements involved can
+    be image pixels, place distances, robot joint torque, sound waves etc.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In the symbolic paradigm to AI, we could represent the different problems as
+    *knowledge graphs* (Zhang et al. [2021](#CR39); Ji et al. [2021](#CR18)), where
+    *nodes* represent specific objects by the means of logical symbols, and *edges*
+    encode the logical operations to manipulate them. Everything is represented in
+    a *state space*, namely a limited set of possible states allowed to configure
+    a specific problem or situation. The structure is inherently *hierarchical* and
+    *sequential*: starting by a *root* exemplifying the initial situation, the different
+    nodes are connected through several *layers* according to the allowed situations
+    and conditions considered. When all the consented actions have been performed
+    in a state, the final node is a *leaf*, encoding the results of all the actions
+    and procedures leading to it. Significantly, there can be different procedures
+    to get a specific result and reaching the attended state. Consequently, there
+    can be various *paths* that can be followed in the graph, involving heterogeneous
+    nodes and edges, from a given root to a desired leaf. Therefore, symbolic AI could
+    be associated to what DARPA (Launchbury [2017](#CR21)) called the *first wave
+    of AI*, dealing with *handcrafted knowledge*, exploiting reasoning capacities
+    for narrowly circumscribed problems, without any learning or abstracting capability
+    and poorly able to deal with informative uncertainty and complexity.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: In the sub-symbolic paradigm to AI, instead, the information collected is managed
+    by the means of *artificial neural networks* (Shanmuganathan [2016](#CR32)), composed
+    by interconnected *neurons* able to manage data and information by the means of
+    “embedded” functions. The neurons are activated according to specific thresholds
+    involving some parameters, then manipulate the informative elements managed and
+    the resulting output information can serve as a basis for the system’s learning
+    processes and further analysis. Thus, the whole sub-symbolic AI system works through
+    *parallel distributed processing* mechanisms, where information is elaborated
+    in parallel by the different neurons involved. Therefore, in a totally connectionist
+    and *emergentist* perspective, the sub-symbolic paradigm to AI allows to model
+    mental or behavioral phenomena as the emergent processes directly deriving from
+    the interconnection of localized single units, linked in specific networks. These
+    working mechanisms involve *statistical learning*, where models are trained on
+    even large and heterogeneous datasets, as in the case of *Big Data*, related to
+    specific domains. Such *second wave of AI*—as called by DARPA (Launchbury [2017](#CR21))—is
+    endowed with perceiving and learning capabilities, while it has poor reasoning
+    ability and it totally lacks abstracting power.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In the further sections, we will present the different approaches reported by
+    considering the two main dimensions of cognition and interaction. Regarding cognition,
+    it is useful (but certainly not all-embracing) to focus on this dichotomy between
+    symbolic and sub-symbolic AI methods to get a general idea of the overall picture
+    of AI. In this chosen framework, a general conceptual map of the presented AI
+    approaches and paradigms is visually represented in the following figure. The
+    two dimensions of *cognition* and *interaction* are exploited to position the
+    different methods and paradigms. Cognition is roughly classified between symbolic
+    and sub-symbolic approaches, encompassing the different cognitive features and
+    abilities examined. Interaction, instead, is functionally classified between human-AI
+    and AI-AI interaction. Without any claim to being exhaustive or exclusive in our
+    approach, we only intend to provide readers a visual sketch to better appreciate
+    the following sections and the subsequent reported methods (Fig. [2.1](#Fig1)).![](../images/524458_1_En_2_Chapter/524458_1_En_2_Fig1_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: 4 quadrants of A I approaches plot A I A I to human A I, A I A I versus symbolic
+    to sub-symbolic. The human A I has human A I interaction, and explainable artificial
+    intelligence. Sub-symbolic has machine learning, deep learning, and neural networks.
+    A I hyphen A I has artificial life, swarm intelligence, genetic algorithms, and
+    cellular automata. Symbolic has knowledge representation, reasoning, and an expert
+    system.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 2.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: Conceptual map of AI approaches and paradigms
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'While we will examine all these macro-methods and approaches in the further
+    sections of this chapter, it is already useful to contextualize how such methods
+    are positioned in the conceptual framework of the two main dimensions of cognition
+    and interaction. Regarding cognition, we functionally classify the presented AI
+    methods between the symbolic and sub-symbolic ones: thus, it is quite straightforward
+    to position the methods accordingly. Instead, the dimension of interaction functionally
+    takes into consideration both *human-AI* and *AI-AI* interaction, assuming an
+    extended socio-AI perspective. Given such references, it therefore follows that
+    the axes origin point represents the situation where absolutely no interaction
+    exists, either with human or artificial agents. Hence, the methods are positioned
+    according to the typology and “degree” of interaction in the conceptual map. We
+    recall that this is just a rough visual representation of the reported AI methods,
+    to help the readers better appreciate and comprehend the general overview of the
+    AI landscape, according to the classification methodology provided.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.6 Knowledge Representation and Reasoning
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'Let us continue our overview of the current AI scenario by presenting the main
+    and key symbolic methods and approaches, related to the area of knowledge representation.
+    While such methods were highly hyped during the first stages of the AI history,
+    it is undoubtedly clear that they are today relevant and many applications can
+    be found in several application fields. Representing knowledge basically means
+    formalizing it by the means of pre-defined languages, models or methodologies.
+    Thus, the aim of *knowledge representation* (Handbook of Knowledge Representation
+    [2008](#CR15)) is to study, analyze and apply all the widespread frameworks, languages,
+    tools to represent knowledge, as well as to entail different forms of *reasoning*
+    about it. The symbolic perspective is definitively fundamental, due to the key
+    use of *symbols* to represent heterogeneous knowledge bases in different systems.
+    In this perspective, an *intelligent agent* is endowed with a circumscribed set
+    of symbols to represent the outer world (knowledge representation) and is able
+    to make specific *inferences* about it according to *rules* and *principles*.
+    Thus, the main ability of *knowledge-based systems* (KBS) (Akerkar and Sajja [2009](#CR3);
+    Abdullah et al. [2006](#CR1)) is to logically and symbolically represent an inherently
+    limited part of the world, by the means of a symbolic *modelling language*, as
+    well as to reason, again by the means of a logical and formalized methodology,
+    to discover further characteristics, features or properties of the represented
+    world. In the useful categorization of the AI approaches by DARPA, this exactly
+    corresponds to the *first wave of AI*: systems exploiting *handcrafted knowledge*,
+    able to even infer significant hidden aspects, features or behaviors of the outer
+    environment or agents in the specific represented world, though they lack fundamental
+    cognitive abilities like *learning* or *abstracting*.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: In order to effectively represent knowledge, many methodologies and tools have
+    been widely exploited by researchers, scholars and practitioners. It is particularly
+    worth to recall the use of *logic*, and in particular of *first-order logic* (FOL),
+    as a powerful methodological and formal approach to represent knowledge, adopted
+    in many application fields and domains. FOL is basically able to exploit a wide
+    set of *propositions*, *operators* and *quantifiers* to effectively formalize
+    a *knowledge base* in a pre-defined and specified domain. Moreover, nowadays the
+    role of *fuzzy logic* is fundamental, in order to allow AI systems to represent
+    knowledge and make inferences in highly challenging conditions of informative
+    complexity and uncertainty. Beside logics, it is also important to mention the
+    role of *ontologies* and *knowledge graphs* to capture explicit and naturally
+    circumscribed knowledge in a restricted domain. Indeed, the difference between
+    *explicit knowledge* and *tacit knowledge* proves crucial to comprehend most of
+    the main challenges and reasons of the power and limitations of knowledge representation
+    and KBS. While the former is already expressed in a symbolic framework, thus easy
+    and quite immediate to communicate by some language or system, the latter is *implicit*,
+    empirically acquired by an individual throughout experience, education, tradition,
+    social interactions, intuition and other complex dynamical knowledge-generating
+    processes. Therefore, the use of ontologies and knowledge graphs as means to express
+    conceptual elements, objects, and their relationships, has been traditionally
+    and effectively limited to the representation of explicit knowledge, while recently
+    several proposed methods and algorithms deal with the challenge of formalizing
+    tacit knowledge in both organizational and industrial domains.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In any case, the first and maybe main challenge is before the symbolic formalization
+    phase: indeed, the process of *eliciting knowledge* is crucial and extremely delicate,
+    especially in highly-complex fields or organizational environments. While the
+    KBS are definitively lacking the capability to abstract or extend its reason to
+    unformalized variables, rules or behaviors, the role of the *knowledge engineering*
+    is mainly devoted to improving the quality and quantity of *knowledge management
+    systems* and tools. In complex organizations, this means to enhance or even to
+    revolutionize the whole organizational *information systems* or their current
+    functionalities. Moreover, it also means to make all the involved stakeholders
+    or decision-makers aware of their potential role in the processes of *knowledge
+    sharing*, knowledge management and *knowledge enrichment*. Such knowledge-based
+    improvement of operational processes and human decision-making can be effectively
+    aided by AI tools, which have been studied and applied in a wide range of domains,
+    including heterogeneous operation systems, pharmaceutical and clinical domains,
+    as well as education.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In the field of knowledge representation and reasoning, the most probably known
+    and exploited AI approaches are related to the area of *expert systems*. Starting
+    from the very first wave of AI and right up to the present days, such systems
+    have been extensively designed, developed and applied to a wide range of application
+    environments. The ability of expert systems is definitively to focus on a narrow
+    but precisely represented domain and infer solutions to problems related to that
+    domain. The many applications include clinical and medical ones, industrial contexts
+    and product configurators for sales and marketing. Basically, expert systems are
+    apt to substitute human *domain experts* for specific processes, choices or actions.
+    In this way, they help decision-makers and managers to improve the efficacy and
+    the effectiveness of their decisions and actions in the course of heterogeneous
+    business, organizational or industrial processes: their help is significant in
+    problem solving in cases of interpreting data and information coming from sensors,
+    suggesting potential diagnosis to clinicians, identifying potential risks and
+    detecting behaviors, as well as helping managers to achieve business goals by
+    improving planning and programming processes. Therefore, expert systems are often
+    a basis or a component of *decision-support systems*: such systems allow to empower
+    the classical information systems in companies, by including several modules and
+    components to capture, organize and manage data and information to support strategic
+    decision-making processes in business contexts.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The KBS are usually classified according to two complementary categorizations:
+    on the one hand, the *potential application* is considered, on the other hand
+    the *problem-solving methodology*: in other terms, the knowledge representation
+    and reasoning method. As regards the application, the KBS can be divided in *knowledge
+    capturing and storing* systems, *knowledge deployment and sharing* systems and
+    *knowledge processing* systems. This classification allows to specifically focus
+    on the specific ability of the considered system, throughout the whole process
+    of collecting, managing and elaborating data and information to get useful knowledge.
+    According to the problem-solving methodology, the KBS can be classified in *rule-based*,
+    *case-based* and *model-based* systems. Such classification directly derives from
+    the categorization of the reasoning methodologies. Indeed, the internal reasoning
+    mechanisms exploited by the KBS can be based on logical rules, or on the use of
+    *analogies* and *cases* to make inferences, or alternatively on the use of specific
+    model-based descriptions. The following Figure is intended to help readers appreciate
+    the different stages and concepts related to the knowledge representation and
+    reasoning methodologies and systems (Fig. [2.2](#Fig2)).![](../images/524458_1_En_2_Chapter/524458_1_En_2_Fig2_HTML.png)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: A flow diagram illustrates domain expert becomes knowledge engineer through
+    elicitation. Knowledge acquisition leads to knowledge-based system and decision-support
+    system. Knowledge-based system includes knowledge representation and reasoning.
+    Decision-support system includes management, enrichment, and sharing. It leads
+    to system output and further a decision marker.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 2.2
+  prefs: []
+  type: TYPE_NORMAL
+- en: Conceptual representation of the knowledge representation and reasoning process
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The use of such symbolic and knowledge management approaches is definitively
+    useful for the representation and elaboration of knowledge in well-circumscribed
+    and defined domain or contexts. The problems arise when it comes to learning from
+    wide and complex sets of data, often heterogeneous in their structure or coming
+    from different sources. The ability to learn from past in data and to predict
+    future behaviours, situations or states is typical of the other dominant paradigm
+    of AI: connectionism, and, specifically, machine learning approaches.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.7 Machine Learning and Deep Learning
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: In the current scenario of AI methodologies, approaches and algorithms, the
+    lion’s share of the dominant paradigm goes to machine learning. This is still
+    true, but it should definitively not taken for granted, as AI is continuously
+    undergoing a fast, dynamic and somehow unpredictable evolution, fostered by the
+    advancements in technology, data sources and availability, organizations and society
+    as a whole. Nevertheless, machine learning models are particularly relevant on
+    the global scene of AI methods and algorithms thanks to their ability to analyze
+    large sets of data, learn from them and predict new and unseen behaviors, or classify
+    new instances in different environmental conditions.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In a general perspective, machine learning (ML) is the discipline devoted to
+    designing, building and evaluating AI-based models which are able to learn from
+    sample, training, pre-defined specific data, by identifying relevant *patterns*
+    and behaviors, so as to make inferences from them and provide human decision-makers
+    with significant automated classifications, suggestions or predictions. *Data
+    mining* is the whole set of methods, algorithms and evaluation techniques to extract
+    value and in insights from data. ML originates from the disciplinary areas of
+    *statistical learning*, *computational learning* and *pattern recognition*: in
+    this sense, it is inherently based on the use of statistical approaches to analyze
+    sample data, perform relevant tests and experiments and draw problem-related inferences.
+    Then, the whole design and programming procedures for such AI approaches are aimed
+    at obtaining data-driven output or predictions, thus dynamically modifiable according
+    to the evolution in the available datasets. The instances in the data are generally
+    structured around specific *features* to represent them, which can be *categorical*
+    or *numerical*, binary or continuous. The applications of ML methods are immense,
+    ranging from speech recognition to computer vision, from strategic and operative
+    business intelligence to fraud detection, from astrophysics analysis of the galaxies
+    to financial applications.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Overall, ML methods can be classified in three *learning paradigms*, widely
+    exploited in the literature and in the daily practice:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '1.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: '*Supervised learning* methods: this kind of approaches present pre-defined
+    and already provided input and output variables, as sample already classified
+    or analyzed instances, and the algorithm is able to generalize, by detecting the
+    mapping function from input to output.'
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: '2.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: '*Unsupervised learning* methods: in this case, the provided data are not labelled
+    yet, thus the model is not provided with sample pre-analyzed data and results
+    during the training process.'
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: '3.'
+  prefs:
+  - PREF_OL
+  type: TYPE_NORMAL
+- en: '*Reinforcement learning* methods: such approaches are trained by providing
+    them specific feedback and the intelligent system or agent strives to maximize
+    some cumulative reward function to progressively optimize its output.'
+  prefs:
+  - PREF_IND
+  type: TYPE_NORMAL
+- en: 'Therefore, while the working mechanisms of ML methods can significantly vary
+    in a widespread range of possible algorithms, it is definitively clear that such
+    AI approaches are able to *generate knowledge from data*, in a totally different
+    way from knowledge-based systems and knowledge representation methods: this is
+    the process of *knowledge discovery*, which helps practitioners, decision-makers
+    and organization stakeholders to get significant, accurate and useful knowledge
+    from data, with the aim to comprehend domain-related and environmental phenomena
+    or behaviors, as well as to improve the quality and the effectiveness of decision-making
+    processes. In a general perspective, ML is aimed at producing better outcomes
+    for specified learning problems, by learning from past experience, in order to
+    help humans to deal with large sets of data which require effective and efficient
+    automated analysis in heterogeneous conditions, as in cases of uncertainty and
+    complexity.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Supervised learning is widely diffused and exploited in the literature and
+    in the practice. Basically, it consists of providing already labelled and categorized
+    data and related instances, comprehending both their input and the desired output.
+    Thus, the dataset is directly and naturally split into two parts, required for
+    learning: the *training set* and the *test set*. The former is exploited to train
+    the model by the means of the labelled *training examples*, while the latter is
+    subsequently needed to allow the model to make new inferences on unseen data.
+    In the ideal general process, the training of the model should provide the *mapping
+    function* linking the input data and the desired output by examining the already
+    labelled data, while the testing process should apply it to new instances to get
+    predictions or insights. The SL models allow to deal with two macro-categories
+    of problems: *classification* and *regression*.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Classification is the problem of categorizing sets of data into specific pre-defined
+    classes: if there are only two classes, the problem is reduced to binary classification,
+    which can be further extended to multi-class problems. Among the classification
+    methods and algorithms there are non-probabilistic approaches like *support-vector
+    machines*, but also and especially inherently probabilistic methods like *Naïve
+    Bayes* classifiers, as well as *neural networks*, *rule-based* and *logic-based*
+    approaches, or *decision trees*. Instead, regression is the problem of predicting
+    real-valued *target response* to *predictor variables*, so as weighted sum of
+    input features. The main aim is to detect and model the dependence of a regression
+    target on some pre-defined considered features. While linear regression is endowed
+    with relevant advantages thanks to its linearity and the consequent *transparency*
+    of the linear effects of the different features, at the same time it requires
+    handcrafted modifications to deal with non-linearities and the interpretation
+    of the exploited weights is not necessarily intuitive. Thus, extended approaches
+    like *generalized linear models* and *generalized addictive models* are often
+    studied and exploited in the literature and in the daily practice.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Unsupervised learning is the learning paradigm for ML models which does not
+    require already pre-labelled data or instances. In this case, the training set
+    and the test set are present too, and the learning process is still based on the
+    training of the algorithm on past experience and examples. The model is trained
+    to discover by itself the relevant patterns and previously undetected insights
+    related to the information extracted by data. Such learning paradigm is mainly
+    exploited for dealing with the problems of *clustering*, to create groups of data
+    which share similar characteristics, *dimensionality reduction*, to find the main
+    factors of variability of data, and *anomaly detection*, to identify dissimilar
+    examples among groups of instances. The most popular and well-known problem here
+    is clustering: the issues related to grouping data by some specific characteristics
+    to separate them are widely diffused in the practice and applications. In the
+    K-means clustering approach, the objective is to create K-distinct groups, each
+    one with a specific centroid, one for each cluster, and grouping data by minimizing
+    the square error function. Instead, the problem of dimensionality reduction is
+    generally addressed by themeans of approaches like the principal component analysis,
+    helping to reduce two-dimensional into one-dimensional data, or neural networks
+    like autoencoders, which are also useful to deal with anomaly detections and in
+    many applications of the unsupervised learning paradigm.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Finally, *deep learning* is a part of ML approaches, including all the models
+    based on *representation learning* and dealing with multiple *representation layers*
+    to learn from data in complex situations, where multiple levels of abstractions
+    and complexity are involved. In this situation, conventional, shallow machine
+    learning models are inherently limited in their power and capacity. Therefore,
+    deep learning approaches are useful to extract features implicitly, passing through
+    a set of *hidden* layers in the structure of the network or algorithm involved,
+    where the data are passed, elaborated and transformed. The *deep neural networks*
+    are indeed extended neural networks with many input and output layers and data
+    are transmitted and managed without loops in the learning process, in *feedforward*
+    networks. Among the mostly diffused and exploited approaches there are *convolutional
+    neural networks*, *recurrent neural networks* and *deep belief networks*. Notwithstanding
+    the powerful ability of deep learning methods to analyze big data and make inferences
+    in conditions of complexity and uncertainty, ML and also deep learning approaches
+    are still limited and they suffer from several different problems, e.g. issues
+    in *transparency*, *robustness*, *trustworthiness* and *reliability.* Therefore,
+    after this general overview of both symbolical and sub-symbolical AI methods,
+    it is now time to go further and explore the promises and challenges of neuro-symbolical
+    approaches.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.8 Neural Symbolic Computation
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: The goal of *neural symbolic computation* is to effectively integrate and exploit,
+    at the same time, symbolic, logic and formal approaches to computation, together
+    with connectionist, sub-symbolic, neural methods for enhancing the system power,
+    cognitive abilities and accuracy in the output. Such methods strive to address
+    the issues arising with both the first and the second wave of AI, to recall DARPA
+    classification. In general, they try to meet the need for the integration of *knowledge
+    representation* and *reasoning* mechanisms with deep learning-based methods. The
+    aim is to provide researchers and practitioners with more accurate and also *explainable*
+    systems, to enhance both the *predictive power* and the *interpretability* and
+    the *accountability* of the systems, thus favoring the *trust* in the AI decision-making
+    assistants for humans. While we will focus on the *explainability* issues in the
+    next sections, here we just aim to provide a very short and general overview of
+    the main pillars of such methodologies.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Neural-symbolic computing has the goal of integrating the two complementary
+    cognitive abilities we already examined for symbolic and sub-symbolic approaches,
+    respectively: *learning*, from the outer environment or the past experience, and
+    *reasoning* from the result of the learning processes. Neural-symbolic computing
+    tries to exploit both the advantages of learning in advanced up-to-date neural
+    networks and reasoning in symbolic representation, leading to *interpretable*
+    models. Therefore, the main idea behind neural-symbolic computation is the reconciliation
+    of the symbolic and connectionist paradigms of AI under a comprehensive general
+    framework. In this perspective, knowledge is represented by the means of symbolic
+    formal mechanisms, e.g. *first order logic* or *propositional logic*, while learning
+    and reasoning are computed by the means of adapted neural networks. Thus, the
+    framework of neural-symbolic computation allows to effectively combine robust
+    and dynamic learning with inference in neural networks. This increases both the
+    computational capabilities and efficiency of the AI systems, the *robustness*
+    of the algorithm and the accuracy of the output results, not least along with
+    interpretability provided by symbolic knowledge extraction and reasoning by the
+    means of formal theories and logic systems.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: In a general perspective, neural-symbolical AI systems are able to deal with
+    a broader spectrum of cognitive abilities than the previously presented methods,
+    by exploiting the synergies between the capabilities of connectionist and symbolistic
+    approaches. Moving step forward, the main characteristics of such systems are
+    related to knowledge extraction and representation, reasoning, learning, with
+    their applications and effects in different domains. Within the growing scenario
+    of neural-symbolical computing, the *knowledge-based artificial neural network*
+    (KBANN) and the *connectionist inductive learning and logic programming* (CIL²P)
+    systems are some of the most diffused models. KBANN is a system for *insertion*,
+    *refinement* and extraction of rules from neural networks. The results of the
+    design and development of KBANN suggested that neural-symbolical approaches can
+    effectively improve the output of a learning system by the integration of *background
+    knowledge* and learning from examples. The KBANN system was the first to set this
+    research path, with significant applications in bioinformatics. KBANN also served
+    as one of the inspirations for the design and construction of CIL²P. This method
+    integrates inductive learning from examples and background knowledge with deductive
+    learning from *logic programming*. Basically, logic programming allows to represent
+    a program by the means of formal logic. Thus, CIL²P allows to represent background
+    knowledge by a propositional general logic program, enables training from examples
+    to refine the background knowledge and the subsequent knowledge extraction steps
+    are performed by the use of a network, in a logic program.
+  prefs: []
+  type: TYPE_NORMAL
+- en: One of the main challenges in neural-symbolic computation is the solution of
+    the so-called *symbol grounding problem* (SGP). Essentially, this is the problem
+    of endowing AI systems with the capacity to autonomously and automatically create
+    *internal representations* to connect their manipulated symbols to their corresponding
+    elements or *objects* in the external world. The methodology to ground symbols
+    to environmental objects is a delicate and fundamental step in the design and
+    development of a neural-symbolic AI system, often solved by grounding symbols
+    to *real functions* or, in general, to some sort of *functionals* to encode the
+    real-world elements characteristics and features. Solving the SGP enables effective
+    propagation of information via symbol grounding, and, ultimately, the whole working
+    mechanisms of the neural-symbolical network to capture and elaborate knowledge
+    within the system. The way neural-symbolic approaches address and solve the SGP
+    are among the differences among methods like *Deep Problog* and *logic tensor
+    networks*.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The applications of neural-symbolic systems are in a wide range of fields, e.g.
+    data science, learning in ontologies, training and assessment in simulators, and
+    cognitive learning and reasoning methods for different applications. One of the
+    most significant advantages of such systems are related to explainability. Differently
+    from deep learning and *black-box* models, such systems can be explainable, thus
+    allowing human decision-maker to understand the *reasons* behind their provided
+    output. Indeed, the growing complexity of AI systems requires methods that can
+    be able to explain users their working mechanisms and decisions. Thus, it is necessary
+    and unavoidable to get a general picture of the fundamental role of *explainable
+    AI* in the current scenario and evolution of AI systems.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.9 Explainable AI
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'The rise and diffusion of eXplainable AI (XAI) is a crucial step in the current
+    and future evolution of AI systems. Along with the neural-symbolical approaches,
+    such methods can significantly be grouped into the so-called *third wave* of AI,
+    as defined by DARPA. Thus, XAI strives to realize the big challenge of *contextual
+    adaptation*, i.e. the construction of progressively explanatory methods for classes
+    of real-world phenomena. While the field of XAI is actually not new in the literature
+    and in AI research, nowadays its importance is constantly growing, by its ability
+    to address the need for *interpretable*, *transparent* and *accountable* systems.
+    The main reason behind explainable models is the general *opacity* and lack of
+    *interpretability* in machine learning and deep learning models: despite the computing
+    power and the high performances achieved by AI, and specifically by machine learning
+    and deep learning systems, it is hard work to get insights from their internal
+    mechanisms when trying to understand why some outcomes came from.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: In order to address this issue, XAI is aimed at creating a set of AI techniques
+    able to make their own decision more transparent and interpretable, so as to open
+    the black box to share with users the way outputs come from. The final goal is
+    to create completely explainable models and algorithms maintaining high performance
+    levels. In this way, XAI allows user to enhance their interaction with the AI
+    systems, by increasing their *trust* in the system mechanisms, thanks to the comprehension
+    of the specific reasons why some output or decision was made. *Explainability*
+    is badly needed in a wide range of applicative domains and regulations are starting
+    to arise, requiring it as an essential and unavoidable feature of AI systems.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'While there is not a single, unified, pre-defined and widely accepted formal
+    definition of *explanation*, some key concepts emerge in the literature. To strive
+    to define what precisely an explanation is the role of the user or *observer*
+    is essential: in this perspective, an explanation aims at making the relevant
+    *details* of an object clear or easy to understand to some observer. So, an explanation
+    is able to provide users with the significant and needed information to allow
+    them understand how the model works or why it made a specific decision or provided
+    a particular output or suggestion. Moving a step forward, it is worth to highlight
+    that an explanation is an *interface* between a human decision-maker and an intelligent
+    assistant, enabling the human agent to understand some key relevant *proxies*
+    to get the reasons of the system output, as well as the system internal working
+    mechanisms. This adds a new dimension to the concept of explanation, showing new
+    characteristics an explanation should have. It should be an accurate proxy, i.e.
+    the explanation must be based on the model’s mechanisms and the input used. In
+    this perspective, the challenge of generating explanations requires to guarantee
+    that they have accurate proxies, which is not granted in the state-of-the-art
+    models. Such proxies are intrinsically related to the *features* managed by the
+    model: an explanation usually relates the feature values of an instance to its
+    model prediction in a way that can be easily understood by human decision-makers,
+    practitioners or organization stakeholders.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In the literature, there are several attempts to provide classifications, categorizations
+    and characterizations of XAI systems. Explainable recommendations can either be
+    *model-intrinsic* or *model-agnostic*: in the former case, the output model is
+    intrinsically interpretable, meaning that the decision mechanism is completely
+    transparent providing explainability; in the latter case, instead, the output
+    model provides the so-called *post-hoc explanations*, without any modification
+    of the model itself. These two approaches can be conceptually related to a cognitive
+    psychological root: in this perspective, the model-intrinsic models would be somehow
+    similar to the human mind rational decisions, while the model-agnostic ones would
+    somehow resemble the intuitive ways of deciding, followed by some search of the
+    explanations. This classification is also reflected in the categorization of interpretable
+    AI models, Interpretable machine learning techniques can generally be grouped
+    into two categories: intrinsic interpretability and post-hoc interpretability,
+    where the difference is in the moment when the interpretability is obtained and
+    included into the model. Intrinsic interpretability is obtained by designing self-explanatory
+    models incorporating directly interpretability. Among these approaches there are
+    *linear models*, *decision-trees, rule-based* systems etc. In contrast, the post-hoc
+    methods are created by defining another model to include explanations for an existing
+    system.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Another important classification, taken from the specific sub-field of *explainable
+    recommender systems*, is useful for conceptually categorizing two main relevant
+    dimensions in the world of XAI: the dichotomy between the *information source*
+    or the *display style* perspective of the explanations and the explainable model
+    perspective. The former is the way the explanations are provided to users, e.g.
+    *textual explanations*, *visual explanations* etc., while the latter is the specific
+    model exploited for designing and developing the considered explainable system.
+    Thus, while the display style represents the *human–computer interaction* perspective,
+    while the model itself is related to the machine learning dimension of XAI research.
+    Overall, the role of the interaction between the user and the model is fundamental,
+    when it comes to explanations: the growing diffusion of XAI and its applications
+    in a wide range of application domains requires a high-quality interaction and
+    the effectiveness of the information and knowledge sharing processes between the
+    intelligent assistants and the human-decision makers. Therefore, the rise and
+    the evolution of the promising discipline of human―AI interaction is fundamental
+    for the next stages in the AI history.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 2.10 Human―AI Interaction
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'The current scenario and evolution of AI, as briefly and generally presented
+    throughout this chapter, has nowadays led to focus the researchers’ and practitioners’
+    attention towards the role and the quality of the interaction between the AI systems
+    and the human agents. While AI can be certainly considered as a form of automation,
+    it is certainly not a mere technological means: rather, it is something more,
+    enabling a continuous, non-linear and somehow unpredictable dynamics of the whole
+    society. In a broader perspective, AI is becoming a real agent, not just supporting
+    humans but interacting and exchanging information and knowledge with them. It
+    is then necessary to embrace a wider perspective, where humans and AI work together,
+    in order to enhance and empower the decision-making processes and the whole environments
+    where such actors live and act. This poses relevant and unavoidable ethical issues,
+    due to the possible risks deriving from somehow “equating” humans and AI. Whereas
+    the ethical concerns are fundamental and should be definitively faced and solved
+    by the means of a pre-defined and widely accepted framework, this is not the aim
+    of this chapter. To our scope, it is sufficient to understand that humans and
+    AI work, reason and act together in advanced and diffused socio-technical systems:
+    better, in *socio-AI systems* that we could not ignore or underestimate. Furthermore,
+    such systems will increasingly stimulate a wide variety of *emergent collective
+    behaviors*, in a complex system perspective.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In this context, human―AI interaction (HAII) is an emerging and challenging
+    discipline, aimed at studying, designing and evaluating interactive AI-based systems,
+    as well as the potential relationships, issues and problems throughout the interaction,
+    collaboration and teaming between humans and AI-based systems. HAII applies the
+    classical paradigms and frameworks derived from human―computer interaction (HCI)
+    to the cases where the technological interactive system is based on AI. Thus,
+    the concepts related to *user*―*centered design*, *usability* and *user experience*
+    are widely retained and adapted. The role of the users is fundamental: humans
+    should be in the loop when designing and improving the AI systems modelling. In
+    the field of HAII several frameworks for evaluating the application, interaction
+    and the consequences of the exploitation of AI-based systems in heterogeneous
+    application domains: one of the most important frameworks is the Artificial Intelligence
+    Impact Assessment, which helps to map the potential benefits and threats of an
+    AI application in a real-world situation, identify and assess the reliability,
+    safety and transparency of AI systems and limit the potential risks in their deployment.
+    Other frameworks and modelling instruments are aimed at identifying the current
+    level of evolution and automation of the AI systems and functionalities, with
+    respect to the role of the humans in the interaction: to this aim, the Parasuraman’s
+    model for types and levels of human interaction with automation can be applied
+    to the assessment of the degree of automation of AI-based systems.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In this perspective, AI is increasingly becoming a *teammate* and a *decision-maker*,
+    not just a mere *tool* or *assistant* or agent. To be able to design and develop
+    reliable and trustworthy AI systems, as well as to enhance the kinds of interactions
+    with humans, *guidelines* for HAII have been designed and applied. Such guidelines
+    are meant to improve *fluency*, *effectiveness* and the overall *coordination*
+    between humans and AI-based systems. They consider and strive to improve all the
+    stages of the operations, before, during and at the end of the interaction and
+    of the whole knowledge extracting and decision-making process. The main focus,
+    again, is to put the user in the loop, meaning making clear the actions, decisions,
+    contextually relevant information throughout all the process. Moreover, they strive
+    to ensure that all the needed information and knowledge collection stages are
+    well performed and that knowledge is accurately elicited, collected and transmitted:
+    thus, they highlight the importance of learning from past feedback and from user
+    behavior, as well as to remember the past interactions. The idea is to enable
+    the AI system to adapt and evolve in its behavior, on the basis of the previous
+    knowledge and experience accumulated, together with the human agent involved.
+    Following such approach, there are several methodologies and frameworks to design
+    the interaction between human actors and AI-based systems, e.g. smart and *conversational
+    interface*s, *anthropomorphism* and the application of *ethopoeia*, namely the
+    attribution of human attitudes or intentions to machines, in the conceptual paradigm
+    of the “*computer as social actors*” theory.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'At the end of this journey, what’s next? Well, there is much more waiting for
+    us at the horizon! AI is currently shifting its role and characteristics in the
+    whole society: starting from mere and inherently limited automated decision-support
+    systems and technological infrastructure to interacting assistants, teammates
+    and even *managers* and decision-makers. Thus, human and machine intelligences
+    are going to combine in unpredictable and synergistic ways, reaching the so-called
+    *hybrid intelligence*, where the human and the machine cognitive abilities are
+    exploited together, in an unified and empowered environment, so as to achieve
+    complex goals and reach superior results, while enabling continuous learning by
+    a fluid and reciprocal knowledge and experience sharing between human and machine
+    agents. And next? The rise of *collective hybrid intelligence* is going to revolutionize
+    probably every aspect of human society, leading to an emerging, comprehensive
+    and socio-AI systemic intelligence. The digital, social and cultural transformation
+    stimulated by the diffused application of AI to human society arises questions
+    that we need to answer, now and every day. Let us work and improve every day our
+    comprehension and awareness of the potentialities and of the challenges of AI,
+    to ensure that its power and advantages can serve to our sons and to all the new
+    and future generations. This should always be our ultimate goal, as researchers,
+    scholars and practitioners. As humans.'
+  prefs: []
+  type: TYPE_NORMAL

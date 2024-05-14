@@ -1,0 +1,164 @@
+- en: Computational Social SciencesSeries EditorsElisa BertinoPurdue University, West
+    Lafayette, IN, USAClaudio Cioffi-RevillaGeorge Mason University, Fairfax, VA,
+    USAJacob FosterUniversity of California, Los Angeles, CA, USANigel GilbertUniversity
+    of Surrey, Guildford, UKJennifer GolbeckUniversity of Maryland, College Park,
+    MD, USABruno GonçalvesNew York University, New York, NY, USAJames A. KittsUniversity
+    of Massachusetts, Amherst, MA, USALarry S. LiebovitchQueens College, City University
+    of New York, Flushing, NY, USASorin A. MateiPurdue University, West Lafayette,
+    IN, USAAnton NijholtUniversity of Twente, Enschede, The NetherlandsAndrzej NowakUniversity
+    of Warsaw, Warsaw, PolandRobert SavitUniversity of Michigan, Ann Arbor, MI, USAFlaminio SquazzoniUniversity
+    of Brescia, Brescia, ItalyAlessandro VinciarelliUniversity of Glasgow, Glasgow,
+    Scotland, UK
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'A series of authored and edited monographs that utilize quantitative and computational
+    methods to model, analyze and interpret large-scale social phenomena. Titles within
+    the series contain methods and practices that test and develop theories of complex
+    social processes through bottom-up modeling of social interactions. Of particular
+    interest is the study of the co-evolution of modern communication technology and
+    social behavior and norms, in connection with emerging issues such as trust, risk,
+    security and privacy in novel socio-technical environments. Computational Social
+    Sciences is explicitly transdisciplinary: quantitative methods from fields such
+    as dynamical systems, artificial intelligence, network theory, agent-based modeling,
+    and statistical mechanics are invoked and combined with state-of-the-art mining
+    and analysis of large data sets to help us understand social agents, their interactions
+    on and offline, and the effect of these interactions at the macro level. Topics
+    include, but are not limited to social networks and media, dynamics of opinions,
+    cultures and conflicts, socio-technical co-evolution and social psychology. Computational
+    Social Sciences will also publish monographs and selected edited contributions
+    from specialized conferences and workshops specifically aimed at communicating
+    new findings to a large transdisciplinary audience. A fundamental goal of the
+    series is to provide a single forum within which commonalities and differences
+    in the workings of this field may be discerned, hence leading to deeper insight
+    and understanding.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: EditorFederico Cecconi
+  prefs: []
+  type: TYPE_NORMAL
+- en: AI in the Financial Markets
+  prefs:
+  - PREF_H1
+  type: TYPE_NORMAL
+- en: New Algorithms and Solutions
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: '![](../images/524458_1_En_BookFrontmatter_Figa_HTML.png)'
+  prefs: []
+  type: TYPE_IMG
+- en: The Springer logo.
+  prefs: []
+  type: TYPE_NORMAL
+- en: EditorFederico CecconiLaboratory of Agent Based Social Simulation, Institute
+    of Cognitive Sciences and Technologies-National Research Council, Rome, ItalyISSN
+    2509-9574e-ISSN 2509-9582Computational Social SciencesISBN 978-3-031-26517-4e-ISBN
+    978-3-031-26518-1[https://doi.org/10.1007/978-3-031-26518-1](https://doi.org/10.1007/978-3-031-26518-1)©
+    The Editor(s) (if applicable) and The Author(s), under exclusive license to Springer
+    Nature Switzerland AG 2023This work is subject to copyright. All rights are solely
+    and exclusively licensed by the Publisher, whether the whole or part of the material
+    is concerned, specifically the rights of translation, reprinting, reuse of illustrations,
+    recitation, broadcasting, reproduction on microfilms or in any other physical
+    way, and transmission or information storage and retrieval, electronic adaptation,
+    computer software, or by similar or dissimilar methodology now known or hereafter
+    developed.The use of general descriptive names, registered names, trademarks,
+    service marks, etc. in this publication does not imply, even in the absence of
+    a specific statement, that such names are exempt from the relevant protective
+    laws and regulations and therefore free for general use.The publisher, the authors,
+    and the editors are safe to assume that the advice and information in this book
+    are believed to be true and accurate at the date of publication. Neither the publisher
+    nor the authors or the editors give a warranty, expressed or implied, with respect
+    to the material contained herein or for any errors or omissions that may have
+    been made. The publisher remains neutral with regard to jurisdictional claims
+    in published maps and institutional affiliations.
+  prefs: []
+  type: TYPE_NORMAL
+- en: This Springer imprint is published by the registered company Springer Nature
+    Switzerland AG
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The registered company address is: Gewerbestrasse 11, 6330 Cham, Switzerland'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Preface
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Financial markets are likely one of the few human achievements that can truly
+    be described as complex systems. Complex systems are structures in physics that:
+    (a) derive a significant portion of their dynamics from interactions between components,
+    (b) the interactions are highly nonlinear and tend to change based on their own
+    dynamics (feedback), (c) the system’s behavior cannot be directly attributed to
+    a pure sum of the individual interactions: The total is much more than the sum
+    of the individual parts, (d) and from this derive two very important consequences:
+    a very strong dependence on initial conditions (starting from similar situations,
+    we observe completely divergent final states) (a typical example is weather forecasts).'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Financial markets are all of these things, and as such, they present enormous
+    challenges to those attempting to comprehend trends, balances, crisis moments,
+    and high variability.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Then there’s AI, or artificial intelligence, and the technology that’s been
+    dubbed “the oil of the future,” powering a large portion of our socioeconomic
+    systems. AI can be found on the Internet, and in applications, we use every day,
+    in economic forecasting systems, advertising management systems, and search engines.
+    In our cars, games, and, of course, financial markets.
+  prefs: []
+  type: TYPE_NORMAL
+- en: This book is about what happens (and what might happen in the near future) when
+    AI technologies become more prevalent in the capital markets. This is a significant
+    advancement over, say, high-frequency trading algorithms, which raged unchecked
+    in markets (particularly financial derivatives) until a few years ago. These algorithms
+    are gradually being supplanted by extremely complex AI technologies capable of
+    performing tasks that are deeply integrated with the ecosystem in which markets
+    operate (the world of news, or sociopolitical dynamics, the pandemic, geopolitical
+    tensions).
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The book is divided into two parts: the theory, which is what AI is today,
+    the current financial markets, and what could be the largest socioeconomic policy
+    operation ever attempted in history, the so-called Great Reset. Then there are
+    the applications, which stem from the use of mixed big data/AI technologies for
+    the detection and deactivation of fake news, economic evaluation and prediction
+    systems, models based on artificial agents capable of making independent decisions,
+    and dynamic opinion models.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'All of this is to answer the question: Can artificial intelligence make financial
+    markets safer, more reliable, and more profitable? And what are the dangers?'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Thanks
+  prefs: []
+  type: TYPE_NORMAL
+- en: This book was made possible by the resources provided by QBT Sagl [https://​qbt.​ch/​](https://qbt.ch/),
+    a Swiss company that has been working in the AI field for many years, specifically
+    in the fintech and proptech sectors. QBT provided the model development and simulation
+    data collection hardware and software resources.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Federico CecconiRome, ItalyContents[1 Artificial Intelligence and Financial
+    Markets](524458_1_En_1_Chapter.xhtml) 1Federico Cecconi[2 AI, the Overall Picture](524458_1_En_2_Chapter.xhtml)
+    13Luca Marconi[3 Financial Markets:​ Values, Dynamics, Problems](524458_1_En_3_Chapter.xhtml)
+    39Juliana Bernhofer and Anna Alexander Vincenzo[4 The AI’s Role in the Great Reset](524458_1_En_4_Chapter.xhtml)
+    57Federico Cecconi[5 AI Fintech:​ Find Out the Truth](524458_1_En_5_Chapter.xhtml)
+    65Federico Cecconi and Alessandro Barazzetti[6 ABM Applications to Financial Markets](524458_1_En_6_Chapter.xhtml)
+    73Riccardo Vasellini[7 ML Application to the Financial Market](524458_1_En_7_Chapter.xhtml)
+    85Riccardo Vasellini[8 AI Tools for Pricing of Distressed Asset UTP and NPL Loan
+    Portfolios](524458_1_En_8_Chapter.xhtml) 95Alessandro Barazzetti and Rosanna Pilla[9
+    More than Data Science:​ FuturICT 2.​0](524458_1_En_9_Chapter.xhtml) 109Federico Cecconi[10
+    Opinion Dynamics](524458_1_En_10_Chapter.xhtml) 117Luca MarconiAbout the EditorFederico
+    Cecconi
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'is R&D manager for QBT Sagl ([https://​www.​qbt.​ch/​it/​](https://www.qbt.ch/it/)),
+    responsible for the LABSS (CNR) of the computer network management and computational
+    resources for simulation, and consultant for Arcipelago Software Srl. He develops
+    computational and mathematical models for the LABSS’s issues (social dynamics,
+    reputation, normative dynamics). For LABSS performs both the dissemination that
+    training. His current research interest is twofold: on the one hand, the study
+    of socio-economic phenomena, typically using computational models and databases.
+    The second is the development of AI model for fintech and proptech.'
+  prefs: []
+  type: TYPE_NORMAL

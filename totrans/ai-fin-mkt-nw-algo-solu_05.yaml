@@ -1,0 +1,326 @@
+- en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2023F.
+    Cecconi (ed.)AI in the Financial Markets Computational Social Sciences[https://doi.org/10.1007/978-3-031-26518-1_5](https://doi.org/10.1007/978-3-031-26518-1_5)
+  prefs: []
+  type: TYPE_NORMAL
+- en: '5. AI Fintech: Find Out the Truth'
+  prefs:
+  - PREF_H1
+  type: TYPE_NORMAL
+- en: 'Federico Cecconi^([1](#Aff16) [ ](#ContactOfAuthor1)) and Alessandro Barazzetti^([2](#Aff17) [ ](#ContactOfAuthor2))(1)LABSS-ISTC-CNR,
+    Via Palestro 32, 00185 Rome, Italy(2)QBT Sagl,, Via E.Bossi, 4 CH6830 Chiasso,
+    SwitzerlandFederico Cecconi (Corresponding author)Email: [federico.cecconi@istc.cnr.it](mailto:federico.cecconi@istc.cnr.it)Alessandro BarazzettiEmail:
+    [alessandro.barazzetti@qbt.ch](mailto:alessandro.barazzetti@qbt.ch)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Abstract
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: 'We propose one example of application that could have a large impact on our
+    economies: the use of artificial agents to reproduce dynamics, case study the
+    spreading of fake news. It is known that a large number of applications (some
+    described here) are dedicated to investing in financial markets by observing the
+    prevailing trends, often carrying out operations at very high speed. These applications
+    often cause problems by accelerating downtrends irrationally. The markets are
+    running for cover against this type of problem. But automatic traders are emerging
+    who are able to evaluate not the trends but directly the news that alone is at
+    the origin of the trends themselves. This poses the following problem: if cultural
+    diffusion (in this case news, but it could be posts on social networks, little
+    changes) is made problematic by the appearance of ‘fake.news’, how can we be calm
+    about the functioning of our automatic traders? Here we propose a completely new
+    approach to this problem, which makes use of a widespread AI technology, artificial
+    agents. These agents reproduce the phenomenon of spreading fake news and give
+    indications on how to fight it (Chen and Freire in Discovering and measuring malicious
+    URL redirection campaigns from fake news domains, pp. 1–6, [2021](#CR1); Garg
+    et al. in Replaying archived twitter: when your bird is broken, will it bring
+    you down? pp. 160–169, [2021](#CR3); Mahesh et al. in Identification of Fake News
+    Using Deep Learning Architecture, pp. 1246–1253, [2021](#CR7)).'
+  prefs: []
+  type: TYPE_NORMAL
+- en: KeywordsFake newsAutomatic tradingAgent based simulationFederico Cecconi
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'is R&D manager for QBT Sagl ([https://​www.​qbt.​ch](https://www.qbt.ch)),
+    responsible for the LABSS (CNR) of the computer network management and computational
+    resources for simulation, and consultant for Arcipelago Software Srl. He develops
+    computational and mathematical models for the Labss’s issues (social dynamics,
+    reputation, normative dynamics). For Labss performs both the dissemination that
+    training. His current research interest is twofold: on the one hand, the study
+    of socio-economic phenomena, typically using computational models and databases.
+    The second is the development of AI model for fintech and proptech.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Alessandro Barazzetti
+  prefs: []
+  type: TYPE_NORMAL
+- en: aeronautical engineer at the Politecnico di Milano, Professor at Ludes Off-Campus
+    Semmelweis University and pilot is the owner of QBT Sagl, a company operating
+    in the development of Algorithms and Software in the Fintech and Proptech sector
+    and of Science Adventure Sagl, a company specialized in the development of applied
+    AI solutions to Health and Care and advanced projects in the Aerospace sector.
+    Alessandro is also founder of SST srl, a company devoted to sustainability studies
+    and certification and Reacorp Sagl a company devoted to Fintech and Proptech services.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 5.1 The Diffusion of Culture
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: The sociological literature relating to the dynamics of diffusion and consolidation
+    of culture is very extensive. Here we have chosen to start from the concept of
+    culture defined by Axelrod who sees the dissemination of culture as the output
+    of a process of reciprocal influence between social actors who share specific
+    values and distinctive traits. In fact, similar agents will tend to prefer interaction
+    between them and consequently a circle of homophilia growth is created between
+    them. In this context, the process of interaction between agents plays a fundamental
+    role.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In particular, the omnipresence of social structures can be found within the
+    daily behavior of social actors to the point of co-occurring in the determination
+    of their own identity. In the collective dimension, the role of social media is
+    fundamental in determining collaborative digital networks that can be “weak” and
+    instantaneous like affinity networks but can also structure themselves to the
+    point of constituting themselves as real social groups.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Therefore, within the dimension of social media, the relational potential acquires
+    such importance that the consumer is not only a user of messages and contents
+    but also becomes their producer and editor, generating a continuous circle of
+    knowledge.
+  prefs: []
+  type: TYPE_NORMAL
+- en: In this interpretative frame the figure of the prosumer is born, i.e. the one
+    who is the producer (producer) and user (consumer) of the media product. The term
+    prosumer was coined in 1980 by the American sociologist Toffler already in 1975
+    by Jean Cloutier had elaborated a similar idealtype defining it self-media, in
+    both cases we refer to the ability of the subject to be producer and user in a
+    contemporary way of cultural and media products.
+  prefs: []
+  type: TYPE_NORMAL
+- en: The digital prosumer, however, is not to be considered as a particular one-off
+    figure but rather defines any user of the network. Since each digital actor is
+    also a content producer, in particular a data producer. The action of producing
+    a digital content within the web space, in fact, is not necessarily limited to
+    the creation of a specific online multimedia content (post, video, image) it also
+    concerns simpler and apparently low communicative activities such as for example
+    share or retweet content, insert a like or geolocate yourself in a specific place.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Choosing to open one website rather than another also means that you have also
+    unknowingly contributed to its management.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 5.2 Research Design
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: The aim of this AI solution is to reconstruct the process by which conspiracy-themed
+    articles are shared by Facebook pages forming a bubble of news from unofficial
+    sources. In particular, it was coded a simulative model based on artificial agents.
+    The agents are articles, social pages, websites and users; these interacting with
+    each other make up the pages-to-articles network (‘pages to articles’ network,
+    pta network), which is the focus of our investigation (Gupta and Potika [2021](#CR5);
+    An et al. [2021](#CR6); Yu et al. [2021](#CR10); Singh and Sampath [2020](#CR11)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: The simulation project is based on an exploratory survey structured through
+    two research issues.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Issue 1—Some misleading information contents, present in the digital space,
+    have some properties that make them desirable for specific Facebook pages and
+    groups and based on specific characteristics these contents spread within the
+    Social Network. The properties concern respectively: the conspiracy-based content,
+    the intensity of the conspiracy content, the political orientation, incitement
+    to hatred and incitement to fear.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Issue 2—Concerns the analysis of the impact of the content of the articles on
+    the topology of the eco chamber through the simulation model.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 5.3 Data Mining
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: In the first phase, an analysis of digital footprints was carried out with respect
+    to Italian counter-information sources identified through a qualitative observation
+    phase of the interactions and content shared within a set of public groups on
+    Facebook. In this regard, 197 articles have been selected on the basis of their
+    content in line with the typical themes of the conspiracy movement (Choudhary
+    and Arora [2021](#CR2); Garg and Jeevaraj [2021](#CR4)).
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Subsequently, the interactions of each article within Facebook were detected
+    through the Social Network Analysis tool. This phase was important both to circumscribe
+    the ecosystem of conspiracy-minded public pages and groups and to identify the
+    posts with the most interactions. Some empirical evidence emerges from the preliminary
+    analysis: (1) there are Facebook sources that only share conspiracy-based content;
+    (2) these articles to be of interest with respect to the pages present specific
+    contents; (3) the contents found come in turn from sources specialized in the
+    dissemination of conspiracy information.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The set of data collected and the processing carried out made it possible to
+    identify the main units (agents) at the basis of the construction process of the
+    echochamber:'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**Websites or the sites** (blogs, information portals, online newspapers, etc.)
+    that produce and contain the articles identified.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**Articles**, the articles collected in the first phase of the research which
+    have the characteristic of presenting contents of information.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**Pages**, this category includes the pages and public Facebook groups that
+    have shared the articles.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: '**Users**, users who interacted within Facebook with the articles.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 5.4 ABM Simulation
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: The purpose of the simulation is to reconstruct the pages versus articles. In
+    the simulation we have to create links between pages and articles. This must be
+    done using the properties of the articles, websites, pages and users taken from
+    the survey. In the start phase, the links between pages and articles are not loaded
+    since that type of network represents the output of the simulation.
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'On the basis of the data collected in the Data Mining phase, the simulation
+    model was designed and codified in two operational tasks: definition of the agents,
+    and definition of the algorithm. The data collected was used to build the artificial
+    agents, divided into four agent sets: Articles, Websites, Pages and Users (Fig. [5.1](#Fig1)).![](../images/524458_1_En_5_Chapter/524458_1_En_5_Fig1_HTML.png)'
+  prefs: []
+  type: TYPE_NORMAL
+- en: A framework illustrates how web content and the Facebook group and like pages
+    are linked to the users. The users post contents on Facebook pages and public
+    groups that are used as articles on websites.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 5.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: The agentsets
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'In detail, the four types are structured as follows: the web sites are connected
+    only with the articles, the articles are connected with the Web sites and with
+    the Pages, the pages are connected with the articles and with the users and finally
+    the users are connected exclusively with pages.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'Specifically, the Articles dataset was constructed by inserting all the articles
+    identified in the first phase of the research classified in their content in relation
+    to the following interpretative categories: (1) contents, the presence / absence
+    of conspiratorial content; (2) intensity, intensity of the content on a scale
+    from 1 to 5; (3) Issue, or the conspiracy narratives present in the article; (4)
+    political, if the article is politically aligned; (5) political orientation, what
+    political orientation does it present; (6) incitement to hate, if it presents
+    characteristics of incitement to hate; (7) incitement to fear, incitement to fear.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The Websities dataset was composed by inserting the following information for
+    each website identified: sum of interaction, count of articles, fame index and
+    exclusivity. Sum of interaction indicates the total sum of the interactions that
+    the contents from that site have had within Facebook, while Count of articles
+    is a value that indicates the number of articles collected from that website.
+    These two values ​​together make up Fame index, that is a synthetic index that
+    expresses when a website is popular within the detected echo chamber.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: 'The Pages database consists of the following items: Source or the name of the
+    Facebook page or public group, Follower, the number of followers of the page,
+    Interaction or the interactions collected for each article.'
+  prefs: []
+  type: TYPE_NORMAL
+- en: Finally, User is made up of User Id or a label that identifies the user, Content,
+    the content of the product comment for each page.
+  prefs: []
+  type: TYPE_NORMAL
+- en: '5.5 Result: The AI Anti ‘Fake News’ Machine'
+  prefs:
+  - PREF_H2
+  type: TYPE_NORMAL
+- en: In Fig. [5.2](#Fig2) we show the interface of the simulator.![](../images/524458_1_En_5_Chapter/524458_1_En_5_Fig2_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: A simulator interface has buttons on the left, and a photograph of connected
+    dots and lines. The buttons on the left are run underscore simulation, run underscore
+    simulation, setup underscore simulation, modality with random setup selected,
+    scenarios with from interface selected, and import underscore world.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 5.2
+  prefs: []
+  type: TYPE_NORMAL
+- en: The interface of NFN System
+  prefs: []
+  type: TYPE_NORMAL
+- en: The simulator, as already mentioned, loads a repertoire of articles, web pages
+    on which they could be published, users who produce these contents and web sites
+    where the articles can be found. Once the upload has been completed, the simulator
+    hypothesizes how the articles will connect to the pages, what is important or
+    what is less so that homogeneous groups are created (the example used here concerns
+    homogeneous groups of health conspiracy theorists).
+  prefs: []
+  type: TYPE_NORMAL
+- en: In the image we used, the yellow figures are the agents, the houses are the
+    websites, and the top two boxes contain the articles and web pages where they
+    have been cited. Obviously the entire interface is selectable, cross-queries can
+    be made, for example to find out which factors are decisive in creating groups
+    where all users are in contact (Fig. [5.3](#Fig3)). The simulator receives a certain
+    number of parameters as input, such as how much weight it is necessary to give
+    to the presence or absence of incitement to violence within the articles.![](../images/524458_1_En_5_Chapter/524458_1_En_5_Fig3_HTML.png)
+  prefs: []
+  type: TYPE_NORMAL
+- en: Depicted are some of the buttons for the simulator interface.
+  prefs: []
+  type: TYPE_NORMAL
+- en: Fig. 5.3
+  prefs: []
+  type: TYPE_NORMAL
+- en: Some input parameters of the simulator
+  prefs: []
+  type: TYPE_NORMAL
+- en: The main result of the entire simulation is a report summarizing the factors
+    that have led (or not) to the formation of homogeneous groups of conspiracy theorists
+    (an example in Table [5.1](#Tab1)). At the end of the simulation, the report can
+    be used to select the contents to feed to the automatic asset evaluation systems,
+    so as to be able to say for example … *avoid contents where there is an* *apparently
+    correct evaluation of the effect of vaccinations* *with RNA; because these evaluations
+    are at the basis of the creation of conspiracy bubbles…*, which can mislead the
+    automatic evaluation systems.Table 5.1
+  prefs: []
+  type: TYPE_NORMAL
+- en: An extract of an NFN System evalutaion report
+  prefs: []
+  type: TYPE_NORMAL
+- en: '|   | Factors |'
+  prefs: []
+  type: TYPE_TB
+- en: '| --- | --- |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Fake news bubble | RNA vaccine distributionRNA productionVaccine (secondary)
+    |'
+  prefs: []
+  type: TYPE_TB
+- en: '| Groups | Use of ‘hate’ in main issueUse of ‘science citation’ in main issueUse
+    of ‘UE’ in secondary issue |'
+  prefs: []
+  type: TYPE_TB
+- en: In other words, NFN System^([1](#Fn1)) (or other simulators based on artificial
+    agents of the same type) can function as risk ‘selectors’, indicating which semantic
+    aspects, extracted in this case from social networks, but similarly extracted
+    from news, can constitute a risk from the point of view of those who use those
+    contents in automatic systems based precisely on semantics (Marium and Mamatha
+    [2021](#CR8); Nath et al. [2021](#CR9); Uppal [2020](#CR12)).
+  prefs: []
+  type: TYPE_NORMAL
