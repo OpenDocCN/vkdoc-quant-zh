@@ -1,6 +1,6 @@
 
 
-# 3. 金融市场：价值、动态、问题
+# 第三章： 金融市场：价值、动态、问题
 
 Juliana Bernhofer^(1, 2  ) 和 Anna Alexander Vincenzo^(3  )(1)意大利摩德纳和雷焦埃米利亚大学经济系，"马尔科·比亚吉"，雅各波·贝伦加里奥大街 51 号，41121 摩德纳(2)意大利威尼斯卡·福斯卡里大学经济系，坎纳雷吉奥 873 号，30121 威尼斯(3)意大利帕多瓦大学，圣德罗 33 号，35123 帕多瓦 Juliana Bernhofer (通讯作者)Email: juliana.bernhofer@unive.itAnna Alexander VincenzoEmail: anna.alexandervincenzo@unipd.it
 

@@ -1,6 +1,6 @@
 
 
-# 1. 人工智能与金融市场
+# 第一章： 人工智能与金融市场
 
 Federico Cecconi^(1  )(1)LABSS-ISTC-CNR, Via Palestro 32, 00185 罗马, 意大利 Federico Cecconi 电子邮件：federico.cecconi@istc.cnr.it
 

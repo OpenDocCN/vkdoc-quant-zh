@@ -1,6 +1,6 @@
 
 
-# 5. 人工智能金融科技：揭示真相
+# 第五章：人工智能金融科技：揭示真相
 
 费德里科·切科尼^(1  ) 和 阿莱山德罗·巴拉泽蒂^(2  ) (1)LABSS-ISTC-CNR, 意大利罗马, Via Palestro 32, 00185(2)QBT Sagl, 瑞士基亚索, Via E.Bossi, 4 CH6830 阿莱山德罗·巴拉泽蒂（通讯作者）Email: federico.cecconi@istc.cnr.it 阿莱山德罗·巴拉泽蒂 Email: alessandro.barazzetti@qbt.ch
 

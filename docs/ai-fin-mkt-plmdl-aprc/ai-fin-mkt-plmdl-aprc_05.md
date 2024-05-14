@@ -1,6 +1,6 @@
 
 
-# 5. 行业回报预测
+# 第五章： 行业回报预测
 
 Thomas Barrau^(1  ) 和 Raphael Douady²(1)AXA 投资管理者 Chorus Ltd，香港，中国香港特别行政区。(2)巴黎第一索邦大学经济中心，法国巴黎。
 

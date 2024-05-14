@@ -1,6 +1,6 @@
 
 
-# 7. ML 应用于金融市场
+# 第七章： ML 应用于金融市场
 
 Riccardo Vasellini^(1  )(1)Universitá di Siena, Siena, ItalyRiccardo VaselliniEmail: r.vasellini@student.unisi.it
 

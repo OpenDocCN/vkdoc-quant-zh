@@ -1,6 +1,6 @@
 
 
-# 1. 介绍
+# 第一章：介绍
 
 Thomas Barrau^(1  ) 和 Raphael Douady² (1) AXA Investment Managers Chorus Ltd，中国香港，香港特别行政区。(2) 经济中心，巴黎索邦大学，法国巴黎。
 
