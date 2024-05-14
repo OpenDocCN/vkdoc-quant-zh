@@ -1,8 +1,10 @@
 - en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2023F.
     Cecconi (ed.)AI in the Financial Markets Computational Social Sciences[https://doi.org/10.1007/978-3-031-26518-1_5](https://doi.org/10.1007/978-3-031-26518-1_5)
+  id: totrans-0
   prefs: []
   type: TYPE_NORMAL
 - en: '5. AI Fintech: Find Out the Truth'
+  id: totrans-1
   prefs:
   - PREF_H1
   type: TYPE_NORMAL
@@ -10,9 +12,11 @@
     Via Palestro 32, 00185 Rome, Italy(2)QBT Sagl,, Via E.Bossi, 4 CH6830 Chiasso,
     SwitzerlandFederico Cecconi (Corresponding author)Email: [federico.cecconi@istc.cnr.it](mailto:federico.cecconi@istc.cnr.it)Alessandro BarazzettiEmail:
     [alessandro.barazzetti@qbt.ch](mailto:alessandro.barazzetti@qbt.ch)'
+  id: totrans-2
   prefs: []
   type: TYPE_NORMAL
 - en: Abstract
+  id: totrans-3
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -35,9 +39,11 @@
     et al. in Replaying archived twitter: when your bird is broken, will it bring
     you down? pp. 160–169, [2021](#CR3); Mahesh et al. in Identification of Fake News
     Using Deep Learning Architecture, pp. 1246–1253, [2021](#CR7)).'
+  id: totrans-4
   prefs: []
   type: TYPE_NORMAL
 - en: KeywordsFake newsAutomatic tradingAgent based simulationFederico Cecconi
+  id: totrans-5
   prefs: []
   type: TYPE_NORMAL
 - en: 'is R&D manager for QBT Sagl ([https://​www.​qbt.​ch](https://www.qbt.ch)),
@@ -48,9 +54,11 @@
     training. His current research interest is twofold: on the one hand, the study
     of socio-economic phenomena, typically using computational models and databases.
     The second is the development of AI model for fintech and proptech.'
+  id: totrans-6
   prefs: []
   type: TYPE_NORMAL
 - en: Alessandro Barazzetti
+  id: totrans-7
   prefs: []
   type: TYPE_NORMAL
 - en: aeronautical engineer at the Politecnico di Milano, Professor at Ludes Off-Campus
@@ -60,9 +68,11 @@
     AI solutions to Health and Care and advanced projects in the Aerospace sector.
     Alessandro is also founder of SST srl, a company devoted to sustainability studies
     and certification and Reacorp Sagl a company devoted to Fintech and Proptech services.
+  id: totrans-8
   prefs: []
   type: TYPE_NORMAL
 - en: 5.1 The Diffusion of Culture
+  id: totrans-9
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -74,6 +84,7 @@
     between them and consequently a circle of homophilia growth is created between
     them. In this context, the process of interaction between agents plays a fundamental
     role.
+  id: totrans-10
   prefs: []
   type: TYPE_NORMAL
 - en: In particular, the omnipresence of social structures can be found within the
@@ -82,12 +93,14 @@
     fundamental in determining collaborative digital networks that can be “weak” and
     instantaneous like affinity networks but can also structure themselves to the
     point of constituting themselves as real social groups.
+  id: totrans-11
   prefs: []
   type: TYPE_NORMAL
 - en: Therefore, within the dimension of social media, the relational potential acquires
     such importance that the consumer is not only a user of messages and contents
     but also becomes their producer and editor, generating a continuous circle of
     knowledge.
+  id: totrans-12
   prefs: []
   type: TYPE_NORMAL
 - en: In this interpretative frame the figure of the prosumer is born, i.e. the one
@@ -96,6 +109,7 @@
     by Jean Cloutier had elaborated a similar idealtype defining it self-media, in
     both cases we refer to the ability of the subject to be producer and user in a
     contemporary way of cultural and media products.
+  id: totrans-13
   prefs: []
   type: TYPE_NORMAL
 - en: The digital prosumer, however, is not to be considered as a particular one-off
@@ -105,16 +119,21 @@
     the creation of a specific online multimedia content (post, video, image) it also
     concerns simpler and apparently low communicative activities such as for example
     share or retweet content, insert a like or geolocate yourself in a specific place.
+  id: totrans-14
   prefs: []
   type: TYPE_NORMAL
 - en: Choosing to open one website rather than another also means that you have also
     unknowingly contributed to its management.
+  id: totrans-15
   prefs: []
   type: TYPE_NORMAL
+  zh: 选择打开一个网站而不是另一个，也意味着你在无意中为其管理做出了贡献。
 - en: 5.2 Research Design
+  id: totrans-16
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 5.2 研究设计
 - en: The aim of this AI solution is to reconstruct the process by which conspiracy-themed
     articles are shared by Facebook pages forming a bubble of news from unofficial
     sources. In particular, it was coded a simulative model based on artificial agents.
@@ -122,36 +141,51 @@
     each other make up the pages-to-articles network (‘pages to articles’ network,
     pta network), which is the focus of our investigation (Gupta and Potika [2021](#CR5);
     An et al. [2021](#CR6); Yu et al. [2021](#CR10); Singh and Sampath [2020](#CR11)).
+  id: totrans-17
   prefs: []
   type: TYPE_NORMAL
+  zh: 这个人工智能解决方案的目标是重建Facebook页面分享阴谋主题文章的过程，形成了一种从非官方来源获取新闻的泡沫。具体来说，基于人工智能代理的模拟模型被编码了。这些代理是文章、社交页面、网站和用户；它们相互作用形成了页面到文章网络（‘pages
+    to articles’ network, pta network），这是我们调查的焦点（Gupta和Potika [2021](#CR5)；An等 [2021](#CR6)；Yu等
+    [2021](#CR10)；Singh和Sampath [2020](#CR11)）。
 - en: The simulation project is based on an exploratory survey structured through
     two research issues.
+  id: totrans-18
   prefs: []
   type: TYPE_NORMAL
+  zh: 该模拟项目是基于一个通过两个研究问题构建的探索性调查。
 - en: 'Issue 1—Some misleading information contents, present in the digital space,
     have some properties that make them desirable for specific Facebook pages and
     groups and based on specific characteristics these contents spread within the
     Social Network. The properties concern respectively: the conspiracy-based content,
     the intensity of the conspiracy content, the political orientation, incitement
     to hatred and incitement to fear.'
+  id: totrans-19
   prefs: []
   type: TYPE_NORMAL
+  zh: 问题1——一些存在于数字空间中的误导性信息内容具有一些特性，使它们对特定的Facebook页面和群体具有吸引力，并且基于特定特征，这些内容在社交网络中传播。这些属性分别涉及：基于阴谋的内容、阴谋内容的强度、政治取向、煽动仇恨和煽动恐惧。
 - en: Issue 2—Concerns the analysis of the impact of the content of the articles on
     the topology of the eco chamber through the simulation model.
+  id: totrans-20
   prefs: []
   type: TYPE_NORMAL
+  zh: 问题2——涉及通过模拟模型分析文章内容对生态舱拓扑结构的影响。
 - en: 5.3 Data Mining
+  id: totrans-21
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 5.3 数据挖掘
 - en: In the first phase, an analysis of digital footprints was carried out with respect
     to Italian counter-information sources identified through a qualitative observation
     phase of the interactions and content shared within a set of public groups on
     Facebook. In this regard, 197 articles have been selected on the basis of their
     content in line with the typical themes of the conspiracy movement (Choudhary
     and Arora [2021](#CR2); Garg and Jeevaraj [2021](#CR4)).
+  id: totrans-22
   prefs: []
   type: TYPE_NORMAL
+  zh: 在第一阶段，通过对Facebook上一组公开群体中的互动和共享内容进行定性观察，对意大利反信息源的数字足迹进行了分析。在这方面，根据其与阴谋运动典型主题内容的一致性，已选择了197篇文章（Choudhary和Arora
+    [2021](#CR2)；Garg和Jeevaraj [2021](#CR4)）。
 - en: 'Subsequently, the interactions of each article within Facebook were detected
     through the Social Network Analysis tool. This phase was important both to circumscribe
     the ecosystem of conspiracy-minded public pages and groups and to identify the
@@ -160,62 +194,89 @@
     (2) these articles to be of interest with respect to the pages present specific
     contents; (3) the contents found come in turn from sources specialized in the
     dissemination of conspiracy information.'
+  id: totrans-23
   prefs: []
   type: TYPE_NORMAL
+  zh: 随后，通过社交网络分析工具检测了每篇文章在Facebook内的互动。这个阶段对于界定阴谋主义公共页面和群体的生态系统以及识别互动最多的帖子都很重要。一些经验性证据从初步分析中浮现出来：（1）有一些Facebook来源只分享基于阴谋的内容；（2）这些文章对于具有特定内容的页面具有兴趣；（3）发现的内容反过来又来自专门传播阴谋信息的来源。
 - en: 'The set of data collected and the processing carried out made it possible to
     identify the main units (agents) at the basis of the construction process of the
     echochamber:'
+  id: totrans-24
   prefs: []
   type: TYPE_NORMAL
+  zh: 收集的数据集和进行的处理使得能够确定构建回音室过程的主要单元（代理）：
 - en: '**Websites or the sites** (blogs, information portals, online newspapers, etc.)
     that produce and contain the articles identified.'
+  id: totrans-25
   prefs: []
   type: TYPE_NORMAL
+  zh: '**网站或站点**（博客、信息门户、在线报纸等），它们产生并包含所识别的文章。'
 - en: '**Articles**, the articles collected in the first phase of the research which
     have the characteristic of presenting contents of information.'
+  id: totrans-26
   prefs: []
   type: TYPE_NORMAL
+  zh: '**文章**，研究的第一阶段收集的具有呈现信息内容特征的文章。'
 - en: '**Pages**, this category includes the pages and public Facebook groups that
     have shared the articles.'
+  id: totrans-27
   prefs: []
   type: TYPE_NORMAL
+  zh: '**页面**，这个类别包括分享文章的页面和公共 Facebook 群组。'
 - en: '**Users**, users who interacted within Facebook with the articles.'
+  id: totrans-28
   prefs: []
   type: TYPE_NORMAL
+  zh: '**用户**，与文章在 Facebook 上进行互动的用户。'
 - en: 5.4 ABM Simulation
+  id: totrans-29
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 5.4 ABM 模拟
 - en: The purpose of the simulation is to reconstruct the pages versus articles. In
     the simulation we have to create links between pages and articles. This must be
     done using the properties of the articles, websites, pages and users taken from
     the survey. In the start phase, the links between pages and articles are not loaded
     since that type of network represents the output of the simulation.
+  id: totrans-30
   prefs: []
   type: TYPE_NORMAL
+  zh: 模拟的目的是重建页面与文章的关系。在模拟中，我们必须创建页面和文章之间的链接。这必须使用从调查中获取的文章、网站、页面和用户的属性来完成。在起始阶段，页面和文章之间的链接没有加载，因为这种类型的网络代表了模拟的输出。
 - en: 'On the basis of the data collected in the Data Mining phase, the simulation
     model was designed and codified in two operational tasks: definition of the agents,
     and definition of the algorithm. The data collected was used to build the artificial
     agents, divided into four agent sets: Articles, Websites, Pages and Users (Fig. [5.1](#Fig1)).![](../images/524458_1_En_5_Chapter/524458_1_En_5_Fig1_HTML.png)'
+  id: totrans-31
   prefs: []
   type: TYPE_NORMAL
+  zh: 根据在数据挖掘阶段收集的数据，模拟模型被设计并编码为两个操作任务：定义代理和定义算法。收集的数据用于构建人工代理，分为四个代理集：文章、网站、页面和用户（图
+    [5.1](#Fig1)）。![](../images/524458_1_En_5_Chapter/524458_1_En_5_Fig1_HTML.png)
 - en: A framework illustrates how web content and the Facebook group and like pages
     are linked to the users. The users post contents on Facebook pages and public
     groups that are used as articles on websites.
+  id: totrans-32
   prefs: []
   type: TYPE_NORMAL
+  zh: 一个框架说明了网页内容与 Facebook 群组和喜欢的页面如何与用户联系在一起。用户在 Facebook 页面和公共群组上发布内容，这些内容被用作网站上的文章。
 - en: Fig. 5.1
+  id: totrans-33
   prefs: []
   type: TYPE_NORMAL
+  zh: 图 5.1
 - en: The agentsets
+  id: totrans-34
   prefs: []
   type: TYPE_NORMAL
+  zh: agentsets
 - en: 'In detail, the four types are structured as follows: the web sites are connected
     only with the articles, the articles are connected with the Web sites and with
     the Pages, the pages are connected with the articles and with the users and finally
     the users are connected exclusively with pages.'
+  id: totrans-35
   prefs: []
   type: TYPE_NORMAL
+  zh: 具体来说，四种类型的结构如下：只有网站与文章相连，文章与网站和页面相连，页面与文章和用户相连，最后用户只与页面相连。
 - en: 'Specifically, the Articles dataset was constructed by inserting all the articles
     identified in the first phase of the research classified in their content in relation
     to the following interpretative categories: (1) contents, the presence / absence
@@ -224,8 +285,11 @@
     political, if the article is politically aligned; (5) political orientation, what
     political orientation does it present; (6) incitement to hate, if it presents
     characteristics of incitement to hate; (7) incitement to fear, incitement to fear.'
+  id: totrans-36
   prefs: []
   type: TYPE_NORMAL
+  zh: 具体来说，文章数据集是通过将在研究的第一阶段中识别的所有文章按照以下解释性类别的内容进行分类而构建的：（1）内容，阴谋内容的存在/不存在；（2）强度，内容在
+    1 到 5 的等级上的强度；（3）议题，或文章中存在的阴谋叙事；（4）政治，文章是否与政治相关联；（5）政治取向，它呈现了什么政治取向；（6）煽动仇恨，是否具有煽动仇恨的特征；（7）煽动恐惧，是否煽动恐惧。
 - en: 'The Websities dataset was composed by inserting the following information for
     each website identified: sum of interaction, count of articles, fame index and
     exclusivity. Sum of interaction indicates the total sum of the interactions that
@@ -233,44 +297,63 @@
     is a value that indicates the number of articles collected from that website.
     These two values ​​together make up Fame index, that is a synthetic index that
     expresses when a website is popular within the detected echo chamber.'
+  id: totrans-37
   prefs: []
   type: TYPE_NORMAL
+  zh: Websities 数据集是通过为每个识别的网站插入以下信息而组成的：交互总和、文章计数、名望指数和独家性。交互总和表示该网站内容在 Facebook
+    内获得的所有互动总和，而文章计数则是指从该网站收集到的文章数量。这两个值加在一起形成了名望指数，这是一个综合指数，表示一个网站在检测到的闭环中有多受欢迎。
 - en: 'The Pages database consists of the following items: Source or the name of the
     Facebook page or public group, Follower, the number of followers of the page,
     Interaction or the interactions collected for each article.'
+  id: totrans-38
   prefs: []
   type: TYPE_NORMAL
+  zh: 页面数据库由以下内容组成：来源或 Facebook 页面或公共群组的名称，追随者，页面的追随者数量，交互或每篇文章收集到的互动。
 - en: Finally, User is made up of User Id or a label that identifies the user, Content,
     the content of the product comment for each page.
+  id: totrans-39
   prefs: []
   type: TYPE_NORMAL
+  zh: 最后，用户由用户标识或标签以及每个页面的产品评论内容组成。
 - en: '5.5 Result: The AI Anti ‘Fake News’ Machine'
+  id: totrans-40
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 5.5 结果：AI 反“假新闻”机器
 - en: In Fig. [5.2](#Fig2) we show the interface of the simulator.![](../images/524458_1_En_5_Chapter/524458_1_En_5_Fig2_HTML.png)
+  id: totrans-41
   prefs: []
   type: TYPE_NORMAL
+  zh: 在图[5.2](#Fig2)中，我们展示了模拟器的界面！[](../images/524458_1_En_5_Chapter/524458_1_En_5_Fig2_HTML.png)
 - en: A simulator interface has buttons on the left, and a photograph of connected
     dots and lines. The buttons on the left are run underscore simulation, run underscore
     simulation, setup underscore simulation, modality with random setup selected,
     scenarios with from interface selected, and import underscore world.
+  id: totrans-42
   prefs: []
   type: TYPE_NORMAL
+  zh: 模拟器界面左侧有按钮，并有连接的点和线的照片。左侧的按钮包括运行下划线模拟，运行下划线模拟，设置下划线模拟，选择随机设置的模态，从界面选择的场景以及导入下划线世界。
 - en: Fig. 5.2
+  id: totrans-43
   prefs: []
   type: TYPE_NORMAL
+  zh: 图5.2
 - en: The interface of NFN System
+  id: totrans-44
   prefs: []
   type: TYPE_NORMAL
+  zh: NFN系统的界面
 - en: The simulator, as already mentioned, loads a repertoire of articles, web pages
     on which they could be published, users who produce these contents and web sites
     where the articles can be found. Once the upload has been completed, the simulator
     hypothesizes how the articles will connect to the pages, what is important or
     what is less so that homogeneous groups are created (the example used here concerns
     homogeneous groups of health conspiracy theorists).
+  id: totrans-45
   prefs: []
   type: TYPE_NORMAL
+  zh: 如前所述，模拟器加载了一组文章、可以发布这些文章的网页、生成这些内容的用户以及可以找到这些文章的网站。上传完成后，模拟器假设文章将如何连接到页面，重要或不重要的是什么，以创建同质群体（此处使用的示例涉及健康阴谋论者的同质群体）。
 - en: In the image we used, the yellow figures are the agents, the houses are the
     websites, and the top two boxes contain the articles and web pages where they
     have been cited. Obviously the entire interface is selectable, cross-queries can
@@ -278,17 +361,25 @@
     where all users are in contact (Fig. [5.3](#Fig3)). The simulator receives a certain
     number of parameters as input, such as how much weight it is necessary to give
     to the presence or absence of incitement to violence within the articles.![](../images/524458_1_En_5_Chapter/524458_1_En_5_Fig3_HTML.png)
+  id: totrans-46
   prefs: []
   type: TYPE_NORMAL
+  zh: 在我们使用的图像中，黄色的图形是代理，房屋是网站，顶部两个框包含了被引用的文章和网页。显然，整个界面都是可选择的，可以进行交叉查询，例如找出在创建所有用户都处于联系状态的群体时哪些因素是决定性的（图[5.3](#Fig3)）。模拟器接收一定数量的参数作为输入，例如需要给予文章中暴力煽动的存在或不存在多少权重等！[](../images/524458_1_En_5_Chapter/524458_1_En_5_Fig3_HTML.png)
 - en: Depicted are some of the buttons for the simulator interface.
+  id: totrans-47
   prefs: []
   type: TYPE_NORMAL
+  zh: 描绘了模拟器界面中的一些按钮。
 - en: Fig. 5.3
+  id: totrans-48
   prefs: []
   type: TYPE_NORMAL
+  zh: 图5.3
 - en: Some input parameters of the simulator
+  id: totrans-49
   prefs: []
   type: TYPE_NORMAL
+  zh: 模拟器的一些输入参数
 - en: The main result of the entire simulation is a report summarizing the factors
     that have led (or not) to the formation of homogeneous groups of conspiracy theorists
     (an example in Table [5.1](#Tab1)). At the end of the simulation, the report can
@@ -297,30 +388,46 @@
     correct evaluation of the effect of vaccinations* *with RNA; because these evaluations
     are at the basis of the creation of conspiracy bubbles…*, which can mislead the
     automatic evaluation systems.Table 5.1
+  id: totrans-50
   prefs: []
   type: TYPE_NORMAL
+  zh: 整个模拟的主要结果是一份报告，总结了导致（或未导致）形成同质阴谋论者群体的因素（示例见表[5.1](#Tab1)）。模拟结束后，可以利用该报告选择要馈送给自动资产评估系统的内容，以便能够说出例如…
+    *避免存在关于RNA疫苗效果的明显正确评估的内容；因为这些评估是阴谋泡沫形成的基础…*，这可能会误导自动评估系统。
 - en: An extract of an NFN System evalutaion report
+  id: totrans-51
   prefs: []
   type: TYPE_NORMAL
+  zh: NFN系统评估报告摘录
 - en: '|   | Factors |'
+  id: totrans-52
   prefs: []
   type: TYPE_TB
+  zh: '|   | 因素 |'
 - en: '| --- | --- |'
+  id: totrans-53
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- |'
 - en: '| Fake news bubble | RNA vaccine distributionRNA productionVaccine (secondary)
     |'
+  id: totrans-54
   prefs: []
   type: TYPE_TB
+  zh: '| 假新闻泡沫 | RNA疫苗分配RNA生产疫苗（次要） |'
 - en: '| Groups | Use of ‘hate’ in main issueUse of ‘science citation’ in main issueUse
     of ‘UE’ in secondary issue |'
+  id: totrans-55
   prefs: []
   type: TYPE_TB
+  zh: '| 群体 | 主要问题中使用‘仇恨’使用‘科学引用’次要问题中使用‘欧盟’ |'
 - en: In other words, NFN System^([1](#Fn1)) (or other simulators based on artificial
     agents of the same type) can function as risk ‘selectors’, indicating which semantic
     aspects, extracted in this case from social networks, but similarly extracted
     from news, can constitute a risk from the point of view of those who use those
     contents in automatic systems based precisely on semantics (Marium and Mamatha
     [2021](#CR8); Nath et al. [2021](#CR9); Uppal [2020](#CR12)).
+  id: totrans-56
   prefs: []
   type: TYPE_NORMAL
+  zh: 换句话说，NFN 系统^([1](#Fn1))（或其他基于相同类型人工智能代理的模拟器）可以作为风险“选择器”发挥作用，指示哪些语义方面，本例中是从社交网络中提取的，但类似地也可以从新闻中提取，从那些将内容用于基于语义的自动系统的人的角度来看，可以构成风险（Marium
+    和 Mamatha [2021](#CR8); Nath 等人 [2021](#CR9); Uppal [2020](#CR12))。

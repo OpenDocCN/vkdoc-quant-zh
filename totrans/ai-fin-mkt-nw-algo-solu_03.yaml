@@ -619,6 +619,10 @@
   id: totrans-51
   prefs: []
   type: TYPE_NORMAL
+  zh: 人们在做出财务决策时受情绪影响的想法最早由约翰·梅纳德·凯恩斯在他1936年的重要著作《就业、利息和货币一般理论》中首次描述。在这本书中，他阐述了“动物精神”如何影响消费者信心，这很可能代表了行为金融的起源。希波克拉底（公元前400年）和帕加马（公元200年）的克劳狄斯·加伦观察到了这一点，将之称为*pneuma
+    psychikon*（或“动物精神”），这是一种位于脑室内的不可见实体，通过肌肉和神经传导（Herbowski [2013](#CR33); Smith et
+    al. [2012](#CR53)）。然而，这一近似似乎确实是对生物学解释背后心理反应的原始想法，表现为“自发的行动冲动”。对震荡的反应之一似乎是产生“压力激素”皮质醇，作为例如市场波动的反应而增加，并已被证明降低风险倾向（Kandasamy
+    et al. [2014](#CR38)）。同时，由于压力水平增加，对小概率事件的过度关注可能部分解释了焦虑及其对金融决策的后果。后一现象在男性中比在女性中更常见。
 - en: Moreover, the human tendency of paying attention to news instead of following
     data-driven models is what Christopher A. Sims in the early 2000s describes with
     his renowned theory of rational inattention which has since been discussed and
@@ -632,10 +636,12 @@
   id: totrans-52
   prefs: []
   type: TYPE_NORMAL
+  zh: 此外，人类倾向于关注新闻而不是遵循数据驱动模型，这是克里斯托弗·A·辛姆斯在21世纪初描述的他著名的理性注意力理论，此后已被许多研究者讨论和应用。根据辛姆斯的论点，投资者在数据、时间和认知能力方面没有信息处理能力来运行高度复杂的模型，因此他们采取一种捷径，依赖媒体报道。虽然这在某种程度上是一种节省金钱的技巧，但这种方法的主要缺点之一是暴露于*负面偏差*，因为对悲观新闻的增加关注导致了悲观预期的形成和对金融市场的扭曲影响。
 - en: '**Trust and Confidence in the Government**'
   id: totrans-53
   prefs: []
   type: TYPE_NORMAL
+  zh: '**政府的信任与信心**'
 - en: Engelhardt et al. [2021](#CR29) address the issue of behavioral aspects in financial
     decision-making from a slightly different angle by investigating a society’s pre-existing
     inherent level of trust and its resilience against the effects of the pandemic.
@@ -948,11 +954,13 @@
   id: totrans-87
   prefs: []
   type: TYPE_NORMAL
+  zh: 人工智能是一种强大的技术。到目前为止，随着越来越多的人工智能解决方案的开发，我们只是触及到了可能实现的可能性的一部分。学习算法能够理解和重新解释复杂的人类需求，以克服可能阻碍无传统中介的金融交易成功的行为态度，缓解经济震荡对社会平等的负面影响，并在放贷方和借款方之间建立互信。人工智能已经广泛应用于关键基础设施领域，例如公共卫生、交通、供水、发电和电信，增强了它们在极端事件发生时的韧性。相同的韧性概念应该应用于中小企业和私人公民的金融资产：在大流行病或其他灾难等极端事件发生时，金融资产必须受到保护，并且能够迅速从这些冲击中恢复。除其他解决方案外，可以通过引导小投资者选择具有较高ES（环境和社会）评级的股票来实现这一点，因为据显示它们对市场波动的反应较小（Albuquerque等人[2020](#CR6)），通过增加人口的数字和金融素养，并提供公平的技术获取，无论其社会经济地位、种族、性别和年龄如何。
 - en: 3.7 Conclusions
   id: totrans-88
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 3.7 结论
 - en: Wars, pandemics, terrorist attacks, and natural disasters are known to have
     a significant impact on financial markets. We provide an overview of the main
     economic and social shocks of the last century and how investors reacted in terms
@@ -963,6 +971,7 @@
   id: totrans-89
   prefs: []
   type: TYPE_NORMAL
+  zh: 战争、大流行病、恐怖袭击和自然灾害都以对金融市场产生重大影响而闻名。我们概述了上个世纪的主要经济和社会冲击，以及投资者在金融决策方面的反应。我们讨论了这些反应在社会平等方面所涉及的内容，以及这些危机如何影响个人偏好，如对冒险行为的倾向、对信任和对政府的信心的态度。
 - en: 'A particular side effect of the recent Covid-19 pandemic is that of digitalization.
     We also dedicate part of our chapter to the phenomenon of digital literacy, which
     has experienced an unprecedented—yet forceful—surge after the first lockdown.
@@ -978,6 +987,7 @@
   id: totrans-90
   prefs: []
   type: TYPE_NORMAL
+  zh: 最近新冠疫情的一个特殊副作用是数字化。我们还将本章的一部分专门致力于数字素养现象，这在第一次封锁后经历了前所未有但又强有力的激增。虽然这一过程的成本和随后的市场不稳定性仍然不均匀分布，数字化为发展中国家和具有较低社会经济地位的阶层打开了一扇窗户：它具有教育、网络、经济增长和财富再分配的巨大潜力。然而，全球政府的任务是积极创造积极的变革和协同效应，防止其最终加剧人口和国家之间的社会经济差距。这可以通过建立信任、投资数字基础设施和人力资本、为私人公民和小企业提供培训和支持来实现。
 - en: Social connectedness is a known predictor of upward social mobility and may
     act as a catalyst to the creation of a new global interconnectedness that can
     also be accessed by those who had previously been confined to an often limited
@@ -991,6 +1001,7 @@
   id: totrans-91
   prefs: []
   type: TYPE_NORMAL
+  zh: 社会联系是向上社会流动的已知预测因素，并且可能促成新的全球互联，这也可以被那些以前局限于常常有限的本地机会的人所利用。Chetty等人[2022a](#CR19)，[2022b](#CR20)研究了基于社交媒体友谊和邮政编码的三种连接方式。第一种是低社会经济地位和高社会经济地位之间的连接，第二种类型是社会凝聚力，第三种是定义的公民参与水平。他们发现第一种（经济）连接是向上收入流动的最强因素。我们声称，这在某种程度上也适用于全球互联，无论物理距离如何。
 - en: The present century is the century of complexity, as already predicted by a
     famous physicist and as we have seen, financial markets are no exception. The
     development of the concept of resilience is a consequence of this prophecy, as
@@ -1006,3 +1017,4 @@
   id: totrans-92
   prefs: []
   type: TYPE_NORMAL
+  zh: 当前世纪是复杂性的世纪，正如一位著名物理学家已经预言的那样，而我们已经看到，金融市场也不例外。弹性概念的发展是这一预言的结果，因为复杂性无法用一颗药丸解决。然而，通过增加金融和数字素养，投资于教育，提供技术接入，并通过建立对同行和政府的信心，可以实现从未预料到的情况中恢复——无论是在金融还是社会上。一个更加公平的世界可以通过增强同行和政府的信心、投资于教育以及提供技术接入来创建。最后，*利益相关者资本主义*的理念，即公司以共同利益为考量而不是眼前利润行事，以及创建一个具有韧性、平等和环境可持续性的系统是*大重启*的主要支柱，这是世界经济论坛推动的一个倡议，将在下一章中更深入地介绍。
