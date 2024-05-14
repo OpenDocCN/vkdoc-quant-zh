@@ -1,21 +1,29 @@
 - en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2022T.
     Barrau, R. DouadyArtificial Intelligence for Financial MarketsFinancial Mathematics
     and Fintech[https://doi.org/10.1007/978-3-030-97319-3_4](https://doi.org/10.1007/978-3-030-97319-3_4)
+  id: totrans-0
   prefs: []
   type: TYPE_NORMAL
+  zh: © 作者，独家许可给施普林格自然瑞士公司 2022 年。
 - en: 4. Predictions of Market Returns
+  id: totrans-1
   prefs:
   - PREF_H1
   type: TYPE_NORMAL
+  zh: 4. 市场回报预测
 - en: Thomas Barrau^([1](#Aff5)  ) and Raphael Douady^([2](#Aff6))(1)AXA Investment
     Managers Chorus Ltd, Hong Kong, Hong Kong S.A.R.(2)Economic Center, University
     Paris 1 Sorbonne, Paris, France
+  id: totrans-2
   prefs: []
   type: TYPE_NORMAL
+  zh: Thomas Barrau^([1](#Aff5)  ) 和 Raphael Douady^([2](#Aff6))
 - en: Abstract
+  id: totrans-3
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 摘要
 - en: We propose a Systematic Risk Indicator derived from a polymodel estimation.
     Polymodels allow us to measure the strength of the links that a stock market maintains
     with its economic environment. We show that these links tend to be more *extreme*
@@ -25,23 +33,34 @@
     be strongly significant, both from an economic and statistical point of view.
     Results are robust across different time-periods, for various sets of explanatory
     variables, and among 12 different stock markets.
+  id: totrans-4
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们提出了一个来源于多模型估计的系统风险指标。多模型使我们能够衡量股市与其经济环境之间的联系强度。我们表明，在市场危机之前，这些联系往往更为*极端*，验证了相关性增加的众所周知的情况，同时提出了一个更加微妙的视角。我们实施了一个完全自动化且成功的交易策略来评估信号的兴趣，这一信号在经济和统计学上都表现出了强烈的显著性。结果在不同时间段、不同解释变量集合和
+    12 个不同的股票市场之间都是稳健的。
 - en: KeywordsPolymodel theorySystematic riskFinancial crisisSpeculative bubbleStock
     market crashTrading strategyLNLM modelingMarket timingDrawdown prediction
+  id: totrans-5
   prefs: []
   type: TYPE_NORMAL
+  zh: 关键词
 - en: 4.1 Introduction
+  id: totrans-6
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 4.1 引言
 - en: In this chapter, we predict the market returns of 12 main stock indexes.
+  id: totrans-7
   prefs: []
   type: TYPE_NORMAL
+  zh: 在本章中，我们预测了 12 个主要股票指数的市场回报。
 - en: Our approach takes root in the wide literature dedicated to market crisis anticipation.
     Quite often, this literature relies on identifying some herding behavior.
+  id: totrans-8
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们的方法扎根于广泛致力于市场危机预测的文献。这些文献往往依赖于识别一些群体行为。
 - en: Sornette (see Johansen et al. ([2000](#CR4)) and Sornette ([2009](#CR11))) has
     been a pioneer in the anticipation of stock market crashes with his LPPL model
     (also well described in Geraskin and Fantazzini ([2013](#CR2))). Essentially,
@@ -58,8 +77,11 @@
     and behave as rational traders. Note that such a behavior by market participants
     implies an increasing level of mimicry among traders’ actions while approaching
     the stock market crash.
+  id: totrans-9
   prefs: []
   type: TYPE_NORMAL
+  zh: Sornette (参见 Johansen et al. ([2000](#CR4)) 和 Sornette ([2009](#CR11))) 是使用其
+    LPPL 模型（也在 Geraskin 和 Fantazzini ([2013](#CR2)) 中有很好的描述）预测股市崩盘的先驱。本质上，该模型描述了股市价格在投机泡沫期间的演变。市场动态使用幂律和一些减小的周期振荡的组合进行建模。价格中的幂律是一组理性、信息充分的交易者的行动的结果，他们投资于投机泡沫，因为股市崩盘的风险被价格上涨的加速所弥补。振荡是由一组噪声交易者的随机行动产生的，他们表现出一些群体行为，例如通过对新闻的过度反应而被从理性价格中驱赶出去。振荡的减小是因为当幂律加强时，接近其最终奇点，所有市场参与者都认识到了泡沫并且表现得像理性交易者一样。请注意，市场参与者的这种行为意味着在接近股市崩盘时，交易者的行动水平会逐渐增加。
 - en: Anticipation of a financial crisis also often relies on identifying increasing
     correlations among assets composing the markets. Patro et al. ([2013](#CR7)) propose
     a very simple systemic risk indicator by measuring increasing correlations among
@@ -71,8 +93,10 @@
     on the link among sectorial sub-components of the market index to predict the
     market itself. Harmon et al. ([2011](#CR3)) show that the internal herding of
     the market can also be captured by co-movement.
+  id: totrans-10
   prefs: []
   type: TYPE_NORMAL
+  zh: 对于金融危机的预期通常还依赖于识别构成市场的资产之间的增加相关性。Patro等人（[2013](#CR7)）通过衡量银行股票收益之间的增加相关性提出了一个非常简单的系统性风险指标。这种方法有许多变种，有关调查请参见Silva等人（[2017](#CR9)）。一些其他作者不仅限于识别银行之间的相关性。例如，Douady和Kornprobst（[2018](#CR1)）开发了一种基于定义市场的股票的相关矩阵结构的方法。Zheng等人（[2012](#CR13)）使用基于市场指数的部门子组件之间的联系的指标来预测市场本身。Harmon等人（[2011](#CR3)）表明市场内部的群集也可以通过共同运动来捕捉。
 - en: But these increasing correlations also appear among the markets themselves,
     which tend to behave as one during a financial crisis (Junior & Franca, [2012](#CR5)).
     This point is especially important, because it highlights the fact that external
@@ -86,8 +110,10 @@
     of fit should evolve during a financial crisis. In particular, we do not assume
     that the links between the market and its environment strengthen during the crisis,
     and we will see that this strengthening is only a part of the phenomenon’s characteristics.
+  id: totrans-11
   prefs: []
   type: TYPE_NORMAL
+  zh: 但是这些增加的相关性也出现在市场本身之间，这在金融危机期间倾向于表现为一个市场（Junior＆Franca，[2012](#CR5)）。这一点尤为重要，因为它突显了外部原因也很重要，与内部动态一样。Ye和Douady（[2019](#CR12)）使用200个外部因素来估计一个非线性多项式模型，在推导出一个系统性风险指标方面取得了成功的结果。他们的指标基于一个好的拟合指标的基本模型之间的总和，即R²。我们的方法也依赖于评估股票市场指数及其环境之间的联系，使用非线性多项式模型。然而，尽管我们的系统性风险指标专注于拟合度，但我们不假设拟合度在金融危机期间应如何发展。特别是，我们不假设市场与其环境之间的联系在危机期间加强，我们将看到这种加强只是现象特征的一部分。
 - en: 'In this chapter, we first present the structure of the data that we use to
     estimate the non-linear polymodel. Next, we propose an economically agnostic and
     point-in-time systemic risk indicator. We also analyze the indicator with respect
@@ -96,12 +122,16 @@
     to beat the market. The fourth part is dedicated to performing a wide set of robustness
     tests. Finally, we summarize the findings and limits of the chapter in a conclusion
     section, which is followed by the references.'
+  id: totrans-12
   prefs: []
   type: TYPE_NORMAL
+  zh: 在本章中，我们首先介绍用于估计非线性多项式模型的数据结构。接下来，我们提出了一种经济派别无关且以时间点为基础的系统性风险指标。我们还分析了该指标在各个方面的表现。在第三部分中，我们模拟了一种交易策略，以便将该指标与其最自然的现实实现相对比：试图击败市场。第四部分专门用于进行一系列健壮性测试。最后，我们在结论部分总结了本章的发现和局限性，随后是参考文献。
 - en: 4.2 Data
+  id: totrans-13
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 4.2 数据
 - en: A large majority (96%) of the data used is provided by Bloomberg, in the form
     of daily returns.^([1](#Fn1))^,^([2](#Fn2)) Since all the data is market data,
     it is point-in-time. The data includes the returns of the 12 stock indexes that
@@ -109,85 +139,125 @@
     explanatory variables. The dataset is defined between 1995-01-02 and 2018-10-16,
     although some variables are defined only for a part of this period. Thereafter
     the number of variables available over time in the factor set is shown (Fig. [4.1](#Fig1)):![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig1_HTML.png)
+  id: totrans-14
   prefs: []
   type: TYPE_NORMAL
+  zh: 使用的数据中绝大部分（96%）由彭博提供，以每日收益的形式。^([1](#Fn1))^,^([2](#Fn2))^ 由于所有数据都是市场数据，所以是即时的。数据包括我们的多模型的目标变量，即12个股票指数的收益，以及一个包括1,134个解释变量的因素集。数据集定义于1995-01-02至2018-10-16之间，尽管某些变量仅在此期间的一部分定义。之后，因素集随时间可用的变量数量如下所示（图[4.1](#Fig1)）：![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig1_HTML.png)
 - en: Fig. 4.1
+  id: totrans-15
   prefs: []
   type: TYPE_NORMAL
+  zh: 图4.1
 - en: Number of variables in the factor set over time
+  id: totrans-16
   prefs: []
   type: TYPE_NORMAL
+  zh: 因素集随时间的变量数量
 - en: 'The target stock indexes are the following:'
+  id: totrans-17
   prefs: []
   type: TYPE_NORMAL
+  zh: 目标股票指数如下：
 - en: S&P 500 Index
+  id: totrans-18
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 标准普尔500指数
 - en: Euro STOXX 600 Index
+  id: totrans-19
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 欧洲STOXX 600指数
 - en: FTSE 100 Index
+  id: totrans-20
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 富时100指数
 - en: Tokyo Stock Exchange Price Index (TOPIX)
+  id: totrans-21
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 东京证券交易所价格指数（TOPIX）
 - en: DAX Index
+  id: totrans-22
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: DAX指数
 - en: CAC 40 Index
+  id: totrans-23
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: CAC 40指数
 - en: Swiss Market Index
+  id: totrans-24
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 瑞士市场指数
 - en: IBEX 35 Index
+  id: totrans-25
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: IBEX 35指数
 - en: OMX Copenhagen Index
+  id: totrans-26
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: OMX哥本哈根指数
 - en: OMX Helsinki Index
+  id: totrans-27
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: OMX赫尔辛基指数
 - en: OMX Stockholm 30 Index
+  id: totrans-28
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: OMX斯德哥尔摩30指数
 - en: MSCI Italy Index
+  id: totrans-29
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: MSCI意大利指数
 - en: The factor set is designed with the available data in order to reach a near-complete
     representation of the world financial markets. However, we allow an important
     bias in favor of the equity indices, as the target variables are themselves equities.
     This choice is also motivated by the broader number of themes covered by this
     asset class (regional as well as country indices, sectorial indices, factor indices…).
     Below is the repartition in terms of asset classes of the factor set (Fig. [4.2](#Fig2)):![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig2_HTML.png)
+  id: totrans-30
   prefs: []
   type: TYPE_NORMAL
+  zh: 因素集是根据可用数据设计的，以达到对世界金融市场的近乎完整的代表性。然而，我们允许在股票指数方面存在重要的偏差，因为目标变量本身就是股票。这个选择也受到此资产类别涵盖的主题数量更广泛的影响（地区指数、国家指数、部门指数、因子指数等）。以下是因素集的资产类别分配（图[4.2](#Fig2)）：![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig2_HTML.png)
 - en: Fig. 4.2
+  id: totrans-31
   prefs: []
   type: TYPE_NORMAL
+  zh: 图4.2
 - en: Repartition in terms of asset classes of the factor set
+  id: totrans-32
   prefs: []
   type: TYPE_NORMAL
+  zh: 因素集的资产类别分配
 - en: Our concern for the representativeness of the factor set also incorporates the
     question of geographical coverage. In order to address this question from different
     perspectives, we select some region-specific factors as well as some country-specific
     factors.
+  id: totrans-33
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们对因素集代表性的关注也包括地理覆盖范围的问题。为了从不同角度解决这个问题，我们选择了一些区域特定因素以及一些国家特定因素。
 - en: Region-specific factors include several geographical divisions. At the most
     inclusive level, we have some World or World ex-USA factors. The simplest division
     is then between Developed and Emerging Markets. Finally, the region-specific factors
@@ -195,189 +265,309 @@
     of the factor set, all the other factors being country-specific. The repartitions
     of the region-specific factors are shown in the Table [4.1](#Tab1) below:Table
     4.1
+  id: totrans-34
   prefs: []
   type: TYPE_NORMAL
+  zh: 区域特定因素包括多个地理划分。在最包容的层面上，我们有一些世界或不包括美国的世界因素。最简单的划分然后是发达市场和新兴市场之间。最后，区域特定因素还包括一些大陆因素。区域特定因素占因素集的34%，所有其他因素都是国家特定的。区域特定因素的分配如下表[4.1](#Tab1)所示：
 - en: Repartition of region-specific factors
+  id: totrans-35
   prefs: []
   type: TYPE_NORMAL
+  zh: 区域特定因素的分配
 - en: '| World | 60.41% |'
+  id: totrans-36
   prefs: []
   type: TYPE_TB
+  zh: '| 世界 | 60.41% |'
 - en: '| World ex-USA | 4.88% |'
+  id: totrans-37
   prefs: []
   type: TYPE_TB
+  zh: '| 美国以外世界 | 4.88% |'
 - en: '| Developed markets | 6.17% |'
+  id: totrans-38
   prefs: []
   type: TYPE_TB
+  zh: '| 发达市场 | 6.17% |'
 - en: '| Emerging markets | 4.88% |'
+  id: totrans-39
   prefs: []
   type: TYPE_TB
+  zh: '| 新兴市场 | 4.88% |'
 - en: '| Europe | 5.91% |'
+  id: totrans-40
   prefs: []
   type: TYPE_TB
+  zh: '| 欧洲 | 5.91% |'
 - en: '| Asia/Pacific | 5.40% |'
+  id: totrans-41
   prefs: []
   type: TYPE_TB
+  zh: '| 亚太地区 | 5.40% |'
 - en: '| Africa & Middle East | 4.37% |'
+  id: totrans-42
   prefs: []
   type: TYPE_TB
+  zh: '| 非洲和中东 | 4.37% |'
 - en: '| South America | 4.11% |'
+  id: totrans-43
   prefs: []
   type: TYPE_TB
+  zh: '| 南美 | 4.11% |'
 - en: '| North America | 3.86% |'
+  id: totrans-44
   prefs: []
   type: TYPE_TB
+  zh: '| 北美 | 3.86% |'
 - en: '| Total | 100.00% |'
+  id: totrans-45
   prefs: []
   type: TYPE_TB
+  zh: '| 总计 | 100.00% |'
 - en: Country-specific factors thus represent 66% of the factor set. Below is their
     repartition (Table [4.2](#Tab2)):Table 4.2
+  id: totrans-46
   prefs: []
   type: TYPE_NORMAL
+  zh: 因此，特定国家因素占因素集的66%。以下是它们的分配（表[4.2](#Tab2)）：
 - en: Repartition of country-specific factors
+  id: totrans-47
   prefs: []
   type: TYPE_NORMAL
+  zh: 国家特定因素的分配
 - en: '| United States of America | 10.34% |'
+  id: totrans-48
   prefs: []
   type: TYPE_TB
+  zh: '| 美国 | 10.34% |'
 - en: '| China | 5.50% |'
+  id: totrans-49
   prefs: []
   type: TYPE_TB
+  zh: '| 中国 | 5.50% |'
 - en: '| Japan | 3.76% |'
+  id: totrans-50
   prefs: []
   type: TYPE_TB
+  zh: '| 日本 | 3.76% |'
 - en: '| Italy | 2.82% |'
+  id: totrans-51
   prefs: []
   type: TYPE_TB
+  zh: '| 意大利 | 2.82% |'
 - en: '| Swiss | 3.09% |'
+  id: totrans-52
   prefs: []
   type: TYPE_TB
+  zh: '| 瑞士 | 3.09% |'
 - en: '| Australia | 3.36% |'
+  id: totrans-53
   prefs: []
   type: TYPE_TB
+  zh: '| 澳大利亚 | 3.36% |'
 - en: '| Malaysia | 2.68% |'
+  id: totrans-54
   prefs: []
   type: TYPE_TB
+  zh: '| 马来西亚 | 2.68% |'
 - en: '| United Kingdom | 3.09% |'
+  id: totrans-55
   prefs: []
   type: TYPE_TB
+  zh: '| 英国 | 3.09% |'
 - en: '| Egypt | 2.55% |'
+  id: totrans-56
   prefs: []
   type: TYPE_TB
+  zh: '| 埃及 | 2.55% |'
 - en: '| Indonesia | 2.42% |'
+  id: totrans-57
   prefs: []
   type: TYPE_TB
+  zh: '| 印度尼西亚 | 2.42% |'
 - en: '| New Zealand | 2.42% |'
+  id: totrans-58
   prefs: []
   type: TYPE_TB
+  zh: '| 新西兰 | 2.42% |'
 - en: '| Russia | 2.42% |'
+  id: totrans-59
   prefs: []
   type: TYPE_TB
+  zh: '| 俄罗斯 | 2.42% |'
 - en: '| Taiwan | 2.68% |'
+  id: totrans-60
   prefs: []
   type: TYPE_TB
+  zh: '| 台湾 | 2.68% |'
 - en: '| Austria | 2.28% |'
+  id: totrans-61
   prefs: []
   type: TYPE_TB
+  zh: '| 奥地利 | 2.28% |'
 - en: '| France | 2.55% |'
+  id: totrans-62
   prefs: []
   type: TYPE_TB
+  zh: '| 法国 | 2.55% |'
 - en: '| Korea | 2.28% |'
+  id: totrans-63
   prefs: []
   type: TYPE_TB
+  zh: '| 韩国 | 2.28% |'
 - en: '| Poland | 2.28% |'
+  id: totrans-64
   prefs: []
   type: TYPE_TB
+  zh: '| 波兰 | 2.28% |'
 - en: '| Spain | 2.28% |'
+  id: totrans-65
   prefs: []
   type: TYPE_TB
+  zh: '| 西班牙 | 2.28% |'
 - en: '| Belgium | 2.15% |'
+  id: totrans-66
   prefs: []
   type: TYPE_TB
+  zh: '| 比利时 | 2.15% |'
 - en: '| Germany | 2.42% |'
+  id: totrans-67
   prefs: []
   type: TYPE_TB
+  zh: '| 德国 | 2.42% |'
 - en: '| Hong Kong | 2.15% |'
+  id: totrans-68
   prefs: []
   type: TYPE_TB
+  zh: '| 香港 | 2.15% |'
 - en: '| Mexico | 2.15% |'
+  id: totrans-69
   prefs: []
   type: TYPE_TB
+  zh: '| 墨西哥 | 2.15% |'
 - en: '| Netherlands | 2.15% |'
+  id: totrans-70
   prefs: []
   type: TYPE_TB
+  zh: '| 荷兰 | 2.15% |'
 - en: '| Brazil | 2.01% |'
+  id: totrans-71
   prefs: []
   type: TYPE_TB
+  zh: '| 巴西 | 2.01% |'
 - en: '| Saudi Arabia | 2.15% |'
+  id: totrans-72
   prefs: []
   type: TYPE_TB
+  zh: '| 沙特阿拉伯 | 2.15% |'
 - en: '| South Africa | 2.01% |'
+  id: totrans-73
   prefs: []
   type: TYPE_TB
+  zh: '| 南非 | 2.01% |'
 - en: '| Turkey | 2.01% |'
+  id: totrans-74
   prefs: []
   type: TYPE_TB
+  zh: '| 土耳其 | 2.01% |'
 - en: '| United Arab Emirates | 2.01% |'
+  id: totrans-75
   prefs: []
   type: TYPE_TB
+  zh: '| 阿联酋 | 2.01% |'
 - en: '| Canada | 2.68% |'
+  id: totrans-76
   prefs: []
   type: TYPE_TB
+  zh: '| 加拿大 | 2.68% |'
 - en: '| Norway | 1.88% |'
+  id: totrans-77
   prefs: []
   type: TYPE_TB
+  zh: '| 挪威 | 1.88% |'
 - en: '| Sweden | 1.88% |'
+  id: totrans-78
   prefs: []
   type: TYPE_TB
+  zh: '| 瑞典 | 1.88% |'
 - en: '| Colombia | 1.74% |'
+  id: totrans-79
   prefs: []
   type: TYPE_TB
+  zh: '| 哥伦比亚 | 1.74% |'
 - en: '| Denmark | 1.74% |'
+  id: totrans-80
   prefs: []
   type: TYPE_TB
+  zh: '| 丹麦 | 1.74% |'
 - en: '| Greece | 1.74% |'
+  id: totrans-81
   prefs: []
   type: TYPE_TB
+  zh: '| 希腊 | 1.74% |'
 - en: '| Thailand | 1.74% |'
+  id: totrans-82
   prefs: []
   type: TYPE_TB
+  zh: '| 泰国 | 1.74% |'
 - en: '| India | 1.61% |'
+  id: totrans-83
   prefs: []
   type: TYPE_TB
+  zh: '| 印度 | 1.61% |'
 - en: '| Argentina | 1.48% |'
+  id: totrans-84
   prefs: []
   type: TYPE_TB
+  zh: '| 阿根廷 | 1.48% |'
 - en: '| Nigeria | 1.21% |'
+  id: totrans-85
   prefs: []
   type: TYPE_TB
+  zh: '| 尼日利亚 | 1.21% |'
 - en: '| Ukraine | 1.21% |'
+  id: totrans-86
   prefs: []
   type: TYPE_TB
+  zh: '| 乌克兰 | 1.21% |'
 - en: '| Jamaica | 0.67% |'
+  id: totrans-87
   prefs: []
   type: TYPE_TB
+  zh: '| 牙买加 | 0.67% |'
 - en: '| Banglasdesh | 0.27% |'
+  id: totrans-88
   prefs: []
   type: TYPE_TB
+  zh: '| 孟加拉国 | 0.27% |'
 - en: '| Iran | 0.13% |'
+  id: totrans-89
   prefs: []
   type: TYPE_TB
+  zh: '| 伊朗 | 0.13% |'
 - en: '| Total | 100.00% |'
+  id: totrans-90
   prefs: []
   type: TYPE_TB
+  zh: '| 总计 | 100.00% |'
 - en: 4.3 Systemic Risk Indicator
+  id: totrans-91
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 4.3 系统风险指标
 - en: 4.3.1 Model Estimation
+  id: totrans-92
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 4.3.1 模型估计
 - en: For each of the stock markets considered, the methodology to derive our systemic
     risk indicator is the same.
+  id: totrans-93
   prefs: []
   type: TYPE_NORMAL
+  zh: 对于考虑的每个股票市场，导出我们的系统性风险指标的方法是相同的。
 - en: We first estimate a polymodel:![$$ \left\{Y={\varphi}_i\left({X}_i\right)\kern1em
     \forall i\right\}. $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_Equ1.png)(4.1)The
     polymodel is estimated using the LNLM model, as described in Chap. [3](519851_1_En_3_Chapter.xhtml):![$$
@@ -398,25 +588,42 @@
     polymodel. This indicator captures the strength of the link between a given factor
     and the predicted stock market. In order to remove the most insignificant factors,
     we filter the polymodel to keep only the lowest 80% RMSEs.
+  id: totrans-94
   prefs: []
   type: TYPE_NORMAL
+  zh: 首先我们估计一个多模型:![$$ \left\{Y={\varphi}_i\left({X}_i\right)\kern1em \forall i\right\}.
+    $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_Equ1.png)(4.1)多模型是使用
+    LNLM 模型估计的，如第[3](519851_1_En_3_Chapter.xhtml)章所述：![$$ LNLM(X)\stackrel{\scriptscriptstyle\mathrm{def}}{=}\overline{y}+\mu
+    \sum \limits_{h=1}^u{\hat{\beta}}_h^{NonLin}{H}_h(X)+\left(1-\mu \right){\hat{\beta}}^{Lin}X+\varepsilon
+    \Rightarrow \left\{Y={LNLM}_i\left({X}_i\right)\kern1em \forall i\right\}. $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_Equ2.png)(4.2)多模型是基于滚动基础估计的，使用
+    5 年的窗口。尽管数据以每日频率可用，但由于我们的计算资源限制，我们只在每月重新执行估计。我们转换每日收益以获得一些月度收益^([3](#Fn3))，这可能显示出更清晰的模式。解释变量的因子集由一个月的滞后产生，以便为我们提供一个明确的因果方向（作为积极的副作用，它还确保我们避免由于国际市场的异步性而使用未来信息）:![$$
+    \left\{{Y}_t={LNLM}_{i,t}\left({X}_{i,t-1}\right)\kern1em \forall i\right\}. $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_Equ3.png)(4.3)一旦对给定日期完成估计，我们计算每个组成多模型的基本模型的拟合优度指标，即均方根误差。此指标捕获了给定因子与预测股市之间联系的强度。为了删除最不显著的因子，我们过滤多模型以仅保留最低的
+    80% 均方根误差。
 - en: 4.3.2 Systemic Risk Indicator Definition
+  id: totrans-95
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 4.3.2 系统性风险指标定义
 - en: The distribution of the RMSEs is a simple representation of the links that the
     market maintains with its whole economic environment. It is similar to having
     a distribution of the correlations, however, it is a more general representation
     since it allows for the links to be non-linear, thanks to the use of polymodels.
     The foundation of our indicator is the hypothesis that a specific distribution
     of the RMSEs exists before the crisis.
+  id: totrans-96
   prefs: []
   type: TYPE_NORMAL
+  zh: RMSEs 的分布是市场与其整个经济环境保持联系的简单表示。它类似于具有相关性分布，然而，它是一个更一般的表示，因为它允许链接是非线性的，这要归功于使用
+    polymodels。我们指标的基础是一个假设：在危机爆发之前存在特定的 RMSEs 分布。
 - en: The distributions of the RMSEs are obtained using a simple kernel density estimation
     (see Parzen, [1962](#CR6); Rosenblatt, [1956](#CR8)). The bandwidth selection
     is done according to Silverman’s rule of thumb (Silverman, [1986](#CR10)).
+  id: totrans-97
   prefs: []
   type: TYPE_NORMAL
+  zh: RMSEs 的分布是通过简单的核密度估计获得的（参见 Parzen，[1962](#CR6); Rosenblatt，[1956](#CR8)）。带宽选择根据
+    Silverman 的经验法则完成（Silverman，[1986](#CR10)）。
 - en: First, we only select the distributions of RMSEs that are followed by a market
     drawdown in the following 3 months. Our representation of the pre-crisis distribution
     is a rolling average of these distributions, weighted by the square of the 3 months’
@@ -427,35 +634,51 @@
     are taken into account with less and less importance. Of course, this rolling
     representation is shifted properly so that at each point in time, it does not
     use any future information.
+  id: totrans-98
   prefs: []
   type: TYPE_NORMAL
+  zh: 首先，我们仅选择后续 3 个月市场回调的 RMSE 分布。我们对危机前分布的表示是这些分布的滚动平均值，以随后 3 个月回报的平方加权（我们假设后续回调越大，分布越具代表性）。滚动平均值采用指数加权方案，半衰期为
+    10 年，这使我们能够略微加权最近的分布，而非常旧的危机前分布表示则被考虑得越来越不重要。当然，这种滚动表示被适当地移动，以便在每个时间点上，它不使用任何未来信息。
 - en: The ‘normal times’ distribution is represented by the average of all RMSE distributions,
     whatever the sign of the following 3 months’ return of the market.
+  id: totrans-99
   prefs: []
   type: TYPE_NORMAL
+  zh: ‘正常时期’的分布由市场后 3 个月回报的所有 RMSE 分布的平均值表示，无论该回报的符号如何。
 - en: We thus obtain a representation of the pre-crisis distribution and a representation
     of the normal times distribution for each of the 12 stock indexes we analyze.
+  id: totrans-100
   prefs: []
   type: TYPE_NORMAL
+  zh: 因此，我们得到了每个我们分析的 12 个股票指数的危机前分布的表示和正常时期分布的表示。
 - en: Once this representation of the pre-crisis distribution is obtained, we compute
     the Hellinger distance between this distribution and the current distribution
     of the RMSE. The smaller the Hellinger distance, the closer the market is to a
     pre-crisis situation. In Fig. [4.3](#Fig3) below, we display the evolution of
     the average Hellinger distance to the Pre-Crisis Distribution:![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig3_HTML.png)
+  id: totrans-101
   prefs: []
   type: TYPE_NORMAL
+  zh: 一旦获得危机前分布的表示，我们计算这个分布与当前 RMSE 分布之间的 Hellinger 距离。Hellinger 距离越小，市场越接近危机前情况。在下图
+    [4.3](#Fig3) 中，我们显示了平均 Hellinger 距离到危机前分布的演变：![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig3_HTML.png)
 - en: Fig. 4.3
+  id: totrans-102
   prefs: []
   type: TYPE_NORMAL
+  zh: 图 4.3
 - en: Average Hellinger distance to the Pre-Crisis Distribution, over time
+  id: totrans-103
   prefs: []
   type: TYPE_NORMAL
+  zh: 平均 Hellinger 距离到危机前分布，随时间变化。
 - en: The pattern drawn by the Hellinger distance clearly reflects the speculative
     bubble that preceded the financial crisis of 2008, as well as its burst. Assuming
     that this pattern is indeed predictive, then a decrease in the distance would
     be a negative signal about future market returns, and reciprocally.
+  id: totrans-104
   prefs: []
   type: TYPE_NORMAL
+  zh: Hellinger 距离绘制的图案清楚地反映了 2008 年金融危机之前的投机泡沫，以及其爆裂。假设这种模式确实具有预测性，那么距离的减小将是关于未来市场回报的负面信号，反之亦然。
 - en: Our Systematic Risk Indicator simply reproduces this reasoning, being defined
     by the sign of the variation of the Hellinger distance:![$$ {SRI}_t\stackrel{\scriptscriptstyle\mathrm{def}}{=}\left\{\begin{array}{c}1\kern0.5em
     if\kern0.5em \mathcal{H}\left({\mathcal{R}}_t^{Current},{\mathcal{R}}_t^{Pre-
@@ -479,101 +702,173 @@
     of the pre-crisis distribution of the RMSE available at date “t”.*As an example,
     we display^([4](#Fn4)) below the indicator in the case of the Stoxx Europe 600
     (Fig. [4.4](#Fig4)):![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig4_HTML.png)
+  id: totrans-105
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们的系统性风险指标简单地复制了这种推理，其定义为 Hellinger 距离变化的符号:![$$ {SRI}_t\stackrel{\scriptscriptstyle\mathrm{def}}{=}\left\{\begin{array}{c}1\kern0.5em
+    if\kern0.5em \mathcal{H}\left({\mathcal{R}}_t^{Current},{\mathcal{R}}_t^{Pre-
+    Crisis}\right)&lt;\mathcal{H}\left({\mathcal{R}}_{t-1}^{Current},{\mathcal{R}}_{t-1}^{Pre-
+    Crisis}\right)\\ {}0\kern0.5em if\kern0.5em \mathcal{H}\left({\mathcal{R}}_t^{Current},{\mathcal{R}}_t^{Pre-
+    Crisis}\right)\ge \mathcal{H}\left({\mathcal{R}}_{t-1}^{Current},{\mathcal{R}}_{t-1}^{Pre-
+    Crisis}\right)\end{array}\right. $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_Equ4.png)(4.4)*这里，“*![$$
+    {\mathcal{R}}_t^{Current} $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_IEq1.png)*”是当前日期“t”的
+    RMSE 分布，“* ![$$ {\mathcal{R}}_t^{Pre- Crisis} $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_IEq2.png)*”是日期“t”可用的
+    RMSE 预危机分布的上一个表示，“* ![$$ \mathcal{H}\left(\ \right) $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_IEq3.png)*”是
+    Hellinger 距离。*Hellinger 距离在我们的离散框架中被定义为:![$$ \mathcal{H}\left({\mathcal{R}}_t^{Current},{\mathcal{R}}_t^{Pre-
+    Crisis}\right)\stackrel{\scriptscriptstyle\mathrm{def}}{=}\frac{1}{\sqrt{2}}\sqrt{\sum
+    \limits_{i=1}^n{\left(\sqrt{{\mathcal{R}}_{i,t}^{Current}}-\sqrt{{\mathcal{R}}_{i,t}^{Pre-
+    Crisis}}\right)}^2} $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_Equ5.png)(4.5)*这里，“*![$$
+    {\mathcal{R}}_{i,t}^{Current} $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_IEq4.png)*”是给定因子“i”当前日期“t”的
+    RMSE 值，“* ![$$ {\mathcal{R}}_{i,t}^{Pre- Crisis} $$](../images/519851_1_En_4_Chapter/519851_1_En_4_Chapter_TeX_IEq5.png)*”是因子“i”的
+    RMSE 值，从日期“t”可用的 RMSE 预危机分布的上一个表示中绘制而得。*例如，我们在 Stoxx Europe 600 的情况下在下面显示^([4](#Fn4))
+    指标（图 [4.4](#Fig4)）:![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig4_HTML.png)
 - en: Fig. 4.4
+  id: totrans-106
   prefs: []
   type: TYPE_NORMAL
+  zh: 图 4.4
 - en: Systematic Risk Indicator and Stoxx Europe 600
+  id: totrans-107
   prefs: []
   type: TYPE_NORMAL
+  zh: 系统性风险指标和 Stoxx Europe 600
 - en: Although the indicator is not perfect, at first glance it seems to be activated
     during most of the drawdowns of the market, even if there are some false positives.
+  id: totrans-108
   prefs: []
   type: TYPE_NORMAL
+  zh: 尽管该指标并不完美，但乍一看，它似乎在大多数市场回调期间激活，即使有一些误报。
 - en: 4.3.3 Primary Analysis
+  id: totrans-109
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 4.3.3 初步分析
 - en: If our main test for the predictive power of our Systemic Risk Indicator is
     to implement a trading strategy, we first conduct a simple analysis to better
     understand the properties of the indicator.
+  id: totrans-110
   prefs: []
   type: TYPE_NORMAL
+  zh: 如果我们对系统风险指标的主要预测能力测试是实施交易策略，我们首先进行简单分析以更好地理解指标的性质。
 - en: To begin with, we display below the t-statistics obtained by a logistic regression
     estimated with maximum likelihood (Table [4.3](#Tab3)). Since the Pre-Crisis distribution
     that we identified in the construction of the indicator is defined as being followed
     by a negative 3-month market return, our variable of interest is a dummy representing
     the sign of the 3-month future return. The explanatory variable is, of course,
     the Systemic Risk Indicator itself:Table 4.3
+  id: totrans-111
   prefs: []
   type: TYPE_NORMAL
+  zh: 首先，我们展示了由最大似然估计得到的Logistic回归的t统计量（表[4.3](#Tab3)）。由于我们在指标构建中确定的危机前分布被定义为后续出现负3个月市场回报，我们感兴趣的变量是代表未来3个月回报符号的虚拟变量。解释变量当然是系统风险指标本身：表4.3
 - en: Summary of a logistic regression of the direction of the future market returns
     on the systemic risk indicator
+  id: totrans-112
   prefs: []
   type: TYPE_NORMAL
+  zh: 对未来市场回报方向的Logistic回归摘要风险指标
 - en: '|   | a. Full Sample | b. Subprime Crisis Period (2007–2009) | c. After Subprime
     Crisis Period (2010–2018) |'
+  id: totrans-113
   prefs: []
   type: TYPE_TB
+  zh: '|   | a. 全样本 | b. 次贷危机期间（2007年–2009年） | c. 次贷危机后期（2010年–2018年） |'
 - en: '| --- | --- | --- | --- |'
+  id: totrans-114
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- | --- |'
 - en: '| DAX Index | −4.08171 (***) | −3.870322 (***) | −2.629115 (***) |'
+  id: totrans-115
   prefs: []
   type: TYPE_TB
+  zh: '| 德国DAX指数 | −4.08171 (***) | −3.870322 (***) | −2.629115 (***) |'
 - en: '| HEX Index | −7.097665 (***) | −9.184638 (***) | −6.63464 (***) |'
+  id: totrans-116
   prefs: []
   type: TYPE_TB
+  zh: '| 瑞士HEX指数 | −7.097665 (***) | −9.184638 (***) | −6.63464 (***) |'
 - en: '| IBEX Index | −5.653079 (***) | −7.82105 (***) | −3.826911 (***) |'
+  id: totrans-117
   prefs: []
   type: TYPE_TB
+  zh: '| 西班牙IBEX35指数 | −5.653079 (***) | −7.82105 (***) | −3.826911 (***) |'
 - en: '| KAX Index | −9.003569 (***) | −6.395333 (***) | −5.249408 (***) |'
+  id: totrans-118
   prefs: []
   type: TYPE_TB
+  zh: '| 德国KAX指数 | −9.003569 (***) | −6.395333 (***) | −5.249408 (***) |'
 - en: '| MXIT Index | −10.995961 | −11.167755 (***) | −1.806702 (*) |'
+  id: totrans-119
   prefs: []
   type: TYPE_TB
+  zh: '| 墨西哥IPC指数 | −10.995961 | −11.167755 (***) | −1.806702 (*) |'
 - en: '| NCAC Index | −5.725893 (***) | −7.115673 (***) | −0.018437 () |'
+  id: totrans-120
   prefs: []
   type: TYPE_TB
+  zh: '| 中国A股指数 | −5.725893 (***) | −7.115673 (***) | −0.018437 () |'
 - en: '| OMX Index | −1.126313 () | −1.793216 (*) | 0.137003 () |'
+  id: totrans-121
   prefs: []
   type: TYPE_TB
+  zh: '| 瑞典OMX指数 | −1.126313 () | −1.793216 (*) | 0.137003 () |'
 - en: '| SMI Index | −7.651904 (***) | −8.600267 (***) | −2.39497 (**) |'
+  id: totrans-122
   prefs: []
   type: TYPE_TB
+  zh: '| 瑞士SMI指数 | −7.651904 (***) | −8.600267 (***) | −2.39497 (**) |'
 - en: '| SPX Index | −9.898438 (***) | −7.752158 (***) | −10.863697 (***) |'
+  id: totrans-123
   prefs: []
   type: TYPE_TB
+  zh: '| 美国标准普尔500指数 | −9.898438 (***) | −7.752158 (***) | −10.863697 (***) |'
 - en: '| SXXP Index | −9.53557 (***) | −9.376226 (***) | −3.017459 (***) |'
+  id: totrans-124
   prefs: []
   type: TYPE_TB
+  zh: '| 欧洲SXXP指数 | −9.53557 (***) | −9.376226 (***) | −3.017459 (***) |'
 - en: '| TPX Index | −17.485469 (***) | −5.240356 (***) | −11.043662 (***) |'
+  id: totrans-125
   prefs: []
   type: TYPE_TB
+  zh: '| 日本TOPIX指数 | −17.485469 (***) | −5.240356 (***) | −11.043662 (***) |'
 - en: '| UKX Index | −5.492477 (***) | −10.047277 (***) | 1.483732 () |'
+  id: totrans-126
   prefs: []
   type: TYPE_TB
+  zh: '| 英国FTSE100指数 | −5.492477 (***) | −10.047277 (***) | 1.483732 () |'
 - en: '| Mean | −**7.812337 (***)** | −**7.363689 (***)** | −**3.822022 (***)** |'
+  id: totrans-127
   prefs: []
   type: TYPE_TB
+  zh: '| 平均值 | −**7.812337 (***)** | −**7.363689 (***)** | −**3.822022 (***)** |'
 - en: '| Median | −7.374785 | −7.786604 | −2.823287 |'
+  id: totrans-128
   prefs: []
   type: TYPE_TB
+  zh: '| 中位数 | −7.374785 | −7.786604 | −2.823287 |'
 - en: '| Std | 4.112063 | 2.691223 | 4.024313 |'
+  id: totrans-129
   prefs: []
   type: TYPE_TB
+  zh: '| 标准差 | 4.112063 | 2.691223 | 4.024313 |'
 - en: '| Min | −17.485469 | −11.167755 | −11.043662 |'
+  id: totrans-130
   prefs: []
   type: TYPE_TB
+  zh: '| 最小值 | −17.485469 | −11.167755 | −11.043662 |'
 - en: '| Max | −1.126313 | −1.793216 | 1.483732 |'
+  id: totrans-131
   prefs: []
   type: TYPE_TB
+  zh: '| 最大值 | −1.126313 | −1.793216 | 1.483732 |'
 - en: Full sample, the Systemic Risk Indicator is highly significant in 11 markets
     out of 12, which is a good sign of its predictive power.
+  id: totrans-132
   prefs: []
   type: TYPE_NORMAL
+  zh: 在全样本中，系统风险指标在12个市场中的11个市场中具有高度显著性，这是其预测能力的一个良好迹象。
 - en: Since the indicator is designed precisely to anticipate the crisis, we also
     conduct some sub-sample regressions, in order to compare the performance of the
     indicator during the 2008 subprime crisis, and in the decade that followed, which
@@ -581,40 +876,60 @@
     markets except OMX, which exhibit only a 7% *p*-value in the crisis period. Although
     the indicator is overall less significant in the second period, it continues to
     attest to a high level of predictive power in most of the markets.
+  id: totrans-133
   prefs: []
   type: TYPE_NORMAL
+  zh: 由于该指标设计精确地预期危机，我们还进行了一些子样本回归，以比较2008年次贷危机期间和随后的十年期间（较为平静）指标的表现。结果在所有市场中的p值均显著达到1%的水平，除了OMX，在危机期间仅达到7%的p值。尽管该指标在第二个时期的整体显著性较低，但它继续在大多数市场中证明具有很高的预测能力。
 - en: Table [4.4](#Tab4) below displays the information coefficients, which should
     resonate with the references of the practitioners. We compute both the IC^([5](#Fn5))
     with the sign of the future 3 months’ returns, and with their values. Interestingly,
     predicting the sign of the future returns is not enough in all the cases, and
     the value of the IC decrease is important for the HEX and the KAX Index, for example.Table
     4.4
+  id: totrans-134
   prefs: []
   type: TYPE_NORMAL
+  zh: 表[4.4](#Tab4)以下显示了信息系数，这应该与从业者的参考文献共鸣。我们计算了与未来3个月回报符号及其值的IC^([5](#Fn5))。有趣的是，在所有情况下预测未来回报的符号是不够的，对于瑞士HEX指数和KAX指数来说，IC减少的值是重要的。表4.4
 - en: Information coefficients of the systemic risk indicator
+  id: totrans-135
   prefs: []
   type: TYPE_NORMAL
+  zh: 系统风险指标的信息系数
 - en: '|   | DAX Index (%) | HEX Index (%) | IBEX Index (%) | KAX Index (%) | MXIT
     Index (%) | NCAC Index (%) | OMX Index (%) | SMI Index (%) | SPX Index (%) | SXXP
     Index (%) | TPX Index (%) | UKX Index (%) |'
+  id: totrans-136
   prefs: []
   type: TYPE_TB
+  zh: '|   | DAX指数（%） | HEX指数（%） | IBEX指数（%） | KAX指数（%） | MXIT指数（%） | NCAC指数（%） |
+    OMX指数（%） | SMI指数（%） | SPX指数（%） | SXXP指数（%） | TPX指数（%） | UKX指数（%） |'
 - en: '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
     |'
+  id: totrans-137
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
+    |'
 - en: '| Future returns sign | −6.06 | −10.56 | −8.40 | −13.43 | −16.40 | −8.51 |
     −1.67 | −11.39 | −14.79 | −14.22 | −26.29 | −8.16 |'
+  id: totrans-138
   prefs: []
   type: TYPE_TB
+  zh: '| 未来回报符号 | −6.06 | −10.56 | −8.40 | −13.43 | −16.40 | −8.51 | −1.67 | −11.39
+    | −14.79 | −14.22 | −26.29 | −8.16 |'
 - en: '| Future returns value | −4.80 | −0.95 | −7.40 | −4.81 | −14.08 | −9.47 | 1.63
     | −8.40 | −9.34 | −13.42 | −27.82 | −6.71 |'
+  id: totrans-139
   prefs: []
   type: TYPE_TB
+  zh: '| 未来回报价值 | −4.80 | −0.95 | −7.40 | −4.81 | −14.08 | −9.47 | 1.63 | −8.40 |
+    −9.34 | −13.42 | −27.82 | −6.71 |'
 - en: These differences of IC between sign and value can be explained by having some
     false positives/negatives that precede very large market returns.
+  id: totrans-140
   prefs: []
   type: TYPE_NORMAL
+  zh: 这些IC之间的差异（IC：信息系数）在很大程度上可以通过一些先于市场大幅回报的假阳性/假阴性来解释。
 - en: To conclude this primary analysis, we consider the correlation matrix among
     indicators. The matrix shows high levels of correlations among indicators, with
     an average correlation of 58% (diagonal excluded). Such a configuration asks if
@@ -622,73 +937,110 @@
     a kind of “average market”. Recalling that the indicator predicts the sign of
     the next 3 months’ market returns, we compare the correlation matrix of these
     signs to the correlation matrix of the indicator (Figs. [4.5](#Fig5) and [4.6](#Fig6)).![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig5_HTML.png)
+  id: totrans-141
   prefs: []
   type: TYPE_NORMAL
+  zh: 总结这一初步分析，我们考虑指标之间的相关矩阵。该矩阵显示指标之间存在高水平的相关性，平均相关性为58%（不包括对角线）。这样的配置要求系统性风险指标是否适应每个市场，或者它只是预测一种“平均市场”。回顾该指标预测下一个3个月市场回报的符号，我们将这些符号的相关矩阵与指标的相关矩阵进行比较（图[4.5](#Fig5)和[4.6](#Fig6)）。![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig5_HTML.png)
 - en: Fig. 4.5
+  id: totrans-142
   prefs: []
   type: TYPE_NORMAL
+  zh: 图4.5
 - en: Correlation matrix of the systemic risk indicator
+  id: totrans-143
   prefs: []
   type: TYPE_NORMAL
+  zh: 系统性风险指标的相关矩阵
 - en: '![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig6_HTML.png)'
+  id: totrans-144
   prefs: []
   type: TYPE_IMG
+  zh: '![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig6_HTML.png)'
 - en: Fig. 4.6
+  id: totrans-145
   prefs: []
   type: TYPE_NORMAL
+  zh: 图4.6
 - en: Correlation matrix of the signs of the 3 months’ market returns
+  id: totrans-146
   prefs: []
   type: TYPE_NORMAL
+  zh: 3个月市场回报的符号相关矩阵
 - en: 'Comparing these two matrices leads to the conclusion that the correlation among
     indicators just reflects the correlations among market returns. The average correlation
     of the second matrix is similar to that of the first matrix: 57%.'
+  id: totrans-147
   prefs: []
   type: TYPE_NORMAL
+  zh: 比较这两个矩阵得出结论：指标之间的相关性仅反映市场回报之间的相关性。第二个矩阵的平均相关性与第一个矩阵的相似：57%。
 - en: We should also consider that some indicators which are particularity lowly correlated,
     such as those of HEX and TPX, well perform individually in terms of t-stats. Hence,
     we can reasonably consider that our Systemic Risk Indicator is adaptive to the
     specificities of each of the different markets.
+  id: totrans-148
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们还应考虑一些相关性特别低的指标，例如HEX和TPX的指标，在t统计量方面表现良好。因此，我们可以合理地认为我们的系统性风险指标适应了每个不同市场的特定情况。
 - en: 4.3.4 Roots of the Predictive Power
+  id: totrans-149
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 4.3.4 预测能力的根源
 - en: In order to better understand the patterns that are used by the Systemic Risk
     Indicator to predict the future drawdowns, we conduct below an aggregated analysis
     of the Pre-Crisis and of the Normal Times distributions of RMSEs.
+  id: totrans-150
   prefs: []
   type: TYPE_NORMAL
+  zh: 为了更好地理解系统性风险指标用于预测未来回撤的模式，我们对RMSE的危机前和正常时期分布进行了聚合分析。
 - en: Instead of using rolling averages for these two distributions, we directly compute
     full sample averages of the distributions. These full sample average distributions
     are then averaged again among markets, so that we obtain a single, representative
     distribution for both the normal and the pre-crisis case.
+  id: totrans-151
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们没有使用这两个分布的滚动平均值，而是直接计算了分布的全样本平均值。然后，我们再次对各个市场的全样本平均分布进行平均，以便获得正常情况和危机前案例的单一代表性分布。
 - en: 'These representative distributions^([6](#Fn6)) allow us to understand what
     happens before the crisis occurs:'
+  id: totrans-152
   prefs: []
   type: TYPE_NORMAL
+  zh: 这些代表性分布^([6](#Fn6))使我们能够理解危机发生前发生了什么：
 - en: Figure [4.7](#Fig7) seems to show a simultaneous increase of some of the RMSEs
     and a decrease of some others. If we compute the difference of densities of these
     two distributions, the phenomenon becomes even more obvious (Fig. [4.8](#Fig8)):![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig7_HTML.png)
+  id: totrans-153
   prefs: []
   type: TYPE_NORMAL
+  zh: 图 [4.7](#Fig7) 似乎显示了一些 RMSE 的同时增加和一些 RMSE 的减少。如果我们计算这两个分布的密度差异，这一现象将变得更加明显（图
+    [4.8](#Fig8)）:![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig7_HTML.png)
 - en: Fig. 4.7
+  id: totrans-154
   prefs: []
   type: TYPE_NORMAL
+  zh: 图 4.7
 - en: Representative RMSE distributions
+  id: totrans-155
   prefs: []
   type: TYPE_NORMAL
+  zh: 代表性 RMSE 分布
 - en: '![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig8_HTML.png)'
+  id: totrans-156
   prefs: []
   type: TYPE_IMG
+  zh: '![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig8_HTML.png)'
 - en: Fig. 4.8
+  id: totrans-157
   prefs: []
   type: TYPE_NORMAL
+  zh: 图 4.8
 - en: Differences of previous densities between Normal Times and Pre-Crisis distributions
+  id: totrans-158
   prefs: []
   type: TYPE_NORMAL
+  zh: 正常时期和危机前分布之间的前期密度差异
 - en: 'Above, we separate the density differences into three areas, that correspond
     roughly to the left tail, the center of the distribution, and the right tail.
     In the center of the distribution it is clear that there is a decrease of density,
@@ -704,268 +1056,402 @@
     be true for each of the markets, in which most of the time the right and the left
     fat tail coexist, although the right fat tail seems to occur more frequently (see
     Appendix: Representative RMSE Distributions per Stock Index).'
+  id: totrans-159
   prefs: []
   type: TYPE_NORMAL
+  zh: 上面，我们将密度差异分成三个区域，大致对应于分布的左尾、分布的中心和右尾。在分布的中心，密度明显减少，这意味着在危机之前，通常与股票指数适度相关的因素的数量减少。我们注意到左尾增加，这对应于文献中已经很好地记录的相关性增加。但令人惊讶的是，大部分在中心消失的密度出现在右尾，这意味着通常相关的一些因素的去相关性是危机前时间的一个重要特征。更具体地说，在中心消失的密度中，69.7%
+    转移到右尾，只有 30.3% 转移到左尾。这些发现，基于市场中的平均代表性分布，似乎也适用于每个市场，在其中右尾和左尾的 fat tail 大多数时间是共存的，尽管右尾
+    fat tail 似乎更频繁发生（请参见附录：每个股票指数的代表性 RMSE 分布）。
 - en: 4.4 Trading Strategy
+  id: totrans-160
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 4.4 交易策略
 - en: Our principal assessment of the performance of the Systemic Risk Indicator is
     through a simulated trading strategy.
+  id: totrans-161
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们对系统风险指标的性能的主要评估是通过模拟交易策略来完成的。
 - en: 4.4.1 Methodology
+  id: totrans-162
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 4.4.1 方法论
 - en: 'The simulated trading strategy is extremely simple: we always get the returns
     of the market, but with a variable leverage, equal to 0.5 when the risk is off,
     and 2 when the risk is on. Since there is a wide range of leveraged ETFs available
     nowadays, we assume no transaction costs.^([7](#Fn7)) This is also justified by
     the fact that since the Systemic Risk Indicator is only computed once a month,
     the potential change of leveraged ETF also only occurs once a month.'
+  id: totrans-163
   prefs: []
   type: TYPE_NORMAL
+  zh: 模拟交易策略非常简单：我们始终获取市场的回报，但杠杆是可变的，当风险关闭时为 0.5，当风险开启时为 2。由于现在有各种各样的杠杆 ETF 可用，我们假设没有交易成本。（参见注释
+    [7](#Fn7)）这也是有道理的，因为由于系统风险指标仅每月计算一次，所以杠杆 ETF 的潜在变化也仅发生一次。
 - en: For each of the stock indexes, we compute the Sharpe ratio of the market, and
     of the market timed portfolio. We then compute the average Sharpe ratio among
     markets, and the average Sharpe ratio of market timed portfolios. The percentage
     of improvement of this average Sharpe is the central number of our aggregated
     analysis.
+  id: totrans-164
   prefs: []
   type: TYPE_NORMAL
+  zh: 对于每个股票指数，我们计算市场的夏普比率以及市场时机组合的夏普比率。然后，我们计算市场的夏普比率的平均值，以及市场时机组合的夏普比率的平均值。这个平均夏普比率的改善百分比是我们综合分析的核心数字。
 - en: 'We assess the significance of this number by computing its *p*-value. The *p*-value
     is generated as follows:'
+  id: totrans-165
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们通过计算其 *p* 值来评估这个数字的显著性。*p* 值的生成如下：
 - en: For each market, we compute the sign of the variation of the Hellinger distances,
     as we do for the Systemic Risk Indicator.
+  id: totrans-166
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 对于每个市场，我们计算 Hellinger 距离变化的符号，就像我们对系统风险指标一样。
 - en: We shuffle these signs over the time period of the sample, so that they are
     present in the same proportions as in the SRI but at different points in time.
+  id: totrans-167
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 我们在样本时间段内对这些信号进行重新排列，使它们以与 SRI 中相同的比例但在不同的时间点出现。
 - en: Based on the shuffled indicator, we compute the performance of a new market
     timed portfolio, using the same trading strategy.
+  id: totrans-168
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 基于重新排列的指标，我们使用相同的交易策略计算新的市场定时投资组合的表现。
 - en: We then compute the metric we are interested in, i.e. the improvement of the
     average Sharpe ratio among markets.
+  id: totrans-169
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 然后，我们计算我们感兴趣的度量，即市场夏普比率的平均改善。
 - en: We repeat this procedure 1,000 times, so that we get a distribution of random
     average Sharpe improvements.
+  id: totrans-170
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 我们重复这个过程 1,000 次，这样我们就得到了随机平均夏普改善的分布。
 - en: The distribution is smoothed, using a kernel density estimation, in order to
     avoid some threshold effects in the *p*-value computation.
+  id: totrans-171
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 为了避免*p*-值计算中的某些阈值效应，使用核密度估计对分布进行了平滑处理。
 - en: Given this distribution, we simply compute the probability of randomly obtaining
     the level of improvement we get originally.
+  id: totrans-172
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 给定这个分布，我们只需计算我们最初获得的改善水平的概率。
 - en: Note that this procedure eventually only evaluates the *relevance of the moment*
     when the signal appears and makes sure that the performance is unlikely to come
     from random chance, or from a particular design of the trading strategy.
+  id: totrans-173
   prefs: []
   type: TYPE_NORMAL
+  zh: 注意，这个过程最终仅评估信号出现的*时刻的相关性*，并确保性能不太可能来自随机机会，或者来自交易策略的特定设计。
 - en: 4.4.2 Results
+  id: totrans-174
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 4.4.2 结果
 - en: Table [4.5](#Tab5) summarizes the results of the trading strategy, by presenting
     the Sharpe ratios of each market and their improvements:Table 4.5
+  id: totrans-175
   prefs: []
   type: TYPE_NORMAL
+  zh: '表 [4.5](#Tab5) 总结了交易策略的结果，通过呈现每个市场的夏普比率及其改善: 表 4.5'
 - en: Improvements of the Sharpe ratios obtained from the trading strategy
+  id: totrans-176
   prefs: []
   type: TYPE_NORMAL
+  zh: 从交易策略获得的夏普比率改善
 - en: '|   | Market | Market Timed Portfolio | Improvement (%) |'
+  id: totrans-177
   prefs: []
   type: TYPE_TB
+  zh: '|   | 市场 | 市场定时投资组合 | 改善 (%) |'
 - en: '| --- | --- | --- | --- |'
+  id: totrans-178
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- | --- |'
 - en: '| DAX Index | 0.12 | 0.31 | 148 |'
+  id: totrans-179
   prefs: []
   type: TYPE_TB
+  zh: '| DAX 指数 | 0.12 | 0.31 | 148 |'
 - en: '| HEX Index | 0.20 | 0.25 | 21 |'
+  id: totrans-180
   prefs: []
   type: TYPE_TB
+  zh: '| HEX 指数 | 0.20 | 0.25 | 21 |'
 - en: '| IBEX Index | 0.19 | 0.45 | 141 |'
+  id: totrans-181
   prefs: []
   type: TYPE_TB
+  zh: '| IBEX 指数 | 0.19 | 0.45 | 141 |'
 - en: '| KAX Index | 0.38 | 0.73 | 89 |'
+  id: totrans-182
   prefs: []
   type: TYPE_TB
+  zh: '| KAX 指数 | 0.38 | 0.73 | 89 |'
 - en: '| MXIT Index | 0.02 | 0.30 | 1,275 |'
+  id: totrans-183
   prefs: []
   type: TYPE_TB
+  zh: '| MXIT 指数 | 0.02 | 0.30 | 1,275 |'
 - en: '| NCAC Index | 0.09 | 0.47 | 394 |'
+  id: totrans-184
   prefs: []
   type: TYPE_TB
+  zh: '| NCAC 指数 | 0.09 | 0.47 | 394 |'
 - en: '| OMX Index | 0.28 | 0.53 | 88 |'
+  id: totrans-185
   prefs: []
   type: TYPE_TB
+  zh: '| OMX 指数 | 0.28 | 0.53 | 88 |'
 - en: '| SMI Index | 0.14 | 0.50 | 267 |'
+  id: totrans-186
   prefs: []
   type: TYPE_TB
+  zh: '| SMI 指数 | 0.14 | 0.50 | 267 |'
 - en: '| SPX Index | 0.35 | 0.68 | 95 |'
+  id: totrans-187
   prefs: []
   type: TYPE_TB
+  zh: '| SPX 指数 | 0.35 | 0.68 | 95 |'
 - en: '| SXXP Index | 0.17 | 0.53 | 205 |'
+  id: totrans-188
   prefs: []
   type: TYPE_TB
+  zh: '| SXXP 指数 | 0.17 | 0.53 | 205 |'
 - en: '| TPX Index | 0.00 | 0.35 | 12,381 |'
+  id: totrans-189
   prefs: []
   type: TYPE_TB
+  zh: '| TPX 指数 | 0.00 | 0.35 | 12,381 |'
 - en: '| UKX Index | 0.21 | 0.50 | 140 |'
+  id: totrans-190
   prefs: []
   type: TYPE_TB
+  zh: '| UKX 指数 | 0.21 | 0.50 | 140 |'
 - en: '| Average | **0.18** | **0.47** | **157** |'
+  id: totrans-191
   prefs: []
   type: TYPE_TB
+  zh: '| 平均值 | **0.18** | **0.47** | **157** |'
 - en: The performance of each of the markets is improved by the trading strategy,
     and the increases of the Sharpe ratios are economically significant.
+  id: totrans-192
   prefs: []
   type: TYPE_NORMAL
+  zh: 每个市场的表现都通过交易策略得到了改善，并且夏普比率的增加在经济上具有重要意义。
 - en: The *p*-value of the improvement of the average^([8](#Fn8)) computed with the
     methodology mentioned previously is 0.06%, confirming that the performance is
     also statistically significant.
+  id: totrans-193
   prefs: []
   type: TYPE_NORMAL
+  zh: 使用先前提到的方法计算的平均改善的*p*-值^([8](#Fn8))为 0.06%，证实了性能也具有统计学意义。
 - en: We display below the distribution of the random performances (Fig. [4.9](#Fig9)):![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig9_HTML.png)
+  id: totrans-194
   prefs: []
   type: TYPE_NORMAL
+  zh: '我们在下面展示了随机表现的分布（图 [4.9](#Fig9)）: ![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig9_HTML.png)'
 - en: Fig. 4.9
+  id: totrans-195
   prefs: []
   type: TYPE_NORMAL
+  zh: 图 4.9
 - en: Distribution of randomly generated improvements of the average Sharpe
+  id: totrans-196
   prefs: []
   type: TYPE_NORMAL
+  zh: 随机生成的平均夏普改善分布
 - en: Out of 1,000 simulated random portfolios, only one is better than the proposed
     portfolio. This distribution also emphasizes the fact that beating the market
     is extremely difficult, since its average is −14.62%.
+  id: totrans-197
   prefs: []
   type: TYPE_NORMAL
+  zh: 在 1,000 个模拟的随机投资组合中，只有一个比所提议的投资组合更好。这个分布也强调了击败市场是极其困难的事实，因为其平均值为 −14.62%。
 - en: Note that on average, the market timed portfolios are hedged 41% of the time,
     which is a good sign of non-overfitting. Indeed, since the leverage is re-decided
     each month, there are a lot of different bets that are done over time. Compared
     to an indicator that only bets against the market a couple of times over 20 years
     of simulations, it considerably decreases the chances of cherry-picking a crisis
     indicator.
+  id: totrans-198
   prefs: []
   type: TYPE_NORMAL
+  zh: 注意，平均而言，市场定时投资组合有 41% 的时间进行对冲，这是不过度拟合的一个好迹象。事实上，由于每个月重新决定杠杆，随着时间的推移会进行大量不同的投注。与在
+    20 年模拟中仅对市场进行少数几次投注的指标相比，这显着降低了挑选危机指标的机会。
 - en: 'Staying with the previous example, we display below the performance of the
     strategy for the Stoxx Europe 600^([9](#Fn9)) (full results are available in Appendix:
     Market Timed Portfolio and Systemic Risk Indicator per Stock Index) (Fig. [4.10](#Fig10)):![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig10_HTML.png)'
+  id: totrans-199
   prefs: []
   type: TYPE_NORMAL
+  zh: 仍然以之前的例子为例，我们展示下面的策略对Stoxx Europe 600^([9](#Fn9))的表现（完整结果请见附录：按股票指数的市场时机组合和系统风险指标）（图[4.10](#Fig10)）：![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig10_HTML.png)
 - en: Fig. 4.10
+  id: totrans-200
   prefs: []
   type: TYPE_NORMAL
+  zh: 图4.10
 - en: 'Stoxx Europe 600: Market Timed Portfolio vs Market Portfolio (equal volatility)'
+  id: totrans-201
   prefs: []
   type: TYPE_NORMAL
+  zh: Stoxx Europe 600：市场时机组合与市场组合（等波动性）
 - en: 4.5 Robustness Tests
+  id: totrans-202
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 4.5 鲁棒性测试
 - en: In the previous developments, we already saw that frequent changes of the indicator
     are a good protection against overfitting, and that the indicator is still predictive
     in sub-samples. We complement these findings with a series of robustness tests
     that assesses the sensitivity of the performance of the trading strategy to the
     design we made.
+  id: totrans-203
   prefs: []
   type: TYPE_NORMAL
+  zh: 在之前的发展中，我们已经看到指标的频繁变化是防止过度拟合的一个很好的保护措施，并且在子样本中指标仍然具有预测能力。我们通过一系列鲁棒性测试来补充这些发现，评估交易策略的性能对我们所做设计的敏感性。
 - en: For each of the robustness tests, we present the variation of the significance
     of the trading strategy in statistical terms (*p*-value) and economical terms
     (improvement of the average Sharpe ratio, number of indices for which the strategy
     beat the market).
+  id: totrans-204
   prefs: []
   type: TYPE_NORMAL
+  zh: 对于每一个鲁棒性测试，我们提供交易策略显著性的变化，统计学意义上的（*p*值）和经济意义上的（平均夏普比率改善，策略击败市场的指数数量）。
 - en: 4.5.1 Sensitivity to the Noise Filter
+  id: totrans-205
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 4.5.1 对噪声滤波器的敏感性
 - en: Recall that we removed the noisy factors from the RMSE distribution using a
     very simple filter that only keeps the top X% of the best explanatory variables
     in terms of RMSE. This parameter was originally set to 80%, in order to keep most
     of the factors.
+  id: totrans-206
   prefs: []
   type: TYPE_NORMAL
+  zh: 回想一下，我们使用了一个非常简单的过滤器从RMSE分布中去除了噪声因素，这个过滤器只保留了RMSE方面排名前X%的最佳解释变量。这个参数最初设置为80%，以保留大多数因素。
 - en: We can see in the Table [4.6](#Tab6) that this choice seems well justified:Table
     4.6
+  id: totrans-207
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们可以在表[4.6](#Tab6)中看到这个选择似乎是合理的：表4.6
 - en: Sensitivity of the improvement of the average Sharpe ratio to the noise filter
+  id: totrans-208
   prefs: []
   type: TYPE_NORMAL
+  zh: 对于平均夏普比率改善的敏感性和噪声滤波器
 - en: '| Filter quantile (%) | Improvement of the average (%) | *p*-value (%) | Percentage
     of positive improvements (%) |'
+  id: totrans-209
   prefs: []
   type: TYPE_TB
+  zh: '| 过滤器分位数（%） | 平均改善（%） | *p*值（%） | 正改善百分比（%） |'
 - en: '| --- | --- | --- | --- |'
+  id: totrans-210
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- | --- |'
 - en: '| 100 | 61.13 | 7.52 (*) | 100.00 |'
+  id: totrans-211
   prefs: []
   type: TYPE_TB
+  zh: '| 100 | 61.13 | 7.52 (*) | 100.00 |'
 - en: '| 95 | 138.78 | 0.01 (***) | 100.00 |'
+  id: totrans-212
   prefs: []
   type: TYPE_TB
+  zh: '| 95 | 138.78 | 0.01 (***) | 100.00 |'
 - en: '| 90 | 152.77 | 0.00 (***) | 100.00 |'
+  id: totrans-213
   prefs: []
   type: TYPE_TB
+  zh: '| 90 | 152.77 | 0.00 (***) | 100.00 |'
 - en: '| 85 | 148.82 | 0.01 (***) | 100.00 |'
+  id: totrans-214
   prefs: []
   type: TYPE_TB
+  zh: '| 85 | 148.82 | 0.01 (***) | 100.00 |'
 - en: '| 80 | 157.49 | 0.06 (***) | 100.00 |'
+  id: totrans-215
   prefs: []
   type: TYPE_TB
+  zh: '| 80 | 157.49 | 0.06 (***) | 100.00 |'
 - en: '| 75 | 153.45 | 0.04 (***) | 100.00 |'
+  id: totrans-216
   prefs: []
   type: TYPE_TB
+  zh: '| 75 | 153.45 | 0.04 (***) | 100.00 |'
 - en: '| 50 | 92.54 | 0.61 (***) | 100.00 |'
+  id: totrans-217
   prefs: []
   type: TYPE_TB
+  zh: '| 50 | 92.54 | 0.61 (***) | 100.00 |'
 - en: '| 25 | 58.08 | 3.16 (**) | 100.00 |'
+  id: totrans-218
   prefs: []
   type: TYPE_TB
+  zh: '| 25 | 58.08 | 3.16 (**) | 100.00 |'
 - en: '| 10 | −0.86 | 33.49 () | 58.33 |'
+  id: totrans-219
   prefs: []
   type: TYPE_TB
+  zh: '| 10 | −0.86 | 33.49 () | 58.33 |'
 - en: The first finding that can be extracted from Table [4.6](#Tab6) is that the
     performance of the trading strategy is robust to the choice of a particular level
     of filtering, except in the extreme regions.
+  id: totrans-220
   prefs: []
   type: TYPE_NORMAL
+  zh: 从表[4.6](#Tab6)中可以提取的第一个发现是，交易策略的表现对于特定过滤级别的选择是鲁棒的，除了在极端区域。
 - en: Secondly, our approach has been to select a reasonable value for the filter.
     Indeed, it is possible to reach a higher level of historical performance using
     the 99% quantile, however, such a choice would have seemed dangerous with regard
     to the performance of the 100% quantile. Some of the variables in between seem
     to introduce a lot of noise in the RMSE distribution, and the frontier between
     a relevant and a noisy variable is quite thin in this region.
+  id: totrans-221
   prefs: []
   type: TYPE_NORMAL
+  zh: 其次，我们的方法是选择一个合理的过滤器值。确实，可以使用99%分位数达到更高水平的历史表现，然而，这样的选择似乎对于100%分位数的性能来说是危险的。在这个区域内的一些变量似乎在RMSE分布中引入了很多噪声，并且在一个相关和一个噪声变量之间的边界在这个区域是非常薄的。
 - en: As a third point, we would like to mention that the vast majority of the factor
     set seems to be important for the crisis prediction. This emphasizes the need
     to select a large factor set to describe the entire economic environment of the
     stock indices we are predicting.
+  id: totrans-222
   prefs: []
   type: TYPE_NORMAL
+  zh: 作为第三点，我们想要提到的是，绝大多数因子集似乎对危机预测很重要。这强调了选择一个大的因子集来描述我们正在预测的股票指数的整个经济环境的必要性。
 - en: 4.5.2 Sensitivity to Future Returns Windows
+  id: totrans-223
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 4.5.2 对未来收益窗口的敏感性
 - en: The indicator is designed so that it predicts the sign of the 3-month future
     returns of the markets. This choice has been made following some practitioners’
     heuristics, 1 month being usually considered as too noisy for the crisis prediction,
@@ -973,118 +1459,184 @@
     Our sensitivity analysis on this parameter confirms this opinion, while showing
     the clear robustness of the trading strategy to this parameter (Table [4.7](#Tab7)).Table
     4.7
+  id: totrans-224
   prefs: []
   type: TYPE_NORMAL
+  zh: 该指标设计为预测市场未来 3 个月的收益的符号。这个选择是根据一些从业者的启发式规则做出的，1 个月通常被认为对于危机预测来说太嘈杂，而接下来的几个月被认为不太可预测。我们对这个参数的敏感性分析证实了这个观点，同时显示了交易策略对这个参数的明确鲁棒性（表
+    [4.7](#Tab7)）。表 4.7
 - en: Sensitivity of the average improvement of the Sharpe ratio to the future returns
     window
+  id: totrans-225
   prefs: []
   type: TYPE_NORMAL
+  zh: 未来收益窗口的平均夏普比率改善的敏感性
 - en: '| Future returns window | Improvement of the average (%) | *p*-value (%) |
     Percentage of positive improvements (%) |'
+  id: totrans-226
   prefs: []
   type: TYPE_TB
+  zh: '| 未来收益窗口 | 平均改善 (%) | *p* 值 (%) | 正改善百分比 (%) |'
 - en: '| --- | --- | --- | --- |'
+  id: totrans-227
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- | --- |'
 - en: '| 1 Month | 117.11 | 0.12 (***) | 83.33 |'
+  id: totrans-228
   prefs: []
   type: TYPE_TB
+  zh: '| 1 个月 | 117.11 | 0.12 (***) | 83.33 |'
 - en: '| 2 Months | 131.78 | 0.10 (***) | 100.00 |'
+  id: totrans-229
   prefs: []
   type: TYPE_TB
+  zh: '| 2 个月 | 131.78 | 0.10 (***) | 100.00 |'
 - en: '| 3 Months | 157.49 | 0.06 (***) | 100.00 |'
+  id: totrans-230
   prefs: []
   type: TYPE_TB
+  zh: '| 3 个月 | 157.49 | 0.06 (***) | 100.00 |'
 - en: '| 6 Months | 147.46 | 0.00 (***) | 100.00 |'
+  id: totrans-231
   prefs: []
   type: TYPE_TB
+  zh: '| 6 个月 | 147.46 | 0.00 (***) | 100.00 |'
 - en: '| 9 Months | 139.71 | 0.00 (***) | 100.00 |'
+  id: totrans-232
   prefs: []
   type: TYPE_TB
+  zh: '| 9 个月 | 139.71 | 0.00 (***) | 100.00 |'
 - en: '| 12 Months | 115.93 | 0.00 (***) | 100.00 |'
+  id: totrans-233
   prefs: []
   type: TYPE_TB
+  zh: '| 12 个月 | 115.93 | 0.00 (***) | 100.00 |'
 - en: 4.5.3 Sensitivity to Half-life
+  id: totrans-234
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 4.5.3 对半衰期的敏感性
 - en: The Pre-Crisis RMSE distribution is defined on a rolling basis, using an exponential
     weighting scheme of the past observations. The speed at which the current representation
     of the Pre-Crisis distribution ‘forgets’ the past events is controlled by the
     half-life of this exponential window. Our choice has been to set it to 10 years,
     in order to have a representation that takes into account very old events while
     focusing a bit more on the present.
+  id: totrans-235
   prefs: []
   type: TYPE_NORMAL
+  zh: 预危机 RMSE 分布是根据过去观察的指数加权方案在滚动基础上定义的。当前预危机分布 '忘记' 过去事件的速度由这个指数窗口的半衰期控制。我们的选择是将其设置为
+    10 年，以便具有考虑非常老的事件的表现，同时更加关注当前。
 - en: The table below shows that this is a good choice (even if it is not the best).
     Also, the robustness of the strategy performance to this parameter is still quite
     good (Table [4.8](#Tab8)).Table 4.8
+  id: totrans-236
   prefs: []
   type: TYPE_NORMAL
+  zh: 下表显示这是一个不错的选择（即使不是最好的选择）。此外，策略绩效对该参数的鲁棒性仍然相当好（表 [4.8](#Tab8)）。表 4.8
 - en: Sensitivity of the average improvement of the Sharpe ratio to the half-life
     of the exponential window
+  id: totrans-237
   prefs: []
   type: TYPE_NORMAL
+  zh: 平均夏普比率改善对指数窗口的半衰期的敏感性
 - en: '| Half-life of the exponential window | Improvement of the average (%) | *p*-value
     (%) | Percentage of positive improvements (%) |'
+  id: totrans-238
   prefs: []
   type: TYPE_TB
+  zh: '| 指数窗口的半衰期 | 平均改善 (%) | *p* 值 (%) | 正改善百分比 (%) |'
 - en: '| --- | --- | --- | --- |'
+  id: totrans-239
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- | --- |'
 - en: '| 20 Years | 149.82 | 0.11 (***) | 100.00 |'
+  id: totrans-240
   prefs: []
   type: TYPE_TB
+  zh: '| 20 年 | 149.82 | 0.11 (***) | 100.00 |'
 - en: '| 15 Years | 152.46 | 0.10 (***) | 100.00 |'
+  id: totrans-241
   prefs: []
   type: TYPE_TB
+  zh: '| 15 年 | 152.46 | 0.10 (***) | 100.00 |'
 - en: '| 10 Years | 157.49 | 0.06 (***) | 100.00 |'
+  id: totrans-242
   prefs: []
   type: TYPE_TB
+  zh: '| 10 年 | 157.49 | 0.06 (***) | 100.00 |'
 - en: '| 5 Years | 161.12 | 0.00 (***) | 100.00 |'
+  id: totrans-243
   prefs: []
   type: TYPE_TB
+  zh: '| 5 年 | 161.12 | 0.00 (***) | 100.00 |'
 - en: '| 3 Years | 154.84 | 0.00 (***) | 100.00 |'
+  id: totrans-244
   prefs: []
   type: TYPE_TB
+  zh: '| 3 年 | 154.84 | 0.00 (***) | 100.00 |'
 - en: '| 1 Year | 96.74 | 0.41 (***) | 100.00 |'
+  id: totrans-245
   prefs: []
   type: TYPE_TB
+  zh: '| 1 年 | 96.74 | 0.41 (***) | 100.00 |'
 - en: 4.5.4 Sensitivity to Rolling Window Length
+  id: totrans-246
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 4.5.4 对滚动窗口长度的敏感性
 - en: The polymodel that we use to compute the RMSEs is itself estimated on a rolling
     basis.
+  id: totrans-247
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们用于计算 RMSE 的 polymodel 本身是根据滚动基础上估计的。
 - en: We can see below that the length of the rolling window used for this estimation
     is a parameter that matters (Table [4.9](#Tab9)):Table 4.9
+  id: totrans-248
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们可以看到下面的表明用于该估计的滚动窗口的长度是一个重要参数（表 [4.9](#Tab9)）：表 4.9
 - en: Sensitivity of the average improvement of the Sharpe ratio to the polymodels
     estimation window
+  id: totrans-249
   prefs: []
   type: TYPE_NORMAL
+  zh: 平均夏普比率改善对 polymodel 估计窗口的敏感性
 - en: '| Polymodel estimation window | Improvement of the average | *p*-value | Percentage
     of positive improvements |'
+  id: totrans-250
   prefs: []
   type: TYPE_TB
+  zh: '| polymodel 估计窗口 | 平均改善 | *p* 值 | 正改善百分比 |'
 - en: '| --- | --- | --- | --- |'
+  id: totrans-251
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- | --- |'
 - en: '| 6 Years | 27.09 | 9.01 (*) | 91.67 |'
+  id: totrans-252
   prefs: []
   type: TYPE_TB
+  zh: '| 6 年 | 27.09 | 9.01 (*) | 91.67 |'
 - en: '| 5 Years | 157.49 | 0.06 (***) | 100.00 |'
+  id: totrans-253
   prefs: []
   type: TYPE_TB
+  zh: '| 5 年 | 157.49 | 0.06 (***) | 100.00 |'
 - en: '| 4 Years | 56.84 | 8.32 (*) | 75.00 |'
+  id: totrans-254
   prefs: []
   type: TYPE_TB
+  zh: '| 4 年 | 56.84 | 8.32 (*) | 75.00 |'
 - en: '| 3 Years | 78.38 | 1.24 (**) | 91.67 |'
+  id: totrans-255
   prefs: []
   type: TYPE_TB
+  zh: '| 3 年 | 78.38 | 1.24 (**) | 91.67 |'
 - en: 'Although the improvement of the average and the *p*-value stays significant
     in all cases, it is to a less extent than in other robustness tests, both economically
     and statistically. The quality of the estimations is thus particularly tied to
@@ -1093,8 +1645,11 @@
     estimates a model that evolves too slowly, and is thus unable to efficiently capture
     the relatively fast dynamics of the market. Considering this reasoning and the
     results above, the 5-year window then seems quite justified.'
+  id: totrans-256
   prefs: []
   type: TYPE_NORMAL
+  zh: 尽管平均值和 *p*-value 在所有情况下的改进仍然显著，但在其他稳健性测试中，从经济和统计角度来看，程度要小得多。因此，估计的质量特别与此参数相关联：较短的窗口包含较少的数据点，并使拟合以及其拟合度指标变得不太可靠，而较长的窗口则估计一个演变速度过慢的模型，因此无法有效捕捉市场的相对快速动态。考虑到这种推理和上述结果，5
+    年期窗口似乎是相当合理的。
 - en: However, especially since we are measuring the performance of a trading strategy,
     it is important to make sure that the construction of a robust trading strategy
     is possible based on our Systemic Risk Indicator. Hence, in order to limit the
@@ -1103,8 +1658,11 @@
     a 6-year, a 5-year, a 4-year, and a 3-year rolling window. Computing the indicator
     using this average RMSE is a simple way to make it more robust to the choice of
     a particular window.
+  id: totrans-257
   prefs: []
   type: TYPE_NORMAL
+  zh: 然而，特别是因为我们正在衡量交易策略的表现，确保能够基于我们的系统性风险指标构建稳健的交易策略至关重要。因此，为了限制随意选择窗口参数的风险，我们重新计算指标和策略的表现，使用一个
+    6 年、一个 5 年、一个 4 年和一个 3 年滚动窗口的 RMSE 的平均值。使用这个平均 RMSE 计算指标是一种简单的方法，可以使其对特定窗口的选择更加稳健。
 - en: The result is that this “window robust strategy” still performs quite well.
     The improvement of the average is 95%, a figure associated with a *p*-value of
     0.16%. In this version of the strategy, previous figures stay comparable, with
@@ -1112,122 +1670,193 @@
     within the sample, and 11 stock indexes out of 12 that over-perform the market.
     Ultimately, even diluted by weaker versions of itself, our trading strategy delivers
     strong results (Table [4.10](#Tab10)):Table 4.10
+  id: totrans-258
   prefs: []
   type: TYPE_NORMAL
+  zh: 结果是这个“窗口稳健策略”仍然表现得相当不错。平均改进率为 95%，与 *p*-value 的 0.16% 相关联。在这个策略的版本中，之前的数字仍然是可比较的，平均随机改进率为
+    −12.63%，样本内平均对冲率为 35.96%，有 11 个股票指数超过市场。最终，即使被更弱的版本所稀释，我们的交易策略也能够取得强劲的结果（表 [4.10](#Tab10)）：Table
+    4.10
 - en: Improvements of the Sharpe ratios for a “window robust strategy”
+  id: totrans-259
   prefs: []
   type: TYPE_NORMAL
+  zh: 对于“窗口稳健策略”的夏普比率的改进
 - en: '|   | Market | Market timed portfolio | Improvement (%) |'
+  id: totrans-260
   prefs: []
   type: TYPE_TB
+  zh: '|   | 市场 | 市场定时组合 | 改进 (%) |'
 - en: '| --- | --- | --- | --- |'
+  id: totrans-261
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- | --- |'
 - en: '| DAX Index | 0.12 | 0.06 | −49 |'
+  id: totrans-262
   prefs: []
   type: TYPE_TB
+  zh: '| DAX 指数 | 0.12 | 0.06 | −49 |'
 - en: '| HEX Index | 0.20 | 0.29 | 41 |'
+  id: totrans-263
   prefs: []
   type: TYPE_TB
+  zh: '| HEX 指数 | 0.20 | 0.29 | 41 |'
 - en: '| IBEX Index | 0.19 | 0.33 | 73 |'
+  id: totrans-264
   prefs: []
   type: TYPE_TB
+  zh: '| IBEX 指数 | 0.19 | 0.33 | 73 |'
 - en: '| KAX Index | 0.38 | 0.76 | 99 |'
+  id: totrans-265
   prefs: []
   type: TYPE_TB
+  zh: '| KAX 指数 | 0.38 | 0.76 | 99 |'
 - en: '| MXIT Index | 0.02 | 0.13 | 502 |'
+  id: totrans-266
   prefs: []
   type: TYPE_TB
+  zh: '| MXIT 指数 | 0.02 | 0.13 | 502 |'
 - en: '| NCAC Index | 0.09 | 0.32 | 235 |'
+  id: totrans-267
   prefs: []
   type: TYPE_TB
+  zh: '| NCAC 指数 | 0.09 | 0.32 | 235 |'
 - en: '| OMX Index | 0.28 | 0.30 | 7 |'
+  id: totrans-268
   prefs: []
   type: TYPE_TB
+  zh: '| OMX 指数 | 0.28 | 0.30 | 7 |'
 - en: '| SMI Index | 0.14 | 0.34 | 153 |'
+  id: totrans-269
   prefs: []
   type: TYPE_TB
+  zh: '| SMI 指数 | 0.14 | 0.34 | 153 |'
 - en: '| SPX Index | 0.35 | 0.62 | 76 |'
+  id: totrans-270
   prefs: []
   type: TYPE_TB
+  zh: '| SPX 指数 | 0.35 | 0.62 | 76 |'
 - en: '| SXXP Index | 0.17 | 0.43 | 149 |'
+  id: totrans-271
   prefs: []
   type: TYPE_TB
+  zh: '| SXXP 指数 | 0.17 | 0.43 | 149 |'
 - en: '| TPX Index | 0.00 | 0.24 | 8,311 |'
+  id: totrans-272
   prefs: []
   type: TYPE_TB
+  zh: '| TPX 指数 | 0.00 | 0.24 | 8,311 |'
 - en: '| UKX Index | 0.21 | 0.40 | 93 |'
+  id: totrans-273
   prefs: []
   type: TYPE_TB
+  zh: '| UKX 指数 | 0.21 | 0.40 | 93 |'
 - en: '| Average | **0.18** | **0.35** | **95** |'
+  id: totrans-274
   prefs: []
   type: TYPE_TB
+  zh: '| 平均 | **0.18** | **0.35** | **95** |'
 - en: 4.5.5 Asset-Class Specific Performances
+  id: totrans-275
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 4.5.5 资产类别特定表现
 - en: 'For this test, we restrict the factor set to a single asset class. There are
     two motivations to conduct this test:'
+  id: totrans-276
   prefs: []
   type: TYPE_NORMAL
+  zh: 对于这个测试，我们将因子集限制为单个资产类别。进行此测试有两个动机：
 - en: Testing the contribution of each asset class to the overall crisis prediction.
+  id: totrans-277
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 测试每个资产类别对整体危机预测的贡献。
 - en: To a lesser extent, it also allows us to test if the results that we presented
     are not conditioned to the choice of a specific dataset.
+  id: totrans-278
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 在较小的程度上，它还使我们能够测试我们提出的结果是否不受特定数据集的选择的限制。
 - en: Here, our analysis is restricted to the asset classes that contains enough factors
     to estimate a distribution, Real Estate, Hedge Funds and Volatility thus being
     excluded.Table [4.11](#Tab11) shows that none of the asset classes dominate *per
     se* the aggregated factor set. It proves that the diversity of factor asset classes
     contributes to the quality of the predictions.Table 4.11
+  id: totrans-279
   prefs: []
   type: TYPE_NORMAL
+  zh: 在这里，我们的分析仅限于包含足够因子来估算分布的资产类别，因此房地产、对冲基金和波动性被排除在外。表 [4.11](#Tab11) 表明，没有任何资产类别在聚合因子集中单独占据主导地位。这证明了因子资产类别的多样性有助于预测的质量。表
+    4.11
 - en: Sensitivity of the average improvement of the Sharpe ratio to the asset class
+  id: totrans-280
   prefs: []
   type: TYPE_NORMAL
+  zh: 对资产类别夏普比率平均改进的敏感性
 - en: '| Asset class | Improvement of the average (%) | *p*-value (%) | Percentage
     of positive improvemsents (%) |'
+  id: totrans-281
   prefs: []
   type: TYPE_TB
+  zh: '| 资产类别 | 平均改进 (%) | *p*-值 (%) | 正改进的百分比 (%) |'
 - en: '| --- | --- | --- | --- |'
+  id: totrans-282
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- | --- |'
 - en: '| Stock markets | 104.89 | 0.33 (***) | 91.67 |'
+  id: totrans-283
   prefs: []
   type: TYPE_TB
+  zh: '| 股票市场 | 104.89 | 0.33 (***) | 91.67 |'
 - en: '| Equity factors | 29.99 | 12.55 () | 66.67 |'
+  id: totrans-284
   prefs: []
   type: TYPE_TB
+  zh: '| 股票因素 | 29.99 | 12.55 () | 66.67 |'
 - en: '| Currencies | 67.51 | 1.47 (**) | 83.33 |'
+  id: totrans-285
   prefs: []
   type: TYPE_TB
+  zh: '| 货币 | 67.51 | 1.47 (**) | 83.33 |'
 - en: '| Commodities | 71.20 | 0.62 (***) | 100.00 |'
+  id: totrans-286
   prefs: []
   type: TYPE_TB
+  zh: '| 商品 | 71.20 | 0.62 (***) | 100.00 |'
 - en: '| Corporate bonds | 33.79 | 9.87 (*) | 83.33 |'
+  id: totrans-287
   prefs: []
   type: TYPE_TB
+  zh: '| 公司债券 | 33.79 | 9.87 (*) | 83.33 |'
 - en: '| Sovereign bonds | 66.99 | 0.72 (***) | 91.67 |'
+  id: totrans-288
   prefs: []
   type: TYPE_TB
+  zh: '| 主权债券 | 66.99 | 0.72 (***) | 91.67 |'
 - en: '| Money market | −32.26 | 62.51 () | 16.67 |'
+  id: totrans-289
   prefs: []
   type: TYPE_TB
+  zh: '| 货币市场 | −32.26 | 62.51 () | 16.67 |'
 - en: According to these results, it seems clear that the Stock Markets is the most
     important asset class, which is a natural finding. However, most of the other
     asset classes also perform on this standalone basis, which is a strong sign that
     the trading strategy can perform independently of the choice of a particular factor
     set.
+  id: totrans-290
   prefs: []
   type: TYPE_NORMAL
+  zh: 根据这些结果，很明显股票市场是最重要的资产类别，这是一种自然的发现。然而，大多数其他资产类别也在这种独立基础上表现良好，这表明交易策略可以独立于特定因子集的选择而执行。
 - en: 4.5.6 Sensitivity to Trading Strategy
+  id: totrans-291
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 4.5.6 对交易策略的敏感性
 - en: We now discuss the extent to which the performances that we observe are the
     results of our particular choices of leverage for our trading strategy. Since
     the full sample volatility of the returns is standardized to make the market and
@@ -1236,93 +1865,138 @@
     ON leverage, more than the level of the leverage itself. Hence, we try some changes
     of the risk OFF leverage, while keeping the risk ON leverage constantly equal
     to 2.
+  id: totrans-292
   prefs: []
   type: TYPE_NORMAL
+  zh: 现在我们讨论我们观察到的表现程度是我们特定杠杆选择的结果。由于返回的全样本波动率被标准化，使得市场和交易策略可以比较，控制策略攻击性的是风险关闭杠杆和风险开杠杆之间的差异的大小，而不是杠杆本身的水平。因此，我们尝试改变风险关闭杠杆，同时将风险开杠杆保持恒定为
+    2。
 - en: Moreover, we try an In/Out strategy, in which the leverage is set to 0 when
     the risk is OFF.
+  id: totrans-293
   prefs: []
   type: TYPE_NORMAL
+  zh: 此外，我们尝试了一个 In/Out 策略，在这种策略中，当风险关闭时杠杆被设置为 0。
 - en: Finally, we also allow for short sales, making the strategy extremely aggressive
     and dangerous, as the markets are known to go up on average.
+  id: totrans-294
   prefs: []
   type: TYPE_NORMAL
+  zh: 最后，我们也允许做空操作，使得策略变得极具攻击性和危险性，因为众所周知市场平均上涨。
 - en: Below are the results, for these different settings (Table [4.12](#Tab12)):Table
     4.12
+  id: totrans-295
   prefs: []
   type: TYPE_NORMAL
+  zh: 下面是针对这些不同设置的结果（表 [4.12](#Tab12)）：表 4.12
 - en: Sensitivity of the average improvement of the Sharpe ratio to the leverage used
+  id: totrans-296
   prefs: []
   type: TYPE_NORMAL
+  zh: 对杠杆使用的平均夏普比率改进的敏感性
 - en: '| Risk OFF leverage &#124; Risk ON leverage | Improvement of the average (%)
     | *p*-value (%) | Percentage of positive improvements (%) |'
+  id: totrans-297
   prefs: []
   type: TYPE_TB
+  zh: '| 风险关杠杆 &#124; 风险开杠杆 | 平均改进 (%) | *p*-值 (%) | 正改进的百分比 (%) |'
 - en: '| --- | --- | --- | --- |'
+  id: totrans-298
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- | --- |'
 - en: '| Risk OFF −1 &#124; Risk ON 2 | 201.88 | 0.14 (***) | 91.67 |'
+  id: totrans-299
   prefs: []
   type: TYPE_TB
+  zh: '| 风险关 -1 &#124; 风险开 2 | 201.88 | 0.14 (***) | 91.67 |'
 - en: '| Risk OFF −0.5 &#124; Risk ON 2 | 215.39 | 0.09 (***) | 100.00 |'
+  id: totrans-300
   prefs: []
   type: TYPE_TB
+  zh: '| 风险关 -0.5 &#124; 风险开 2 | 215.39 | 0.09 (***) | 100.00 |'
 - en: '| Risk OFF 0 &#124; Risk ON 2 | 201.83 | 0.07 (***) | 100.00 |'
+  id: totrans-301
   prefs: []
   type: TYPE_TB
+  zh: '| 风险关 0 &#124; 风险开 2 | 201.83 | 0.07 (***) | 100.00 |'
 - en: '| Risk OFF 0.25 &#124; Risk ON 2 | 182.78 | 0.06 (***) | 100.00 |'
+  id: totrans-302
   prefs: []
   type: TYPE_TB
+  zh: '| 风险关 0.25 &#124; 风险开 2 | 182.78 | 0.06 (***) | 100.00 |'
 - en: '| Risk OFF 0.5 &#124; Risk ON 2 | 157.49 | 0.06 (***) | 100.00 |'
+  id: totrans-303
   prefs: []
   type: TYPE_TB
+  zh: '| 风险关 0.5 &#124; 风险开 2 | 157.49 | 0.06 (***) | 100.00 |'
 - en: '| Risk OFF 1 &#124; Risk ON 2 | 99.19 | 0.08 (***) | 100.00 |'
+  id: totrans-304
   prefs: []
   type: TYPE_TB
+  zh: '| 风险关 1 &#124; 风险开 2 | 99.19 | 0.08 (***) | 100.00 |'
 - en: Remarkably, the *p*-value is quite insensitive to the level of performance,
     which is a good indicator that the methodology we proposed for computing this
     *p*-value is reliable.
+  id: totrans-305
   prefs: []
   type: TYPE_NORMAL
+  zh: 非常显著的是，*p*-值对性能水平相当不敏感，这是一个很好的指标，表明我们提出的用于计算这个 *p*-值的方法是可靠的。
 - en: Note that the performances are always increasing when we increase aggressiveness,
     until the −1|2 case. It is an extremely strong sign of predictive power that the
     strategy survives to short sales, and even gets better under this framework. However,
     if one is going to use short sales, it should be done carefully.
+  id: totrans-306
   prefs: []
   type: TYPE_NORMAL
+  zh: 请注意，当我们增加攻击性时，表现始终会增加，直到−1|2的情况。这是一个极其强烈的预测力的迹象，表明该策略在空头销售中仍然生存，并且在这种框架下甚至变得更好。然而，如果要使用空头销售，应该小心进行。
 - en: Indeed, in the −0.5|2 case, the average random improvement is −49%, which clearly
     shows that shorting the market is an extremely dangerous strategy, for which we
     should have an extreme level of confidence in the underlying signal.
+  id: totrans-307
   prefs: []
   type: TYPE_NORMAL
+  zh: 实际上，在−0.5|2的情况下，平均随机改善为−49%，这清楚地表明，空头销售市场是一种极端危险的策略，对于这种策略，我们应该对基础信号有极高的信心。
 - en: 'Still, if the strategy is successful, this is also to an extreme point: below,
     we display the example of the Stoxx Europe 600, for which the −0.5|2 strategy
     reaches a final level of 1,242.44 points (base 100 in 2001), versus a final level
     of 165.92 points for the market (recall that both portfolio returns have the same
     volatility) (Fig. [4.11](#Fig11)).![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig11_HTML.png)'
+  id: totrans-308
   prefs: []
   type: TYPE_NORMAL
+  zh: 然而，如果该策略成功，这也是一个极端的点：在下面，我们展示了Stoxx Europe 600的示例，其中−0.5|2策略达到了1,242.44点的最终水平（2001年基数100），而市场的最终水平为165.92点（请记住，两个投资组合的回报率具有相同的波动性）（图[4.11](#Fig11)）。![](../images/519851_1_En_4_Chapter/519851_1_En_4_Fig11_HTML.png)
 - en: Fig. 4.11
+  id: totrans-309
   prefs: []
   type: TYPE_NORMAL
+  zh: 图4.11
 - en: 'Stoxx Europe 600: Market Timed Portfolio with aggressive leverage strategy,
     vs Market Portfolio (equal volatility)'
+  id: totrans-310
   prefs: []
   type: TYPE_NORMAL
+  zh: Stoxx Europe 600：具有激进杠杆策略的定时市场投资组合，与市场投资组合（等波动性）相比
 - en: 4.6 Conclusions
+  id: totrans-311
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 4.6 结论
 - en: In this chapter, we presented a polymodel-based Systemic Risk Indicator and
     its associated trading strategy.
+  id: totrans-312
   prefs: []
   type: TYPE_NORMAL
+  zh: 在本章中，我们介绍了基于多模型的系统性风险指标及其相关交易策略。
 - en: The predictive power of the indicator was shown to be statistically and economically
     significant across several markets and time periods. These results are found to
     be robust in the tests that have been conducted. However, the robustness of the
     strategy, as well as its performance, can be increased by selecting/combining
     better/different parameters of the strategy.
+  id: totrans-313
   prefs: []
   type: TYPE_NORMAL
+  zh: 该指标的预测能力已经在几个市场和时间段上被证明在统计学和经济学上是显著的。这些结果在进行的测试中被发现是稳健的。然而，通过选择/组合更好/不同的策略参数可以增加策略的稳健性以及其性能。
 - en: In terms of improving the design of the indicator, it is possible to explore
     different paths. Subject to computational resources, estimating the indicator
     on a daily frequency can be a game changer since the indicator spikes sometimes
@@ -1332,19 +2006,25 @@
     beginning of speculative bubbles, for example. If this is the case, it can also
     improve the crisis indicator by differentiating exuberant mimicry from collective
     panic.
+  id: totrans-314
   prefs: []
   type: TYPE_NORMAL
+  zh: 在改进指标设计方面，可以探索不同的路径。在计算资源的限制下，以每日频率估计指标可能会改变游戏规则，因为该指标有时只会在市场下跌开始几天后出现高峰。应该还要测试为指标开发的方法，以查看它是否能够预测市场的反弹。实际上，可能会发生一些特定的赶羊行为，例如在投机泡沫开始时。如果是这样，还可以通过区分狂热的模仿和集体恐慌来改进危机指标。
 - en: This last point emphasizes the need to strengthen the economical foundations
     of the indicator. It is especially important to better understand which factors
     correlate or de-correlate the most before the crisis, and why they behave accordingly.
+  id: totrans-315
   prefs: []
   type: TYPE_NORMAL
+  zh: 这最后一点强调了加强指标的经济基础的必要性。在危机之前更好地了解哪些因素在经济上最相关或最不相关以及它们为什么会相应行动尤其重要。
 - en: The indicator should also be compared with existing alternatives, to measure
     how it can add value to a portfolio that aims at benefiting from various market
     timing signals (for example, its performance can be compared with other market
     stress indicators, such as Chicago Fed’s National Financial Conditions Index (NFCI)).
+  id: totrans-316
   prefs: []
   type: TYPE_NORMAL
+  zh: 指标还应与现有替代方案进行比较，以衡量其如何为旨在从各种市场定时信号中获益的投资组合增加价值（例如，其表现可以与其他市场压力指标进行比较，例如芝加哥联邦储备银行的全国金融状况指数（NFCI））。
 - en: There are already several systemic risk indicators identified by the literature.
     However, as far as we know, at the time of writing, all these indicators are based
     on the increase of correlations. The present chapter adds value to the literature
@@ -1352,5 +2032,7 @@
     of the factors. Considering the shape of the representative pre-Crisis distributions
     and the results achieved by the Systemic Risk Indicator, this finding may be one
     of the keys to understanding the financial crisis.
+  id: totrans-317
   prefs: []
   type: TYPE_NORMAL
+  zh: 文献已经确定了几个系统风险指标。然而据我们所知，截至撰写本文时，所有这些指标都是基于相关性的增加。本章通过识别另一种、同时可能更强烈的因素去相关化现象，为文献增加了价值。考虑到代表性的危机前分布形状以及系统风险指标取得的结果，这一发现可能是理解金融危机的关键之一。
