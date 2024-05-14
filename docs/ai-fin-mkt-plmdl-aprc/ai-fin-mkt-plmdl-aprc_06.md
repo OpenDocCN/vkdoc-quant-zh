@@ -108,11 +108,11 @@ BIC 过滤器：*t*-统计量作为噪声过滤器分位数的函数
 
 ### 6.3.4 使用动态最优过滤进行选择
 
-基于我们对各种指标进行过滤的完整样本结果，很明显基于 F 检验的*p*-值不应该用于进行预测的选择，而 RMSE 和 BIC 的性能是可接受的。由于这些性能与这些指标的数学定义是可比较的，我们选择通过将它们结合起来来避免任何任意选择。因为我们最终依赖于分位数，我们可以通过对 BIC 和 RMSE 的排名值求和并排名该和来创建一个平衡的组合度量：![$$ {DFM}_t=\mathit{\operatorname{rank}}\left[\mathit{\operatorname{rank}}\left({BIC}_t\right)+\mathit{\operatorname{rank}}\left({RMSE}_t\right)\right]. $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ7.png)(6.7)*这里 DFM 是时间 t 时刻所有基本模型的“双重过滤度量”向量，rank 是排名操作符。*
+基于我们对各种指标进行过滤的完整样本结果，很明显基于 F 检验的*p*-值不应该用于进行预测的选择，而 RMSE 和 BIC 的性能是可接受的。由于这些性能与这些指标的数学定义是可比较的，我们选择通过将它们结合起来来避免任何任意选择。因为我们最终依赖于分位数，我们可以通过对 BIC 和 RMSE 的排名值求和并排名该和来创建一个平衡的组合度量：![$$ {DFM}_t=\mathit{\operatorname{rank}}\left[\mathit{\operatorname{rank}}\left({BIC}_t\right)+\mathit{\operatorname{rank}}\left({RMSE}_t\right)\right]. $$](img/519851_1_En_6_Chapter_TeX_Equ7.png)(6.7)*这里 DFM 是时间 t 时刻所有基本模型的“双重过滤度量”向量，rank 是排名操作符。*
 
 我们需要确定一个适当的分位数阈值来进行过滤。然而，尽管在这里考虑使用完整样本数据作为过滤指标选择的一种可容忍方式，⁷但保持全样本方法来设置阈值会导致过度拟合的风险很高，因为最终结果会反映某种形式的样本内优化。因此，过滤阈值的设置仅使用点时数据。此外，阈值适应于每个多模型，因此不再假设不同股票回报之间的同质性。
 
-对于特定的多模型，在每个日期，我们计算由双重过滤度量的不同分位数过滤的平均预测。然后，每个季度，我们重新计算下一天的股票回报对当前过滤/聚合预测的单变量回归，用于不同的分位数。对于当前日期，我们因此再次获得一个*t*统计量曲线，反映了不同过滤分位数的预测能力，可能看起来像 6.4 图所示，作为问题的代表性示例！[](../images/519851_1_En_6_Chapter/519851_1_En_6_Fig4_HTML.png)
+对于特定的多模型，在每个日期，我们计算由双重过滤度量的不同分位数过滤的平均预测。然后，每个季度，我们重新计算下一天的股票回报对当前过滤/聚合预测的单变量回归，用于不同的分位数。对于当前日期，我们因此再次获得一个*t*统计量曲线，反映了不同过滤分位数的预测能力，可能看起来像 6.4 图所示，作为问题的代表性示例！[](img/519851_1_En_6_Fig4_HTML.png)
 
 图 6.4
 
@@ -142,7 +142,7 @@ DFM 过滤器示例：作为噪声过滤分位数的函数的*t-*统计量
 
 ### 6.4.1 使用贝叶斯模型平均进行预测聚合
 
-贝叶斯模型平均（BMA）是一种常用的方法，用于组合预测（关于介绍，请参见 Hoeting 等人，1999 和 Raftery 等人，1997）。它已经在多模型的上下文中被用于通过 Guan（2019）组合基本模型。通过为每个基本模型分配一个概率，BMA 提出了一个综合预测，该预测考虑了模型不确定性。对于给定的多项式：![$$ E\left[{y}_{t+1}|{X}_t\right]=\sum \limits_{i=1}^n\hat{\varphi_{i,t}}\left({X}_{i,t}\right)\times p\left({\varphi}_{i,t}\left({X}_{i,t}\right)|{X}_t\right) $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ8.png)(6.8)*这里 y*[*t* + 1] *是我们试图预测的变量，X*[*t*] *是在时间 t 的因子集，而 φ**i* *是在时间 t 的因子 i 的基本模型。*
+贝叶斯模型平均（BMA）是一种常用的方法，用于组合预测（关于介绍，请参见 Hoeting 等人，1999 和 Raftery 等人，1997）。它已经在多模型的上下文中被用于通过 Guan（2019）组合基本模型。通过为每个基本模型分配一个概率，BMA 提出了一个综合预测，该预测考虑了模型不确定性。对于给定的多项式：![$$ E\left[{y}_{t+1}|{X}_t\right]=\sum \limits_{i=1}^n\hat{\varphi_{i,t}}\left({X}_{i,t}\right)\times p\left({\varphi}_{i,t}\left({X}_{i,t}\right)|{X}_t\right) $$](img/519851_1_En_6_Chapter_TeX_Equ8.png)(6.8)*这里 y*[*t* + 1] *是我们试图预测的变量，X*[*t*] *是在时间 t 的因子集，而 φ**i* *是在时间 t 的因子 i 的基本模型。*
 
 这种方法相当直观，因为不同的预测是可信度加权的，但是它并未考虑到不同模型可能存在相关性。 （后验）概率由贝叶斯定理定义为：
 
@@ -168,7 +168,7 @@ RMSE 越小，预测器的可信度越大。因此，我们的可信度度量被
 
 考虑到所有预测都是相关的（它们已被过滤），一个等于分布平均值的预测！$$ \frac{1}{n}\sum \limits_{i=1}^n{\hat{y}}_i $$ 不包含太多信息，因为在考虑所有其他预测的同时，我们已经知道 *m* 值是可能的，甚至是可信的。另一方面，“![$$ {\hat{y}}^{\ast } $$](img/519851_1_En_6_Chapter_TeX_IEq4.png)” 这一点包含了很多信息，因为如果没有这一点，我们就不知道事件 “![$$ {\hat{y}}^{\ast } $$](img/519851_1_En_6_Chapter_TeX_IEq5.png)” 是可能的。因此，关于已经确切知道的事件的相关信息（*p* = 1）不包含任何信息，而关于完全意外事件的相关信息包含很多信息。因此，在讲堂上，一个学生，即使是优秀的，只是重复别人已经说过的话，并不会带来太多信息，而一个能够预测到完全意想不到事情的好学生应该被认真听取。
 
-在我们的背景下，香农的信息度量反映了预测与基本模型之间的预测分布的独创性。因此，我们提出以下的预测独创性度量：![$$ o\left({\hat{\varphi}}_{i,t}\left({x}_{i,t}\right)\right)\stackrel{\scriptscriptstyle\mathrm{def}}{=}\mathit{\log}{\left(\ p\left({\hat{\varphi}}_{i,t}\left({x}_{i,t}\right)\ |\ \left\{{\hat{\varphi}}_{j,t}\left({x}_{j,t}\right)\forall j\in \left[1:n\right]\right\}\ \right)\right)}²\. $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ15.png)(6.15)我们用平方代替否定的使用来获得对数的正值，因为它允许更极端的独创性度量，从而导致更具区分性的度量。要将学生视为具有独创性，单个时间点的预测观察是不足够的，预测应该是重复独创的。因此，我们预测者的最终独创性度量是：![$$ {O}_{i,t}\stackrel{\scriptscriptstyle\mathrm{def}}{=}\frac{1}{\tau }{\sum}_{s=t-\tau}^to\left({\hat{\varphi}}_{i,s}\left({x}_{i,s}\right)\right). $$](img/519851_1_En_6_Chapter_TeX_Equ16.png)(6.16)我们假设独创性属性的动态与基本模型的估计动态相关联，因此我们使用 5 年滚动窗口来计算预测者的独创性度量。如前所述，如果一个预测者同时具有可信度和独创性，则它会为整体预测增加价值，因此我们的增加值度量被定义为：![$$ {AV}_{i,t}\stackrel{\scriptscriptstyle\mathrm{def}}{=}{B}_{i,t}\times {O}_{i,t}. $$](img/519851_1_En_6_Chapter_TeX_Equ17.png)(6.17)使用增值平均（AVA）进行的聚合预测是：![$$ E\left[{y}_{t+1}|{X}_t\right]=\sum \limits_{i=1}^n\hat{\varphi_{i,t}}\left({X}_{i,t}\right)\times {AV}_{i,t}. $$](../images/519851_1_En_6_Chapter/519851_1_En_6_Chapter_TeX_Equ18.png)(6.18)
+在我们的背景下，香农的信息度量反映了预测与基本模型之间的预测分布的独创性。因此，我们提出以下的预测独创性度量：![$$ o\left({\hat{\varphi}}_{i,t}\left({x}_{i,t}\right)\right)\stackrel{\scriptscriptstyle\mathrm{def}}{=}\mathit{\log}{\left(\ p\left({\hat{\varphi}}_{i,t}\left({x}_{i,t}\right)\ |\ \left\{{\hat{\varphi}}_{j,t}\left({x}_{j,t}\right)\forall j\in \left[1:n\right]\right\}\ \right)\right)}²\. $$](img/519851_1_En_6_Chapter_TeX_Equ15.png)(6.15)我们用平方代替否定的使用来获得对数的正值，因为它允许更极端的独创性度量，从而导致更具区分性的度量。要将学生视为具有独创性，单个时间点的预测观察是不足够的，预测应该是重复独创的。因此，我们预测者的最终独创性度量是：![$$ {O}_{i,t}\stackrel{\scriptscriptstyle\mathrm{def}}{=}\frac{1}{\tau }{\sum}_{s=t-\tau}^to\left({\hat{\varphi}}_{i,s}\left({x}_{i,s}\right)\right). $$](img/519851_1_En_6_Chapter_TeX_Equ16.png)(6.16)我们假设独创性属性的动态与基本模型的估计动态相关联，因此我们使用 5 年滚动窗口来计算预测者的独创性度量。如前所述，如果一个预测者同时具有可信度和独创性，则它会为整体预测增加价值，因此我们的增加值度量被定义为：![$$ {AV}_{i,t}\stackrel{\scriptscriptstyle\mathrm{def}}{=}{B}_{i,t}\times {O}_{i,t}. $$](img/519851_1_En_6_Chapter_TeX_Equ17.png)(6.17)使用增值平均（AVA）进行的聚合预测是：![$$ E\left[{y}_{t+1}|{X}_t\right]=\sum \limits_{i=1}^n\hat{\varphi_{i,t}}\left({X}_{i,t}\right)\times {AV}_{i,t}. $$](img/519851_1_En_6_Chapter_TeX_Equ18.png)(6.18)
 
 ### 6.4.3 聚合预测的不确定性
 

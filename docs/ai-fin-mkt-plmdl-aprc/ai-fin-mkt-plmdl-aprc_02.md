@@ -22,11 +22,11 @@ Thomas Barrau^(1  ) 和 Raphael Douady²(1)AXA 投资经理 Chorus Ltd，香�
 
 +   步骤 A：研究者制定感兴趣变量的模型命题，作为其环境条件期望。此步骤的目的是对*Y*和*X*之间的联系建模：
 
-![$$ E\left[Y|X\right]=f(X). $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ1.png)(2.1)
+![$$ E\left[Y|X\right]=f(X). $$](img/519851_1_En_2_Chapter_TeX_Equ1.png)(2.1)
 
 +   这一步骤可能非常复杂，可能涉及对*Y*和*X*的定义讨论，以及一些复杂版本的*f*()的开发。例如，如果*Y*是一个随机过程，它可能包括一些动态表示：
 
-![$$ E\left[{Y}_t\ |\ {\left\{{X}_s\right\}}_{s\in \left[t-\tau :t\right]}\right]=f\left({X}_t,{X}_{t-1},{X}_{t-2},\dots \right). $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ2.png)(2.2)*这里的“t”是当前时间索引，“τ”是 X 的最远重要时间滞后，“s”是定义在 t−τ和 t 之间的第二个时间索引。*
+![$$ E\left[{Y}_t\ |\ {\left\{{X}_s\right\}}_{s\in \left[t-\tau :t\right]}\right]=f\left({X}_t,{X}_{t-1},{X}_{t-2},\dots \right). $$](img/519851_1_En_2_Chapter_TeX_Equ2.png)(2.2)*这里的“t”是当前时间索引，“τ”是 X 的最远重要时间滞后，“s”是定义在 t−τ和 t 之间的第二个时间索引。*
 
 +   第二步：研究模型的统计特性。这一步骤可能包括研究感兴趣变量*Y*的分布以及环境变量*X*的联合分布，但也可能包括研究模型参数*f*()的分布，以量化其不确定性、评估其鲁棒性等。
 
@@ -142,7 +142,7 @@ Polymodel 理论的文献仍然稀少，这正好说明了我们提出对这种�
 
 这就是为什么增加多变量回归中预测变量数量会暴露过拟合风险的原因，以至于像经济计量学家这样的专家会引用约翰·冯·诺伊曼的著名语录而开玩笑：“用四个参数我可以拟合一只大象，用五个我可以让它摇摆鼻子”。当观察数量减少时，这种情况经常发生。事实上，对于给定数量的观察，增加多变量模型中的预测变量数量会减少残差的方差，使模型在拟合度方面变得“更好”，但只是表面上看起来如此。
 
-当预测变量的数量增加到比观察数量更高时，问题变得更加严重。在这种情况下，预测变量的协方差矩阵*X'X*不可逆，导致通常的普通最小二乘线性模型参数估计解决方案失败，定义为：![$$ \hat{\beta}={\left[{X}^{\prime }X\right]}^{-1}{X}^{\prime }Y. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ9.png)(2.9)计算 OLS 估计量所需的矩阵求逆可以看作是要解决的一组方程，而在我们的情况下，解决方案不唯一。因此，这个问题被称为“病态”（Hadamard，1902）。解决这个问题的一个非常常见的方法是使用 L²-范数的系数估计值进行回归正则化（称为岭回归（Hoerl & Kennard，1988）或 Tikhonov 正则化）。请记住，在普通最小二乘中，直线与数据之间的平方差之和被最小化。参数β的估计值，称为![$$ \hat{\upbeta} $$](img/519851_1_En_2_Chapter_TeX_IEq1.png)，因此是优化问题的解：![$$ \underset{\beta }{\mathit{\min}}\ {\left\Vert Y- X\beta \right\Vert}_2²\. $$](img/519851_1_En_2_Chapter_TeX_Equ10.png)(2.10)在岭回归中，L²-范数的惩罚被添加如下：![$$ \underset{\beta }{\mathit{\min}}\ {\left\Vert Y- X\beta \right\Vert}_2²+\lambda {\left\Vert \beta \right\Vert}_2², $$](img/519851_1_En_2_Chapter_TeX_Equ11.png)(2.11)*这里，“λ”是岭惩罚参数*。导致参数的以下缩小估计值：![$$ {\hat{\beta}}^{Ridge}={\left[{X}^{\prime }X+\lambda I\right]}^{-1}{X}^{\prime }Y. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ12.png)(2.12)*“I”是 n × n 单位矩阵。*
+当预测变量的数量增加到比观察数量更高时，问题变得更加严重。在这种情况下，预测变量的协方差矩阵*X'X*不可逆，导致通常的普通最小二乘线性模型参数估计解决方案失败，定义为：![$$ \hat{\beta}={\left[{X}^{\prime }X\right]}^{-1}{X}^{\prime }Y. $$](img/519851_1_En_2_Chapter_TeX_Equ9.png)(2.9)计算 OLS 估计量所需的矩阵求逆可以看作是要解决的一组方程，而在我们的情况下，解决方案不唯一。因此，这个问题被称为“病态”（Hadamard，1902）。解决这个问题的一个非常常见的方法是使用 L²-范数的系数估计值进行回归正则化（称为岭回归（Hoerl & Kennard，1988）或 Tikhonov 正则化）。请记住，在普通最小二乘中，直线与数据之间的平方差之和被最小化。参数β的估计值，称为![$$ \hat{\upbeta} $$](img/519851_1_En_2_Chapter_TeX_IEq1.png)，因此是优化问题的解：![$$ \underset{\beta }{\mathit{\min}}\ {\left\Vert Y- X\beta \right\Vert}_2²\. $$](img/519851_1_En_2_Chapter_TeX_Equ10.png)(2.10)在岭回归中，L²-范数的惩罚被添加如下：![$$ \underset{\beta }{\mathit{\min}}\ {\left\Vert Y- X\beta \right\Vert}_2²+\lambda {\left\Vert \beta \right\Vert}_2², $$](img/519851_1_En_2_Chapter_TeX_Equ11.png)(2.11)*这里，“λ”是岭惩罚参数*。导致参数的以下缩小估计值：![$$ {\hat{\beta}}^{Ridge}={\left[{X}^{\prime }X+\lambda I\right]}^{-1}{X}^{\prime }Y. $$](img/519851_1_En_2_Chapter_TeX_Equ12.png)(2.12)*“I”是 n × n 单位矩阵。*
 
 在允许矩阵求逆的基础上，L²-范数的惩罚自动减小了 OLS 估计的系数的大小，从而导致更好的外样本估计（Van Dusen，2016）提出了对这一点的全面概述）。还可以在优化问题中引入 L¹和 L²-范数的惩罚，这种技术称为弹性网络正则化（Tibshirani，1996，另见 Zou 和 Hastie，2005）。当加入 L¹-范数的惩罚时，一些系数会变为零，从而实现对自变量的选择。岭回归和弹性网络回归因此解决了与多模型相同的问题，这是在使用大量变量进行建模时防止过度拟合的替代方法。
 

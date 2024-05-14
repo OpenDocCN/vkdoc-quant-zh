@@ -62,7 +62,7 @@ Riccardo Vasellini^(1  )（1）意大利锡耶纳大学，锡耶纳 Riccardo�
 
 此时订单被插入账簿。
 
-市场将匹配订单。它将寻找与期望价格和数量相匹配的购买（如果订单是卖出）或卖出（如果订单是买入）订单，从最早发布的订单开始。价格和数量不需要相同；代理可能以比最初期望的更低的价格购买较少的股票，然后从另一个代理那里购买剩余部分。当所有可能被满足的订单都完成时，这一天结束。然后代理将学习，这意味着根据他们是否比以前更好以及如果他们做出其他判断可能会怎样来升级他们的决策启发式。然后他们将模仿与他们关联的财富比他们更富有的代理，适当调整他们的启发式。每两周，股票的基本价值将以适度比例变化。这是为了模拟基础公司资产的实际变化。平均股价和其他代理的基本属性将被保留。在此时，循环可能会恢复！[](../images/524458_1_En_6_Chapter/524458_1_En_6_Figa_HTML.png)
+市场将匹配订单。它将寻找与期望价格和数量相匹配的购买（如果订单是卖出）或卖出（如果订单是买入）订单，从最早发布的订单开始。价格和数量不需要相同；代理可能以比最初期望的更低的价格购买较少的股票，然后从另一个代理那里购买剩余部分。当所有可能被满足的订单都完成时，这一天结束。然后代理将学习，这意味着根据他们是否比以前更好以及如果他们做出其他判断可能会怎样来升级他们的决策启发式。然后他们将模仿与他们关联的财富比他们更富有的代理，适当调整他们的启发式。每两周，股票的基本价值将以适度比例变化。这是为了模拟基础公司资产的实际变化。平均股价和其他代理的基本属性将被保留。在此时，循环可能会恢复！[](img/524458_1_En_6_Figa_HTML.png)
 
 一个流程图显示了过程；真实视野映射、趋势视野映射、总价格映射、买卖价值、订单创建、学习和模仿。
 
@@ -109,49 +109,49 @@ Riccardo Vasellini^(1  )（1）意大利锡耶纳大学，锡耶纳 Riccardo�
 
 P：代理的收益，即自上次学习以来其净值增加了多少。
 
-![$$S\left[y\right]\; with\; y\in \left[{T}_{s},{D}_{s},G\right]$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq2.png)：代理在此时选择的参数 y 的策略。
+![$$S\left[y\right]\; with\; y\in \left[{T}_{s},{D}_{s},G\right]$$](img/524458_1_En_6_Chapter_TeX_IEq2.png)：代理在此时选择的参数 y 的策略。
 
-![$${S}^{old}\left[y\right]:$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq3.png)：上一轮代理程序学习的策略。如果 ![$${S}^{old}\left[y\right]=-1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq4.png)，表示代理程序减少了其 y-决策参数，如果 ![$${S}^{old}\left[y\right]=1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq5.png)，表示增加了其 y-决策参数，如果 ![$${S}^{old}\left[y\right]=0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq6.png)，则不做任何操作。
+![$${S}^{old}\left[y\right]:$$](img/524458_1_En_6_Chapter_TeX_IEq3.png)：上一轮代理程序学习的策略。如果 ![$${S}^{old}\left[y\right]=-1$$](img/524458_1_En_6_Chapter_TeX_IEq4.png)，表示代理程序减少了其 y-决策参数，如果 ![$${S}^{old}\left[y\right]=1$$](img/524458_1_En_6_Chapter_TeX_IEq5.png)，表示增加了其 y-决策参数，如果 ![$${S}^{old}\left[y\right]=0$$](img/524458_1_En_6_Chapter_TeX_IEq6.png)，则不做任何操作。
 
-![$${w}_{k}^{P&gt;0}:$$](img/524458_1_En_6_Chapter_TeX_IEq7.png)：在给定先前策略 ![$${S}^{old}\left[y\right]$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq11.png) ![$$=k$$](img/524458_1_En_6_Chapter_TeX_IEq12.png) 和 P > 0 的情况下，在 ![$$S\left[y\right] = 1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq8.png)、![$$S\left[y\right] =1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq9.png) 或 ![$$S\left[y\right] = 0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq10.png) 之间选择新策略的概率。
+![$${w}_{k}^{P&gt;0}:$$](img/524458_1_En_6_Chapter_TeX_IEq7.png)：在给定先前策略 ![$${S}^{old}\left[y\right]$$](img/524458_1_En_6_Chapter_TeX_IEq11.png) ![$$=k$$](img/524458_1_En_6_Chapter_TeX_IEq12.png) 和 P > 0 的情况下，在 ![$$S\left[y\right] = 1$$](img/524458_1_En_6_Chapter_TeX_IEq8.png)、![$$S\left[y\right] =1$$](img/524458_1_En_6_Chapter_TeX_IEq9.png) 或 ![$$S\left[y\right] = 0$$](img/524458_1_En_6_Chapter_TeX_IEq10.png) 之间选择新策略的概率。
 
-![$${w}_{k}^{P\le 0}$$](img/524458_1_En_6_Chapter_TeX_IEq13.png)：在给定先前策略 ![$${S}^{old}\left[y\right] = k$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq17.png) 和 P ![$$\le$$](img/524458_1_En_6_Chapter_TeX_IEq18.png) 0 的情况下，在 ![$$S\left[y\right] = 1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq14.png)、![$$S\left[y\right] =1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq15.png) 或 ![$$S\left[y\right] = 0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq16.png) 之间选择新策略的概率。
+![$${w}_{k}^{P\le 0}$$](img/524458_1_En_6_Chapter_TeX_IEq13.png)：在给定先前策略 ![$${S}^{old}\left[y\right] = k$$](img/524458_1_En_6_Chapter_TeX_IEq17.png) 和 P ![$$\le$$](img/524458_1_En_6_Chapter_TeX_IEq18.png) 0 的情况下，在 ![$$S\left[y\right] = 1$$](img/524458_1_En_6_Chapter_TeX_IEq14.png)、![$$S\left[y\right] =1$$](img/524458_1_En_6_Chapter_TeX_IEq15.png) 或 ![$$S\left[y\right] = 0$$](img/524458_1_En_6_Chapter_TeX_IEq16.png) 之间选择新策略的概率。
 
 ![$$\Gamma \left({w}_{k}^{P}\right)$$](img/524458_1_En_6_Chapter_TeX_IEq19.png)：基于概率 ![$${w}_{k}^{P}$$](img/524458_1_En_6_Chapter_TeX_IEq21.png) 输出 ![$${S}^{new}$$](img/524458_1_En_6_Chapter_TeX_IEq20.png) 的函数。
 
 **如果** ![$${\varvec{P}}\boldsymbol{ }\le 0$$](img/524458_1_En_6_Chapter_TeX_IEq22.png) **那么**
 
-**对于** y 在 ![$$\left[{T}_{s},{D}_{s},G\right]$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq23.png) **循环执行**
+**对于** y 在 ![$$\left[{T}_{s},{D}_{s},G\right]$$](img/524458_1_En_6_Chapter_TeX_IEq23.png) **循环执行**
 
-**如果** ![$${{\varvec{S}}}^{{\varvec{o}}{\varvec{l}}{\varvec{d}}}\left[{\varvec{y}}\right]=1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq24.png) **那么**
+**如果** ![$${{\varvec{S}}}^{{\varvec{o}}{\varvec{l}}{\varvec{d}}}\left[{\varvec{y}}\right]=1$$](img/524458_1_En_6_Chapter_TeX_IEq24.png) **那么**
 
-![$${S}^{new}\left[y\right]=\Gamma \left({w}_{1}^{P\le 0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq25.png)
+![$${S}^{new}\left[y\right]=\Gamma \left({w}_{1}^{P\le 0}\right)$$](img/524458_1_En_6_Chapter_TeX_IEq25.png)
 
-**否则如果** ![$${S}^{old}\left[y\right]=0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq26.png) **那么**
+**否则如果** ![$${S}^{old}\left[y\right]=0$$](img/524458_1_En_6_Chapter_TeX_IEq26.png) **那么**
 
-![$${S}^{new}\left[y\right]=\Gamma \left({w}_{0}^{P\le 0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq27.png)
+![$${S}^{new}\left[y\right]=\Gamma \left({w}_{0}^{P\le 0}\right)$$](img/524458_1_En_6_Chapter_TeX_IEq27.png)
 
-**else if** ![$${S}^{old}\left[y\right]=-1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq28.png) **then**
+**else if** ![$${S}^{old}\left[y\right]=-1$$](img/524458_1_En_6_Chapter_TeX_IEq28.png) **then**
 
-![$${S}^{new}\left[y\right]=\Gamma \left({w}_{-1}^{P\le 0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq29.png)
+![$${S}^{new}\left[y\right]=\Gamma \left({w}_{-1}^{P\le 0}\right)$$](img/524458_1_En_6_Chapter_TeX_IEq29.png)
 
 **end if**
 
 **else if** ![$${\varvec{P}}\boldsymbol{ }&gt;0$$](img/524458_1_En_6_Chapter_TeX_IEq30.png) **then**
 
-**for** y in ![$$\left[{T}_{s},{D}_{s},G\right]$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq31.png) **do.**
+**for** y in ![$$\left[{T}_{s},{D}_{s},G\right]$$](img/524458_1_En_6_Chapter_TeX_IEq31.png) **do.**
 
-**if** ![$${{\varvec{S}}}^{{\varvec{o}}{\varvec{l}}{\varvec{d}}}\left[{\varvec{y}}\right]=1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq32.png) **then**
+**if** ![$${{\varvec{S}}}^{{\varvec{o}}{\varvec{l}}{\varvec{d}}}\left[{\varvec{y}}\right]=1$$](img/524458_1_En_6_Chapter_TeX_IEq32.png) **then**
 
-![$${S}^{new}\left[y\right]=\Gamma \left({w}_{1}^{P&gt;0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq33.png)
+![$${S}^{new}\left[y\right]=\Gamma \left({w}_{1}^{P&gt;0}\right)$$](img/524458_1_En_6_Chapter_TeX_IEq33.png)
 
-**else if** ![$${S}^{old}\left[y\right]=0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq34.png) **then**
+**else if** ![$${S}^{old}\left[y\right]=0$$](img/524458_1_En_6_Chapter_TeX_IEq34.png) **then**
 
-![$${S}^{new}\left[y\right]=\Gamma \left({w}_{0}^{P&gt;0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq35.png)
+![$${S}^{new}\left[y\right]=\Gamma \left({w}_{0}^{P&gt;0}\right)$$](img/524458_1_En_6_Chapter_TeX_IEq35.png)
 
-**else if** ![$${S}^{old}\left[y\right]=-1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq36.png) **then**
+**else if** ![$${S}^{old}\left[y\right]=-1$$](img/524458_1_En_6_Chapter_TeX_IEq36.png) **then**
 
-![$${S}^{new}\left[y\right]=\Gamma \left({w}_{-1}^{P&gt;0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq37.png)
+![$${S}^{new}\left[y\right]=\Gamma \left({w}_{-1}^{P&gt;0}\right)$$](img/524458_1_En_6_Chapter_TeX_IEq37.png)
 
 **end if**
 
