@@ -1,22 +1,33 @@
 - en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2023F.
     Cecconi (ed.)AI in the Financial Markets Computational Social Sciences[https://doi.org/10.1007/978-3-031-26518-1_8](https://doi.org/10.1007/978-3-031-26518-1_8)
+  id: totrans-0
   prefs: []
   type: TYPE_NORMAL
+  zh: © 作者，独家许可给 Springer Nature Switzerland AG 2023F. Cecconi (编辑)金融市场中的人工智能计算社会科学[https://doi.org/10.1007/978-3-031-26518-1_8](https://doi.org/10.1007/978-3-031-26518-1_8)
 - en: 8. AI Tools for Pricing of Distressed Asset UTP and NPL Loan Portfolios
+  id: totrans-1
   prefs:
   - PREF_H1
   type: TYPE_NORMAL
+  zh: 8. 用于定价困境资产 UTP 和 NPL 贷款组合的人工智能工具
 - en: 'Alessandro Barazzetti^([1](#Aff16) [ ](#ContactOfAuthor1)) and Rosanna Pilla^([2](#Aff17) [ ](#ContactOfAuthor2))(1)QBT
     Sagl, Via E. Bossi 4, 6830 Chiasso, Switzerland(2)Reacorp Sagl, Via E. Bossi 4,
     6830 Chiasso, CH, SwitzerlandAlessandro Barazzetti (Corresponding author)Email:
     [alessandro.barazzetti@qbt.ch](mailto:alessandro.barazzetti@qbt.ch)Rosanna PillaEmail:
     [rosanna.pilla@reacorp.ch](mailto:rosanna.pilla@reacorp.ch)'
+  id: totrans-2
   prefs: []
   type: TYPE_NORMAL
+  zh: 'Alessandro Barazzetti^([1](#Aff16) [ ](#ContactOfAuthor1)) 和 Rosanna Pilla^([2](#Aff17) [ ](#ContactOfAuthor2))(1)QBT
+    Sagl，Via E. Bossi 4，6830 Chiasso，瑞士(2)Reacorp Sagl，Via E. Bossi 4，6830 Chiasso，瑞士Alessandro Barazzetti（通讯作者）Email:
+    [alessandro.barazzetti@qbt.ch](mailto:alessandro.barazzetti@qbt.ch)Rosanna PillaEmail:
+    [rosanna.pilla@reacorp.ch](mailto:rosanna.pilla@reacorp.ch)'
 - en: Abstract
+  id: totrans-3
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 摘要
 - en: The Non- Performing Exposures are an asset financial class that sees large volumes
     of credits of banking origin traded on the free market through assignment operations.
     The issue of credit enhancement therefore acquires a central role in the credit
@@ -25,12 +36,17 @@
     than traditional econometrics. The following approach has been studied for the
     Italian NPE market, as it has unique characteristics in terms of size, legal and
     technical-real estate aspects.
+  id: totrans-4
   prefs: []
   type: TYPE_NORMAL
+  zh: 非 performing 曝光是一种资产金融类别，通过转让操作在自由市场上交易大量来自银行的贷款。因此，信用增强问题在信贷购买过程中变得至关重要。在这项研究中，我们描述了一种基于人工智能算法和计算方法而非传统计量经济学的非
+    performing 曝光价值评估方法。以下方法已针对意大利非 performing 曝光市场进行了研究，因为在规模、法律和技术房地产方面具有独特特征。
 - en: KeywordsNPELoan evaluationAIFintechBusiness planCluster tree analysisExpert
     systemCash flowAlessandro Barazzetti
+  id: totrans-5
   prefs: []
   type: TYPE_NORMAL
+  zh: 关键词非 performing 曝光贷款评估人工智能金融科技商业计划群集树分析专家系统现金流Alessandro Barazzetti
 - en: Aeronautical Engineer at the Politecnico di Milano, Professor at Ludes Off-Campus
     Semmelweis University and pilot is the owner of QBT Sagl, a company operating
     in the development of Algorithms and Software in the Fintech and Proptech sector
@@ -38,11 +54,17 @@
     AI solutions to Health & Care and advanced projects in the Aerospace sector. Alessandro
     is also founder of SST srl, a company devoted to sustainability studies and certification
     and Reacorp Sagl a company devoted to Fintech and Proptech services.
+  id: totrans-6
   prefs: []
   type: TYPE_NORMAL
+  zh: 米兰理工大学航空工程师，卢德斯离校医科大学教授和飞行员，是 QBT Sagl 公司的所有者，该公司在金融科技和房地产科技领域开发算法和软件，并且是 Science
+    Adventure Sagl 公司的所有者，该公司专门从事应用于健康与护理和航空航天领域的人工智能解决方案和先进项目。 Alessandro 还是 SST
+    srl 公司的创始人，该公司致力于可持续性研究和认证，以及 Reacorp Sagl 公司，该公司致力于金融科技和房地产科技服务。
 - en: Rosanna Pilla
+  id: totrans-7
   prefs: []
   type: TYPE_NORMAL
+  zh: Rosanna Pilla
 - en: is a Lawyer; she has chosen to consolidate her skills in banking and finance
     law, credit restructuring, executive and repossess procedures. Expert in the active
     management and enhancement of real estate guarantees, in due diligence and securitisations,
@@ -54,511 +76,777 @@
     of new technologies for data analysis and enhancement. Rosanna is a Member of
     the TSEI Association—Study Table of Italian Executions and founder of Reacorp
     Sagl, a Swiss company devoted to Fintech and Proptech Services
+  id: totrans-8
   prefs: []
   type: TYPE_NORMAL
+  zh: 是一位律师；她选择巩固自己在银行和金融法律、信贷重组、执行和回收程序方面的技能。精通动态管理和增强房地产担保品、尽职调查和证券化、信用转让、担保和非担保信用组合的业务计划的准备和实施、非
+    performing 贷款和 UTP 信用。一个年轻专业人士组成的团队的团队领导，该团队已经进行了各种尽职调查活动，包括销售 NPLS 信用组合和 FIA
+    基金的设立。她有兴趣关注新技术用于数据分析和增强的发展和应用。Rosanna 是意大利执行协会（TSEI Association）—意大利执行研究组的成员，也是
+    Reacorp Sagl 公司的创始人，这是一家致力于金融科技和房地产科技服务的瑞士公司。
 - en: 8.1 Non-performing Loans
+  id: totrans-9
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 8.1 非 performing 贷款
 - en: NPE (Regulation (EU) [2013](#CR1)) refers to a credit position of banking origin,
     for which the debtor has no longer been able to honor payments. The debtor enters
     a state of insolvency and the credit is classified as non-performing becoming
     a Non Performing Exposure or NPE. Three different types of NPE are identified
     based on the number of months that have passed since the last payment made by
     the debtor to the institution that granted the credit.
+  id: totrans-10
   prefs: []
   type: TYPE_NORMAL
+  zh: 不良贷款（欧盟法规[2013](#CR1)）是指银行业信贷头寸，债务人已无法履行支付。债务人陷入破产状态，信贷被归类为不良，成为不良信贷风险或NPE。根据债务人上次向授信机构支付的月数，确定了三种不同类型的NPE。
 - en: Each type corresponds to a precise accounting fulfillment and calculation of
     interest and expenses up to the judicial procedure for the compulsory recovery
     of the credit through the judicial auction mechanism.
+  id: totrans-11
   prefs: []
   type: TYPE_NORMAL
+  zh: 每种类型都对应着明确的会计履约和利息及费用计算，直至通过法院拍卖机制进行强制回收信贷的司法程序。
 - en: 'The types of NPE are identified as follows, in order of time since the last
     payment made:'
+  id: totrans-12
   prefs: []
   type: TYPE_NORMAL
+  zh: 不良信贷风险的类型按照上次支付时间的顺序确定如下：
 - en: '1.'
+  id: totrans-13
   prefs:
   - PREF_OL
   type: TYPE_NORMAL
+  zh: '1.'
 - en: Overdrawn and/or past-due exposures
+  id: totrans-14
   prefs:
   - PREF_IND
   type: TYPE_NORMAL
+  zh: 透支和/或逾期信贷风险
 - en: '2.'
+  id: totrans-15
   prefs:
   - PREF_OL
   type: TYPE_NORMAL
+  zh: '2.'
 - en: Unlikely-to-pay exposures (UTP)
+  id: totrans-16
   prefs:
   - PREF_IND
   type: TYPE_NORMAL
+  zh: 不良信贷风险（UTP）
 - en: '3.'
+  id: totrans-17
   prefs:
   - PREF_OL
   type: TYPE_NORMAL
+  zh: '3.'
 - en: Non-performing loans (Bad loans).
+  id: totrans-18
   prefs:
   - PREF_IND
   type: TYPE_NORMAL
+  zh: 不良贷款（坏账）。
 - en: The classification of NPE positions was defined by the European Union through
     a regulation issued by the European Banking Authority (EBA) (European Central
     Bank [2017](#CR2)) pursuant to a European Regulation (EBA/GL [2016](#CR3)).
+  id: totrans-19
   prefs: []
   type: TYPE_NORMAL
+  zh: NPE头寸的分类是由欧盟通过欧洲银行业监管局（EBA）发布的一项法规（《欧洲中央银行》[2017](#CR2)）根据欧洲法规（EBA/GL[2016](#CR3)）进行的。
 - en: 'The NPE positions are also distinguished by the type of guarantee linked to
     the credit: therefore we have non-performing positions of loans with a mortgage
     guarantee (Secured loans) and loans without a mortgage guarantee (Unsecured).'
+  id: totrans-20
   prefs: []
   type: TYPE_NORMAL
+  zh: 不良信贷风险的位置也根据与信贷相关的担保类型进行区分：因此，我们有具有抵押担保的贷款的不良贷款（担保贷款）和没有抵押担保的贷款（无担保）。
 - en: 'Secured positions, the mortgage guarantee is made up of the debtor''s real
     estate assets: therefore, these are non-performing loans whose recovery is facilitated
     by the possibility of proceeding through the courts at the property auction.'
+  id: totrans-21
   prefs: []
   type: TYPE_NORMAL
+  zh: 担保头寸，抵押担保由债务人的房地产资产组成：因此，这些是通过法院通过财产拍卖程序便于回收的不良贷款。
 - en: 'Unsecured loans, on the other hand, are distinguished on the basis of the type
     of credit disbursed: we have credits of a financial, commercial and banking nature.'
+  id: totrans-22
   prefs: []
   type: TYPE_NORMAL
+  zh: 另一方面，无担保贷款是根据发放的信贷类型来区分的：我们有金融、商业和银行性质的信贷。
 - en: 'Another important distinction concerns the type of debtor. The credits can
     be disbursed to individuals or legal entities. The type of debtor has an impact
     above all in the recovery legal action: for legal persons, the judicial recovery
     of the amounts due takes place through a bankruptcy executive procedure (ie bankruptcy)
     compared to individual execution (ie attachment) for natural persons.'
+  id: totrans-23
   prefs: []
   type: TYPE_NORMAL
+  zh: 另一个重要区别在于债务人类型。信贷可以发放给个人或法人实体。债务人类型在回收法律行动中尤其具有影响：对于法人实体，欠款的司法回收通过破产执行程序（即破产）进行，而对于自然人则是个人执行（即查封）。
 - en: Furthermore, the credit amounts for legal entities are usually higher than for
     natural persons.
+  id: totrans-24
   prefs: []
   type: TYPE_NORMAL
+  zh: 此外，法人实体的信贷金额通常高于自然人。
 - en: The study will focus on the Italian NPE credit market since it is a large market
     as well as being particularly complex in relation to the legal credit recovery
     activities and the particularity of the properties placed as collateral for the
     credit.
+  id: totrans-25
   prefs: []
   type: TYPE_NORMAL
+  zh: 本研究将重点关注意大利NPE信贷市场，因为这是一个庞大的市场，同时也与法律信贷回收活动的复杂性以及用作信贷抵押品的房产的特殊性相关。
 - en: 8.2 The Size of the NPE Market
+  id: totrans-26
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 8.2 不良贷款市场规模
 - en: The market for bank credit positions classified as NPE has a considerable size
     in terms of both overall volumes and number of credit positions.
+  id: totrans-27
   prefs: []
   type: TYPE_NORMAL
+  zh: 作为不良信贷风险分类的银行信贷头寸市场在整体量和信贷头寸数量方面都具有相当规模。
 - en: At the end of 2021, the stock of NPEs in Italy amounted to €330 billion, of
     which €250 billion in NPL positions and €80 billion in positions classified as
     UTP (Market Watch [2021](#CR4)).
+  id: totrans-28
   prefs: []
   type: TYPE_NORMAL
+  zh: 截至2021年底，意大利的不良贷款存量为3300亿欧元，其中不良贷款头寸2500亿欧元，被归类为UTP的头寸800亿欧元（《市场观察》[2021](#CR4)）。
 - en: is expected in consideration of the current economic crisis, with strong repercussions
     in the three-year period 2023–2026 in relation to the high rate of inflation,
     which is affecting the real economy of the country.
+  id: totrans-29
   prefs: []
   type: TYPE_NORMAL
+  zh: 预计考虑到当前经济危机，在2023年至2026年的三年期间将出现强烈的影响，这主要由于高通胀率影响了该国的实体经济。
 - en: Of the figures previously indicated, 75% regards loans to companies and 70%
     loans with real estate guarantees (secured).
+  id: totrans-30
   prefs: []
   type: TYPE_NORMAL
+  zh: 先前指出的数字中，75%是公司贷款，70%是有房地产担保（有担保）的贷款。
 - en: 'NPE transactions in 2021 amounted to approximately 36 billion euros for 34
     billion euros of NPLS and 2 billion euros of UTP divided as follows: 80% of loans
     to companies and 50% of loans secured by real estate (Fig. [8.1](#Fig1)).![](../images/524458_1_En_8_Chapter/524458_1_En_8_Fig1_HTML.png)'
+  id: totrans-31
   prefs: []
   type: TYPE_NORMAL
+  zh: 2021年的NPE交易额约为360亿欧元，NPLS为340亿欧元，UTP为20亿欧元，分别占80%的公司贷款和50%的房地产抵押贷款（图[8.1](#Fig1)）。![](../images/524458_1_En_8_Chapter/524458_1_En_8_Fig1_HTML.png)
 - en: A grouped bar graph of U T P and N P L sales in billions of euros in 2019 to
     2021\. The data of U T P in all 3 years are 8, 9, and 2\. The data of N P L in
     all 3 years are 38, 34, and 34.
+  id: totrans-32
   prefs: []
   type: TYPE_NORMAL
+  zh: 2019年至2021年间以十亿欧元计的UTP和NPL销售的分组条形图。所有3年的UTP数据分别为8、9和2。所有3年的NPL数据分别为38、34和34。
 - en: Fig. 8.1
+  id: totrans-33
   prefs: []
   type: TYPE_NORMAL
+  zh: 图8.1
 - en: NPE portfolio sales in the last three years in billions of Euros
+  id: totrans-34
   prefs: []
   type: TYPE_NORMAL
+  zh: 过去三年间的NPE组合销售额，以十亿欧元计
 - en: 8.3 The Valuation of Credits and Credit Portfolios
+  id: totrans-35
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 8.3 信贷和信贷组合的估值
 - en: Non-performing loans or NPEs are purchased by investment funds through Special
     Purposes Vehicle (SPV) through the credit securitization process (Bank of Italy
     [2017](#CR5)).
+  id: totrans-36
   prefs: []
   type: TYPE_NORMAL
+  zh: 不良贷款或NPE通过信贷证券化过程（意大利银行[2017](#CR5)）由投资基金通过专用目的车辆（SPV）购买。
 - en: The purchase of credits takes place through a non-recourse assignment by the
     assignor bank according to a price that is negotiated between the parties at the
     time of purchase.
+  id: totrans-37
   prefs: []
   type: TYPE_NORMAL
+  zh: 信贷的购买通过出让行按照当时双方协商的价格进行，采用无追索权的转让方式进行。
 - en: An alternative to the non-recourse transfer is represented by the Contribution
     Funds or FIAs, which allow the banking institutions that transfer the credits
     to transfer the NPE positions in a closed fund. In exchange, the assignors receive
     the units of the fund in proportion to the amount of impaired loans transferred.
     AIFs are not speculative in nature.
+  id: totrans-38
   prefs: []
   type: TYPE_NORMAL
+  zh: 无追索转让的替代方案由贡献基金或FIA代表，允许转让信贷的银行机构将NPE职位转移到封闭基金中。作为交换，出让方按转移的不良贷款金额比例获得基金单位。AIFs的性质不是投机的。
 - en: In both cases, banks can assign or contribute single positions or single names
     to the AIFs or entire loan portfolios which also group together a large number
     of debtors.
+  id: totrans-39
   prefs: []
   type: TYPE_NORMAL
+  zh: 在这两种情况下，银行可以将单个职位或单个名称分配或贡献给AIFs，也可以将整个贷款组合分配给AIFs，这些贷款组合也汇集了大量的债务人。
 - en: The purchase price of the credit or of the specular contribution value for the
     AIFs is determined by estimating a credit recovery forecast, known as the Business
     Plan of the transfer transaction.
+  id: totrans-40
   prefs: []
   type: TYPE_NORMAL
+  zh: 信贷或投机性贡献值的购买价格由估计信贷回收预测确定，这被称为转让交易的商业计划。
 - en: The activity that allows the buyer to arrive at the determination of the recovery
     forecast and therefore the drafting of the Business Plan takes the name of credit
     due diligence and consists in the analysis of the single NPE positions.
+  id: totrans-41
   prefs: []
   type: TYPE_NORMAL
+  zh: 让买方确定回收预测并因此起草商业计划的活动称为信贷尽职调查，包括分析单个NPE职位。
 - en: The set of information collected by the buyer and made available by the seller
     is then used by the econometric models to elaborate the recovery forecast or Business
     Plan.
+  id: totrans-42
   prefs: []
   type: TYPE_NORMAL
+  zh: 买方收集的信息集合由卖方提供，并由计量经济模型用于制定回收预测或商业计划。
 - en: 'Usually the buyer relies on companies specialized in technical-legal advisory
     to carry out the due credit due diligence: these companies have staff who are
     experts in legal, financial and real estate analyses.'
+  id: totrans-43
   prefs: []
   type: TYPE_NORMAL
+  zh: 通常，买方依赖于专门从事技术法律咨询的公司进行尽职信贷尽职调查：这些公司拥有法律、财务和房地产分析方面的专家人员。
 - en: In the case of AIFs, on the other hand, the contributing institutions rely on
     the figure of the Independent Credit Expert.
+  id: totrans-44
   prefs: []
   type: TYPE_NORMAL
+  zh: 另一方面，在AIFs的情况下，贡献机构依靠独立信贷专家的形象。
 - en: The purchase price of receivables or the contribution value, whether single
     names or entire portfolios of receivables, is determined by discounting the cash
     flows included in the Business plan, which represents the forecast of credit recovery,
     according to the rate of return expected or IRR.
+  id: totrans-45
   prefs: []
   type: TYPE_NORMAL
+  zh: 应收账款的购买价格或贡献价值，无论是单一名称还是整个应收账款组合，都是通过贴现包含在业务计划中的现金流量来确定的，该业务计划代表了信贷回收的预测，根据预期收益率或IRR。
 - en: The rate of return represents the investor's expectation for the sale transaction.
+  id: totrans-46
   prefs: []
   type: TYPE_NORMAL
+  zh: 收益率代表投资者对销售交易的期望。
 - en: The expected return rates or market IRRs differ according to the type of credit
     but we can indicate a range between 11 and 15% as a benchmark for Secured credit
     portfolios, with a highly speculative investor approach.
+  id: totrans-47
   prefs: []
   type: TYPE_NORMAL
+  zh: 预期收益率或市场IRR根据信贷类型而异，但我们可以指出，对于担保信贷组合，高度投机的投资者方法的基准范围为11%至15%。
 - en: Of particular importance is the definition of the rate of return for FIA contribution
     operations, which we remind you do not have a speculative purpose.
+  id: totrans-48
   prefs: []
   type: TYPE_NORMAL
+  zh: 特别重要的是对FIA（金融投资者协会）投资运营的收益率定义，我们提醒您，这不具有投机目的。
 - en: 'For this type of transaction, the expected rate of return is set at ~ 3%: the
     rate is defined on the basis of a series of objective market parameters linked
     to the ten-year average of the Euribor and the average of the savings deposit
     rates of the main banking operators.'
+  id: totrans-49
   prefs: []
   type: TYPE_NORMAL
+  zh: 对于这种类型的交易，预期收益率设定为~3%：该率是根据与Euribor的十年平均值和主要银行操作者储蓄存款利率的平均值相关的一系列客观市场参数确定的。
 - en: The econometric methods for determining the purchase price of credit or credit
     portfolios are essentially statistical in nature based on the analysis of the
     correlations between the descriptive attributes of the debtor and the nature of
     the credit in relation to the historical trend of collections.
+  id: totrans-50
   prefs: []
   type: TYPE_NORMAL
+  zh: 确定信贷或信贷组合购买价格的计量方法基本上是统计方法，基于对债务人描述性属性和信贷性质与收集历史趋势之间相关性的分析。
 - en: Alternatively, we have implemented a method for determining recovery forecasts
     for UTP credits based on an AI approach.
+  id: totrans-51
   prefs: []
   type: TYPE_NORMAL
+  zh: 或者，我们实施了一种基于AI方法确定UTP信贷回收预测的方法。
 - en: 8.4 Description of an AI Valuation Method of UTP Credits
+  id: totrans-52
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 8.4 不良授信UTP信用的AI估值方法描述
 - en: In this chapter we describe a credit valorisation method based on an AI approach
     based on the construction of an Expert System (Bazzocchi [1988](#CR6)).
+  id: totrans-53
   prefs: []
   type: TYPE_NORMAL
+  zh: 在本章中，我们描述了一种基于AI方法的信贷价值化方法，该方法基于专家系统的构建（Bazzocchi [1988](#CR6)）。
 - en: With Expert System we mean a program able to replicate the behavior of one or
     more expert people (Iacono [1991](#CR7)).
+  id: totrans-54
   prefs: []
   type: TYPE_NORMAL
+  zh: 专家系统是指能够复制一个或多个专家行为的程序（Iacono [1991](#CR7)）。
 - en: 'The founding principle of the Expert Systems is the writing of “rules” which
     constitute the basis of the knowledge of the program: these rules are built thanks
     to interviews with experts in the sector, thanks to statistical analysis of data
     to extrapolate regularities identified by means of Decision Trees^([1](#Fn1))
     or using a Machine Learning solution (Woolery and Grzymala-Busse [1994](#CR9)).'
+  id: totrans-55
   prefs: []
   type: TYPE_NORMAL
+  zh: 专家系统的创始原则是编写“规则”，这构成了程序知识的基础：这些规则是通过与该领域专家的访谈建立的，借助数据的统计分析来推断通过决策树（[1](#Fn1)）或使用机器学习解决方案（Woolery和Grzymala-Busse
+    [1994](#CR9)）所识别的规律性。
 - en: We focus our study on UTP Secured and Unsecured credits, disbursed to both individuals
     and legal entities.
+  id: totrans-56
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们的研究重点放在了向个人和法人发放的UTP担保和非担保信贷上。
 - en: 'UTP credits are defined as credits that have not yet become non-performing:
     for this type of credit, the debtor has stopped paying his debt but the bank has
     not yet classified it as actual insolvency. The UTP condition has a legally limited
     duration over time and has two potential exit conditions: the position becomes
     a real non-performing loan or NPL or, through a specific recovery strategy, it
     returns to the performing condition.'
+  id: totrans-57
   prefs: []
   type: TYPE_NORMAL
+  zh: UTP（不良授信未转逾期贷款）信用是指尚未变为不良的贷款：对于这种类型的贷款，债务人已停止偿还债务，但银行尚未将其归类为实际破产。UTP状况在法律上具有有限的持续时间，并具有两个潜在的退出条件：该职位变为真正的不良贷款或NPL，或者通过特定的回收策略，它恢复为正常状态。
 - en: Both exit conditions determine a credit recovery forecast and a related recovery
     time frame.
+  id: totrans-58
   prefs: []
   type: TYPE_NORMAL
+  zh: 这两种退出条件确定了信贷回收预测和相关的回收时间框架。
 - en: 'Our program or algorithm for determining the valuation of UTP credits includes
     the following flow chart, which we will analyze in detail:'
+  id: totrans-59
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们用于确定UTP信贷估值的程序或算法包括以下流程图，我们将对其进行详细分析：
 - en: The UTP position is initially distinguished between a natural person and a legal
     person.
+  id: totrans-60
   prefs: []
   type: TYPE_NORMAL
+  zh: UTP职位最初区分为自然人和法人。
 - en: If the position is a natural person the information that is used is of a commercial
     nature.
+  id: totrans-61
   prefs: []
   type: TYPE_NORMAL
+  zh: 如果位置是自然人，则使用的信息是商业性质的。
 - en: If the position is instead a legal person, the information, in addition to the
     legal ones, concerns the company's balance sheet data and sector analysis.
+  id: totrans-62
   prefs: []
   type: TYPE_NORMAL
+  zh: 如果位置是法人，除了法律信息外，还涉及公司的资产负债表数据和行业分析。
 - en: Here is the information used in the model, which represents the input of the
     program (Tables [8.1](#Tab1) and [8.2](#Tab2)).Table 8.1
+  id: totrans-63
   prefs: []
   type: TYPE_NORMAL
+  zh: 这是模型中使用的信息，代表程序的输入（见表[8.1](#Tab1)和[8.2](#Tab2)）。表8.1
 - en: List of variables used in the algorithm for individuals
+  id: totrans-64
   prefs: []
   type: TYPE_NORMAL
+  zh: 用于个人算法的变量列表
 - en: '| Input parameters | Input type | Description |'
+  id: totrans-65
   prefs: []
   type: TYPE_TB
+  zh: '| 输入参数 | 输入类型 | 描述 |'
 - en: '| --- | --- | --- |'
+  id: totrans-66
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- |'
 - en: '| GBV | Amount | A Due credit |'
+  id: totrans-67
   prefs: []
   type: TYPE_TB
+  zh: '| GBV | 金额 | A应付信用 |'
 - en: '| How much did he pay | Amount | B Credits already paid |'
+  id: totrans-68
   prefs: []
   type: TYPE_TB
+  zh: '| 他支付了多少 | 金额 | B已支付的信贷 |'
 - en: '| How much disbursed | Amount | C Credit disbursed |'
+  id: totrans-69
   prefs: []
   type: TYPE_TB
+  zh: '| 已发放多少 | 金额 | C 已发放信用 |'
 - en: '| When last payment | At your place |   |'
+  id: totrans-70
   prefs: []
   type: TYPE_TB
+  zh: '| 上次付款时间 | 在您处 |   |'
 - en: '| Property location | String |   |'
+  id: totrans-71
   prefs: []
   type: TYPE_TB
+  zh: '| 物业位置 | 字符串 |   |'
 - en: '| Real estate value | Amount |   |'
+  id: totrans-72
   prefs: []
   type: TYPE_TB
+  zh: '| 房地产价值 | 金额 |   |'
 - en: '| Other Warranties | Yes   No |   |'
+  id: totrans-73
   prefs: []
   type: TYPE_TB
+  zh: '| 其他担保 | 是   否 |   |'
 - en: '| Guarantors | Yes   No |   |'
+  id: totrans-74
   prefs: []
   type: TYPE_TB
+  zh: '| 担保人 | 是   否 |   |'
 - en: '| Average installation amount | Amount |   |'
+  id: totrans-75
   prefs: []
   type: TYPE_TB
+  zh: '| 平均安装金额 | 金额 |   |'
 - en: '| Collections from utp | Yes   No | Collections after switching to UTP |'
+  id: totrans-76
   prefs: []
   type: TYPE_TB
+  zh: '| 从UTP收集 | 是   否 | 转换为UTP后的收集 |'
 - en: '| Work | Yes   No |   |'
+  id: totrans-77
   prefs: []
   type: TYPE_TB
+  zh: '| 工作 | 是   否 |   |'
 - en: '| Salary | Amount | F amount of salary |'
+  id: totrans-78
   prefs: []
   type: TYPE_TB
+  zh: '| 薪水 | 金额 | F薪水金额 |'
 - en: '| Work type | Drop down menu |   |'
+  id: totrans-79
   prefs: []
   type: TYPE_TB
+  zh: '| 工作类型 | 下拉菜单 |   |'
 - en: '| Profession | Drop down menu |   |'
+  id: totrans-80
   prefs: []
   type: TYPE_TB
+  zh: '| 职业 | 下拉菜单 |   |'
 - en: '| Marital status | Drop down menu |   |'
+  id: totrans-81
   prefs: []
   type: TYPE_TB
+  zh: '| 婚姻状况 | 下拉菜单 |   |'
 - en: '| Bride works | Yes   No |   |'
+  id: totrans-82
   prefs: []
   type: TYPE_TB
+  zh: '| 新娘是否工作 | 是   否 |   |'
 - en: '| Sons | Yes   No |   |'
+  id: totrans-83
   prefs: []
   type: TYPE_TB
+  zh: '| 儿子 | 是   否 |   |'
 - en: '| Available | Yes   No |   |'
+  id: totrans-84
   prefs: []
   type: TYPE_TB
+  zh: '| 可用的 | 是   否 |   |'
 - en: '| Special | Yes   No |   |'
+  id: totrans-85
   prefs: []
   type: TYPE_TB
+  zh: '| 特殊 | 是   否 |   |'
 - en: Table 8.2
+  id: totrans-86
   prefs: []
   type: TYPE_NORMAL
+  zh: 表8.2
 - en: List of variables used in the algorithm for legal entities
+  id: totrans-87
   prefs: []
   type: TYPE_NORMAL
+  zh: 用于法人算法的变量列表
 - en: '| Input parameters | Input type | Description |'
+  id: totrans-88
   prefs: []
   type: TYPE_TB
+  zh: '| 输入参数 | 输入类型 | 描述 |'
 - en: '| --- | --- | --- |'
+  id: totrans-89
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- |'
 - en: '| GBV | Amount | A Due credit |'
+  id: totrans-90
   prefs: []
   type: TYPE_TB
+  zh: '| GBV | 金额 | A 应付信用 |'
 - en: '| How much did he pay | Amount | B Credits already paid |'
+  id: totrans-91
   prefs: []
   type: TYPE_TB
+  zh: '| 他支付了多少 | 金额 | B 已支付的信贷 |'
 - en: '| How much disbursed | Amount | C Credit disbursed |'
+  id: totrans-92
   prefs: []
   type: TYPE_TB
+  zh: '| 已发放多少 | 金额 | C 已发放信用 |'
 - en: '| When last payment | At your place |   |'
+  id: totrans-93
   prefs: []
   type: TYPE_TB
+  zh: '| 上次付款时间 | 在您处 |   |'
 - en: '| Property location | String |   |'
+  id: totrans-94
   prefs: []
   type: TYPE_TB
+  zh: '| 物业位置 | 字符串 |   |'
 - en: '| Real estate value | Amount | d |'
+  id: totrans-95
   prefs: []
   type: TYPE_TB
+  zh: '| 房地产价值 | 金额 | d |'
 - en: '| Other Warranties | Yes   No |   |'
+  id: totrans-96
   prefs: []
   type: TYPE_TB
+  zh: '| 其他担保 | 是   否 |   |'
 - en: '| Guarantors | Yes   No |   |'
+  id: totrans-97
   prefs: []
   type: TYPE_TB
+  zh: '| 担保人 | 是   否 |   |'
 - en: '| Average installation amount | Amount | AND |'
+  id: totrans-98
   prefs: []
   type: TYPE_TB
+  zh: '| 平均安装金额 | 金额 | AND |'
 - en: '| Collections from utp | Yes   No |   |'
+  id: totrans-99
   prefs: []
   type: TYPE_TB
+  zh: '| 从UTP收集 | 是   否 |   |'
 - en: '| Sector | Drop down menu | Merchandise sector of the company |'
+  id: totrans-100
   prefs: []
   type: TYPE_TB
+  zh: '| 行业 | 下拉菜单 | 公司的商品行业 |'
 - en: '| active | Amount | Budget items |'
+  id: totrans-101
   prefs: []
   type: TYPE_TB
+  zh: '| 活跃度 | 金额 | 预算项目 |'
 - en: '| Passive | Amount | Budget items |'
+  id: totrans-102
   prefs: []
   type: TYPE_TB
+  zh: '| 被动 | 金额 | 预算项目 |'
 - en: '| Members | Yes   No |   |'
+  id: totrans-103
   prefs: []
   type: TYPE_TB
+  zh: '| 成员 | 是   否 |   |'
 - en: '| Activate | Yes   No |   |'
+  id: totrans-104
   prefs: []
   type: TYPE_TB
+  zh: '| 激活 | 是   否 |   |'
 - en: '| Refundable | Yes   No |   |'
+  id: totrans-105
   prefs: []
   type: TYPE_TB
+  zh: '| 可退还金额 | 是   否 |   |'
 - en: '| Special | Yes   No |   |'
+  id: totrans-106
   prefs: []
   type: TYPE_TB
+  zh: '| 特殊 | 是   否 |   |'
 - en: '| Refinancing analysis | Drop down menu | Index from 1 to 10 |'
+  id: totrans-107
   prefs: []
   type: TYPE_TB
+  zh: '| 重新融资分析 | 下拉菜单 | 从1到10的指数 |'
 - en: Following the scheme in Fig. [8.2](#Fig2), the first analysis consists in determining
     whether the position remains UTP or will become NPL.![](../images/524458_1_En_8_Chapter/524458_1_En_8_Fig2_HTML.png)
+  id: totrans-108
   prefs: []
   type: TYPE_NORMAL
+  zh: 按图[8.2](#Fig2)中的方案，第一次分析包括确定位置是否仍为UTP或将变为NPL。
 - en: A flowchart in 6 steps. 1, The U T P borrower divided into company and individual.
     2, The company is divided into legal, balance sheet, and market analysis. The
     individual flows personal analysis. 3, All the analysis are clubbed in recovery
     strategy. 4, Recovery strategy is divided into N P L judicial and U T P performing.
     5, U T P is divided into 7 category. 6, N P L and U T P categories are clubbed
     as business plan.
+  id: totrans-109
   prefs: []
   type: TYPE_NORMAL
+  zh: 6步骤的流程图。1、UTP借款人分为公司和个人。2、公司分为法人、资产负债表和市场分析。个人流程个人分析。3、所有分析汇总成恢复策略。4、恢复策略分为NPL司法和UTP表现。5、UTP分为7类别。6、NPL和UTP类别合并为业务计划。
 - en: Fig. 8.2
+  id: totrans-110
   prefs: []
   type: TYPE_NORMAL
+  zh: 图8.2
 - en: Flowchart
+  id: totrans-111
   prefs: []
   type: TYPE_NORMAL
+  zh: 流程图
 - en: Using the Input parameters, the two UTP credit portfolios were analyzed as follows,
     through a Cluster Tree Analysis (Table [8.3](#Tab3)).Table 8.3
+  id: totrans-112
   prefs: []
   type: TYPE_NORMAL
+  zh: 使用输入参数，通过集群树分析对两个UTP信贷组合进行了如下分析（见表[8.3](#Tab3)）。表8.3
 - en: Portfolios used to analyze NPL vs UTP positions
+  id: totrans-113
   prefs: []
   type: TYPE_NORMAL
+  zh: 用于分析NPL与UTP职位的投资组合
 - en: '| Portfolio ID | GBV € (~) | Borrower number (~) |'
+  id: totrans-114
   prefs: []
   type: TYPE_TB
+  zh: '| 投资组合ID | GBV €（〜） | 借款人数量（〜） |'
 - en: '| --- | --- | --- |'
+  id: totrans-115
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- |'
 - en: '| Portfolio A | 12,000,000.00 | 30 |'
+  id: totrans-116
   prefs: []
   type: TYPE_TB
+  zh: '| 投资组合A | 12,000,000.00 | 30 |'
 - en: '| Portfolio B | 55,000,000.00 | 25 |'
+  id: totrans-117
   prefs: []
   type: TYPE_TB
+  zh: '| 投资组合B | 55,000,000.00 | 25 |'
 - en: The result of the analysis made it possible to assign the correct weight to
     each parameter in determining the probability of switching from UTP to NPL.
+  id: totrans-118
   prefs: []
   type: TYPE_NORMAL
+  zh: 分析结果使得能够确定每个参数在确定从UTP到NPL转换概率时的正确权重。
 - en: In the event that the position becomes an NPL, the valuation becomes judicial
     and involves the application of a haircut on the value of the receivable equal
     to 80% of the value with a recovery time quantified as an average of 5.3 years
     (Study of the Times of the Courts Ed. [2022](#CR10)).
+  id: totrans-119
   prefs: []
   type: TYPE_NORMAL
+  zh: 如果职位变为NPL，则估值变为司法估值，并涉及对应收账款价值的折扣，折扣率为价值的80%，恢复时间平均为5.3年（法院审理时间研究[2022](#CR10)）。
 - en: In the event that the position remains UTP, it becomes necessary to define what
     is the most probable exit strategy from the UTP condition towards a return to
     performing or in any case an out-of-court settlement.
+  id: totrans-120
   prefs: []
   type: TYPE_NORMAL
+  zh: 如果职位仍然是UTP，则需要定义从UTP状态向执行或无论如何都要进行庭外和解的最有可能的退出策略。
 - en: In this case, to determine the recovery forecast, it is necessary to calculate
     the most probable strategy of non-judicial UTP solutions which can be classified
     as follows (Table [8.4](#Tab4)).Table 8.4
+  id: totrans-121
   prefs: []
   type: TYPE_NORMAL
+  zh: 在这种情况下，为了确定恢复预测，需要计算非司法UTP解决方案的最有可能策略，其可分类如下（表[8.4](#Tab4)）。表8.4
 - en: UTP exit strategies for legal entities
+  id: totrans-122
   prefs: []
   type: TYPE_NORMAL
+  zh: 个体法人退出UTP条件的策略
 - en: '| Exit strategy | Description |'
+  id: totrans-123
   prefs: []
   type: TYPE_TB
+  zh: '| 退出策略 | 描述 |'
 - en: '| --- | --- |'
+  id: totrans-124
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- |'
 - en: '| Asset sale | Consensual asset sale |'
+  id: totrans-125
   prefs: []
   type: TYPE_TB
+  zh: '| 资产出售 | 协商的资产出售 |'
 - en: '| DPO | Voluntary disposal even with a post or gradual return plan |'
+  id: totrans-126
   prefs: []
   type: TYPE_TB
+  zh: '| DPO | 即使有后期或渐进式归还计划，也可以自愿处置 |'
 - en: '| DPO Ex Article 67 | Recovery plan with a DPO |'
+  id: totrans-127
   prefs: []
   type: TYPE_TB
+  zh: '| 根据第67条的DPO | 带有DPO的恢复计划 |'
 - en: '| Article 67 lf—recovery plan | Recovery plans |'
+  id: totrans-128
   prefs: []
   type: TYPE_TB
+  zh: '| 第67条 lf-恢复计划 | 恢复计划 |'
 - en: '| Article 182 bis. restructuring | Legal restructuring plan |'
+  id: totrans-129
   prefs: []
   type: TYPE_TB
+  zh: '| 第182 bis 条. 重组 | 法律重组计划 |'
 - en: '| Article 160 lf—legal agreement | Legal agreement |'
+  id: totrans-130
   prefs: []
   type: TYPE_TB
+  zh: '| 第160条 lf-法律协议 | 法律协议 |'
 - en: For the determination of the recovery strategies of Table [8.5](#Tab5), for
     the positions that remain UTP we used a set of rules inserted in the calculation
     program of the credit recovery forecast.Table 8.5
+  id: totrans-131
   prefs: []
   type: TYPE_NORMAL
+  zh: 为了确定表[8.5](#Tab5)中的恢复策略，对于保持UTP状态的职位，我们使用了插入信贷恢复预测计算程序中的一组规则。表8.5
 - en: Strategies for exiting the UTP condition for individuals
+  id: totrans-132
   prefs: []
   type: TYPE_NORMAL
+  zh: 个人退出UTP状态的策略
 - en: '| Exit strategy | Description |'
+  id: totrans-133
   prefs: []
   type: TYPE_TB
+  zh: '| 退出策略 | 描述 |'
 - en: '| --- | --- |'
+  id: totrans-134
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- |'
 - en: '| Asset sale | Consensual asset sale |'
+  id: totrans-135
   prefs: []
   type: TYPE_TB
+  zh: '| 资产出售 | 协商的资产出售 |'
 - en: '| DPO | Voluntary disposal even with a DPO or gradual return plan |'
+  id: totrans-136
   prefs: []
   type: TYPE_TB
+  zh: '| DPO | 即使有DPO或渐进式归还计划，也可以自愿处置 |'
 - en: 'The Expert System was defined by a group of credit specialists with different
     backgrounds: we created a team made up of two lawyers, an economist expert in
     budget analysis and a real estate technical expert.'
+  id: totrans-137
   prefs: []
   type: TYPE_NORMAL
+  zh: 专家系统由具有不同背景的信贷专家组成：我们组建了一个由两名律师、一名精通预算分析的经济学家和一名房地产技术专家组成的团队。
 - en: The working group formulated the rules that define the activation conditions
     of the various strategies in relation to the input variables.
+  id: totrans-138
   prefs: []
   type: TYPE_NORMAL
+  zh: 工作组制定了定义各种策略激活条件的规则，与输入变量相关。
 - en: Particular mention should be made of the parameter relating to sector analysis.
     By sector we mean the belonging of the company to a precise product category defined
     through the ATECO codes (ATECO [2007](#CR11)). Through the analysis of sector
@@ -566,211 +854,327 @@
     to each product group in the case of sectors capable of generating GDP, differently
     a negative score for sectors with recession prospects in relation to macroeconomic
     conditions current.
+  id: totrans-139
   prefs: []
   type: TYPE_NORMAL
+  zh: 特别提及与行业分析相关的参数。所谓的行业是指公司属于通过ATECO代码（ATECO [2007](#CR11)）定义的精确产品类别。通过行业研究的分析（ISTAT
+    [2021](#CR12)），专家组为能够产生国内生产总值的行业的每个产品组分配了正分数，而对于在当前宏观经济条件下存在衰退前景的行业则分配了负分数。
 - en: In the same way, a company financeability scale linked to specific rules deduced
     from the analysis of the financial statements of the companies belonging to the
     portfolios in Table [8.3](#Tab3) was defined.
+  id: totrans-140
   prefs: []
   type: TYPE_NORMAL
+  zh: 同样地，根据对表[8.3](#Tab3)中所列公司财务报表分析的具体规则，定义了与公司可融资性相关的公司融资能力规模。
 - en: The analysis of financial statements for legal entities represents the most
     important element in drafting the rules for determining the most probable credit
     recovery strategy.
+  id: totrans-141
   prefs: []
   type: TYPE_NORMAL
+  zh: 对法人实体的财务报表进行分析是制定确定最可能的信贷回收策略规则的最重要因素。
 - en: The rules thus determined apply to the parameters entered as input and take
     the following form (Table [8.6](#Tab6)).Table 8.6
+  id: totrans-142
   prefs: []
   type: TYPE_NORMAL
+  zh: 因此确定的规则适用于输入的参数，并采取以下形式 (Table [8.6](#Tab6)).Table 8.6
 - en: Example of rules
+  id: totrans-143
   prefs: []
   type: TYPE_NORMAL
+  zh: 规则示例
 - en: '| Rules | Strategy |'
+  id: totrans-144
   prefs: []
   type: TYPE_TB
+  zh: '| 规则 | 策略 |'
 - en: '| --- | --- |'
+  id: totrans-145
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- |'
 - en: '| If FIRST MORTGAGE (SUBSTANTIAL) = YES AND D > A | Consensual asset sale |'
+  id: totrans-146
   prefs: []
   type: TYPE_TB
+  zh: '| 若第一抵押（实质性） = 是 并且 D > A | 自愿出售资产 |'
 - en: '| IF (FIRST MORTGAGE (SUBSTANTIAL) = NO (OR NULL) OR UNSECURED = YES) AND ACTIVE > PASSIVE
     AND ACTIVATE = YES | Voluntary disposal even with a post or gradual return plan
     |'
+  id: totrans-147
   prefs: []
   type: TYPE_TB
+  zh: '| 若 (第一抵押（实质性） = 否 (或空) 或 无抵押 = 是) 并且 活跃 > 被动 并且 激活 = 是 | 即使有岗位或逐步回归计划，也会自愿处置
+    |'
 - en: '| IF ACTIVE > (PASSIVE + Tolerance * PASSIVE) AND D > 0 | Consensual asset
     sale |'
+  id: totrans-148
   prefs: []
   type: TYPE_TB
+  zh: '| 若活跃 > (被动 + 容差 * 被动) 并且 D > 0 | 自愿出售资产 |'
 - en: '| IF ACTIVE > (PASSIVE + Tolerance * PASSIVE) | Voluntary disposal even with
     a post or gradual return plan |'
+  id: totrans-149
   prefs: []
   type: TYPE_TB
+  zh: '| 若活跃 > (被动 + 容差 * 被动) | 即使有岗位或逐步回归计划，也会自愿处置 |'
 - en: '| IF ACTIVE <  = A AND ACTIVE > PASSIVE | Dpo ex art 67 lf recovery plan |'
+  id: totrans-150
   prefs: []
   type: TYPE_TB
+  zh: '| 若活跃 <  = A 并且 活跃 > 被动 | 根据法律 67 lf 执行的复苏计划 |'
 - en: '| IF PASSIVE > ACTIVE AND (A < PASSIVE + Tolerance * PASSIVE AND A > PASSIVE—Tolerance
     * PASSIVE) | Art 160 lf—legal agreement |'
+  id: totrans-151
   prefs: []
   type: TYPE_TB
+  zh: '| 若被动 > 活跃 并且 (A < 被动 + 容差 * 被动 并且 A > 被动—容差 * 被动) | 第 160 lf 条—法律协议 |'
 - en: '| … | … |'
+  id: totrans-152
   prefs: []
   type: TYPE_TB
+  zh: '| … | … |'
 - en: Each strategy is then associated with a recovery forecast based on rules (Table
     [8.7](#Tab7)).Table 8.7
+  id: totrans-153
   prefs: []
   type: TYPE_NORMAL
+  zh: 然后，每种策略都与基于规则的回收预测相关联 (Table [8.7](#Tab7)).Table 8.7
 - en: Enhancement of the strategy for legal entities
+  id: totrans-154
   prefs: []
   type: TYPE_NORMAL
+  zh: 用于法人实体的策略改进
 - en: '| Exit strategy | UTP recovery amount |'
+  id: totrans-155
   prefs: []
   type: TYPE_TB
+  zh: '| 退出策略 | UTP 回收金额 |'
 - en: '| --- | --- |'
+  id: totrans-156
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- |'
 - en: '| Asset sale | Amount = (min A; D) * % Discount 1 |'
+  id: totrans-157
   prefs: []
   type: TYPE_TB
+  zh: '| 资产出售 | 金额 = (min A; D) * % 折扣 1 |'
 - en: '| DPO | Amount = A * % Discount 2 |'
+  id: totrans-158
   prefs: []
   type: TYPE_TB
+  zh: '| DPO | 金额 = A * % 折扣 2 |'
 - en: '| … | … |'
+  id: totrans-159
   prefs: []
   type: TYPE_TB
+  zh: '| … | … |'
 - en: The percentages indicated as DiscountN were determined through the statistical
     analysis of the credit portfolio database in Table [8.3](#Tab3), which have already
     generated receipts over the years.
+  id: totrans-160
   prefs: []
   type: TYPE_NORMAL
+  zh: 通过对表格 [8.3](#Tab3) 中的信贷组合数据库进行统计分析确定的 DiscountN 百分比已经在多年内产生了收据。
 - en: The result is highlighted in Table [8.8](#Tab8).Table 8.8
+  id: totrans-161
   prefs: []
   type: TYPE_NORMAL
+  zh: 结果在表 [8.8](#Tab8) 中突出显示。Table 8.8
 - en: Recovery values in percentages and in years associated with individual strategies
+  id: totrans-162
   prefs: []
   type: TYPE_NORMAL
+  zh: 百分比和个别策略相关的回收值
 - en: '| Strategy | Tolerance (%) | Discount as percentage (%) | Years for recovery
     |'
+  id: totrans-163
   prefs: []
   type: TYPE_TB
+  zh: '| 策略 | 容差 (%) | 折扣百分比 (%) | 回收年限 |'
 - en: '| --- | --- | --- | --- |'
+  id: totrans-164
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- | --- |'
 - en: '| Consensual asset sale | 10 | 90 | 3 |'
+  id: totrans-165
   prefs: []
   type: TYPE_TB
+  zh: '| 自愿出售资产 | 10 | 90 | 3 |'
 - en: '| Voluntary disposal even with a post or gradual return plan |   | 80 | 5 |'
+  id: totrans-166
   prefs: []
   type: TYPE_TB
+  zh: '| 即使有岗位或逐步回归计划 |   | 80 | 5 |'
 - en: '| Dpo ex art 67 lf recovery plan | 10 | 80 | 4 |'
+  id: totrans-167
   prefs: []
   type: TYPE_TB
+  zh: '| 根据法律 67 lf 执行的复苏计划 | 10 | 80 | 4 |'
 - en: '| Article 67 lf—recovery plan | 10 | 70 | 3 |'
+  id: totrans-168
   prefs: []
   type: TYPE_TB
+  zh: '| 第 67 lf 条—复苏计划 | 10 | 70 | 3 |'
 - en: '| Article 182 bis.—legal restructuring plan | 20 | 50 | 5 |'
+  id: totrans-169
   prefs: []
   type: TYPE_TB
+  zh: '| 第 182 bis 条.—法律重组计划 | 20 | 50 | 5 |'
 - en: '| Art 160 lf—legal agreement | 30 | 60 | 4 |'
+  id: totrans-170
   prefs: []
   type: TYPE_TB
+  zh: '| 第 160 lf 条—法律协议 | 30 | 60 | 4 |'
 - en: 'The credit valorisation thus elaborated makes it possible to generate a business
     plan of the credit portfolio, assigning to each position:'
+  id: totrans-171
   prefs: []
   type: TYPE_NORMAL
+  zh: '因此制定的信贷增值可以生成信贷组合的业务计划，为每个位置分配:'
 - en: Attribution of transition to NPL or permanence in UTP
+  id: totrans-172
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 将 NPL 过渡到 UTP 或保持在其中的归因
 - en: If NPL then Strategy is Judicial
+  id: totrans-173
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 如果是 NPL，则策略是司法
 - en: If UTP then the rules are applied to determine the Most Probable Recovery Strategy
+  id: totrans-174
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 如果是 UTP，则根据规则确定最可能的回收策略
 - en: For the selected Strategy, the recovery forecast is determined based on the
     valuation rules with the application of the Discount percentages calculated statistically
     as well as the recovery time in years.
+  id: totrans-175
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 对于所选的策略，根据统计计算的折扣百分比以及年度回收时间，确定回收预测。
 - en: The result is a business plan as shown in Fig. [8.3](#Fig3).![](../images/524458_1_En_8_Chapter/524458_1_En_8_Fig3_HTML.png)
+  id: totrans-176
   prefs: []
   type: TYPE_NORMAL
+  zh: 结果是一个业务计划，如图 [8.3](#Fig3) 所示。![](../images/524458_1_En_8_Chapter/524458_1_En_8_Fig3_HTML.png)
 - en: A table of 11 columns and 8 rows of data. The column headers are mentioned in
     foreign text and 4 dates in 2022 are March 31, June 30, September 30, and December
     31.
+  id: totrans-177
   prefs: []
   type: TYPE_NORMAL
+  zh: 一个包含 11 列和 8 行数据的表格。列标题用外文提及，2022 年的 4 个日期分别是 3 月 31 日、6 月 30 日、9 月 30 日和 12
+    月 31 日。
 - en: Fig. 8.3
+  id: totrans-178
   prefs: []
   type: TYPE_NORMAL
+  zh: 图 8.3
 - en: Example of UTP credit portfolio business plan
+  id: totrans-179
   prefs: []
   type: TYPE_NORMAL
+  zh: UTP 信贷组合业务计划示例
 - en: Each line of the document represents a debt position for which the credit value
     or GBV is presented, the legal nature, the exit condition as NPL or UTP and the
     recovery strategy with the related forecast of cash flows over time and the price
     of purchase or contribution value calculated as discounting of the cash flow at
     the reference rate.
+  id: totrans-180
   prefs: []
   type: TYPE_NORMAL
+  zh: 文档的每一行代表一个债务头寸，其中提供了信贷价值或GBV、法律性质、退出条件（作为NPL或UTP）以及与相关的现金流预测和购买价格或折现的贡献值计算有关的回收策略。参考利率。
 - en: 8.5 Model Verification
+  id: totrans-181
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 8.5 模型验证
 - en: The results of the credit portfolio valuation processing carried out with the
     program based on the algorithm described were validated by means of a valuation
     test conducted in parallel and manually with the specialists of the group of experts
     on the same credit portfolios. This activity has made it possible to consolidate
     the valorisation rules.
+  id: totrans-182
   prefs: []
   type: TYPE_NORMAL
+  zh: 使用所描述算法的程序对信贷投资组合进行估值处理的结果经过了与专家组的专家手动并行进行的估值测试的验证。这一活动使得价值规则得以巩固。
 - en: Subsequently, back tests were carried out on the valuation of loan portfolios
     whose strategy and recovery of the single position was already known. The degree
     of reliability both in terms of determination of the NPL or UTP conditions and
     of the exit strategies from the UTP condition has proved to be extremely high
     as shown in Table [8.9](#Tab9).Table 8.9
+  id: totrans-183
   prefs: []
   type: TYPE_NORMAL
+  zh: 随后，在已知单个头寸的策略和回收的贷款组合的估值上进行了回测。从UTP条件的确定以及从UTP条件的退出策略方面来看，可靠度程度证明极高，如[表8.9](#Tab9)所示。表8.9
 - en: Errors of the model compared to real cases
+  id: totrans-184
   prefs: []
   type: TYPE_NORMAL
+  zh: 与实际情况相比模型的误差
 - en: '| PortfolioID | GBV € (~) | Borrower number (~) | Error NPL Vs UTP (%) | Error
     in strategy det (%) | Error in recovery amount det (%) |'
+  id: totrans-185
   prefs: []
   type: TYPE_TB
+  zh: '| 投资组合ID | GBV € (~) | 借款人数量 (~) | NPL与UTP的错误率 (%) | 策略确定性的错误率 (%) | 回收金额确定性的错误率
+    (%) |'
 - en: '| --- | --- | --- | --- | --- | --- |'
+  id: totrans-186
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- | --- | --- | --- |'
 - en: '| P tf1 | 24,000,000.00 | 1 | 0 | 0 | 15 |'
+  id: totrans-187
   prefs: []
   type: TYPE_TB
+  zh: '| P tf1 | 24,000,000.00 | 1 | 0 | 0 | 15 |'
 - en: '| ptf2 | 20,000,000.00 | 20 | 10 | 11 | 9 |'
+  id: totrans-188
   prefs: []
   type: TYPE_TB
+  zh: '| ptf2 | 20,000,000.00 | 20 | 10 | 11 | 9 |'
 - en: '| ptf3 | 6,000,000.00 | 2 | 0 | 50 | 20 |'
+  id: totrans-189
   prefs: []
   type: TYPE_TB
+  zh: '| ptf3 | 6,000,000.00 | 2 | 0 | 50 | 20 |'
 - en: '| ptf4 | 30,000,000.00 | 40 | 6 | 7 | 6 |'
+  id: totrans-190
   prefs: []
   type: TYPE_TB
+  zh: '| ptf4 | 30,000,000.00 | 40 | 6 | 7 | 6 |'
 - en: '| ptf5 | 8,000,000.00 | 20 | 4 | 6 | 5 |'
+  id: totrans-191
   prefs: []
   type: TYPE_TB
+  zh: '| ptf5 | 8,000,000.00 | 20 | 4 | 6 | 5 |'
 - en: '| ptf6 | 14,000,000.00 | 15 | 9 | 9 | 8 |'
+  id: totrans-192
   prefs: []
   type: TYPE_TB
+  zh: '| ptf6 | 14,000,000.00 | 15 | 9 | 9 | 8 |'
 - en: '| ptf7 | 60,000,000.00 | 25 | 11 | 10 | 9 |'
+  id: totrans-193
   prefs: []
   type: TYPE_TB
+  zh: '| ptf7 | 60,000,000.00 | 25 | 11 | 10 | 9 |'
 - en: 8.6 Conclusion
+  id: totrans-194
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 8.6 结论
 - en: The use of a credit enhancement system based on the use of an Expert System
     has the advantage of explaining the physical phenomenon underlying the credit
     recovery process in a transparent and verifiable way. Rules can be subjected to
@@ -778,9 +1182,13 @@
     Furthermore, new rules can be added over time as environmental conditions change.
     In particular, new regulatory obligations or considerations on the application
     of macroeconomic parameters.
+  id: totrans-195
   prefs: []
   type: TYPE_NORMAL
+  zh: 基于专家系统的信用增强系统的使用具有将信贷回收过程的物理现象解释以透明和可验证方式的优势。规则可以随着时间的推移进行经验测试，以检查其描述的物理现实的遵循程度。此外，随着环境条件的变化，可以随时添加新规则。特别是，对新的监管义务或对宏观经济参数应用的考虑。
 - en: The application of the model on real credit portfolios allowed us to test the
     method and verify its correctness on various transactions, with satisfactory results.
+  id: totrans-196
   prefs: []
   type: TYPE_NORMAL
+  zh: 在实际信贷组合上应用模型使我们能够测试该方法，并在各种交易中验证其正确性，取得了令人满意的结果。

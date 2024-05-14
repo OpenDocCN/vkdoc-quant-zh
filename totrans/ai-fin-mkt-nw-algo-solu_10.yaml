@@ -1,21 +1,30 @@
 - en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2023F.
     Cecconi (ed.)AI in the Financial Markets Computational Social Sciences[https://doi.org/10.1007/978-3-031-26518-1_10](https://doi.org/10.1007/978-3-031-26518-1_10)
+  id: totrans-0
   prefs: []
   type: TYPE_NORMAL
+  zh: © 作者，独家许可给Springer Nature Switzerland AG 2023F. Cecconi (ed.)金融市场中的人工智能计算社会科学[https://doi.org/10.1007/978-3-031-26518-1_10](https://doi.org/10.1007/978-3-031-26518-1_10)
 - en: 10. Opinion Dynamics
+  id: totrans-1
   prefs:
   - PREF_H1
   type: TYPE_NORMAL
+  zh: 10. 观点动态
 - en: 'Luca Marconi^([1](#Aff16) [ ](#ContactOfAuthor1))(1)Advanced School in Artificial
     Intelligence, Brain, Mind and Society, Institute of Cognitive Sciences and Technologies,
     Italian National Research Council, Via San Martino Della Battaglia 44, Rome, ItalyLuca MarconiEmail:
     [luca.marc@hotmail.it](mailto:luca.marc@hotmail.it)'
+  id: totrans-2
   prefs: []
   type: TYPE_NORMAL
+  zh: Luca Marconi^([1](#Aff16) [ ](#ContactOfAuthor1))(1)意大利国家研究委员会认知科学与技术研究所，人工智能、大脑、心灵和社会高级学校，罗马，意大利Via
+    San Martino Della Battaglia 44Luca Marconi电子邮件：[luca.marc@hotmail.it](mailto:luca.marc@hotmail.it)
 - en: Abstract
+  id: totrans-3
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 摘要
 - en: 'The computational social science is a challenging interdisciplinary field of
     study, aimed at studying social phenomena by merging the traditional research
     of social science with the use of a computational and data-driven approach. In
@@ -52,11 +61,15 @@
     often be modified with various variants. In this chapter, we will present the
     overall scenario of opinion dynamics, by showing the main challenges and approaches
     to study and analyze consensus formation in heterogeneous settings and conditions.'
+  id: totrans-4
   prefs: []
   type: TYPE_NORMAL
+  zh: 计算社会科学是一个具有挑战性的跨学科研究领域，旨在通过将传统社会科学研究与计算和数据驱动的方法相结合来研究社会现象。在复杂系统科学的概念框架中，这些现象所处和行动的环境可以被视为一个社会系统，由许多元素组成，这些元素是代理人，形成一个社会复杂网络：因此，代理人可以被网络的节点所代表，它们的相互位置决定了所产生的网络结构。因此，复杂系统科学的视角特别有助于研究社会环境中发生的相互作用：事实上，这些机制导致了系统水平上出现的集体行为。因此，计算社会科学的目标是研究不同的相互作用机制，以便理解它们在集体社会现象的产生中的作用。为了进行有效和稳健的研究，已经提出了许多模型，范围从一般社会动态和社会传播到群体行为和观点，文化或语言动态，或层次结构或分离形成。在这种背景下，观点动态绝对是一个需要研究的基本社会行为。通过日常经验，最重要的社会现象之一是一致意见：特别是当涉及到涉及不同观点的讨论时，达成至少部分一致的过程在人类思维演变过程中被证明是一个基本的催化剂。从单个个体的相互作用动态到大规模人口的观点动态，社会和政治生活中有许多情况下，社区需要达成共识。通过在不同主题上逐步达成共识的过程，一些观点传播，一些观点消失，一些观点通过合并和非线性模因过程演变：通过这种方式，主导的宏观文化在社会中形成并演变。因此，观点动态模型可以被看作是所谓的共识模型的一个子集。通常，共识模型允许理解当选择多个选项时一组相互作用的代理人是否以及如何达成共识：政治投票，观点，文化特征是其中的著名例子。基于代理人的建模方法特别有助于表示个体的行为并分析人口动态。在文献中，已经有许多模型旨在研究观点动态：每个提出的模型通常可以通过各种变体进行修改。在本章中，我们将通过展示主要的挑战和方法来研究和分析异质设置和条件下共识形成的整体情景。
 - en: KeywordsOpinion dynamicComputational social scienceSociophysicsLuca Marconi
+  id: totrans-5
   prefs: []
   type: TYPE_NORMAL
+  zh: 关键词意见动态计算社会科学社会物理学卢卡·马尔科尼
 - en: is currently PhD Candidate in Computer Science at the University of Milano-Bicocca,
     in the research areas of Artificial Intelligence and Decision Systems, as well
     as Business Strategist and AI Researcher for an AI company in Milan. He also gained
@@ -73,12 +86,17 @@
     with the Laboratory of Agent Based Social Simulation of the ISTC-CNR. His research
     interests are in the fields of artificial intelligence, cognitive science, social
     systems dynamics, complex systems and management science.
+  id: totrans-6
   prefs: []
   type: TYPE_NORMAL
+  zh: 目前是米兰比科卡大学计算机科学博士候选人，在人工智能和决策系统、以及米兰一家人工智能公司的业务战略师和AI研究员研究领域有丰富经验。他还曾担任知名媒体情报和金融传播私人顾问的研究顾问和顾问。他拥有米兰理工大学管理工程的理学和学士学位，以及巴利阿里群岛大学交叉学科物理与复杂系统研究所（IFISC
+    UIB-CSIC）的复杂系统物理理学硕士学位。他还持有意大利国家研究理事会认知科学和技术研究所（ISTC-CNR）举办的人工智能、大脑、心灵和社会高级学校的研究生文凭，他在那里与ISTC-CNR的基于代理人的社会模拟实验室合作开展了计算社会科学领域的研究项目。他的研究兴趣涉及人工智能、认知科学、社会系统动力学、复杂系统和管理科学等领域。
 - en: 10.1 Introduction to Opinion Dynamics
+  id: totrans-7
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 10.1 引言：舆论动态学
 - en: 'Opinion dynamics aims at studying, modelling and evaluating in a formal and
     mathematical the process of the evolution of *opinions* in the course of heterogeneous
     social *interactions* among *agents* (Xia et al. [2011](#CR39); Zha et al. [2020](#CR40)).
@@ -98,8 +116,10 @@
     phenomena and situations: in the computational social science perspective, then,
     the challenge is to effectively model the interaction mechanisms, so as to understand
     their role in the rise of *collective social phenomena*.'
+  id: totrans-8
   prefs: []
   type: TYPE_NORMAL
+  zh: 舆论动态学旨在以形式化和数学的方式研究、建模和评估在异质社会个体之间的社会互动过程中*观点*演变的过程（Xia等人，[2011](#CR39)；Zha等人，[2020](#CR40)）。虽然这个研究领域在文献中并不是最近才出现的，但它的受欢迎程度如今已经增长：实际上，对*复杂系统*和*计算社会科学*的日益关注（Lazer等人，[2009](#CR27)；Conte等人，[2012](#CR12)）明显刺激了这一学科的发展，以及它在政治、社会学甚至金融等广泛范围的具体现实场景中的应用。在这个视角下，舆论动态学致力于模拟代理人之间的互动过程中发生的复杂现象，这些现象在系统层面上产生了*新兴行为*：一般来说，代理人通过一些简单或复杂的*社交网络*相互连接，从而实现一些特定的互动、*协调*和*信息交换*过程（Patterson和Bamieh，[2010](#CR32)；Fotakis等人，[2018](#CR17)）。这些机制在其本质上是有限和局限的，它们指导着潜在的动态，从而使学者和研究人员能够将他们的研究集中在特定的现象和情境上：在计算社会科学的视角下，挑战在于有效地模拟互动机制，以便理解它们在*集体社会现象*的产生中的作用。
 - en: 'In this conceptual framework, opinion dynamics studies the opinion evolution
     processes among groups of agents, socially and physically organized in some sort
     of social network. By everyday experience, one of the most important social phenomenon
@@ -118,8 +138,11 @@
     for helping practitioners, decision-makers, managers and stakeholders in heterogenous
     organizations to improve and optimize decision-making processes under a wide range
     of potential real-case situations.'
+  id: totrans-9
   prefs: []
   type: TYPE_NORMAL
+  zh: 在这个概念框架中，舆论动态研究了在某种社会网络中组织的群体之间的舆论演化过程。通过日常经验，最重要的社会现象之一是*一致*或*共识*：特别是当涉及到讨论不同观点的讨论时，至少达成部分一致的过程被证明是人类思维演化的基本催化剂之一。其重要性已经被哲学和逻辑学指出，从赫拉克利特到黑格尔，都有着*论点-反论点*的概念化。社会和政治生活中有许多情况需要社区达成共识。通过对不同主题的逐步达成一致的过程，一些观点传播开来，一些观点消失，另一些通过合并和非线性的*模因过程*演化（Mueller
+    and Tan [2018](#CR28); Nye [2011](#CR31)）：这样，主导的宏观文化就形成并在社会中演化。因此，对参与社会群体中观点演化的不同社会和文化现象的数学和统计研究，对于帮助异质组织中的从业者、决策者、管理者和利益相关者在各种潜在的实际情况下改善和优化决策过程是非常重要的。
 - en: 'In opinion dynamics, the process of designing, adapting, choosing and evaluating
     the right model under specific static or evolving conditions and boundaries requires
     a twofold view: on the one hand, it is necessary to model the single, precise,
@@ -147,8 +170,11 @@
     etc.), the opinion evolution rules, namely the update rules governing the system
     dynamics, and the opinion dynamics environment, that is the social network enclosing
     the agents under specific, circumscribed social or physical relationships.'
+  id: totrans-10
   prefs: []
   type: TYPE_NORMAL
+  zh: 在舆论动态中，设计、调整、选择和评估在特定静态或演变条件和边界下的正确模型的过程需要双重视角：一方面，有必要对社会群体中代理之间的单一、精确的*本地*相互作用进行建模，这些代理通常在物理上或社会上*邻近*或在某种程度上“相似”。必须准确建立和预定义*邻域*、*相似性*、能力或特定*阈值*的概念，以允许这种相互作用。一般来说，代理之间的局部相互作用由所谓的*更新规则*来建模，这些规则封装了具体的机制和关系，同时考虑了代理行动和相互作用的网络特征和结构。简单、局限的局部相互作用和知识交换过程导致在整个社会网络水平上产生*全局*、一般的、新兴的行为（Bolzern等人[2020](#CR5);
+    Giardini等人[2015](#CR19)）。因此，舆论动态的主要目标之一是研究和分析社会系统达成共识所需的方式和整体时间，在几种*边界条件*下。一般来说，最终状态倾向于假定三种经典的*稳定状态*之一：共识、*极化*和*分裂*（Zha等人[2020](#CR40)）。正如每个人的日常经验所表明的那样，在社会群体或交互中，并没有保证总是达成共识：在某些情况下，会出现两种最终意见，将人口极化为两个群集，或者，在其他情况下，没有出现主导意见，因此人口意见在某些群集中分裂。因此，舆论动态考虑了一些构建有效和完整模型的具体概念要素：意见表达格式，即意见如何表达和建模（例如，连续、离散、二进制等）、意见演变规则，即管理系统动态的更新规则，以及舆论动态环境，即在特定的、局限的社会或物理关系下围绕代理的社会网络。
 - en: In this chapter, we will present the overall scenario of opinion dynamics, by
     showing the main challenges and approaches to study and analyze consensus formation
     in heterogeneous settings and conditions. We will start by contextualizing the
@@ -160,12 +186,16 @@
     potential applications to the financial domain will be highlighted, in order to
     help the reader appreciate and understand this fascinating discipline’s potentialities
     for real, concrete and current financial situations and environments.
+  id: totrans-11
   prefs: []
   type: TYPE_NORMAL
+  zh: 在本章中，我们将通过展示主要挑战和方法来研究和分析异质环境和条件下共识形成的整体情景，来呈现舆论动态的总体情况。我们将从将计算社会科学的一般概念框架置于上下文中开始，作为有效研究和分析社会现象的手段，然后我们将提出文献中主要舆论动态模型的初步分类，这对我们的目标是有用的。然后，这些模型将被概括描述，旨在突出考虑的主要特征和行为。最后，我们将强调它们对金融领域的优势和潜在应用，以帮助读者欣赏和理解这个引人入胜的学科对于真实、具体和当前的金融情景和环境的潜力。
 - en: 10.2 The Computational Social Science Perspective
+  id: totrans-12
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 10.2 计算社会科学视角
 - en: 'The *computational social science* (CSS) is a challenging and promising highly-interdisciplinary
     field of study, aimed at studying potentially any *social phenomena* by merging
     the traditional research of social science with the use of a computational and
@@ -183,8 +213,11 @@
     and *agent-based models*. On the other hand, the possible applicative fields range
     from cultural and political sociology to social psychology, up to economics and
     demographics.'
+  id: totrans-13
   prefs: []
   type: TYPE_NORMAL
+  zh: '*计算社会科学*（CSS）是一个充满挑战和前景的高度跨学科研究领域，旨在通过将传统社会科学研究与计算和*数据驱动*方法相结合，研究可能的任何*社会现象*（Lazer等人[2009](#CR27);
+    Conte等人[2012](#CR12)）。因此，CSS专注于让社会科学家利用定量、客观的*以数据为中心*的方法，将他们的经典和传统的定性研究与来自于社会现象的定量分析的新证据相结合，这些证据来自于真实社会环境和社区。用于设计和评估计算模型的数据可以来自于多种*数据来源*，例如社交媒体、互联网、其他数字媒体或数字化档案。因此，CSS本质上是跨学科和多层面的：它允许通过广泛而不断发展的一系列方法和途径进行关于人类和社会行为的推断，例如统计方法、*数据挖掘*和*文本分析*技术，以及*多主体系统*和*基于代理人的模型*。另一方面，可能的应用领域涵盖了文化和政治社会学、社会心理学，甚至经济学和人口统计学。'
 - en: 'In the conceptual framework of complex systems science, the environment where
     these phenomena live and act can be seen as a *social complex system*, composed
     of many elements, the *agents*, which form a *social complex network*: thus, the
@@ -207,8 +240,11 @@
     in large human societies. Therefore, the main challenge for CSS is to recognize,
     analyze and predict the evolution of heterogenous social behaviors and phenomena
     deriving from the social interactions among the agents involved.'
+  id: totrans-14
   prefs: []
   type: TYPE_NORMAL
+  zh: 在复杂系统科学的概念框架中，这些现象存在和作用的环境可以被视为一个*社会复杂系统*，由许多元素，即*代理人*组成，它们形成了一个*社会复杂网络*：因此，代理人可以被表示为网络的节点，它们之间的相互位置决定了生成的网络结构。创建和调整“正确”的和最“有用”的网络结构证明是CSS方法和算法设计和开发中的基本步骤。节点之间发生的不同关系可以产生整个网络中的一些普遍和新兴的行为。然后，复杂系统科学的视角特别有用于研究社会环境中生成和发展的相互作用：这些机制导致了系统级别上的*新兴集体行为*。因此，整个网络的某些属性源自节点之间发生的各种关系。作为一个复杂系统，新兴行为不能从单个代理人的行为或属性中推断出来，根据亚里士多德的话：“整体大于部分之和”（Grieves
+    and Vickers [2017](#CR23); Aristotle and Armstrong [1933](#CR1)）。在任何社会系统中，代理人之间的相互作用在所有社会过程中都起着关键作用，从组织中的*决策*和*协作*，到社会群体中的意见动态和*感知*，再到大型人类社会中的*文化演化*和*扩散*。因此，CSS面临的主要挑战是识别、分析和预测涉及的代理人之间的社会相互作用导致的异质社会行为和现象的演变。
 - en: 'Overall, CSS has to deal with two main macro-issues: the *socio-computational*
     and the *algorithmic-modelling* issues. The former is related to the general needs
     and challenges related to CSS, e.g. the integration of qualitative social research
@@ -227,8 +263,10 @@
     steps to be faced is the choice, design, implementation and evaluation of the
     right model, adapted and even extended in the specific case and social dynamics
     involved.'
+  id: totrans-15
   prefs: []
   type: TYPE_NORMAL
+  zh: 总的来说，CSS 必须处理两个主要的宏观问题：*社会计算*和*算法建模*问题。前者与 CSS 相关的一般需求和挑战有关，例如将定性社会研究与数据分析和计算方法相结合，以及评估和模拟代理人在不同条件和社会情境中的*协调*、交互和社会过程的需求。这些交互和协调过程可能涉及代理人之间的*信息*或*知识生产*和*分享*，就像在观点动态模型中一样，导致网络层面存在或不存在*最终状态*，例如在整个系统中达成一致或*同步*。相反，后者与设计和建模不同交互机制相关的具体问题和算法问题有关，旨在理解它们在集体社会现象的出现中的作用。同样，信息和知识的创造与交流的作用必须经过算法调查，因为它们在定向人口社会和文化演变中起着重要作用。随后要面对的步骤是选择、设计、实施和评估适合的模型，在特定情况和涉及的社会动态中进行调整甚至扩展。
 - en: 'In the literature, the models proposed deal with many different kinds of social
     phenomena and processes, ranging from general *social dynamics* (González et al.
     [2008](#CR21); Balcan et al. [2009](#CR3)) and *social spreading* (Conover et
@@ -250,6 +288,7 @@
     real-world social situations, allowing practitioners and scholars to both focus
     on some specific mechanism and assess the overall emerging behaviors and phenomena
     in the global network.'
+  id: totrans-16
   prefs: []
   type: TYPE_NORMAL
 - en: In this general perspective, now we proceed by focusing on opinion dynamics
@@ -259,9 +298,11 @@
     classification strategy to focus on the different models and mechanisms, to make
     the reader appreciate their relevance in social settings and, finally, in concrete
     financial applications.
+  id: totrans-17
   prefs: []
   type: TYPE_NORMAL
 - en: 10.3 Classification of Opinion Dynamics Models
+  id: totrans-18
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -277,6 +318,7 @@
     or potential applications when it comes to finance and its challenges. Therefore,
     this work is surely not intended as an exhaustive review of the models in the
     literature.
+  id: totrans-19
   prefs: []
   type: TYPE_NORMAL
 - en: 'To provide a useful classification for our scopes, we consider two main dimensions:
@@ -301,6 +343,7 @@
     or behaviors to study and simulate, e.g. in the CODA (continuous opinions and
     discrete actions) model (Zha et al. [2020](#CR40); Sîrbu et al. [2017](#CR35))
     we will report.'
+  id: totrans-20
   prefs: []
   type: TYPE_NORMAL
 - en: Of course, there could be several other ways to provide a classification methodology
@@ -318,23 +361,29 @@
     Nevertheless, we decided to make the classification chosen as simple as possible,
     to focus on the main fundamental models and their application in finance, as anticipated
     before.
+  id: totrans-21
   prefs: []
   type: TYPE_NORMAL
 - en: In Fig. [10.1](#Fig1), we schematically represent the different models according
     to the presented classification.![](../images/524458_1_En_10_Chapter/524458_1_En_10_Fig1_HTML.png)
+  id: totrans-22
   prefs: []
   type: TYPE_NORMAL
 - en: 4 quadrant illustration of dynamics models. The top is continuous, the left
     is 1 dimensional, the bottom is discrete, and the right is multi-dimensional.
+  id: totrans-23
   prefs: []
   type: TYPE_NORMAL
 - en: Fig. 10.1
+  id: totrans-24
   prefs: []
   type: TYPE_NORMAL
 - en: Classification positioning map of the main opinion dynamics models
+  id: totrans-25
   prefs: []
   type: TYPE_NORMAL
 - en: 10.4 Continuous Opinion Models
+  id: totrans-26
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -347,9 +396,11 @@
     Das et al. [2014](#CR13)) and the bounded confidence models: the Deffuant-Weisbuch
     model (Weisbuch et al. [2002](#CR38); Deffuant et al. [2000](#CR14)) and the Hegselmann-Krause
     model (Hegselmann and Krause [2002](#CR24)).'
+  id: totrans-27
   prefs: []
   type: TYPE_NORMAL
 - en: '**De Groot Model**'
+  id: totrans-28
   prefs: []
   type: TYPE_NORMAL
 - en: 'This is a classical opinion dynamics models, widely studied as a basic approach
@@ -392,9 +443,11 @@
     Friedkin and Johnsen [1990](#CR18)), which include *stubborn agents* in the system,
     by considering a parameter representing the *susceptibility* of each individual
     agent, namely the level of *stubbornness*.'
+  id: totrans-29
   prefs: []
   type: TYPE_NORMAL
 - en: '**Bounded Confidence Models**'
+  id: totrans-30
   prefs: []
   type: TYPE_NORMAL
 - en: 'The bounded confidence models can be seen as extensions of the De Groot model,
@@ -409,9 +462,11 @@
     *homogeneous*; otherwise, the model is *heterogeneous*. The two main bounded confidence
     models are the Deffuant-Weisbuch model, wich is a *pairwise* model, and the Hegselmann-Krause
     model, which is the mostly diffused *synchronous* version.'
+  id: totrans-31
   prefs: []
   type: TYPE_NORMAL
 - en: '***Deffuant-Weisbuch Model***'
+  id: totrans-32
   prefs: []
   type: TYPE_NORMAL
 - en: In the Deffuant model, at each discrete time step two neighboring agents are
@@ -424,6 +479,7 @@
     In the case the interaction happens, the update rule for the agent i is the following
     one:![$${o}_{i}^{t+1}={o}_{i}^{t}+\mu \left({o}_{j}^{t}-{o}_{i}^{t}\right),$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_Equd.png)while
     the update rule for the agent j is:![$${o}_{j}^{t+1}={o}_{j}^{t}+\mu \left({o}_{i}^{t}-{o}_{j}^{t}\right).$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_Eque.png)
+  id: totrans-33
   prefs: []
   type: TYPE_NORMAL
 - en: 'Then, in this model there are two main parameters to take into consideration:
@@ -442,9 +498,11 @@
     their previous opinions. Several extensions are found in the literature, considering
     aspects like the presence of *noise*, the kind of agents interacting and specific
     boundaries or conditions on the values of the parameters.'
+  id: totrans-34
   prefs: []
   type: TYPE_NORMAL
 - en: '***Hegselmann-Krause Model***'
+  id: totrans-35
   prefs: []
   type: TYPE_NORMAL
 - en: This is the most well-known and diffused synchronous version of bounded confidence
@@ -462,9 +520,11 @@
     possibly interacting agents is below a given threshold. This model is studied
     with specific attention to the neighbors’ opinion dynamics and their convergence
     properties, even in an extended multi-dimensional case.
+  id: totrans-36
   prefs: []
   type: TYPE_NORMAL
 - en: 10.5 Discrete Opinion Models
+  id: totrans-37
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -478,9 +538,11 @@
     basic models used as a basis for more complicated and advanced approaches: the
     idea is to introduce the reader to the many potentialities of these approaches
     for finance, which we will explore in the last section of this chapter.'
+  id: totrans-38
   prefs: []
   type: TYPE_NORMAL
 - en: '**Voter Model**'
+  id: totrans-39
   prefs: []
   type: TYPE_NORMAL
 - en: The voter model is one of the most classical and simplest discrete opinion dynamics
@@ -507,9 +569,11 @@
     regular lattices. Moreover, many studies are related to ![$$d$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq45.png)-dimensional
     hyper-cubic lattices. In an infinite system, it has been proved that consensus
     is reached for ![$$d\le 2$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq46.png).
+  id: totrans-40
   prefs: []
   type: TYPE_NORMAL
 - en: '**Sznajd Model**'
+  id: totrans-41
   prefs: []
   type: TYPE_NORMAL
 - en: 'The idea behind the Snajzd model can be effectively conveyed by the simple
@@ -527,9 +591,11 @@
     be the opinion of the agent ![$${a}_{i}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq49.png)
     at time ![$$t$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq50.png).
     The update rules governing the evolution of the opinions are the following:'
+  id: totrans-42
   prefs: []
   type: TYPE_NORMAL
 - en: '1.'
+  id: totrans-43
   prefs:
   - PREF_OL
   type: TYPE_NORMAL
@@ -538,10 +604,12 @@
     and ![$${a}_{i+1}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq53.png)
     are randomly chosen and their neighbors are ![$${a}_{i-1}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq54.png)
     and ![$${a}_{i+2}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq55.png).
+  id: totrans-44
   prefs:
   - PREF_IND
   type: TYPE_NORMAL
 - en: '2.'
+  id: totrans-45
   prefs:
   - PREF_OL
   type: TYPE_NORMAL
@@ -551,10 +619,12 @@
     and ![$${a}_{i+2}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq59.png),
     i.e. if ![$${o}_{i}^{t}={o}_{i+1}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq60.png)
     then ![$${o}_{i-1}^{t+1}={o}_{i+2}^{t+1}={o}_{i}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq61.png).
+  id: totrans-46
   prefs:
   - PREF_IND
   type: TYPE_NORMAL
 - en: '3.'
+  id: totrans-47
   prefs:
   - PREF_OL
   type: TYPE_NORMAL
@@ -564,10 +634,12 @@
     agent neighbors, namely if ![$${o}_{i}^{t}={-o}_{i+1}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq64.png)
     then ![$${o}_{i-1}^{t+1}={o}_{i+1}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq65.png)
     and ![$${o}_{i+2}^{t+1}={o}_{i}^{t}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq66.png).
+  id: totrans-48
   prefs:
   - PREF_IND
   type: TYPE_NORMAL
 - en: '**Ising Model**'
+  id: totrans-49
   prefs: []
   type: TYPE_NORMAL
 - en: The Ising model is a well-known and extensively studied model in physics, one
@@ -590,9 +662,11 @@
     between the opinions and the external information. The former interaction energy
     will be minimal when two agents share the same opinions, while the latter is minimized
     when the opinion and the external field share the same value.
+  id: totrans-50
   prefs: []
   type: TYPE_NORMAL
 - en: '**Majority Rule Model**'
+  id: totrans-51
   prefs: []
   type: TYPE_NORMAL
 - en: This model was introduced by Galam to study the use of majority rule in the
@@ -614,9 +688,11 @@
     and stimulate the study of opinion dynamics in hierarchical systems and decision-making
     in political and electoral systems in several conditions, including the presence
     of coalition or fragmentation between opinions among agents in the population.
+  id: totrans-52
   prefs: []
   type: TYPE_NORMAL
 - en: '**Granovetter’s Threshold Model**'
+  id: totrans-53
   prefs: []
   type: TYPE_NORMAL
 - en: This is one of the most famous threshold models, investigating the possible
@@ -632,9 +708,11 @@
     part to the decision-making process and collective behavior. The study of such
     thresholds in heterogeneous conditions and populations allows to predict the final
     state of the opinions in the population.
+  id: totrans-54
   prefs: []
   type: TYPE_NORMAL
 - en: 10.6 Hybrid Models
+  id: totrans-55
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -648,9 +726,11 @@
     present the Continuous Opinions and Discrete Actions (CODA) model, providing a
     explanatory approach for hybridization of discrete and continuous elements in
     opinion dynamics.
+  id: totrans-56
   prefs: []
   type: TYPE_NORMAL
 - en: '**CODA Model**'
+  id: totrans-57
   prefs: []
   type: TYPE_NORMAL
 - en: In this model, the agents deal with binary decisions, thus representing the
@@ -686,6 +766,7 @@
     to judge the other ones, categorizing them into “trustworthy” and “untrustworthy”.
     In each case, the possible emergence of consensus or polarization is studied under
     several heterogeneous conditions.
+  id: totrans-58
   prefs: []
   type: TYPE_NORMAL
 - en: 'Besides the CODA model, many other hybrid approaches have been investigated
@@ -700,9 +781,11 @@
     require more than one dimensions to adequately represent the full range of the
     opinions considered: thus, it is worth to mention multi-dimensional opinion dynamics
     models.'
+  id: totrans-59
   prefs: []
   type: TYPE_NORMAL
 - en: 10.7 Multi-dimensional Opinions
+  id: totrans-60
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -727,9 +810,11 @@
     section, we briefly present the main aspects of the well-known Axelrod model,
     where the agents are endowed with different cultural features modeling their beliefs
     or attitudes.
+  id: totrans-61
   prefs: []
   type: TYPE_NORMAL
 - en: '**Axelrod Model**'
+  id: totrans-62
   prefs: []
   type: TYPE_NORMAL
 - en: This model was introduced for culture dynamics, to study and simulate the culture
@@ -741,6 +826,7 @@
     in many kinds of social networks and social communities. The latter, instead,
     refers to the tendency of the individual to become more similar after their interaction,
     thus it is the ability to mutually influence each other in the curse of the interaction.
+  id: totrans-63
   prefs: []
   type: TYPE_NORMAL
 - en: 'In the population of ![$$N$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq91.png)
@@ -775,6 +861,7 @@
     ![$${q}_{C}$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq104.png),
     depending on the number ![$$F$$](../images/524458_1_En_10_Chapter/524458_1_En_10_Chapter_TeX_IEq105.png)
     of the features in the population.'
+  id: totrans-64
   prefs: []
   type: TYPE_NORMAL
 - en: Of course, such model has been extensively analyzed, adapted and extended in
@@ -791,9 +878,11 @@
     change in their opinion, e.g. including some threshold for the overlap, determining
     when the agents will disagree, as well as including *committed individuals* that
     will not change their opinion in any case.
+  id: totrans-65
   prefs: []
   type: TYPE_NORMAL
 - en: 10.8 Applications to Finance
+  id: totrans-66
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -817,6 +906,7 @@
     generally possible to find applications of the already presented basic models
     or their extensions, as well as newly created models, specifically designed to
     analyze particular situations or scenarios.
+  id: totrans-67
   prefs: []
   type: TYPE_NORMAL
 - en: 'Among the models presented, the Ising one is one of the most commonly applied
@@ -838,6 +928,7 @@
     for modeling the agents features and the forces influencing their interactions,
     as well as to model the kind of actions the traders can perform, thus giving rise
     to a wide set of possible simulations of financial situations and scenarios.'
+  id: totrans-68
   prefs: []
   type: TYPE_NORMAL
 - en: 'The Sznajd model can allow to better understand and study some specific characteristics
@@ -855,6 +946,7 @@
     Moreover, there could be *rational traders* added to the model: these traders
     have an exact knowledge of the level of demand and supply in the market, thus
     they are able to calculate the way to exactly place their orders.'
+  id: totrans-69
   prefs: []
   type: TYPE_NORMAL
 - en: 'Similarly, the voter model was applied to the financial domain to study the
@@ -866,6 +958,7 @@
     applications of the voter model employs the so-called *social temperature*, which
     represents the market temperature, influencing the *persuasiveness* of some agents
     groups and, subsequently, the uncertainty of the agents’ investment strategies.'
+  id: totrans-70
   prefs: []
   type: TYPE_NORMAL
 - en: The use of the basic models is significant to analyze the behaviors of the agents
@@ -894,6 +987,7 @@
     point of view, in this case often the *stochastic differential equations* are
     employed, as well as neural network structures, to help study the nonlinear dependencies
     and opinion dynamics in the social networks.
+  id: totrans-71
   prefs: []
   type: TYPE_NORMAL
 - en: Overall, opinion dynamics is a highly promising methodological tool to help
@@ -905,5 +999,6 @@
     deep learning, will shed light on many social and financial mechanisms, thus allowing
     to take a step forward toward the comprehension of one of the more fascinating
     complex systems, deeply affecting our everyday life.
+  id: totrans-72
   prefs: []
   type: TYPE_NORMAL
