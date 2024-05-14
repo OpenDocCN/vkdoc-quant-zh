@@ -1,21 +1,31 @@
 - en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2022T.
     Barrau, R. DouadyArtificial Intelligence for Financial MarketsFinancial Mathematics
     and Fintech[https://doi.org/10.1007/978-3-030-97319-3_2](https://doi.org/10.1007/978-3-030-97319-3_2)
+  id: totrans-0
   prefs: []
   type: TYPE_NORMAL
+  zh: © 作者，独家许可给 Springer Nature Switzerland AG 2022T. Barrau, R. Douady 金融市场的人工智能
+    金融数学和金融科技[https://doi.org/10.1007/978-3-030-97319-3_2](https://doi.org/10.1007/978-3-030-97319-3_2)
 - en: '2. Polymodel Theory: An Overview'
+  id: totrans-1
   prefs:
   - PREF_H1
   type: TYPE_NORMAL
+  zh: 2. 多模型理论：概述
 - en: Thomas Barrau^([1](#Aff5)  ) and Raphael Douady^([2](#Aff6))(1)AXA Investment
     Managers Chorus Ltd, Hong Kong, Hong Kong S.A.R.(2)Economic Center, University
     Paris 1 Sorbonne, Paris, France
+  id: totrans-2
   prefs: []
   type: TYPE_NORMAL
+  zh: Thomas Barrau^([1](#Aff5)  ) 和 Raphael Douady^([2](#Aff6))(1)AXA 投资经理 Chorus
+    Ltd，香港，中国香港特别行政区(2)巴黎索邦大学经济中心，法国巴黎
 - en: Abstract
+  id: totrans-3
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 摘要
 - en: We present Polymodel Theory, defining a polymodel as a *collection of non-linear
     univariate models*. A mathematical formulation as well as an epistemological foundation
     is presented. We explain how polymodels are, in several respects, a superior alternative
@@ -23,16 +33,22 @@
     we also present the limits of the method. Although it is a regression technique,
     we clarify how the polymodels framework is closer to artificial intelligence than
     traditional statistics.
+  id: totrans-4
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们提出了多模型理论，将多模型定义为*一组非线性单变量模型*。我们提出了数学公式和认识基础。我们解释了多模型在几个方面是传统OLS、岭回归和逐步回归等估计的多元回归的一个优越替代；我们还介绍了这种方法的局限性。尽管它是一种回归技术，但我们阐明了多模型框架如何比传统统计学更接近人工智能。
 - en: KeywordsPolymodel theoryArtificial intelligenceMachine learningUnivariate regressionMultivariate
     regressionNon-linear modelingHigh dimension modelingOverfitting
+  id: totrans-5
   prefs: []
   type: TYPE_NORMAL
+  zh: 关键词多模型理论人工智能机器学习单变量回归多元回归非线性建模高维建模过拟合
 - en: 2.1 Introduction
+  id: totrans-6
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 2.1 引言
 - en: Polymodels, understood as *a collection of non-linear univariate models*, were
     introduced in finance by Coste et al. ([2010](#CR13)). In their paper, polymodels
     are used as a part of an overall procedure to predict hedge fund performance.
@@ -41,8 +57,10 @@
     is therefore to provide a more in-depth discussion on the theory of polymodels,
     in order to understand the pros and cons of this technique, along with the possibilities
     of the framework it offers.
+  id: totrans-7
   prefs: []
   type: TYPE_NORMAL
+  zh: 多模型，理解为*一组非线性单变量模型*，是由 Coste 等人([2010](#CR13)) 在金融领域引入的。在他们的论文中，多模型被用作预测对冲基金绩效的整体程序的一部分。因此，尽管概念相当通用，但论文以简洁方式呈现，因为其目的是专注于其应用结果。因此，当前章节的目的是更深入地讨论多模型理论，以便了解这种技术的利弊，以及其提供的框架的可能性。
 - en: The use of a collection of univariate models must be understood as an alternative
     to the use of a multivariate regression model. The interest of polymodels is thus
     explained extensively, from this perspective, in the current chapter. However,
@@ -50,8 +68,10 @@
     perspective of statistics, as it is closer to artificial intelligence. For the
     reader to follow the standpoint we propose, we need to go back to the question
     of the purpose of modeling.
+  id: totrans-8
   prefs: []
   type: TYPE_NORMAL
+  zh: 一组单变量模型的使用必须被理解为对多元回归模型的一种替代。因此，从这个角度来看，多模型的利益在当前章节中得到了广泛解释。然而，我们通过多模型来处理建模的方式在某种程度上与统计学的标准视角有所不同，因为它更接近人工智能。为了让读者理解我们提出的观点，我们需要回到建模目的的问题。
 - en: For Aris ([1994](#CR3)), “a system of equations, Σ, is said to be a model of
     the prototypical system, S, if it is formulated to express the laws of S and its
     solution is intended to represent some aspect of the behavior of S”. This quite
@@ -67,8 +87,10 @@
     that are a part of it, thus modifying the system. Fundamentally, our approach
     to modeling is thus oriented by the pursuit of effective results while acting
     in the real world.
+  id: totrans-9
   prefs: []
   type: TYPE_NORMAL
+  zh: 对于阿里斯（[1994](#CR3)），“一个方程组Σ被称为是典型系统S的模型，如果它被构建来表达S的定律，并且其解决方案意图代表S行为的某个方面”。这个相当静态的定义被戴维斯等人（[2011](#CR14)）补充，他们提出了模型被构建的目的列表，其中包括“影响进一步的实验或观察”。这个最后的目标是理解我们立场的关键。由于它被设计来解决金融领域遇到的问题，Polymodel理论属于应用数学领域，因为我们的重点是“找到应用于自身利益之外的数学”（参见戴维斯等人([2011](#CR14)）再次说明这个定义）。Polymodels不仅是一个观察和表示（金融系统的某些子部分）的工具，还旨在作为其中的从业人员、交易员和风险管理人员，从而改变系统。基本上，我们对建模的方法是通过追求在现实世界中行动时产生有效结果来导向的。
 - en: 'This objective being stated, we suggest below a simplified, caricature version
     of the modeling process. This representation is not intended to describe the process
     that each researcher follows, nor to outline a methodological standard; it simply
@@ -78,59 +100,80 @@
     an environment itself composed of random variables. Let us call our variable of
     interest *Y*, and the set of the variables that compose the environment *X*. We
     may then follow the stylized process:'
+  id: totrans-10
   prefs: []
   type: TYPE_NORMAL
+  zh: '有了这个目标，我们在下面提出了建模过程的简化、漫画版本。这个表示不打算描述每个研究者遵循的过程，也不是要勾勒出一个方法标准；它只是为了支持我们对建模方法的介绍。我们从拥有一个（或多个）感兴趣的变量的问题开始，这些变量是（部分）随机的，并且我们希望在一个由随机变量组成的环境中进行一些预测。让我们称我们感兴趣的变量为*Y*，组成环境的变量集合为*X*。然后我们可以遵循这个程式化的过程： '
 - en: 'Step A: the researcher formulates a proposition of a model of the variable
     of interest, as a conditional expectation of its environment. The purpose of this
     step is to model the links between *Y* and *X*:'
+  id: totrans-11
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 步骤A：研究者制定感兴趣变量的模型命题，作为其环境条件期望。此步骤的目的是对*Y*和*X*之间的联系建模：
 - en: '![$$ E\left[Y|X\right]=f(X). $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ1.png)(2.1)'
+  id: totrans-12
   prefs: []
   type: TYPE_IMG
+  zh: '![$$ E\left[Y|X\right]=f(X). $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ1.png)(2.1)'
 - en: 'This step, which may be very complex, can involve a discussion of the definition
     of *Y* and *X*, and the development of some sophisticated versions of *f* ().
     For example, it may include some dynamical representations if *Y* is a random
     process:'
+  id: totrans-13
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 这一步骤可能非常复杂，可能涉及对*Y*和*X*的定义讨论，以及一些复杂版本的*f*()的开发。例如，如果*Y*是一个随机过程，它可能包括一些动态表示：
 - en: '![$$ E\left[{Y}_t\ |\ {\left\{{X}_s\right\}}_{s\in \left[t-\tau :t\right]}\right]=f\left({X}_t,{X}_{t-1},{X}_{t-2},\dots
     \right). $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ2.png)(2.2)*Here
     “t” is the current time index, “τ” is the farthest significant time-lag of X,
     and “s” is the second time index defined between t−τ and t.*'
+  id: totrans-14
   prefs: []
   type: TYPE_NORMAL
+  zh: '![$$ E\left[{Y}_t\ |\ {\left\{{X}_s\right\}}_{s\in \left[t-\tau :t\right]}\right]=f\left({X}_t,{X}_{t-1},{X}_{t-2},\dots
+    \right). $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ2.png)(2.2)*这里的“t”是当前时间索引，“τ”是X的最远重要时间滞后，“s”是定义在t−τ和t之间的第二个时间索引。*'
 - en: 'Step B: the statistical properties of the model are studied. This step may
     include a study of the distribution of the variable of interest *Y* and of the
     joint distribution of the environment variables *X*, but also a study of the distribution
     of the parameters of the model *f* (), in order to quantify their uncertainty,
     assess their robustness, etc.'
+  id: totrans-15
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 第二步：研究模型的统计特性。这一步骤可能包括研究感兴趣变量*Y*的分布以及环境变量*X*的联合分布，但也可能包括研究模型参数*f*()的分布，以量化其不确定性、评估其鲁棒性等。
 - en: 'Step C: the model is used for a particular purpose. This may be the maximization
     of a given utility function, or the estimation of a risk measure, or any kind
     of goal that allows one to make a decision.'
+  id: totrans-16
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 第三步：将模型用于特定目的。这可能是最大化给定效用函数，或者估计风险度量，或者任何能够帮助做出决策的目标。
 - en: 'Step D: the best models produced by steps A to C are selected. The variables
     they include, the functional forms they use, and the methods they employ are evaluated
     using performance and relevance measures, such as the *p*-value.'
+  id: totrans-17
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 第四步：选择由步骤A到C产生的最佳模型。评估它们包含的变量、使用的函数形式以及采用的方法，使用性能和相关性度量，例如*p*-值。
 - en: Some form of stress-testing of the models (for example using Monte-Carlo simulations)
     may be introduced either in step C as a validation of the model, or in step D
     as a selection criterion.
+  id: totrans-18
   prefs: []
   type: TYPE_NORMAL
+  zh: 可以在第三步引入对模型的某种形式的应力测试（例如使用蒙特卡洛模拟），作为模型验证的一部分，或者在第四步作为选择标准。
 - en: Since we model in order to act, our focus is entirely on the results obtained
     in step C.
+  id: totrans-19
   prefs: []
   type: TYPE_NORMAL
+  zh: 由于我们建模以行动，我们的重点完全放在步骤C中获得的结果上。
 - en: Individual researchers often focus on step A to C, while D may be considered
     as a meta-problem which is related to how the literature evolves on a given topic.
     When performing a polymodel analysis, the steps are completed in a different manner.
@@ -141,8 +184,11 @@
     of models through time. We primarily keep the information obtained in a multidimensional
     form, which allows us to derive a variety of indicators (e.g. the StressVaR (Coste
     et al. ([2010](#CR13))), or the Long-term Expectation (Guan, [2019](#CR20))).
+  id: totrans-20
   prefs: []
   type: TYPE_NORMAL
+  zh: 个别研究人员通常关注步骤A到C，而D可能被视为与文献在给定主题上的演变相关的元问题。在执行多模型分析时，步骤以不同的方式完成。我们首先估计一组单变量模型，这对应于步骤A的重复。然后，我们使用有意义地与步骤C的目标相关的标准选择最佳模型，这对应于步骤D。步骤D本身是重复的，因为我们将其用于考虑模型集合随时间的动态演变。我们主要以多维形式保留所获得的信息，这使我们能够导出各种指标（例如StressVaR
+    (Coste等人([2010](#CR13)))或Long-term Expectation (Guan，[2019](#CR20))）。
 - en: We perform step A repeatedly in an imprecise, simplified, and sub-optimal manner,
     but the multiplicity of models overcome this simplification since the collection
     of models is a very rich representation of the phenomenon we are studying. Let
@@ -155,8 +201,12 @@
     for a high number of independent variables in the factor set, it is likely that
     the non-linear modeling captures the tail events at some point (see Ye & Douady,
     ([2019](#CR44)) for an example of market drawdown prediction using polymodels).
+  id: totrans-21
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们以不精确、简化和次优的方式重复执行步骤A，但由于模型的多样性，这种简化被克服，因为模型集合是我们所研究现象的非常丰富的表示。让我们通过一个简单的例子来澄清这一点。我们可以用从金融变量获得的非线性单变量模型集合来模拟标准普尔500的回报。通常，我们假设模型的噪声是高斯的，这当然是相当简化的，知道金融市场的尾部更厚（参见例如Platen和Rendek
+    ([2008](#CR31))）。然而，例如，对油的非线性建模可能能够在某种程度上捕捉标准普尔500的尾部事件。而且对于因子集中的大量独立变量，非线性建模很可能在某个时候捕捉到尾部事件（例如，参见Ye
+    & Douady，([2019](#CR44))，以获取使用多模型进行市场回撤预测的示例）。
 - en: Questions about the robustness of the methods still need to be asked, but in
     a way that differs from the stylized research process presented above. Since we
     are entirely focused on achieving results in regard to step C, part of the work
@@ -171,62 +221,86 @@
     and [6](519851_1_En_6_Chapter.xhtml) of the present book). We thus do not discuss
     the problems addressed by step B, as although they are interesting by themselves,
     they are of secondary importance when considering step C as a central concern.
+  id: totrans-22
   prefs: []
   type: TYPE_NORMAL
+  zh: 仍然需要问关于方法鲁棒性的问题，但方式与上述的程式化研究过程有所不同。由于我们完全专注于实现关于步骤C的结果，通常在步骤B中完成的部分工作可能变得无关紧要。例如，我们可以观察到，从步骤B到C的过渡没有特定的原因，它甚至在大多数情况下可能是高度非线性的。按照这种推理，追求无偏估计变得无关紧要，因为它们不能有效地用于实现步骤C的最终目标。因此，通过敏感性分析或特定测试来评估多模型方法得到的结果的鲁棒性经常是通过统计显著性（见本书第[4](519851_1_En_4_Chapter.xhtml)、[5](519851_1_En_5_Chapter.xhtml)和[6](519851_1_En_6_Chapter.xhtml)章）的测量来进行的。因此，我们不讨论步骤B所解决的问题，尽管它们本身很有趣，但在考虑到将步骤C作为中心关注时，它们是次要的。
 - en: 'Note that apart from polymodels, another research field performs steps A and
     D directly regarding the objective of step C: machine learning (Friedman et al.,
     ([2001](#CR18)) provide a long introduction to the main techniques). From this
     perspective, polymodels could be considered as a machine learning technique.'
+  id: totrans-23
   prefs: []
   type: TYPE_NORMAL
+  zh: 注意，除了多模型之外，另一个研究领域直接执行步骤A和D，关于步骤C的目标：机器学习（Friedman等人，（[2001](#CR18)）提供了对主要技术的长篇介绍）。从这个角度来看，多模型可以被视为一种机器学习技术。
 - en: 'Now that once the breadcrumb of the modeling approach of Polymodel Theory has
     been established, we can develop several points that will further clarify the
     concept. In order to do so, we organize the chapter as follows:'
+  id: totrans-24
   prefs: []
   type: TYPE_NORMAL
+  zh: 现在，一旦建立了多模型理论建模方法的面包屑，我们可以发展几个进一步澄清概念的要点。为此，我们将本章组织如下：
 - en: As a final part of the introduction, we first review the current state of the
     literature on the topic of polymodels.
+  id: totrans-25
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 作为介绍的最后部分，我们首先回顾了有关多模型主题的文献的当前研究状况。
 - en: We then formally define the notion of polymodel.
+  id: totrans-26
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 然后我们正式定义了多模型的概念。
 - en: This definition is followed by a discussion on how this object can be interpreted
     from an epistemological point of view.
+  id: totrans-27
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 这一定义之后，我们讨论了如何从认识论角度解释这个对象。
 - en: We then review the most salient advantages that are expected when using the
     technique, in econometrical terms. The use of a collection of univariate models
     is an alternative to the use of a multivariate model. We thus discuss these advantages
     with regard to standard alternatives, such as the classical linear regression
     estimated by OLS, Ridge regression, or Stepwise regression.
+  id: totrans-28
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 然后，我们回顾了在计量经济学术语中使用该技术时所期望的最显著优势。使用一系列单变量模型是使用多变量模型的一种替代方法。因此，我们将这些优势与标准替代方案进行讨论，例如由OLS估计的经典线性回归，岭回归或逐步回归。
 - en: We finally consider the challenges that Polymodel Theory raises, and conclude
     the chapter.
+  id: totrans-29
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 最后，我们考虑了多模型理论所引发的挑战，并总结了本章。
 - en: 'Some of the important questions that are raised when using polymodels in practice
     are:'
+  id: totrans-30
   prefs: []
   type: TYPE_NORMAL
+  zh: 在实践中使用多模型时引发的一些重要问题是：
 - en: How do we estimate the univariate models?
+  id: totrans-31
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 我们如何估计单变量模型？
 - en: How do we select the variables?
+  id: totrans-32
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 我们如何选择变量？
 - en: How do we aggregate the results?
+  id: totrans-33
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 我们如何合并结果？
 - en: The current chapter only proposes a theoretical overview of Polymodel Theory,
     and thus provides answers to the questions “what is a polymodel?” and “why using
     it?” but not to the question “how to use it?”. The three practical questions listed
@@ -235,18 +309,25 @@
     being tackled. Hence, presenting any of the techniques that we can use to answer
     these questions would cause the current chapter to lack generality. We thus restrict
     our explanations to the objective of presenting the notion of polymodels.
+  id: totrans-34
   prefs: []
   type: TYPE_NORMAL
+  zh: 当前章节只是提出了 Polymodel 理论的理论概述，因此回答了“什么是 polymodel？”和“为什么使用它？”的问题，但没有回答“如何使用它？”的问题。上述三个简单发展更一般问题“如何使用它？”的实际问题可能会以非常不同的方式来解决，必须根据所处理的经验问题进行调整。因此，介绍我们可以用来回答这些问题的任何技术都会导致当前章节缺乏普遍性。因此，我们将限制我们的解释以呈现
+    polymodel 的概念。
 - en: The literature on Polymodel Theory is still scarce. In its current form, there
     have been applications in finance, however the usage of collections of univariate
     linear models also exists outside of this field.
+  id: totrans-35
   prefs: []
   type: TYPE_NORMAL
+  zh: 对于 Polymodel 理论的文献仍然很稀少。目前的形式已经在金融领域有了应用，但是单变量线性模型集合的使用也存在于这个领域之外。
 - en: 'We first review the emerging financial literature on this topic. Apart from
     the initial paper of Coste et al. ([2010](#CR13)), which introduces the notion,
     Polymodel Theory has already been used in a variety of applications in finance:'
+  id: totrans-36
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们首先回顾了关于这个主题的新兴金融文献。除了 Coste 等人 ([2010](#CR13)) 的初始论文介绍了这个概念之外，Polymodel 理论已经在金融领域的各种应用中得到了使用：
 - en: Zhang ([2019](#CR45)) built a clustering algorithm based on polymodel estimations,
     with applications to the equity market. The overall idea is that if two stocks
     react in the same manner to different factors, they are somehow similar. The clustering
@@ -254,24 +335,32 @@
     superior returns compared to the benchmark. The clustering algorithm is shown
     to outperform classic clustering methods (correlations, qualitative classification)
     in the context of statistical arbitrage.
+  id: totrans-37
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 张 ([2019](#CR45)) 基于 polymodel 估计构建了一个聚类算法，并应用于股票市场。总体思想是，如果两只股票对不同因素的反应方式相同，它们在某种程度上是相似的。聚类算法被用来设计一种比基准表现更好的统计套利交易策略。聚类算法在统计套利的背景下表现出色，超越了经典的聚类方法（相关性、定性分类）。
 - en: Ye and Douady ([2019](#CR44)), and Kuang and Douady ([2022](#CR2001)) proposed
     some systemic risk indicators for equity indices based on polymodels. The indicators
     are essentially focused on the increase of the statistical significance of the
     links of a factor set with a stock index (Ye & Douady) and the concavity of the
     elementary models (Kuang & Douady).
+  id: totrans-38
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 叶和杜亚迪 ([2019](#CR44))，以及匡和杜亚迪 ([2022](#CR2001)) 提出了一些基于 polymodel 的股票指数系统风险指标。这些指标主要关注因子集与股票指数之间联系的统计显著性增加（叶
+    & 杜亚迪）和基本模型的凹性（匡 & 杜亚迪）。
 - en: Guan ([2019](#CR20)) used polymodels to produce some variations of traditional
     risk premia. He proved that the StressVaR, which is the risk indicator tested
     by Coste et al. ([2010](#CR13)) for distinguishing risky hedge funds, is also
     a useful predictor of the cross-section of stock returns.
+  id: totrans-39
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 关 ([2019](#CR20)) 使用 polymodel 生成了一些传统风险溢价的变体。他证明了 StressVaR，这是 Coste 等人 ([2010](#CR13))
+    用于区分风险对冲基金的风险指标，也是股票收益横截面的一个有用预测因子。
 - en: 'The literature on Polymodel Theory is thus still sparse, which justifies our
     proposal for a denser discussion of this framework of analysis.Constructing a
     set of univariate models is quite an intuitive approach to modeling when the amount
@@ -280,8 +369,11 @@
     predictors because there are more predictors than observations, or finding problems
     of multicollinearity, are concerns that are not confined to finance. Unsurprisingly,
     some traces and precedents of Polymodel Theory have been found in several disciplines:'
+  id: totrans-40
   prefs: []
   type: TYPE_NORMAL
+  zh: Polymodel 理论的文献仍然稀少，这正好说明了我们提出对这种分析框架进行更密集讨论的建议。当数据量过大无法处理时，构建一组单变量模型是一种相当直观的建模方法，这种情况下多元线性回归可能会有一些限制。的确，由于预测变量的协方差矩阵不可逆（因为预测变量多于观测值），或者出现多重共线性问题，这些问题并不局限于金融领域。毫不奇怪，Polymodel
+    理论的一些迹象和先例已经在几个学科中找到：
 - en: In genetics, the field of Genome-Wide Association Studies (GWAS) massively relied
     on linear versions of polymodels. GWAS encountered the problem of dealing with
     hundreds of thousands of predictors to predict a single target variable. Furthermore,
@@ -290,44 +382,59 @@
     predictors, e.g. see de Vlaming and Groenen ([2015](#CR15)) for Ridge regressions,
     Wu et al. ([2009](#CR43)) for Lasso, or Liang and Kelemen ([2008](#CR27)) for
     a literature review.
+  id: totrans-41
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 在遗传学中，基因组范围关联研究（GWAS）领域大量依赖于Polymodels的线性版本。GWAS面临的问题是要处理数十万个预测变量来预测单个目标变量。此外，独立变量比观测值更多。经典的正则化技术已被用来尝试解决预测变量之间的相关性问题，例如参见de
+    Vlaming和Groenen（[2015](#CR15)）的Ridge回归，Wu等人（[2009](#CR43)）的Lasso，或Liang和Kelemen（[2008](#CR27)）的文献综述。
 - en: In an analysis of driver fatality risk factors, Bose et al. ([2013](#CR7)) used
     a set of univariate models to benchmark the coefficients obtained with a multivariate
     model.
+  id: totrans-42
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 在对驾驶员致命风险因素进行分析时，Bose等人（[2013](#CR7)）使用一组单变量模型来对多变量模型得到的系数进行基准测试。
 - en: For the purpose of analysing epidemics, Bessell et al. ([2010](#CR6)) began
     their study with a set of univariate models. They used the results of this polymodel
     to assess the statistical significance of the predictors, in order to select the
     most relevant of them to build a multivariate model.
+  id: totrans-43
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 为了分析流行病，Bessell等人（[2010](#CR6)）从一组单变量模型开始他们的研究。他们利用这个多模型的结果来评估预测变量的统计显著性，以选择最相关的变量来构建多变量模型。
 - en: Ladyzhets ([2019](#CR26)) proposed to analyse the probability space of a set
     of regression models to model financial time series. Although close to polymodels,
     as it represents the target variable using alternative models, the paper still
     uses multivariate models, thus losing some of the benefits of the former.
+  id: totrans-44
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: Ladyzhets（[2019](#CR26)）建议分析一组回归模型的概率空间来建模金融时间序列。虽然与Polymodels接近，因为它使用替代模型表示目标变量，但该论文仍然使用多元模型，从而失去了前者的一些好处。
 - en: These last examples do not directly refer to Polymodel Theory as we present
     it in the current chapter, however, they show that the concerns we encounter when
     using multivariate regressions techniques are shared among several fields, making
     polymodels potentially interesting for mathematical applications outside of finance.
+  id: totrans-45
   prefs: []
   type: TYPE_NORMAL
+  zh: 这些最后的例子并没有直接涉及到我们在当前章节中提出的Polymodel理论，然而，它们表明了在使用多元回归技术时我们遇到的关注点是多个领域共享的，使得Polymodels在金融之外的数学应用中可能是有趣的。
 - en: 2.2 Mathematical Formulation
+  id: totrans-46
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 2.2 数学公式化
 - en: A polymodel can be defined as a collection of models, all equally valid and
     significant, that can be understood as a collection of relevant points of view
     on the same reality.
+  id: totrans-47
   prefs: []
   type: TYPE_NORMAL
+  zh: 一个Polymodel可以被定义为一组模型，它们都同样有效和显著，可以被理解为对同一现实的一系列相关观点的集合。
 - en: Mathematically, it can be equally formalized using Eq. ([2.3](#Equ3)) or Eq.
     ([2.4](#Equ4)):![$$ \left\{\begin{array}{c}Y={\varphi}_1\left({X}_1\right)\\ {}Y={\varphi}_2\left({X}_2\right)\\
     {}\dots \\ {}Y={\varphi}_n\left({X}_n\right)\end{array}\right. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ3.png)(2.3)![$$
@@ -335,35 +442,55 @@
     Y is the target variable, X*[*i*] *and* φ[i] *are respectively the explanatory
     variable and the function of the i*^(*th*) *model, with i ϵ[1: n], and n the number
     of models (and factors).*
+  id: totrans-48
   prefs: []
   type: TYPE_NORMAL
+  zh: 从数学上讲，可以用方程（[2.3](#Equ3)）或方程（[2.4](#Equ4)）等式来等效地形式化：![$$ \left\{\begin{array}{c}Y={\varphi}_1\left({X}_1\right)\\
+    {}Y={\varphi}_2\left({X}_2\right)\\ {}\dots \\ {}Y={\varphi}_n\left({X}_n\right)\end{array}\right.
+    $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ3.png)(2.3)![$$
+    \left\{Y={\varphi}_i\left({X}_i\right)\kern1em \forall i\right\}. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ4.png)(2.4)*这里，Y是目标变量，X[i]是解释变量，而φ[i]分别是第i个模型的函数，其中i
+    ϵ[1: n]，n是模型（和因素）的数量。*
 - en: The *n* models that we present here, called “elementary models”, are models
     of a single variable. These models are all defined on the entire hyperspace of
     the explanatory variables *ℝ*^(*n*). They do not interact with each other and
     they are all valid simultaneously.
+  id: totrans-49
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们在这里呈现的*n*个模型，称为“基本模型”，都是单变量模型。这些模型都在解释变量*ℝ*^(*n*)的整个超空间上定义。它们彼此不相互作用，并且它们同时都是有效的。
 - en: The noise term *ε*[*i*] is added to represent stochastic errors:^([1](#Fn1))![$$
     \left\{\begin{array}{c}Y={\varphi}_1\left({X}_1\right)+{\varepsilon}_1\\ {}Y={\varphi}_2\left({X}_2\right)+{\varepsilon}_2\\
     {}\dots \\ {}Y={\varphi}_n\left({X}_n\right)+{\varepsilon}_{n.}\end{array}\right.
     $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ5.png)(2.5)Similarly,
     from Eq. ([2.4](#Equ4)):![$$ \left\{Y={\varphi}_i\left({X}_i\right)+{\varepsilon}_i\kern1em
     \forall i\right\}. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ6.png)(2.6)
+  id: totrans-50
   prefs: []
   type: TYPE_NORMAL
+  zh: 噪声项*ε*[*i*]被添加以表示随机误差:^([1](#Fn1))![$$ \left\{\begin{array}{c}Y={\varphi}_1\left({X}_1\right)+{\varepsilon}_1\\
+    {}Y={\varphi}_2\left({X}_2\right)+{\varepsilon}_2\\ {}\dots \\ {}Y={\varphi}_n\left({X}_n\right)+{\varepsilon}_{n.}\end{array}\right.
+    $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ5.png)(2.5)同样，从方程([2.4](#Equ4))可以得到:![$$
+    \left\{Y={\varphi}_i\left({X}_i\right)+{\varepsilon}_i\kern1em \forall i\right\}.
+    $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ6.png)(2.6)
 - en: 2.3 Epistemological Foundations
+  id: totrans-51
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 2.3 认识论基础
 - en: Polymodel Theory can be considered from many different points of view. Even
     if we present applications clearly focused on financial mathematics, it is important
     to emphasize the philosophical roots that have led to the emergence of the theory.
+  id: totrans-52
   prefs: []
   type: TYPE_NORMAL
+  zh: 多模型理论可以从许多不同的角度来考虑。即使我们明确专注于金融数学的应用，强调导致该理论出现的哲学根源也是很重要的。
 - en: 2.3.1 A Statistical Perspectivism
+  id: totrans-53
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 2.3.1 统计视角主义
 - en: The concept of perspectivism was first developed by the pre-Socratic philosopher
     Protagoras (c. 481 B.C.E.–c. 420 B.C.E.), whose thoughts we know through the dialogues
     of Plato (Lamb, [1967](#CR32); Taylor & Lee, [2016](#CR38)). Perspectivism, the
@@ -373,50 +500,67 @@
     dependent on the perspective in which it appears. It is an invitation to humbly
     understand that we are biased and have limited access and a limited understanding
     of the world.
+  id: totrans-54
   prefs: []
   type: TYPE_NORMAL
+  zh: 视角主义的概念最初由前苏格拉底哲学家普罗泰戈拉斯（约公元前481年至公元前420年）发展而来，我们通过柏拉图（Lamb，[1967](#CR32)；Taylor
+    & Lee，[2016](#CR38)）的对话了解到他的思想。视角主义是理解多模型理论的关键，它声称我们无法获得单一和绝对的真理。我们认为真实的东西往往只是从特定视角来看才是真实的，而这种对现实的感知本身取决于它出现的视角。这是一个谦逊地理解我们是有偏见的，对世界的了解和接触是有限的邀请。
 - en: 'One can easily understand the need to use several perspectives on the same
     question from the reflections of Pascal in his *Essay pour les coniques* (Clarke
     & Smith, [1928](#CR12)): “By the term conic section we mean the circumference
     of the circle, the ellipse, the hyperbola, the parabola and the rectilinear angle”.
     All these perspectives on the same object are true and complementary, because
     none of them is able to fully describe the nature of the cone.'
+  id: totrans-55
   prefs: []
   type: TYPE_NORMAL
+  zh: 人们可以很容易地从帕斯卡在他的《圆锥曲线论文》（Clarke & Smith，[1928](#CR12)）中的反思中理解需要在同一问题上使用几个不同视角的必要性：“通过圆锥截面这个术语，我们指的是圆周、椭圆、双曲线、抛物线和直线角”。对于同一对象的所有这些视角都是真实且互补的，因为没有一个能够完全描述圆锥的本质。
 - en: Thus, in the philosophical doctrines that flow from perspectivism, reality is
     the aggregation of all the perspectives that we have on it.
+  id: totrans-56
   prefs: []
   type: TYPE_NORMAL
+  zh: 因此，在流经视角主义的哲学学说中，现实是我们对其所有视角的聚合。
 - en: Similarly, the purpose of Polymodel Theory is to combine several descriptions
     of the same variable in order to get as close as possible to a full understanding
     of its nature. It provides a very rich description of reality, which is more than
     the sum of its parts, allowing us to understand very accurately some specific
     aspects of the considered variable. Hence, Polymodel Theory is a mathematical
     equivalent of philosophical perspectivism.
+  id: totrans-57
   prefs: []
   type: TYPE_NORMAL
+  zh: 同样，多模型理论的目的是将同一变量的几个描述组合在一起，以尽可能全面地理解其本质。它提供了对现实的非常丰富的描述，这种描述不仅仅是其部分的总和，还允许我们非常准确地理解所考虑变量的一些特定方面。因此，多模型理论是哲学视角主义的数学等价物。
 - en: 2.3.2 A Phenomenological Approach
+  id: totrans-58
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 2.3.2 现象学方法
 - en: 'The different elementary models that compose the polymodel are alternative
     descriptions of its variable of interest. But these descriptions are made in a
     particular way: they describe how the dependent variable *reacts* to each independent
     variable.'
+  id: totrans-59
   prefs: []
   type: TYPE_NORMAL
+  zh: 构成多模型的不同基本模型是其感兴趣变量的替代描述。但是这些描述是以一种特定的方式进行的：它们描述了依赖变量对每个自变量的*反应*。
 - en: 'Phenomenology can be described as follows (Smith, [2018](#CR36)): “Literally,
     phenomenology is the study of ‘phenomena’: appearances of things, or things as
     they appear in our experience, or the ways we experience things, thus the meanings
     things have in our experience.”'
+  id: totrans-60
   prefs: []
   type: TYPE_NORMAL
+  zh: 现象学可以如下描述（Smith，[2018](#CR36)）：“字面上，现象学是对‘现象’的研究：事物的外表，或者事物在我们的经验中呈现的方式，或者我们经验事物的方式，因此事物在我们经验中具有的含义。”
 - en: Thus, the point of interest of phenomenology is how the various phenomena that
     compose our experience interact with us. Polymodel Theory proposes a similar approach,
     by studying how various independent variables (i.e. an environment) interact with
     a variable of interest.
+  id: totrans-61
   prefs: []
   type: TYPE_NORMAL
+  zh: 因此，现象学的焦点是我们的经验中组成的各种现象如何与我们互动。Polymodel 理论提出了类似的方法，通过研究各种独立变量（即环境）如何与感兴趣的变量互动来实现。
 - en: Such a position is by itself extremely meaningful, because it states that there
     is no interest given to the underlying mechanism of the dependent variable. A
     polymodel just describes how this variable behaves in various situations, that
@@ -425,16 +569,23 @@
     Theory is closer to the physicist’s approach to studying reality than to the economist’s
     approach, as it primarily answers the question “how?” instead of the question
     “why?”.
+  id: totrans-62
   prefs: []
   type: TYPE_NORMAL
+  zh: 这样的立场本身就非常有意义，因为它指出对于因变量的底层机制没有兴趣。Polymodel 只是描述了这个变量在各种情况下的行为，这些情况与解释变量的集合一样完整。它并不解释为什么会发生这种行为，尽管它可以帮助我们理解它。因此，Polymodel
+    理论更接近于物理学家研究现实的方法，而不是经济学家的方法，因为它主要回答的问题是“怎么样？”而不是“为什么？”。
 - en: 2.4 Comparison of Polymodels to Multivariate Models
+  id: totrans-63
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 2.4 Polymodels 与多变量模型的比较
 - en: 2.4.1 Reducing Overfitting
+  id: totrans-64
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 2.4.1 减少过度拟合
 - en: Econometric models usually admit two components, a deterministic component,
     often called the mean equation, and a stochastic component, called the error term
     (see the introductions to econometrics by Stock and Watson ([2015](#CR37)) and
@@ -464,15 +615,24 @@
     *β* is a column vector of linear coefficients, and *X* is a matrix that contains
     a vector of ones when a constant is included (we assume this is always the case
     hereafter), and the vectors of the explanatory variables.
+  id: totrans-65
   prefs: []
   type: TYPE_NORMAL
+  zh: 计量经济模型通常包括两个组成部分，一个确定性部分，通常称为均值方程，和一个随机部分，称为误差项（参见斯托克和沃森([2015](#CR37))以及塞伯和李([2012](#CR34))的计量经济学导论，或者亚历克索普洛斯([2010](#CR2))关于多元回归的简洁论文）:![$$
+    Y=f(X)+\varepsilon . $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ7.png)(2.7)这里
+    *Y* 是我们希望解释的随机变量，*f(X)* 是由一组随机变量 *X* 和一个函数 *f* () 组成的均值方程，该函数产生 *Y* 和 *X* 之间的关联，ε
+    是误差项，通常服从于0的某种概率规律。当随机变量 *X* 的集合只包含一个变量时，该模型称为“单变量”，而当它包含多个变量时，则称为“多变量”。将确定性部分（*f(X)*）和随机部分（*ε*）之间的分离是因为我们的世界的自然复杂性，其中通常存在着与发生的现象相关的大量原因，使得每个事件部分不可预测，仅仅因为数学模型目前无法处理如此高的复杂性。这种描述现实的方式暗示了只有一部分目标变量的值可以用预测变量来描述，而其余部分则不能，并且必须保持未解释。假设目标变量与预测变量之间存在有效的联系，则我们的上下文中建模的目标是准确地表示这种关系。这应该通过构建一个表示预测变量与目标变量确定性部分之间关系的均值方程来完成，仅使用包含在预测变量中的关于目标变量的信息。这种关系由一个功能形式来形式化，它是真实关系的一种程式化代理。最简单的功能形式是线性的一个（斯托克和沃森，[2015](#CR37)):![$$
+    Y= X\beta +\varepsilon, $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ8.png)(2.8)其中
+    *β* 是线性系数的列向量，*X* 是一个矩阵，当包含一个常数时包含一个向量，我们假定以后都是这样。以及解释变量的向量。
 - en: Given a particular sample of data, the task of the scientist is to choose a
     functional form and estimate its parameters to represent this relation. Of course,
     the goal being to explain the target variable, the importance of the deterministic
     part relative to the stochastic part^([2](#Fn2)) should be as high *as possible*
     in a good model.
+  id: totrans-66
   prefs: []
   type: TYPE_NORMAL
+  zh: 给定一组特定的数据样本，科学家的任务是选择一个功能形式并估计其参数，以表示这种关系。当然，目标是解释目标变量，良好模型中确定性部分与随机部分的重要性^([2](#Fn2))应尽可能高*。
 - en: However, the truly stochastic part of the model, i.e. the part of the target
     variable’s values which is not related to the predictors, can always be spuriously
     modeled using the predictors. This is just a matter of using a sufficiently complex
@@ -485,17 +645,20 @@
     (outside of the original data set) are used to predict corresponding values of
     the target variable. The accuracy of the predictions is low, revealing the weakness
     of the initial model.
+  id: totrans-67
   prefs: []
   type: TYPE_NORMAL
 - en: Observing a low predicting power out-of-sample of a model that exhibits a high
     level of goodness of fit in-sample is a typical definition of overfitting (Babyak,
     [2004](#CR4)).
+  id: totrans-68
   prefs: []
   type: TYPE_NORMAL
 - en: Intuitively, one can see that it would be easy to find patterns in the data
     that seem to correspond to a link that does not exist, especially because we adapt
     these patterns to the target variable using the estimation of the functional form
     parameters.
+  id: totrans-69
   prefs: []
   type: TYPE_NORMAL
 - en: 'This functional form, which characterizes the model, tends to adapt better
@@ -503,6 +666,7 @@
     on the number of parameters, and essentially comes from two sources: the complexity
     of the functional form associated to each variable, and the number of variables
     used in the model (Hawkins ([2004](#CR22)) discusses these points in depth).'
+  id: totrans-70
   prefs: []
   type: TYPE_NORMAL
 - en: 'This is why increasing the number of predictors in a multivariate regression
@@ -514,6 +678,7 @@
     increasing the number of predictors in a multivariate model decreases the variance
     of the residuals, making the model ‘better’ in terms of goodness of fit, but only
     in appearance.'
+  id: totrans-71
   prefs: []
   type: TYPE_NORMAL
 - en: The problem becomes even worse when the number of predictors increases so much
@@ -539,6 +704,7 @@
     of the parameters:![$$ {\hat{\beta}}^{Ridge}={\left[{X}^{\prime }X+\lambda I\right]}^{-1}{X}^{\prime
     }Y. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ12.png)(2.12)*“I”
     is the n × n identity matrix.*
+  id: totrans-72
   prefs: []
   type: TYPE_NORMAL
 - en: On top of allowing the matrix inversion, the penalization of the L²-norm automatically
@@ -551,6 +717,7 @@
     for a selection of the independent variables. Ridge and Elastic Net regressions
     thus address the same problem as polymodels, which is an alternative when trying
     to prevent overfitting when modeling with a large number of variables.
+  id: totrans-73
   prefs: []
   type: TYPE_NORMAL
 - en: However, in most of the applications of these approaches, the number of degrees
@@ -559,12 +726,14 @@
     removed by using polymodels, because the number of degrees of freedom is greatly
     increased by the use of a single variable in each elementary model. Using a polymodel
     thus offers a simpler and more effective approach to solving these ill-posed problems.
+  id: totrans-74
   prefs: []
   type: TYPE_NORMAL
 - en: To better understand how the multivariate models overfit compared to polymodels,
     we propose to illustrate our reasoning with a toy example. To tackle a familiar
     problem, we model the returns of the S&P 500 as a function of a set of *n* predictors
     (as presented in Eq. ([2.7](#Equ7)), in which *Y* is the S&P returns).
+  id: totrans-75
   prefs: []
   type: TYPE_NORMAL
 - en: 'To test the spuriousness of the various approaches, we build a set of predictors
@@ -574,10 +743,12 @@
     by construction, *there is no link between the target variable and the predictors*
     in our experiment. There is only noise to fit in the explanatory variables. To
     obtain *f ()*, we compare three different modeling techniques:'
+  id: totrans-76
   prefs: []
   type: TYPE_NORMAL
 - en: The multivariate linear model described by Eq. ([2.8](#Equ8)), estimated using
     the OLS estimator described by Eq. ([2.9](#Equ9)).
+  id: totrans-77
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
@@ -585,11 +756,13 @@
     Eq. ([2.12](#Equ12)). The parameter λ, which is crucial for the estimation, is
     chosen using a 5-fold cross-validation (see Golub et al., [1979](#CR19)) on the
     use of cross-validation to choose the Ridge parameter).
+  id: totrans-78
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
 - en: A polymodel, as described in Eq. ([2.5](#Equ5)), with elementary models defined
     as linear univariate models estimated with OLS.
+  id: totrans-79
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
@@ -618,10 +791,12 @@
     \limits_{s=t+1}^{t+157}{\left({y}_s-{\overline{y}}_{t+157}\right)}^2}. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ15.png)(2.15)The
     formula above reflects that new data, between *t* + 1 and *t* + 157, is used to
     recompute the *R*^(*2*), but that the fitted function, f[t](), stays unchanged.
+  id: totrans-80
   prefs: []
   type: TYPE_NORMAL
 - en: 'We then measure the *Spread* between the “In-Sample R²” and the “Out-of-Sample
     R²”:'
+  id: totrans-81
   prefs: []
   type: TYPE_NORMAL
 - en: '![$$ Spread={R^2}_{IS}-{R^2}_{OOS}. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ16.png)(2.16)For
@@ -631,13 +806,16 @@
     of predictors *n*. We make this number vary between 1 and 156 (recall that there
     are 157 observations). This overfitting measure as a function of the number of
     predictors is compared for the three modeling techniques in Fig. [2.1](#Fig1):![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig1_HTML.png)'
+  id: totrans-82
   prefs: []
   type: TYPE_IMG
 - en: Fig. 2.1
+  id: totrans-83
   prefs: []
   type: TYPE_NORMAL
 - en: Spreads between In-Sample vs Out-of-Sample R² as a function of the number of
     explanatory variables included in the regression
+  id: totrans-84
   prefs: []
   type: TYPE_NORMAL
 - en: The graph above represents the spread between the in-sample and out-of-sample
@@ -646,18 +824,22 @@
     the different elementary models). For the multivariate models, the larger the
     number of independent variables, the larger the spread, thus the stronger the
     overfitting.
+  id: totrans-85
   prefs: []
   type: TYPE_NORMAL
 - en: The spread of the multivariate OLS is so explosive when the number of regressors
     reaches the number of data points that it breaks the scale of the graph. Zooming
     makes it understandable (see Fig. [2.2](#Fig2)):![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig2_HTML.png)
+  id: totrans-86
   prefs: []
   type: TYPE_NORMAL
 - en: Fig. 2.2
+  id: totrans-87
   prefs: []
   type: TYPE_NORMAL
 - en: Spreads between In-Sample vs Out-of-Sample R² as a function of the number of
     explanatory variables included in the regression (zoom)
+  id: totrans-88
   prefs: []
   type: TYPE_NORMAL
 - en: The Ridge estimator behaves as expected in this toy example, notably reducing
@@ -666,24 +848,29 @@
     lower than that of the classical OLS estimator. However, even with regularization,
     it is clear that the overfitting grows as a function of the number of variables
     included in the multivariate models.
+  id: totrans-89
   prefs: []
   type: TYPE_NORMAL
 - en: This is not true in the case of the average spread in the polymodel, which is
     (of course) asymptotically constant when the number of regressors *n* increases.
     For *n* = 156, the spread of the polymodel is 10⁵ times lower than OLS and 34
     times lower than Ridge in this particular case (Fig. [2.3](#Fig3)).![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig3_HTML.png)
+  id: totrans-90
   prefs: []
   type: TYPE_NORMAL
 - en: Fig. 2.3
+  id: totrans-91
   prefs: []
   type: TYPE_NORMAL
 - en: Average spread between In-Sample vs Out-of-Sample R² as a function of the number
     of explanatory variables included in the regression (polymodels only)
+  id: totrans-92
   prefs: []
   type: TYPE_NORMAL
 - en: 'This straightforward experiment also helps us to understand the nature of overfitting
     by comparing the *In-Sample R*^(*2*) and *Out-of-Sample R*^(*2*) of the three
     models:'
+  id: totrans-93
   prefs: []
   type: TYPE_NORMAL
 - en: In these three graphs, we have shown the *In-Sample R*^(*2*) and the *Out-of-Sample
@@ -696,33 +883,42 @@
     significant extent it actually also contributes to its deterioration, as we act
     only to follow past noise in that case. Note that the scale of the *R*² is quite
     different among the figures (Figs. [2.4](#Fig4), [2.5](#Fig5) and [2.6](#Fig6)).![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig4_HTML.png)
+  id: totrans-94
   prefs: []
   type: TYPE_NORMAL
 - en: Fig. 2.4
+  id: totrans-95
   prefs: []
   type: TYPE_NORMAL
 - en: 'Multivariate OLS: In-Sample vs Out-of-Sample R² as a function of the number
     of explanatory variables included in the regression'
+  id: totrans-96
   prefs: []
   type: TYPE_NORMAL
 - en: '![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig5_HTML.png)'
+  id: totrans-97
   prefs: []
   type: TYPE_IMG
 - en: Fig. 2.5
+  id: totrans-98
   prefs: []
   type: TYPE_NORMAL
 - en: 'Multivariate Ridge: In-Sample vs Out-of-Sample R² as a function of the number
     of explanatory variables included in the regression'
+  id: totrans-99
   prefs: []
   type: TYPE_NORMAL
 - en: '![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig6_HTML.png)'
+  id: totrans-100
   prefs: []
   type: TYPE_IMG
 - en: Fig. 2.6
+  id: totrans-101
   prefs: []
   type: TYPE_NORMAL
 - en: 'Polymodels (Univariate OLS): In-Sample vs Out-of-Sample R² as a function of
     the number of explanatory variables included in the regression'
+  id: totrans-102
   prefs: []
   type: TYPE_NORMAL
 - en: Of course, this toy example is a bit simplistic, far from the techniques we
@@ -732,6 +928,7 @@
     may also question the use of a cross-validated regularized estimator when it seems
     that a repetition of simple OLS estimates performs better. We let the supporters
     of Occam’s razor make their choice.
+  id: totrans-103
   prefs: []
   type: TYPE_NORMAL
 - en: Another technique commonly used to handle a large number of potential candidate
@@ -752,15 +949,18 @@
     procedure leads to overfitting (Flom & Cassell, [2007](#CR17)). Polymodels may
     be estimated in very different manners, hence one can easily avoid the trap of
     the step-by-step procedure.
+  id: totrans-104
   prefs: []
   type: TYPE_NORMAL
 - en: Considering the usual alternatives to stepwise selection or regularization,
     the polymodel approach presents an effective way to reduce overfitting, since
     it cannot really be avoided in multivariate models when the number of potential
     independent variables is high.
+  id: totrans-105
   prefs: []
   type: TYPE_NORMAL
 - en: 2.4.2 Increasing Precision
+  id: totrans-106
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
@@ -778,6 +978,7 @@
     (Caginalp & DeSantis, [2011](#CR9), [2019](#CR10)), multi-factor modeling of interest
     rate volatility (Boudoukh et al., [1999](#CR8)), or lead-lag modeling of foreign
     exchange rates (Serletis et al., [2012](#CR35)).
+  id: totrans-107
   prefs: []
   type: TYPE_NORMAL
 - en: In many domains, such as finance, a relevant increase in prediction accuracy
@@ -793,6 +994,7 @@
     From this point of view, non-linear modeling is not just a viable method if one
     wants to slightly increase the accuracy of predictions, but it is a requirement
     to avoid surprises in extreme times.
+  id: totrans-108
   prefs: []
   type: TYPE_NORMAL
 - en: A good example to illustrate this point is the perspective of fund of funds
@@ -803,6 +1005,7 @@
     of hedge funds, but since the relation with their factor exposures is non-linear,
     it would be incapable of modeling their extreme returns, justifying the development
     of non-linear methods for this purpose (e.g. Cherny et al., [2010](#CR11)).
+  id: totrans-109
   prefs: []
   type: TYPE_NORMAL
 - en: The use of non-linear functions in elementary models, for example polynomials,
@@ -826,6 +1029,7 @@
     Watson, [1964](#CR41)), also known as kernel regression, may deliver suitable
     results. Still, polynomial regression has the advantage of being extremely easy
     to implement, and thus may be quickly computed in real world situations.
+  id: totrans-110
   prefs: []
   type: TYPE_NORMAL
 - en: Of course, our reasoning about the superiority of non-linear over linear techniques
@@ -833,6 +1037,7 @@
     fitted. Indeed, because the polynomial model is more complex, it is more likely
     to result in overfitting. To tackle this question, Zhang ([2019](#CR45)) proposed
     to use regularization to shrink the parameters of polynomial elementary models.
+  id: totrans-111
   prefs: []
   type: TYPE_NORMAL
 - en: The use of non-linear modeling allows for a very flexible functional form that,
@@ -852,6 +1057,7 @@
     assumptions, which constitutes a good way to avoid model rigidity, driven by assumptions
     that may turn out to be false (from a general point of view, assuming a linear
     model can be seen as a strong assumption on the functional form of the model).
+  id: totrans-112
   prefs: []
   type: TYPE_NORMAL
 - en: This extremely high level of flexibility of polymodels requires a careful estimation
@@ -860,6 +1066,7 @@
     be too adaptive, otherwise overfitting can emerge again. Satisfying this need
     for a reasonable algorithm to fit the elementary models is the subject of Chap.
     [3](519851_1_En_3_Chapter.xhtml).
+  id: totrans-113
   prefs: []
   type: TYPE_NORMAL
 - en: The overall increase in precision which is introduced by non-linear modeling
@@ -872,9 +1079,11 @@
     Hence, on the particular question of accurately fitting the patterns that are
     really present in large amounts of data, Polymodel Theory shows enviable characteristics
     compared to the standard alternatives.
+  id: totrans-114
   prefs: []
   type: TYPE_NORMAL
 - en: 2.4.3 Increasing Robustness
+  id: totrans-115
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
@@ -894,6 +1103,7 @@
     the framework of Polymodel Theory multicollinearity just doesn’t appear, which
     makes it more suitable for obtaining a robust estimation of the reaction function
     of each predictor.
+  id: totrans-116
   prefs: []
   type: TYPE_NORMAL
 - en: We propose to draw from the real world another toy example to illustrate this
@@ -915,52 +1125,67 @@
     from the predictor set, so that we can collect 42 × 43 = 1,806 values for Δ[coeff]
     for the three models. Here are the descriptive statistics of these values (Table
     [2.1](#Tab1)):Table 2.1
+  id: totrans-117
   prefs: []
   type: TYPE_NORMAL
 - en: Sensitivity of estimates to changes in the set of explanatory variables
+  id: totrans-118
   prefs: []
   type: TYPE_NORMAL
 - en: '|   | Multivariate (OLS) | Multivariate (Ridge) | Polymodels (Univariate OLS)
     |'
+  id: totrans-119
   prefs: []
   type: TYPE_TB
 - en: '| --- | --- | --- | --- |'
+  id: totrans-120
   prefs: []
   type: TYPE_TB
 - en: '| Count | 1,806 | 1,806 | 1,806 |'
+  id: totrans-121
   prefs: []
   type: TYPE_TB
 - en: '| Mean | 76% | 28% | 0% |'
+  id: totrans-122
   prefs: []
   type: TYPE_TB
 - en: '| Min | 0% | 0% | 0% |'
+  id: totrans-123
   prefs: []
   type: TYPE_TB
 - en: '| Quantile 25% | 2% | 1% | 0% |'
+  id: totrans-124
   prefs: []
   type: TYPE_TB
 - en: '| Quantile 50% | 10% | 5% | 0% |'
+  id: totrans-125
   prefs: []
   type: TYPE_TB
 - en: '| Quantile 75% | 39% | 18% | 0% |'
+  id: totrans-126
   prefs: []
   type: TYPE_TB
 - en: '| Max | 9.110% | 1.556% | 0% |'
+  id: totrans-127
   prefs: []
   type: TYPE_TB
 - en: '| Std | 4.12 | 0.93 | 0.00 |'
+  id: totrans-128
   prefs: []
   type: TYPE_TB
 - en: '| Kurtosis | 233.30 | 88.70 | 0.00 |'
+  id: totrans-129
   prefs: []
   type: TYPE_TB
 - en: '| Skewness | 13.83 | 8.19 | 0.00 |'
+  id: totrans-130
   prefs: []
   type: TYPE_TB
 - en: The average absolute change in the coefficient is 76% for the multivariate OLS,
     28% for the multivariate Ridge, and obviously 0% for the polymodel. These extremely
     large changes in the multivariate case result from a high level of multicollinearity
     in the predictors. Indeed, their average correlation is 56%.
+  id: totrans-131
   prefs: []
   type: TYPE_NORMAL
 - en: Of course, there are plenty of cases where the predictors used are only lowly
@@ -970,6 +1195,7 @@
     if the Ridge estimator is indeed effective at reducing parameter instability,
     its results remain imperfect, while any multicollinearity totally disappears with
     polymodels, which thus provide a radical tool to solve this problem.
+  id: totrans-132
   prefs: []
   type: TYPE_NORMAL
 - en: In order to guarantee that the estimated model is reliable, one of the standard
@@ -991,6 +1217,7 @@
     multicollinearity, the robustness of the modeling is also better using polymodels
     instead of multivariate models from the particular perspective of respecting the
     homoskedasticity assumption.
+  id: totrans-133
   prefs: []
   type: TYPE_NORMAL
 - en: When modeling with several variables, the practitioner frequently encounters
@@ -1009,6 +1236,7 @@
     difference should then be taken into account in the tests used to assess the statistical
     significance of each variable. By keeping all the observations, polymodels thus
     increase the robustness of the estimations compared to multivariate models.
+  id: totrans-134
   prefs: []
   type: TYPE_NORMAL
 - en: Multivariate modeling techniques can only address these concerns about the robustness
@@ -1017,18 +1245,22 @@
     to respect the raw structure of the data (dynamics of variance, missing observations)
     as well as polymodels do. These findings position the polymodel technique as a
     suitable one to work with large amounts of data.
+  id: totrans-135
   prefs: []
   type: TYPE_NORMAL
 - en: 2.5 Considerations Raised by Polymodels
+  id: totrans-136
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
 - en: 2.5.1 Aggregation of Predictions
+  id: totrans-137
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
 - en: One of the usual questions raised when Polymodel Theory is presented is which
     method to use to aggregate the predictions.
+  id: totrans-138
   prefs: []
   type: TYPE_NORMAL
 - en: First, it is important to note that Polymodel Theory offers more than an aggregated
@@ -1039,6 +1271,7 @@
     the elementary models may be used to produce measures other than a prediction
     of the target variable, such as the Value at Risk. Thus, very different measures
     representing different aspects of the system may be produced.
+  id: totrans-139
   prefs: []
   type: TYPE_NORMAL
 - en: The aggregation of the measures that investigate the different dimensions of
@@ -1048,14 +1281,17 @@
     the measures brings information about their instability. It is also possible to
     consider the ratio of the measure to its historical mean, in order to get a meaningful
     value of its relative present level.
+  id: totrans-140
   prefs: []
   type: TYPE_NORMAL
 - en: Finally, aggregating the predictions of the different elementary models together
     raises the question of the correlations of different predictors.
+  id: totrans-141
   prefs: []
   type: TYPE_NORMAL
 - en: In order to effectively understand the stakes of this question, we approach
     it through the metaphor of an amphitheater.
+  id: totrans-142
   prefs: []
   type: TYPE_NORMAL
 - en: Let us consider an amphitheater filled by students from the department of finance
@@ -1066,24 +1302,28 @@
     proportion of the bad students, who have answered the questionnaire following
     a random guessing procedure, may have been selected by chance. The test used to
     determine the best students is fallible, as all tests are.
+  id: totrans-143
   prefs: []
   type: TYPE_NORMAL
 - en: These spuriously selected students will not have the most common profile among
     those we may encounter in the amphitheater. Most of the students selected are
     skilled, however, since they all come from the same university, they share the
     same knowledge and ideas about financial markets.
+  id: totrans-144
   prefs: []
   type: TYPE_NORMAL
 - en: However, some of the students started their studies in other universities, even
     in different fields in a few cases, and some of them study more than others, looking
     for complementary information outside of the lectures, hence, some original views
     may be expressed by those students.
+  id: totrans-145
   prefs: []
   type: TYPE_NORMAL
 - en: The predictions made by the students are anonymous, thus we can’t know who these
     original students are. We only observe the predictions, which are repeated for
     several rounds, trying each time to predict the return of the financial asset
     for the next period.
+  id: totrans-146
   prefs: []
   type: TYPE_NORMAL
 - en: It is quite transparent that the amphitheater is a polymodel, and that each
@@ -1093,9 +1333,11 @@
     is then how to distinguish the wise, the fool and the crowd. This question can
     be addressed in several ways, and we propose to tackle it through a measure that
     considers both originality and believability, which is presented in Chap. [6](519851_1_En_6_Chapter.xhtml).
+  id: totrans-147
   prefs: []
   type: TYPE_NORMAL
 - en: 2.5.2 Number of Variables Per Elementary Model
+  id: totrans-148
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
@@ -1103,24 +1345,29 @@
     be discussed. Indeed, most of the benefits of the polymodels are preserved if
     the elementary models are composed of several variables. Such a construction is
     also in line with the epistemological approach of Polymodel Theory.
+  id: totrans-149
   prefs: []
   type: TYPE_NORMAL
 - en: Nonetheless, including several variables in elementary models would not allow
     us to have a high level of precision (i.e. non-linear modeling) without overfitting.
     Some of the other benefits, for example the absence of multicollinearity, would
     be lost.
+  id: totrans-150
   prefs: []
   type: TYPE_NORMAL
 - en: Apart from statistical considerations, the use of univariate elementary models
     simplifies a lot the analysis, since it is clear that the metrics that we measure
     on the elementary models are associated with a single, well-identified factor.
+  id: totrans-151
   prefs: []
   type: TYPE_NORMAL
 - en: Thus, univariate elementary models seem to be the most appropriate choice for
     the construction of the polymodels.
+  id: totrans-152
   prefs: []
   type: TYPE_NORMAL
 - en: 2.6 Conclusions
+  id: totrans-153
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -1129,6 +1376,7 @@
     modeling. However, the first applications in finance show that the method provides
     a rich framework, particularly favorable to the non-linear modeling of big data,
     with a large panel of applications outside of the scope of multivariate modeling.
+  id: totrans-154
   prefs: []
   type: TYPE_NORMAL
 - en: Formalizing a tool that is increasingly used in the recent literature, we have
@@ -1138,12 +1386,14 @@
     amounts of data in a data-driven, robust, accurate, and non-overfitted manner
     are required. From this perspective, Polymodel Theory can be seen as a machine
     learning method.
+  id: totrans-155
   prefs: []
   type: TYPE_NORMAL
 - en: 'Polymodel Theory also has philosophical benefits: from the point of view of
     epistemology it seems to be a more reasonable approach than multivariate modeling,
     since it provides several representations of the same object (that can be weighted
     according to believability) in lieu of a single, immutable representation.'
+  id: totrans-156
   prefs: []
   type: TYPE_NORMAL
 - en: The non-linearity of polymodels makes it possible to efficiently tackle regime
@@ -1151,6 +1401,7 @@
     the moves, rather than to a random “temporal” event. This is in line with, for
     instance, hidden Markov models in which the “beta” of stocks with respect to certain
     indices depends on the regime.
+  id: totrans-157
   prefs: []
   type: TYPE_NORMAL
 - en: The challenges of estimating, selecting and aggregating the predictions are
@@ -1158,5 +1409,6 @@
     questions properly is the cornerstone of the use of polymodels. Still, if properly
     handled, it makes Polymodel Theory a powerful modeling method, and to some extent,
     a superior alternative to most of the traditional multivariate regression techniques.
+  id: totrans-158
   prefs: []
   type: TYPE_NORMAL
