@@ -2,7 +2,7 @@
 
 # 3. 估计方法：线性非线性混合模型
 
-Thomas Barrau^(1  ) 和 Raphael Douady^(2)(1)AXA 投资经理 Chorus 有限公司，香港，香港特别行政区。(2)巴黎索邦大学经济中心，法国巴黎。
+Thomas Barrau^(1  ) 和 Raphael Douady²(1)AXA 投资经理 Chorus 有限公司，香港，香港特别行政区。(2)巴黎索邦大学经济中心，法国巴黎。
 
 ## 摘要
 
@@ -42,11 +42,11 @@ Thomas Barrau^(1  ) 和 Raphael Douady^(2)(1)AXA 投资经理 Chorus 有限公
 
 ### 3.2.1 定义
 
-LNLM 模型旨在表示目标变量如下:![$$ Y= LNLM(X). $$](img/519851_1_En_3_Chapter_TeX_Equ5.png)(3.5)这种表示使用以下定义完成:![$$ LNLM(X)\stackrel{\scriptscriptstyle\mathrm{def}}{=}\overline{y}+\mu \sum \limits_{h=1}^u{\hat{\beta}}_h^{NonLin}{H}_h(X)+\left(1-\mu \right){\hat{\beta}}^{Lin}X+\varepsilon . $$](img/519851_1_En_3_Chapter_TeX_Equ6.png)(3.6)*这里* 0 ≤ *μ* ≤ 1 *是允许控制潜在*^(1) *非线性的参数，因此被称为非线性倾向参数，* ![$$ \overline{y} $$](img/519851_1_En_3_Chapter_TeX_IEq1.png) *是目标变量的均值。*
+LNLM 模型旨在表示目标变量如下:![$$ Y= LNLM(X). $$](img/519851_1_En_3_Chapter_TeX_Equ5.png)(3.5)这种表示使用以下定义完成:![$$ LNLM(X)\stackrel{\scriptscriptstyle\mathrm{def}}{=}\overline{y}+\mu \sum \limits_{h=1}^u{\hat{\beta}}_h^{NonLin}{H}_h(X)+\left(1-\mu \right){\hat{\beta}}^{Lin}X+\varepsilon . $$](img/519851_1_En_3_Chapter_TeX_Equ6.png)(3.6)*这里* 0 ≤ *μ* ≤ 1 *是允许控制潜在*¹ *非线性的参数，因此被称为非线性倾向参数，* ![$$ \overline{y} $$](img/519851_1_En_3_Chapter_TeX_IEq1.png) *是目标变量的均值。*
 
-因此，LNLM 模型简单地通过线性模型对多项式模型进行正则化^(2)。 这一点非常重要，并且与使用 Ridge 回归^(3) 对参数进行经典收缩造成了显著差异（Hoerl & Kennard，1988）。 实际上，首先想到的减少多项式引起的过拟合的自然想法是简单地收缩模型的 OLS 估计，就像 Zhang (2019) 所做的那样。 其他公认的替代方法包括 LASSO（Tibshirani，1996）或 Elastic Net（Zou & Hastie，2005）方法，但是这两种方法都包括 L¹-范数的惩罚，这通常会导致丢弃一些协变量。 在选择不同独立变量的简洁选择方面，这是非常有意义的，但在我们的情况下，我们只使用相同独立变量的不同变化，我们预计保留所有多项式项将导致更平衡的聚合函数。
+因此，LNLM 模型简单地通过线性模型对多项式模型进行正则化²。 这一点非常重要，并且与使用 Ridge 回归³ 对参数进行经典收缩造成了显著差异（Hoerl & Kennard，1988）。 实际上，首先想到的减少多项式引起的过拟合的自然想法是简单地收缩模型的 OLS 估计，就像 Zhang (2019) 所做的那样。 其他公认的替代方法包括 LASSO（Tibshirani，1996）或 Elastic Net（Zou & Hastie，2005）方法，但是这两种方法都包括 L¹-范数的惩罚，这通常会导致丢弃一些协变量。 在选择不同独立变量的简洁选择方面，这是非常有意义的，但在我们的情况下，我们只使用相同独立变量的不同变化，我们预计保留所有多项式项将导致更平衡的聚合函数。
 
-使用 LNLM 模型而不是 Ridge 模型的动机主要是理论上的。我们先前的信念是，多项式模型的过度拟合仅来自模型的非线性项。换句话说，我们从不指望模型的线性部分过度拟合数据。在岭回归中，无法避免收缩线性项。回顾一下，岭回归的估计值定义为：![$$ {\hat{\beta}}^{Ridge}={\left[{X}^{\prime }X+\lambda I\right]}^{-1}{X}^{\prime }Y,\kern0.75em s.t.\kern0.75em \lambda \ge 0 $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ7.png)(3.7)*这里λ是整数，收缩参数，“I”是 u×u 单位矩阵。*在多项式模型的情况下，矩阵*X′X*将是 4×4，所以我们可以用矩阵*J*替换 4×4 单位矩阵*I* ^(4)：![$$ J=\left[\begin{array}{cc}\begin{array}{cc}0&amp; 0\\ {}0&amp; 1\end{array}&amp; \begin{array}{cc}0&amp; 0\\ {}0&amp; 0\end{array}\\ {}\begin{array}{cc}0&amp; 0\\ {}0&amp; 0\end{array}&amp; \begin{array}{cc}1&amp; 0\\ {}0&amp; 1\end{array}\end{array}\right] $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ8.png)(3.8)这个解决方案很诱人，因为我们可以期望线性项不再受到矩阵*J*的惩罚。然而，我们仍然必须求解矩阵*[X′X + λJ]*的逆，这相当于解一个四元方程组。在这样一个系统中，只有第二、第三和第四个方程被修改，而在协方差矩阵中加入惩罚项后，第一个方程保持不变。但是在求解系统时，每个方程的解都取决于所有其他方程的解，因此系统的第一个方程的解也被修改，结果线性系数也被改变。
+使用 LNLM 模型而不是 Ridge 模型的动机主要是理论上的。我们先前的信念是，多项式模型的过度拟合仅来自模型的非线性项。换句话说，我们从不指望模型的线性部分过度拟合数据。在岭回归中，无法避免收缩线性项。回顾一下，岭回归的估计值定义为：![$$ {\hat{\beta}}^{Ridge}={\left[{X}^{\prime }X+\lambda I\right]}^{-1}{X}^{\prime }Y,\kern0.75em s.t.\kern0.75em \lambda \ge 0 $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ7.png)(3.7)*这里λ是整数，收缩参数，“I”是 u×u 单位矩阵。*在多项式模型的情况下，矩阵*X′X*将是 4×4，所以我们可以用矩阵*J*替换 4×4 单位矩阵*I* ⁴：![$$ J=\left[\begin{array}{cc}\begin{array}{cc}0&amp; 0\\ {}0&amp; 1\end{array}&amp; \begin{array}{cc}0&amp; 0\\ {}0&amp; 0\end{array}\\ {}\begin{array}{cc}0&amp; 0\\ {}0&amp; 0\end{array}&amp; \begin{array}{cc}1&amp; 0\\ {}0&amp; 1\end{array}\end{array}\right] $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ8.png)(3.8)这个解决方案很诱人，因为我们可以期望线性项不再受到矩阵*J*的惩罚。然而，我们仍然必须求解矩阵*[X′X + λJ]*的逆，这相当于解一个四元方程组。在这样一个系统中，只有第二、第三和第四个方程被修改，而在协方差矩阵中加入惩罚项后，第一个方程保持不变。但是在求解系统时，每个方程的解都取决于所有其他方程的解，因此系统的第一个方程的解也被修改，结果线性系数也被改变。
 
 因此，LNLM 模型是对 Ridge 回归在拟合单变量多项式模型的非常特殊情况下的极限的响应（保持过度拟合仅来自非线性的假设）。
 
@@ -70,7 +70,7 @@ LNLM 模型的结构阻止了使用 OLS 进行全局直接拟合，首先因为�
 
 分层交叉验证的折叠分布的样式化表示
 
-一旦数据分成了折叠，我们分别使用最后的*k*−1 个折叠来拟合线性模型和非线性模型。然后，我们使用第一个折叠来数值计算最小化该伪样本折叠内的均方根误差（RMSE）的*μ*的值，该折叠尚未用于估计 OLS 参数：![$$ \underset{\mu_1}{\mathit{\min}}\sqrt{\frac{1}{q}{\sum}_{d=1}^q{\left({y}_{1,d}-\left[{\overline{y}}_{2,3,\dots, k}+{\mu}_1\sum \limits_{h=1}^u{\hat{\beta}}_{2,3,\dots, k,h}^{NonLin}{H}_h\left({x}_{1,d}\right)+\left(1-{\mu}_1\right){\hat{\beta}}_{2,3,\dots, k}^{Lin}{x}_{d,1}\right]\right)}²} $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ9.png)(3.9)这个数值选择重复*k*次，每次改变用于确定*μ*的伪样本折叠：![$$ \left\{\begin{array}{c}\underset{\mu_1}{\mathit{\min}}\sqrt{\frac{1}{q}{\sum}_{d=1}^q{\left({y}_{1,d}-\left[{\overline{y}}_{2,3,\dots, k}+{\mu}_1\sum \limits_{h=1}^u{\hat{\beta}}_{2,3,\dots, k,h}^{NonLin}{H}_h\left({x}_{1,d}\right)+\left(1-{\mu}_1\right){\hat{\beta}}_{2,3,\dots, k}^{Lin}{x}_{1,d}\right]\right)}²}\\ {}\underset{\mu_2}{\mathit{\min}}\sqrt{\frac{1}{q}{\sum}_{d=1}^q{\left({y}_{2,d}-\left[{\overline{y}}_{1,3,\dots, k}+{\mu}_2\sum \limits_{h=1}^u{\hat{\beta}}_{1,3,\dots, k,h}^{NonLin}{H}_h\left({x}_{2,d}\right)+\left(1-{\mu}_2\right){\hat{\beta}}_{1,3,\dots, k}^{Lin}{x}_{2,d}\right]\right)}²}\\ {}\begin{array}{c}\begin{array}{c}\dots \\ {}\dots \\ {}\dots \end{array}\\ {}\underset{\mu_k}{\mathit{\min}}\sqrt{\frac{1}{q}{\sum}_{d=1}^q{\left({y}_{k,d}-\left[{\overline{y}}_{1,2,\dots, k-1}+{\mu}_k\sum \limits_{h=1}^u{\hat{\beta}}_{1,2,\dots, k-1,h}^{NonLin}{H}_h\left({x}_{k,d}\right)+\left(1-{\mu}_k\right){\hat{\beta}}_{1,2,\dots, k-1}^{Lin}{x}_{k,d}\right]\right)}²}\end{array}\end{array}\right. $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ10.png)(3.10)因此，我们得到了*k*个不同的最佳*μ*值，最简单的聚合方法是取平均值。然而，*μ*的值在每个折叠中的重要性不同。在某些折叠中，选择最佳值^(5)的*μ*会导致 RMSE 的显著减少，而在另一些折叠中，RMSE 对最佳选择的敏感性较低。为了考虑到这一点，对于*k*个折叠中的每一个，我们计算以下度量：![$$ {\xi}_l=\sqrt{E\left[{\left({\mathfrak{R}}_l-{\mathfrak{r}}_l^{\ast}\right)}²\right]} $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ11.png)(3.11)*这里* ![$$ {\mathfrak{R}}_l $$](img/519851_1_En_3_Chapter_TeX_IEq2.png) *是计算了所有测试折叠“ l”的*μ*值的均方根误差向量（约 100 个），而* ![$$ {\mathfrak{r}}_l^{\ast } $$](img/519851_1_En_3_Chapter_TeX_IEq3.png) *是在最佳处的 RMSE 值。*
+一旦数据分成了折叠，我们分别使用最后的*k*−1 个折叠来拟合线性模型和非线性模型。然后，我们使用第一个折叠来数值计算最小化该伪样本折叠内的均方根误差（RMSE）的*μ*的值，该折叠尚未用于估计 OLS 参数：![$$ \underset{\mu_1}{\mathit{\min}}\sqrt{\frac{1}{q}{\sum}_{d=1}^q{\left({y}_{1,d}-\left[{\overline{y}}_{2,3,\dots, k}+{\mu}_1\sum \limits_{h=1}^u{\hat{\beta}}_{2,3,\dots, k,h}^{NonLin}{H}_h\left({x}_{1,d}\right)+\left(1-{\mu}_1\right){\hat{\beta}}_{2,3,\dots, k}^{Lin}{x}_{d,1}\right]\right)}²} $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ9.png)(3.9)这个数值选择重复*k*次，每次改变用于确定*μ*的伪样本折叠：![$$ \left\{\begin{array}{c}\underset{\mu_1}{\mathit{\min}}\sqrt{\frac{1}{q}{\sum}_{d=1}^q{\left({y}_{1,d}-\left[{\overline{y}}_{2,3,\dots, k}+{\mu}_1\sum \limits_{h=1}^u{\hat{\beta}}_{2,3,\dots, k,h}^{NonLin}{H}_h\left({x}_{1,d}\right)+\left(1-{\mu}_1\right){\hat{\beta}}_{2,3,\dots, k}^{Lin}{x}_{1,d}\right]\right)}²}\\ {}\underset{\mu_2}{\mathit{\min}}\sqrt{\frac{1}{q}{\sum}_{d=1}^q{\left({y}_{2,d}-\left[{\overline{y}}_{1,3,\dots, k}+{\mu}_2\sum \limits_{h=1}^u{\hat{\beta}}_{1,3,\dots, k,h}^{NonLin}{H}_h\left({x}_{2,d}\right)+\left(1-{\mu}_2\right){\hat{\beta}}_{1,3,\dots, k}^{Lin}{x}_{2,d}\right]\right)}²}\\ {}\begin{array}{c}\begin{array}{c}\dots \\ {}\dots \\ {}\dots \end{array}\\ {}\underset{\mu_k}{\mathit{\min}}\sqrt{\frac{1}{q}{\sum}_{d=1}^q{\left({y}_{k,d}-\left[{\overline{y}}_{1,2,\dots, k-1}+{\mu}_k\sum \limits_{h=1}^u{\hat{\beta}}_{1,2,\dots, k-1,h}^{NonLin}{H}_h\left({x}_{k,d}\right)+\left(1-{\mu}_k\right){\hat{\beta}}_{1,2,\dots, k-1}^{Lin}{x}_{k,d}\right]\right)}²}\end{array}\end{array}\right. $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ10.png)(3.10)因此，我们得到了*k*个不同的最佳*μ*值，最简单的聚合方法是取平均值。然而，*μ*的值在每个折叠中的重要性不同。在某些折叠中，选择最佳值⁵的*μ*会导致 RMSE 的显著减少，而在另一些折叠中，RMSE 对最佳选择的敏感性较低。为了考虑到这一点，对于*k*个折叠中的每一个，我们计算以下度量：![$$ {\xi}_l=\sqrt{E\left[{\left({\mathfrak{R}}_l-{\mathfrak{r}}_l^{\ast}\right)}²\right]} $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ11.png)(3.11)*这里* ![$$ {\mathfrak{R}}_l $$](img/519851_1_En_3_Chapter_TeX_IEq2.png) *是计算了所有测试折叠“ l”的*μ*值的均方根误差向量（约 100 个），而* ![$$ {\mathfrak{r}}_l^{\ast } $$](img/519851_1_En_3_Chapter_TeX_IEq3.png) *是在最佳处的 RMSE 值。*
 
 因此，度量*ξ*测量了围绕最优解获得的误差的分散程度。它可以理解为与最小 RMSE 的标准偏差。*ξ*的值越大，当我们偏离最优解时误差增加的幅度就越大，选择这个特定值*μ*就越重要。
 
@@ -94,11 +94,11 @@ LNLM 模型的结构阻止了使用 OLS 进行全局直接拟合，首先因为�
 
 +   我们假设可以观察到*X*和![$$ \overset{\sim }{\mathrm{Y}} $$](img/519851_1_En_3_Chapter_TeX_IEq4.png)的值，但模型的函数形式以及随机部分对于外部观察者是未知的。我们将自己置于这个外部观察者的位置，尝试使用几种建模技术来拟合均值方程。
 
-+   一旦使用这些不同模型进行拟合，我们使用与之前相同的分布生成*X*的新值，并观察估计模型如何使用这些新值适合其原始目标，^(6) ϕ(*X*)。
++   一旦使用这些不同模型进行拟合，我们使用与之前相同的分布生成*X*的新值，并观察估计模型如何使用这些新值适合其原始目标，⁶ ϕ(*X*)。
 
 这个实验设计因此捕捉了每种建模技术的 *样本外预测能力*，即其应对过拟合问题的能力。
 
-*X* 服从自由度为 4 的学生 t 分布，因为已发现这种分布能够适当地模拟股票收益的分布情况（Platen & Rendek，2008）。为方便起见，在反应函数的定义中，超出区间[−6, +6]的值会被截断处理。^(7)
+*X* 服从自由度为 4 的学生 t 分布，因为已发现这种分布能够适当地模拟股票收益的分布情况（Platen & Rendek，2008）。为方便起见，在反应函数的定义中，超出区间[−6, +6]的值会被截断处理。⁷
 
 建模金融市场通常是一项困难的任务，因为使用的数据非常嘈杂。我们关注的是在大量噪声存在的情况下测试不同建模技术的准确性，因此 ε 的值也将从自由度为 4 的学生 t 分布中抽取。
 
@@ -146,7 +146,7 @@ LNLM 模型的结构阻止了使用 OLS 进行全局直接拟合，首先因为�
 
 +   一个非参数模型，即纳达拉-沃森估计量（见纳达拉亚(1964)，沃森(1964)以获得正式定义）。非参数拟合的最重要参数，即带宽，也是使用交叉验证方法进行选择的。估计是使用 statsmodels 的核回归模块执行的。
 
-我们还使用不同数量的观测值在向量*X*中，由于相同的模拟噪声，用小数据集可能比用大数据集更难识别基础功能。为了保持对现实主义的关注，对于向量*X*，我们使用了 126、252、756 和 1,260 个观测值的长度。这些数字来自于使用滚动窗口估计多项式的频繁使用。^(8)
+我们还使用不同数量的观测值在向量*X*中，由于相同的模拟噪声，用小数据集可能比用大数据集更难识别基础功能。为了保持对现实主义的关注，对于向量*X*，我们使用了 126、252、756 和 1,260 个观测值的长度。这些数字来自于使用滚动窗口估计多项式的频繁使用。⁸
 
 在每个模拟中，用于估计的*X*值的数据、噪声值的数据以及用于预测的*X*值的数据是从不同的随机种子生成的（来自 numpy 库）。
 
@@ -176,7 +176,7 @@ LNLM 模型的结构阻止了使用 OLS 进行全局直接拟合，首先因为�
 
 这些图表显示，与实际情况一样，由于模拟数据中存在大量噪声，拟合相对困难。
 
-对于每个*X*长度，我们对上述定义的 13 个函数的每个函数运行了 1,000 次模拟，每次使用不同的随机种子，从而达到总共 52,000 次模拟。^(9)
+对于每个*X*长度，我们对上述定义的 13 个函数的每个函数运行了 1,000 次模拟，每次使用不同的随机种子，从而达到总共 52,000 次模拟。⁹
 
 我们计算了所有这些情况下的样本外预测的均方根误差，这是我们的样本外拟合优度的指标。
 

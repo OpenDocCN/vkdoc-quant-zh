@@ -2,7 +2,7 @@
 
 # 4. 市场回报预测
 
-Thomas Barrau^(1  ) 和 Raphael Douady^(2)
+Thomas Barrau^(1  ) 和 Raphael Douady²
 
 ## 摘要
 
@@ -26,7 +26,7 @@ Sornette (参见 Johansen et al. (2000) 和 Sornette (2009)) 是使用其 LPPL
 
 ## 4.2 数据
 
-使用的数据中绝大部分（96%）由彭博提供，以每日收益的形式。^(1)^,^(2)^ 由于所有数据都是市场数据，所以是即时的。数据包括我们的多模型的目标变量，即 12 个股票指数的收益，以及一个包括 1,134 个解释变量的因素集。数据集定义于 1995-01-02 至 2018-10-16 之间，尽管某些变量仅在此期间的一部分定义。之后，因素集随时间可用的变量数量如下所示（图 4.1）：![](img/519851_1_En_4_Fig1_HTML.png)
+使用的数据中绝大部分（96%）由彭博提供，以每日收益的形式。¹^,²^ 由于所有数据都是市场数据，所以是即时的。数据包括我们的多模型的目标变量，即 12 个股票指数的收益，以及一个包括 1,134 个解释变量的因素集。数据集定义于 1995-01-02 至 2018-10-16 之间，尽管某些变量仅在此期间的一部分定义。之后，因素集随时间可用的变量数量如下所示（图 4.1）：![](img/519851_1_En_4_Fig1_HTML.png)
 
 图 4.1
 
@@ -137,7 +137,7 @@ Sornette (参见 Johansen et al. (2000) 和 Sornette (2009)) 是使用其 LPPL
 
 对于考虑的每个股票市场，导出我们的系统性风险指标的方法是相同的。
 
-首先我们估计一个多模型:![$$ \left\{Y={\varphi}_i\left({X}_i\right)\kern1em \forall i\right\}. $$](img/519851_1_En_4_Chapter_TeX_Equ1.png)(4.1)多模型是使用 LNLM 模型估计的，如第三章所述：![$$ LNLM(X)\stackrel{\scriptscriptstyle\mathrm{def}}{=}\overline{y}+\mu \sum \limits_{h=1}^u{\hat{\beta}}_h^{NonLin}{H}_h(X)+\left(1-\mu \right){\hat{\beta}}^{Lin}X+\varepsilon \Rightarrow \left\{Y={LNLM}_i\left({X}_i\right)\kern1em \forall i\right\}. $$](img/519851_1_En_4_Chapter_TeX_Equ2.png)(4.2)多模型是基于滚动基础估计的，使用 5 年的窗口。尽管数据以每日频率可用，但由于我们的计算资源限制，我们只在每月重新执行估计。我们转换每日收益以获得一些月度收益^(3)，这可能显示出更清晰的模式。解释变量的因子集由一个月的滞后产生，以便为我们提供一个明确的因果方向（作为积极的副作用，它还确保我们避免由于国际市场的异步性而使用未来信息）:![$$ \left\{{Y}_t={LNLM}_{i,t}\left({X}_{i,t-1}\right)\kern1em \forall i\right\}. $$](img/519851_1_En_4_Chapter_TeX_Equ3.png)(4.3)一旦对给定日期完成估计，我们计算每个组成多模型的基本模型的拟合优度指标，即均方根误差。此指标捕获了给定因子与预测股市之间联系的强度。为了删除最不显著的因子，我们过滤多模型以仅保留最低的 80% 均方根误差。
+首先我们估计一个多模型:![$$ \left\{Y={\varphi}_i\left({X}_i\right)\kern1em \forall i\right\}. $$](img/519851_1_En_4_Chapter_TeX_Equ1.png)(4.1)多模型是使用 LNLM 模型估计的，如第三章所述：![$$ LNLM(X)\stackrel{\scriptscriptstyle\mathrm{def}}{=}\overline{y}+\mu \sum \limits_{h=1}^u{\hat{\beta}}_h^{NonLin}{H}_h(X)+\left(1-\mu \right){\hat{\beta}}^{Lin}X+\varepsilon \Rightarrow \left\{Y={LNLM}_i\left({X}_i\right)\kern1em \forall i\right\}. $$](img/519851_1_En_4_Chapter_TeX_Equ2.png)(4.2)多模型是基于滚动基础估计的，使用 5 年的窗口。尽管数据以每日频率可用，但由于我们的计算资源限制，我们只在每月重新执行估计。我们转换每日收益以获得一些月度收益³，这可能显示出更清晰的模式。解释变量的因子集由一个月的滞后产生，以便为我们提供一个明确的因果方向（作为积极的副作用，它还确保我们避免由于国际市场的异步性而使用未来信息）:![$$ \left\{{Y}_t={LNLM}_{i,t}\left({X}_{i,t-1}\right)\kern1em \forall i\right\}. $$](img/519851_1_En_4_Chapter_TeX_Equ3.png)(4.3)一旦对给定日期完成估计，我们计算每个组成多模型的基本模型的拟合优度指标，即均方根误差。此指标捕获了给定因子与预测股市之间联系的强度。为了删除最不显著的因子，我们过滤多模型以仅保留最低的 80% 均方根误差。
 
 ### 4.3.2 系统性风险指标定义
 
@@ -159,7 +159,7 @@ RMSEs 的分布是通过简单的核密度估计获得的（参见 Parzen，1962
 
 Hellinger 距离绘制的图案清楚地反映了 2008 年金融危机之前的投机泡沫，以及其爆裂。假设这种模式确实具有预测性，那么距离的减小将是关于未来市场回报的负面信号，反之亦然。
 
-我们的系统性风险指标简单地复制了这种推理，其定义为 Hellinger 距离变化的符号:![$$ {SRI}_t\stackrel{\scriptscriptstyle\mathrm{def}}{=}\left\{\begin{array}{c}1\kern0.5em if\kern0.5em \mathcal{H}\left({\mathcal{R}}_t^{Current},{\mathcal{R}}_t^{Pre- Crisis}\right)&lt;\mathcal{H}\left({\mathcal{R}}_{t-1}^{Current},{\mathcal{R}}_{t-1}^{Pre- Crisis}\right)\\ {}0\kern0.5em if\kern0.5em \mathcal{H}\left({\mathcal{R}}_t^{Current},{\mathcal{R}}_t^{Pre- Crisis}\right)\ge \mathcal{H}\left({\mathcal{R}}_{t-1}^{Current},{\mathcal{R}}_{t-1}^{Pre- Crisis}\right)\end{array}\right. $$](img/519851_1_En_4_Chapter_TeX_Equ4.png)(4.4)*这里，“*![$$ {\mathcal{R}}_t^{Current} $$](img/519851_1_En_4_Chapter_TeX_IEq1.png)*”是当前日期“t”的 RMSE 分布，“* ![$$ {\mathcal{R}}_t^{Pre- Crisis} $$](img/519851_1_En_4_Chapter_TeX_IEq2.png)*”是日期“t”可用的 RMSE 预危机分布的上一个表示，“* ![$$ \mathcal{H}\left(\ \right) $$](img/519851_1_En_4_Chapter_TeX_IEq3.png)*”是 Hellinger 距离。*Hellinger 距离在我们的离散框架中被定义为:![$$ \mathcal{H}\left({\mathcal{R}}_t^{Current},{\mathcal{R}}_t^{Pre- Crisis}\right)\stackrel{\scriptscriptstyle\mathrm{def}}{=}\frac{1}{\sqrt{2}}\sqrt{\sum \limits_{i=1}^n{\left(\sqrt{{\mathcal{R}}_{i,t}^{Current}}-\sqrt{{\mathcal{R}}_{i,t}^{Pre- Crisis}}\right)}²} $$](img/519851_1_En_4_Chapter_TeX_Equ5.png)(4.5)*这里，“*![$$ {\mathcal{R}}_{i,t}^{Current} $$](img/519851_1_En_4_Chapter_TeX_IEq4.png)*”是给定因子“i”当前日期“t”的 RMSE 值，“* ![$$ {\mathcal{R}}_{i,t}^{Pre- Crisis} $$](img/519851_1_En_4_Chapter_TeX_IEq5.png)*”是因子“i”的 RMSE 值，从日期“t”可用的 RMSE 预危机分布的上一个表示中绘制而得。*例如，我们在 Stoxx Europe 600 的情况下在下面显示^(4) 指标（图 4.4）:![](img/519851_1_En_4_Fig4_HTML.png)
+我们的系统性风险指标简单地复制了这种推理，其定义为 Hellinger 距离变化的符号:![$$ {SRI}_t\stackrel{\scriptscriptstyle\mathrm{def}}{=}\left\{\begin{array}{c}1\kern0.5em if\kern0.5em \mathcal{H}\left({\mathcal{R}}_t^{Current},{\mathcal{R}}_t^{Pre- Crisis}\right)&lt;\mathcal{H}\left({\mathcal{R}}_{t-1}^{Current},{\mathcal{R}}_{t-1}^{Pre- Crisis}\right)\\ {}0\kern0.5em if\kern0.5em \mathcal{H}\left({\mathcal{R}}_t^{Current},{\mathcal{R}}_t^{Pre- Crisis}\right)\ge \mathcal{H}\left({\mathcal{R}}_{t-1}^{Current},{\mathcal{R}}_{t-1}^{Pre- Crisis}\right)\end{array}\right. $$](img/519851_1_En_4_Chapter_TeX_Equ4.png)(4.4)*这里，“*![$$ {\mathcal{R}}_t^{Current} $$](img/519851_1_En_4_Chapter_TeX_IEq1.png)*”是当前日期“t”的 RMSE 分布，“* ![$$ {\mathcal{R}}_t^{Pre- Crisis} $$](img/519851_1_En_4_Chapter_TeX_IEq2.png)*”是日期“t”可用的 RMSE 预危机分布的上一个表示，“* ![$$ \mathcal{H}\left(\ \right) $$](img/519851_1_En_4_Chapter_TeX_IEq3.png)*”是 Hellinger 距离。*Hellinger 距离在我们的离散框架中被定义为:![$$ \mathcal{H}\left({\mathcal{R}}_t^{Current},{\mathcal{R}}_t^{Pre- Crisis}\right)\stackrel{\scriptscriptstyle\mathrm{def}}{=}\frac{1}{\sqrt{2}}\sqrt{\sum \limits_{i=1}^n{\left(\sqrt{{\mathcal{R}}_{i,t}^{Current}}-\sqrt{{\mathcal{R}}_{i,t}^{Pre- Crisis}}\right)}²} $$](img/519851_1_En_4_Chapter_TeX_Equ5.png)(4.5)*这里，“*![$$ {\mathcal{R}}_{i,t}^{Current} $$](img/519851_1_En_4_Chapter_TeX_IEq4.png)*”是给定因子“i”当前日期“t”的 RMSE 值，“* ![$$ {\mathcal{R}}_{i,t}^{Pre- Crisis} $$](img/519851_1_En_4_Chapter_TeX_IEq5.png)*”是因子“i”的 RMSE 值，从日期“t”可用的 RMSE 预危机分布的上一个表示中绘制而得。*例如，我们在 Stoxx Europe 600 的情况下在下面显示⁴ 指标（图 4.4）:![](img/519851_1_En_4_Fig4_HTML.png)
 
 图 4.4
 
@@ -199,7 +199,7 @@ Hellinger 距离绘制的图案清楚地反映了 2008 年金融危机之前的�
 
 由于该指标设计精确地预期危机，我们还进行了一些子样本回归，以比较 2008 年次贷危机期间和随后的十年期间（较为平静）指标的表现。结果在所有市场中的 p 值均显著达到 1%的水平，除了 OMX，在危机期间仅达到 7%的 p 值。尽管该指标在第二个时期的整体显著性较低，但它继续在大多数市场中证明具有很高的预测能力。
 
-表 4.4 以下显示了信息系数，这应该与从业者的参考文献共鸣。我们计算了与未来 3 个月回报符号及其值的 IC^(5)。有趣的是，在所有情况下预测未来回报的符号是不够的，对于瑞士 HEX 指数和 KAX 指数来说，IC 减少的值是重要的。表 4.4
+表 4.4 以下显示了信息系数，这应该与从业者的参考文献共鸣。我们计算了与未来 3 个月回报符号及其值的 IC⁵。有趣的是，在所有情况下预测未来回报的符号是不够的，对于瑞士 HEX 指数和 KAX 指数来说，IC 减少的值是重要的。表 4.4
 
 系统风险指标的信息系数
 
@@ -232,7 +232,7 @@ Hellinger 距离绘制的图案清楚地反映了 2008 年金融危机之前的�
 
 我们没有使用这两个分布的滚动平均值，而是直接计算了分布的全样本平均值。然后，我们再次对各个市场的全样本平均分布进行平均，以便获得正常情况和危机前案例的单一代表性分布。
 
-这些代表性分布^(6)使我们能够理解危机发生前发生了什么：
+这些代表性分布⁶使我们能够理解危机发生前发生了什么：
 
 图 4.7 似乎显示了一些 RMSE 的同时增加和一些 RMSE 的减少。如果我们计算这两个分布的密度差异，这一现象将变得更加明显（图 4.8）:![](img/519851_1_En_4_Fig7_HTML.png)
 
@@ -300,7 +300,7 @@ Hellinger 距离绘制的图案清楚地反映了 2008 年金融危机之前的�
 
 每个市场的表现都通过交易策略得到了改善，并且夏普比率的增加在经济上具有重要意义。
 
-使用先前提到的方法计算的平均改善的*p*-值^(8)为 0.06%，证实了性能也具有统计学意义。
+使用先前提到的方法计算的平均改善的*p*-值⁸为 0.06%，证实了性能也具有统计学意义。
 
 我们在下面展示了随机表现的分布（图 4.9）: ![](img/519851_1_En_4_Fig9_HTML.png)
 
@@ -312,7 +312,7 @@ Hellinger 距离绘制的图案清楚地反映了 2008 年金融危机之前的�
 
 注意，平均而言，市场定时投资组合有 41% 的时间进行对冲，这是不过度拟合的一个好迹象。事实上，由于每个月重新决定杠杆，随着时间的推移会进行大量不同的投注。与在 20 年模拟中仅对市场进行少数几次投注的指标相比，这显着降低了挑选危机指标的机会。
 
-仍然以之前的例子为例，我们展示下面的策略对 Stoxx Europe 600^(9)的表现（完整结果请见附录：按股票指数的市场时机组合和系统风险指标）（图 4.10）：![](img/519851_1_En_4_Fig10_HTML.png)
+仍然以之前的例子为例，我们展示下面的策略对 Stoxx Europe 600⁹的表现（完整结果请见附录：按股票指数的市场时机组合和系统风险指标）（图 4.10）：![](img/519851_1_En_4_Fig10_HTML.png)
 
 图 4.10
 

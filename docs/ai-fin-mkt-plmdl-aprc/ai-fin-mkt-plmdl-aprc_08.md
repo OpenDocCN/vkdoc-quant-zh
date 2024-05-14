@@ -2,7 +2,7 @@
 
 # 结论
 
-Thomas Barrau^(1  ) 和 Raphael Douady^(2)(1)AXA Investment Managers Chorus Ltd, 香港, 香港特别行政区。(2)经济中心, 巴黎索邦大学, 巴黎, 法国
+Thomas Barrau^(1  ) 和 Raphael Douady²(1)AXA Investment Managers Chorus Ltd, 香港, 香港特别行政区。(2)经济中心, 巴黎索邦大学, 巴黎, 法国
 
 ## 摘要
 
