@@ -648,12 +648,14 @@
   id: totrans-67
   prefs: []
   type: TYPE_NORMAL
+  zh: 然而，模型中真正随机的部分，即与预测变量无关的目标变量值部分，总是可以通过预测变量虚假建模。这只是使用足够复杂和适当参数化的预测变量函数的问题。在样本内，这将极大地改善模型的常规拟合度度量，但在这种情况下，我们将对不存在的联系进行建模，因为根据定义，预测变量与目标变量的随机部分之间没有联系。因此，在使用特定数据样本估计模型之后，当使用预测变量的新值（超出原始数据集）来预测相应的目标变量值时，这种不良实践的直接后果就会出现。预测的准确度很低，揭示了初始模型的弱点。
 - en: Observing a low predicting power out-of-sample of a model that exhibits a high
     level of goodness of fit in-sample is a typical definition of overfitting (Babyak,
     [2004](#CR4)).
   id: totrans-68
   prefs: []
   type: TYPE_NORMAL
+  zh: 在样本外呈现出高拟合度模型的低预测能力是过拟合的典型定义（Babyak，[2004](#CR4)）。
 - en: Intuitively, one can see that it would be easy to find patterns in the data
     that seem to correspond to a link that does not exist, especially because we adapt
     these patterns to the target variable using the estimation of the functional form
@@ -661,6 +663,7 @@
   id: totrans-69
   prefs: []
   type: TYPE_NORMAL
+  zh: 直觉上，我们可以看出，在数据中很容易找到似乎对应于不存在的联系的模式，特别是因为我们通过估计函数形式参数来将这些模式适应于目标变量。
 - en: 'This functional form, which characterizes the model, tends to adapt better
     to these spurious patterns when it is made more complex. This complexity depends
     on the number of parameters, and essentially comes from two sources: the complexity
@@ -669,6 +672,8 @@
   id: totrans-70
   prefs: []
   type: TYPE_NORMAL
+  zh: 这种描述模型的函数形式，在更复杂的情况下，更容易适应这些虚假模式。这种复杂性取决于参数的数量，并且主要来自两个来源：与每个变量相关的函数形式的复杂性，以及模型中使用的变量数量（Hawkins
+    ([2004](#CR22)) 对这些问题进行了深入讨论）。
 - en: 'This is why increasing the number of predictors in a multivariate regression
     is well known to expose the danger of overfitting, so much so that econometricians
     on the subject like to joke by citing John von Neumann’s famous quote: “With four
@@ -681,6 +686,7 @@
   id: totrans-71
   prefs: []
   type: TYPE_NORMAL
+  zh: 这就是为什么增加多变量回归中预测变量数量会暴露过拟合风险的原因，以至于像经济计量学家这样的专家会引用约翰·冯·诺伊曼的著名语录而开玩笑：“用四个参数我可以拟合一只大象，用五个我可以让它摇摆鼻子”。当观察数量减少时，这种情况经常发生。事实上，对于给定数量的观察，增加多变量模型中的预测变量数量会减少残差的方差，使模型在拟合度方面变得“更好”，但只是表面上看起来如此。
 - en: The problem becomes even worse when the number of predictors increases so much
     that it becomes higher than the number of observations. In such a case, the covariance
     matrix of the predictors *X′X* is not invertible, leading to a failure of the
@@ -707,6 +713,15 @@
   id: totrans-72
   prefs: []
   type: TYPE_NORMAL
+  zh: 当预测变量的数量增加到比观察数量更高时，问题变得更加严重。在这种情况下，预测变量的协方差矩阵*X'X*不可逆，导致通常的普通最小二乘线性模型参数估计解决方案失败，定义为：![$$
+    \hat{\beta}={\left[{X}^{\prime }X\right]}^{-1}{X}^{\prime }Y. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ9.png)(2.9)计算OLS估计量所需的矩阵求逆可以看作是要解决的一组方程，而在我们的情况下，解决方案不唯一。因此，这个问题被称为“病态”（Hadamard，[1902](#CR21)）。解决这个问题的一个非常常见的方法是使用L²-范数的系数估计值进行回归正则化（称为岭回归（Hoerl
+    & Kennard，[1988](#CR24)）或Tikhonov正则化）。请记住，在普通最小二乘中，直线与数据之间的平方差之和被最小化。参数β的估计值，称为![$$
+    \hat{\upbeta} $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_IEq1.png)，因此是优化问题的解：![$$
+    \underset{\beta }{\mathit{\min}}\ {\left\Vert Y- X\beta \right\Vert}_2^2\. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ10.png)(2.10)在岭回归中，L²-范数的惩罚被添加如下：![$$
+    \underset{\beta }{\mathit{\min}}\ {\left\Vert Y- X\beta \right\Vert}_2^2+\lambda
+    {\left\Vert \beta \right\Vert}_2^2, $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ11.png)(2.11)*这里，“λ”是岭惩罚参数*。导致参数的以下缩小估计值：![$$
+    {\hat{\beta}}^{Ridge}={\left[{X}^{\prime }X+\lambda I\right]}^{-1}{X}^{\prime
+    }Y. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ12.png)(2.12)*“I”是n × n单位矩阵。*
 - en: On top of allowing the matrix inversion, the penalization of the L²-norm automatically
     reduces the magnitude of the coefficients estimated by OLS, leading to better
     out-of-sample estimates (Van Dusen, [2016](#CR40)) proposes a comprehensive overview
@@ -720,6 +735,7 @@
   id: totrans-73
   prefs: []
   type: TYPE_NORMAL
+  zh: 在允许矩阵求逆的基础上，L²-范数的惩罚自动减小了OLS估计的系数的大小，从而导致更好的外样本估计（Van Dusen，[2016](#CR40)）提出了对这一点的全面概述）。还可以在优化问题中引入L¹和L²-范数的惩罚，这种技术称为弹性网络正则化（Tibshirani，[1996](#CR39)，另见Zou和Hastie，[2005](#CR46)）。当加入L¹-范数的惩罚时，一些系数会变为零，从而实现对自变量的选择。岭回归和弹性网络回归因此解决了与多模型相同的问题，这是在使用大量变量进行建模时防止过度拟合的替代方法。
 - en: However, in most of the applications of these approaches, the number of degrees
     of freedom of the model stays very low even after variable selection, which always
     raises some reservations about the resulting fit. This is a concern that is easily
@@ -729,6 +745,7 @@
   id: totrans-74
   prefs: []
   type: TYPE_NORMAL
+  zh: 然而，在这些方法的大多数应用中，即使在变量选择后，模型的自由度数量仍然非常低，这总是会对结果拟合引起一些疑虑。通过使用多模型，可以轻松解决这个问题，因为每个基本模型中使用单个变量大大增加了自由度的数量。因此，使用多模型提供了一种更简单、更有效的解决这些问题的方法。
 - en: To better understand how the multivariate models overfit compared to polymodels,
     we propose to illustrate our reasoning with a toy example. To tackle a familiar
     problem, we model the returns of the S&P 500 as a function of a set of *n* predictors
@@ -736,6 +753,8 @@
   id: totrans-75
   prefs: []
   type: TYPE_NORMAL
+  zh: 为了更好地理解多元模型与多模型相比过度拟合的情况，我们提出通过一个玩具例子来说明我们的推理。为了解决一个熟悉的问题，我们将S&P 500的回报建模为一组*n*个预测变量的函数（如方程
+    ([2.7](#Equ7)) 中所示，其中*Y*是S&P回报）。
 - en: 'To test the spuriousness of the various approaches, we build a set of predictors
     that contains values randomly drawn from a Student’s t-distribution with 4 degrees
     of freedom:^([3](#Fn3))![$$ X=0+\varepsilon $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equa.png)![$$
@@ -746,12 +765,16 @@
   id: totrans-76
   prefs: []
   type: TYPE_NORMAL
+  zh: 为了测试各种方法的虚假性，我们构建了一个包含从自由度为4的学生t分布中随机抽取的值的预测器集合:^([3](#Fn3))![$$ X=0+\varepsilon
+    $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equa.png)![$$ \varepsilon
+    \sim {t}_{\nu =4.} $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ13.png)(2.13)因此，根据构造，*在我们的实验中，目标变量与预测变量之间没有任何联系*。只有噪声可以适应解释变量。为了得到*f()*，我们比较了三种不同的建模技术：
 - en: The multivariate linear model described by Eq. ([2.8](#Equ8)), estimated using
     the OLS estimator described by Eq. ([2.9](#Equ9)).
   id: totrans-77
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 由方程 ([2.8](#Equ8)) 描述的多元线性模型，使用方程 ([2.9](#Equ9)) 描述的OLS估计器进行估计。
 - en: The same multivariate model estimated using the Ridge estimator described by
     Eq. ([2.12](#Equ12)). The parameter λ, which is crucial for the estimation, is
     chosen using a 5-fold cross-validation (see Golub et al., [1979](#CR19)) on the
@@ -760,12 +783,14 @@
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 使用由方程 ([2.12](#Equ12)) 描述的Ridge估计器进行估计的相同多元模型。对于估计至关重要的参数λ是通过5倍交叉验证（参见Golub等人，[1979](#CR19)）选择的（有关使用交叉验证选择Ridge参数的使用）。
 - en: A polymodel, as described in Eq. ([2.5](#Equ5)), with elementary models defined
     as linear univariate models estimated with OLS.
   id: totrans-79
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 如方程 ([2.5](#Equ5)) 中描述的多模型，其中基本模型被定义为使用OLS估计的线性单变量模型。
 - en: This simple setting does not include non-linearity or variable selection, so
     that the results are only driven by the multivariate/univariate distinction. We
     estimate the parameters of each of these three models using the weekly returns
@@ -794,11 +819,22 @@
   id: totrans-80
   prefs: []
   type: TYPE_NORMAL
+  zh: 这个简单的设置不包括非线性或变量选择，因此结果仅由多元/单一区分驱动。我们使用 2001-01-01 至 2003-12-31 期间的标普500周回报估计了这三种模型的参数，这对应于
+    157 个观测值。然后，我们为 *X* 生成新值，并使用先前估计的参数将它们与模型化的标普回报模型化为 2004-01-01 至 2006-12-31 期间的情况。当然，我们不指望这些预测中有任何好的结果，实验的目的是反映不同模型被拟合纯噪音的能力。因此，我们通过比较样本内（2001年至2003年期间）的拟合度和样本外（2004年至2006年期间）的拟合度来测量过拟合。拟合度使用R²来评估，它是总平方和中残差平方和的减法值的百分比:![$$
+    {R}^2=1-\frac{\sum \limits_{s=1}^t{\left({y}_s-{f}_t\left({x}_s\right)\right)}^2}{\sum
+    \limits_{s=1}^t{\left({y}_s-{\overline{y}}_t\right)}^2}. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ14.png)(2.14)*这里，“t”是当前时间索引（即
+    2003 年底），“s”是窗口中滚动时间索引（即它在 01-2001 和 12-2003 之间采用每周日期值），“ ![$$ {\overline{y}}_t
+    $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_IEq2.png)”是在 s=
+    1 和 s=t 之间的目标变量的平均值，“ f*[*t*]*”是使用在日期 t 可用的数据估计的拟合函数。*更确切地说，为了评估过拟合，我们测量“样本外R²”，它与上面的“样本内R²”公式相同，但使用样本内系数和样本外数据:![$$
+    {R^2}_{oos}=1-\frac{\sum \limits_{s=t+1}^{t+157}{\left({y}_s-{f}_t\left({x}_s\right)\right)}^2}{\sum
+    \limits_{s=t+1}^{t+157}{\left({y}_s-{\overline{y}}_{t+157}\right)}^2}. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ15.png)(2.15)上述公式反映了使用新数据（在
+    *t* + 1 到 *t* + 157 之间）重新计算 *R*^(*2*)，但拟合函数 *f[t]*() 保持不变。
 - en: 'We then measure the *Spread* between the “In-Sample R²” and the “Out-of-Sample
     R²”:'
   id: totrans-81
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们接着测量“样本内R²”和“样本外R²”之间的*差异*：
 - en: '![$$ Spread={R^2}_{IS}-{R^2}_{OOS}. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ16.png)(2.16)For
     the polymodel, we do not represent the spread of each elementary model but choose
     to present the average^([4](#Fn4)) spread among elementary models, for the sake
@@ -809,15 +845,20 @@
   id: totrans-82
   prefs: []
   type: TYPE_IMG
+  zh: '![$$ 差异={R^2}_{IS}-{R^2}_{OOS}. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ16.png)(2.16)对于多元模型，我们不表示每个基本模型的差异，而是选择呈现基本模型之间的平均^([4](#Fn4))
+    差异，为了简洁起见。接下来我们观察差异如何随预测变量数量 *n* 的变化而变化。我们将这个数字变化在 1 和 156 之间（回顾一下共有 157 个观测值）。在图
+    [2.1](#Fig1) 中，将这个作为过拟合度量的预测变量数量的函数进行了比较：![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig1_HTML.png)'
 - en: Fig. 2.1
   id: totrans-83
   prefs: []
   type: TYPE_NORMAL
+  zh: 图 2.1
 - en: Spreads between In-Sample vs Out-of-Sample R² as a function of the number of
     explanatory variables included in the regression
   id: totrans-84
   prefs: []
   type: TYPE_NORMAL
+  zh: 根据回归中包含的解释变量的数量，内样本和外样本R²之间的差距（缩放）
 - en: The graph above represents the spread between the in-sample and out-of-sample
     goodness of fit, as a function of the number of regressors (for the polymodels
     the value displayed is the (unweighted, un-selected) average of the spreads among
@@ -827,21 +868,25 @@
   id: totrans-85
   prefs: []
   type: TYPE_NORMAL
+  zh: 上图表示内样本和外样本拟合优度之间的差距，作为回归系数数量的函数（对于多项模型，显示的值是在不同基本模型之间的差距的（非加权，未选择）平均值）。对于多元模型，独立变量的数量越多，差距越大，因此过拟合越强。
 - en: The spread of the multivariate OLS is so explosive when the number of regressors
     reaches the number of data points that it breaks the scale of the graph. Zooming
     makes it understandable (see Fig. [2.2](#Fig2)):![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig2_HTML.png)
   id: totrans-86
   prefs: []
   type: TYPE_NORMAL
+  zh: 当回归器的数量达到数据点的数量时，多元OLS的差距会变得非常爆炸性，以至于它打破了图的比例。通过缩放可以理解（见图[2.2](#Fig2)）：![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig2_HTML.png)
 - en: Fig. 2.2
   id: totrans-87
   prefs: []
   type: TYPE_NORMAL
+  zh: 图2.2
 - en: Spreads between In-Sample vs Out-of-Sample R² as a function of the number of
     explanatory variables included in the regression (zoom)
   id: totrans-88
   prefs: []
   type: TYPE_NORMAL
+  zh: 根据回归中包含的解释变量的数量，内样本和外样本的R²之间的差距（缩放）
 - en: The Ridge estimator behaves as expected in this toy example, notably reducing
     the overfitting compared to OLS in the multivariate case. Indeed, for the extreme
     case where *n* = 156, the spread of the Ridge estimator is roughly 3,000 times
@@ -851,6 +896,7 @@
   id: totrans-89
   prefs: []
   type: TYPE_NORMAL
+  zh: 在这个玩具例子中，Ridge估计器表现如预期，明显减少了与多元OLS相比的过拟合。实际上，对于极端情况，即*n*=156时，Ridge估计器的差距大约比经典OLS估计器低3000倍。然而，即使有正则化，显然过拟合也随着多元模型中包含的变量数量的增加而增加。
 - en: This is not true in the case of the average spread in the polymodel, which is
     (of course) asymptotically constant when the number of regressors *n* increases.
     For *n* = 156, the spread of the polymodel is 10⁵ times lower than OLS and 34
@@ -858,21 +904,25 @@
   id: totrans-90
   prefs: []
   type: TYPE_NORMAL
+  zh: 在多项式模型的平均差距的情况下，当回归数*n*增加时，差距（当然）在渐近时是恒定的。对于*n*=156的情况，多项式模型的差距比OLS低了10⁵倍，在这种特殊情况下比Ridge低了34倍（图[2.3](#Fig3)）。![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig3_HTML.png)
 - en: Fig. 2.3
   id: totrans-91
   prefs: []
   type: TYPE_NORMAL
+  zh: 图2.3
 - en: Average spread between In-Sample vs Out-of-Sample R² as a function of the number
     of explanatory variables included in the regression (polymodels only)
   id: totrans-92
   prefs: []
   type: TYPE_NORMAL
+  zh: 解释变量数量的函数（仅限多项式模型）中内样本和外样本R²之间的平均差距
 - en: 'This straightforward experiment also helps us to understand the nature of overfitting
     by comparing the *In-Sample R*^(*2*) and *Out-of-Sample R*^(*2*) of the three
     models:'
   id: totrans-93
   prefs: []
   type: TYPE_NORMAL
+  zh: 这个简单的实验还帮助我们通过比较三个模型的内样本R²和外样本R²来理解过拟合的本质：
 - en: In these three graphs, we have shown the *In-Sample R*^(*2*) and the *Out-of-Sample
     R*^(*2*) as a function of the number of independent variables, for the three fitting
     methods. In both of the multivariate models, we see that the *Spread* is not growing
@@ -886,41 +936,50 @@
   id: totrans-94
   prefs: []
   type: TYPE_NORMAL
+  zh: 在这三个图中，我们展示了内样本R²和外样本R²作为独立变量数量的函数，对于三种拟合方法。在这两种多元模型中，我们发现*差距*增长不仅仅是因为*内样本R²*的增加。外样本R²急剧恶化，以至于它迅速成为差距计算中最重要的数字。这说明过拟合不仅导致对外样本性能有太高的期望，而且在很大程度上实际上也导致其恶化，因为在这种情况下我们只是在跟随过去的噪声。注意R²的比例在图中是完全不同的（图[2.4](#Fig4)、[2.5](#Fig5)和[2.6](#Fig6)）。![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig4_HTML.png)
 - en: Fig. 2.4
   id: totrans-95
   prefs: []
   type: TYPE_NORMAL
+  zh: 图2.4
 - en: 'Multivariate OLS: In-Sample vs Out-of-Sample R² as a function of the number
     of explanatory variables included in the regression'
   id: totrans-96
   prefs: []
   type: TYPE_NORMAL
+  zh: 多元OLS回归：样本内与样本外的R²随包含在回归中的解释变量数量的变化而变化
 - en: '![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig5_HTML.png)'
   id: totrans-97
   prefs: []
   type: TYPE_IMG
+  zh: '![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig5_HTML.png)'
 - en: Fig. 2.5
   id: totrans-98
   prefs: []
   type: TYPE_NORMAL
+  zh: 图 2.5
 - en: 'Multivariate Ridge: In-Sample vs Out-of-Sample R² as a function of the number
     of explanatory variables included in the regression'
   id: totrans-99
   prefs: []
   type: TYPE_NORMAL
+  zh: 多元岭回归：样本内与样本外的R²随包含在回归中的解释变量数量的变化而变化
 - en: '![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig6_HTML.png)'
   id: totrans-100
   prefs: []
   type: TYPE_IMG
+  zh: '![](../images/519851_1_En_2_Chapter/519851_1_En_2_Fig6_HTML.png)'
 - en: Fig. 2.6
   id: totrans-101
   prefs: []
   type: TYPE_NORMAL
+  zh: 图 2.6
 - en: 'Polymodels (Univariate OLS): In-Sample vs Out-of-Sample R² as a function of
     the number of explanatory variables included in the regression'
   id: totrans-102
   prefs: []
   type: TYPE_NORMAL
+  zh: 多模型（单变量OLS）：样本内与样本外的R²随包含在回归中的解释变量数量的变化而变化
 - en: Of course, this toy example is a bit simplistic, far from the techniques we
     actually use,^([5](#Fn5)) but it allows us to explain the phenomenon of overfitting
     while giving a taste of the magnitude of its effects. Apart from the achieved
@@ -931,6 +990,7 @@
   id: totrans-103
   prefs: []
   type: TYPE_NORMAL
+  zh: 当然，这个玩具示例有点简化，远离我们实际使用的技术，^([5](#Fn5))但它使我们能够解释过度拟合现象，并使我们对其效果的大小有所了解。除了明显由多模型主导的过度拟合降低水平外，当似乎简单OLS估计的重复表现更好时，我们还可以质疑交叉验证的正则化估计器的使用。我们让奥卡姆剃刀的支持者做出选择。
 - en: Another technique commonly used to handle a large number of potential candidate
     variables is stepwise regression. Stepwise regression builds the final model by
     starting with all variables in the model, and then eliminates some of them (‘backward
@@ -952,6 +1012,7 @@
   id: totrans-104
   prefs: []
   type: TYPE_NORMAL
+  zh: 另一种常用于处理大量潜在候选变量的技术是逐步回归。逐步回归通过将所有变量置于模型中开始构建最终模型，然后消除其中一些变量（'向后消除'），或者从不包含变量开始，然后逐步将它们引入模型中（'向前选择'）（霍金，[1976](#CR23)）。变量的选择基于特定的拟合优度准则，这些准则通常鼓励在模型中减少变量的数量，例如调整后的R²、阿卡信息准则或贝叶斯信息准则。然后，按照一步一步的程序进行，评估每一步模型的添加/删除变量的兴趣，使用每一步的拟合优度量度。这样的方法可以保留合理数量的自由度（特别是在向前选择过程中），并且也比岭回归更容易地将自变量的非线性变化整合进来。然而，这样的重复程序会导致用于评估其拟合优度的统计量存在偏差（威尔金森和达拉尔，[1981](#CR42)），通常，一步一步的过程会导致过度拟合（弗洛姆和卡塞尔，[2007](#CR17)）。当潜在的独立变量数量很高时，多模型可能以非常不同的方式进行估计，因此在一步一步的过程中可以轻松避免陷阱。
 - en: Considering the usual alternatives to stepwise selection or regularization,
     the polymodel approach presents an effective way to reduce overfitting, since
     it cannot really be avoided in multivariate models when the number of potential
@@ -959,11 +1020,13 @@
   id: totrans-105
   prefs: []
   type: TYPE_NORMAL
+  zh: 考虑到逐步选择或正则化的常见替代方案，多模型方法提供了一种有效的减少过度拟合的方法，因为当潜在独立变量的数量很高时，在多元模型中实际上无法避免过度拟合。
 - en: 2.4.2 Increasing Precision
   id: totrans-106
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 2.4.2 增加精度
 - en: Another concern of econometrics, though less often emphasized, is underfitting.
     The simplest way to model a relation between two variables is a linear model,
     however, there is no particular reason for the true reaction function to be a
@@ -981,6 +1044,7 @@
   id: totrans-107
   prefs: []
   type: TYPE_NORMAL
+  zh: 经济计量学的另一个关注点，尽管不经常被强调，是欠拟合。模拟两个变量之间关系的最简单方法是线性模型，然而，真实反应函数为直线并没有特定的原因。即使线性模型对大多数情况下都能产生可接受的结果，但是通过引入平滑曲线来取代通常的直线，这些结果可以得到改进。事实上，如果真实的基础模型是非线性的，那么非线性模型应该比线性模型表现更好，这要归功于其灵活性。然而，反之并不成立，如果基础模型是线性的，那么线性和非线性模型都有能力拟合直线。[^6]
 - en: In many domains, such as finance, a relevant increase in prediction accuracy
     can be decisive in terms of economic consequences, but the benefits that one can
     obtain from using non-linear modeling as a standard do not necessarily restrict
@@ -997,6 +1061,7 @@
   id: totrans-108
   prefs: []
   type: TYPE_NORMAL
+  zh: 在许多领域，如金融领域，预测准确性的显著提高可能在经济后果方面具有决定性意义，但是使用非线性建模作为标准可以获得的好处不一定仅限于相对于线性模型的精度增加。在许多情况下，线性建模会导致错误的建模。即使在线性模型平均下能够产生良好的结果的情况下，独立变量分布尾部发生的事件可能表现出与目标变量非常不同的响应函数。这对从业者可能会造成最糟糕的后果，因为一个被认为是良好的模型，似乎始终能够产生一致良好的结果，突然间可能无法进行任何准确的预测。从这个角度来看，非线性建模不仅是一种如果想要略微提高预测准确性的可行方法，而且是一种在极端情况下避免出现意外的要求。
 - en: A good example to illustrate this point is the perspective of fund of funds
     managers, who can be concerned with the multi-factor modeling of hedge fund returns.
     Hedge funds bear a significant tail risk, so their concave payoffs cannot be properly
@@ -1008,6 +1073,7 @@
   id: totrans-109
   prefs: []
   type: TYPE_NORMAL
+  zh: 另一个很好的例子来说明这一点是基金经理的观点，他们可能关注对冲基金收益的多因子建模。对冲基金承担着显著的尾部风险，因此它们的凹形收益不能用线性因子模型来恰当描述。线性多因子模型可能能够解释对冲基金的“正常时期”，即非极端收益，但是由于与其因子暴露之间的关系是非线性的，它将无法对其极端收益进行建模，从而证明了为此目的开发非线性方法的必要性（例如，Cherny等人，[2010](#CR11)）。
 - en: The use of non-linear functions in elementary models, for example polynomials,
     if fitted properly, allows one to increase the precision of the predictions, and
     to model extreme event^([7](#Fn7)) For example, we may define the function *φ*[*i*](*X*[*i*])
@@ -1032,6 +1098,9 @@
   id: totrans-110
   prefs: []
   type: TYPE_NORMAL
+  zh: 在基础模型中使用非线性函数，例如多项式，如果适当拟合，可以增加预测的精度，并模拟极端事件^([7](#Fn7))。例如，我们可以将方程（[2.6](#Equ6)）中的函数*φ*[*i*](*X*[*i*])定义为：![$$
+    {\varphi}_i\left({X}_i\right)=\sum \limits_{h=0}^u{\beta}_{i,h}{X}_i^h. $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ17.png)（2.17）上述基础模型中使用的函数是多项式的加权和。这样的模型的权重可以通过OLS估计。然而，简单的多项式之间高度相关，并且OLS估计量的假设之一是回归变量的线性独立性。尽管如此，通过正交化多项式可以满足这一假设。假设因素的联合分布是高斯Copula，我们被引导使用Hermite多项式（Cherny等，[2010](#CR11)）。Chebyshev多项式已知适用于区间[−1,
+    1]的OLS估计（Mason＆Handscomb，[2002](#CR29)），这个区间包含大部分金融收益。最后，Guan（[2019](#CR20)）提议对多项式进行数值自正交化。所有这些替代选择都有利有弊，取决于应用。请注意，存在许多非线性逼近函数*φ*[*i*](*X*[*i*])的可能性。例如，在非参数世界中，Nadaraya–Watson估计器（Nadaraya，[1964](#CR30)；Watson，[1964](#CR41)），也称为核回归，可能会产生合适的结果。尽管如此，多项式回归具有极易实现的优点，因此可以在现实世界中快速计算。
 - en: Of course, our reasoning about the superiority of non-linear over linear techniques
     is conditioned by the fact that the polynomial model, if used, is not blindly
     fitted. Indeed, because the polynomial model is more complex, it is more likely
@@ -1040,6 +1109,7 @@
   id: totrans-111
   prefs: []
   type: TYPE_NORMAL
+  zh: 当然，我们对非线性技术优于线性技术的推理是有条件的，即多项式模型如果使用，则不是盲目拟合的。事实上，由于多项式模型更复杂，更容易导致过拟合。为了解决这个问题，Zhang（[2019](#CR45)）提议使用正则化来收缩多项式基础模型的参数。
 - en: The use of non-linear modeling allows for a very flexible functional form that,
     if used properly, is more data-driven than model-driven. This spirit of being
     reasonably adaptive to the data is also reflected in the variable assumptions
@@ -1060,6 +1130,8 @@
   id: totrans-112
   prefs: []
   type: TYPE_NORMAL
+  zh: 使用非线性建模可以实现非常灵活的函数形式，如果使用得当，比起模型驱动更加数据驱动。这种合理适应数据的精神也体现在多模型中对变量假设的制定上。实际上，由于我们不希望忽视对现实的任何相关视角以理解它，多模型理论是一种邀请，可以在多模型中包含任何潜在重要的变量。在估算程序之前，几乎可以（并应该）在多模型中包含任意数量的变量。这一令人振奋的特性需要在多模型的估算过程中系统地包含一个*选择方法*，以便仅保留在最终估算的多模型中真正相关的变量。在这个阶段，没有关于选择方法的标准，因此它被适应于各种经验案例（第
+    [4](519851_1_En_4_Chapter.xhtml) 和 [6](519851_1_En_6_Chapter.xhtml) 章就此提出了一些解决方案）。因此，在使用弱功能假设之上，多模型理论还使用弱变量假设，这构成了一种避免模型僵化的良好方式，该模型受到可能是错误的假设（从一般观点来看，假设线性模型可以被视为对模型的函数形式做出的强假设）的驱使。
 - en: This extremely high level of flexibility of polymodels requires a careful estimation
     method. As stated, this estimation method should include a way to balance and/or
     select the different elementary models, but more importantly, the fit should not
@@ -1069,6 +1141,8 @@
   id: totrans-113
   prefs: []
   type: TYPE_NORMAL
+  zh: 这种极高的多模型灵活性需要一种谨慎的估算方法。正如所述，这种估算方法应包括一种平衡和/或选择不同基本模型的方法，但更重要的是，拟合过程不应过于自适应，否则可能再次出现过度拟合。满足这种对合理算法以拟合基本模型的需求是第
+    [3](519851_1_En_3_Chapter.xhtml) 章的主题。
 - en: The overall increase in precision which is introduced by non-linear modeling
     could be achieved using a stepwise regression. Such a method would also allow
     for automatic variable selection, however we already saw that the step-by-step
@@ -1082,11 +1156,13 @@
   id: totrans-114
   prefs: []
   type: TYPE_NORMAL
+  zh: 非线性建模引入的整体精度增加可以通过逐步回归实现。这样的方法还允许自动变量选择，然而我们已经看到逐步过程会导致过度拟合。在岭回归和弹性网正则化的情况下，引入预测变量的非线性版本可能克服线性建模的精度不足，但显然会以增加模型系数的数量为代价，这必然会增加过拟合的风险。因此，就准确拟合真正存在于大量数据中的模式这个特定问题而言，多模型理论与标准替代方案相比表现出令人羡慕的特性。
 - en: 2.4.3 Increasing Robustness
   id: totrans-115
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 2.4.3 提高鲁棒性
 - en: One of the most obvious benefits of using a polymodel, compared to a multivariate
     model, is the disappearance of multicollinearity. Multicollinearity, which we
     can expect to often appear often in large data samples, provides a non-robust
@@ -1106,6 +1182,10 @@
   id: totrans-116
   prefs: []
   type: TYPE_NORMAL
+  zh: 与多元模型相比，使用 polymodel 最明显的好处之一是消除了多重共线性。在大数据样本中，我们经常会遇到多重共线性，它提供了对参数的非稳健估计，即回归系数对估计数据的微小变化非常敏感（参见例如
+    Belsley，[2014](#CR5)）。这在使用时间滚动窗口进行重复拟合时尤其成问题，这是金融领域经常使用的一种技术。此外，多重共线性可能会使我们难以可靠地识别与我们试图解释的目标变量有效相关的自变量。由于它增加了受影响系数的标准误差，如果通过常规
+    t 统计量计算，则虚高了参数的 *p*-值。虽然可以使用 Ridge 回归来解决预测变量之间的多重共线性问题，但会以准确性为代价（Hoerl＆Kennard，[1970](#CR25)），但在
+    Polymodel 理论框架下，多重共线性根本不会出现，这使其更适用于获得对每个预测变量的反应函数的稳健估计。
 - en: We propose to draw from the real world another toy example to illustrate this
     particular point. Again, we consider the problem of fitting a multi-factor model
     with a multivariate OLS, a multivariate Ridge and a simple linear polymodel. The
@@ -1128,59 +1208,75 @@
   id: totrans-117
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们建议从现实世界中提取另一个玩具示例来说明这一特定点。同样，我们考虑用多元OLS、多元Ridge和简单线性polymodel拟合多因子模型的问题。目标变量仍然是标准普尔500指数的周回报，我们继续研究2001-01-01至2003-12-31（157次观测）的情况。然而，我们用于预测它的预测变量集合不再由随机选择组成。相反，我们使用了43个美国股票指数，其中大多数是行业指数。^([8](#Fn8))我们首先使用这43个解释变量估计三种不同的模型，并收集它们的相关参数。接下来，我们重新估计三个模型，同时删除其中一个预测变量，因此保留42个。如果初始估计是稳健的，它们应该是稳定的，因此与多因子模型中使用43个变量估计的系数完全相同。对于每个模型，我们测量系数的绝对变化，预计等于0，使用以下基本度量标准：![$$
+    {\Delta}_{coeff}=\left|\frac{{\hat{\beta}}_{42}-{\hat{\beta}}_{43}}{{\hat{\beta}}_{43}}\right|.
+    $$](../images/519851_1_En_2_Chapter/519851_1_En_2_Chapter_TeX_Equ18.png)(2.18)然后，此过程重复43次，每次更改从预测器集中删除的变量，以便我们可以收集三种模型的Δ[coeff]的42 × 43 = 1,806个值。这些值的描述性统计如下（表[2.1](#Tab1)）：表2.1
 - en: Sensitivity of estimates to changes in the set of explanatory variables
   id: totrans-118
   prefs: []
   type: TYPE_NORMAL
+  zh: 对解释变量集合变化的估计的敏感性
 - en: '|   | Multivariate (OLS) | Multivariate (Ridge) | Polymodels (Univariate OLS)
     |'
   id: totrans-119
   prefs: []
   type: TYPE_TB
+  zh: '|   | 多元（OLS） | 多元（Ridge） | polymodel（单变量OLS） |'
 - en: '| --- | --- | --- | --- |'
   id: totrans-120
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- | --- |'
 - en: '| Count | 1,806 | 1,806 | 1,806 |'
   id: totrans-121
   prefs: []
   type: TYPE_TB
+  zh: '| 计数 | 1,806 | 1,806 | 1,806 |'
 - en: '| Mean | 76% | 28% | 0% |'
   id: totrans-122
   prefs: []
   type: TYPE_TB
+  zh: '| 均值 | 76% | 28% | 0% |'
 - en: '| Min | 0% | 0% | 0% |'
   id: totrans-123
   prefs: []
   type: TYPE_TB
+  zh: '| 最小值 | 0% | 0% | 0% |'
 - en: '| Quantile 25% | 2% | 1% | 0% |'
   id: totrans-124
   prefs: []
   type: TYPE_TB
+  zh: '| 四分位数 25% | 2% | 1% | 0% |'
 - en: '| Quantile 50% | 10% | 5% | 0% |'
   id: totrans-125
   prefs: []
   type: TYPE_TB
+  zh: '| 四分位数 50% | 10% | 5% | 0% |'
 - en: '| Quantile 75% | 39% | 18% | 0% |'
   id: totrans-126
   prefs: []
   type: TYPE_TB
+  zh: '| 四分位数 75% | 39% | 18% | 0% |'
 - en: '| Max | 9.110% | 1.556% | 0% |'
   id: totrans-127
   prefs: []
   type: TYPE_TB
+  zh: '| 最大值 | 9.110% | 1.556% | 0% |'
 - en: '| Std | 4.12 | 0.93 | 0.00 |'
   id: totrans-128
   prefs: []
   type: TYPE_TB
+  zh: '| 标准差 | 4.12 | 0.93 | 0.00 |'
 - en: '| Kurtosis | 233.30 | 88.70 | 0.00 |'
   id: totrans-129
   prefs: []
   type: TYPE_TB
+  zh: '| 峰度 | 233.30 | 88.70 | 0.00 |'
 - en: '| Skewness | 13.83 | 8.19 | 0.00 |'
   id: totrans-130
   prefs: []
   type: TYPE_TB
+  zh: '| 偏度 | 13.83 | 8.19 | 0.00 |'
 - en: The average absolute change in the coefficient is 76% for the multivariate OLS,
     28% for the multivariate Ridge, and obviously 0% for the polymodel. These extremely
     large changes in the multivariate case result from a high level of multicollinearity
@@ -1188,6 +1284,7 @@
   id: totrans-131
   prefs: []
   type: TYPE_NORMAL
+  zh: 多变量OLS的系数平均绝对变化为76%，多变量Ridge为28%，而多项模型显然为0%。多变量情况下这些极大的变化是由于预测变量中存在高水平的多重共线性。事实上，它们的平均相关性为56%。
 - en: Of course, there are plenty of cases where the predictors used are only lowly
     correlated, or not correlated at all. Still, the higher the number of predictors
     used in the model, the more likely the appearance of multicollinearity for some
@@ -1198,6 +1295,8 @@
   id: totrans-132
   prefs: []
   type: TYPE_NORMAL
+  zh: '当然，有很多情况下使用的预测变量只有低相关性，或者根本没有相关性。但是，使用的解释变量越多，某些解释变量出现多重共线性的可能性就越大。我们提出的简单例子表明，即使
+    Ridge 估计器确实能够降低参数不稳定性，其结果仍然不完美，而多项模型则完全消除了任何多重共线性问题，因此提供了一个彻底解决这个问题的工具。  '
 - en: In order to guarantee that the estimated model is reliable, one of the standard
     hypotheses in modeling is that the variance of the residuals is constant for all
     observations of the sample used for the fit. Homoskedasticity may be difficult
@@ -1220,6 +1319,9 @@
   id: totrans-133
   prefs: []
   type: TYPE_NORMAL
+  zh: 为了确保估计的模型是可靠的，在建模中的一个标准假设是，用于拟合的样本的所有观测的残差方差都是恒定的。在处理时间序列时，可能很难确保同方差性，因为时间序列可能显示出波动的集群（在金融领域，曼德布罗特
+    [1997](#CR28) 和恩格尔 [1982](#CR16) 已经引起了人们的注意）。因此，使用于估计的窗口越长，同方差性假设不被满足的可能性就越小。当这个条件不被满足时，OLS
+    估计的系数的标准误差就会有偏差，再次导致基于 t 统计量的虚假 *p* 值水平，从而可能错误地确定在分析中要考虑的最相关的变量。请注意，在尝试避免过度拟合时，多变量模型必须依赖于可用的最大时间深度。相比之下，多项模型允许减少估计的时间深度，同时保持令人满意的自由度，这样就不太容易过度拟合。因此，除了避免多重共线性之外，从尊重同方差性假设的特定角度来看，使用多项模型而不是多变量模型也更有利于建模的稳健性。
 - en: When modeling with several variables, the practitioner frequently encounters
     the problem of missing data. Missing observations in the matrix of the predictors
     prevents estimation, thus it leads either to drop all the observations of the
@@ -1239,6 +1341,7 @@
   id: totrans-134
   prefs: []
   type: TYPE_NORMAL
+  zh: 在对多个变量建模时，从业者经常会遇到缺失数据的问题。在预测变量的矩阵中缺少观测会导致估计不准确，因此要么删除所有具有相同索引的其他变量的观测（例如简单地删除日期），要么完全删除整个变量本身。当使用大量变量时，这个问题变得越来越棘手，因为通常会缺少广泛的观测，并且这些观测可能不会同时缺失。无论采取何种选择，使用任何多元回归技术都会导致移除一部分可用数据。模型的稳健性也与用于估计其参数的观测数量相关联。再次，多模型允许克服这一问题。由于每个变量都是使用其自己的基本模型独立拟合的，因此无需删除任何观测，每个基本模型中使用的观测数量可以不同。自然地，这种差异应该在用于评估每个变量的统计显着性的测试中考虑进去。通过保留所有观测，多模型因此增加了估计的稳健性，与多元模型相比。
 - en: Multivariate modeling techniques can only address these concerns about the robustness
     of the estimations with difficulty. Although Ridge regressions may partly solve
     the problem of multicollinearity, none of the multivariate techniques are able
@@ -1248,21 +1351,25 @@
   id: totrans-135
   prefs: []
   type: TYPE_NORMAL
+  zh: 多变量建模技术只能难以解决对估计的稳健性的担忧。尽管岭回归可能在一定程度上解决了多重共线性的问题，但没有一种多元技术能像多模型那样尊重数据的原始结构（方差的动态性，缺失观测）。这些发现将多模型技术定位为适合处理大量数据的技术。
 - en: 2.5 Considerations Raised by Polymodels
   id: totrans-136
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 2.5 多模型引发的考虑
 - en: 2.5.1 Aggregation of Predictions
   id: totrans-137
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 2.5.1 预测的聚合
 - en: One of the usual questions raised when Polymodel Theory is presented is which
     method to use to aggregate the predictions.
   id: totrans-138
   prefs: []
   type: TYPE_NORMAL
+  zh: 当介绍多模型理论时，常常引起的一个常见问题是使用什么方法来聚合预测。
 - en: First, it is important to note that Polymodel Theory offers more than an aggregated
     prediction. Since its purpose is to provide a quasi-exhaustive representation
     of the links that a variable maintains with its whole environment, there is a
@@ -1274,6 +1381,7 @@
   id: totrans-139
   prefs: []
   type: TYPE_NORMAL
+  zh: 首先，重要的是要注意，多模型理论提供的不仅仅是聚合预测。由于其目的是提供一个准确的表示一个变量与其整个环境之间关系的近似全面的表示，因此从这种表示本身就可以学到很多东西。研究人员可以关注这些联系强度的动态性，它们的非线性程度等等。此外，可以使用基本模型生成除目标变量预测之外的其他度量，例如风险价值。因此，可以生成代表系统不同方面的非常不同的度量。
 - en: The aggregation of the measures that investigate the different dimensions of
     the polymodel can be done in very different ways. We may consider the entire distribution
     of these measures, as well as maxima, minima or extreme quantiles that depict
@@ -1284,16 +1392,19 @@
   id: totrans-140
   prefs: []
   type: TYPE_NORMAL
+  zh: 调查多模型不同维度的度量的聚合可以通过非常不同的方式进行。我们可以考虑这些度量的整个分布，以及在压力条件下描述系统反应的最大值、最小值或极端分位数。度量的随时间变化的波动提供了关于其不稳定性的信息。还可以考虑度量与其历史平均值的比率，以获得其相对当前水平的有意义值。
 - en: Finally, aggregating the predictions of the different elementary models together
     raises the question of the correlations of different predictors.
   id: totrans-141
   prefs: []
   type: TYPE_NORMAL
+  zh: 最后，将不同基本模型的预测聚合在一起引发了不同预测器的相关性的问题。
 - en: In order to effectively understand the stakes of this question, we approach
     it through the metaphor of an amphitheater.
   id: totrans-142
   prefs: []
   type: TYPE_NORMAL
+  zh: 为了有效地理解这个问题的重要性，我们通过一个大礼堂的隐喻来解决它。
 - en: Let us consider an amphitheater filled by students from the department of finance
     of a university. We would like to use their knowledge to predict the future returns
     of a financial asset. Before joining the amphitheater, the students have been
@@ -1305,6 +1416,7 @@
   id: totrans-143
   prefs: []
   type: TYPE_NORMAL
+  zh: 让我们考虑一下，一个由某大学财务系的学生填满的大礼堂。我们希望利用他们的知识来预测金融资产的未来收益。在加入大礼堂之前，学生们已经被选为该特定任务在大学中最有技能的学生。选择是使用多项选择问卷进行的。因此，一小部分通过随机猜测程序回答问卷的不好的学生，可能会被偶然选中。用于确定最佳学生的测试是有缺陷的，就像所有测试一样。
 - en: These spuriously selected students will not have the most common profile among
     those we may encounter in the amphitheater. Most of the students selected are
     skilled, however, since they all come from the same university, they share the
@@ -1312,6 +1424,7 @@
   id: totrans-144
   prefs: []
   type: TYPE_NORMAL
+  zh: 这些被毫无原则地选择出来的学生在我们在大礼堂里可能会遇到的学生中并不具有最常见的特征。然而，大多数被选择的学生都很有技能，因为他们都来自同一所大学，他们对金融市场有着相同的知识和想法。
 - en: However, some of the students started their studies in other universities, even
     in different fields in a few cases, and some of them study more than others, looking
     for complementary information outside of the lectures, hence, some original views
@@ -1319,6 +1432,7 @@
   id: totrans-145
   prefs: []
   type: TYPE_NORMAL
+  zh: 然而，一些学生在其他大学开始了他们的学习，甚至在少数情况下在不同领域开始了他们的学习，而且他们中的一些人比其他人学习得更多，在讲座之外寻找补充信息，因此，一些原始观点可能会被这些学生表达出来。
 - en: The predictions made by the students are anonymous, thus we can’t know who these
     original students are. We only observe the predictions, which are repeated for
     several rounds, trying each time to predict the return of the financial asset
@@ -1326,6 +1440,7 @@
   id: totrans-146
   prefs: []
   type: TYPE_NORMAL
+  zh: 学生们所做的预测是匿名的，因此我们无法知道这些原始学生是谁。我们只能观察到这些预测，这些预测在几轮中重复，每次都试图预测下一个时期的金融资产收益。
 - en: It is quite transparent that the amphitheater is a polymodel, and that each
     of the students represents an elementary model. Also, we clearly understand that
     the predictions of most of the students, even if relevant, would be correlated,
@@ -1336,11 +1451,13 @@
   id: totrans-147
   prefs: []
   type: TYPE_NORMAL
+  zh: 很明显，大礼堂是一个多模型，每个学生代表着一个基本模型。此外，我们清楚地了解到，大多数学生的预测，即使相关，也会有所关联，因为他们代表市场的方式本质上是相同的。问题是如何区分智者、愚者和群众。这个问题可以通过几种方式来解决，我们提议通过一个同时考虑到原创性和可信度的度量来解决，该度量在第[6](519851_1_En_6_Chapter.xhtml)章中提出。
 - en: 2.5.2 Number of Variables Per Elementary Model
   id: totrans-148
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 2.5.2每个基本模型的变量数量
 - en: The choice of including only a single variable per elementary model needs to
     be discussed. Indeed, most of the benefits of the polymodels are preserved if
     the elementary models are composed of several variables. Such a construction is
@@ -1348,6 +1465,7 @@
   id: totrans-149
   prefs: []
   type: TYPE_NORMAL
+  zh: 选择只包括基本模型中的单个变量需要进行讨论。事实上，如果基本模型由多个变量组成，则大多数Polymodel的好处仍然存在。这样的构造也符合Polymodel理论的认识论方法。
 - en: Nonetheless, including several variables in elementary models would not allow
     us to have a high level of precision (i.e. non-linear modeling) without overfitting.
     Some of the other benefits, for example the absence of multicollinearity, would
@@ -1355,22 +1473,26 @@
   id: totrans-150
   prefs: []
   type: TYPE_NORMAL
+  zh: 然而，将几个变量包括在基本模型中将不允许我们在没有过度拟合的情况下获得高水平的精度（即非线性建模）。例如，多重共线性的缺失将会丢失一些其他的好处。
 - en: Apart from statistical considerations, the use of univariate elementary models
     simplifies a lot the analysis, since it is clear that the metrics that we measure
     on the elementary models are associated with a single, well-identified factor.
   id: totrans-151
   prefs: []
   type: TYPE_NORMAL
+  zh: 除了统计考虑之外，使用单变量基本模型大大简化了分析，因为我们测量的基本模型指标与一个单一、明确定义的因子相关联。
 - en: Thus, univariate elementary models seem to be the most appropriate choice for
     the construction of the polymodels.
   id: totrans-152
   prefs: []
   type: TYPE_NORMAL
+  zh: 因此，单变量基本模型似乎是构建Polymodel的最合适选择。
 - en: 2.6 Conclusions
   id: totrans-153
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 2.6 结论
 - en: Polymodel Theory is an intuitive approach that has been used in different fields
     for a long time, but it has often been hastily rejected in favor of multivariate
     modeling. However, the first applications in finance show that the method provides
@@ -1379,6 +1501,7 @@
   id: totrans-154
   prefs: []
   type: TYPE_NORMAL
+  zh: Polymodel理论是一种直观的方法，长期以来已经在不同领域中使用，但通常会被匆忙地拒绝，以支持多变量建模。然而，金融领域的首次应用表明，该方法提供了一个丰富的框架，特别有利于大数据的非线性建模，在多变量建模范围之外有大量应用。
 - en: Formalizing a tool that is increasingly used in the recent literature, we have
     shown that the multi-univariate approach of polymodels has many favorable qualities
     from an econometrical point of view. In particular, these advantages are in line
@@ -1389,6 +1512,7 @@
   id: totrans-155
   prefs: []
   type: TYPE_NORMAL
+  zh: 形式化一个在最近文献中越来越常用的工具，我们已经表明多元多变量(polymodels)方法在计量经济学角度具有许多有利特性。特别地，这些优点符合当前金融利益，其中需要以数据驱动、稳健、准确、非过度拟合的方式处理大量数据的技术。从这个角度来看，Polymodel理论可以被看作是一种机器学习方法。
 - en: 'Polymodel Theory also has philosophical benefits: from the point of view of
     epistemology it seems to be a more reasonable approach than multivariate modeling,
     since it provides several representations of the same object (that can be weighted
@@ -1396,6 +1520,7 @@
   id: totrans-156
   prefs: []
   type: TYPE_NORMAL
+  zh: Polymodel理论还具有哲学上的好处：从认识论的角度来看，它似乎比多变量建模更合理，因为它提供了同一对象的多种表示（可以根据可信度加权），而不是单一的、不变的表示。
 - en: The non-linearity of polymodels makes it possible to efficiently tackle regime
     changes in the market dynamics that are “spatial”, that is, due to the size of
     the moves, rather than to a random “temporal” event. This is in line with, for
@@ -1404,6 +1529,7 @@
   id: totrans-157
   prefs: []
   type: TYPE_NORMAL
+  zh: Polymodel的非线性使得可以有效地处理市场动态中的制度变化，这些变化是“空间”的，即由于移动的大小而不是由于随机的“时间”事件。这与例如隐藏的马尔可夫模型一致，在其中股票对某些指数的“beta”取决于制度。
 - en: The challenges of estimating, selecting and aggregating the predictions are
     important topics that are addressed in the following chapters. Managing these
     questions properly is the cornerstone of the use of polymodels. Still, if properly
@@ -1412,3 +1538,4 @@
   id: totrans-158
   prefs: []
   type: TYPE_NORMAL
+  zh: 估计、选择和聚合预测的挑战是接下来章节要讨论的重要话题。妥善处理这些问题是使用Polymodel的基石。但是，如果得到适当处理，这使得Polymodel理论成为一种强大的建模方法，并在某种程度上，成为大多数传统多变量回归技术的优越替代品。
