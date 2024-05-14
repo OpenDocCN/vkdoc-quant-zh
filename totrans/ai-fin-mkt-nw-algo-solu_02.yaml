@@ -1,21 +1,31 @@
 - en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2023F.
     Cecconi (ed.)AI in the Financial Markets Computational Social Sciences[https://doi.org/10.1007/978-3-031-26518-1_2](https://doi.org/10.1007/978-3-031-26518-1_2)
+  id: totrans-0
   prefs: []
   type: TYPE_NORMAL
+  zh: © 作者，独家许可给 Springer Nature Switzerland AG 2023F. Cecconi（编著）AI in the Financial
+    Markets Computational Social Sciences[https://doi.org/10.1007/978-3-031-26518-1_2](https://doi.org/10.1007/978-3-031-26518-1_2)
 - en: 2. AI, the Overall Picture
+  id: totrans-1
   prefs:
   - PREF_H1
   type: TYPE_NORMAL
+  zh: 2. AI，整体视角
 - en: 'Luca Marconi^([1](#Aff16) [ ](#ContactOfAuthor1))(1)Advanced School in Artificial
     Intelligence, Brain, Mind and Society, Institute of Cognitive Sciences and Technologies,
     Italian National Research Council, Via San Martino Della Battaglia 44, Rome, ItalyLuca MarconiEmail:
     [luca.marc@hotmail.it](mailto:luca.marc@hotmail.it)'
+  id: totrans-2
   prefs: []
   type: TYPE_NORMAL
+  zh: 'Luca Marconi^([1](#Aff16) [ ](#ContactOfAuthor1))(1)意大利国家研究委员会认知科学与技术研究所，人工智能、大脑、心灵和社会高级学校，罗马，圣马丁诺德拉巴塔利亚44号Luca MarconiEmail:
+    [luca.marc@hotmail.it](mailto:luca.marc@hotmail.it)'
 - en: Abstract
+  id: totrans-3
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 摘要
 - en: Nowadays, artificial intelligence (AI) algorithms are being designed, exploited
     and integrated into a wide variety of software or systems for different and heterogenous
     application domains. AI is definitively and progressively emerging as transversal
@@ -24,12 +34,17 @@
     knowledge. Researchers and scientists are starting to explore, from several perspectives,
     the different and synergetic ways AI will transform heterogenous business models
     and every segment of all industries.
+  id: totrans-4
   prefs: []
   type: TYPE_NORMAL
+  zh: 如今，人工智能（AI）算法正在被设计、开发和集成到各种不同和异构的应用领域的软件或系统中。AI 明显而逐渐地成为横向和强大的技术范式，这是因为它不仅能够处理大数据和信息，而且尤其是因为它产生、管理和利用知识。研究人员和科学家开始从多个角度探索
+    AI 将如何以不同而协同的方式转变异构商业模式和所有行业的每个领域。
 - en: KeywordsKnowledge representationReasoningAIMachine learningCognitive scienceLuca
     Marconi
+  id: totrans-5
   prefs: []
   type: TYPE_NORMAL
+  zh: 关键词知识表示推理人工智能机器学习认知科学Luca Marconi
 - en: is currently PhD Candidate in Computer Science at the University of Milano-Bicocca,
     in the research areas of Artificial Intelligence and Decision Systems, as well
     as Business Strategist and AI Researcher for an AI company in Milan. He also gained
@@ -46,8 +61,12 @@
     with the Laboratory of Agent Based Social Simulation of the ISTC-CNR. His research
     interests are in the fields of artificial intelligence, cognitive science, social
     systems dynamics, complex systems and management science.
+  id: totrans-6
   prefs: []
   type: TYPE_NORMAL
+  zh: 目前在米兰比科卡大学攻读计算机科学博士学位，研究领域包括人工智能和决策系统，同时也是米兰一家人工智能公司的商业战略师和 AI 研究员。他还在米兰一家知名媒体情报和金融传播私人顾问公司担任研究顾问和顾问。他拥有米兰理工大学的管理工程硕士和学士学位，以及巴利阿里群岛大学交叉学科物理与复杂系统研究所（IFISC
+    UIB-CSIC）的复杂系统物理学硕士学位。他还拥有意大利国家研究委员会认知科学与技术研究所（ISTC-CNR）组织的人工智能、大脑、心灵和社会高级学校的研究生研究证书，在那里他与
+    ISTC-CNR 的基于代理的社会仿真实验室合作开展了计算社会科学领域的研究项目。他的研究兴趣包括人工智能、认知科学、社会系统动力学、复杂系统和管理科学。
 - en: 'Overall, AI has the potential to generally provide higher quality, greater
     efficiency, and better outcomes than human experts. This significant and strong
     potential of AI is emerging in potentially every applicative domain, organizational
@@ -56,6 +75,7 @@
     by the application of the powerful technological paradigm of the Internet of Things,
     autonomous vehicles are being produced and tested in heterogeneous driving conditions
     and intelligent robots are being designed for a variety of challenges and fields.'
+  id: totrans-7
   prefs: []
   type: TYPE_NORMAL
 - en: 'Indeed, AI is definitively contributing to the so-called fourth industrial
@@ -70,6 +90,7 @@
     the current and future evolution of human society and the comprehension of AI
     methods and techniques is definitively crucial when it comes to depicting the
     evolving scenario of this decisive technological paradigm.'
+  id: totrans-8
   prefs: []
   type: TYPE_NORMAL
 - en: In this chapter, we will explore the current technological and methodological
@@ -81,9 +102,11 @@
     and AI actually interact and even collaborate in heterogeneous contexts, so as
     to depict the current stages towards a hybrid and collective socio-AI systemic
     intelligence.
+  id: totrans-9
   prefs: []
   type: TYPE_NORMAL
 - en: 2.1 Introduction to AI
+  id: totrans-10
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -102,8 +125,11 @@
     deep and synergetic ways AI is already stimulating the evolution of heterogeneous
     business models and industry fields (Haefner et al. [2021](#CR14); Brynjolfsson
     and Mcafee [2017](#CR5); Krogh [2018](#CR34)).'
+  id: totrans-11
   prefs: []
   type: TYPE_NORMAL
+  zh: 如今，人工智能（AI）正在整个社会中变得至关重要：它绝对是21世纪的主要方法论、技术和算法主角之一。人工智能方法和工具的泛滥显然已经为每个人所见：新的算法不断地被设计、利用并集成到各种不同和异构的应用领域的软件或系统中。从业者们意识到人工智能不仅仅是一个技术领域或方法论。事实上，人工智能正逐渐成为一个横跨的、强大的技术范式：它的力量来自于它促进了社会的广泛转型能力，这是因为它不仅能够处理大数据和信息，而且因为它能够产生、管理和利用知识。研究人员正在从多个角度开始探索，人工智能已经从不同的深度和协同的方式刺激了异构商业模式和行业领域的演变（Haefner
+    et al. [2021](#CR14)；Brynjolfsson and Mcafee [2017](#CR5)；Krogh [2018](#CR34)）。
 - en: 'According to DARPA (Launchbury [2017](#CR21)), a general perspective on AI
     should take into consideration a minimum set of macro-abilities to represent the
     way it collects, processes and manages information: *perceiving*, *learning*,
@@ -122,8 +148,11 @@
     by the means of the Internet of Things to connect smart devices in powerful ecosystems,
     autonomous vehicles are being produced and tested in heterogeneous driving conditions
     and intelligent robots are being designed for a variety of challenges and fields.'
+  id: totrans-12
   prefs: []
   type: TYPE_NORMAL
+  zh: 根据DARPA（Launchbury [2017](#CR21)），对人工智能的一般视角应考虑一组最小的宏观能力，以表示其收集、处理和管理信息的方式：*感知*、*学习*、*抽象*和*推理*。这些认知能力在整个人工智能方法的领域中并不均匀分布。事实上，目前仍然没有任何单一正式和广泛接受的人工智能定义。尽管目前正在努力寻找统一的定义，但人工智能方法、模型和算法的潜力，以及它们的多重功能、特征和潜在影响，已经影响着人类社会。总的来说，人工智能有潜力在广泛的任务和条件下，与人类专家相比，提供更高质量、更高效率甚至更好的结果（Agrawal
+    et al. [2018](#CR2)）。人工智能的这种重大而强大的影响正在潜在的每一个应用领域、组织背景或业务领域中显现出来。因此，学术研究和经验表明，人工智能对我们的日常生活和工作生活的影响不断增加：智能系统正在通过物联网的方式进行建模和互联，将智能设备连接到强大的生态系统中，自动驾驶车辆正在在各种异构的驾驶条件下进行生产和测试，智能机器人正在被设计用于各种挑战和领域。
 - en: 'In an even broader perspective, AI is one of the main contributors to the so-called
     *fourth industrial revolution*, according to Klaus Schwab ([2017](#CR31)), the
     Founder and Executive Chairman of the World Economic Forum. He clearly stated
@@ -143,8 +172,11 @@
     society and the comprehension of AI methods and techniques is definitively crucial
     when it comes to depicting the evolving scenario of this decisive technological
     paradigm.'
+  id: totrans-13
   prefs: []
   type: TYPE_NORMAL
+  zh: 从更广泛的视角来看，根据世界经济论坛的创始人兼执行主席克劳斯·施瓦布（[2017](#CR31)）的说法，人工智能是所谓的*第四次工业革命*的主要推动者之一。他明确表示，人工智能是技术场景中的一项基本突破，能够促进我们生活和互动方式的深刻转变。其分析表明，人工智能是这场革命的驱动力之一，物理、数字和生物领域之间存在着多重、协同和复杂的相互作用。足以提及的是，安德鲁·吴，百度前首席科学家兼Coursera联合创始人，在2017年的AI
+    Frontiers大会上发表的主题演讲中表示，人工智能真的是新的电力：一种具有颠覆性和普遍性的横跨技术，能够在潜在的任何领域或领域支持甚至赋予技术和流程。因此，人工智能不仅仅是一种有限但强大影响的简单工具：相反，它在人类和非人类生态系统中的行动和相互作用直接导致了它们的新状态、条件和新兴行为，在一个复杂的社会技术总体视角下。因此，当涉及描绘这一决定性技术范式的演变场景时，理解人工智能方法和技术绝对至关重要。
 - en: 'In this chapter, we will explore the current technological and methodological
     scenario of AI by presenting the overall picture and the main macro-challenges,
     approaches and present steps towards what may happen in the future of AI and society.
@@ -159,12 +191,16 @@
     Interaction perspective, by reviewing to what extent humans and AI actually interact
     and even collaborate in heterogeneous contexts, so as to depict the current stages
     towards a hybrid and collective socio-AI systemic intelligence.'
+  id: totrans-14
   prefs: []
   type: TYPE_NORMAL
+  zh: 在本章中，我们将通过呈现整体图景和主要的宏观挑战、方法和未来人工智能与社会可能发生的步骤来探索人工智能的当前技术和方法论情景。在文献中，有各种各样的分类和分类方法来对人工智能方法进行分类。本章并不打算涵盖所有问题和方法，也不打算提供全球、整合和全面的审查，包括整个最新技术状态的整个情景。然而，它旨在提供关于人工智能的两个广泛维度——*认知*和*交互*的主要宏观方法和范式的一般概述。具体来说，我们旨在为读者提供通用的概念工具，以接近主要的符号和次符号人工智能方法。最后，我们将关注于人工智能与人类互动的视角，通过审查人类和人工智能在异质环境中实际互动甚至合作的程度，以描绘当前朝着混合和集体的社会-人工智能系统智能的阶段。
 - en: 2.2 An Historical Perspective
+  id: totrans-15
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 2.2 历史视角
 - en: Despite the fundamental role of AI in the current technological scenario, the
     initial stages of the design, development and evaluation of AI systems are not
     actually new in the history. The official birth of the discipline dates back to
@@ -178,8 +214,13 @@
     for the analytical study of intelligence in computers and for identifying the
     first basic concepts for applying relevant methodologies, e.g. information theory,
     to the study of AI.
+  id: totrans-16
   prefs: []
   type: TYPE_NORMAL
+  zh: 尽管人工智能在当前技术场景中扮演着基本的角色，但人工智能系统的设计、开发和评估的初期阶段实际上在历史上并不是新鲜事物。该学科的正式诞生可以追溯到1956年，当时
+    Marvin Minsky 和 John McCarthy 在新罕布什尔州达特茅斯学院举办了达特茅斯人工智能暑期研究项目（DSRPAI）。达特茅斯会议涉及了一些主要的和最重要的历史上的人工智能“奠基人”，包括
+    Allen Newell、Herbert Simon、Nathaniel Rochester 和 Claude Shannon。达特茅斯活动的主要目的是创建一个完全新的研究领域，重点研究设计和构建智能机器的挑战。随后的提案（McCarthy
+    等人 [2006](#CR25)）为在计算机中对智能进行分析研究奠定了基础，并确定了应用相关方法学的第一个基本概念，例如信息理论，用于研究人工智能。
 - en: Nevertheless, the subsequent stages in the development of the discipline were
     not as easy as the founding fathers supposed. Despite the further creation of
     the first algorithms and computer programs, the Minsky’s optimistic claim that
@@ -202,8 +243,13 @@
     and pre-defined set of limited problems. Such systems were not endowed with any
     learning or abstracting capability, thus they did not meet the ambitious expectations
     of the founding fathers of the discipline.
+  id: totrans-17
   prefs: []
   type: TYPE_NORMAL
+  zh: 尽管学科发展的后续阶段并不像创始人们所想象的那样容易。尽管进一步创造了第一批算法和计算机程序，但明斯基乐观地声称人工智能很快就能够模拟和仿效人类智能的说法并未得到证实，尽管那段充满狂热活动的时期进行了不懈的努力。那些年的一些成果包括
+    ELIZA（Weizenbaum [1966](#CR36)），这是一种自然语言处理工具，某种程度上预示了现代聊天机器人的出现，以及通用问题解决器（Newell
+    等人 [1959](#CR27)），这是一个基于逻辑的程序，旨在创建一个通用问题解决器，但实际上只能解决特定类别的有限问题。在那个时期采用的基本方法主要依赖于逻辑和显式知识表示，完全采用*符号*视角，旨在通过演绎和线性的*if–then*逻辑路径处理经验和心理数据。总体而言，人工智能的最初阶段的野心是迅速而有力地催生所谓的*强人工智能*，或*人工通用智能*，即完全能够模仿甚至取代人类自然智能的人工智能系统。然而，选择纯逻辑方法的应用导致了固有的有限方法，利用
+    DARPA 特别称为*手工制作的知识*（Launchbury [2017](#CR21)）仅为狭义选择和预定义的一组有限问题提供了推理能力。这些系统没有任何学习或抽象能力，因此未能满足学科的创始人们的雄心勃勃的期望。
 - en: 'Consequently, both scholars and governments started to question the initial
     optimistic wave and conceptual blossoming of AI. In the 70’s, the US Congress
     and the British parliament harshly criticized the previous funds dedicated to
@@ -217,8 +263,12 @@
     in generalized settings, though the obtained results into the simulation of circumscribed
     psychological processes were promising. As a result, the research in the AI field
     was partly abandoned and several support funds were ended.'
+  id: totrans-18
   prefs: []
   type: TYPE_NORMAL
+  zh: 结果，学者和政府开始质疑初期对人工智能的乐观浪潮和概念上的蓬勃发展。在70年代，美国国会和英国议会严厉批评了之前用于研究和设计人工智能系统的经费。在同一时期，英国数学家詹姆斯·莱特希尔（James
+    Lighthill）发表了所谓的*Lighthill报告*（James等人[1973](#CR17)），由英国科学研究理事会委托，在大学和学者之间经过长时间的讨论后：这份报告最终开始了人工智能的艰难时期，之前人工智能研究人员给出的乐观前景被抛弃了。
+    Lighthill报告收集了失望的主要原因，包括人工智能系统在解决泛化设置中的真实世界问题方面的能力有限，尽管在模拟有限心理过程时取得了令人鼓舞的结果。结果，人工智能领域的研究部分被放弃，多个支持基金被终止。
 - en: Nevertheless, the advent of connectionism (McLeod et al. [1998](#CR26)) in 1986
     marked a renewed period of flourishing interest and activity in AI, from a different
     and somehow opposite perspective. Aside from any ambition to replace human intelligence,
@@ -240,8 +290,14 @@
     the *perceptron* (Rosenblatt [1958](#CR28)), namely the first model of neural
     network, thus proposing a basic method for the further studies in the *back-propagation*
     training and in *feed-forward* neural networks.
+  id: totrans-19
   prefs: []
   type: TYPE_NORMAL
+  zh: 然而，1986年连接主义（McLeod等人[1998](#CR26)）的出现标志着人工智能重新兴起的一个时期，从一个不同的，有些相反的角度。除了取代人类智能的任何野心外，连接主义方法和哲学的目标是研究作为来自相互连接的神经单元的工作行为和相互作用的新兴过程的心理模型及其相关认知和行为现象。这种向大脑机制的概念转变在某种程度上预示了进一步的神经科学介入人工智能，以及人工智能与*复杂系统理论*（San
+    Miguel等人[2012](#CR30)）之间的协同作用和关系，其中大脑和神经系统实际上是突出的示例和案例研究。连接主义的兴起开始了*人工神经网络*的研究和设计的基础时期，试图模拟大脑上的认知机制，同时基本上假设知识主要来源于神经系统与外部环境的相互作用。尽管机器学习的基础可以追溯到上世纪40年代唐纳德·赫布（Donald
+    Hebb）的工作，以及所谓的*赫布学习*理论（Wang和Raj [2017](#CR35)），但其创立和初期发展的最重要支柱是由马文·明斯基（Marvin
+    Minksy）、詹姆斯·麦克莱兰（James McClelland）、大卫·鲁梅尔哈特（David Rumelhart）和弗兰克·罗森布拉特（Frank Rosenblatt）等研究人员刺激的，他们构想了*感知机*（Rosenblatt
+    [1958](#CR28)），即第一个神经网络模型，从而提出了进一步研究*反向传播*训练和*前馈*神经网络的基本方法。
 - en: 'At the same time, the course of history lead to other significant steps for
     the evolution of AI: first, the foundation of a broad range of Artificial Life
     approaches, which enlarged the ambition to enable algorithms to resemble biological
@@ -255,6 +311,7 @@
     robotics* (Lastname et al. [2001](#CR20)), added relevant contributions to understand
     biological systems by the means of the integration between neuroscience, developmental
     psychology and engineering sciences.'
+  id: totrans-20
   prefs: []
   type: TYPE_NORMAL
 - en: Though, it is only since the beginning of the XXI century that AI began to unfold
@@ -264,9 +321,11 @@
     rising algorithms for intelligent systems is currently experiencing a period of
     great splendour and the development of AI methods and techniques is nowadays fostering
     unavoidable impacts and upcoming phenomena on the whole society.
+  id: totrans-21
   prefs: []
   type: TYPE_NORMAL
 - en: 2.3 AI Impact on Society
+  id: totrans-22
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -285,6 +344,7 @@
     worth to highlight how the impact of AI in society is not marginal, rather it
     has the potentialities to radically transform society in a *socio-technical* and
     *socio-AI* systemic perspective.'
+  id: totrans-23
   prefs: []
   type: TYPE_NORMAL
 - en: 'This process is still happening, giving rise to significant and unavoidable
@@ -298,8 +358,10 @@
     it is certainly a fundamental crossroad that only human intelligence and nature
     can pass. Nevertheless, the examination of the many and relevant ethical implications
     of AI in society is not the focus of this chapter.'
+  id: totrans-24
   prefs: []
   type: TYPE_NORMAL
+  zh: 这一过程仍在进行中，引发了重大且不可避免的伦理问题。尽管人工智能具有强大的性质，但人类无法摆脱这样一个明确的决定，即他们是否打算将其视为一种工具——或者说，一种令人印象深刻的方法论和技术范式——即作为达到目的的手段，或者在某种程度上将其视为终极目标。从另一个相关的视角来看，伦理挑战始终根植于人类关于他们如何设计人工智能以及他们打算如何利用人工智能的潜力、能力和结构应用的选择。这一选择明确反映了人类的自由意志：因此，这无疑是一个只有人类智慧和本性才能通过的基本十字路口。然而，对人工智能在社会中的许多和重要的伦理含义进行审查并不是本章的重点。
 - en: 'There is no doubt that the impact of AI in our society is constantly growing
     and evolving: suffice it to consider that, according to the International Data
     Corporation (IDC), the global investment on AI and market is expected to break
@@ -324,8 +386,15 @@
     by a powerful and pervasive use of both human and artificial intelligence, to
     model and effectively manage highly complex situations and business conditions
     by *connected*, *contextual* and *continuous* decision-making processes.'
+  id: totrans-25
   prefs: []
   type: TYPE_NORMAL
+  zh: 毫无疑问，人工智能对我们社会的影响不断增长和发展：只需考虑到，根据国际数据公司（IDC）的数据，全球对人工智能的投资和市场预计将在2023年突破5000亿美元（IDC
+    [2022](#CR16)）。此外，统计门户网站Statista预测，全球人工智能市场规模将在2024年达到5000亿美元以上（Statista [2022](#CR33)）。因此，就业市场的演变需要工人和利益相关者将他们的技能和元素能力适应一个迅速转变的场景。根据世界经济论坛的数据，超过60%的今天开始上学的孩子将在尚不存在的工作中工作（世界经济论坛
+    [2017](#CR38)）。此外，牛津马丁经济学院报告称，在未来20年内，美国所有工作职能中最多可自动化47%，这将导致一个与我们所知和所处的世界非常不同的世界（Frey和Osborne
+    [2017](#CR10)）。值得特别注意的是，Gartner将人工智能视为2022年度Gartner十大战略技术趋势中两个互补基础趋势之一（Gartner
+    [2021](#CR12)）：*人工智能工程* 和 *决策智能*。人工智能工程专注于通过AI、机器人流程自动化（RPA）、业务流程管理（BPM）等协同技术和方法论方法的完整识别和运作，来检测和自动化业务和IT流程。相反，决策智能是一种系统化的方法，通过强大和广泛的人工智能和人工智能的使用，来对高度复杂的情况和业务条件进行建模和有效管理，通过
+    *连接*、*上下文* 和 *连续* 的决策过程来提高组织决策的效率。
 - en: Thus, the impact of AI in potentially any business field is more and more crucial
     for the evolution and digital transformation of organizations. AI is affecting
     both the technological and organizational perspectives and processes, thus reshaping
@@ -340,6 +409,7 @@
     process (Marr [2019](#CR24)), in Netflix’s decision-making processes related to
     movie plots, directors, and actors (Westcott Grant [2018](#CR37)), and in Pfizer’s
     drug discovery and scientific development activities (Fleming [2018](#CR8)).
+  id: totrans-26
   prefs: []
   type: TYPE_NORMAL
 - en: Such impact is today fostered by the recent advances in computational power
@@ -357,6 +427,7 @@
     valuable technology-transfer projects to foster innovation in the countries has
     been confirmed by many institutional task-forces, work groups and especially recent
     publications of AI national strategy documents, as in the case of Italy.
+  id: totrans-27
   prefs: []
   type: TYPE_NORMAL
 - en: 'Though, let us take a step back, to effectively comprehend why and how AI is
@@ -366,9 +437,11 @@
     a sort of conceptual progression we cannot avoid to examine, from different complementary
     perspectives: from data to knowledge, from abilities to intelligence, and, further,
     from society to socio-AI systems.'
+  id: totrans-28
   prefs: []
   type: TYPE_NORMAL
 - en: 2.4 The Cognitive Science Framework
+  id: totrans-29
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -383,6 +456,7 @@
     panorama of such discipline. Rather, we report a limited set of fundamental concepts
     that prove to be useful for later understanding and appreciate the further descriptions
     of the main reported macro-categories of AI systems and methods.
+  id: totrans-30
   prefs: []
   type: TYPE_NORMAL
 - en: 'First, we have to take into consideration a triadic conceptual framework, already
@@ -394,6 +468,7 @@
     enlarges the considered perspectives towards the interaction between human and
     artificial cognitive systems, anticipating the essential theme of the Human-AI
     Interaction in a cognitive science perspective.'
+  id: totrans-31
   prefs: []
   type: TYPE_NORMAL
 - en: 'In a *cognitivist* approach, the mind and its internal working mechanisms could
@@ -415,6 +490,7 @@
     *connectionism* (Butler [1993](#CR6)); on the other hand, the role of *experience*
     and *social interaction* gained importance, in a more *constructivist* perspective
     (Amineh and Asl [2015](#CR4)).'
+  id: totrans-32
   prefs: []
   type: TYPE_NORMAL
 - en: 'Moreover, the nature of intelligence itself is not fixed and pre-defined in
@@ -437,12 +513,15 @@
     [2001](#CR7)) tries to take into consideration a broader framework, involving
     several macro-abilities, ranging from *linguistic-verbal*, to *logical-mathematical*
     and *visual-spatial*, and event to *kinesthetic* and *musical-harmonic* intelligence.'
+  id: totrans-33
   prefs: []
   type: TYPE_NORMAL
 - en: 'To our scope, it is worth to highlight two main aspects:'
+  id: totrans-34
   prefs: []
   type: TYPE_NORMAL
 - en: '1.'
+  id: totrans-35
   prefs:
   - PREF_OL
   type: TYPE_NORMAL
@@ -452,10 +531,12 @@
     the wide range of possible cognitive features, by gather them into four macro-abilities
     to represent the way a cognitive system collects, processes and manages information:
     *perceiving*, *learning*, *abstracting* and *reasoning*.'
+  id: totrans-36
   prefs:
   - PREF_IND
   type: TYPE_NORMAL
 - en: '2.'
+  id: totrans-37
   prefs:
   - PREF_OL
   type: TYPE_NORMAL
@@ -463,6 +544,7 @@
     when presenting AI systems and their relation with both the human cognitive ability
     and society: *cognition*, in the sense sketched beforehand, and *interaction*,
     intended towards both artificial and human agents, in an extended socio-AI perspective.'
+  id: totrans-38
   prefs:
   - PREF_IND
   type: TYPE_NORMAL
@@ -476,6 +558,7 @@
     AI actually interact and even collaborate in heterogeneous contexts and situations,
     so as to delineate the current stages towards a hybrid and collective socio-AI
     systemic intelligence.'
+  id: totrans-39
   prefs: []
   type: TYPE_NORMAL
 - en: 'Now let us zoom in on a significant dichotomy we have to consider to effectively
@@ -484,9 +567,11 @@
     the relevance of such classification to somehow recap the cognitive characteristics
     shown, as well as to help the reader appreciate the complementary cognitive potentialities
     of the reported methods.'
+  id: totrans-40
   prefs: []
   type: TYPE_NORMAL
 - en: 2.5 Symbolic and Sub-Symbolic AI
+  id: totrans-41
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -506,6 +591,7 @@
     of the mind comes directly from the massive interaction among the interconnected
     neurons, where intelligence emerges from a distributed elaboration of the information
     and data collected.'
+  id: totrans-42
   prefs: []
   type: TYPE_NORMAL
 - en: As a step forward, it becomes clear how symbolic and sub-symbolic AI differ.
@@ -522,6 +608,7 @@
     e.g. where the elements involved can be objects and relations among them. Instead,
     sub-symbolic AI operates at a *low-level*, e.g. where the elements involved can
     be image pixels, place distances, robot joint torque, sound waves etc.
+  id: totrans-43
   prefs: []
   type: TYPE_NORMAL
 - en: 'In the symbolic paradigm to AI, we could represent the different problems as
@@ -542,6 +629,7 @@
     of AI*, dealing with *handcrafted knowledge*, exploiting reasoning capacities
     for narrowly circumscribed problems, without any learning or abstracting capability
     and poorly able to deal with informative uncertainty and complexity.'
+  id: totrans-44
   prefs: []
   type: TYPE_NORMAL
 - en: In the sub-symbolic paradigm to AI, instead, the information collected is managed
@@ -561,6 +649,7 @@
     specific domains. Such *second wave of AI*—as called by DARPA (Launchbury [2017](#CR21))—is
     endowed with perceiving and learning capabilities, while it has poor reasoning
     ability and it totally lacks abstracting power.
+  id: totrans-45
   prefs: []
   type: TYPE_NORMAL
 - en: In the further sections, we will present the different approaches reported by
@@ -576,6 +665,7 @@
     and AI-AI interaction. Without any claim to being exhaustive or exclusive in our
     approach, we only intend to provide readers a visual sketch to better appreciate
     the following sections and the subsequent reported methods (Fig. [2.1](#Fig1)).![](../images/524458_1_En_2_Chapter/524458_1_En_2_Fig1_HTML.png)
+  id: totrans-46
   prefs: []
   type: TYPE_NORMAL
 - en: 4 quadrants of A I approaches plot A I A I to human A I, A I A I versus symbolic
@@ -584,12 +674,15 @@
     A I hyphen A I has artificial life, swarm intelligence, genetic algorithms, and
     cellular automata. Symbolic has knowledge representation, reasoning, and an expert
     system.
+  id: totrans-47
   prefs: []
   type: TYPE_NORMAL
 - en: Fig. 2.1
+  id: totrans-48
   prefs: []
   type: TYPE_NORMAL
 - en: Conceptual map of AI approaches and paradigms
+  id: totrans-49
   prefs: []
   type: TYPE_NORMAL
 - en: 'While we will examine all these macro-methods and approaches in the further
@@ -606,9 +699,11 @@
     recall that this is just a rough visual representation of the reported AI methods,
     to help the readers better appreciate and comprehend the general overview of the
     AI landscape, according to the classification methodology provided.'
+  id: totrans-50
   prefs: []
   type: TYPE_NORMAL
 - en: 2.6 Knowledge Representation and Reasoning
+  id: totrans-51
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -636,6 +731,7 @@
     able to even infer significant hidden aspects, features or behaviors of the outer
     environment or agents in the specific represented world, though they lack fundamental
     cognitive abilities like *learning* or *abstracting*.'
+  id: totrans-52
   prefs: []
   type: TYPE_NORMAL
 - en: In order to effectively represent knowledge, many methodologies and tools have
@@ -661,6 +757,7 @@
     and effectively limited to the representation of explicit knowledge, while recently
     several proposed methods and algorithms deal with the challenge of formalizing
     tacit knowledge in both organizational and industrial domains.
+  id: totrans-53
   prefs: []
   type: TYPE_NORMAL
 - en: 'In any case, the first and maybe main challenge is before the symbolic formalization
@@ -678,6 +775,7 @@
     aided by AI tools, which have been studied and applied in a wide range of domains,
     including heterogeneous operation systems, pharmaceutical and clinical domains,
     as well as education.'
+  id: totrans-54
   prefs: []
   type: TYPE_NORMAL
 - en: 'In the field of knowledge representation and reasoning, the most probably known
@@ -700,6 +798,7 @@
     the classical information systems in companies, by including several modules and
     components to capture, organize and manage data and information to support strategic
     decision-making processes in business contexts.'
+  id: totrans-55
   prefs: []
   type: TYPE_NORMAL
 - en: 'The KBS are usually classified according to two complementary categorizations:
@@ -718,6 +817,7 @@
     model-based descriptions. The following Figure is intended to help readers appreciate
     the different stages and concepts related to the knowledge representation and
     reasoning methodologies and systems (Fig. [2.2](#Fig2)).![](../images/524458_1_En_2_Chapter/524458_1_En_2_Fig2_HTML.png)'
+  id: totrans-56
   prefs: []
   type: TYPE_NORMAL
 - en: A flow diagram illustrates domain expert becomes knowledge engineer through
@@ -725,12 +825,15 @@
     system. Knowledge-based system includes knowledge representation and reasoning.
     Decision-support system includes management, enrichment, and sharing. It leads
     to system output and further a decision marker.
+  id: totrans-57
   prefs: []
   type: TYPE_NORMAL
 - en: Fig. 2.2
+  id: totrans-58
   prefs: []
   type: TYPE_NORMAL
 - en: Conceptual representation of the knowledge representation and reasoning process
+  id: totrans-59
   prefs: []
   type: TYPE_NORMAL
 - en: 'The use of such symbolic and knowledge management approaches is definitively
@@ -740,9 +843,11 @@
     from different sources. The ability to learn from past in data and to predict
     future behaviours, situations or states is typical of the other dominant paradigm
     of AI: connectionism, and, specifically, machine learning approaches.'
+  id: totrans-60
   prefs: []
   type: TYPE_NORMAL
 - en: 2.7 Machine Learning and Deep Learning
+  id: totrans-61
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -755,6 +860,7 @@
     the global scene of AI methods and algorithms thanks to their ability to analyze
     large sets of data, learn from them and predict new and unseen behaviors, or classify
     new instances in different environmental conditions.
+  id: totrans-62
   prefs: []
   type: TYPE_NORMAL
 - en: 'In a general perspective, machine learning (ML) is the discipline devoted to
@@ -775,13 +881,16 @@
     ranging from speech recognition to computer vision, from strategic and operative
     business intelligence to fraud detection, from astrophysics analysis of the galaxies
     to financial applications.'
+  id: totrans-63
   prefs: []
   type: TYPE_NORMAL
 - en: 'Overall, ML methods can be classified in three *learning paradigms*, widely
     exploited in the literature and in the daily practice:'
+  id: totrans-64
   prefs: []
   type: TYPE_NORMAL
 - en: '1.'
+  id: totrans-65
   prefs:
   - PREF_OL
   type: TYPE_NORMAL
@@ -789,26 +898,31 @@
     and already provided input and output variables, as sample already classified
     or analyzed instances, and the algorithm is able to generalize, by detecting the
     mapping function from input to output.'
+  id: totrans-66
   prefs:
   - PREF_IND
   type: TYPE_NORMAL
 - en: '2.'
+  id: totrans-67
   prefs:
   - PREF_OL
   type: TYPE_NORMAL
 - en: '*Unsupervised learning* methods: in this case, the provided data are not labelled
     yet, thus the model is not provided with sample pre-analyzed data and results
     during the training process.'
+  id: totrans-68
   prefs:
   - PREF_IND
   type: TYPE_NORMAL
 - en: '3.'
+  id: totrans-69
   prefs:
   - PREF_OL
   type: TYPE_NORMAL
 - en: '*Reinforcement learning* methods: such approaches are trained by providing
     them specific feedback and the intelligent system or agent strives to maximize
     some cumulative reward function to progressively optimize its output.'
+  id: totrans-70
   prefs:
   - PREF_IND
   type: TYPE_NORMAL
@@ -825,6 +939,7 @@
     help humans to deal with large sets of data which require effective and efficient
     automated analysis in heterogeneous conditions, as in cases of uncertainty and
     complexity.'
+  id: totrans-71
   prefs: []
   type: TYPE_NORMAL
 - en: 'Supervised learning is widely diffused and exploited in the literature and
@@ -839,6 +954,7 @@
     labelled data, while the testing process should apply it to new instances to get
     predictions or insights. The SL models allow to deal with two macro-categories
     of problems: *classification* and *regression*.'
+  id: totrans-72
   prefs: []
   type: TYPE_NORMAL
 - en: 'Classification is the problem of categorizing sets of data into specific pre-defined
@@ -857,6 +973,7 @@
     of the exploited weights is not necessarily intuitive. Thus, extended approaches
     like *generalized linear models* and *generalized addictive models* are often
     studied and exploited in the literature and in the daily practice.'
+  id: totrans-73
   prefs: []
   type: TYPE_NORMAL
 - en: 'Unsupervised learning is the learning paradigm for ML models which does not
@@ -878,6 +995,7 @@
     helping to reduce two-dimensional into one-dimensional data, or neural networks
     like autoencoders, which are also useful to deal with anomaly detections and in
     many applications of the unsupervised learning paradigm.'
+  id: totrans-74
   prefs: []
   type: TYPE_NORMAL
 - en: Finally, *deep learning* is a part of ML approaches, including all the models
@@ -899,9 +1017,11 @@
     after this general overview of both symbolical and sub-symbolical AI methods,
     it is now time to go further and explore the promises and challenges of neuro-symbolical
     approaches.
+  id: totrans-75
   prefs: []
   type: TYPE_NORMAL
 - en: 2.8 Neural Symbolic Computation
+  id: totrans-76
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -918,6 +1038,7 @@
     assistants for humans. While we will focus on the *explainability* issues in the
     next sections, here we just aim to provide a very short and general overview of
     the main pillars of such methodologies.
+  id: totrans-77
   prefs: []
   type: TYPE_NORMAL
 - en: 'Neural-symbolic computing has the goal of integrating the two complementary
@@ -937,6 +1058,7 @@
     of the algorithm and the accuracy of the output results, not least along with
     interpretability provided by symbolic knowledge extraction and reasoning by the
     means of formal theories and logic systems.'
+  id: totrans-78
   prefs: []
   type: TYPE_NORMAL
 - en: In a general perspective, neural-symbolical AI systems are able to deal with
@@ -960,6 +1082,7 @@
     knowledge by a propositional general logic program, enables training from examples
     to refine the background knowledge and the subsequent knowledge extraction steps
     are performed by the use of a network, in a logic program.
+  id: totrans-79
   prefs: []
   type: TYPE_NORMAL
 - en: One of the main challenges in neural-symbolic computation is the solution of
@@ -976,6 +1099,7 @@
     within the system. The way neural-symbolic approaches address and solve the SGP
     are among the differences among methods like *Deep Problog* and *logic tensor
     networks*.
+  id: totrans-80
   prefs: []
   type: TYPE_NORMAL
 - en: The applications of neural-symbolic systems are in a wide range of fields, e.g.
@@ -988,9 +1112,11 @@
     be able to explain users their working mechanisms and decisions. Thus, it is necessary
     and unavoidable to get a general picture of the fundamental role of *explainable
     AI* in the current scenario and evolution of AI systems.
+  id: totrans-81
   prefs: []
   type: TYPE_NORMAL
 - en: 2.9 Explainable AI
+  id: totrans-82
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -1007,6 +1133,7 @@
     power and the high performances achieved by AI, and specifically by machine learning
     and deep learning systems, it is hard work to get insights from their internal
     mechanisms when trying to understand why some outcomes came from.'
+  id: totrans-83
   prefs: []
   type: TYPE_NORMAL
 - en: In order to address this issue, XAI is aimed at creating a set of AI techniques
@@ -1018,6 +1145,7 @@
     of the specific reasons why some output or decision was made. *Explainability*
     is badly needed in a wide range of applicative domains and regulations are starting
     to arise, requiring it as an essential and unavoidable feature of AI systems.
+  id: totrans-84
   prefs: []
   type: TYPE_NORMAL
 - en: 'While there is not a single, unified, pre-defined and widely accepted formal
@@ -1040,6 +1168,7 @@
     model: an explanation usually relates the feature values of an instance to its
     model prediction in a way that can be easily understood by human decision-makers,
     practitioners or organization stakeholders.'
+  id: totrans-85
   prefs: []
   type: TYPE_NORMAL
 - en: 'In the literature, there are several attempts to provide classifications, categorizations
@@ -1061,6 +1190,7 @@
     *linear models*, *decision-trees, rule-based* systems etc. In contrast, the post-hoc
     methods are created by defining another model to include explanations for an existing
     system.'
+  id: totrans-86
   prefs: []
   type: TYPE_NORMAL
 - en: 'Another important classification, taken from the specific sub-field of *explainable
@@ -1079,9 +1209,11 @@
     intelligent assistants and the human-decision makers. Therefore, the rise and
     the evolution of the promising discipline of human―AI interaction is fundamental
     for the next stages in the AI history.'
+  id: totrans-87
   prefs: []
   type: TYPE_NORMAL
 - en: 2.10 Human―AI Interaction
+  id: totrans-88
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -1104,6 +1236,7 @@
     better, in *socio-AI systems* that we could not ignore or underestimate. Furthermore,
     such systems will increasingly stimulate a wide variety of *emergent collective
     behaviors*, in a complex system perspective.'
+  id: totrans-89
   prefs: []
   type: TYPE_NORMAL
 - en: 'In this context, human―AI interaction (HAII) is an emerging and challenging
@@ -1126,6 +1259,7 @@
     respect to the role of the humans in the interaction: to this aim, the Parasuraman’s
     model for types and levels of human interaction with automation can be applied
     to the assessment of the degree of automation of AI-based systems.'
+  id: totrans-90
   prefs: []
   type: TYPE_NORMAL
 - en: 'In this perspective, AI is increasingly becoming a *teammate* and a *decision-maker*,
@@ -1149,6 +1283,7 @@
     interface*s, *anthropomorphism* and the application of *ethopoeia*, namely the
     attribution of human attitudes or intentions to machines, in the conceptual paradigm
     of the “*computer as social actors*” theory.'
+  id: totrans-91
   prefs: []
   type: TYPE_NORMAL
 - en: 'At the end of this journey, what’s next? Well, there is much more waiting for
@@ -1170,5 +1305,6 @@
     to ensure that its power and advantages can serve to our sons and to all the new
     and future generations. This should always be our ultimate goal, as researchers,
     scholars and practitioners. As humans.'
+  id: totrans-92
   prefs: []
   type: TYPE_NORMAL

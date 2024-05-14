@@ -466,11 +466,13 @@
   id: totrans-47
   prefs: []
   type: TYPE_NORMAL
+  zh: 软件的另一个关键优势是其操作安全性水平。该软件仅在通过严格的身份验证流程后才与加密交易所连接，以保障您的安全。它还允许您控制交易机器人在您的交易平台上拥有的权限，作为风险缓解过程的一部分。
 - en: 1.2 Pattern Discovering
   id: totrans-48
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 1.2 模式发现
 - en: In highly digitised markets, such as the ones for equities and FX products,
     AI solutions promise to provide competitive pricing, manage liquidity, optimise
     and streamline execution. Importantly, AI algorithms deployed in trading can enhance
@@ -481,6 +483,7 @@
   id: totrans-49
   prefs: []
   type: TYPE_NORMAL
+  zh: 在高度数字化的市场，例如股票和外汇产品市场，AI解决方案承诺提供竞争定价、管理流动性、优化和简化执行。重要的是，用于交易的AI算法可以通过动态方式优化大小、持续时间和订单大小，根据市场条件增强流动性管理和大订单执行，以最小化市场影响（Joshi等人[2021](#CR6)；刘[2021](#CR7)；泽义和王[2021](#CR8)；Sanz等人[2021](#CR9)）。
 - en: The use of AI and big data in sentiment analysis to identify themes, trends,
     and trading signals is augmenting a practice that is not new. Traders have mined
     news reports and management announcements/commentaries for decades now, seeking
@@ -493,6 +496,7 @@
   id: totrans-50
   prefs: []
   type: TYPE_NORMAL
+  zh: 使用AI和大数据进行情感分析来识别主题、趋势和交易信号，这是一种并不新鲜的做法。交易员们已经几十年来一直在挖掘新闻报道和管理公告/评论，试图了解非金融信息对股票价格的影响。如今，通过NPL算法对社交媒体帖子、推文或卫星数据进行文本挖掘和分析，是创新技术的应用示例，这些技术可以为交易决策提供信息，因为它们具有自动收集和分析数据的能力，并且能够在人类无法处理的规模上识别持久的模式或行为。
 - en: What differentiates AI-managed trading with systematic trading is the reinforcement
     learning and adjustment of the AI model to changing market conditions, when traditional
     systematic strategies would take longer to adjust parameters due to the heavy
@@ -505,11 +509,13 @@
   id: totrans-51
   prefs: []
   type: TYPE_NORMAL
+  zh: AI管理的交易与系统性交易的不同之处在于，AI模型根据变化的市场条件进行强化学习和调整，而传统的系统性策略由于涉及大量人为干预，调整参数需要更长的时间。基于历史数据的传统后测策略可能无法在实时交易中提供良好的回报，因为先前确定的趋势会崩溃。ML模型的使用将分析转向实时趋势的预测和分析，例如使用“前进步进”测试而不是后测。这些测试预测并实时适应趋势，以减少基于历史数据的后测中的过拟合（或曲线拟合）和（Yin等人[2021](#CR10)）。
 - en: We starting tak now about algo wheel. An algo wheel is a broad term, encompassing
     fully automated solutions to mostly trader-directed flow.
   id: totrans-52
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们现在开始谈论算法轮。算法轮是一个广义术语，涵盖了完全自动化的解决方案，到大部分由交易员指导的流量。
 - en: An AI-based algo wheel is an automated routing process embedding AI techniques
     to assign a broker algorithm to orders from a pre-configured list of algorithmic
     solutions (Bharne et al. [2019](#CR11)). In other words, AI-based algo wheels
@@ -518,6 +524,7 @@
   id: totrans-53
   prefs: []
   type: TYPE_NORMAL
+  zh: 基于AI的算法轮是一种自动路由过程，嵌入了AI技术，用于从预配置的算法解决方案列表中为订单分配经纪算法（Bharne等人[2019](#CR11)）。换句话说，基于AI的算法轮是选择最佳策略和经纪人的模型，通过这些模型，可以根据市场条件和交易目标/要求路由订单。
 - en: Investment firms typically use algo wheels for two reasons; first, to achieve
     performance gains from improved execution quality; second, to gain workflow efficiency
     from automating small order flow or normalizing broker algorithms into standardized
@@ -527,6 +534,7 @@
   id: totrans-54
   prefs: []
   type: TYPE_NORMAL
+  zh: 投资公司通常使用算法轮盘的原因有两个：第一，通过改进执行质量来实现性能提升；第二，通过自动化小订单流或将经纪人算法规范化为标准命名约定来获得工作流效率。市场参与者认为算法轮盘减少了围绕经纪人选择和在市场中部署的经纪人算法的交易员偏见。
 - en: From the historical point of view, the use of AI in pattern discovering has
     gone through different stages of development and corresponding complexity, adding
     a layer to traditional algorithmic trading at each step of the process. First-generation
@@ -535,6 +543,7 @@
   id: totrans-55
   prefs: []
   type: TYPE_NORMAL
+  zh: 从历史角度来看，AI在模式发现中的应用经历了不同阶段的发展和相应的复杂性，在每个过程的每个步骤都为传统的算法交易增加了一层。第一代算法由具有简单参数的买入或卖出订单组成，随后是允许动态定价的算法。
 - en: Second-generation algorithms deployed strategies to break up large orders and
     reduce potential market impact, helping obtain better prices (so-called ‘execution
     algos’). Current strategies based on deep neural networks are designed to provide
@@ -549,6 +558,8 @@
   id: totrans-56
   prefs: []
   type: TYPE_NORMAL
+  zh: 第二代算法采用策略来分解大订单，减少潜在的市场影响，帮助获得更好的价格（所谓的‘执行算法’）。基于深度神经网络的当前策略旨在提供最佳的订单放置和执行方式，以最小化市场影响（Sirirattanajakarin
+    和 Suntisrivaraporn [2019](#CR12)）。深度神经网络通过一组设计用于识别模式的算法来模仿人脑，并且不太依赖人为干预来运作和学习。使用这种技术对市场做市商有利，可以增强他们的库存管理并减少资产负债表的成本。随着人工智能的发展，人工智能算法演变为自动化的、计算机程序化的算法，可以从使用的数据输入中学习，并且不太依赖人为干预。
 - en: In practice, the more advanced forms of AI today are mostly used to identify
     signals from ‘low informational value’ incidents in flow-based trading, which
     consist of less obvious events, harder to identify and extract value from. Rather
@@ -560,6 +571,7 @@
   id: totrans-57
   prefs: []
   type: TYPE_NORMAL
+  zh: 在实践中，当今更先进的人工智能形式主要用于识别‘低信息价值’事件中的信号，这些事件由流量交易组成，包括不太明显的事件，难以识别和提取价值。人工智能实际上不是用来帮助执行速度，而是用来从数据中提取信号并将此信息转化为交易决策。较不先进的算法主要用于‘高信息价值事件’，这些事件包括金融事件的新闻，对所有参与者都更为明显，执行速度至关重要。
 - en: At this stage of their development, ML–based models are therefore not aiming
     at front-running trades and profit from speed of action, such as HFT strategies.
     Instead, they are mostly confined to being used offline, for example for the calibration
