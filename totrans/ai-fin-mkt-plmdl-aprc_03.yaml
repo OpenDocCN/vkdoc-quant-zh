@@ -4,22 +4,26 @@
   id: totrans-0
   prefs: []
   type: TYPE_NORMAL
+  zh: © 作者（独家许可）Springer Nature Switzerland AG 2022T. Barrau, R. Douady 金融市场的人工智能金融数学和金融科技[https://doi.org/10.1007/978-3-030-97319-3_3](https://doi.org/10.1007/978-3-030-97319-3_3)
 - en: '3. Estimation Method: The Linear Non-Linear Mixed Model'
   id: totrans-1
   prefs:
   - PREF_H1
   type: TYPE_NORMAL
+  zh: 3. 估计方法：线性非线性混合模型
 - en: Thomas Barrau^([1](#Aff5)  ) and Raphael Douady^([2](#Aff6))(1)AXA Investment
     Managers Chorus Ltd, Hong Kong, Hong Kong S.A.R.(2)Economic Center, University
     Paris 1 Sorbonne, Paris, France
   id: totrans-2
   prefs: []
   type: TYPE_NORMAL
+  zh: Thomas Barrau^([1](#Aff5)  ) 和 Raphael Douady^([2](#Aff6))(1)AXA投资经理Chorus有限公司，香港，香港特别行政区。(2)巴黎索邦大学经济中心，法国巴黎。
 - en: Abstract
   id: totrans-3
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 摘要
 - en: We introduce the Linear Non-Linear Mixed (LNLM) model as an effective method
     to produce non-linear univariate models, with the primary concern of reducing
     overfitting. We show using numerical simulations that the LNLM model is able to
@@ -30,16 +34,19 @@
   id: totrans-4
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们引入了线性非线性混合（LNLM）模型作为产生非线性单变量模型的有效方法，主要关注减少过拟合。我们通过数值模拟表明，LNLM 模型能够成功地检测到噪声数据中的模式，其准确度与或优于数据驱动建模替代方案。我们发现我们的算法在计算上是高效的，这对于机器学习应用来说是一个必要的特征，这些应用通常涉及大量的估计。
 - en: KeywordsNon-Linear modelingPolynomial regressionPolymodel theoryRegularizationOverfittingData-drivenNon-parametricUnivariate
     regression
   id: totrans-5
   prefs: []
   type: TYPE_NORMAL
+  zh: 关键词非线性建模多项式回归Polymodel理论正则化过拟合数据驱动非参数单变量回归
 - en: 3.1 Introduction
   id: totrans-6
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 3.1 引言
 - en: As explained in Chap. [2](519851_1_En_2_Chapter.xhtml), one of the most powerful
     advantages of a polymodel over a classical multi-factor model is the possibility
     of more accurately fitting the target variable, without restricting ourselves
@@ -56,6 +63,9 @@
   id: totrans-7
   prefs: []
   type: TYPE_NORMAL
+  zh: 如第[2](519851_1_En_2_Chapter.xhtml)章所述，Polymodel 相对于经典的多因子模型最强大的优势之一是更准确地拟合目标变量，而不局限于简单的线性函数形式。在数据驱动建模领域有很多选择，但对于大多数技术来说，估计过程可能在计算资源方面很重，这在
+    polymodels 框架中是一个特别重要的点。事实上，即使是 Polymodel 理论的简单应用也可能涉及到数百万到数十亿的拟合。例如，一个人可能想要使用每天更新的一千个因子来拟合一个
+    20 年的模拟，这直接导致了 1,000 * 252 * 20 = 5,040,000 次拟合。很容易想象，在 polymodels 涉及的大数据框架中，计算时间非常重要。
 - en: The simple solution that practitioners originally used to estimate an elementary
     model was to use a weighted sum of polynomials. Douady, along with Molchanov and
     Cherny ([2010](#CR1)), introduced the use of Hermite polynomials, which exhibit
@@ -64,6 +74,8 @@
   id: totrans-8
   prefs: []
   type: TYPE_NORMAL
+  zh: 从前从事者用于估计基本模型的简单解决方案是使用多项式的加权和。 Douady 和 Molchanov 以及 Cherny ([2010](#CR1))
+    引入了使用 Hermite 多项式的方法，这些多项式在回归中一起使用时表现出有趣的特性，限制了它们之间的相关性。
 - en: Recall that the Hermite polynomials are defined as:![$$ {H}_h(x)\stackrel{\scriptscriptstyle\mathrm{def}}{=}{\left(-1\right)}^h{e}^{\frac{x^2}{2}}\frac{d^h}{d{x}^h}{e}^{\frac{-{x}^2}{2}}.
     $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ1.png)(3.1)We
     then simply use the following non-linear model to estimate the elementary models:![$$
@@ -248,17 +260,26 @@
   id: totrans-24
   prefs: []
   type: TYPE_NORMAL
+  zh: 使用LNLM模型而不是Ridge模型的动机主要是理论上的。我们先前的信念是，多项式模型的过度拟合仅来自模型的非线性项。换句话说，我们从不指望模型的线性部分过度拟合数据。在岭回归中，无法避免收缩线性项。回顾一下，岭回归的估计值定义为：![$$
+    {\hat{\beta}}^{Ridge}={\left[{X}^{\prime }X+\lambda I\right]}^{-1}{X}^{\prime
+    }Y,\kern0.75em s.t.\kern0.75em \lambda \ge 0 $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ7.png)(3.7)*这里λ是整数，收缩参数，“I”是u×u单位矩阵。*在多项式模型的情况下，矩阵*X′X*将是4×4，所以我们可以用矩阵*J*替换4×4单位矩阵*I*
+    ^([4](#Fn4))：![$$ J=\left[\begin{array}{cc}\begin{array}{cc}0&amp; 0\\ {}0&amp;
+    1\end{array}&amp; \begin{array}{cc}0&amp; 0\\ {}0&amp; 0\end{array}\\ {}\begin{array}{cc}0&amp;
+    0\\ {}0&amp; 0\end{array}&amp; \begin{array}{cc}1&amp; 0\\ {}0&amp; 1\end{array}\end{array}\right]
+    $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ8.png)(3.8)这个解决方案很诱人，因为我们可以期望线性项不再受到矩阵*J*的惩罚。然而，我们仍然必须求解矩阵*[X′X + λJ]*的逆，这相当于解一个四元方程组。在这样一个系统中，只有第二、第三和第四个方程被修改，而在协方差矩阵中加入惩罚项后，第一个方程保持不变。但是在求解系统时，每个方程的解都取决于所有其他方程的解，因此系统的第一个方程的解也被修改，结果线性系数也被改变。
 - en: The LNLM model is thus a response to the limit of the Ridge regression in the
     very special case of the fitting of a univariate polynomial model (maintaining
     the assumption that the overfitting only comes from non-linearity).
   id: totrans-25
   prefs: []
   type: TYPE_NORMAL
+  zh: 因此，LNLM模型是对Ridge回归在拟合单变量多项式模型的非常特殊情况下的极限的响应（保持过度拟合仅来自非线性的假设）。
 - en: 3.2.2 Fitting Procedure
   id: totrans-26
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 3.2.2 拟合过程
 - en: The structure of the LNLM model prevents a global direct fit using OLS, first
     because the result would just be a large overfitted polynomial model, secondly
     because the perfect correlation of the linear terms in the model would preclude
@@ -266,6 +287,7 @@
   id: totrans-27
   prefs: []
   type: TYPE_NORMAL
+  zh: LNLM模型的结构阻止了使用OLS进行全局直接拟合，首先因为结果将只是一个过度拟合的大型多项式模型，其次是因为模型中线性项的完美相关性将阻止矩阵求逆。
 - en: Therefore, we design a three-step fitting procedure, where we first choose the
     value of *μ*, the non-linearity-propensity parameter, then separately estimate
     the non-linear model and the linear model and finally combine all the ingredients
@@ -274,6 +296,7 @@
   id: totrans-28
   prefs: []
   type: TYPE_NORMAL
+  zh: 因此，我们设计了一个三步拟合过程，首先选择非线性倾向参数*μ*的值，然后分别估计非线性模型和线性模型，最后将LNLM的所有要素结合起来得到最终拟合。步骤2和步骤3是微不足道的，因此我们将重点放在接下来详细介绍的步骤1上。
 - en: The aim of our approach being to reduce overfitting, we structure our methodology
     around the concept of cross-validation. More precisely, we use a variation of
     k-fold cross-validation to numerically approach the value of *μ* that minimizes
@@ -363,6 +386,23 @@
   id: totrans-36
   prefs: []
   type: TYPE_NORMAL
+  zh: 一旦数据分成了折叠，我们分别使用最后的*k*−1个折叠来拟合线性模型和非线性模型。然后，我们使用第一个折叠来数值计算最小化该伪样本折叠内的均方根误差（RMSE）的*μ*的值，该折叠尚未用于估计OLS参数：![$$
+    \underset{\mu_1}{\mathit{\min}}\sqrt{\frac{1}{q}{\sum}_{d=1}^q{\left({y}_{1,d}-\left[{\overline{y}}_{2,3,\dots,
+    k}+{\mu}_1\sum \limits_{h=1}^u{\hat{\beta}}_{2,3,\dots, k,h}^{NonLin}{H}_h\left({x}_{1,d}\right)+\left(1-{\mu}_1\right){\hat{\beta}}_{2,3,\dots,
+    k}^{Lin}{x}_{d,1}\right]\right)}^2} $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ9.png)(3.9)这个数值选择重复*k*次，每次改变用于确定*μ*的伪样本折叠：![$$
+    \left\{\begin{array}{c}\underset{\mu_1}{\mathit{\min}}\sqrt{\frac{1}{q}{\sum}_{d=1}^q{\left({y}_{1,d}-\left[{\overline{y}}_{2,3,\dots,
+    k}+{\mu}_1\sum \limits_{h=1}^u{\hat{\beta}}_{2,3,\dots, k,h}^{NonLin}{H}_h\left({x}_{1,d}\right)+\left(1-{\mu}_1\right){\hat{\beta}}_{2,3,\dots,
+    k}^{Lin}{x}_{1,d}\right]\right)}^2}\\ {}\underset{\mu_2}{\mathit{\min}}\sqrt{\frac{1}{q}{\sum}_{d=1}^q{\left({y}_{2,d}-\left[{\overline{y}}_{1,3,\dots,
+    k}+{\mu}_2\sum \limits_{h=1}^u{\hat{\beta}}_{1,3,\dots, k,h}^{NonLin}{H}_h\left({x}_{2,d}\right)+\left(1-{\mu}_2\right){\hat{\beta}}_{1,3,\dots,
+    k}^{Lin}{x}_{2,d}\right]\right)}^2}\\ {}\begin{array}{c}\begin{array}{c}\dots
+    \\ {}\dots \\ {}\dots \end{array}\\ {}\underset{\mu_k}{\mathit{\min}}\sqrt{\frac{1}{q}{\sum}_{d=1}^q{\left({y}_{k,d}-\left[{\overline{y}}_{1,2,\dots,
+    k-1}+{\mu}_k\sum \limits_{h=1}^u{\hat{\beta}}_{1,2,\dots, k-1,h}^{NonLin}{H}_h\left({x}_{k,d}\right)+\left(1-{\mu}_k\right){\hat{\beta}}_{1,2,\dots,
+    k-1}^{Lin}{x}_{k,d}\right]\right)}^2}\end{array}\end{array}\right. $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ10.png)(3.10)因此，我们得到了*k*个不同的最佳*μ*值，最简单的聚合方法是取平均值。然而，*μ*的值在每个折叠中的重要性不同。在某些折叠中，选择最佳值^([5](#Fn5))的*μ*会导致RMSE的显著减少，而在另一些折叠中，RMSE对最佳选择的敏感性较低。为了考虑到这一点，对于*k*个折叠中的每一个，我们计算以下度量：![$$
+    {\xi}_l=\sqrt{E\left[{\left({\mathfrak{R}}_l-{\mathfrak{r}}_l^{\ast}\right)}^2\right]}
+    $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ11.png)(3.11)*这里*
+    ![$$ {\mathfrak{R}}_l $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_IEq2.png)
+    *是计算了所有测试折叠“ l”的*μ*值的均方根误差向量（约100个），而* ![$$ {\mathfrak{r}}_l^{\ast } $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_IEq3.png)
+    *是在最佳处的RMSE值。*
 - en: Thus the metric *ξ* measures the dispersion of the errors obtained around the
     optimum. It can be understood as the standard deviation from the minimum RMSE.
     The larger the value of *ξ*, the larger the increase of the error when we deviate
@@ -370,6 +410,7 @@
   id: totrans-37
   prefs: []
   type: TYPE_NORMAL
+  zh: 因此，度量*ξ*测量了围绕最优解获得的误差的分散程度。它可以理解为与最小RMSE的标准偏差。*ξ*的值越大，当我们偏离最优解时误差增加的幅度就越大，选择这个特定值*μ*就越重要。
 - en: We integrate this measure of the importance of the choice of the optimum per
     fold by computing the final aggregated value of *μ* as an average of the optimal
     values obtained from the k-folds, weighted by their associated standard deviation
@@ -380,6 +421,8 @@
   id: totrans-38
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们通过计算最终聚合值*μ*，将每折中对选择最优值的重要性进行衡量，该值是从与最小值相关联的标准偏差加权得到的![$$ {\mu}^{\ast }=\sum
+    \limits_{l=1}^k{\mu}_l\frac{\xi_l}{\sum_{l=1}^k{\xi}_l}. $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ12.png)(3.12)这样的加权相当直观，因为我们的标准偏差到最小值的关系与标准误差的概念密切相关。
 - en: Note that the procedure described above leads to two OLS fits (one for the linear
     and one for the non-linear model) per fold, and two final OLS fits with the full
     data available. Hence, in the case of a 10-fold cross-validation, only 22 matrix
@@ -389,11 +432,13 @@
   id: totrans-39
   prefs: []
   type: TYPE_NORMAL
+  zh: 注意，上述描述的过程导致每个折叠中进行两次OLS拟合（一个用于线性模型，一个用于非线性模型），并且在所有可用数据进行两次最终OLS拟合。因此，在10倍交叉验证的情况下，只执行了22次矩阵求逆运算，而在相同情况下，Ridge正则化需要进行100次矩阵求逆运算。这种差异使我们能够预期LNLM模型的计算时间更短。
 - en: 3.3 Evaluation Methodology
   id: totrans-40
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 3.3 评估方法学
 - en: 'We propose to evaluate the interest of the LNLM model using simulations reflecting
     real-life cases. In our context, the point of modeling is to identify a relation
     between two variables for which we only have access to noisy observations. Thus
@@ -401,31 +446,37 @@
   id: totrans-41
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们建议使用反映真实情况的模拟来评估LNLM模型的兴趣。在我们的情境中，建模的目的是确定两个变量之间的关系，而我们只能获得带有噪声的观测结果。因此，我们按照以下方法进行：
 - en: First simulate a variable *X*, distributed similarly to stock returns.
   id: totrans-42
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 首先模拟一个变量*X*，其分布类似于股票收益。
 - en: We then associate to this variable a particular reaction function *ϕ*(*X*) that
     models the relation between a target and our independent variable.
   id: totrans-43
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 然后，我们将与这个变量相关联的特定反应函数*ϕ*(*X*)，该函数建模了目标与我们的自变量之间的关系。
 - en: '![$$ Y=\phi (X). $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ13.png)(3.13)'
   id: totrans-44
   prefs: []
   type: TYPE_IMG
+  zh: '![$$ Y=\phi (X). $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ13.png)(3.13)'
 - en: 'Then, we associate to the output of this function a noise term, thus defining
     the observed target variable *Y*, such as:'
   id: totrans-45
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 然后，我们将一个噪声项与该函数的输出关联起来，从而定义观察到的目标变量*Y*，如下所示：
 - en: '![$$ \overset{\sim }{Y}=\phi (X)+\varepsilon . $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ14.png)(3.14)'
   id: totrans-46
   prefs: []
   type: TYPE_IMG
+  zh: '![$$ \overset{\sim }{Y}=\phi (X)+\varepsilon . $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_Equ14.png)(3.14)'
 - en: We assume that it is possible to observe the values of *X* and ![$$ \overset{\sim
     }{\mathrm{Y}} $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_IEq4.png),
     but that the functional form, as well as the stochastic part of the model, are
@@ -435,6 +486,7 @@
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 我们假设可以观察到*X*和![$$ \overset{\sim }{\mathrm{Y}} $$](../images/519851_1_En_3_Chapter/519851_1_En_3_Chapter_TeX_IEq4.png)的值，但模型的函数形式以及随机部分对于外部观察者是未知的。我们将自己置于这个外部观察者的位置，尝试使用几种建模技术来拟合均值方程。
 - en: Once the fits using these different models are performed, we generate new values
     of *X* using the same distribution as before, and see how well the estimated models
     fit their original target,^([6](#Fn6)) ϕ(*X*), using these new values of *X*.
@@ -442,11 +494,13 @@
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 一旦使用这些不同模型进行拟合，我们使用与之前相同的分布生成*X*的新值，并观察估计模型如何使用这些新值适合其原始目标，^([6](#Fn6)) ϕ(*X*)。
 - en: This experiment design thus captures the *out-of-sample predictive power* of
     each modeling technique, i.e. its ability to tackle the problem of overfitting.
   id: totrans-49
   prefs: []
   type: TYPE_NORMAL
+  zh: 这个实验设计因此捕捉了每种建模技术的 *样本外预测能力*，即其应对过拟合问题的能力。
 - en: '*X* is drawn from a Student’s t distribution with 4 degrees of freedom, as
     this distribution has been found to appropriately model the distribution of stock
     returns in a wide range of cases (Platen & Rendek, [2008](#CR6)). For convenience,
@@ -455,6 +509,8 @@
   id: totrans-50
   prefs: []
   type: TYPE_NORMAL
+  zh: '*X* 服从自由度为4的学生t分布，因为已发现这种分布能够适当地模拟股票收益的分布情况（Platen & Rendek，[2008](#CR6)）。为方便起见，在反应函数的定义中，超出区间[−6,
+    +6]的值会被截断处理。^([7](#Fn7))'
 - en: Modeling financial markets is often a difficult task because the data used is
     extremely noisy. Our concern is to test the accuracy of different modeling techniques
     in the presence of a large amount of noise, thus the values of ε are also to be
@@ -462,6 +518,7 @@
   id: totrans-51
   prefs: []
   type: TYPE_NORMAL
+  zh: 建模金融市场通常是一项困难的任务，因为使用的数据非常嘈杂。我们关注的是在大量噪声存在的情况下测试不同建模技术的准确性，因此 ε 的值也将从自由度为4的学生t分布中抽取。
 - en: 'We use several base functions to generate different target variables. Our goal
     is to obtain a representative set of plausible real-life functions. We thus define
     the thirteen functions below, still in the interval [−6, +6]:![$$ {\phi}_1(x)\stackrel{\scriptscriptstyle\mathrm{def}}{=}0.33x
@@ -490,6 +547,7 @@
   id: totrans-52
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们使用几个基础函数来生成不同的目标变量。我们的目标是获得一组代表性的可能出现在现实生活中的函数。因此，我们在区间 [−6, +6] 中定义了以下十三个函数：
 - en: 'The function must behave smoothly on its interval of definition, reflecting
     the plausibility of observing such functions in the real-life cases for which
     the LNLM model is designed. Below are the graphical representations of the functions
@@ -498,6 +556,7 @@
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 函数必须在其定义区间上平滑地运行，反映出在 LNLM 模型设计的实际案例中观察到此类函数的合理性。下面是函数的图形表示（图 [3.3](#Fig3)）：
 - en: 'The slope of the function must be not too sharp. The synthetic observations
     are created by adding noise to the fitted values, which results in creating a
     vertical distance between the noisy data and the true data. If we take the extreme
@@ -509,54 +568,67 @@
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 函数的斜率不能太陡。合成观测是通过向拟合值添加噪声而创建的，这导致嘈杂数据与真实数据之间产生垂直距离。如果我们考虑一个斜率为无穷大的极端情况，即垂直线，任何嘈杂数据都将成为原始曲线的一部分，使得拟合过于简单。通过显示第二个函数的嘈杂观测（图
+    [3.4](#Fig4)）可以直观地了解发生了什么：
 - en: '![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig3_HTML.png)'
   id: totrans-55
   prefs: []
   type: TYPE_IMG
+  zh: '![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig3_HTML.png)'
 - en: Fig. 3.3
   id: totrans-56
   prefs: []
   type: TYPE_NORMAL
+  zh: 图 3.3
 - en: Graphical representations of functions used for simulations
   id: totrans-57
   prefs: []
   type: TYPE_NORMAL
+  zh: 用于模拟的函数的图形表示
 - en: '![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig4_HTML.png)'
   id: totrans-58
   prefs: []
   type: TYPE_IMG
+  zh: '![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig4_HTML.png)'
 - en: Fig. 3.4
   id: totrans-59
   prefs: []
   type: TYPE_NORMAL
+  zh: 图 3.4
 - en: Noisy observations for the second function (slope = 0.8)
   id: totrans-60
   prefs: []
   type: TYPE_NORMAL
+  zh: 第二个函数的嘈杂观测（斜率 = 0.8）
 - en: 'Increasing the slope from 0.8 to 3 leads, *ceteris paribus*, to the following
     noisy data (Fig. [3.5](#Fig5)):'
   id: totrans-61
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 将斜率从 0.8 增加到 3，*ceteris paribus*，导致以下嘈杂数据（图 [3.5](#Fig5)）：
 - en: '![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig5_HTML.png)'
   id: totrans-62
   prefs: []
   type: TYPE_IMG
+  zh: '![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig5_HTML.png)'
 - en: Fig. 3.5
   id: totrans-63
   prefs: []
   type: TYPE_NORMAL
+  zh: 图 3.5
 - en: Noisy observations for the second function (slope = 3)
   id: totrans-64
   prefs: []
   type: TYPE_NORMAL
+  zh: 第二个函数的嘈杂观测（斜率 = 3）
 - en: Thus, restricting the sharpness of the functions is important to avoid revealing
     the obvious nature of the underlying functions.
   id: totrans-65
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 因此，限制函数的陡峭程度是重要的，以避免揭示基础函数的显而易见的特性。
 - en: The sub-functions must be selected in order to represent a wide range of possible
     functional forms. We particularly take care to include the simplistic constant,
     linear and quadratic functions, but we also integrate a lot of sub-functions that
@@ -569,23 +641,28 @@
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 子函数必须被选中以代表可能的各种功能形式。我们特别注意包括简单的常数、线性和二次函数，但我们也集成了许多未包含在 LNLM 模型本身中的子函数（这大约占到了所有函数的一半）。如果我们关心的是知识诚实，这最后一点非常重要，因为在
+    LNLM 模型设计的实际情况中，连接独立变量和目标变量的真实函数并不是由多项式组成的。
 - en: 'The resulting noisy target variables are fitted using the following modeling
     techniques:'
   id: totrans-67
   prefs: []
   type: TYPE_NORMAL
+  zh: 使用以下建模技术拟合生成的嘈杂目标变量：
 - en: A simple linear model estimated with OLS. The estimation is performed using
     the python library statsmodels 0.6.1.
   id: totrans-68
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 使用OLS估计的简单线性模型。估计使用 Python 库 statsmodels 0.6.1 进行。
 - en: A polynomial model of the same degree (4) as the LNLM model, estimated with
     OLS. This model is also estimated with statsmodels.
   id: totrans-69
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 一个与 LNLM 模型相同阶数（4 阶）的多项式模型，使用OLS进行估计。此模型也使用 statsmodels 进行估计。
 - en: A polynomial model of the same degree as the LNLM model, estimated by a Ridge
     regularization of least squares. The estimation uses the “RidgeCV” function of
     the library scikit-learn 0.22.2 for python, which allows us to cross-validate
@@ -595,6 +672,8 @@
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 与 LNLM 模型相同阶数的多项式模型，通过最小二乘法的岭正则化进行估计。估计使用 Python 的 scikit-learn 0.22.2 库的 “RidgeCV”
+    函数进行。这允许我们对正则化参数进行交叉验证。我们使用 10 折交叉验证对 13 个不同的 *λ* 值进行数值搜索，范围从 1e−8 到 1e+4。
 - en: The LNLM Model, estimated with our variation of stratified k-fold cross-validation.
     The number of folds used to compute the value of the *μ* in the LNLM model is
     set to 10\. OLS fits are directly coded in python, using numpy 1.10.4 to invert
@@ -603,12 +682,15 @@
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 使用我们的变体分层 k 折交叉验证估计的 LNLM 模型。用于计算 LNLM 模型中 *μ* 值的折数设置为 10\. OLS 拟合直接编码在 Python
+    中，使用 numpy 1.10.4 来求解OLS估计的协方差矩阵的逆矩阵。
 - en: A naive version of the LNLM Model, estimated with *μ* set to 0.5\. This fit
     allows us to control for the relevance of the algorithm of choice of *μ*.
   id: totrans-72
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 一个天真版本的 LNLM 模型，其 *μ* 设置为 0.5\. 这个拟合允许我们控制 *μ* 的选择算法的相关性。
 - en: A non-parametric model, namely the Nadaraya–Watson estimator (again, see Nadaraya
     ([1964](#CR5)), Watson ([1964](#CR8)) for a formal definition). The most important
     parameter of the non-parametric fit, i.e. the bandwidth, is also selected using
@@ -618,6 +700,7 @@
   prefs:
   - PREF_UL
   type: TYPE_NORMAL
+  zh: 一个非参数模型，即纳达拉-沃森估计量（见纳达拉亚([1964](#CR5))，沃森([1964](#CR8))以获得正式定义）。非参数拟合的最重要参数，即带宽，也是使用交叉验证方法进行选择的。估计是使用statsmodels的核回归模块执行的。
 - en: We also use a different number of observations in the vector *X*, as with the
     same simulated noise, it may be much more difficult to identify the underlying
     function with a small dataset than with a large one. Keeping the same concern
@@ -626,119 +709,146 @@
   id: totrans-74
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们还使用不同数量的观测值在向量*X*中，由于相同的模拟噪声，用小数据集可能比用大数据集更难识别基础功能。为了保持对现实主义的关注，对于向量*X*，我们使用了126、252、756和1,260个观测值的长度。这些数字来自于使用滚动窗口估计多项式的频繁使用。^([8](#Fn8))
 - en: In each of the simulations, the data for the values of *X* used for the estimations,
     the data for the noise values, and the data of the values of *X* used for the
     predictions are generated from different random seeds (from the numpy library).
   id: totrans-75
   prefs: []
   type: TYPE_NORMAL
+  zh: 在每个模拟中，用于估计的*X*值的数据、噪声值的数据以及用于预测的*X*值的数据是从不同的随机种子生成的（来自numpy库）。
 - en: To give the reader a graphical impression of the realism and difficulty of the
     fit, we present below a few examples of the noisy data we generated (Figs. [3.6](#Fig6),
     [3.7](#Fig7), [3.8](#Fig8), and [3.9](#Fig9)):![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig6_HTML.png)
   id: totrans-76
   prefs: []
   type: TYPE_NORMAL
+  zh: 为了给读者一个关于拟合的现实感和难度，我们下面展示了我们生成的一些噪声数据的图示（图 [3.6](#Fig6)，[3.7](#Fig7)，[3.8](#Fig8)
+    和 [3.9](#Fig9)）:![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig6_HTML.png)
 - en: Fig. 3.6
   id: totrans-77
   prefs: []
   type: TYPE_NORMAL
+  zh: 图 3.6
 - en: 'Synthetic noisy data example: Function 8 with 126 observations'
   id: totrans-78
   prefs: []
   type: TYPE_NORMAL
+  zh: 合成噪声数据示例：带有126个观测值的函数 8
 - en: '![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig7_HTML.png)'
   id: totrans-79
   prefs: []
   type: TYPE_IMG
+  zh: '![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig7_HTML.png)'
 - en: Fig. 3.7
   id: totrans-80
   prefs: []
   type: TYPE_NORMAL
+  zh: 图 3.7
 - en: 'Synthetic noisy data example: Function 6 with 252 observations'
   id: totrans-81
   prefs: []
   type: TYPE_NORMAL
+  zh: 合成噪声数据示例：带有252个观测值的函数 6
 - en: '![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig8_HTML.png)'
   id: totrans-82
   prefs: []
   type: TYPE_IMG
+  zh: '![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig8_HTML.png)'
 - en: Fig. 3.8
   id: totrans-83
   prefs: []
   type: TYPE_NORMAL
+  zh: 图 3.8
 - en: 'Synthetic noisy data example: Function 11 with 756 observations'
   id: totrans-84
   prefs: []
   type: TYPE_NORMAL
+  zh: 合成噪声数据示例：带有756个观测值的函数 11
 - en: '![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig9_HTML.png)'
   id: totrans-85
   prefs: []
   type: TYPE_IMG
+  zh: '![](../images/519851_1_En_3_Chapter/519851_1_En_3_Fig9_HTML.png)'
 - en: Fig. 3.9
   id: totrans-86
   prefs: []
   type: TYPE_NORMAL
+  zh: 图 3.9
 - en: 'Synthetic noisy data example: Function 5 with 1,260 observations'
   id: totrans-87
   prefs: []
   type: TYPE_NORMAL
+  zh: 合成噪声数据示例：带有1,260个观测值的函数 5
 - en: These plots show the fact that, as in real-life cases, the fits are relatively
     difficult because of the large amount of noise in the simulated data.
   id: totrans-88
   prefs: []
   type: TYPE_NORMAL
+  zh: 这些图表显示，与实际情况一样，由于模拟数据中存在大量噪声，拟合相对困难。
 - en: For each of these lengths of *X*, we run 1,000 simulations with different random
     seeds for each of the 13 functions defined above, reaching in this way a total
     of 52,000 simulations.^([9](#Fn9))
   id: totrans-89
   prefs: []
   type: TYPE_NORMAL
+  zh: 对于每个*X*长度，我们对上述定义的13个函数的每个函数运行了1,000次模拟，每次使用不同的随机种子，从而达到总共52,000次模拟。^([9](#Fn9))
 - en: We compute the root mean squared error of the out-of-sample predictions for
     all of these cases, which is our indicator of out-of-sample goodness of fit.
   id: totrans-90
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们计算了所有这些情况下的样本外预测的均方根误差，这是我们的样本外拟合优度的指标。
 - en: We also record the average computation time for each model, composed of the
     time used to perform the estimations plus the time used to perform the predictions.
   id: totrans-91
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们还记录了每个模型的平均计算时间，包括用于执行估计的时间和用于执行预测的时间。
 - en: 3.4 Results
   id: totrans-92
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 3.4 结果
 - en: Below we present the tables of results, for each of the four lengths of *X*.
   id: totrans-93
   prefs: []
   type: TYPE_NORMAL
+  zh: 接下来我们呈现每个*X*长度的结果表。
 - en: We first present the summary statistics of the RMSE, that aggregate all the
     fits for a particular length of *X*.
   id: totrans-94
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们首先介绍了RMSE的摘要统计，它汇总了所有特定长度*X*的拟合结果。
 - en: We then display the average results for each function, in order to see the ability
     of each model to fit particular functional forms.
   id: totrans-95
   prefs: []
   type: TYPE_NORMAL
+  zh: 然后，我们显示了每个函数的平均结果，以查看每个模型适合特定函数形式的能力。
 - en: We conclude by presenting the average computation time.
   id: totrans-96
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们最后通过呈现平均计算时间来总结。
 - en: 3.4.1 For 126 Observations (Tables [3.1](#Tab1) and [3.2](#Tab2))
   id: totrans-97
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 3.4.1 对于126个观测值（表 [3.1](#Tab1) 和 [3.2](#Tab2)）
 - en: Table 3.1
   id: totrans-98
   prefs: []
   type: TYPE_NORMAL
+  zh: 表 3.1
 - en: Summary statistics of the root mean square error, for 126 observations
   id: totrans-99
   prefs: []
   type: TYPE_NORMAL
+  zh: 126个观测值的根均方误差的摘要统计
 - en: '|   | Mean | Std | Median | Min | Max |'
   id: totrans-100
   prefs: []
@@ -1309,83 +1419,104 @@
   id: totrans-224
   prefs: []
   type: TYPE_TB
+  zh: '| 平均值 | 2.09E−01 | 1.16E−01 | 1.43E−01 | 1.37E−01 | 1.26E−01 | 2.58E−01 |'
 - en: '| Std | 1.44E−01 | 6.17E−02 | 7.89E−02 | 3.07E−02 | 5.52E−02 | 2.25E−01 |'
   id: totrans-225
   prefs: []
   type: TYPE_TB
+  zh: '| 标准差 | 1.44E−01 | 6.17E−02 | 7.89E−02 | 3.07E−02 | 5.52E−02 | 2.25E−01 |'
 - en: '| Median | 1.89E−01 | 9.78E−02 | 1.12E−01 | 1.45E−01 | 9.92E−02 | 1.90E−01
     |'
   id: totrans-226
   prefs: []
   type: TYPE_TB
+  zh: '| 中位数 | 1.89E−01 | 9.78E−02 | 1.12E−01 | 1.45E−01 | 9.92E−02 | 1.90E−01 |'
 - en: '| Min | 5.63E−02 | 6.97E−02 | 7.14E−02 | 7.87E−02 | 9.92E−02 | 7.52E−02 |'
   id: totrans-227
   prefs: []
   type: TYPE_TB
+  zh: '| 最小值 | 5.63E−02 | 6.97E−02 | 7.14E−02 | 7.87E−02 | 9.92E−02 | 7.52E−02 |'
 - en: '| Max | 4.52E−01 | 2.84E−01 | 3.03E−01 | 1.77E−01 | 2.83E−01 | 7.89E−01 |'
   id: totrans-228
   prefs: []
   type: TYPE_TB
+  zh: '| 最大值 | 4.52E−01 | 2.84E−01 | 3.03E−01 | 1.77E−01 | 2.83E−01 | 7.89E−01 |'
 - en: 3.4.5 Computation Time (Table [3.9](#Tab9))
   id: totrans-229
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 3.4.5 计算时间（表 [3.9](#Tab9)）
 - en: Table 3.9
   id: totrans-230
   prefs: []
   type: TYPE_NORMAL
+  zh: 表 3.9
 - en: Average computation time per model
   id: totrans-231
   prefs: []
   type: TYPE_NORMAL
+  zh: 每种模型的平均计算时间
 - en: '|   | 126 observations | 252 observations | 756 observations | 1,260 observations
     | Average |'
   id: totrans-232
   prefs: []
   type: TYPE_TB
+  zh: '|   | 126 个观察值 | 252 个观察值 | 756 个观察值 | 1,260 个观察值 | 平均 |'
 - en: '| --- | --- | --- | --- | --- | --- |'
   id: totrans-233
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- | --- | --- | --- |'
 - en: '| *Linear* | *1.00E*−*02* | *1.11E*−*02* | *8.83E*−*03* | *1.01E*−*02* | *1.00E*−*02*
     |'
   id: totrans-234
   prefs: []
   type: TYPE_TB
+  zh: '| *线性* | *1.00E*−*02* | *1.11E*−*02* | *8.83E*−*03* | *1.01E*−*02* | *1.00E*−*02*
+    |'
 - en: '| *Naive LNLM* | *1.31E*−*02* | *1.60E*−*02* | *1.43E*−*02* | *1.55E*−*02*
     | *1.47E*−*02* |'
   id: totrans-235
   prefs: []
   type: TYPE_TB
+  zh: '| *朴素 LNLM* | *1.31E*−*02* | *1.60E*−*02* | *1.43E*−*02* | *1.55E*−*02* | *1.47E*−*02*
+    |'
 - en: '| *Polynomial by OLS* | *2.16E*−*02* | *2.25E*−*02* | *1.98E*−*02* | *1.78E*−*02*
     | *2.04E*−*02* |'
   id: totrans-236
   prefs: []
   type: TYPE_TB
+  zh: '| *OLS 多项式* | *2.16E*−*02* | *2.25E*−*02* | *1.98E*−*02* | *1.78E*−*02* | *2.04E*−*02*
+    |'
 - en: '| LNLM | 8.88E−01 | 9.65E−01 | 8.48E−01 | 9.00E−01 | 9.00E−01 |'
   id: totrans-237
   prefs: []
   type: TYPE_TB
+  zh: '| LNLM | 8.88E−01 | 9.65E−01 | 8.48E−01 | 9.00E−01 | 9.00E−01 |'
 - en: '| Polynomial by Ridge | 1.51E+00 | 1.60E+00 | 1.62E+00 | 1.36E+00 | 1.52E+00
     |'
   id: totrans-238
   prefs: []
   type: TYPE_TB
+  zh: '| Ridge 多项式 | 1.51E+00 | 1.60E+00 | 1.62E+00 | 1.36E+00 | 1.52E+00 |'
 - en: '| Non-Parametric | 1.52E+00 | 2.60E+00 | 9.07E+00 | 1.75E+01 | 7.67E+00 |'
   id: totrans-239
   prefs: []
   type: TYPE_TB
+  zh: '| 非参数 | 1.52E+00 | 2.60E+00 | 9.07E+00 | 1.75E+01 | 7.67E+00 |'
 - en: 3.4.6 Interpretations
   id: totrans-240
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 3.4.6 解释
 - en: There are various and interesting conclusions that can be drawn from the previous
     tables.
   id: totrans-241
   prefs: []
   type: TYPE_NORMAL
+  zh: 从前面的表中可以得出各种有趣的结论。
 - en: First, the most obvious finding is the out-of-sample quality of the fits provided
     by the LNLM model, which over-perform all the other modeling techniques in terms
     of Median RMSE in each of the 4 different window lengths, and which is still better
@@ -1393,6 +1524,8 @@
   id: totrans-242
   prefs: []
   type: TYPE_NORMAL
+  zh: 首先，最明显的发现是 LNLM 模型提供的外样品拟合质量，它在每个不同窗口长度的中值 RMSE 方面超过了所有其他建模技术，并且在 4 个不同窗口长度中的
+    3 个中在平均 RMSE 方面仍然更好。
 - en: As expected, we note that, on average, the naive version of the LNLM brings
     results that are always worse than the LNLM estimated with Stratified K-folds,
     which gives some credibility to this algorithm and to the relevance of its choice
@@ -1404,6 +1537,9 @@
   id: totrans-243
   prefs: []
   type: TYPE_NORMAL
+  zh: 如预期的那样，我们注意到，就平均而言，LNLM 的朴素版本的结果总是比使用分层 K 折估计的 LNLM 的结果更差，这给了该算法和其选择的非线性倾向参数的相关性一定的可信度。关于正则化方法，我们还看到，不清楚
+    Ridge 正则化是否可以改善由 OLS 估计的多项式模型。然而，这可能是由于交叉验证中评估的 *λ* 值的精度不足，因为我们从一个 *λ* 值进步到另一个
+    *λ* 值的因子是 10。
 - en: Remarkably, the LNLM model does not often beat the other modeling techniques
     in each particular functional form, it is even beaten most of the time. The other
     modeling techniques tend to dominate only in particular cases, the most obvious
@@ -1414,6 +1550,8 @@
   id: totrans-244
   prefs: []
   type: TYPE_NORMAL
+  zh: 值得注意的是，LNLM 模型通常不会在每个特定的函数形式中击败其他建模技术，甚至大多数时候会被其他技术击败。其他建模技术往往只在特定情况下占优势，其中最明显的例子是线性模型，当基础函数确实是线性时，即对于函数
+    1、2 和 13 时，线性模型取得了最佳结果。LNLM 模型只在聚合级别上表现出过度性能的出现是其对识别未知（和各种）函数形式的稳健性的良好迹象。
 - en: The kernel estimator achieved good results, especially for small windows. Notably,
     the standard deviation of its RMSEs is most of the time the smallest one. However,
     the computation time for this model grows linearly with the number of observations,
@@ -1421,6 +1559,7 @@
   id: totrans-245
   prefs: []
   type: TYPE_NORMAL
+  zh: 核密度估计器取得了良好的结果，尤其是对于小窗口。值得注意的是，其 RMSE 的标准差大部分时间都是最小的。然而，该模型的计算时间随着观测数量的增加而线性增长，导致平均计算时间较长。
 - en: Apart from this model, all the other computation times are relatively independent
     of the number of observations. Regularized polynomials using Ridge takes more
     time than LNLM to be estimated, however, the computation time directly depends
@@ -1437,6 +1576,7 @@
   id: totrans-246
   prefs: []
   type: TYPE_NORMAL
+  zh: 除了这个模型，所有其他的计算时间都相对独立于观测值的数量。使用岭回归的正则化多项式估计时间比LNLM更长，然而，计算时间直接取决于交叉验证算法对*λ*的测试值数量。然而，仅通过测试13个不同的*λ*值，我们对于这个参数的数值优化有较低的精度（在当前设置中，对于LNLM测试了100个*μ*值）。这一发现很容易与LNLM与交叉验证岭回归所需的矩阵求逆次数（在我们的情况下分别为22和130）的数量联系起来，这揭示了计算性能的差异。因此，在提出的复杂方法中，即非参数拟合、多项式正则化模型和LNLM，所有使用相同交叉验证原理的方法中，LNLM模型在计算时间方面似乎是一个令人信服的选择。
 - en: The performance of the linear model is excellent with a small window of 126
     observations, because it is not fooled by the large quantity of noise, unlike
     the other models, but it becomes worse and worse as the window increases, allowing
@@ -1444,6 +1584,7 @@
   id: totrans-247
   prefs: []
   type: TYPE_NORMAL
+  zh: 线性模型在126个观测值的小窗口下的性能非常好，因为它不会被大量的噪声愚弄，不像其他模型那样，但随着窗口的增大，性能变得越来越差，允许非线性技术更准确地识别潜在的函数形式。
 - en: The inverse phenomenon appears for the polynomial model, which is totally fooled
     by the noise for small windows, but performs relatively well for large windows,
     when the underlying function becomes easier to capture, as errors compensate each
@@ -1451,6 +1592,7 @@
   id: totrans-248
   prefs: []
   type: TYPE_NORMAL
+  zh: 对于多项式模型，相反的现象出现了，它在小窗口下完全被噪声愚弄，但对于大窗口，当潜在函数变得更容易捕捉时，表现相对良好，因为误差更频繁地互相抵消。
 - en: For very small or very large windows, outside the scope of the present study,
     these two models can be interesting, but for the windows that may reasonably be
     assumed to be used by researchers working on daily financial data, the LNLM model
@@ -1458,17 +1600,20 @@
   id: totrans-249
   prefs: []
   type: TYPE_NORMAL
+  zh: 对于非常小或非常大的窗口，超出了本研究的范围，这两个模型可能会有趣，但对于研究者可能合理假设的用于日常金融数据处理的窗口，LNLM模型似乎是一个令人信服的选择。
 - en: 3.5 Conclusions
   id: totrans-250
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 3.5 结论
 - en: We have presented the motivations as well as a complete fitting procedure for
     the LNLM model, and explained its particular interest compared to other methods
     of regularization, such as Ridge regression.
   id: totrans-251
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们已经介绍了LNLM模型的动机以及完整的拟合过程，并解释了与其他正则化方法（如岭回归）相比，它的特殊兴趣。
 - en: The present chapter demonstrates, using a realistic simulation framework, that
     the LNLM model can successfully reduce over-fitting compared to several alternatives.
     Of course, there is no guarantee that this will be the case in all possible applications,
@@ -1476,6 +1621,7 @@
   id: totrans-252
   prefs: []
   type: TYPE_NORMAL
+  zh: 本章利用一个真实的模拟框架，演示了LNLM模型相对于几种替代方案可以成功减少过拟合的性能。当然，不能保证在所有可能的应用中都会出现这种情况，但这仍然强调了该模型在金融领域的兴趣。
 - en: Furthermore, the model has the advantage of having a data-driven functional
     form. Also, the estimated underlying function is always smooth, which can be an
     advantage for several computational applications, as well as for the realism of
@@ -1484,6 +1630,7 @@
   id: totrans-253
   prefs: []
   type: TYPE_NORMAL
+  zh: 此外，该模型具有数据驱动的功能形式的优势。另外，估计的潜在函数始终是平滑的，这对于几种计算应用以及对潜在函数的真实性表示（例如，非参数方法可能会出现一些LNLM从未发生过的中断）可能是优势。
 - en: The estimations are especially fast, which greatly improves the computation
     time compared to non-parametric methods, as well as the Ridge-regularized polynomial
     model (to a lesser extent), which uses recent python libraries, for which the
@@ -1492,8 +1639,10 @@
   id: totrans-254
   prefs: []
   type: TYPE_NORMAL
+  zh: 估计特别快速，与非参数方法相比大大提高了计算时间，以及使用最近的 Python 库优化了计算时间的岭正则化多项式模型（程度较低）。在大数据的背景下，这一点尤为重要，因为多项式模型经常涉及其中。
 - en: All these properties of the LNLM model open a door for applications that the
     alternative modeling methods may have left closed.
   id: totrans-255
   prefs: []
   type: TYPE_NORMAL
+  zh: 所有这些 LNLM 模型的特性为可能被其他建模方法忽略的应用打开了一扇门。
