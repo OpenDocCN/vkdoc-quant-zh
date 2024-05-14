@@ -1,4 +1,4 @@
-© 作者（独家许可）Springer Nature Switzerland AG 2022T. Barrau, R. Douady 金融市场的人工智能金融数学和金融科技[`doi.org/10.1007/978-3-030-97319-3_3`](https://doi.org/10.1007/978-3-030-97319-3_3)
+
 
 # 3. 估计方法：线性非线性混合模型
 

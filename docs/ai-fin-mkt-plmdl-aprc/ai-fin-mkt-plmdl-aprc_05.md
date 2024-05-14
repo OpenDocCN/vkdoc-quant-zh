@@ -1,4 +1,4 @@
-© 作者(们)，独家许可给 Springer Nature Switzerland AG 2022T. Barrau, R. Douady 金融市场人工智能金融数学与金融科技[`doi.org/10.1007/978-3-030-97319-3_5`](https://doi.org/10.1007/978-3-030-97319-3_5)
+
 
 # 5. 行业回报预测
 

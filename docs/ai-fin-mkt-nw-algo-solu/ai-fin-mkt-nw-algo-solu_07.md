@@ -1,4 +1,4 @@
-© The Author(s), under exclusive license to Springer Nature Switzerland AG 2023F. Cecconi (ed.)AI in the Financial Markets Computational Social Sciences[`doi.org/10.1007/978-3-031-26518-1_7`](https://doi.org/10.1007/978-3-031-26518-1_7)
+
 
 # 7. ML 应用于金融市场
 
