@@ -1,19 +1,28 @@
 - en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2023F.
     Cecconi (ed.)AI in the Financial Markets Computational Social Sciences[https://doi.org/10.1007/978-3-031-26518-1_1](https://doi.org/10.1007/978-3-031-26518-1_1)
+  id: totrans-0
   prefs: []
   type: TYPE_NORMAL
+  zh: © 作者(s)，独家授权给Springer Nature Switzerland AG 2023F. Cecconi (编辑)金融市场的AI计算社会科学[https://doi.org/10.1007/978-3-031-26518-1_1](https://doi.org/10.1007/978-3-031-26518-1_1)
 - en: 1. Artificial Intelligence and Financial Markets
+  id: totrans-1
   prefs:
   - PREF_H1
   type: TYPE_NORMAL
+  zh: 1. 人工智能与金融市场
 - en: 'Federico Cecconi^([1](#Aff16) [ ](#ContactOfAuthor1))(1)LABSS-ISTC-CNR, Via
     Palestro 32, 00185 Rome, ItalyFederico CecconiEmail: [federico.cecconi@istc.cnr.it](mailto:federico.cecconi@istc.cnr.it)'
+  id: totrans-2
   prefs: []
   type: TYPE_NORMAL
+  zh: Federico Cecconi^([1](#Aff16) [ ](#ContactOfAuthor1))(1)LABSS-ISTC-CNR, Via
+    Palestro 32, 00185 罗马, 意大利Federico Cecconi电子邮件：[federico.cecconi@istc.cnr.it](mailto:federico.cecconi@istc.cnr.it)
 - en: Abstract
+  id: totrans-3
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 摘要
 - en: 'Artificial intelligence is a branch of computer science concerned with the
     development of intelligent machines that function and behave similarly to humans.
     A.I. is based on the notion that a machine can simulate the human brain and that,
@@ -31,11 +40,15 @@
     analysis of the market. Reduced costs: AI can assist in lowering the costs of
     running a financial institution. It can be used to automate processes or improve
     operational efficiency, for example.'
+  id: totrans-4
   prefs: []
   type: TYPE_NORMAL
+  zh: 人工智能是计算机科学的一个分支，专注于开发能够像人类一样工作和行为的智能机器。AI基于这样的理念：机器可以模拟人脑，并且，在足够的数据下，机器可以学会像人类一样思考和行动。因此，我们可以将人工智能应用于金融市场并预测未来的趋势，例如。机器还可以被训练来识别买家动态中的模式，然后利用这些知识来预测未来的价格。我可以继续说下去，但主要观点是：为什么AI在信贷市场背景下有用？将人工智能应用于金融的优势是什么？简而言之，本书致力于解释这一点：提高准确性：AI可以帮助预测收盘价、开盘价和其他金融数据。这可以导致更好的决策和更有利可图的交易。提高服务：人工智能可以用于改善金融机构的客户服务。例如，它可以用于帮助客户进行账户查询或提供市场技术分析。降低成本：AI可以帮助降低金融机构的运营成本。例如，它可以用于自动化流程或提高运营效率。
 - en: KeywordsArtificial intelligenceFinancial marketsPropTechFinTechFederico Cecconi
+  id: totrans-5
   prefs: []
   type: TYPE_NORMAL
+  zh: 关键词人工智能金融市场PropTechFinTechFederico Cecconi
 - en: 'is R&D manager for QBT Sagl ([https://​www.​qbt.​ch/​it/​](https://www.qbt.ch/it/)),
     responsible for the LABSS (CNR) of the computer network management and computational
     resources for simulation, and consultant for Arcipelago Software Srl. He develops
@@ -44,12 +57,17 @@
     training. His current research interest is twofold: on the one hand, the study
     of socio-economic phenomena, typically using computational models and databases.
     The second is the development of AI model for fintech and proptech.'
+  id: totrans-6
   prefs: []
   type: TYPE_NORMAL
+  zh: F. Cecconi是QBT Sagl的研发经理([https://​www.​qbt.​ch/​it/​](https://www.qbt.ch/it/))，负责LABSS
+    (CNR)的计算机网络管理和模拟计算资源，同时也是Arcipelago Software Srl的顾问。他为Labss开发了计算和数学模型（社会动态、声誉、规范动态）。在Labss，他既负责传播也负责培训。他目前的研究兴趣有两个方面：一方面是研究社会经济现象，通常使用计算模型和数据库。另一方面是开发金融科技和房地产科技的AI模型。
 - en: 1.1 What About AI is Useful for the Financial Markets?
+  id: totrans-7
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 1.1 人工智能对金融市场有何用处？
 - en: Artificial intelligence is becoming more prevalent in both models and applications.
     It is expanding in assisted (or autonomous) driving solutions, computer vision,
     automatic text analysis, chat-bot creation, economic planning applications, and
@@ -57,8 +75,10 @@
     in the financial markets? How much AI can we currently see in the capital market,
     and, more importantly, how much can we expect to see in the near future? What
     are the challenges? What technologies are you using?
+  id: totrans-8
   prefs: []
   type: TYPE_NORMAL
+  zh: 人工智能在模型和应用中变得越来越普遍。它在辅助（或自主）驾驶解决方案、计算机视觉、自动文本分析、聊天机器人创建、经济规划应用和营销支持平台中不断扩展。但是，这种增长，有多少被再投资于金融市场？我们目前在资本市场中能看到多少人工智能，更重要的是，我们预计在不久的将来能看到多少？有哪些挑战？您正在使用哪些技术？
 - en: To begin answering these questions, let us define AI today. Artificial intelligence
     is still a long way from creating an intelligent mind. Indeed, there are numerous
     indications that this is no longer a hot topic. On the contrary, we are far ahead
@@ -73,8 +93,10 @@
     as an interface, and it has far more in common with traditional IT than with the
     theory of cognitive systems for searching for information, such as short term
     memory structures in the human mind.
+  id: totrans-9
   prefs: []
   type: TYPE_NORMAL
+  zh: 要开始回答这些问题，让我们先定义当今的人工智能。人工智能距离创造一个智能的头脑还有很长的路要走。确实，有许多迹象表明这已不再是热门话题。相反，我们在所谓的受限人工智能领域已经遥遥领先，当应用于非常特定的情境时，它能确保优于人类技能和能力的卓越成果。我们不应认为商业聊天机器人（如SIRI）是为了模仿人类智能，甚至更好地理解人类的认知过程而创建的。实际上，这种雄心壮志，即在理解心灵、人工智能实现和心灵新理解之间创造一个正反馈循环，似乎并未出现在基础研究或应用的议程上。SIRI是访问分布式数据库的一个例子，它使用自然语言作为接口，与传统的IT技术有更多的共同点，而不是与寻找信息的认知系统理论，如人类心灵中的短期记忆结构有共同之处。
 - en: 'It is true that there are some research centers around the world that deal
     with mind and AI in an integrated manner, frequently linking the functioning of
     the mind to the fact that the mind is connected to a brain and a body in nature.
@@ -86,8 +108,10 @@
     regarding their surrounding space, such as keeping safe or socially appropriate
     distances from other agents. However, we expect to see AI outside of laboratories
     beyond the time horizon set by this book (ten years).'
+  id: totrans-10
   prefs: []
   type: TYPE_NORMAL
+  zh: 确实，世界上有一些研究中心以综合的方式处理心灵和人工智能，经常将心灵的运作与心灵与自然中的大脑和身体的联系联系起来。在过去的几十年里，人类的多感官整合认知模型已经被开发出来并应用于模拟人类身体体验。最近的研究表明，贝叶斯和连接主义模型可能会推动机器人学各个分支的发展：辅助机器人设备可能会适应其人类用户，例如在假肢中，而类人机器人可能会被赋予与周围空间相关的人类般的能​​力，例如保持安全或社交上适当的距离。然而，我们预计会在本书设定的时间范围（十年）之外看到实验室之外的人工智能。
 - en: In conclusion, despite the fact that AI models have limited abstraction capacity
     and learn differently than humans, we can now develop systems capable of performing
     actions and tasks efficiently and effectively (think of the difference with which
@@ -95,27 +119,35 @@
     it is undeniable that in certain areas and with specific tasks, systems utilizing
     artificial intelligence techniques can produce results that are superior to those
     of humans.
+  id: totrans-11
   prefs: []
   type: TYPE_NORMAL
+  zh: 总之，尽管人工智能模型的抽象能力有限，且学习方式与人类不同，我们现在能够开发出能够高效有效地执行行动和任务的系统（想想它们与孩子相比学习识别猫的方式有何不同）。然而，不可否认的是，在某些领域和特定任务中，使用人工智能技术的系统能够产生比人类更优越的结果。
 - en: Returning to the financial markets, it is becoming clear which of these technologies
     we currently expect to find, which we believe will be discovered soon, and which
     we believe are consistent with the desire to make markets safer, more profitable,
     and more connected to society and macroeconomic dynamics. I've written a chapter
     about each of them.
+  id: totrans-12
   prefs: []
   type: TYPE_NORMAL
+  zh: 回到金融市场，我们逐渐清晰地认识到目前期望找到哪些技术，相信哪些技术很快会被发现，以及哪些技术与使市场更安全、更有利可图、更与社会和宏观经济动态相连接的愿望相一致。我为每一种技术都写了一章。
 - en: 1.1.1 Automatic Evaluation and PropTech
+  id: totrans-13
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 1.1.1 自动评估与PropTech
 - en: Humans have always attempted to assign a monetary value to things, particularly
     since our species has been able to generate a “surplus” of resources that can
     be conserved and possibly exchanged. In fact, it makes no sense to try to assign
     a value to things in hunter-gatherer societies, such as the Native American populations
     of the north, because the things themselves, whatever they are, are used now and
     immediately and replaced with the new.
+  id: totrans-14
   prefs: []
   type: TYPE_NORMAL
+  zh: 人类一直试图为物品赋予货币价值，特别是在我们这个物种能够产生可保存和可能交换的“剩余”资源之后。实际上，在狩猎采集社会中，比如北美的原住民群体，试图为物品赋予价值是没有意义的，因为无论是什么物品，都是立即使用并被新的物品所取代。
 - en: Capital markets are the most advanced form of this process because an attempt
     is made to assign value to financial assets that are sometimes very distant from
     the ‘physical’ good that produced them. Let's start with mortgages. Even if we
@@ -128,21 +160,27 @@
     in my neighborhood), whereas the mortgage is influenced, for example, by macroeconomic
     dynamics linked to interest rates (the bank has less interest in providing mortgages
     because interest rates tend to be low).
+  id: totrans-15
   prefs: []
   type: TYPE_NORMAL
+  zh: 资本市场是这一过程的最高级形式，因为它试图为有时与产生它们的‘实体’商品相去甚远的金融资产赋予价值。让我们从抵押贷款开始。即使我们忽略任何复杂的金融抵押交易（例如，将多个抵押贷款合并为一个可以借款的单一对象），抵押贷款是一种我使用实体资产（如房产）的价值作为抵押的贷款，其价值动态与贷款金融对象的动态非常不同。房产的价值可能会根据其租赁环境中的结构性变化而增加或减少（例如，我的社区开通了新的地铁站），而抵押贷款则受到与利率相关的宏观经济动态的影响（例如，银行因为利率趋于低而减少提供抵押贷款的兴趣）。
 - en: 'After all, there are dozens of circularities that connect the two values, the
     financial one linked to the mortgage as a financial object in the strict sense,
     and the property understood as a physical asset in the strict sense: for example,
     if macroeconomic dynamics push interest rates lower, and banks pay less, the value
     of a house can fall, because demand falls (many people do not have enough money
     to buy and, given the difficulty in obtaining mortgag-es, they give up).'
+  id: totrans-16
   prefs: []
   type: TYPE_NORMAL
+  zh: 毕竟，金融价值与抵押贷款作为严格意义上的金融对象，以及房产作为严格意义上的实体资产之间存在着数十种循环联系：例如，如果宏观经济动态推动利率下降，银行支付减少，房屋的价值可能会下降，因为需求下降（许多人没有足够的钱购买，并且由于获得抵押贷款的困难，他们放弃了）。
 - en: Precisely in the field of real estate, and with the idea of having tools capable
     of calculating the value of things, AI has made an impressive entrance, creating
     a large number of models that fall into the proptech macro-category.
+  id: totrans-17
   prefs: []
   type: TYPE_NORMAL
+  zh: 在房地产领域，为了拥有能够计算物品价值的工具，人工智能已经做出了令人印象深刻的贡献，创造了许多属于proptech宏观类别的模型。
 - en: The term proptech, which derives from the crasis of the words “property” and
     “technology,” was coined in 2014 in the United Kingdom and refers to solutions,
     technologies, and tools for the innovation of processes, products, services, and
@@ -156,8 +194,10 @@
     there's more to it than just the sale. According to some studies, the demand for
     rental housing units is rapidly increasing, to the point where we refer to “rent
     generation.”
+  id: totrans-18
   prefs: []
   type: TYPE_NORMAL
+  zh: 房地产科技（proptech）一词源于“property”（财产）和“technology”（技术）的混合，于2014年在英国创造，指的是用于创新流程、产品、服务和房地产市场的解决方案、技术和工具。房地产科技涉及正在改变房地产各个方面的数字解决方案，如房地产销售、风险分析、财务预测模型、资产管理以及开发项目的融资动态。实际上，房地产科技是房地产行业更大规模数字化转型的一个较小组成部分。它与房地产行业及其用户在数据收集、交易以及建筑和城市设计方面的技术创新思维转变有关。但这不仅仅是销售。根据一些研究，对租赁住房单元的需求正在迅速增加，以至于我们称之为“租赁一代”。
 - en: This shift from property ownership to property rental is a major driver of the
     proptech trend. Tenants today are constantly looking for better and newer spaces
     with cutting-edge technology. Consumers want an experience they can control—control
@@ -169,55 +209,73 @@
     the customer experience. Companies can thus offer flexible rentals while also
     providing a high-quality furnished space experience. Furthermore, fintech-proptech
     firms can provide a streamlined tenant onboarding process.
+  id: totrans-19
   prefs: []
   type: TYPE_NORMAL
+  zh: 从房产所有权向房产租赁的转变是推动房地产科技趋势的主要因素。今天的租户不断寻找更好、更新的空间，配备尖端技术。消费者希望获得他们能够控制——灯光、温度、访问等——的体验，无论是通过手机还是其他渠道，无论是他们的工作环境、最喜欢的商店，还是他们日常生活的空间。人工智能系统可以帮助计算成本、评估解决方案，并偶尔为居住者提供数字体验，但通过使用增强/虚拟现实等技术，它可以显著提升客户体验。公司因此可以提供灵活的租赁，同时提供高质量的家具空间体验。此外，金融科技-房地产科技公司可以提供简化的租户入职流程。
 - en: Proptech solutions almost always include AI elements, which are almost always
     based on models that can learn on a regular basis using databases. There are elements
     of computer vision and natural language understanding in the models at times,
     particularly when it comes to the possibility of including the ability to react
     to news that is not necessarily of an economic nature (the typical example is
     news related to climatic dynamics).
+  id: totrans-20
   prefs: []
   type: TYPE_NORMAL
+  zh: 房地产科技解决方案几乎总是包含人工智能元素，这些元素几乎总是基于能够定期使用数据库进行学习的模型。这些模型有时包含计算机视觉和自然语言理解元素，尤其是在涉及到对非经济性质的新闻（典型的例子是与气候动态相关的新闻）做出反应的可能性时。
 - en: 1.1.2 ‘News Based’ Decision Model
+  id: totrans-21
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 1.1.2 基于新闻的决策模型
 - en: We already have systems in operation that read news (even in real time) and
     are able to suggest actions, or carry them out themselves. The journalistic sectors
     most predisposed to automation are those that have the ability to access large,
     well-structured data sets. This is the case, for example, with sports news, weather
     forecasts, earthquake warnings, traffic and crime news, and of course it is the
     case with financial news. Here are some examples.
+  id: totrans-22
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们已经有了能够实时阅读新闻并能够提出建议或自行采取行动的系统。最容易实现自动化的记者领域是那些能够访问大型、结构良好的数据集的领域。例如，体育新闻、天气预报、地震预警、交通和犯罪新闻，当然还有金融新闻。以下是一些例子。
 - en: '**Sport**'
+  id: totrans-23
   prefs: []
   type: TYPE_NORMAL
+  zh: '**体育**'
 - en: As for the sports sector, in 2016 the Swedish local media company Östgöta Media
     launched the “Klackspark” website with the aim of covering every local football
     match. In Sweden football is very popular, each district has its own team and
     therefore for the newspapers it is complex to deal with all the matches of the
     national and international football divisions (men and women).
+  id: totrans-24
   prefs: []
   type: TYPE_NORMAL
+  zh: 至于体育领域，2016年瑞典地方媒体公司Östgöta Media推出了“Klackspark”网站，旨在覆盖每一场地方足球比赛。在瑞典，足球非常受欢迎，每个地区都有自己的球队，因此对于报纸来说，报道所有国内和国际足球分区的比赛（男女）是复杂的。
 - en: To be able to have greater coverage, Klackspark decided to use automated software
     writing algorithms, which collect structured data on each game and automatically
     publish a hundred-word report on the challenge. It is not a difficult task or
     that requires particular imagination as what is told is based on who scored the
     goals, the results of previous matches and the ranking. The short articles produced
     are then reviewed by reporters who add interesting features.
+  id: totrans-25
   prefs: []
   type: TYPE_NORMAL
+  zh: 为了能够拥有更广泛的覆盖范围，Klackspark决定使用自动编写软件算法，这些算法收集每场比赛的结构化数据，并自动发布关于挑战的百字报告。这不是一个困难的任务，也不需要特别的想象力，因为所讲述的内容基于谁进了球、之前的比赛结果和排名。生成的简短文章随后由记者进行审查，并添加有趣的特色。
 - en: Additionally, the machine alerts reporters when there may be an interesting
     story to deal with, such as a player scoring multiple goals in the same match.
     This allows you to interview the direct interviewee by adding information to the
     article and in fact making it more juicy.
+  id: totrans-26
   prefs: []
   type: TYPE_NORMAL
+  zh: 此外，机器在可能出现有趣的故事时会提醒记者，例如一名球员在同一场比赛中多次进球。这允许你采访直接受访者，为文章添加信息，实际上使其更加生动。
 - en: '**Meteorology**'
+  id: totrans-27
   prefs: []
   type: TYPE_NORMAL
+  zh: '**气象学**'
 - en: Can automation improve the quality of our life? This may be the case with the
     weather news industry which produces automatic bulletins for each city. The speed
     and accuracy of these reports are essential for this sector. A related case is
@@ -225,16 +283,21 @@
     influence on people's lives. A special case was the Los Angeles Times project,
     the “Quake Bot,” which can automatically generate and publish earthquake reports
     to help readers of possible risks to their existence or loved ones.
+  id: totrans-28
   prefs: []
   type: TYPE_NORMAL
+  zh: 自动化能否提高我们的生活质量？在天气新闻行业，这可能是事实，该行业为每个城市生产自动化的天气预报。这些报告的速度和准确性对这个行业至关重要。一个相关案例是报告和发布地震警报的机器人，对人们的生活有重大影响。一个特殊案例是洛杉矶时报的“Quake
+    Bot”项目，它可以自动生成并发布地震报告，帮助读者了解可能对其生存或亲人构成的风险。
 - en: The system works by drawing information from the United States Geological Survey
     (USGS) database. However, in June 2017 the Quake Bot released a bogus report due
     to an error and issued an alert that turned out to be wrong. It was later discovered
     that the error was caused by an erroneous design decision. Algorithms are not
     neutral and objective decision makers but rather opaque, both to protect the companies
     that created them and use them and for the technical needs of secure system management.
+  id: totrans-29
   prefs: []
   type: TYPE_NORMAL
+  zh: 该系统通过从美国地质调查局（USGS）数据库中提取信息来工作。然而，在2017年6月，Quake Bot发布了一个虚假报告，由于一个错误发出了错误的警报。后来发现，错误是由一个错误的设计决策造成的。算法不是中立和客观的决策者，而是不透明的，既为了保护创建和使用它们的公司，也为了满足安全系统管理的技术需求。
 - en: The creators, during the programming phase, must however take into consideration
     the use that a user will make of the information received to provide a sophisticated
     product. Speed, large-scale data analysis and accuracy are the reasons for choosing
@@ -243,19 +306,26 @@
     In this way they can use the time for more creative jobs and where critical judgment
     mindset is required. Only some sectors benefit more than others from automation
     and therefore it would not make sense to automate everything.
+  id: totrans-30
   prefs: []
   type: TYPE_NORMAL
+  zh: 在编程阶段，创作者必须考虑到用户将如何使用接收到的信息，以提供一个复杂的产品。速度、大规模数据分析和准确性是选择自动化新闻的原因。对于新闻编辑室来说，最重要的好处是有机会自动化那些对记者来说不刺激的重复性日常任务。这样他们就可以把时间用于更需要创造性和批判性思维的工作上。只有某些行业从自动化中获益更多，因此并不是所有东西都值得自动化。
 - en: '**Finance**'
+  id: totrans-31
   prefs: []
   type: TYPE_NORMAL
+  zh: '**金融**'
 - en: I chose to report on a financial instrument created by Bloomberg, an international
     news agency. For more than a decade, the agency has been automatically generating
     written press releases for its terminal. In 2018, Bloomberg achieved a quarter
     of its content production through automation (Mandeep et al. [2022](#CR1)). The
     agency's innovation laboratory (called BHIVE) presented “The Bulletin” the same
     year, a tool capable of providing an automated summary of news.
+  id: totrans-32
   prefs: []
   type: TYPE_NORMAL
+  zh: 我选择报道的是由国际新闻机构彭博创建的金融工具。十多年来，该机构一直在为其终端自动生成书面新闻稿。2018年，彭博通过自动化实现了内容生产的四分之一（Mandeep
+    et al. [2022](#CR1)）。同年，该机构的创新实验室（称为BHIVE）推出了“公告”，这是一个能够提供新闻自动摘要的工具。
 - en: The research team concentrated on user preferences, particularly their home
     page, and how to get them the most up-to-date information in order to provide
     them with a clear and quick-to-read overview. The Bulletin includes a synopsis
@@ -267,20 +337,28 @@
     It is based on natural language processing (NLP), which scans articles for key
     words and semantics and synthesizes them into a simple sentence ready for use
     by the user (Ashkan [2022](#CR2)).
+  id: totrans-33
   prefs: []
   type: TYPE_NORMAL
+  zh: 研究团队专注于用户偏好，特别是他们的主页，以及如何为他们提供最新信息，以便提供一个清晰且易于阅读的概览。公告包括来自彭博全球网络的三个最重要和最新的新闻摘要。其目标是为那些时间有限、只在手机上短暂浏览但希望全面了解世界动态的用户提供信息。人工智能通过筛选该机构2700名记者和分析师的网络，提取最重要的细节来介入。它基于自然语言处理（NLP），扫描文章中的关键词和语义，并将它们综合成一个简单的句子，供用户使用（Ashkan
+    [2022](#CR2)）。
 - en: 1.1.3 Trend Follower
+  id: totrans-34
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 1.1.3 趋势跟随者
 - en: Simply put, AI trading software is designed to analyze stock and trading patterns
     in real-time. From its analysis of the market, the software can come up with stock
     recommendations as well as real-time data. The type of information generated by
     these types of software is highly valuable, as you can use them to optimize your
     entry and exit into stock positions to maximize profits (Yan [2022](#CR3); Yao
     et al. [2022](#CR4); Gu et al. [2021](#CR5)).
+  id: totrans-35
   prefs: []
   type: TYPE_NORMAL
+  zh: 简而言之，AI交易软件旨在实时分析股票和交易模式。通过其市场分析，软件可以提出股票推荐以及实时数据。这类软件生成的信息极具价值，因为您可以使用它们来优化进入和退出股票头寸的时机，以最大化利润（Yan
+    [2022](#CR3); Yao et al. [2022](#CR4); Gu et al. [2021](#CR5)）。
 - en: Since trading primarily hinges on making timely decisions based on future price
     movements in the market, the ability to analyze and predict price movements is
     a valuable skill in trading. By analyzing the market and predicting price movements
@@ -291,14 +369,18 @@
     that they are designed with the capability to learn from improving through exposure
     to data sets. In other words, machine learning models are able to learn from their
     mistakes as and improve over time without human intervention.
+  id: totrans-36
   prefs: []
   type: TYPE_NORMAL
+  zh: 由于交易主要依赖于基于市场未来价格变动的及时决策，因此分析和预测价格变动的能力是交易中的一项宝贵技能。通过代表您分析市场并预测价格变动，AI交易软件提供了超越其他类型交易软件的空前优势。AI交易软件的核心是机器学习，这是人工智能的一个子领域。机器学习软件试图模仿人类的思维和行为。我们使用“模仿”这个词，是因为它们被设计为具有通过接触数据集来学习和改进的能力。换句话说，机器学习模型能够在没有人类干预的情况下从错误中学习并随着时间的推移而改进。
 - en: Most AI trading software can monitor the price behavior of thousands of stocks
     simultaneously and around the clock. Given a set of pre-determined parameters,
     the software can monitor the market for specific markers of price movements. It
     will then notify you of these impending changes, allowing you to act accordingly.
+  id: totrans-37
   prefs: []
   type: TYPE_NORMAL
+  zh: 大多数AI交易软件能够同时监控数千只股票的价格行为，并且全天候运作。根据预设的参数，软件可以监控市场中的特定价格变动标志。然后，它会通知您这些即将发生的变化，使您能够相应地采取行动。
 - en: In addition to monitoring stock price movements, some AI trading software can
     track your performance over time. In a back-testing process, the software analyzes
     historical data to give you an idea of how well your strategy worked for a given
@@ -307,65 +389,85 @@
     each day, analyzing technical and fundamentals. It also analyzes hundreds of social
     media and news websites for reports of company-based movements that can affect
     stock prices.
+  id: totrans-38
   prefs: []
   type: TYPE_NORMAL
+  zh: 除了监控股票价格变动外，一些人工智能交易软件还能跟踪你的长期表现。在回测过程中，软件分析历史数据，让你了解在特定时期内你的策略效果如何。一些软件还允许你在模拟交易平台上测试不同的策略。软件每天同时筛选数千只股票，分析技术和基本面。它还分析数百个社交媒体和新闻网站，以获取可能影响股价的公司动态报告。
 - en: The software offers a wide selection of features, including providing signals
     for entry and exit to maximize your profits. It also features real-time trading
     simulation, price alerts, risk assessment, building and back-testing for various
     trading strategies, and automatic trading. It also features a virtual trading
     assistant that can help you analyze chart patterns as well as ideal entry and
     exit points in real-time.
+  id: totrans-39
   prefs: []
   type: TYPE_NORMAL
+  zh: 该软件提供了广泛的功能选择，包括提供入场和退出的信号以最大化你的利润。它还具备实时交易模拟、价格警报、风险评估、构建和回测各种交易策略，以及自动交易。它还提供了一个虚拟交易助手，可以帮助你实时分析图表模式以及理想的入场和退出点。
 - en: One advantage to the software is its ability to filter bad stocks. It does this
     by analyzing the stock’s historical performance in contrast to current market
     conditions. The software is also very easy to use, making it ideal for both beginner
     traders and professional traders.
+  id: totrans-40
   prefs: []
   type: TYPE_NORMAL
+  zh: 该软件的一个优势是其过滤不良股票的能力。它通过分析股票的历史表现与当前市场状况的对比来实现这一点。该软件也非常易于使用，适合初学者和专业交易者。
 - en: The software will then run the data through a variety of complicated financial
     and engineering models. These include classification, regression, and so forth.
     The software then compiles the results in a predictive ranking for stocks and
     other assets.
+  id: totrans-41
   prefs: []
   type: TYPE_NORMAL
+  zh: 然后，软件将数据通过一系列复杂的金融和工程模型运行。这些模型包括分类、回归等。软件随后将结果编译成股票和其他资产的预测排名。
 - en: Aside from the ability to rank stocks using indicators, the software has other
     very useful features, some of which are also backed by artificial intelligence.
     One feature includes a paper trading portfolio, which allows you to test out an
     investment strategy without using real money.
+  id: totrans-42
   prefs: []
   type: TYPE_NORMAL
+  zh: 除了能够使用指标对股票进行排名外，该软件还具备其他非常实用的功能，其中一些功能还得到了人工智能的支持。其中一个功能包括一个模拟交易组合，允许你在不使用真实资金的情况下测试投资策略。
 - en: It also features a market news service. This service compiles relevant financial
     news and a watchlist feature that keeps track of specific stocks and markets.
     There’s also a market analysis tool that filters out the best stocks for you to
     invest in and a calendar to keep track of stock performance week-on-week.
+  id: totrans-43
   prefs: []
   type: TYPE_NORMAL
+  zh: 该软件还提供市场新闻服务。这项服务汇总了相关的财经新闻，并具备一个观察列表功能，用于跟踪特定的股票和市场。此外，还有一个市场分析工具，可筛选出最适合投资的股票，以及一个日历，用于跟踪股票每周的表现。
 - en: Finally, looking for an AI trading software that supports crypto trading can
     be difficult given the lack of available information.
+  id: totrans-44
   prefs: []
   type: TYPE_NORMAL
+  zh: 最后，鉴于可用信息的缺乏，寻找支持加密货币交易的人工智能交易软件可能很困难。
 - en: Automated trading leaves the actual trading to a crypto bot, you don’t have
     to manually input your orders. All you have to do is set your trade parameters
     beforehand. The system will run a string of simulations and give you a list of
     the best stocks with the best possible outcomes.
+  id: totrans-45
   prefs: []
   type: TYPE_NORMAL
+  zh: 自动交易将实际交易交给加密货币机器人，你无需手动输入订单。你所需要做的就是提前设置交易参数。系统将运行一系列模拟，并为你提供具有最佳可能结果的股票列表。
 - en: The software also features back-testing, which takes a look at your past trading
     decisions and market conditions to evaluate your performance. It also features
     a demo portfolio where you can run scenarios with exchanges without using real
     money or crypto. It also offers a way to track your crypto trading performance
     individually or in aggregate across multiple exchanges via a single app.
+  id: totrans-46
   prefs: []
   type: TYPE_NORMAL
+  zh: 该软件还具备回测功能，通过查看你过去的交易决策和市场状况来评估你的表现。它还提供了一个演示组合，你可以在不使用真实资金或加密货币的情况下运行交易场景。此外，它还提供了一种方式，通过单一应用程序跟踪你的加密货币交易表现，无论是单独的还是汇总多个交易所的数据。
 - en: Another critical advantage to the software is the level of security with which
     it operates. The software connects with crypto exchanges only after passing a
     strict authentication process for your security. It also lets you control what
     the trading bot has access to on your trading platform as part of a risk-mitigation
     process.
+  id: totrans-47
   prefs: []
   type: TYPE_NORMAL
 - en: 1.2 Pattern Discovering
+  id: totrans-48
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -376,6 +478,7 @@
     by optimising size, duration and order size in a dynamic fashion, based on market
     conditions (Joshi et al. [2021](#CR6); Liu [2021](#CR7); Zeyi and Wang [2021](#CR8);
     Sanz et al. [2021](#CR9)).
+  id: totrans-49
   prefs: []
   type: TYPE_NORMAL
 - en: The use of AI and big data in sentiment analysis to identify themes, trends,
@@ -387,6 +490,7 @@
     that can inform trading decisions, as they have the capacity to automate data
     gathering and analysis and identify persistent patterns or behaviours on a scale
     that a human cannot process.
+  id: totrans-50
   prefs: []
   type: TYPE_NORMAL
 - en: What differentiates AI-managed trading with systematic trading is the reinforcement
@@ -398,10 +502,12 @@
     of trends in real time, for example using ‘walk forward’ tests instead of back
     testing. Such tests predict and adapt totrends in real time to reduce over-fitting
     (or curve fitting) in back tests based on historical data and (Yin et al. [2021](#CR10)).
+  id: totrans-51
   prefs: []
   type: TYPE_NORMAL
 - en: We starting tak now about algo wheel. An algo wheel is a broad term, encompassing
     fully automated solutions to mostly trader-directed flow.
+  id: totrans-52
   prefs: []
   type: TYPE_NORMAL
 - en: An AI-based algo wheel is an automated routing process embedding AI techniques
@@ -409,6 +515,7 @@
     solutions (Bharne et al. [2019](#CR11)). In other words, AI-based algo wheels
     are models that select the optimal strategy and broker through which to route
     the order, depending on market conditions and trading objectives/requirements.
+  id: totrans-53
   prefs: []
   type: TYPE_NORMAL
 - en: Investment firms typically use algo wheels for two reasons; first, to achieve
@@ -417,6 +524,7 @@
     naming conventions. Market participants argue that algo wheels reduce the trader
     bias around the selection of the broker and broker’s algorithm deployed in the
     marketplace.
+  id: totrans-54
   prefs: []
   type: TYPE_NORMAL
 - en: From the historical point of view, the use of AI in pattern discovering has
@@ -424,6 +532,7 @@
     a layer to traditional algorithmic trading at each step of the process. First-generation
     algorithms consisted of buy or sell orders with simple parameters, followed by
     algorithms allowing for dynamic pricing.
+  id: totrans-55
   prefs: []
   type: TYPE_NORMAL
 - en: Second-generation algorithms deployed strategies to break up large orders and
@@ -437,6 +546,7 @@
     reduce the cost of their balance sheet. As the development of AI advances, AI
     algorithms evolve into automated, computer programmed algorithms that learn from
     the data input used and rely less on human intervention.
+  id: totrans-56
   prefs: []
   type: TYPE_NORMAL
 - en: In practice, the more advanced forms of AI today are mostly used to identify
@@ -447,6 +557,7 @@
     algorithms are mostly used for ‘high informational events’, which consist of news
     of financial events that are more obvious for all participants to pick up and
     where execution speed is of the essence.
+  id: totrans-57
   prefs: []
   type: TYPE_NORMAL
 - en: At this stage of their development, ML–based models are therefore not aiming
@@ -462,15 +573,21 @@
     and executing them. ML-based algos for execution will allow for the autonomous
     and dynamic adjustment of their own decision logic while trading. In that case,
     the requirements already applied for algorithmic trading.
+  id: totrans-58
   prefs: []
   type: TYPE_NORMAL
+  zh: 在目前的发展阶段，基于机器学习（ML）的模型并不旨在进行前瞻性交易并从行动速度中获利，例如高频交易（HFT）策略。相反，它们主要限于离线使用，例如用于校准算法参数和改进算法的决策逻辑，而不是用于执行目的。然而，随着人工智能技术的进步，并在更多用例中部署，它可能会增强传统算法交易的能力，对金融市场产生影响。当人工智能技术开始在交易执行阶段得到更广泛部署时，这种情况预计会发生，提供增强的自动化交易执行能力，并为从信号采集到策略制定，再到执行的整个行动链提供服务。基于机器学习的执行算法将允许在交易过程中自主和动态地调整其决策逻辑。在这种情况下，已经适用于算法交易的要求。
 - en: 1.3 Virtual Assistants
+  id: totrans-59
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 1.3 虚拟助手
 - en: '**Business intelligence**'
+  id: totrans-60
   prefs: []
   type: TYPE_NORMAL
+  zh: '**商业智能**'
 - en: There are a plethora of software solutions devoted to so-called business intelligence,
     or the ability to make economic decisions in business contexts. There are numerous
     software solutions dedicated to what is known as business intelligence, or the
@@ -478,8 +595,10 @@
     products ([https://​www.​gogravity.​com/​](https://www.gogravity.com/)) 's.merchandise
     One example is [https://​www.​gogravity.​com/​](https://www.gogravity.com/). I
     guess an application in a banking environment.
+  id: totrans-61
   prefs: []
   type: TYPE_NORMAL
+  zh: 有许多软件解决方案致力于所谓的商业智能，即在商业环境中做出经济决策的能力。有许多软件解决方案致力于所谓的商业智能，即在商业环境中做出经济决策的能力。例如Gravity的产品（[https://​www.​gogravity.​com/​](https://www.gogravity.com/)）。一个例子是[https://​www.​gogravity.​com/​](https://www.gogravity.com/)。我猜想在银行环境中有一个应用。
 - en: Banks requisite to familiarize to developing prospects of customers, lessen
     expenses, avoid damages of trade to quicker initiate-up challengers, and discover
     innovative means to propagate incomes. Banks’ needs are demanding to magnify aspects
@@ -492,11 +611,16 @@
     personality”. These could benefit and provide on the stipulation, automatic assistance,
     such as allocating with repeatedly enquired interrogations; accomplish financial
     services; and assist with fiscal applications (Kurshan et al. [2020](#CR14)).
+  id: totrans-62
   prefs: []
   type: TYPE_NORMAL
+  zh: 银行需要适应客户发展前景的变化，降低成本，避免因快速启动的竞争对手而损失业务，并寻找创新方式来增加收入。银行的需求在实践中因快速增长，以及广泛的产品线而面临挑战（Mendoza
+    Armenta等人[2018](#CR13)）。银行经常面临处理与客户呼叫中心和客户电子邮件相关的查询量增加的问题，而且众所周知，传统的银行客户服务模式在财务审慎平衡和调整方面存在不足。因此，银行正在实施聊天机器人或“高科技人格”。这些可以提供自动化的帮助，例如处理常见问题；完成金融服务；并协助财务申请（Kurshan等人[2020](#CR14)）。
 - en: '**Scam**'
+  id: totrans-63
   prefs: []
   type: TYPE_NORMAL
+  zh: '**诈骗**'
 - en: With the emergence of E-commerce deception or fraud online has greater than
     before and it is not so much possible to avoid. Recently the United States has
     reported the detection of fraud 15 times of the concrete deception rate. Artificial
@@ -512,27 +636,33 @@
     will analyze the actual data and send immediate notifications in the genuine holder’s
     email or smartphones and all related communicating mediums associated with personalized
     wallets.
+  id: totrans-64
   prefs: []
   type: TYPE_NORMAL
 - en: '**Protecting security**'
+  id: totrans-65
   prefs: []
   type: TYPE_NORMAL
 - en: Many of the administrations are attempting to gadget the Artificial Intellect
     in order to raise the safekeeping for operational dealings and associated services.
     It is possible if there is processer access which can forecast the unlawful databases
     precisely.
+  id: totrans-66
   prefs: []
   type: TYPE_NORMAL
 - en: '**Expenditure Configuration Forecast**'
+  id: totrans-67
   prefs: []
   type: TYPE_NORMAL
 - en: Artificial Intelligence is beneficial for shopper expenditure recognition used
     by numerous companies and financial service sectors. It will be obliging when
     the cars are stolen or the account is hacked in order to avoid the deception or
     shoplifting.
+  id: totrans-68
   prefs: []
   type: TYPE_NORMAL
 - en: '**Stock Dealer scheme**'
+  id: totrans-69
   prefs: []
   type: TYPE_NORMAL
 - en: 'A computer system has been trained to predict when to buy or sell shares in
@@ -540,5 +670,6 @@
     the losses during the uncertainties and meltdown. Client-side user validation:
     This can again authenticate or recognize the user and permit the deal to come
     to pass.'
+  id: totrans-70
   prefs: []
   type: TYPE_NORMAL

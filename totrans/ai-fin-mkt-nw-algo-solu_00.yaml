@@ -9,8 +9,14 @@
     of Warsaw, Warsaw, PolandRobert SavitUniversity of Michigan, Ann Arbor, MI, USAFlaminio SquazzoniUniversity
     of Brescia, Brescia, ItalyAlessandro VinciarelliUniversity of Glasgow, Glasgow,
     Scotland, UK
+  id: totrans-0
   prefs: []
   type: TYPE_NORMAL
+  zh: 计算社会科学系列编辑Elisa Bertino普渡大学，西拉法叶，印第安纳州，美国Claudio Cioffi-Revilla乔治梅森大学，费尔法克斯，弗吉尼亚州，美国Jacob
+    Foster加州大学洛杉矶分校，洛杉矶，加利福尼亚州，美国Nigel Gilbert萨里大学，吉尔福德，英国Jennifer Golbeck马里兰大学，学院公园，马里兰州，美国Bruno
+    Gonçalves纽约大学，纽约，纽约州，美国James A. Kitts马萨诸塞大学，阿默斯特，马萨诸塞州，美国Larry S. Liebovitch皇后学院，纽约市立大学，弗拉兴，纽约州，美国Sorin
+    A. Matei普渡大学，西拉法叶，印第安纳州，美国Anton Nijholt特文特大学，恩斯赫德，荷兰Andrzej Nowak华沙大学，华沙，波兰Robert
+    Savit密歇根大学，安娜堡，密歇根州，美国Flaminio Squazzoni布雷西亚大学，布雷西亚，意大利Alessandro Vinciarelli格拉斯哥大学，格拉斯哥，苏格兰，英国
 - en: 'A series of authored and edited monographs that utilize quantitative and computational
     methods to model, analyze and interpret large-scale social phenomena. Titles within
     the series contain methods and practices that test and develop theories of complex
@@ -31,25 +37,37 @@
     series is to provide a single forum within which commonalities and differences
     in the workings of this field may be discerned, hence leading to deeper insight
     and understanding.'
+  id: totrans-1
   prefs: []
   type: TYPE_NORMAL
+  zh: 一系列采用定量和计算方法来建模、分析和解释大规模社会现象的编著和编辑专著。该系列中的书名包含测试和开发复杂社会过程理论的方法和实践，通过自下而上的社会互动建模。特别感兴趣的是现代通信技术与社会行为和规范的共同演化研究，以及在新兴的社会技术环境中信任、风险、安全和隐私等问题的联系。计算社会科学是明确跨学科的：来自动力系统、人工智能、网络理论、基于代理的建模和统计力学等领域的定量方法被引用和结合，以及对大型数据集的最新挖掘和分析，以帮助我们理解社会代理、他们在线上和线下的互动，以及这些互动在宏观层面的影响。主题包括但不限于社交网络和媒体、意见、文化和冲突的动态、社会技术共同演化和社会心理学。计算社会科学还将出版专著和来自专门会议和研讨会的精选编辑贡献，旨在向广泛的跨学科受众传达新发现。该系列的一个基本目标是提供一个单一的论坛，在其中可以辨别该领域的运作的共同点和差异，从而导致更深入的洞察和理解。
 - en: EditorFederico Cecconi
+  id: totrans-2
   prefs: []
   type: TYPE_NORMAL
+  zh: 编辑Federico Cecconi
 - en: AI in the Financial Markets
+  id: totrans-3
   prefs:
   - PREF_H1
   type: TYPE_NORMAL
+  zh: AI在金融市场
 - en: New Algorithms and Solutions
+  id: totrans-4
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 新算法和解决方案
 - en: '![](../images/524458_1_En_BookFrontmatter_Figa_HTML.png)'
+  id: totrans-5
   prefs: []
   type: TYPE_IMG
+  zh: '![](../images/524458_1_En_BookFrontmatter_Figa_HTML.png)'
 - en: The Springer logo.
+  id: totrans-6
   prefs: []
   type: TYPE_NORMAL
+  zh: 施普林格标志。
 - en: EditorFederico CecconiLaboratory of Agent Based Social Simulation, Institute
     of Cognitive Sciences and Technologies-National Research Council, Rome, ItalyISSN
     2509-9574e-ISSN 2509-9582Computational Social SciencesISBN 978-3-031-26517-4e-ISBN
@@ -71,18 +89,28 @@
     to the material contained herein or for any errors or omissions that may have
     been made. The publisher remains neutral with regard to jurisdictional claims
     in published maps and institutional affiliations.
+  id: totrans-7
   prefs: []
   type: TYPE_NORMAL
+  zh: 编辑：Federico Cecconi，代理基于社会模拟实验室，认知科学与技术研究所-国家研究委员会，罗马，意大利。ISSN 2509-9574，电子ISSN
+    2509-9582，计算社会科学。ISBN 978-3-031-26517-4，电子ISBN 978-3-031-26518-1[https://doi.org/10.1007/978-3-031-26518-1](https://doi.org/10.1007/978-3-031-26518-1)©
+    The Editor(s) (如适用) 和 The Author(s)，独家授权给Springer Nature Switzerland AG 2023。本作品受版权保护。所有权利仅且专属于出版商，无论是整个作品还是部分作品，特别是翻译、重印、插图的再利用、朗诵、微缩胶片的复制或其他任何物理方式的复制，以及信息传输或存储、电子改编、计算机软件，或现在已知或以后开发的类似或不同方法。本书中使用的一般描述性名称、注册名称、商标、服务标记等并不意味着，即使没有具体声明，这些名称免于相关保护法律和规定，因此可自由通用。出版商、作者和编辑可以安全地假设本书中的建议和信息在出版日期被认为是真实和准确的。出版商、作者或编辑不提供任何明示或暗示的保证，对于本书中包含的材料或可能存在的任何错误或遗漏。出版商对出版的地图和机构隶属关系中的司法管辖权主张保持中立。
 - en: This Springer imprint is published by the registered company Springer Nature
     Switzerland AG
+  id: totrans-8
   prefs: []
   type: TYPE_NORMAL
+  zh: 本Springer印记由注册公司Springer Nature Switzerland AG出版。
 - en: 'The registered company address is: Gewerbestrasse 11, 6330 Cham, Switzerland'
+  id: totrans-9
   prefs: []
   type: TYPE_NORMAL
+  zh: 注册公司地址为：Gewerbestrasse 11, 6330 Cham, 瑞士
 - en: Preface
+  id: totrans-10
   prefs: []
   type: TYPE_NORMAL
+  zh: 前言
 - en: 'Financial markets are likely one of the few human achievements that can truly
     be described as complex systems. Complex systems are structures in physics that:
     (a) derive a significant portion of their dynamics from interactions between components,
@@ -92,20 +120,27 @@
     of the individual parts, (d) and from this derive two very important consequences:
     a very strong dependence on initial conditions (starting from similar situations,
     we observe completely divergent final states) (a typical example is weather forecasts).'
+  id: totrans-11
   prefs: []
   type: TYPE_NORMAL
+  zh: 金融市场可能是少数真正可以被描述为复杂系统的人类成就之一。复杂系统是物理学中的结构，它们：(a) 从组件之间的相互作用中获得其动态的很大一部分，(b)
+    相互作用高度非线性，并且往往根据其自身的动态（反馈）而变化，(c) 系统的行为不能直接归因于个体相互作用的纯和：整体远大于个体部分的总和，(d) 并由此产生两个非常重要的后果：对初始条件的非常强烈的依赖（从相似的情况开始，我们观察到完全不同的最终状态）（一个典型的例子是天气预报）。
 - en: Financial markets are all of these things, and as such, they present enormous
     challenges to those attempting to comprehend trends, balances, crisis moments,
     and high variability.
+  id: totrans-12
   prefs: []
   type: TYPE_NORMAL
+  zh: 金融市场具备所有这些特征，因此，它们为试图理解趋势、平衡、危机时刻和高变异性的那些人提出了巨大的挑战。
 - en: Then there’s AI, or artificial intelligence, and the technology that’s been
     dubbed “the oil of the future,” powering a large portion of our socioeconomic
     systems. AI can be found on the Internet, and in applications, we use every day,
     in economic forecasting systems, advertising management systems, and search engines.
     In our cars, games, and, of course, financial markets.
+  id: totrans-13
   prefs: []
   type: TYPE_NORMAL
+  zh: 然后是人工智能（AI），这种技术被称为“未来的石油”，驱动着我们社会经济系统的大部分。AI存在于互联网上，存在于我们每天使用的应用程序中，存在于经济预测系统、广告管理系统、搜索引擎中。在我们的汽车、游戏以及当然，在金融市场中。
 - en: This book is about what happens (and what might happen in the near future) when
     AI technologies become more prevalent in the capital markets. This is a significant
     advancement over, say, high-frequency trading algorithms, which raged unchecked
@@ -114,8 +149,10 @@
     performing tasks that are deeply integrated with the ecosystem in which markets
     operate (the world of news, or sociopolitical dynamics, the pandemic, geopolitical
     tensions).
+  id: totrans-14
   prefs: []
   type: TYPE_NORMAL
+  zh: 本书探讨了当人工智能技术在资本市场中变得更加普遍时会发生什么（以及在不久的将来可能发生的情况）。这与几年前在市场中（尤其是金融衍生品）肆无忌惮地横行的高频交易算法相比，是一个重大进步。这些算法正逐渐被能够执行与市场运作生态系统深度整合的任务的极其复杂的人工智能技术所取代（涉及新闻世界、社会政治动态、疫情、地缘政治紧张局势）。
 - en: 'The book is divided into two parts: the theory, which is what AI is today,
     the current financial markets, and what could be the largest socioeconomic policy
     operation ever attempted in history, the so-called Great Reset. Then there are
@@ -123,21 +160,29 @@
     the detection and deactivation of fake news, economic evaluation and prediction
     systems, models based on artificial agents capable of making independent decisions,
     and dynamic opinion models.'
+  id: totrans-15
   prefs: []
   type: TYPE_NORMAL
+  zh: 本书分为两部分：理论部分，即AI目前的状况、当前的金融市场，以及可能是历史上尝试过的最大的社会经济政策行动，即所谓的“大重置”。然后是应用部分，这些应用源于混合大数据/AI技术在检测和消除假新闻、经济评估和预测系统、基于能够独立做出决策的人工代理的模型以及动态意见模型中的使用。
 - en: 'All of this is to answer the question: Can artificial intelligence make financial
     markets safer, more reliable, and more profitable? And what are the dangers?'
+  id: totrans-16
   prefs: []
   type: TYPE_NORMAL
+  zh: 所有这些旨在回答一个问题：人工智能能否使金融市场更安全、更可靠、更有利可图？以及存在哪些风险？
 - en: Thanks
+  id: totrans-17
   prefs: []
   type: TYPE_NORMAL
+  zh: 感谢
 - en: This book was made possible by the resources provided by QBT Sagl [https://​qbt.​ch/​](https://qbt.ch/),
     a Swiss company that has been working in the AI field for many years, specifically
     in the fintech and proptech sectors. QBT provided the model development and simulation
     data collection hardware and software resources.
+  id: totrans-18
   prefs: []
   type: TYPE_NORMAL
+  zh: 本书得以问世，得益于QBT Sagl [https://​qbt.​ch/​](https://qbt.ch/)提供的资源，这是一家在人工智能领域深耕多年的瑞士公司，尤其在金融科技和房地产科技领域。QBT提供了模型开发和模拟数据收集所需的硬件和软件资源。
 - en: Federico CecconiRome, ItalyContents[1 Artificial Intelligence and Financial
     Markets](524458_1_En_1_Chapter.xhtml) 1Federico Cecconi[2 AI, the Overall Picture](524458_1_En_2_Chapter.xhtml)
     13Luca Marconi[3 Financial Markets:​ Values, Dynamics, Problems](524458_1_En_3_Chapter.xhtml)
@@ -150,8 +195,18 @@
     More than Data Science:​ FuturICT 2.​0](524458_1_En_9_Chapter.xhtml) 109Federico Cecconi[10
     Opinion Dynamics](524458_1_En_10_Chapter.xhtml) 117Luca MarconiAbout the EditorFederico
     Cecconi
+  id: totrans-19
   prefs: []
   type: TYPE_NORMAL
+  zh: Federico Cecconi罗马，意大利目录[1 人工智能与金融市场](524458_1_En_1_Chapter.xhtml) 1Federico
+    Cecconi[2 AI，总体概况](524458_1_En_2_Chapter.xhtml) 13Luca Marconi[3 金融市场：​价值、动态、问题](524458_1_En_3_Chapter.xhtml)
+    39Juliana Bernhofer和Anna Alexander Vincenzo[4 AI在“大重置”中的作用](524458_1_En_4_Chapter.xhtml)
+    57Federico Cecconi[5 金融科技AI：​揭露真相](524458_1_En_5_Chapter.xhtml) 65Federico Cecconi和Alessandro
+    Barazzetti[6 ABM在金融市场中的应用](524458_1_En_6_Chapter.xhtml) 73Riccardo Vasellini[7
+    机器学习在金融市场的应用](524458_1_En_7_Chapter.xhtml) 85Riccardo Vasellini[8 用于定价不良资产UTP和NPL贷款组合的AI工具](524458_1_En_8_Chapter.xhtml)
+    95Alessandro Barazzetti和Rosanna Pilla[9 不仅仅是数据科学：​FuturICT 2.​0](524458_1_En_9_Chapter.xhtml)
+    109Federico Cecconi[10 意见动态](524458_1_En_10_Chapter.xhtml) 117Luca Marconi关于编辑Federico
+    Cecconi
 - en: 'is R&D manager for QBT Sagl ([https://​www.​qbt.​ch/​it/​](https://www.qbt.ch/it/)),
     responsible for the LABSS (CNR) of the computer network management and computational
     resources for simulation, and consultant for Arcipelago Software Srl. He develops
@@ -160,5 +215,8 @@
     training. His current research interest is twofold: on the one hand, the study
     of socio-economic phenomena, typically using computational models and databases.
     The second is the development of AI model for fintech and proptech.'
+  id: totrans-20
   prefs: []
   type: TYPE_NORMAL
+  zh: 担任QBT Sagl的研发经理（[https://www.qbt.ch/it/](https://www.qbt.ch/it/)），负责LABSS（CNR）的计算机网络管理和模拟计算资源，并为Arcipelago
+    Software Srl提供咨询服务。他开发了针对LABSS问题的计算和数学模型（社会动力学、声誉、规范动力学）。为LABSS进行传播和培训工作。他目前的研究兴趣有两个方面：一方面是研究社会经济现象，通常使用计算模型和数据库。另一方面是开发金融科技和房地产科技的AI模型。
