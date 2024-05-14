@@ -1,3 +1,4 @@
++   [金融市场中的人工智能：新算法和解决方案](README.md)
 +   [前言](ai-fin-mkt-nw-algo-solu_00.md)
 +   [第一章：人工智能与金融市场](ai-fin-mkt-nw-algo-solu_01.md)
 +   [第二章：AI，整体视角](ai-fin-mkt-nw-algo-solu_02.md)

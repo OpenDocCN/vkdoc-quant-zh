@@ -1,3 +1,4 @@
++   [面向金融市场的人工智能：多模型方法](README.md)
 +   [前言](ai-fin-mkt-plmdl-aprc_00.md)
 +   [第一章：介绍](ai-fin-mkt-plmdl-aprc_01.md)
 +   [第二章：多模型理论：概述](ai-fin-mkt-plmdl-aprc_02.md)
