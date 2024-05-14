@@ -1,4 +1,4 @@
-© 作者，独家许可给 Springer Nature Switzerland AG 2023F. Cecconi (ed.)金融市场中的人工智能计算社会科学[`doi.org/10.1007/978-3-031-26518-1_10`](https://doi.org/10.1007/978-3-031-26518-1_10)
+
 
 # 10. 观点动态
 

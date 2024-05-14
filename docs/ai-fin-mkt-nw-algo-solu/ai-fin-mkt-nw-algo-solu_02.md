@@ -1,4 +1,4 @@
-© 作者，独家许可给 Springer Nature Switzerland AG 2023F. Cecconi（编著）AI in the Financial Markets Computational Social Sciences[`doi.org/10.1007/978-3-031-26518-1_2`](https://doi.org/10.1007/978-3-031-26518-1_2)
+
 
 # 2. AI，整体视角
 

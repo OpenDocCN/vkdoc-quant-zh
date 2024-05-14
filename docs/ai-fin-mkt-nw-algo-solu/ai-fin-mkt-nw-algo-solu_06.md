@@ -1,4 +1,4 @@
-© 作者，独家授权给 Springer Nature Switzerland AG 2023F. Cecconi（编著）AI 在金融市场中的应用计算社会科学[`doi.org/10.1007/978-3-031-26518-1_6`](https://doi.org/10.1007/978-3-031-26518-1_6)
+
 
 # 6. ABM 应用于金融市场
 
