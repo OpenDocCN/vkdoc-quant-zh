@@ -1,19 +1,27 @@
 - en: © The Author(s), under exclusive license to Springer Nature Switzerland AG 2023F.
     Cecconi (ed.)AI in the Financial Markets Computational Social Sciences[https://doi.org/10.1007/978-3-031-26518-1_6](https://doi.org/10.1007/978-3-031-26518-1_6)
+  id: totrans-0
   prefs: []
   type: TYPE_NORMAL
+  zh: © 作者，独家授权给Springer Nature Switzerland AG 2023F. Cecconi（编著）AI在金融市场中的应用计算社会科学[https://doi.org/10.1007/978-3-031-26518-1_6](https://doi.org/10.1007/978-3-031-26518-1_6)
 - en: 6. ABM Applications to Financial Markets
+  id: totrans-1
   prefs:
   - PREF_H1
   type: TYPE_NORMAL
+  zh: 6. ABM 应用于金融市场
 - en: 'Riccardo Vasellini^([1](#Aff16) [ ](#ContactOfAuthor1))(1)Universitá di Siena,
     Siena, ItalyRiccardo VaselliniEmail: [r.vasellini@student.unisi.it](mailto:r.vasellini@student.unisi.it)'
+  id: totrans-2
   prefs: []
   type: TYPE_NORMAL
+  zh: Riccardo Vasellini^([1](#Aff16) [ ](#ContactOfAuthor1))（1）意大利锡耶纳大学，锡耶纳Riccardo VaselliniEmail：[r.vasellini@student.unisi.it](mailto:r.vasellini@student.unisi.it)
 - en: Abstract
+  id: totrans-3
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 摘要
 - en: Traditional economic theories struggle to explain financial market volatility
     and the macroeconomy. Traders seldom assume the role of rational optimizers, as
     described in standard economic models, in financial markets. Boom and bust cycles
@@ -35,11 +43,15 @@
     system to a differential equation. They could instead mimic the interactions of
     the system’s single agents. If the agents’ behavioral assumption is right, shared
     behaviors should “emerge” in the system.
+  id: totrans-4
   prefs: []
   type: TYPE_NORMAL
+  zh: 传统经济理论难以解释金融市场波动和宏观经济。交易者很少像标准经济模型中描述的那样假设自己是理性的优化者，他们不会在金融市场中如此行事。繁荣与萧条周期普遍存在，像是公司价值仅基于CEO的花哨个性、鲁莽投机者以及普遍的不理性感觉。显然，仅凭这一点就不足以将旧经济理论谴责为“无用”。事实上，了解人类行为导致的自我调节、稳定的市场，在这种市场中价格从不偏离平衡太远，可以提供令人兴奋和实用的结果。与其将整个金融系统作为一个整体进行评估并从上到下对其进行建模，不如检查其代理人，看看是否可以从它们的互动中产生系统特征。这被广泛用于研究所谓的复杂系统，这些系统表现出显著的非线性和不稳定的平衡状态，很容易被小冲击打乱。传统经济理论在说明相对狭窄的系统状态方面是有效的，即市场处于平衡状态的情况。然而，借助复杂系统理论支持的替代技术，可以描绘出一个更通用的模型，在这个模型中，平衡状态是更大模型的一个子领域。ABM是模拟复杂系统的一种有价值的方法。自下而上的建模不需要科学家将整个系统近似为微分方程。他们可以模仿系统单个代理人的互动。如果代理人的行为假设正确，共享行为应该会在系统中“出现”。
 - en: KeywordsAgent based modelingFinancial marketsCognitionRiccardo Vasellini
+  id: totrans-5
   prefs: []
   type: TYPE_NORMAL
+  zh: 关键词：基于代理的建模、金融市场、认知、Riccardo Vasellini
 - en: PhD candidate with a background in civil, environmental, and management engineering.
     I’m currently studying at the University of Siena’s Department of Information
     Science, majoring in the topic of Complex Systems. In the scientific world, my
@@ -48,12 +60,17 @@
     Dynamics is vital for making sound decisions. While studying on my Doctorate,
     I work as a Project Manager in a variety of industries, including Real Estate
     Development, Real Estate Portfolio Management, Renewable Energies, and Tourism.
+  id: totrans-6
   prefs: []
   type: TYPE_NORMAL
+  zh: 具有土木、环境和管理工程背景的博士候选人。我目前在锡耶纳大学信息科学系学习，专攻复杂系统。在科学界，我的目标是利用基于代理的建模和人工智能来深入了解复杂系统。我认为研究
+    emergent phenomena 和系统动力学对做出明智决策至关重要。在攻读博士学位期间，我在多个行业担任项目经理，包括房地产开发、房地产投资组合管理、可再生能源和旅游业。
 - en: 6.1 Introduction
+  id: totrans-7
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 6.1 引言
 - en: Traditional economic theories have a particularly tough time explaining financial
     market fluctuations and how they relate to the macroeconomy (LeBaron [2000](#CR1)).
     In the financial markets, traders seldom ever play the part of the rational optimizers
@@ -61,14 +78,19 @@
     to observe boom and bust cycles, company valuations depending only on the glitzy
     personalities of CEOs, reckless speculators, and a great deal of irrationality
     overall.
+  id: totrans-8
   prefs: []
   type: TYPE_NORMAL
+  zh: 传统经济理论在解释金融市场波动及其与宏观经济的关系方面特别困难（LeBaron [2000](#CR1)）。在金融市场中，交易者很少扮演传统经济模型中经常描绘的理性优化者的角色，事实上，观察到经济的繁荣和衰退周期、公司估值仅取决于首席执行官的吸引力、鲁莽的投机者以及整体上的许多非理性行为并不罕见。
 - en: Obviously, this not suffice to disregard traditional economic models as “useless”,
     in fact thinking that human behavior results in self-regulating, stable marketplaces
     where prices never stray too far from equilibrium, can yield interesting and realistic
     results (Iori and Porter [2012](#CR2)).
+  id: totrans-9
   prefs: []
   type: TYPE_NORMAL
+  zh: 显然，这并不足以将传统经济模型视为“无用”，事实上，认为人类行为导致自我调节、稳定的市场，价格永远不会偏离均衡，可能会产生有趣且现实的结果（Iori和Porter
+    [2012](#CR2)）。
 - en: 'However, an alternative approach is possible: instead of evaluating the financial
     system as a whole, and model it using a top-down approach, one might think to
     study it by understanding the agents populating the system and observe if properties
@@ -76,15 +98,19 @@
     used to study the so-called Complex Systems, i.e., systems exhibiting high degrees
     of non-linearity, in which equilibrium states are unstable and small perturbations
     easily disrupts them.'
+  id: totrans-10
   prefs: []
   type: TYPE_NORMAL
+  zh: 然而，也存在一种替代方法：不是将金融系统作为一个整体进行评估，并使用自上而下的方法对其进行建模，而是可能考虑通过理解构成系统的代理并观察系统的共同特性是否从它们的相互作用中出现。这通常是研究所谓的复杂系统的方法，即表现出高度非线性的系统，在其中平衡状态是不稳定的，小的扰动很容易打破它们。
 - en: One could argue that while traditional economic theories are successful at illustrating
     a very specific system state, namely one in which the market is in equilibrium,
     alternative approaches, supported by the theory of complex systems, may enable
     the illustration of a more general model in which the specific instances of equilibrium
     states are a subfield of broader model.
+  id: totrans-11
   prefs: []
   type: TYPE_NORMAL
+  zh: 有人可能会认为，传统经济理论成功地阐明了一个非常具体的系统状态，即市场处于均衡状态，而由复杂系统理论支持的替代方法可以实现更一般的模型的阐明，其中特定的均衡状态是更广泛模型的一个子领域。
 - en: A very good way to model complex system is to use Agent Based Modelling. In
     this type of modelling, the bottom-up approach is king and scientists don’t have
     to concern themselves with approximating the whole system to a differential equation.
@@ -92,11 +118,15 @@
     the single agents that are intended to exist in the system. If the behavioural
     hypothesis upon which the agents have been created is sound, one expects to see
     the “emergence” of behaviours that are shared by the entire system.
+  id: totrans-12
   prefs: []
   type: TYPE_NORMAL
+  zh: 建模复杂系统的一种非常好的方法是使用基于代理的建模。在这种建模类型中，自下而上的方法至关重要，科学家们无需将整个系统近似为微分方程。相反，他们可以集中精力模拟系统中存在的单个代理之间的相互作用。如果创建代理的行为假设是合理的，那么人们期望看到整个系统共享的行为的“出现”。
 - en: 'To those not too familiar with this type of modelling imagine the following:'
+  id: totrans-13
   prefs: []
   type: TYPE_NORMAL
+  zh: 对于那些不太熟悉这种建模类型的人，想象一下以下情景：
 - en: You want to describe how a balloon filled with gas behave, instead of writing
     down the Gay-Lussac’s law, PV = nRT, thus using a top-down approach, you describe
     how a single atom or molecule of the gas behaves when it exchanges heat, modify
@@ -105,16 +135,20 @@
     and the environment. If you did a good job the results emerging will be coherent
     with the Gay-Lussac’s law even though you could have known nothing about the balloon
     as a whole.
+  id: totrans-14
   prefs: []
   type: TYPE_NORMAL
+  zh: 你想描述一个充满气体的气球的行为，而不是写下盖·吕萨克定律，PV = nRT，因此使用自上而下的方法，你描述一个气体的单个原子或分子在交换热量、改变其运动量或被另一个气体原子击中时的行为。然后你使用计算机模拟所有这些原子之间的相互作用以及原子与环境的相互作用。如果你做得很好，出现的结果将与盖·吕萨克定律一致，即使你可能对整个气球一无所知。
 - en: Obviously, in the specific case of this metaphor, it seems pretty counterintuitive
     and unnecessarily complicated to use such approach. However, there are many circumstances
     when it might be difficult, if not impossible, to use conventional mathematical
     models. When dealing with a large number of equations and several heterogeneous
     variables with a lot of indices, mathematical models are often not particularly
     effective.
+  id: totrans-15
   prefs: []
   type: TYPE_NORMAL
+  zh: 显然，在这个比喻的具体案例中，使用这种方法似乎相当违反直觉且不必要复杂。然而，在许多情况下，使用传统的数学模型可能会很困难，甚至是不可能的。当处理大量方程式和多个具有许多指标的异质变量时，数学模型通常不是特别有效的。
 - en: These compliances can, instead, be managed better if described by algorithms
     and iterative processes. In particular when parts of the system interact frequently
     among each other’s leading to the emergence of important features, to understand
@@ -131,17 +165,23 @@
     by simply describing that of a single ant. However, harnessing the power of simulation
     is possible, by setting simple behavioral rules for the single ant, describe the
     whole nest.
+  id: totrans-16
   prefs: []
   type: TYPE_NORMAL
+  zh: 这些合规性可以通过算法和迭代过程来更好地管理。特别是当系统的部分经常相互作用，导致重要特征的出现时，要理解系统通常很难实现传统的数学模型。我刚刚写的并不完全准确，更准确的说法是当科学家试图描述系统的整体时，很难实现传统模型。当无法进行鸟瞰式的观察时，比如在社会或经济领域，即使研究该系统的人也是其中的一部分，那么尝试使用代理基模型（ABM）是有用的，从底层开始，从我们能够理解和简化描述的部分进行模拟。这就是ABM的真正威力。用另一个比喻来说，描述一只蚂蚁，一个非常简单的生物，要比描述整个蚁巢容易得多，后者的行为不能通过简单描述单个蚂蚁的行为来理解。然而，利用模拟的力量是可能的，通过为单个蚂蚁设置简单的行为规则，描述整个蚁巢。
 - en: Now that we’ve established what ABM is all about, we can provide some modelling
     overview and, following that, we will present a novel model developed by the writers
     of this book.
+  id: totrans-17
   prefs: []
   type: TYPE_NORMAL
+  zh: 现在我们已经了解了ABM的全部内容，我们可以提供一些建模概述，接着我们将介绍本书作者开发的一种新模型。
 - en: 6.2 ABM
+  id: totrans-18
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 6.2 代理基模型（ABM）
 - en: 'ABMs present a challenge to the neoclassical idea that agents generate rational
     expectations based on the assumption that they have full understanding of the
     economy and limitless computing capacity (Iori and Porter [2012](#CR2)). The all-knowing
@@ -149,8 +189,11 @@
     able to infer about the markets thanks to a combination of behavioural rules and
     heuristics. In fact, we can use agents’ modelling types to classify different
     modelling approaches:'
+  id: totrans-19
   prefs: []
   type: TYPE_NORMAL
+  zh: 代理基模型（ABMs）对新古典主义理念提出了挑战，该理念认为代理根据他们对经济的充分理解和无限的计算能力形成理性预期（Iori和Porter [2012](#CR2)）。全知的理性代理被具有有限理性的代理所替代（Simon
+    [1997](#CR3)），后者能够通过行为规则和启发式方法推断市场。实际上，我们可以使用代理的建模类型来分类不同的建模方法：
 - en: 'Zero Intelligence Agents: Agents are scarcely, or not at all, able to learn
     and that their behavioural rules are extremely simple. The point of these type
     of models is to observe if features actually present in real financial markets
@@ -169,20 +212,26 @@
     against real data from the London Stock Exchange Market, explaining approximately
     96% of the spread and 75% of the variance in the price diffusion rate using a
     single free parameter.'
+  id: totrans-20
   prefs: []
   type: TYPE_NORMAL
+  zh: '**零智能代理**：代理人几乎无法学习，或者根本不具备学习能力，他们的行为规则极其简单。这类模型的重点在于观察是否能从系统结构中产生实际存在于真实金融市场中的特征。这方面的一个很好的例子是由Farmer等人开发的模型（[2005](#CR4)）。作者将非理性代理人的概念推到了极致，创建了完全没有理性的代理人。在这个模型中，代理人只是随机下订单（订单确切地以泊松随机过程到达），并参与连续的双边竞价，即他们可以随时下买单或卖单。因此，该模型放弃了描述市场策略或人类行为的任何野心，而是主要专注于表征连续双边竞价对系统施加的限制。代理人之间唯一的区别在于他们下订单的频率：不耐烦的代理人将被迫在单位时间内下达固定数量的订单，而耐心的代理人将随机下订单，不仅仅是为了定价，还有时间上的考虑。然后，作者将他们的发现与来自伦敦证券交易所的真实数据进行了比较和评估，仅使用一个自由参数就能解释约96%的价差和75%的价格扩散率的变化。'
 - en: What should be surprising is that just by making very simple assumption, in
     this case the simplest possible, on the behaviour of the agents it’s possible
     to reproduce market’s and prices’ features by focussing the modelling attention
     on how the agents actually interact (continuous double auction).
+  id: totrans-21
   prefs: []
   type: TYPE_NORMAL
+  zh: 令人惊讶的是，仅仅通过对代理人行为进行非常简单的假设，例如这种最简单的情况，就可以通过将建模注意力集中在代理人实际交互的方式上（连续双边竞价）来重现市场和价格的特征。
 - en: In traditional models a common feature that traders lack is the possibility
     of being chartists. Given the rational assumption the only possibility for the
     stock trader is to be a fundamentalist always trying to discover the real valuation
     of a stock and trade consequently.
+  id: totrans-22
   prefs: []
   type: TYPE_NORMAL
+  zh: 在传统模型中，交易者普遍缺乏的一个特征是可能成为图表分析者的可能性。在理性的假设下，股票交易者唯一的可能性就是一直试图发现股票的真实估值并据此交易的基本主义者。
 - en: However, when implementing agents more complex than the zero-intelligence ones
     it’s possible to include as many behavioural rules as wanted. Within this framework
     traders can pursue different strategies and react differently to signals, either
@@ -191,26 +240,34 @@
     who can interact directly among each other’s. The latter type can has been useful
     to explain herding behaviour in finance (Hirshleifer and Slew [2003](#CR5)), while
     the former has been useful to understand the role of learning (LeBaron [2000](#CR6)).
+  id: totrans-23
   prefs: []
   type: TYPE_NORMAL
+  zh: 然而，当实现比零智能代理更复杂的代理时，可以包含任意数量的行为规则。在这个框架内，交易者可以追求不同的策略，并对来自市场或其他代理的信号做出不同的反应。Iori和Porter（[2012](#CR2)）区分了通过市场进行中介交互的异质代理和那些可以直接相互交互的代理。后者类型已被证明对于解释金融中的群体行为很有用（Hirshleifer和Slew，[2003](#CR5)），而前者则有助于理解学习的作用（LeBaron，[2000](#CR6)）。
 - en: 6.3 Our Model
+  id: totrans-24
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 6.3 我们的模型
 - en: 'We started developing this model starting from a fundamental idea: Markets
     are diverse ecosystems inhabited figuratively by a myriad of different species,
     each with their own set of interests and ambitions. Understanding how these groups
     of people act and interact might help us understand market behaviour.'
+  id: totrans-25
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们开始开发这个模型的起点是一个基本的想法：市场是多样化的生态系统，象征性地由无数不同种类的物种组成，每个物种都有自己的利益和抱负。了解这些人群是如何行动和相互作用的可能有助于我们理解市场行为。
 - en: This is precisely what Andrew Lo argues in his Adaptive Market Theory, which
     is an attempt to incorporate the Efficient Market Theory into a broader framework
     in which it becomes a special case. Considering financial markets in this manner
     entails conceiving of them as complex systems; thus, to understand them, we must
     employ the methods we use to examine complexity. We decided that the best approach
     would have been to use AB Modelling.
+  id: totrans-26
   prefs: []
   type: TYPE_NORMAL
+  zh: 这正是安德鲁·罗在他的自适应市场理论中所主张的，这是将有效市场理论纳入更广泛框架的尝试，使其成为特殊情况。以这种方式考虑金融市场意味着将它们视为复杂系统；因此，要理解它们，我们必须采用我们用于研究复杂性的方法。我们决定最好的方法是使用AB建模。
 - en: 'Moreover, we started wondering if these “groups” living in the financial ecosystem
     could emerge spontaneously from the interaction of multiple agents trading in
     the market. By “groups,” we refer to clusters of agents exhibiting dynamically
@@ -219,8 +276,10 @@
     are limited just by the person’s defining them imagination. We decided to focus
     only on two types of investors: Fundamentalists, and Chartists (whom we, unfortunately,
     called “Trendists”).'
+  id: totrans-27
   prefs: []
   type: TYPE_NORMAL
+  zh: 此外，我们开始思考这些生活在金融生态系统中的“群体”是否可以从市场中多个交易代理之间的相互作用中自发产生。通过“群体”，我们指的是表现出动态相似行为的代理的聚类。在真实市场中，这可能包括机构和零售投资者或算法和手动交易者等等。群体仅仅受到人们想象力的限制。我们决定只专注于两种类型的投资者：基本主义者和图表派（不幸的是，我们将他们称为“趋势主义者”）。
 - en: Our primary objective was to demonstrate if and how agents without any a-priori
     configuration or bias toward being fundamentalists or chartists, nor any explicit
     external trigger coming from the system pushing in one direction or the other,
@@ -228,12 +287,16 @@
     over time. These behaviours emerge spontaneously only through the two mechanisms
     of adaptation available to the agents, i.e., learning and imitation. Now we will
     proceed to describe the model into more details.
+  id: totrans-28
   prefs: []
   type: TYPE_NORMAL
+  zh: 我们的主要目标是证明如果没有任何对基本主义者或图表派的先验配置或偏见，也没有任何来自系统的明确外部触发器推动向一个方向或另一个方向，那么代理人如何能够聚集成一群投资者，其行为随着时间的推移而呈现出特定的模式。这些行为仅通过代理人可用的两种适应机制，即学习和模仿，自发地产生。现在我们将继续更详细地描述模型。
 - en: 6.3.1 Overview
+  id: totrans-29
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 6.3.1 概述
 - en: Each day, the traders will analyse each of the three stocks using two distinct
     methodologies. They do a fundamental examination of the stock, simulating the
     act of investigating the worth of the underlying corporation that issued the shares,
@@ -245,11 +308,15 @@
     In addition, the price will be affected by how greedy or fearful market participants
     are at the moment. Finally, following these analyses, they will determine which
     stocks to sell or purchase and in what quantities.
+  id: totrans-30
   prefs: []
   type: TYPE_NORMAL
+  zh: 每天，交易员会使用两种不同的方法分析三种股票。他们对股票进行基本分析，模拟调查发行股票的基础公司的价值，并据此定价股票。他们还会进行趋势分析，仅关注股票的先前表现，而忽略基础资产。执行这两种定价方法的顺序并不重要。然后，他们将根据他们当前的市场展望，或者是否认为成为“基本主义者”或“图表派”更为可取，权衡两个获得的价格。此外，市场参与者当前有多贪婪或恐惧也会影响价格。最后，在进行这些分析之后，他们将确定要出售或购买的股票以及数量。
 - en: At this point orders are inserted in the ledger.
+  id: totrans-31
   prefs: []
   type: TYPE_NORMAL
+  zh: 此时订单被插入账簿。
 - en: The market will then match orders. It will look for a purchase (if the order
     is a sell) or a sell (if the order is a buy) order that matches the desired price
     and quantity, beginning with the oldest order issued. Price and quantity do not
@@ -264,87 +331,132 @@
     This is done to imitate actual changes in the assets of the underlying firms.
     Average stock prices and other agents’ fundamental properties will be preserved.
     At this moment, the cycle may resume.![](../images/524458_1_En_6_Chapter/524458_1_En_6_Figa_HTML.png)
+  id: totrans-32
   prefs: []
   type: TYPE_NORMAL
+  zh: 市场将匹配订单。它将寻找与期望价格和数量相匹配的购买（如果订单是卖出）或卖出（如果订单是买入）订单，从最早发布的订单开始。价格和数量不需要相同；代理可能以比最初期望的更低的价格购买较少的股票，然后从另一个代理那里购买剩余部分。当所有可能被满足的订单都完成时，这一天结束。然后代理将学习，这意味着根据他们是否比以前更好以及如果他们做出其他判断可能会怎样来升级他们的决策启发式。然后他们将模仿与他们关联的财富比他们更富有的代理，适当调整他们的启发式。每两周，股票的基本价值将以适度比例变化。这是为了模拟基础公司资产的实际变化。平均股价和其他代理的基本属性将被保留。在此时，循环可能会恢复！[](../images/524458_1_En_6_Chapter/524458_1_En_6_Figa_HTML.png)
 - en: A flow chart has the process; true sight mapping, trend sight mapping, total
     price mapping, buy sell value, order creation, learning, and imitation.
+  id: totrans-33
   prefs: []
   type: TYPE_NORMAL
+  zh: 一个流程图显示了过程；真实视野映射、趋势视野映射、总价格映射、买卖价值、订单创建、学习和模仿。
 - en: 6.3.2 Agents and Stocks Features
+  id: totrans-34
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 6.3.2 代理与股票特征
 - en: Agents behave following three main decisional parameters; Greediness, Truesight
     and Trendsight. Moreover, they have a certain number of resources and a total
     net worth. More details on these 5 features are in Table [6.1](#Tab1).Table 6.1
+  id: totrans-35
   prefs: []
   type: TYPE_NORMAL
+  zh: 代理根据三个主要决策参数行事；贪婪度、真实视野和趋势视野。此外，它们拥有一定数量的资源和总净值。关于这 5 个特征的更多细节在表 [6.1](#Tab1)
+    中。表 6.1
 - en: Agent properties
+  id: totrans-36
   prefs: []
   type: TYPE_NORMAL
+  zh: 代理属性
 - en: '| Resources | Liquidity of the agents, money at their disposal. It is initially
     distributed in the population as a Pareto distribution with α = 1.16 |'
+  id: totrans-37
   prefs: []
   type: TYPE_TB
+  zh: '| 资源 | 代理的流动性，其处置的资金。最初以帕累托分布，α = 1.16，分布在人群中。'
 - en: '| Net worth | Total wealth, sum of resources and stock owned times their value
     at the moment |'
+  id: totrans-38
   prefs: []
   type: TYPE_TB
+  zh: '| 净值 | 总财富，资源和当前拥有的股票价值乘以其价值的总和 |'
 - en: '| Greediness | Willingness to be in the market. Value between 0 and 1, 0 being
     extreme fear of the market and 1 extreme F.O.M.O. from the market. It is distributed
     in the population as a Normal distribution *N* ~ (50, 20) |'
+  id: totrans-39
   prefs: []
   type: TYPE_TB
+  zh: '| 贪婪度 | 进入市场的意愿。值介于 0 和 1 之间，0 表示对市场极度恐惧，而 1 表示对市场极度恐慌。在人群中以正态分布*N* ~ (50,
+    20)分布 |'
 - en: '| Truesight | Ability to perform fundamental analysis of a stock. Value between
     0 and 1, 0 being total inability to price a stock based on its fundamentals and
     1 ability of perfectly doing it. It is initially distributed in the population
     as a Normal distribution *N* ~ (50, 20) |'
+  id: totrans-40
   prefs: []
   type: TYPE_TB
+  zh: '| 真实视野 | 对股票基本面分析的能力。值介于 0 和 1 之间，0 表示完全无法根据其基本面定价股票，而 1 表示完美地执行此操作。最初以正态分布*N* ~ (50,
+    20)分布在人群中 |'
 - en: '| Trendsigth | Importance given by an agent to trend analysis of a stock. Value
     between 0 and 1, 0 being complete indifference to trends while 1 is the opposite.
     It is initially distributed in the population as a Normal distribution *N* ~ (50,
     20) |'
+  id: totrans-41
   prefs: []
   type: TYPE_TB
+  zh: '| 趋势洞察 | 代理对股票趋势分析的重视程度。值介于 0 和 1 之间，0 表示对趋势完全不关心，而 1 则相反。最初以正态分布*N* ~ (50,
+    20)分布在人群中 |'
 - en: At the beginning of the simulation every agent is initialized attributing each
     of its a random value from a certain distribution depending on the feature.
+  id: totrans-42
   prefs: []
   type: TYPE_NORMAL
+  zh: 在模拟开始时，每个代理都会初始化，根据特征的不同分布为其分配随机值。
 - en: These 5 features, and in particular the 3 decisional one, are used by each agent
     to take a decision on which stock buy or sell and at what price.
+  id: totrans-43
   prefs: []
   type: TYPE_NORMAL
+  zh: 这 5 个特征，尤其是 3 个决策性特征，被每个代理用来决定买卖哪些股票以及价格。
 - en: The stocks present on the market are 3, they differ for their initial price
     and how much one of their 2 fundamental proprieties (the “true value”) variates
     in time.
+  id: totrans-44
   prefs: []
   type: TYPE_NORMAL
+  zh: 市场上存在的股票有 3 种，它们因其初始价格和其 2 种基本属性（“真实价值”）在时间上变化的程度而异。
 - en: The 2 fundamental proprieties are better explained in Table [6.2](#Tab2).Table
     6.2
+  id: totrans-45
   prefs: []
   type: TYPE_NORMAL
+  zh: 这 2 种基本属性在表 [6.2](#Tab2) 中更好地解释。表 6.2
 - en: Stock properties
+  id: totrans-46
   prefs: []
   type: TYPE_NORMAL
+  zh: 股票属性
 - en: '| True value | The price value one would obtain from a perfect price analysis,
     it can be seen as the real value of a stock, not perfectly known by anyone. It
     changes each 25 ticks, growing or decreasing by values included between 0.5 and
     6% |'
+  id: totrans-47
   prefs: []
   type: TYPE_TB
+  zh: '| 真实价值 | 从完美的价格分析中获得的价格值，可以看作是股票的真实价值，由任何人都不完全了解。它每 25 个 ticks 变化一次，增长或减少值在
+    0.5% 到 6% 之间 |'
 - en: '| Trend value | It’s simply given by a weighted average of the last 5 prices![$$\begin{aligned}\text{Trend
     Value}&amp;= 0.4\, \mathrm{Avg}.{\mathrm{Price}}_{\mathrm{n}}\\ &amp;\quad+ 0.25\,
     \mathrm{Avg}.{\mathrm{Price}}_{\mathrm{n}-1}\\ &amp;\quad+ 0.15\, \mathrm{Avg}.{\mathrm{Price}}_{\mathrm{n}-2}\\
     &amp;\quad+ 0.1\, \mathrm{Avg}.{\mathrm{Price}}_{\mathrm{n}-3}\\ &amp;\quad+ 0.1\,
     \mathrm{Avg}.{\mathrm{Price}}_{\mathrm{n}-4}\end{aligned}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq1.png)Where
     n is the tick value |'
+  id: totrans-48
   prefs: []
   type: TYPE_TB
+  zh: '| 趋势价值 | 它简单地由过去 5 个价格的加权平均值给出![$$\begin{aligned}\text{Trend Value}&amp;= 0.4\,
+    \mathrm{Avg}.{\mathrm{Price}}_{\mathrm{n}}\\ &amp;\quad+ 0.25\, \mathrm{Avg}.{\mathrm{Price}}_{\mathrm{n}-1}\\
+    &amp;\quad+ 0.15\, \mathrm{Avg}.{\mathrm{Price}}_{\mathrm{n}-2}\\ &amp;\quad+
+    0.1\, \mathrm{Avg}.{\mathrm{Price}}_{\mathrm{n}-3}\\ &amp;\quad+ 0.1\, \mathrm{Avg}.{\mathrm{Price}}_{\mathrm{n}-4}\end{aligned}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq1.png)其中
+    n 是 tick 值 |'
 - en: 6.3.3 Mapping Process
+  id: totrans-49
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 6.3.3 映射过程
 - en: At each simulation iteration, the features of each agent’s order are determined
     by the three decisional parameters of the agents and the two characteristics of
     the stocks. In practise, an agent will establish a price as if it were only behaving
@@ -353,17 +465,23 @@
     weighting both prices based on their trendsight and truesight values. The agent
     will then determine whether to buy or sell based on his own “greediness,” selling
     when greediness is low (market fear) and buying when greediness is high (FOMO).
+  id: totrans-50
   prefs: []
   type: TYPE_NORMAL
+  zh: 在每次模拟迭代中，每个代理订单的特征由代理的三个决策参数和股票的两个特性确定。在实践中，一个代理将建立一个价格，就好像它只是作为一个基本分析者行为，因此仅使用其“真视力”，一个价格，就好像它只是作为一个图表分析者行为，因此仅使用其“趋势视力”，然后一个总价基于它们的趋势视力和真视力值加权的价格。然后，代理将根据自己的“贪婪度”确定是否买入或卖出，当贪婪度较低时卖出（市场恐惧），当贪婪度较高时买入（FOMO）。
 - en: After this process the agent will create an order, hopefully the order will
     be matched, if not it will remain in the ledger for other 4 iterations, after
     which it will be eliminated.
+  id: totrans-51
   prefs: []
   type: TYPE_NORMAL
+  zh: 经过这个过程，代理将创建一个订单，希望订单能够匹配，如果不能，它将保留在账本上另外的 4 个迭代中，之后将被删除。
 - en: 6.3.4 Learning
+  id: totrans-52
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 6.3.4 学习
 - en: Each Agent will adjust its three decision parameters (Truesight, Trendsight,
     and Greediness) at the conclusion of each time interval. It does so by determining
     if its previous activities led to an increase in Net Worth, if that is the case
@@ -372,29 +490,46 @@
     and in the previous iteration he decided to increase (decrease), let’s say, its
     Greediness, it will increase (decrease) it again, and with very little probability
     it will do the opposite of what it did at the previous iteration.
+  id: totrans-53
   prefs: []
   type: TYPE_NORMAL
+  zh: 每个代理在每个时间间隔结束时将调整其三个决策参数（Truesight、Trendsight 和 Greediness）。它这样做是通过确定其先前的活动是否导致净值增加来完成的，如果是这样，代理将很可能保持参数不变，以较低的概率重复上次做出的选择（因此如果他看到其净值激增，并且在上一次迭代中他决定增加（减少）其
+    Greediness，它将再次增加（减少）它，并且以非常小的概率它会做与上一次迭代相反的事情。
 - en: 'In mathematical terms:'
+  id: totrans-54
   prefs: []
   type: TYPE_NORMAL
+  zh: 用数学术语表示：
 - en: Let
+  id: totrans-55
   prefs: []
   type: TYPE_NORMAL
+  zh: 让
 - en: 'P: payoff of an Agent, it’s how much its Net Worth increased since the last
     time it learned.'
+  id: totrans-56
   prefs: []
   type: TYPE_NORMAL
+  zh: P：代理的收益，即自上次学习以来其净值增加了多少。
 - en: '![$$S\left[y\right]\; with\; y\in \left[{T}_{s},{D}_{s},G\right]$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq2.png):
     Strategy the Agent is choosing at this time for the parameter y.'
+  id: totrans-57
   prefs: []
   type: TYPE_NORMAL
+  zh: '![$$S\left[y\right]\; with\; y\in \left[{T}_{s},{D}_{s},G\right]$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq2.png)：代理在此时选择的参数
+    y 的策略。'
 - en: '![$${S}^{old}\left[y\right]:$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq3.png)
     strategy with which the Agent learned at the previous loop. If ![$${S}^{old}\left[y\right]=-1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq4.png)
     it means the agent decreased its y-decision parameter, if ![$${S}^{old}\left[y\right]=1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq5.png)
     it increased it, if ![$${S}^{old}\left[y\right]=0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq6.png)
     it did nothing.'
+  id: totrans-58
   prefs: []
   type: TYPE_NORMAL
+  zh: '![$${S}^{old}\left[y\right]:$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq3.png)：上一轮代理程序学习的策略。如果
+    ![$${S}^{old}\left[y\right]=-1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq4.png)，表示代理程序减少了其
+    y-决策参数，如果 ![$${S}^{old}\left[y\right]=1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq5.png)，表示增加了其
+    y-决策参数，如果 ![$${S}^{old}\left[y\right]=0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq6.png)，则不做任何操作。'
 - en: '![$${w}_{k}^{P&gt;0}:$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq7.png)
     Probabilities to pick a new strategy among ![$$S\left[y\right] = 1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq8.png),
     ![$$S\left[y\right] =1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq9.png),
@@ -402,8 +537,15 @@
     given the previous strategy ![$${S}^{old}\left[y\right]$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq11.png)
     ![$$=k$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq12.png)
     and that P > 0.'
+  id: totrans-59
   prefs: []
   type: TYPE_NORMAL
+  zh: '![$${w}_{k}^{P&gt;0}:$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq7.png)：在给定先前策略
+    ![$${S}^{old}\left[y\right]$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq11.png)
+    ![$$=k$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq12.png)
+    和 P > 0 的情况下，在 ![$$S\left[y\right] = 1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq8.png)、![$$S\left[y\right]
+    =1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq9.png) 或 ![$$S\left[y\right]
+    = 0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq10.png) 之间选择新策略的概率。'
 - en: '![$${w}_{k}^{P\le 0}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq13.png):
     Probabilities to pick a new strategy among ![$$S\left[y\right] = 1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq14.png),
     ![$$S\left[y\right] =1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq15.png),
@@ -411,185 +553,296 @@
     given the previous strategy ![$${S}^{old}\left[y\right] = k$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq17.png)
     and that P ![$$\le$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq18.png)
     0.'
+  id: totrans-60
   prefs: []
   type: TYPE_NORMAL
+  zh: '![$${w}_{k}^{P\le 0}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq13.png)：在给定先前策略
+    ![$${S}^{old}\left[y\right] = k$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq17.png)
+    和 P ![$$\le$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq18.png)
+    0 的情况下，在 ![$$S\left[y\right] = 1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq14.png)、![$$S\left[y\right]
+    =1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq15.png) 或 ![$$S\left[y\right]
+    = 0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq16.png) 之间选择新策略的概率。'
 - en: '![$$\Gamma \left({w}_{k}^{P}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq19.png):
     Function outputting ![$${S}^{new}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq20.png)
     based on the probabilities ![$${w}_{k}^{P}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq21.png)'
+  id: totrans-61
   prefs: []
   type: TYPE_IMG
+  zh: '![$$\Gamma \left({w}_{k}^{P}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq19.png)：基于概率
+    ![$${w}_{k}^{P}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq21.png)
+    输出 ![$${S}^{new}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq20.png)
+    的函数。'
 - en: '**if** ![$${\varvec{P}}\boldsymbol{ }\le 0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq22.png)
     **then**'
+  id: totrans-62
   prefs: []
   type: TYPE_NORMAL
+  zh: '**如果** ![$${\varvec{P}}\boldsymbol{ }\le 0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq22.png)
+    **那么**'
 - en: '**for** y in ![$$\left[{T}_{s},{D}_{s},G\right]$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq23.png)
     **do**'
+  id: totrans-63
   prefs: []
   type: TYPE_NORMAL
+  zh: '**对于** y 在 ![$$\left[{T}_{s},{D}_{s},G\right]$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq23.png)
+    **循环执行**'
 - en: '**if** ![$${{\varvec{S}}}^{{\varvec{o}}{\varvec{l}}{\varvec{d}}}\left[{\varvec{y}}\right]=1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq24.png)
     **then**'
+  id: totrans-64
   prefs: []
   type: TYPE_NORMAL
+  zh: '**如果** ![$${{\varvec{S}}}^{{\varvec{o}}{\varvec{l}}{\varvec{d}}}\left[{\varvec{y}}\right]=1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq24.png)
+    **那么**'
 - en: '![$${S}^{new}\left[y\right]=\Gamma \left({w}_{1}^{P\le 0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq25.png)'
+  id: totrans-65
   prefs: []
   type: TYPE_IMG
+  zh: '![$${S}^{new}\left[y\right]=\Gamma \left({w}_{1}^{P\le 0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq25.png)'
 - en: '**else if** ![$${S}^{old}\left[y\right]=0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq26.png)
     **then**'
+  id: totrans-66
   prefs: []
   type: TYPE_NORMAL
+  zh: '**否则如果** ![$${S}^{old}\left[y\right]=0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq26.png)
+    **那么**'
 - en: '![$${S}^{new}\left[y\right]=\Gamma \left({w}_{0}^{P\le 0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq27.png)'
+  id: totrans-67
   prefs: []
   type: TYPE_IMG
+  zh: '![$${S}^{new}\left[y\right]=\Gamma \left({w}_{0}^{P\le 0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq27.png)'
 - en: '**else if** ![$${S}^{old}\left[y\right]=-1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq28.png)
     **then**'
+  id: totrans-68
   prefs: []
   type: TYPE_NORMAL
+  zh: '**else if** ![$${S}^{old}\left[y\right]=-1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq28.png)
+    **then**'
 - en: '![$${S}^{new}\left[y\right]=\Gamma \left({w}_{-1}^{P\le 0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq29.png)'
+  id: totrans-69
   prefs: []
   type: TYPE_IMG
+  zh: '![$${S}^{new}\left[y\right]=\Gamma \left({w}_{-1}^{P\le 0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq29.png)'
 - en: '**end if**'
+  id: totrans-70
   prefs: []
   type: TYPE_NORMAL
+  zh: '**end if**'
 - en: '**else if** ![$${\varvec{P}}\boldsymbol{ }&gt;0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq30.png)
     **then**'
+  id: totrans-71
   prefs: []
   type: TYPE_NORMAL
+  zh: '**else if** ![$${\varvec{P}}\boldsymbol{ }&gt;0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq30.png)
+    **then**'
 - en: '**for** y in ![$$\left[{T}_{s},{D}_{s},G\right]$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq31.png)
     **do.**'
+  id: totrans-72
   prefs: []
   type: TYPE_NORMAL
+  zh: '**for** y in ![$$\left[{T}_{s},{D}_{s},G\right]$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq31.png)
+    **do.**'
 - en: '**if** ![$${{\varvec{S}}}^{{\varvec{o}}{\varvec{l}}{\varvec{d}}}\left[{\varvec{y}}\right]=1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq32.png)
     **then**'
+  id: totrans-73
   prefs: []
   type: TYPE_NORMAL
+  zh: '**if** ![$${{\varvec{S}}}^{{\varvec{o}}{\varvec{l}}{\varvec{d}}}\left[{\varvec{y}}\right]=1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq32.png)
+    **then**'
 - en: '![$${S}^{new}\left[y\right]=\Gamma \left({w}_{1}^{P&gt;0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq33.png)'
+  id: totrans-74
   prefs: []
   type: TYPE_IMG
+  zh: '![$${S}^{new}\left[y\right]=\Gamma \left({w}_{1}^{P&gt;0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq33.png)'
 - en: '**else if** ![$${S}^{old}\left[y\right]=0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq34.png)
     **then**'
+  id: totrans-75
   prefs: []
   type: TYPE_NORMAL
+  zh: '**else if** ![$${S}^{old}\left[y\right]=0$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq34.png)
+    **then**'
 - en: '![$${S}^{new}\left[y\right]=\Gamma \left({w}_{0}^{P&gt;0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq35.png)'
+  id: totrans-76
   prefs: []
   type: TYPE_IMG
+  zh: '![$${S}^{new}\left[y\right]=\Gamma \left({w}_{0}^{P&gt;0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq35.png)'
 - en: '**else if** ![$${S}^{old}\left[y\right]=-1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq36.png)
     **then**'
+  id: totrans-77
   prefs: []
   type: TYPE_NORMAL
+  zh: '**else if** ![$${S}^{old}\left[y\right]=-1$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq36.png)
+    **then**'
 - en: '![$${S}^{new}\left[y\right]=\Gamma \left({w}_{-1}^{P&gt;0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq37.png)'
+  id: totrans-78
   prefs: []
   type: TYPE_IMG
+  zh: '![$${S}^{new}\left[y\right]=\Gamma \left({w}_{-1}^{P&gt;0}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq37.png)'
 - en: '**end if**'
+  id: totrans-79
   prefs: []
   type: TYPE_NORMAL
+  zh: '**end if**'
 - en: '**end if**'
+  id: totrans-80
   prefs: []
   type: TYPE_NORMAL
+  zh: '**end if**'
 - en: 6.3.5 Imitation
+  id: totrans-81
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 6.3.5 模仿
 - en: 'The imitation process is relatively simple: the agents are connected in a Barabasi-Albert
     Graph in which the wealthier nodes are also those with a higher degree. Each tick,
     agents will examine their first-degree neighbours and adjust their parameters
     to resemble those of their wealthier neighbours.'
+  id: totrans-82
   prefs: []
   type: TYPE_NORMAL
+  zh: 模仿过程相对简单：代理以巴拉巴西-艾伯特图连接，其中财富较大的节点也是度较高的节点。每个时刻，代理将检查其一度邻居并调整其参数以类似于其较富裕的邻居。
 - en: 'Let:'
+  id: totrans-83
   prefs: []
   type: TYPE_NORMAL
+  zh: 'Let:'
 - en: '![$${A}_{i}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq38.png):
     i-Agent'
+  id: totrans-84
   prefs: []
   type: TYPE_NORMAL
+  zh: '![$${A}_{i}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq38.png):
+    i-代理'
 - en: '![$${{\varvec{N}}}^{{\varvec{i}}}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq39.png):
     Set of the Neighbours of the i-Agent'
+  id: totrans-85
   prefs: []
   type: TYPE_NORMAL
+  zh: '![$${{\varvec{N}}}^{{\varvec{i}}}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq39.png):
+    i-代理的邻居集合'
 - en: '![$${N}_{j}^{i}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq40.png):
     j-Neighbour Agent of the i-Agent'
+  id: totrans-86
   prefs: []
   type: TYPE_NORMAL
+  zh: '![$${N}_{j}^{i}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq40.png):
+    j-邻居代理的i-代理'
 - en: '![$$W\left(x\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq41.png):
     Net Worth of the element × (an Agent or a Neighbour)'
+  id: totrans-87
   prefs: []
   type: TYPE_IMG
+  zh: '![$$W\left(x\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq41.png):
+    元素的净值 × （一个代理或一个邻居）'
 - en: 'G(x): Greediness of the element × (an Agent or a Neighbour)'
+  id: totrans-88
   prefs: []
   type: TYPE_NORMAL
+  zh: 'G(x): 元素的贪婪程度 × （一个代理或一个邻居）'
 - en: 'T(x): Truesight of the element × (an Agent or a Neighbour)'
+  id: totrans-89
   prefs: []
   type: TYPE_NORMAL
+  zh: 'T(x): 元素的真实视野 × （一个代理或一个邻居）'
 - en: 'D(x): Trendsight of the element × (an Agent or a Neighbour)'
+  id: totrans-90
   prefs: []
   type: TYPE_NORMAL
+  zh: 'D(x): 元素的趋势视野 × （一个代理或一个邻居）'
 - en: 'deg(x): Degree of the node associated to the element × (an Agent or a Neighbour)
     in the Network'
+  id: totrans-91
   prefs: []
   type: TYPE_NORMAL
+  zh: 'deg(x): 节点关联的元素的度 × （一个代理或一个邻居）在网络中'
 - en: 'V: number of Agents in the model'
+  id: totrans-92
   prefs: []
   type: TYPE_NORMAL
+  zh: 'V: 模型中的代理数量'
 - en: '**for** ![$${N}_{j}^{i}\; in \;{\boldsymbol{ }{\varvec{N}}}^{{\varvec{i}}}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq42.png)
     **do**'
+  id: totrans-93
   prefs: []
   type: TYPE_NORMAL
+  zh: '**for** ![$${N}_{j}^{i}\; in \;{\boldsymbol{ }{\varvec{N}}}^{{\varvec{i}}}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq42.png)
+    **do**'
 - en: '**if** ![$$\left({N}_{j}^{i}\right)&gt;W\left({A}_{i}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq43.png)
     **then**'
+  id: totrans-94
   prefs: []
   type: TYPE_NORMAL
+  zh: '**if** ![$$\left({N}_{j}^{i}\right)&gt;W\left({A}_{i}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq43.png)
+    **then**'
 - en: '**if** ![$$G\left({N}_{j}^{i}\right)\ge G\left({A}_{i}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq44.png)
     **then**'
+  id: totrans-95
   prefs: []
   type: TYPE_NORMAL
 - en: '![$$G\left({A}_{i}\right)=G\left({A}_{i}\right)\cdot \left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq45.png)'
+  id: totrans-96
   prefs: []
   type: TYPE_IMG
 - en: '**else**'
+  id: totrans-97
   prefs: []
   type: TYPE_NORMAL
 - en: '![$$G\left({A}_{i}\right)=\frac{G\left({A}_{i}\right)}{\left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq46.png)'
+  id: totrans-98
   prefs: []
   type: TYPE_IMG
 - en: '**end if**'
+  id: totrans-99
   prefs: []
   type: TYPE_NORMAL
 - en: '**if** ![$$T\left({N}_{j}^{i}\right)\ge T\left({A}_{i}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq47.png)
     **then**'
+  id: totrans-100
   prefs: []
   type: TYPE_NORMAL
 - en: '![$$T\left({A}_{i}\right)=T\left({A}_{i}\right)\cdot \left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq48.png)'
+  id: totrans-101
   prefs: []
   type: TYPE_IMG
 - en: '**else**'
+  id: totrans-102
   prefs: []
   type: TYPE_NORMAL
 - en: '![$$T\left({A}_{i}\right)=\frac{T\left({A}_{i}\right)}{\left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq49.png)'
+  id: totrans-103
   prefs: []
   type: TYPE_IMG
 - en: '**end if**'
+  id: totrans-104
   prefs: []
   type: TYPE_NORMAL
 - en: '**if** ![$$D\left({N}_{j}^{i}\right)\ge D\left({A}_{i}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq50.png)
     **then**'
+  id: totrans-105
   prefs: []
   type: TYPE_NORMAL
 - en: '![$$D\left({A}_{i}\right)=D\left({A}_{i}\right)\cdot \left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq51.png)'
+  id: totrans-106
   prefs: []
   type: TYPE_IMG
 - en: '**else**'
+  id: totrans-107
   prefs: []
   type: TYPE_NORMAL
 - en: '![$$D\left({A}_{i}\right)=\frac{D\left({A}_{i}\right)}{\left(1+\frac{deg\left({N}_{j}^{i}\right)}{V}\right)}$$](../images/524458_1_En_6_Chapter/524458_1_En_6_Chapter_TeX_IEq52.png)'
+  id: totrans-108
   prefs: []
   type: TYPE_IMG
 - en: '**end if**'
+  id: totrans-109
   prefs: []
   type: TYPE_NORMAL
 - en: '**end if**'
+  id: totrans-110
   prefs: []
   type: TYPE_NORMAL
 - en: 6.3.6 Results and Comments
+  id: totrans-111
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
@@ -602,6 +855,7 @@
     one among the imitation or the learning mechanism. This led us to think that to
     obtain non trivial model, where we can observe the emergence of types of investors,
     we need both mechanisms working at the same time.
+  id: totrans-112
   prefs: []
   type: TYPE_NORMAL
 - en: Other interesting results came from performing a K-Mean Cluster analysis over
@@ -611,9 +865,11 @@
     to identify groups of investors who react similarly to changes in the market in
     which they participate by interacting (imitation mechanism) and by changing their
     strategy based on previous performance (learning mechanism).
+  id: totrans-113
   prefs: []
   type: TYPE_NORMAL
 - en: 6.4 Conclusions
+  id: totrans-114
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
@@ -627,9 +883,14 @@
     and innovation. Our model was on the same line. A very early stage research on
     investors dynamic clustering and on the role of imitation and learning in the
     modelling of financial markets.
+  id: totrans-115
   prefs: []
   type: TYPE_NORMAL
+  zh: ABM 是一种强大而创新的工具，其理想用途是解决难以通过自上而下方法解决的问题。将金融市场视为复杂系统使其成为 ABM 显而易见的应用领域。然而，与 ML
+    不同，后者已经展示了令人期待的实际应用，目前 ABM 似乎主要在学术界提供其大部分成果，尤其是用于描述市场中发生的社会现象。这使我们认为我们对这种建模技术仍处于早期阶段，因此还有很大的改进和创新空间。我们的模型也是如此。一个对投资者动态聚类和模拟与学习在金融市场建模中作用的早期研究。
 - en: In conclusion we can say that while ABM is still waiting to escape academia,
     it’s usefulness is undeniable, and the financial world can only benefit from it.
+  id: totrans-116
   prefs: []
   type: TYPE_NORMAL
+  zh: 总之，我们可以说，虽然 ABM 仍在等待摆脱学术界，但其用处不可否认，金融世界只会从中受益。

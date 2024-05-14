@@ -3,11 +3,13 @@
   id: totrans-0
   prefs: []
   type: TYPE_NORMAL
+  zh: © 作者授予施普林格自然瑞士有限公司独家许可 2023 F.切科尼（主编）金融市场中的人工智能计算社会科学[https://doi.org/10.1007/978-3-031-26518-1_5](https://doi.org/10.1007/978-3-031-26518-1_5)
 - en: '5. AI Fintech: Find Out the Truth'
   id: totrans-1
   prefs:
   - PREF_H1
   type: TYPE_NORMAL
+  zh: 5. 人工智能金融科技：揭示真相
 - en: 'Federico Cecconi^([1](#Aff16) [ ](#ContactOfAuthor1)) and Alessandro Barazzetti^([2](#Aff17) [ ](#ContactOfAuthor2))(1)LABSS-ISTC-CNR,
     Via Palestro 32, 00185 Rome, Italy(2)QBT Sagl,, Via E.Bossi, 4 CH6830 Chiasso,
     SwitzerlandFederico Cecconi (Corresponding author)Email: [federico.cecconi@istc.cnr.it](mailto:federico.cecconi@istc.cnr.it)Alessandro BarazzettiEmail:
@@ -15,11 +17,16 @@
   id: totrans-2
   prefs: []
   type: TYPE_NORMAL
+  zh: '费德里科·切科尼^([1](#Aff16) [ ](#ContactOfAuthor1)) 和 阿莱山德罗·巴拉泽蒂^([2](#Aff17) [ ](#ContactOfAuthor2))
+    (1)LABSS-ISTC-CNR, 意大利罗马, Via Palestro 32, 00185(2)QBT Sagl, 瑞士基亚索, Via E.Bossi,
+    4 CH6830 阿莱山德罗·巴拉泽蒂（通讯作者）Email: [federico.cecconi@istc.cnr.it](mailto:federico.cecconi@istc.cnr.it)
+    阿莱山德罗·巴拉泽蒂Email: [alessandro.barazzetti@qbt.ch](mailto:alessandro.barazzetti@qbt.ch)'
 - en: Abstract
   id: totrans-3
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 摘要
 - en: 'We propose one example of application that could have a large impact on our
     economies: the use of artificial agents to reproduce dynamics, case study the
     spreading of fake news. It is known that a large number of applications (some
@@ -42,10 +49,17 @@
   id: totrans-4
   prefs: []
   type: TYPE_NORMAL
+  zh: '我们提出了一个应用示例，可能对我们的经济产生重大影响：利用人工智能代理复制动态，研究假新闻的传播。众所周知，大量应用程序（其中一些在此处描述）致力于通过观察主要趋势来投资于金融市场，通常以非常高的速度进行操作。这些应用程序经常通过不理性地加速下行趋势而引起问题。市场正在采取措施应对这种类型的问题。但是，正在出现能够评估不是趋势而是直接是趋势本身原因的新闻的自动交易员。这引发了以下问题：如果文化传播（在这种情况下是新闻，但也可能是社交网络上的帖子，稍有改变）因“假新闻”的出现而变得困难，我们如何对我们的自动交易员的运作感到放心？在这里，我们提出了对这个问题的全新方法，该方法利用了一种广泛应用的人工智能技术，即人工代理。这些代理重现了假新闻的传播现象，并提供了如何对抗它的指导（Chen
+    and Freire in Discovering and measuring malicious URL redirection campaigns from
+    fake news domains, pp. 1–6, [2021](#CR1); Garg et al. in Replaying archived twitter:
+    when your bird is broken, will it bring you down? pp. 160–169, [2021](#CR3); Mahesh
+    et al. in Identification of Fake News Using Deep Learning Architecture, pp. 1246–1253,
+    [2021](#CR7)).'
 - en: KeywordsFake newsAutomatic tradingAgent based simulationFederico Cecconi
   id: totrans-5
   prefs: []
   type: TYPE_NORMAL
+  zh: 关键词假新闻自动交易基于代理的仿真费德里科·切科尼
 - en: 'is R&D manager for QBT Sagl ([https://​www.​qbt.​ch](https://www.qbt.ch)),
     responsible for the LABSS (CNR) of the computer network management and computational
     resources for simulation, and consultant for Arcipelago Software Srl. He develops
@@ -57,10 +71,13 @@
   id: totrans-6
   prefs: []
   type: TYPE_NORMAL
+  zh: 是QBT Sagl的研发经理 ([https://​www.​qbt.​ch](https://www.qbt.ch))，负责计算机网络管理和模拟的LABSS（CNR），并为Arcipelago
+    Software Srl担任顾问。他为Labss的问题（社会动态、声誉、规范动态）开发计算和数学模型。Labss既进行传播又进行培训。他目前的研究兴趣有两个方面：一方面，使用计算模型和数据库研究社会经济现象。第二个是为金融科技和地产科技开发人工智能模型。
 - en: Alessandro Barazzetti
   id: totrans-7
   prefs: []
   type: TYPE_NORMAL
+  zh: 阿莱山德罗·巴拉泽蒂
 - en: aeronautical engineer at the Politecnico di Milano, Professor at Ludes Off-Campus
     Semmelweis University and pilot is the owner of QBT Sagl, a company operating
     in the development of Algorithms and Software in the Fintech and Proptech sector
@@ -71,11 +88,15 @@
   id: totrans-8
   prefs: []
   type: TYPE_NORMAL
+  zh: 米兰理工大学航空工程师，卢德斯（Ludes）校外赛梅尔威斯大学（Semmelweis University）教授和飞行员是 QBT Sagl 的所有者，该公司在金融科技和房地产科技领域开发算法和软件，并且是
+    Science Adventure Sagl 的所有者，该公司专注于开发应用于卫生保健的人工智能解决方案以及航空航天领域的高级项目。亚历山德罗还是 SST
+    srl 的创始人，一家致力于可持续性研究和认证的公司，以及 Reacorp Sagl，一家致力于金融科技和房地产科技服务的公司。
 - en: 5.1 The Diffusion of Culture
   id: totrans-9
   prefs:
   - PREF_H2
   type: TYPE_NORMAL
+  zh: 5.1 文化的扩散
 - en: The sociological literature relating to the dynamics of diffusion and consolidation
     of culture is very extensive. Here we have chosen to start from the concept of
     culture defined by Axelrod who sees the dissemination of culture as the output
@@ -87,6 +108,7 @@
   id: totrans-10
   prefs: []
   type: TYPE_NORMAL
+  zh: 与文化扩散和巩固动态相关的社会学文献非常广泛。在这里，我们选择从 Axelrod 定义的文化概念出发，他认为文化的传播是社会行为者之间相互影响过程的产物，这些行为者分享特定的价值观和独特的特征。实际上，相似的代理人倾向于彼此之间的互动，因此在他们之间形成了一种同化增长的圈子。在这种情况下，代理人之间的互动过程起着关键作用。
 - en: In particular, the omnipresence of social structures can be found within the
     daily behavior of social actors to the point of co-occurring in the determination
     of their own identity. In the collective dimension, the role of social media is
@@ -96,6 +118,7 @@
   id: totrans-11
   prefs: []
   type: TYPE_NORMAL
+  zh: 特别是，在社会行为者的日常行为中可以找到社会结构的无处不在，以至于在确定自身身份的过程中同时发生。在集体维度上，社交媒体的作用在于确定可以是“弱”的、瞬时的亲和网络，但也可以自我构建到成为真正的社会群体的程度。
 - en: Therefore, within the dimension of social media, the relational potential acquires
     such importance that the consumer is not only a user of messages and contents
     but also becomes their producer and editor, generating a continuous circle of
@@ -103,6 +126,7 @@
   id: totrans-12
   prefs: []
   type: TYPE_NORMAL
+  zh: 因此，在社交媒体的维度内，关系潜力变得如此重要，以至于消费者不仅是信息和内容的使用者，还成为它们的生产者和编辑，形成了一个连续的知识循环。
 - en: In this interpretative frame the figure of the prosumer is born, i.e. the one
     who is the producer (producer) and user (consumer) of the media product. The term
     prosumer was coined in 1980 by the American sociologist Toffler already in 1975
@@ -112,6 +136,8 @@
   id: totrans-13
   prefs: []
   type: TYPE_NORMAL
+  zh: 在这种解释框架中，产消者的形象诞生了，即媒体产品的生产者（生产者）和用户（消费者）。产消者这一术语是由美国社会学家托夫勒在 1980 年创造的，而让·克鲁提尔（Jean
+    Cloutier）在 1975 年已经制定了一个类似的理想类型，将其定义为自我媒体，这两种情况下我们都指的是主体在当代文化和媒体产品中既是生产者又是用户的能力。
 - en: The digital prosumer, however, is not to be considered as a particular one-off
     figure but rather defines any user of the network. Since each digital actor is
     also a content producer, in particular a data producer. The action of producing
@@ -122,6 +148,7 @@
   id: totrans-14
   prefs: []
   type: TYPE_NORMAL
+  zh: 然而，数字生产者不能被视为一个特定的一次性人物，而是定义了网络的任何用户。由于每个数字行为者也是内容生产者，特别是数据生产者。在网络空间内生成数字内容的行为实际上不一定局限于创建特定的在线多媒体内容（帖子、视频、图像），它还涉及到更简单和表面上低沟通活动，比如分享或转发内容，插入喜欢或在特定地点地理定位自己。
 - en: Choosing to open one website rather than another also means that you have also
     unknowingly contributed to its management.
   id: totrans-15
