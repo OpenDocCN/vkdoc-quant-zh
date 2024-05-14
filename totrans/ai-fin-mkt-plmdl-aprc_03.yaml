@@ -1351,186 +1351,246 @@
   id: totrans-184
   prefs: []
   type: TYPE_TB
+  zh: '| *第7号函数* | 8.57E−02 | 8.98E−02 | 9.07E−02 | 1.44E−01 | 1.19E−01 | 2.28E−01
+    |'
 - en: '| *Function #8* | 1.97E−01 | 1.15E−01 | 1.24E−01 | 1.68E−01 | 1.14E−01 | 3.30E−01
     |'
   id: totrans-185
   prefs: []
   type: TYPE_TB
+  zh: '| *第8号函数* | 1.97E−01 | 1.15E−01 | 1.24E−01 | 1.68E−01 | 1.14E−01 | 3.30E−01
+    |'
 - en: '| *Function #9* | 1.20E−01 | 1.01E−01 | 9.57E−02 | 1.07E−01 | 1.14E−01 | 9.11E−02
     |'
   id: totrans-186
   prefs: []
   type: TYPE_TB
+  zh: '| *第9号函数* | 1.20E−01 | 1.01E−01 | 9.57E−02 | 1.07E−01 | 1.14E−01 | 9.11E−02
+    |'
 - en: '| *Function #10* | 2.88E−01 | 2.12E−01 | 2.15E−01 | 1.94E−01 | 2.13E−01 | 8.83E−01
     |'
   id: totrans-187
   prefs: []
   type: TYPE_TB
+  zh: '| *第10号函数* | 2.88E−01 | 2.12E−01 | 2.15E−01 | 1.94E−01 | 2.13E−01 | 8.83E−01
+    |'
 - en: '| *Function #11* | 4.59E−01 | 1.72E−01 | 2.63E−01 | 1.72E−01 | 1.68E−01 | 2.36E−01
     |'
   id: totrans-188
   prefs: []
   type: TYPE_TB
+  zh: '| *第11号函数* | 4.59E−01 | 1.72E−01 | 2.63E−01 | 1.72E−01 | 1.68E−01 | 2.36E−01
+    |'
 - en: '| *Function #12* | 9.51E−02 | 9.11E−02 | 8.82E−02 | 1.01E−01 | 1.14E−01 | 8.91E−02
     |'
   id: totrans-189
   prefs: []
   type: TYPE_TB
+  zh: '| *第12号函数* | 9.51E−02 | 9.11E−02 | 8.82E−02 | 1.01E−01 | 1.14E−01 | 8.91E−02
+    |'
 - en: '| *Function #13* | 6.53E−02 | 7.56E−02 | 8.19E−02 | 7.06E−02 | 1.14E−01 | 8.71E−02
     |'
   id: totrans-190
   prefs: []
   type: TYPE_TB
+  zh: '| *第13号函数* | 6.53E−02 | 7.56E−02 | 8.19E−02 | 7.06E−02 | 1.14E−01 | 8.71E−02
+    |'
 - en: '| Mean | 2.18E−01 | 1.29E−01 | 1.53E−01 | 1.52E−01 | 1.41E−01 | 3.08E−01 |'
   id: totrans-191
   prefs: []
   type: TYPE_TB
+  zh: '| 平均 | 2.18E−01 | 1.29E−01 | 1.53E−01 | 1.52E−01 | 1.41E−01 | 3.08E−01 |'
 - en: '| Std | 1.44E−01 | 6.46E−02 | 7.72E−02 | 3.85E−02 | 5.50E−02 | 2.58E−01 |'
   id: totrans-192
   prefs: []
   type: TYPE_TB
+  zh: '| 标准差 | 1.44E−01 | 6.46E−02 | 7.72E−02 | 3.85E−02 | 5.50E−02 | 2.58E−01 |'
 - en: '| Median | 1.97E−01 | 1.15E−01 | 1.24E−01 | 1.68E−01 | 1.14E−01 | 2.36E−01
     |'
   id: totrans-193
   prefs: []
   type: TYPE_TB
+  zh: '| 中位数 | 1.97E−01 | 1.15E−01 | 1.24E−01 | 1.68E−01 | 1.14E−01 | 2.36E−01 |'
 - en: '| Min | 6.53E−02 | 7.55E−02 | 8.19E−02 | 7.06E−02 | 1.14E−01 | 8.71E−02 |'
   id: totrans-194
   prefs: []
   type: TYPE_TB
+  zh: '| 最小值 | 6.53E−02 | 7.55E−02 | 8.19E−02 | 7.06E−02 | 1.14E−01 | 8.71E−02 |'
 - en: '| Max | 4.59E−01 | 2.98E−01 | 3.08E−01 | 2.01E−01 | 2.95E−01 | 8.83E−01 |'
   id: totrans-195
   prefs: []
   type: TYPE_TB
+  zh: '| 最大值 | 4.59E−01 | 2.98E−01 | 3.08E−01 | 2.01E−01 | 2.95E−01 | 8.83E−01 |'
 - en: 3.4.4 For 1,260 Observations (Tables [3.7](#Tab7) and [3.8](#Tab8))
   id: totrans-196
   prefs:
   - PREF_H3
   type: TYPE_NORMAL
+  zh: 3.4.4 对于 1,260 个观测值（表 [3.7](#Tab7) 和 [3.8](#Tab8)）
 - en: Table 3.7
   id: totrans-197
   prefs: []
   type: TYPE_NORMAL
+  zh: 表 3.7
 - en: Summary statistics of the root mean square error, for 1,260 observations
   id: totrans-198
   prefs: []
   type: TYPE_NORMAL
+  zh: 每个函数的均方根误差汇总统计，共 1,260 个观测值
 - en: '|   | Mean | Std | Median | Min | Max |'
   id: totrans-199
   prefs: []
   type: TYPE_TB
+  zh: '|   | 平均 | 标准差 | 中位数 | 最小值 | 最大值 |'
 - en: '| --- | --- | --- | --- | --- | --- |'
   id: totrans-200
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- | --- | --- | --- |'
 - en: '| Linear | 2.09E−01 | 1.40E−01 | 1.88E−01 | 2.94E−03 | 5.12E−01 |'
   id: totrans-201
   prefs: []
   type: TYPE_TB
+  zh: '| 线性 | 2.09E−01 | 1.40E−01 | 1.88E−01 | 2.94E−03 | 5.12E−01 |'
 - en: '| LNLM | 1.16E−01 | 6.61E−02 | 9.58E−02 | 1.12E−02 | 4.38E−01 |'
   id: totrans-202
   prefs: []
   type: TYPE_TB
+  zh: '| LNLM | 1.16E−01 | 6.61E−02 | 9.58E−02 | 1.12E−02 | 4.38E−01 |'
 - en: '| Naive LNLM | 1.43E−01 | 7.97E−02 | 1.22E−01 | 2.14E−02 | 3.83E−01 |'
   id: totrans-203
   prefs: []
   type: TYPE_TB
+  zh: '| Naive LNLM | 1.43E−01 | 7.97E−02 | 1.22E−01 | 2.14E−02 | 3.83E−01 |'
 - en: '| Non-Parametric | 1.37E−01 | 5.17E−02 | 1.38E−01 | 2.95E−03 | 5.46E−01 |'
   id: totrans-204
   prefs: []
   type: TYPE_TB
+  zh: '| 非参数 | 1.37E−01 | 5.17E−02 | 1.38E−01 | 2.95E−03 | 5.46E−01 |'
 - en: '| Polynomial by OLS | 1.26E−01 | 6.25E−02 | 1.08E−01 | 2.77E−02 | 4.88E−01
     |'
   id: totrans-205
   prefs: []
   type: TYPE_TB
+  zh: '| 普通最小二乘法多项式 | 1.26E−01 | 6.25E−02 | 1.08E−01 | 2.77E−02 | 4.88E−01 |'
 - en: '| Polynomial by Ridge | 2.58E−01 | 2.70E−01 | 1.40E−01 | 1.20E−02 | 1.08E+00
     |'
   id: totrans-206
   prefs: []
   type: TYPE_TB
+  zh: '| 岭回归多项式 | 2.58E−01 | 2.70E−01 | 1.40E−01 | 1.20E−02 | 1.08E+00 |'
 - en: Table 3.8
   id: totrans-207
   prefs: []
   type: TYPE_NORMAL
+  zh: 表 3.8
 - en: Average root mean square error per function fitted, for 1,260 observations
   id: totrans-208
   prefs: []
   type: TYPE_NORMAL
+  zh: 拟合的每个函数的平均均方根误差，共 1,260 个观测值
 - en: '|   | Linear | LNLM | Naive LNLM | Non-Parametric | Polynomial by OLS | Polynomial
     by Ridge |'
   id: totrans-209
   prefs: []
   type: TYPE_TB
+  zh: '|   | 线性 | LNLM | Naive LNLM | 非参数 | 普通最小二乘法多项式 | 岭回归多项式 |'
 - en: '| --- | --- | --- | --- | --- | --- | --- |'
   id: totrans-210
   prefs: []
   type: TYPE_TB
+  zh: '| --- | --- | --- | --- | --- | --- | --- |'
 - en: '| *Function #1* | 5.63E−02 | 7.02E−02 | 7.14E−02 | 1.38E−01 | 9.92E−02 | 2.28E−01
     |'
   id: totrans-211
   prefs: []
   type: TYPE_TB
+  zh: '| *第1号函数* | 5.63E−02 | 7.02E−02 | 7.14E−02 | 1.38E−01 | 9.92E−02 | 2.28E−01
+    |'
 - en: '| *Function #2* | 5.63E−02 | 7.07E−02 | 7.14E−02 | 1.64E−01 | 9.92E−02 | 2.06E−01
     |'
   id: totrans-212
   prefs: []
   type: TYPE_TB
+  zh: '| *第2号函数* | 5.63E−02 | 7.07E−02 | 7.14E−02 | 1.64E−01 | 9.92E−02 | 2.06E−01
+    |'
 - en: '| *Function #3* | 3.77E−01 | 2.84E−01 | 3.03E−01 | 1.77E−01 | 2.83E−01 | 7.89E−01
     |'
   id: totrans-213
   prefs: []
   type: TYPE_TB
+  zh: '| *第3号函数* | 3.77E−01 | 2.84E−01 | 3.03E−01 | 1.77E−01 | 2.83E−01 | 7.89E−01
+    |'
 - en: '| *Function #4* | 3.05E−01 | 1.02E−01 | 1.68E−01 | 1.54E−01 | 9.94E−02 | 3.22E−01
     |'
   id: totrans-214
   prefs: []
   type: TYPE_TB
+  zh: '| *第4号函数* | 3.05E−01 | 1.02E−01 | 1.68E−01 | 1.54E−01 | 9.94E−02 | 3.22E−01
+    |'
 - en: '| *Function #5* | 2.92E−01 | 1.10E−01 | 1.66E−01 | 1.34E−01 | 1.06E−01 | 1.31E−01
     |'
   id: totrans-215
   prefs: []
   type: TYPE_TB
+  zh: '| *第5号函数* | 2.92E−01 | 1.10E−01 | 1.66E−01 | 1.34E−01 | 1.06E−01 | 1.31E−01
+    |'
 - en: '| *Function #6* | 3.80E−01 | 1.01E−01 | 2.02E−01 | 1.50E−01 | 9.92E−02 | 1.33E−01
     |'
   id: totrans-216
   prefs: []
   type: TYPE_TB
+  zh: '| *第6号函数* | 3.80E−01 | 1.01E−01 | 2.02E−01 | 1.50E−01 | 9.92E−02 | 1.33E−01
+    |'
 - en: '| *Function #7* | 7.80E−02 | 8.27E−02 | 8.02E−02 | 1.26E−01 | 1.04E−01 | 1.90E−01
     |'
   id: totrans-217
   prefs: []
   type: TYPE_TB
+  zh: '| *第7号函数* | 7.80E−02 | 8.27E−02 | 8.02E−02 | 1.26E−01 | 1.04E−01 | 1.90E−01
+    |'
 - en: '| *Function #8* | 1.89E−01 | 9.78E−02 | 1.12E−01 | 1.45E−01 | 9.92E−02 | 2.61E−01
     |'
   id: totrans-218
   prefs: []
   type: TYPE_TB
+  zh: '| *第8号函数* | 1.89E−01 | 9.78E−02 | 1.12E−01 | 1.45E−01 | 9.92E−02 | 2.61E−01
+    |'
 - en: '| *Function #9* | 1.10E−01 | 8.87E−02 | 8.29E−02 | 9.91E−02 | 9.92E−02 | 7.85E−02
     |'
   id: totrans-219
   prefs: []
   type: TYPE_TB
+  zh: '| *第9号函数* | 1.10E−01 | 8.87E−02 | 8.29E−02 | 9.91E−02 | 9.92E−02 | 7.85E−02
+    |'
 - en: '| *Function #10* | 2.81E−01 | 1.93E−01 | 2.07E−01 | 1.74E−01 | 1.94E−01 | 6.78E−01
     |'
   id: totrans-220
   prefs: []
   type: TYPE_TB
+  zh: '| *第10号函数* | 2.81E−01 | 1.93E−01 | 2.07E−01 | 1.74E−01 | 1.94E−01 | 6.78E−01
+    |'
 - en: '| *Function #11* | 4.52E−01 | 1.53E−01 | 2.53E−01 | 1.53E−01 | 1.54E−01 | 1.83E−01
     |'
   id: totrans-221
   prefs: []
   type: TYPE_TB
+  zh: '| *第11号函数* | 4.52E−01 | 1.53E−01 | 2.53E−01 | 1.53E−01 | 1.54E−01 | 1.83E−01
+    |'
 - en: '| *Function #12* | 8.58E−02 | 8.19E−02 | 7.69E−02 | 9.41E−02 | 9.92E−02 | 7.70E−02
     |'
   id: totrans-222
   prefs: []
   type: TYPE_TB
+  zh: '| *第12号函数* | 8.58E−02 | 8.19E−02 | 7.69E−02 | 9.41E−02 | 9.92E−02 | 7.70E−02
+    |'
 - en: '| *Function #13* | 5.63E−02 | 6.97E−02 | 7.14E−02 | 7.87E−02 | 9.92E−02 | 7.52E−02
     |'
   id: totrans-223
   prefs: []
   type: TYPE_TB
+  zh: '| *第13号函数* | 5.63E−02 | 6.97E−02 | 7.14E−02 | 7.87E−02 | 9.92E−02 | 7.52E−02
+    |'
 - en: '| Mean | 2.09E−01 | 1.16E−01 | 1.43E−01 | 1.37E−01 | 1.26E−01 | 2.58E−01 |'
   id: totrans-224
   prefs: []
