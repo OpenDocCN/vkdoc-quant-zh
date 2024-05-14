@@ -1,6 +1,6 @@
 
 
-# 第二章： AI，整体视角
+# 第二章：AI，整体视角
 
 Luca Marconi^(1  )(1)意大利国家研究委员会认知科学与技术研究所，人工智能、大脑、心灵和社会高级学校，罗马，圣马丁诺德拉巴塔利亚 44 号 Luca MarconiEmail: luca.marc@hotmail.it
 

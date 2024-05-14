@@ -1,6 +1,6 @@
 
 
-# 第四章： 大重置中的人工智能角色
+# 第四章：大重置中的人工智能角色
 
 费德里科·切科尼^(1  )(1)LABSS-ISTC-CNR，Via Palestro 32，00185 罗马，意大利费德里科·切科尼电子邮件：federico.cecconi@istc.cnr.it
 

@@ -1,6 +1,6 @@
 
 
-# 第六章： ABM 应用于金融市场
+# 第六章：ABM 应用于金融市场
 
 Riccardo Vasellini^(1  )（1）意大利锡耶纳大学，锡耶纳 Riccardo VaselliniEmail：r.vasellini@student.unisi.it
 

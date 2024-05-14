@@ -1,6 +1,6 @@
 
 
-# 第八章： 用于定价困境资产 UTP 和 NPL 贷款组合的人工智能工具
+# 第八章：用于定价困境资产 UTP 和 NPL 贷款组合的人工智能工具
 
 Alessandro Barazzetti^(1  ) 和 Rosanna Pilla^(2  )(1)QBT Sagl，Via E. Bossi 4，6830 Chiasso，瑞士(2)Reacorp Sagl，Via E. Bossi 4，6830 Chiasso，瑞士 Alessandro Barazzetti（通讯作者）Email: alessandro.barazzetti@qbt.chRosanna PillaEmail: rosanna.pilla@reacorp.ch
 

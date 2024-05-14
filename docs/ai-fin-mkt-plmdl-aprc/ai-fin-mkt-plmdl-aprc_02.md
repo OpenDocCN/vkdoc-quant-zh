@@ -1,6 +1,6 @@
 
 
-# 第二章： 多模型理论：概述
+# 第二章：多模型理论：概述
 
 Thomas Barrau^(1  ) 和 Raphael Douady²(1)AXA 投资经理 Chorus Ltd，香港，中国香港特别行政区(2)巴黎索邦大学经济中心，法国巴黎
 

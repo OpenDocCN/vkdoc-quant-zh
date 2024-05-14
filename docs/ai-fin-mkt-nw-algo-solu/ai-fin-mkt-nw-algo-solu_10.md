@@ -1,6 +1,6 @@
 
 
-# 第十章： 观点动态
+# 第十章：观点动态
 
 Luca Marconi^(1  )(1)意大利国家研究委员会认知科学与技术研究所，人工智能、大脑、心灵和社会高级学校，罗马，意大利 Via San Martino Della Battaglia 44Luca Marconi 电子邮件：luca.marc@hotmail.it
 
