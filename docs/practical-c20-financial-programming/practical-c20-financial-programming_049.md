@@ -1,0 +1,2 @@
+# `IntRateCalculator` 类
+

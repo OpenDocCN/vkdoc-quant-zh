@@ -1,0 +1,224 @@
+name: Building Trading Bots Using Java
+name_cn: Java 交易机器人构建指南
+slug: building-trading-bots-using-java
+toc:
+- - '#'
+  - 使用 Java 开发交易机器人
+- - '####'
+  - 谢卡尔·瓦尔什尼
+- - '##'
+  - 目录
+- - '##'
+  - 指南
+- - '##'
+  - 1. 交易机器人简介
+- - '###'
+  - 1.1 什么是交易机器人？
+- - '###'
+  - 1.2 为什么需要交易机器人？
+- - '###'
+  - 1.3 我们交易机器人的能力
+- - '###'
+  - 1.4 设计目标
+- - '###'
+  - 1.5 代码组织与使用的软件栈
+- - '###'
+  - 1.6 OANDA REST API 作为参考实现
+- - '####'
+  - 1.6.1 开设 OANDA 模拟账户
+- - '####'
+  - 1.6.2 OANDA JSON 键
+- - '####'
+  - 1.6.3 OANDA 实现的构造函数依赖项
+- - '###'
+  - 1.7 事件驱动架构
+- - '####'
+  - 1.7.1 Google EventBus
+- - '###'
+  - 1.8 Provider Helper 接口
+- - '###'
+  - 1.9 `TradingConfig` 类
+- - '###'
+  - 1.10 获取源代码
+- - '###'
+  - 1.11 *自己试试* 小节
+- - '##'
+  - 2. 账户管理
+- - '###'
+  - 2.1 账户数据提供者接口
+- - '###'
+  - 2.2 `AccountDataProvider` 的具体实现
+- - '###'
+  - 2.3 将一切封装在通用 `AccountInfoService` 之后
+- - '###'
+  - 2.4 亲自尝试
+- - '##'
+  - 3. 可交易品种
+- - '###'
+  - 3.1 `InstrumentDataProvider` 接口
+- - '###'
+  - 3.2 `InstrumentDataProvider` 的一个具体实现
+- - '###'
+  - 3.3 将所有内容封装到通用的 `InstrumentService` 背后
+- - '###'
+  - 3.4 动手实践
+- - '##'
+  - 4. 事件流：市场数据事件
+- - '###'
+  - 4.1 流式市场数据接口
+- - '###'
+  - 4.2 `MarketDataStreamingService` 的一个具体实现
+- - '###'
+  - 4.3 下游市场数据事件分发：`MarketEventCallback`
+- - '###'
+  - 4.4 动手实践
+- - '##'
+  - 5. 历史工具市场数据
+- - '###'
+  - 5.1 如何解读蜡烛图
+- - '###'
+  - 5.2 定义蜡烛图粒度的枚举
+- - '###'
+  - 5.3 定义保存蜡烛图信息的 POJO
+- - '####'
+  - 5.3.1 历史数据提供者接口
+- - '###'
+  - 5.4 `HistoricMarketDataProvider` 的具体实现
+- - '###'
+  - 5.5 讨论：另一种数据库实现
+- - '###'
+  - 5.6 用于移动平均计算的蜡烛线
+- - '###'
+  - 5.7 `MovingAverageCalculationService`
+- - '###'
+  - 5.8 动手实践
+- - '##'
+  - 6. 下达订单与交易
+- - '###'
+  - 6.1 `Order` POJO 定义
+- - '###'
+  - 6.2 `OrderManagementProvider` 接口
+- - '###'
+  - 6.3 `OrderManagementProvider` 的具体实现
+- - '###'
+  - 6.4 一个简单的 `OrderInfoService`
+- - '###'
+  - 6.5 执行前验证订单：`PreOrderValidationService`
+- - '###'
+  - 6.6 整合至 `OrderExecutionService`
+- - '###'
+  - 6.7 Trade POJO 定义
+- - '###'
+  - 6.8 `TradeManagementProvider` 接口
+- - '###'
+  - 6.9 `TradeManagementProvider` 的具体实现
+- - '###'
+  - 6.10 将读取操作封装到 TradeInfoService 中
+- - '###'
+  - 6.11 动手实践
+- - '##'
+  - 7. 事件流：交易/订单/账户事件
+- - '###'
+  - 7.1 流式事件接口
+- - '###'
+  - 7.2 `EventsStreamingService` 的具体实现
+- - '###'
+  - 7.3 动手试试
+- - '##'
+  - 8. 集成 Twitter
+- - '###'
+  - 8.1 创建 Twitter 应用
+- - '###'
+  - 8.2 Spring Social
+- - '####'
+  - 8.2.1 使用和配置 Spring Social
+- - '###'
+  - 8.3 采集外汇推文
+- - '####'
+  - 8.3.1 TweetHarvester 接口
+- - '####'
+  - 8.3.2 FXTweetHandler 接口
+- - '####'
+  - 8.3.3 `AbstractFXTweetHandler` 基类
+- - '####'
+  - 8.3.4 特定用户的 `TweetHandlers`
+- - '#####'
+  - '`SignalFactoryFXTweetHandler`'
+- - '#####'
+  - '`ZuluTrader101FXTweetHandler`'
+- - '###'
+  - 8.4 动手实践
+- - '##'
+  - 9. 策略实施
+- - '###'
+  - 9.1 复制推特策略
+- - '###'
+  - 9.2 Fade The Move 策略
+- - '###'
+  - 9.3 动手实践
+- - '##'
+  - 10. 心跳机制
+- - '###'
+  - 10.1 HeartBeatPayLoad
+- - '###'
+  - 10.2 流式心跳接口
+- - '###'
+  - 10.3 `HeartBeatStreamingService` 的具体实现
+- - '###'
+  - 10.4 `HeartBeatCallback` 接口
+- - '###'
+  - 10.5 `DefaultHeartBeatService`
+- - '###'
+  - 10.6 动手实践
+- - '##'
+  - 11. 邮件通知
+- - '###'
+  - 11.1 通知设计
+- - '####'
+  - 11.1.1 EmailPayLoad POJO 类
+- - '####'
+  - 11.1.2 EmailContentGenerator 接口
+- - '####'
+  - 11.1.3 示例实现
+- - '####'
+  - 11.1.4 `EventEmailNotifier` 服务
+- - '###'
+  - 11.2 自己动手试一试
+- - '##'
+  - 12. 配置、部署与运行机器人
+- - '###'
+  - 12.1 交易机器人的配置
+- - '####'
+  - 12.1.1 核心 Bean 配置
+- - '####'
+  - 12.1.2 Twitter 相关 Bean 配置
+- - '####'
+  - 12.1.3 提供商 Bean 配置
+- - '#####'
+  - '`EventStreamingService`（事件流式服务）'
+- - '#####'
+  - Platform Event handlers（平台事件处理器）
+- - '#####'
+  - '`MarketDataStreamingService`（市场数据流式服务）'
+- - '####'
+  - 12.1.4 策略配置
+- - '####'
+  - 12.1.5 服务配置
+- - '###'
+  - 12.2 构建机器人
+- - '###'
+  - 12.3 运行机器人
+- - '##'
+  - 13. 单元测试
+- - '###'
+  - 13.1 使用 Mockito 作为模拟框架
+- - '####'
+  - 13.1.1 模拟 HTTP 交互
+- - '####'
+  - 13.1.2 模拟数据流
+- - '####'
+  - 13.1.3 多才多艺的 `verify`
+- - '####'
+  - 13.1.4 模拟 Twitter 交互
+- - '###'
+  - 13.2 用于 Eclipse IDE 的 EclEmma 代码覆盖率工具

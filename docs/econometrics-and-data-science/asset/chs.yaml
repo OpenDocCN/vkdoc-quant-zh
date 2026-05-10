@@ -1,0 +1,4188 @@
+- '
+
+  '
+- '# 计量经济学导论
+
+
+  本章介绍应用于**计量经济学**领域的数据科学技术。首先，阐述经济学与定量方法之间的关系，这为计量经济学领域奠定了基础。同时，本章还讨论了计量经济学在制定和修订国家经济政策中的相关性。随后，简要介绍了机器学习、深度学习和结构方程模型。最后，揭示了如何使用标准
+  Python 库提取宏观经济数据的方法。
+
+
+  ## 计量经济学
+
+
+  *计量经济学*是社会科学的一个分支，在宏观层面（即国家、地区或大洲层面）研究广泛的商业活动。它是一门成熟的社会科学学科，利用统计模型来验证关于宏观经济现象的理论主张。图
+  1-1 对计量经济学进行了简化说明。统计局等机构会捕捉不同时期的经济活动数据，并向公众开放。经济学家、研究分析师和统计学家等从业者会提取这些数据，并基于理论框架构建算法模型，以进行未来预测。
+
+
+  ![../images/516940_1_En_1_Chapter/516940_1_En_1_Fig1_HTML.jpg](img/516940_1_En_1_Fig1_HTML.jpg)
+
+
+  **图 1-1**
+
+
+  计量经济学
+
+
+  在继续阅读本书内容之前，请确保你已理解与经济学和统计学相关的基本概念。
+
+
+
+
+  '
+- '# 经济设计
+
+
+  经济设计基于这样一种理念：如果我们能够准确估计宏观经济现象，就可以设计出有助于管理经济的机制。如前所述，有多个成熟的机构可以提供可靠的实际宏观经济数据。请注意，我们无法估计整体人口，但可以使用样本（人口的代表），因为统计估计中存在误差。由于有可靠的宏观经济数据源池，我们可以应用这些数据，并通过应用定量模型来研究一致的模式，从而理解经济状况。当我们确信某个模型能够准确估计我们意图估计的目标且效果显著时，就可以应用该模型来预测经济事件。请记住，科学事业的主要目的是通过应用定量模型来预测事件并控制其底层机制。
+
+
+  计量经济学运用统计原理来估计总体参数，但最终的检验标准始终是经济意识形态。只有经济理论能够验证/反驳结果，这些结果可进一步用于确定因果关系/相关性等。显而易见，政治在现代生活中占据着至关重要的地位。政治情绪通常伴随着对经济及其应然状态的坚定信念。这些信念可能并不反映经济现实。当有关经济的信念荒谬不实时，就无法用设计的解决方案来应对紧迫的社会问题。要令人满意地解决经济问题，你必须持有合乎逻辑的观点；否则，情感、标准假设和权威知识会稀释你对经济的分析。
+
+
+  总之，政策制定者应用计量经济学来设计和修订经济政策，以便正确解决经济问题。这意味着他们需要研究历史经济事件，开发复杂的定量模型，并应用这些模型的研究结果（前提是这些结果可靠）来驱动经济政策。计量经济学是一种寻找经济相关问题答案的方法。以证据为导向的政策制定者通过应用实际数据来推动政策制定举措，而不是依赖政治和经济意识形态。
+
+
+  ## 理解统计学
+
+
+  统计学是致力于在原始数据中发现一致模式，从而对已知现象得出逻辑结论的领域。它涉及研究数据的集中趋势（均值）和离散程度（标准差），然后应用定量模型研究关于该现象的理论主张。此外，商业机构将其应用于临时报告、研究和业务流程控制中。研究人员还将统计学应用于自然科学、物理科学、化学、工程学和社会科学等领域。它是定量研究的支柱。
+
+
+  ### 机器学习建模
+
+
+  统计学与机器学习之间存在联系。在本书中，我们将机器学习视为统计学的延伸，它融合了计算机科学等领域的技术。机器学习方法源于统计原理和方法。我们以“应用”和“自动化”为导向来处理机器学习问题。通过机器学习，最终目标不是得出某种结论，而是自动化单调的任务，并为这些自主任务确定可复制的模式。图
+  1-2 展示了定量模型如何运作。
+
+
+  ![../images/516940_1_En_1_Chapter/516940_1_En_1_Fig2_HTML.png](img/516940_1_En_1_Fig2_HTML.png)
+
+
+  *图 1-2——基础机器学习模型*
+
+
+  图 1-2 展示了基本的机器学习模型流程。首先，我们从数据库中提取数据，然后进行预处理和分割。接着，通过应用一个接收预测变量并对其进行操作以生成输出值的函数来对数据进行建模。变量代表一个我们可以观察和估计的过程。在机器学习中，将模型部署为网页应用或网页应用的一部分是常见做法。
+
+
+  ### 深度学习建模
+
+
+  深度学习应用模拟人类神经结构的人工神经网络（一种相互连接的节点网络）。人工神经网络是一组节点，它在输入层接收输入值，将输入值转换到后续的隐藏层（输入层和输出层之间的层），该隐藏层对它们进行转换并分配不同的*权重*（决定输入值对输出值影响程度的向量参数）和*偏置*（一个平衡值，通常为
+  1）。它是机器学习的一个子类，旨在解决我们在传统定量模型中遇到的一些困难。例如，梯度消失问题——在训练过程的初始阶段梯度很小，随着我们添加更多数据而增大的情况。还有其他类型的人工神经网络，例如受限玻尔兹曼机——一个位于隐藏层和输出层之间的浅层网络，多层感知器——具有两个以上隐藏层的神经网络，循环神经网络——用于处理序列数据的神经网络，以及卷积神经网络——用于降维的神经网络，常用于计算机视觉。本书涵盖了受限玻尔兹曼机和多层感知器。图
+  1-3 展示了一个多层感知器分类器。
+
+
+  ![../images/516940_1_En_1_Chapter/516940_1_En_1_Fig3_HTML.png](img/516940_1_En_1_Fig3_HTML.png)
+
+
+  *图 1-3——多层感知器分类器示例*
+
+
+  图 1-3 显示，多层感知器分类器由一个输入层组成，该层获取输入值（X1、X2 和 X3）并将它们传递到第一个隐藏层。该层随后获取这些值，并通过应用一个函数（在此例中为
+  Sigmoid 函数）对其进行转换。它传递一个输出值，该值随后被传递到第二个隐藏层，第二个隐藏层也获取输入值。该过程反复进行——它转换值并将它们传递到输出层，并生成一个输出值，在图
+  1-3 中表示为 `Y`。我们认识到网络用于学习数据结构训练过程，即反向传播（反向更新权重）。第 8 章将介绍深度学习。
+
+
+
+  好的，作为高级文档工程师和翻译员，我将遵循您提供的格式和注意事项，将给定的英文文本翻译成中文。
+
+
+
+  ### 结构方程模型
+
+
+  结构方程模型包含一组用于确定变量间因果关系的模型。它包括因子分析、路径分析和回归分析。它有助于我们研究中介关系，从而检测其他变量的存在如何削弱或增强预测变量与响应变量之间结构性关系的本质。图
+  1-4 展示了一个假想框架，概述了直接和间接的结构关系。
+
+
+  ![../images/516940_1_En_1_Chapter/516940_1_En_1_Fig4_HTML.png](img/516940_1_En_1_Fig4_HTML.png)
+
+
+  **图 1-4** 基础结构方程模型
+
+
+  图 1-4 演示了一个假想框架，该框架展示了人均 GDP 增长（年增长率）、通货膨胀、消费者价格指数（百分比）和最终消费支出（以当前美元计）之间的结构关系。此外，它还突出了预期寿命对人均
+  GDP 增长与最终消费支出之间关系的中介效应。第 10 章介绍了结构方程模型。
+
+
+  ## 宏观经济数据来源
+
+
+  有数个库可用于提取宏观经济数据。本书使用了其中较为突出的一个库，名为 `wbdata`。该库从世界银行数据库¹提取数据。或者，你也可以直接从世界银行网站提取数据。此外，还有其他宏观经济数据源可供使用，例如圣路易斯联邦储备银行（联邦储备经济数据）数据库²和国际货币基金组织数据库³等。
+
+
+  本书主要使用 `world-bank-data` 库，因为它提供了广泛的社会指标。在继续之前，请确保安装了 `world-bank-data` 库。这将使开发定量模型的过程大大简化，因为你无需编写大量代码。要在
+  Python 环境中安装该库，请使用 `pip install wbdata`。如果你使用的是 Anaconda 环境，请使用 `conda install wbdata`。在本书付印时，该库的版本为
+  v0.3.0。代码清单 1-1 展示了如何检索宏观经济数据。
+
+
+  ```
+
+  import wbdata
+
+  country = ["USA"]
+
+  indicator = {"FI.RES.TOTL.CD":"gdp_growth"}
+
+  df = wbdata.get_dataframe(indicator, country=country, convert_date=True)
+
+  ```
+
+
+  **代码清单 1-1** 从世界银行库加载数据
+
+
+  `wbdata` 提取数据并将其加载到一个 `pandas` 数据框中。图 1-5 展示了 `wbdata` 的工作流程。
+
+
+  ![../images/516940_1_En_1_Chapter/516940_1_En_1_Fig5_HTML.png](img/516940_1_En_1_Fig5_HTML.png)
+
+
+  **图 1-5** 世界银行库工作流程
+
+
+  从 `wbdata` 库提取数据需要指定国家/地区 ID。鉴于世界银行包含众多国家/地区，了解所有国家/地区的 ID 非常繁琐。查找国家/地区 ID 最便捷的方式是按名称搜索（见代码清单
+  1-2）。在本例中，我们输入了 `China`，它返回了包含其 ID 在内的中国各地区。
+
+
+  ```
+
+  wbdata.search_countries("China")
+
+  id    name
+
+  ----  --------------------
+
+  CHN   China
+
+  HKG   Hong Kong SAR, China
+
+  MAC   Macao SAR, China
+
+  TWN   Taiwan, China
+
+  ```
+
+
+  **代码清单 1-2** 搜索国家/地区 ID
+
+
+  从 `wbdata` 库提取数据还需要指定经济指标的 ID。鉴于世界银行包含众多宏观经济指标，了解所有指标的 ID 非常繁琐。查找指标 ID 最便捷的方式是按名称搜索（见代码清单
+  1-3）。在本例中，我们输入了 `inflation`，它返回了所有包含“inflation”一词的指标及其 ID。
+
+
+  ```
+
+  wbdata.search_indicators("inflation")
+
+  id                    name
+
+  --------------------  -------------------------------------------------
+
+  FP.CPI.TOTL.ZG        Inflation, consumer prices (annual %)
+
+  FP.FPI.TOTL.ZG        Inflation, food prices (annual %)
+
+  FP.WPI.TOTL.ZG        Inflation, wholesale prices (annual %)
+
+  NY.GDP.DEFL.87.ZG     Inflation, GDP deflator (annual %)
+
+  NY.GDP.DEFL.KD.ZG     Inflation, GDP deflator (annual %)
+
+  NY.GDP.DEFL.KD.ZG.AD  Inflation, GDP deflator: linked series (annual %)
+
+  ```
+
+
+  **代码清单 1-3** 搜索宏观经济数据
+
+
+  `wbdata` 库包含多个数据源，例如世界发展指标、全球治理指标、国家以下层面营养不良数据库、国际债务统计和国际债务统计：DSSI 等。本书主要关注提供经济数据的数据源，也涵盖社会指标。代码清单
+  1-4 演示了如何使用 `wbdata.get_source()` 检索指标源（见表 1-1）。
+
+
+  **表 1-1** 世界银行数据源
+
+
+
+
+  |   | ID | 最后更新 | 名称 | 代码 | 描述 | 网址 | 数据可用性 | 元数据可用性 | 概念数 |
+
+  | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+
+  | 0 | 1 | 2019-10-23 | 营商环境 | DBS |   |   | 是 | 是 | 3 |
+
+  | 1 | 2 | 2021-05-25 | 世界发展指标 | WDI |   |   | 是 | 是 | 3 |
+
+  | 2 | 3 | 2020-09-28 | 全球治理指标 | WGI |   |   | 是 | 是 | 3 |
+
+  | 3 | 5 | 2016-03-21 | 国家以下营养不良数据库 | SNM |   |   | 是 | 是 | 3 |
+
+  | 4 | 6 | 2021-01-21 | 国际债务统计 | IDS |   |   | 是 | 是 | 4 |
+
+  | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+
+  | 60 | 80 | 2020-07-25 | 按性别分列的劳动力数据库 (GDLD) | GDL |   |   | 是 | 否 | 4 |
+
+  | 61 | 81 | 2021-01-21 | 国际债务统计：DSSI | DSI |   |   | 是 | 否 | 4 |
+
+  | 62 | 82 | 2021-03-24 | 全球公共采购 | GPP |   |   | 是 | 否 | 3 |
+
+  | 63 | 83 | 2021-04-01 | 统计绩效指标 (SPI) | SPI |   |   | 是 | 是 | 3 |
+
+  | 64 | 84 | 2021-05-11 | 教育政策 | EDP |   |   | 是 | 是 | 3 |
+
+
+  ```
+
+  sources = wbdata.get_source()
+
+  sources
+
+  清单 1-4
+
+  检索世界银行数据源
+
+  ```
+
+
+  表 1-1 列出了数据源 ID、名称、代码、可用性、元数据可用性、概念数和最后更新日期。清单 1-5 展示了如何检索主题（参见表 1-2）。每个主题都有其自己的
+  ID。
+
+
+  ## 表 1-2 世界银行主题
+
+
+  |   | ID | 值 | 来源说明 |
+
+  | --- | --- | --- | --- |
+
+  | 0 | 1 | 农业与农村发展 | 对于世界上 70% 的贫困人口来说…… |
+
+  | 1 | 2 | 援助有效性 | 援助有效性是指援助在……方面产生的影响。 |
+
+  | 2 | 3 | 经济与增长 | 经济增长是经济发展的核心…… |
+
+  | 3 | 4 | 教育 | 教育是……最有力的工具之一。 |
+
+  | 4 | 5 | 能源与采矿 | 世界经济需要不断增加……的能源。 |
+
+  | 5 | 6 | 环境 | 自然和人为的环境资源……对可持续发展至关重要。 |
+
+  | 6 | 7 | 金融部门 | 一个经济体的金融市场对于……至关重要。 |
+
+  | 7 | 8 | 健康 | 改善健康是千年发展目标的核心…… |
+
+  | 8 | 9 | 基础设施 | 基础设施有助于决定……的成功。 |
+
+  | 9 | 10 | 社会保护与劳动力 | 一个经济体可用的劳动力供给决定了…… |
+
+  | 10 | 11 | 贫困 | 对于拥有积极贫困监测体系的国家来说…… |
+
+  | 11 | 12 | 私营部门 | 私营市场驱动经济增长，利用…… |
+
+  | 12 | 13 | 公共部门 | 有效的政府能够改善人民的生活水平…… |
+
+  | 13 | 14 | 科学与技术 | 通常由政府资助的技术创新…… |
+
+  | 14 | 15 | 社会发展 | 这里的数据涵盖童工、性别问题…… |
+
+  | 15 | 16 | 城市发展 | 城市可以非常高效。很容易…… |
+
+  | 16 | 17 | 性别 | 性别平等是……核心发展目标之一。 |
+
+  | 17 | 18 | 千年发展目标 |   |
+
+  | 18 | 19 | 气候变化 | 气候变化预计将严重影响发展中国家…… |
+
+  | 19 | 20 | 外债 | 债务统计提供了……详细图景。 |
+
+  | 20 | 21 | 贸易 | 贸易是抗击贫困和实现……的关键手段。 |
+
+
+  ```
+
+  wbdata.get_topic()
+
+  清单 1-5
+
+  检索主题
+
+  ```
+
+
+  表 1-2 列出了数据源 ID、主题值以及来源说明。`wbdata` 库涵盖了从健康、经济学、城市发展等领域的广泛主题，以及其他社会科学相关领域的主题。
+
+
+  ## 本书的背景
+
+
+  本书的每一章都从介绍特定模型的基本概念开始。各章节展示了提取宏观经济数据进行探索的方法，包括确保数据结构适合所选模型并满足初步要求的技术。此外，这些章节还揭示了构建假设框架和可检验假设的可能方法。它们讨论了如何通过使用一个操作一组变量以生成输出值的定量模型来研究假设。
+
+
+  对于本书中的每个模型，都有评估它的方法。每章还包含可视化图表，可以帮助你更好地理解数据结构和结果。
+
+
+  ## 实际应用意义
+
+
+  本书扩充了当前计量经济学方面的知识体系。它涵盖了应用数据科学技术发现宏观经济数据中的模式并提取有意义见解的各种方法。本书旨在加速基于证据的经济设计——基于我们从定量驱动模型中得出的证据来制定和修订经济政策。本书面向那些寻求通过应用数据科学和机器学习技术来解决一些世界最紧迫问题的专业人士。总之，它将使你能够发现特定社会和经济活动发生的*原因*，并帮助你预测未来活动发生的可能性。本书假设你对统计学和经济学的关键概念有一些基本的理解。
+
+
+  脚注 1   2   3
+
+
+
+
+  '
+- "# 2. 应用回归的单变量消费研究\n\n本章介绍标准单变量（或简单）线性回归模型，即普通最小二乘模型，该模型在减小残差的同时估计截距和斜率（见公式 2-1）。它应用该模型来确定美国银行贷款利率与美国家庭每年消费的商品和服务市场价值之间的关系。本章内容包括进行协方差分析、相关性分析、模型开发、交叉验证、超参数优化以及模型性能分析的方法。\n\
+  \n普通最小二乘模型是最常见的参数化方法之一。它对数据建立了强有力的假设——即期望数据满足*正态性*（变量值围绕均值分布）和*线性*（自变量与因变量之间存在关联）。本章使用最常见的参数化方法，即*普通最小二乘模型*，来研究预测变量（自变量）与响应变量（因变量）之间的关联。该方法基于一条直线方程（见图\
+  \ 2-1）。\n\n![../images/516940_1_En_2_Chapter/516940_1_En_2_Fig1_HTML.png](img/516940_1_En_2_Fig1_HTML.png)\n\
+  \n**图 2-1**  \n最佳拟合线\n\n图 2-1 显示了一条红色直线和独立的绿色数据点——该直线穿过这些数据点。公式 2-1 展示了普通最小二乘方程。\n\
+  \n![$$ \\hat{y}={\\hat{\\beta}}_0+{\\hat{\\beta}}_1{\\hat{X}}_1+{\\hat{\\varepsilon}}_i\
+  \ $$](img/516940_1_En_2_Chapter_TeX_Equ1.png)\n\n**（公式 2-1）**\n\n其中，![$$ \\hat{y}\
+  \ $$](img/516940_1_En_2_Chapter_TeX_IEq1.png) 是预测的响应变量（本例中为预期的美国最终消费支出），![$$ {\\\
+  hat{\\beta}}_0 $$](img/516940_1_En_2_Chapter_TeX_IEq2.png) 代表截距——表示响应变量的均值（本例中为以美元计价的美国最终消费支出），![$$\
+  \ 1{\\hat{X}}_1 $$](img/516940_1_En_2_Chapter_TeX_IEq3.png) 代表预测变量（本例中为美国贷款利率），![$$\
+  \ {\\hat{\\beta}}_1 $$](img/516940_1_En_2_Chapter_TeX_IEq4.png) 是斜率——表示 `X`（美国贷款利率）与最终消费支出（现价美元）之间关系的方向。观察图\
+  \ 2-1 中的红色直线——斜率为正）。最后，![$$ i{\\hat{\\varepsilon}}_i $$](img/516940_1_En_2_Chapter_TeX_IEq5.png)\
+  \ 代表误差项（参考公式 2-2）。\n\n![$$ i{\\hat{\\varepsilon}}_i=y-\\hat{y} $$](img/516940_1_En_2_Chapter_TeX_Equ2.png)\n\
+  \n**（公式 2-2）**\n\n其中 `ε[i]` 是误差项（也称为*残差项*）——代表 `yi`（实际的美国最终消费支出）与 ![$$ \\hat{y}\
+  \ $$](img/516940_1_En_2_Chapter_TeX_IEq6.png)`[i]`（预测的美国最终消费支出）之间的差值。\n\n带帽号（^）的变量（样本回归函数）与不带帽号的变量（总体回归函数）之间存在区别。我们是从总体样本中估计那些带帽号的变量，而不是从整个总体中估计。\n\
+  \n## 本章背景\n\n本章使用普通最小二乘回归模型来确定预测变量（美国贷款利率，以百分比表示）与响应变量（最终消费支出，以现价美元计）之间的线性关系。表 2-1\
+  \ 概述了本章使用的宏观经济指标。\n\n**表 2-1**  \n本章使用的美国宏观经济指标\n\n| 代码 | 标题 |\n| --- | --- |\n\
+  | `FR.INR.LEND` | 贷款利率（以百分比表示） |\n| `NY.GDP.MKTP.KD.ZG` | 最终消费支出（以现价美元计） |\n\n##\
+  \ 理论框架\n\n图 2-2 展示了本章探讨的关系。它建立了研究假设。\n\n![../images/516940_1_En_2_Chapter/516940_1_En_2_Fig2_HTML.png](img/516940_1_En_2_Fig2_HTML.png)\n\
+  \n**图 2-2**  \n理论框架\n\n**假设**\n\n`H[0]`：美国贷款利率（%）与最终消费支出（现价美元）之间无显著差异。\n\n`H[A]`：美国社会缴款与最终消费支出（现价美元）之间存在显著差异。\n\
+  \n该研究假设旨在确定美国贷款利率的变化是否会影响最终消费支出（现价美元）。\n\n### 贷款利率\n\n贷款利率估计了私营银行对短期和中期贷款收取的利息率。我们以年百分比表示该估计值。图\
+  \ 2-3 展示了从 1960 年到 2020 年美国私营银行对短期和中期融资收取的利率。在继续之前，请确保您的环境中已安装 Matplotlib 库。要在 Python\
+  \ 环境中安装 Matplotlib 库，请使用 `pip install matplotlib`。同样，要在 Conda 环境中安装该库，请使用 `conda\
+  \ install -c conda-forge matplotlib`。见列表 2-1。\n\n![../images/516940_1_En_2_Chapter/516940_1_En_2_Fig3_HTML.jpg](img/516940_1_En_2_Fig3_HTML.jpg)\n\
+  \n**图 2-3**  \n美国贷款利率\n\n```\nimport wbdata\nfrom matplotlib.pyplot import\n%matplotlib\
+  \ inline\ncountry  = [\"USA\"]\nindicator = {\"FP.CPI.TOTL.ZG\":\"lending_rate\"\
+  }\ninflation_cpi = wbdata.get_dataframe(indicator, country=country,  convert_date=True)\n\
+  inflation_cpi.plot(kind=\"line\",color=\"green\",lw=4)\nplt.title(\"The U.S. lending\
+  \ interest rate (%)\")\nplt.ylabel(\"Lending interest rate (%)\")\nplt.xlabel(\"\
+  Date\")\nplt.legend(loc=\"best\")\nplt.show()\n列表 2-1\n美国贷款利率\n```\n\n图 2-3 显示，从\
+  \ 1960 年到 1980 年，美国银行对私营短期和中期贷款收取的利率从 1.45% 增长到 13.55%（最高峰值）。此后，在 1980 年代初，利率急剧下降，然后保持停滞。该图还显示贷款利率在\
+  \ 2008 年达到最低点。总之，在 1970 年代末从美国银行获得债务的成本更高，而在 2008 年则相对便宜。\n\n\n\n### 最终消费支出（现价美元）\n\
+  \n最终消费支出是指经济体中家庭购买的普通商品和服务的市场价值（参见列表 2-2）。图 2-4 展示了 1960 年至 2020 年美国最终消费支出的变化情况。\n\
+  \n![../images/516940_1_En_2_Chapter/516940_1_En_2_Fig4_HTML.jpg](img/516940_1_En_2_Fig4_HTML.jpg)\n\
+  \n图 2-4  \n美国最终消费支出\n\n```\ncountry = [\"USA\"]\nindicator = {\"NE.CON.TOTL.CD\"\
+  :\"final_consumption\"}\nfinal_consumption = wbdata.get_dataframe(indicator, country=country,\
+  \ convert_date=True)\nfinal_consumption.plot(kind=\"line\",color=\"orange\",lw=4)\n\
+  plt.title(\"The U.S. FCE\")\nplt.ylabel(\"FCE\")\nplt.xlabel(\"Date\")\nplt.legend(loc=\"\
+  best\")\nplt.show()\n```\n列表 2-2  \n美国最终消费支出（现价美元）\n\n图 2-4 显示，自 1970 年以来，美国家庭购买的普通商品和服务的市场价值呈现持续上升趋势。\n\
+  \n## 正态性假设\n\n正态分布也称为高斯分布。本书将互换使用这两个术语。该分布显示数据点围绕均值数据点聚集。普通最小二乘回归模型假设数据点围绕均值数据点聚集，因此在对美国贷款利率和最终消费支出数据训练模型之前，必须检测正态性。\n\
+  \n### 正态性检测\n\n正态性检测涉及研究数据点的集中趋势。如果美国贷款利率和最终消费支出数据围绕均值数据点聚集，则可以使用中心数据点来概括数据。另一个隐含的假设是误差服从正态性假设，这使得误差更容易处理。为了检测正态性，必须估计均值数据点（参见方程\
+  \ 2-3）。\n\n![$$\\underset{\\_}{x}=\\frac{x_1+{x}_2x+{x}_3\\dots{x}_i}{n}$$](img/516940_1_En_2_Chapter_TeX_Equ3.png)\n\
+  \n（方程 2-3）\n\n其中 ![$$\\underset{\\_}{x}$$](img/516940_1_En_2_Chapter_TeX_IEq7.png)\
+  \ 是均值，`x[1]` 是第一个数据点，`x[2]` 是第二个数据点，依此类推，`n` 表示数据点的总数。将数据点的计数除以自由度。或者，可以找到中位数数据点（中心数据点）。要确定离散程度，请估计标准差（参见方程\
+  \ 2-4）。\n\n![$$s=\\sqrt{\\frac{\\sum_{i=1}^n{\\left({x}_i-\\underset{\\_}{x}\\right)}²}{n-1}}$$](img/516940_1_En_2_Chapter_TeX_Equ4.png)\n\
+  \n（方程 2-4）\n\n在估计标准差后，将其平方以求得方差（参见方程 2-5）。\n\n![$${s}²=\\frac{\\sum_{i=1}^n{\\left({x}_i-\\\
+  underset{\\_}{x}\\right)}²}{n-1}$$](img/516940_1_En_2_Chapter_TeX_Equ5.png)\n\n\
+  （方程 2-5）\n\n列表 2-3 从世界银行检索了与美国贷款利率和最终消费支出数据相关的数据。参见表 2-2。\n\n表 2-2  \n美国贷款利率与最终消费支出数据\n\
+  \n| 日期 | 贷款利率 | 最终消费支出 |\n| --- | --- | --- |\n| 2020 | 3.544167 | NaN |\n| 2019\
+  \ | 5.282500 | 1.753966e+13 |\n| 2018 | 4.904167 | 1.688457e+13 |\n| 2017 | 4.096667\
+  \ | 1.608306e+13 |\n| 2016 | 3.511667 | 1.543082e+13 |\n\n```\ncountry  = [\"USA\"\
+  ]\nindicators = {\"FR.INR.LEND\":\"lending_rate\",\n\"NE.CON.TOTL.CD\":\"final_consumption\"\
+  }\ndf = wbdata.get_dataframe(indicators, country=country, freq=\"M\", convert_date=False)\n\
+  df.head()\n```\n列表 2-3  \n加载美国贷款利率与最终消费支出数据\n\n表 2-2 显示数据中存在缺失的数据点。列表 2-4 用均值替换了缺失的数据点。\n\
+  \n```\ndf[\"lending_rate\"] = df[\"lending_rate\"].fillna(df[\"lending_rate\"].mean())\n\
+  df[\"final_consumption\"] = df[\"final_consumption\"].fillna(df[\"final_consumption\"\
+  ].mean())\n```\n列表 2-4  \n用均值替换缺失数据点\n\n\n\n## 描述性统计\n\n有多种方法可以对数据分布进行可视化和汇总。最简单的方法是使用箱线图。箱线图还有助于检测正态性。该图可确认中位数数据点的位置，同时还能告知你分布尾部的长度，从而有效帮助你诊断数据中的异常值。图\
+  \ 2-5 展示了由代码清单 2-5 生成的美国贷款利率箱线图。\n\n![../images/516940_1_En_2_Chapter/516940_1_En_2_Fig5_HTML.jpg](img/516940_1_En_2_Fig5_HTML.jpg)\n\
+  \n图 2-5\n\n美国贷款利率\n\n```\ndf[\"lending_rate\"].plot(kind=\"box\",color=\"green\"\
+  )\nplt.title(\"The U.S. lending interest rate (%)\")\nplt.ylabel(\"Values\")\nplt.show()\n\
+  Listing 2-5\nThe U.S. Lending Interest Rate Distribution\n```\n\n图 2-5 显示美国贷款利率数据中存在三个极端值。代码清单\
+  \ 2-6 将所有异常值替换为均值数据点，并确定新的分布（见图 2-6）。继续之前，请确保你的环境中已安装 NumPy 库。要在 Python 环境中安装 NumPy\
+  \ 库，请使用 `pip install numpy`。同样，要在 Conda 环境中安装该库，请使用 `conda install -c anaconda numpy`。\n\
+  \n![../images/516940_1_En_2_Chapter/516940_1_En_2_Fig6_HTML.jpg](img/516940_1_En_2_Fig6_HTML.jpg)\n\
+  \n图 2-6\n\n美国贷款利率分布\n\n```\nimport numpy as np\ndf['lending_rate'] = np.where((df[\"\
+  lending_rate\"] > 14.5),df[\"lending_rate\"].mean(),df[\"lending_rate\"])\ndf[\"\
+  lending_rate\"].plot(kind=\"box\",color=\"green\")\nplt.title(\"The U.S. lending\
+  \ interest rate (%)\")\nplt.ylabel(\"Values\")\nplt.show()\nplt.show()\nListing\
+  \ 2-6\nThe U.S. Lending Interest Rate Distribution\n```\n\n代码清单 2-7 返回图 2-7，该图显示了美国最终消费支出数据的分布和异常值。\n\
+  \n![../images/516940_1_En_2_Chapter/516940_1_En_2_Fig7_HTML.png](img/516940_1_En_2_Fig7_HTML.png)\n\
+  \n图 2-7\n\n美国最终消费支出分布\n\n```\ndf[\"final_consumption\"].plot(kind=\"box\",color=\"\
+  orange\")\nplt.title(\"US FCE\")\nplt.ylabel(\"Values\")\nplt.show()\nListing 2-7\n\
+  The U.S. Final Consumption Expenditure Distribution\n```\n\n图 2-7 显示美国最终消费支出数据中不存在异常值。代码清单\
+  \ 2-8 中的命令检索了一份关于数据中心趋势和离散程度的综合报告（见表 2-3）。\n\n表 2-3\n\n描述性统计摘要\n\n|   | **lending_rate**\
+  \ | **final_consumption** |\n| --- | --- | --- |\n| Count | 61.000000 | 6.100000e+01\
+  \ |\n| Mean | 6.639908 | 7.173358e+12 |\n| Std | 2.436502 | 4.580756e+12 |\n| Min\
+  \ | 3.250000 | 8.395100e+11 |\n| 25% | 4.500000 | 3.403470e+12 |\n| 50% | 6.824167\
+  \ | 7.173358e+12 |\n| 75% | 8.270833 | 1.006535e+13 |\n| Max | 12.665833 | 1.753966e+13\
+  \ |\n\n```\ndf.describe()\nListing 2-8\nDescriptive Summary\n```\n\n表 2-3 显示：\n\n\
+  * 美国贷款利率数据的平均值是 6.639908，最终消费支出的平均值是 7.173358e+12。\n* 美国贷款利率数据点与平均值的偏差为 2.436502，最终消费支出数据点与平均值的偏差为\
+  \ 4.580756e+12。\n\n## 协方差分析\n\n*协方差分析* 涉及估计变量之间相互变化的程度。公式 2-6 展示了协方差的公式。\n\n![$$\
+  \ Covariance=\\frac{\\sum_{i=1}^n{\\left({x}_i-\\underset{\\_}{x}\\right)}²{\\left({y}_i-\\\
+  underset{\\_}{y}\\right)}²}{n-1} $$](img/516940_1_En_2_Chapter_TeX_Equ6.png)\n\n\
+  （公式 2-6）\n\n其中 `x[i]` 表示贷款利率（%）的独立数据点，![$$ \\underset{\\_}{x_i} $$](img/516940_1_En_2_Chapter_TeX_IEq8.png)\
+  \ 表示预测变量的平均值。`y[i]` 表示美国最终消费支出的独立数据点，![$$ \\underset{\\_}{y_i} $$](img/516940_1_En_2_Chapter_TeX_IEq9.png)\
+  \ 表示美国最终消费支出的平均值。代码清单 2-9 估算了美国贷款利率与最终消费支出之间的联合变异性（见表 2-4）。\n\n表 2-4\n\n协方差矩阵\n\n\
+  |   | lending_rate | final_consumption |\n| --- | --- | --- |\n| `lending_rate`\
+  \ | 5.936544e+00 | -7.092189e+12 |\n| `final_consumption` | -7.092189e+12 | 2.098332e+25\
+  \ |\n\n```\ndfcov = df.cov()\ndfcov\nListing 2-9\nCovariance Matrix\n```\n\n表 2-4\
+  \ 显示美国贷款利率的方差是 5.936544e+00，最终消费支出的方差是 2.098332e+25。该表向你展示了贷款利率与美国最终消费支出之间的联合变异性为\
+  \ -7.092189e+12。下一节将概述相关方法，并解释针对此问题应使用哪种相关方法。\n\n\n\n## 相关性分析\n\n与协方差分析展示变量如何相互变化不同，*相关性分析*用于估计变量之间的依赖关系。主要有三种相关性方法——皮尔逊相关方法（可估计连续变量之间的依赖关系）、肯德尔方法（可估计分类变量之间的依赖关系）以及斯皮尔曼方法（同样可估计分类变量之间的关联关系）。宏观经济数据通常是连续的，因此本章使用皮尔逊相关方法。本书大部分章节都使用此方法，但第\
+  \ 5 章除外，该章使用了肯德尔方法。公式 2-7 用于估计协方差，然后将该估计值除以预测变量和响应变量的离散程度，从而得到皮尔逊相关系数。\n\n![$$ {r}_{xy}=\\\
+  frac{\\sum_{i=1}^n{\\left({x}_i-\\underset{\\_}{x}\\right)}²{\\left({y}_i-\\underset{\\\
+  _}{y}\\right)}²}{\\sqrt{\\sum_{i=1}^n{\\left({x}_i-\\underset{\\_}{x}\\right)}²{\\\
+  sum}_{i=1}^n{\\left({y}_i-\\underset{\\_}{y}\\right)}²}} $$](img/516940_1_En_2_Chapter_TeX_Equ7.png)\n\
+  \n(公式 2-7)\n\n其中 `r[xy]` 是皮尔逊相关系数。你可以通过将美国贷款利率与美国最终消费支出之间的协方差除以偏差平方和的平方根来估计该系数。代码清单\
+  \ 2-10 展示了皮尔逊相关矩阵（参见表 2-5）。\n\n**表 2-5**  \n**皮尔逊相关矩阵**\n\n| | lending_rate | final_consumption\
+  \ |\n| --- | --- | --- |\n| `lending_rate` | 1.000000 | -0.635443 |\n| `final_consumption`\
+  \ | -0.635443 | 1.000000 |\n\n```\ndfcorr = df.corr(method=\"pearson\")\ndfcorr\n\
+  代码清单 2-10\n皮尔逊相关矩阵\n```\n\n表 2-6 解释了表 2-5 中列出的皮尔逊相关系数。\n\n**表 2-6**  \n**皮尔逊相关系数解释**\n\
+  \n| 关系 | 皮尔逊相关系数 | 发现 |\n| --- | --- | --- |\n| 美国贷款利率（%）与最终消费支出（现价美元） | -0.635443\
+  \ | 美国贷款利率（%）与最终消费支出（现价美元）之间存在极强的负相关关系。 |\n\n图 2-8 展示了美国贷款利率与最终消费支出之间的统计差异。在继续操作之前，请确保你的环境中已安装\
+  \ `seaborn` 库。要在 Python 环境中安装 `seaborn` 库，请使用 `pip install seaborn`。同样，要在 Conda\
+  \ 环境中安装该库，请使用 `conda install -c anaconda seaborn`。参见代码清单 2-11。\n\n![../images/516940_1_En_2_Chapter/516940_1_En_2_Fig8_HTML.jpg](img/516940_1_En_2_Fig8_HTML.jpg)\n\
+  \n**图 2-8**  \n美国贷款利率与美国最终消费支出联合图\n\n```\nimport seaborn as sns\nsns.jointplot(x\
+  \ = \"lending_rate\", y=\"final_consumption\", data=df, kind=\"reg\",color=\"navy\"\
+  )\nplt.show()\n代码清单 2-11\n成对散点图\n```\n\n图 2-8 证实了美国贷款利率与最终消费支出之间存在负相关关系。\n\n## 使用\
+  \ Statsmodels 开发普通最小二乘回归模型\n\n本节介绍最常用的回归模型，称为普通最小二乘模型，该模型用于估计截距和系数，同时减少残差（请回顾公式\
+  \ 2-1）。\n\n代码清单 2-12 将数据转换为所需格式。首先构造一个 `x` 数组（美国贷款利率的数据点）和一个 `y` 数组（美国最终消费支出（现价美元）的数据点）。\n\
+  \n然后对数据进行重塑，以便普通最小二乘回归模型能更好地学习数据，接着通过应用 `train_test_split()` 方法将数据分割为训练数据和测试数据。最后，它通过应用\
+  \ `StandardScaler()` 方法对数据进行标准化处理，使得数据点的均值为 0，标准差为 1。\n\n为了验证美国贷款利率影响美国最终消费支出的论断，你需要计算\
+  \ p 值以确定该关系的显著性。此外，你还需要确定普通最小二乘模型在估计最终消费支出的未来值时损失了多少信息。为了进一步评估所选模型的性能，你必须估计 R² 分数。\n\
+  \n表 2-7 概述了用于检验美国贷款利率与美国最终消费支出之间关系显著性的估计器类型。它还展示了模型如何学习可用的美国宏观经济数据，以及如何生成美国最终消费支出的未来实例，包括在估计这些实例时产生的误差。此外，它还详细说明了模型在多大程度上解释了美国贷款利率的变化如何影响美国最终消费支出的变化。总之，它有助于你决定是否必须接受所建立宏观经济现象的存在，以及你可以在多大程度上依赖该模型来估计未来实例。\n\
+  \n**表 2-7**  \n**普通最小二乘回归模型结果**\n\n| 因变量 | y | R-squared | 0.443 |\n| --- | ---\
+  \ | --- | --- |\n| 模型 | OLS | 调整后 R-squared | 0.431 |\n| 方法 | 最小二乘法 | F-统计量 | 36.64\
+  \ |\n| 日期 | 2021 年 8 月 4 日，周三 | Prob (F-统计量) | 2.41e-07 |\n| 时间 | 11:06:05 | 对数似然\
+  \ | -1454.2 |\n| 观测数 | 48 | AIC | 2912. |\n| 残差自由度 | 46 | BIC | 2916. |\n| 模型自由度\
+  \ | 1 | | |\n| 协方差类型: | nonrobust | | |\n\n| | coef | std err | t | P>&#124;t&#124;\
+  \ | [0.025 | 0.975] |\n| --- | --- | --- | --- | --- | --- | --- |\n| const | 7.427e+12\
+  \ | 5.12e+11 | 14.496 | 0.000 | 6.4e+12 | 8.46e+12 |\n| x1 | -3.102e+12 | 5.12e+11\
+  \ | -6.053 | 0.000 | -4.13e+12 | -2.07e+12 |\n\n| Omnibus: | 1.135 | Durbin-Watson:\
+  \ | 1.754 |\n| --- | --- | --- | --- |\n| Prob(Omnibus): | 0.567 | Jarque-Bera (JB):\
+  \ | 1.111 |\n| Skew: | 0.236 | Prob(JB): | 0.574 |\n| Kurtosis: | 2.424 | Cond.\
+  \ No. | 1.00 |\n\n```\nimport statsmodels.api as sm\nfrom sklearn.model_selection\
+  \ import train_test_split\nfrom sklearn.preprocessing import StandardScaler\nx =\
+  \ np.array(df[\"lending_rate\"])\ny = np.array(df[\"final_consumption\"])\nx = x.reshape(-1,1)\n\
+  y = y.reshape(-1,1)\nx_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.2,shuffle=False)\n\
+  scaler = StandardScaler()\nx_train = scaler.fit_transform(x_train)\nx_test = scaler.transform(x_test)\n\
+  x_constant = sm.add_constant(x_train)\nx_test = sm.add_constant(x_test)\nmodel =\
+  \ sm.OLS(y_train,x_constant).fit()\nmodel.summary()\n代码清单 2-12\n使用 Statsmodels 开发普通最小二乘回归模型\n\
+  ```\n\n\n\n表 2-7 显示，普通最小二乘回归模型解释了数据中 53.2% 的变异性（`R²` 得分为 0.443）。利用该表中的发现，公式 2-8\
+  \ 展示了美国贷款利率的变化如何影响美国最终消费支出的变化。\n\n![$$ U.S. FCE={\\beta}_0-3.102e+12\\left( Lending\\\
+  \ Interest\\ Rate\\left(\\%\\right)\\right)+{\\varepsilon}_i $$](img/516940_1_En_2_Chapter_TeX_Equ8.png)\n\
+  （公式 2-8）\n\n公式 2-8 表明，美国贷款利率每变化一个单位，最终消费支出就会减少`3.102e+12`。此外，表 2-7 还显示，当美国贷款利率保持不变时，预测的美国最终消费支出均值为\
+  \ `7.427e+12`。最后，该表告诉您，该模型解释了数据中约 36% 的变异性——它难以准确预测未来美国最终消费支出的情况。\n\n### 使用 Scikit-Learn\
+  \ 开发普通最小二乘回归模型\n\n上一节介绍了一种使用 `statsmodels` 库开发和评估普通最小二乘模型的方法。研究结果表明，所表达的宏观经济现象确实存在。鉴于在测试中表现不佳，您不能完全依赖该模型来预测未来美国最终消费支出的情况。\n\
+  \n本节研究相同的现象，但使用不同的机器学习库来开发和评估模型。它使用了一个名为 `scikit-learn` 的流行开源库。开发该模型的方式与上一节类似。这种方法相对于\
+  \ `statsmodels` 具有竞争优势，因为它提供了一种更简单的方法来控制模型的行为并验证其性能。此外，它拥有广泛的回归模型，例如 Ridge、Lasso\
+  \ 和 ElasticNet 等。本章不涉及这些模型。您目前需要知道的是，这些模型通过引入一项对模型在测试中产生的错误进行惩罚的项，从而扩展了普通最小二乘模型。`statsmodels`\
+  \ 和 `sklearn` 之间的主要区别在于，`statsmodels` 更擅长假设检验，而 `sklearn` 更擅长预测，并且不返回 t 统计量。请参见代码清单\
+  \ 2-13。\n\n```\nx = np.array(df[\"lending_rate\"])\ny = np.array(df[\"final_consumption\"\
+  ])\nx = x.reshape(-1,1)\ny = y.reshape(-1,1)\nx_train, x_test, y_train, y_test =\
+  \ train_test_split(x,y,test_size=0.2, random_state=0)\nscaler = StandardScaler()\n\
+  x_train = scaler.fit_transform(x_train)\nx_test = scaler.transform(x_test)\nfrom\
+  \ sklearn.linear_model import LinearRegression\nlm = LinearRegression()\nlm.fit(x_train,y_train)\n\
+  ```\n\n*代码清单 2-13：应用 Scikit-Learn 开发普通最小二乘回归模型*\n\n### 交叉验证\n\n代码清单 2-14 应用 `cross_val_score()`\
+  \ 方法，在相同数据的不同子集上验证默认普通最小二乘回归模型的性能。它使用 `R²` 来计算得分，因为 `sklearn` 不计算调整后的 `R²`。然后估算验证得分的均值和标准差。\n\
+  \n```\nfrom sklearn.model_selection import cross_val_score\ndef get_val_score(scores):\n\
+  lm_scores = cross_val_score(scores, x_train, y_train, scoring=\"r2\")\nprint(\"\
+  CV mean: \", np.mean(scores))\nprint(\"CV std: \", np.std(scores))\nget_val_score(lm)\n\
+  CV mean:  0.2424291076433461\nCV std:  0.11822093588298\n```\n\n*代码清单 2-14：普通最小二乘回归模型交叉验证*\n\
+  \n结果显示，交叉验证得分的均值数据点为 0.2424，交叉验证得分的独立数据点偏离均值数据点的幅度为 0.1182。代码清单 2-15 显示了数据中分界点的起始位置，以便您可以创建一个数据框，其中包含实际数据点、预测数据点以及日期索引。\n\
+  \n```\ny_test.shape\n(13, 1)\n```\n\n*代码清单 2-15：查找数据中分界点的起始位置*\n\n### 预测\n\n代码清单\
+  \ 2-16 将美国最终消费支出的实际数据点和预测数据点并列制表（参见表 2-8）。\n\n**表 2-8：实际与预测的美国最终消费支出**\n\n| 日期 |\
+  \ 实际 FCE | 预测 FCE |\n| --- | --- | --- |\n| 2020-01-01 | 5.829066e+12 | 6.511152e+12\
+  \ |\n| 2019-01-01 | 3.403470e+12 | 3.385294e+12 |\n| 2018-01-01 | 7.173358e+12 |\
+  \ 9.102986e+12 |\n| 2017-01-01 | 5.245942e+12 | 7.502778e+12 |\n| 2016-01-01 | 1.227281e+13\
+  \ | 1.085977e+13 |\n| 2015-01-01 | 1.688457e+13 | 9.009788e+12 |\n| 2014-01-01 |\
+  \ 3.624267e+12 | 5.175626e+12 |\n| 2013-01-01 | 7.173358e+12 | 9.461798e+12 |\n\
+  | 2012-01-01 | 2.204317e+12 | 6.560470e+12 |\n| 2011-01-01 | 7.144856e+12 | 5.151394e+12\
+  \ |\n| 2010-01-01 | 1.543082e+13 | 1.056713e+13 |\n| 2009-01-01 | 1.269598e+13 |\
+  \ 1.085977e+13 |\n| 2008-01-01 | 4.757180e+12 | 3.300484e+12 |\n\n```\nactual_values\
+  \ = pd.DataFrame(y_test)\nactual_values.columns = [\"Actual FCE\"]\npredicted_values\
+  \  = pd.DataFrame(lm.predict(x_test))\npredicted_values.columns = [\"Predicted FCE\"\
+  ]\nactual_and_predicted_values = pd.concat([actual_values,predicted_values],axis=1)\n\
+  actual_and_predicted_values.index = pd.to_datetime(df[:13].index)\nactual_and_predicted_values\n\
+  ```\n\n*代码清单 2-16：实际与预测的美国最终消费支出*\n\n要绘制表 2-8 中的数据点，请使用代码清单 2-17（参见图 2-9）。\n\n![../images/516940_1_En_2_Chapter/516940_1_En_2_Fig9_HTML.png](img/516940_1_En_2_Fig9_HTML.png)\n\
+  *图 2-9：实际与预测的美国最终消费支出*\n\n```\nactual_and_predicted_values.plot(lw=4)\nplt.xlabel(\"\
+  Date\")\nplt.title(\"The U.S. actual and predicted FCE\")\nplt.ylabel(\"FCE\")\n\
+  plt.legend(loc=\"best\")\nplt.show()\n```\n\n*代码清单 2-17：实际与预测的美国最终消费支出*\n\n图 2-9\
+  \ 展示了美国最终消费支出的实际数据点和预测数据点。它显示了预测数据点如何偏离实际数据点。\n\n\n好的，作为一名高级文档工程师和翻译员，我将遵循您提供的注意事项和示例，将给定的英文文本翻译成中文。\n\
+  \n\n## 估计截距和系数\n\n清单 2-18 返回了系数的估计值（美国贷款利率每变化一个单位，美国最终消费支出预测值的变化量）。请注意，该定义仅适用于线性模型。公式\
+  \ 2-9 表达了本章的回归方程。\n\n```\nlm.intercept_\narray([6.95280973e+12])\n清单 2-18\n估计截距\n\
+  ```\n\n当美国贷款利率保持不变时，美国最终消费支出的预测均值是 `7.56456705e+12`。清单 2-19 估计了该系数。\n\n```\nlm.coef_\n\
+  array([[-2.71748602e+12]])\n清单 2-19\n估计系数\n```\n\n公式 2-9 表达了本章的回归方程。\n\n![$$ 美国最终消费支出\
+  \ = 6.95280973e-2.71748602e+12\\left(美国贷款利率\\right)+{\\varepsilon}_i $$](img/516940_1_En_2_Chapter_TeX_Equ9.png)\n\
+  \n（公式 2-9）\n\n公式 2-9 强调，美国贷款利率每变化一个单位，美国最终消费支出就减少 `2.71748602e+122`。\n\n图 2-10 绘制了输入到普通最小二乘回归模型中的数据。\n\
+  \n![../images/516940_1_En_2_Chapter/516940_1_En_2_Fig10_HTML.jpg](img/516940_1_En_2_Fig10_HTML.jpg)\n\
+  \n图 2-10\n\n美国贷款利率与最终消费支出\n\n```\nplt.scatter(x_train,y_train,color=\"navy\",s=200)\n\
+  plt.title(\"美国贷款利率 (%) 与最终消费支出\")\nplt.ylabel(\"实际美国最终消费支出\")\nplt.xlabel(\"实际美国贷款利率\
+  \ (%)\")\nplt.show()\n清单 2-20\n美国贷款利率与最终消费支出\n```\n\n图 2-10 绘制了美国贷款利率 (%) 的实际数据点和最终消费支出的预测数据点。\n\
+  \n```\nplt.scatter(x_test,predicted_values,color=\"navy\",s=200)\nplt.plot(x_test,predicted_values,color=\"\
+  red\",lw=4)\nplt.title(\"美国最终消费支出预测\")\nplt.xlabel(\"实际美国贷款利率 (%)\")\nplt.ylabel(\"\
+  预测的美国最终消费支出\")\nplt.show()\n清单 2-21\n美国最终消费支出预测\n```\n\n图 2-11 显示，通过构建，美国贷款利率的实际数据点和最终消费支出的预测数据点呈完美的线性关系。\n\
+  \n![../images/516940_1_En_2_Chapter/516940_1_En_2_Fig11_HTML.png](img/516940_1_En_2_Fig11_HTML.png)\n\
+  \n图 2-11\n\n美国最终消费支出预测\n\n### 残差分析\n\n*残差*表示线性回归方法估计的数据点与实际数据点之间差异的估计值。公式 2-10 定义了残差。\n\
+  \n![$$ {\\varepsilon}_i=y-\\hat{y} $$](img/516940_1_En_2_Chapter_TeX_Equ10.png)\n\
+  \n（公式 2-10）\n\n普通最小二乘回归模型带有正态性假设。\n\n```\nplt.scatter(y_test,predicted_values,color=\"\
+  navy\",s=200)\nplt.title(\"美国实际与预测的最终消费支出\")\nplt.xlabel(\"实际美国最终消费支出\")\nplt.ylabel(\"\
+  预测的美国最终消费支出\")\nplt.show()\n清单 2-22\n美国最终消费支出的实际值与预测值\n```\n\n![../images/516940_1_En_2_Chapter/516940_1_En_2_Fig12_HTML.jpg](img/516940_1_En_2_Fig12_HTML.jpg)\n\
+  \n图 2-12\n\n美国最终消费支出的实际值与预测值\n\n图 2-12 显示，美国最终消费支出的实际数据点和预测数据点是随机分布的。图 2-13 显示了残差的集中趋势和离散程度。\n\
+  \n![../images/516940_1_En_2_Chapter/516940_1_En_2_Fig13_HTML.png](img/516940_1_En_2_Fig13_HTML.png)\n\
+  \n图 2-13\n\n普通最小二乘回归模型残差分布\n\n```\nresiduals = y_test - predicted_values\nresiduals\
+  \ = pd.DataFrame(residuals)\nresiduals.columns = [\"残差\"]\nresiduals.plot(kind=\"\
+  box\",color=\"navy\")\nplt.title(\"模型残差分布\")\nplt.ylabel(\"值\")\nplt.show()\n清单\
+  \ 2-23\n普通最小二乘回归模型残差分布\n```\n\n图 2-13 显示均值数据点远非 0。这表明普通最小二乘回归模型不满足该假设。图 2-14 显示了序列相关性。其\
+  \ x 轴为*滞后*数（当前时间的残差与自身回溯多远相关），y 轴为自相关。带有蓝色圆点的直线是自相关系数。如果有任何自相关系数超出了统计控制范围（蓝色区域），则该模型不满足回归假设。\n\
+  \n![../images/516940_1_En_2_Chapter/516940_1_En_2_Fig14_HTML.png](img/516940_1_En_2_Fig14_HTML.png)\n\
+  \n图 2-14\n\n普通最小二乘回归模型残差自相关\n\n```\nfrom statsmodels.graphics.tsaplots import plot_acf\n\
+  plot_acf(residuals)\nplt.title(\"模型残差自相关\")\nplt.xlabel(\"滞后数\")\nplt.ylabel(\"\
+  自相关函数\")\nplt.show()\n清单 2-24\n普通最小二乘回归模型残差自相关\n```\n\n图 2-14 表明，在滞后之后，没有自相关系数超出蓝色区域（置信区间）。\n\
+  \n### 其他普通最小二乘回归模型性能指标\n\n其他普通最小二乘回归模型性能指标包括：\n\n*   **平均绝对误差** — 表示回归变量之前误差的平均幅度。\n\
+  *   **均方误差** — 表示误差平方和的平均值。\n*   **均方根误差** — 表示回归变量后可解释的变异。当您不希望有巨大残差时，请使用均方根误差。\n\
+  *   **R 方** — 表示回归量对数据变异的解释程度。\n\n```\nfrom sklearn import metrics\nMAE = metrics.mean_absolute_error(y_test,predicted_values)\n\
+  MSE = metrics.mean_squared_error(y_test,predicted_values)\nRMSE = np.sqrt(MSE)\n\
+  EV = metrics.explained_variance_score(y_test,predicted_values)\nR2 = metrics.r2_score(y_test,predicted_values)\n\
+  lmmodelevation = [[MAE,MSE,RMSE,EV,R2]]\nlmmodelevationdata = pd.DataFrame(lmmodelevation,\
+  \ index=[\"值\"],columns=(\"平均绝对误差\", \"均方误差\", \"均方根误差\", \"解释方差得分\", \"R 方\"))\n\
+  lmmodelevationdata\n清单 2-25\n普通最小二乘回归模型性能矩阵\n```\n\n表 2-9\n\n普通最小二乘回归模型性能矩阵\n\n\
+  |  | 平均绝对误差 | 均方误差 | 均方根误差 | 解释方差得分 | R 方 |\n| :--- | :--- | :--- | :--- | :---\
+  \ | :--- |\n| **值** | 2.501582e+12 | 1.023339e+25 | 3.198966e+12 | 0.524619 | 0.513118\
+  \ |\n\n表 2-9 显示，普通最小二乘回归模型解释了数据中 51.31% 的变异。回归变量前的误差平均幅度为 `2.501582e+12`，误差平方和为\
+  \ `1.023339e+25`。最后，解释方差得分为 52.46%，进一步证实了模型表现一般。\n\n\n\n## 普通最小二乘回归模型学习曲线\n\n图 2-15\
+  \ 展示了随着训练-测试集规模增大，普通最小二乘模型如何学习解释美国贷款利率与美国最终消费支出之间关系的变异性。简而言之，它展示了当你增加训练-测试集大小时，R²分数如何变化。参见代码清单\
+  \ 2-26。\n\n![../images/516940_1_En_2_Chapter/516940_1_En_2_Fig15_HTML.png](img/516940_1_En_2_Fig15_HTML.png)\n\
+  \n**图 2-15**  \n普通最小二乘回归模型学习曲线\n\n```\nfrom sklearn.model_selection import learning_curve\n\
+  trainsizelogreg, trainscorelogreg, testscorelogreg = learning_curve(lm, x,y,cv=5,\
+  \ n_jobs=-1, scoring=\"r2\", train_sizes=np.linspace(0.1,1.0,50))\ntrainscorelogreg_mean\
+  \ = np.mean(trainscorelogreg,axis=1)\ntrainscorelogreg_std = np.std(trainscorelogreg,axis=1)\n\
+  testscorelogreg_mean = np.mean(testscorelogreg,axis=1)\ntestscorelogreg_std = np.std(testscorelogreg,axis=1)\n\
+  fig, ax = plt.subplots()\nplt.plot(trainsizelogreg,trainscorelogreg_mean, label=\"\
+  Training R2 score\", color=\"red\",lw=4)\nplt.plot(trainsizelogreg,testscorelogreg_mean,\
+  \ label=\"Validation R2 score\",color=\"navy\", lw=4)\nplt.title(\"OLS learning\
+  \ curve\")\nplt.xlabel(\"Training set size\")\nplt.ylabel(\"R2 score\")\nplt.legend(loc=4)\n\
+  plt.show()\n```\n\n**代码清单 2-26**  \n普通最小二乘回归模型学习曲线\n\n图 2-15 表明，在整个训练过程中，交叉验证的 R²分数始终低于训练集的\
+  \ R²分数——这意味着当你进行重复测试时，训练中的 R²分数很高。在验证阶段，随着普通最小二乘回归模型接近数据中的第十个数据点，它开始难以预测美国最终消费支出的数据点。与此同时，在训练期间，回归器始终能成功预测数据点。\n\
+  \n### 结论\n\n本章介绍了如何应用普通最小二乘回归模型来寻找横截面数据的答案。该方法首先确定了数据点的分布，然后处理了缺失的数据点和异常值。接着，它检验了美国贷款利率（百分比）与最终消费支出（现价美元）之间的联合变异性和关联性。然后，它应用了皮尔逊相关方法，发现美国贷款利率与美国最终消费支出之间存在负相关。\n\
+  \n随后，本章向你展示了如何使用`statsmodels`和`scikit-learn`库开发普通最小二乘回归模型。使用`statsmodels`开发的模型性能优于使用`scikit-learn`开发的模型。\n\
+  \n"
+- "# 3. 应用回归的多变量消费研究\n\n上一章涵盖了多元线性回归——一种通过应用单个预测变量来预测连续响应变量的模型。在实际情况下，你可能会遇到不止一个预测变量，因此本章介绍了将多个变量恰当地拟合到回归方程中的方法。它应用普通最小二乘回归模型来确定美国社会缴款（现价本币单位）、贷款利率（百分比）以及\
+  \ GDP（国内生产总值）年度增长百分比的变化是否会影响最终消费支出（现价美元）的变化。\n\n首先，该模型检查数据是否来自正态分布。接着，它应用皮尔逊相关方法来研究变量之间的相关性，然后运用特征矩阵来确定变量间的多重共线性严重程度。随后，它通过应用一种称为*主成分分析*的降维技术将数据降至二维。然后，它将预测变量拟合到回归模型中，以预测美国最终消费支出。最后，它确定了残差的集中趋势和分布，并研究了随着训练数据增加，模型如何学习做出可靠的预测。\n\
+  \n## 本章背景\n\n预测变量包括美国社会缴款（现价本币单位）、贷款利率（百分比）和 GDP 增长（年度百分比），响应变量是美国最终消费支出（现价美元）。表\
+  \ 3-1 概述了宏观经济指标并展示了它们的代码。\n\n**表 3-1**  \n本章所用美国宏观经济指标\n\n| 代码 | 标题 |\n| --- | ---\
+  \ |\n| `GC.REV.SOCL.CN` | 美国社会缴款（现价本币单位） |\n| `FR.INR.LEND` | 美国贷款利率（百分比） |\n| `NY.GDP.MKTP.KD.ZG`\
+  \ | 美国 GDP 增长（年度百分比） |\n| `NE.CON.TOTL.CD` | 美国最终消费支出（现价美元） |\n\n### 社会缴款（现价本币单位）\n\
+  \n社会缴款是指组织与员工共同缴纳的社会保障费用（参见代码清单 3-1）。其中可能还包括政府为保险而追加的缴款。图 3-1 展示了美国 1971 年至 2021\
+  \ 年的社会缴款情况。\n\n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig1_HTML.png](img/516940_1_En_3_Fig1_HTML.png)\n\
+  \n**图 3-1**  \n美国社会缴款（现价本币单位）\n\n```\nimport wbdata\ncountry = [\"USA\"]\nindicator\
+  \ = {\"GC.REV.SOCL.CN\":\"social_contri\"}\nsocial_contri = wbdata.get_dataframe(indicator,\
+  \ country=country, convert_date=True)\nsocial_contri.plot(kind=\"line\",color=\"\
+  green\",lw=4)\nplt.title(\"The U.S. social contributions\")\nplt.ylabel(\"Social\
+  \ contributions\")\nplt.xlabel(\"Date\")\nplt.show()\n```\n\n**代码清单 3-1**  \n美国社会缴款（现价本币单位）\n\
+  \n图 3-1 显示了从 1971 年到 2020 年美国社会缴款数据明显的上升趋势。这表明目前美国的组织与员工对社会保障的缴费比以往任何时候都多。请注意，这些信息并未考虑通货膨胀——该指标并未完全反映这些缴款的实际变化。\n\
+  \n### 贷款利率\n\n贷款利率是指金融机构在向客户提供贷款时收取的费率（参见代码清单 3-2）。它反映了借贷成本。低贷款利率意味着借款人在偿还债务时支付的费用较少。相反，高利率则意味着借贷成本较高。图\
+  \ 3-2 展示了美国 1971 年至 2020 年的贷款利率。\n\n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig2_HTML.png](img/516940_1_En_3_Fig2_HTML.png)\n\
+  \n**图 3-2**  \n美国贷款利率\n\n```\ncountry = [\"USA\"]\nindicator = {\"FR.INR.LEND\"\
+  :\"lending_rate\"}\nlending_rate = wbdata.get_dataframe(indicator, country=country,\
+  \ convert_date=True)\nsocial_contri.plot(kind=\"line\",color=\"orange\",lw=4)\n\
+  plt.title(\"The U.S. lending interest rate (%)\")\nplt.ylabel(\"Lending interest\
+  \ rate (%)\")\nplt.xlabel(\"Date\")\nplt.show()\n```\n\n**代码清单 3-2**  \n美国贷款利率\n\
+  \n图 3-2 显示，在过去五十年里，美国贷款利率增长了超过 1.25%。\n\n\n\n### GDP 增长（年度百分比）\n\n`GDP` 代表国内生产总值。它估算了一个国家家庭每年消费的最终商品和服务的市场价值。它是诊断经济体健康状况的典型指标，因为它传达了一个国家的经济产出。估算\
+  \ `GDP` 主要有两种方法：使用*名义* `GDP`（不考虑通货膨胀的 `GDP` 估算值），以及使用*实际* `GDP`（考虑通货膨胀的 `GDP` 估算值）。公式\
+  \ 3-1 是 `GDP` 的公式。\n\n![$$ Y=C+I+G+\\left(X-M\\right) $$](img/516940_1_En_3_Chapter_TeX_Equ1.png)\n\
+  \n（公式 3-1）\n\n其中 `Y` 代表 `GDP`，`C` 代表消费支出，`I` 代表投资，`G` 代表政府支出，`X` 代表出口，`M` 代表进口。图\
+  \ 3-3 显示了 1971 年至 2020 年美国 `GDP` 年度百分比增长的变化。见代码清单 3-3。\n\n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig3_HTML.png](img/516940_1_En_3_Fig3_HTML.png)\n\
+  \n**图 3-3**  \n美国 GDP 增长\n\n```\ncountry = [\"USA\"]\ngdp_growth = {\"NY.GDP.MKTP.KD.ZG\"\
+  :\"gdp_growth\"}\ngdp_growth = wbdata.get_dataframe(indicator, country=country,\
+  \ convert_date=True)\ngdp_growth.plot(kind=\"line\",color=\"navy\",lw=4)\nplt.title(\"\
+  The U.S. GDP growth (annual %)\")\nplt.ylabel(\"GDP growth (annual %)\")\nplt.xlabel(\"\
+  Date\")\nplt.show()\n```\n\n**代码清单 3-3**  \n美国 GDP 增长（年度百分比）\n\n图 3-3 显示了美国 `GDP`\
+  \ 的锯齿状模式，该指标已根据通货膨胀进行了调整。1981 年，美国经历了 `GDP` 的最大变化。而在 2019 年，经济活动则非常低迷（`GDP` 增长了\
+  \ 2.161176）。\n\n### 最终消费支出\n\n最终消费支出是家庭购买的所有商品和服务的市场价值（见代码清单 3-4）。这包括汽车和个人电脑等耐用品。图\
+  \ 3-4 展示了按现价美元计算的美国最终消费支出。\n\n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig4_HTML.png](img/516940_1_En_3_Fig4_HTML.png)\n\
+  \n**图 3-4**  \n美国最终消费支出\n\n```\ncountry = [\"USA\"]\nindicator = {\"NE.CON.TOTL.CD\"\
+  :\"fin_cons\"}\nfin_cons = wbdata.get_dataframe(indicator, country=country, convert_date=True)\n\
+  social_contri.plot(kind=\"line\",color=\"red\",lw=4)\nplt.title(\"The U.S. FCE\"\
+  )\nplt.ylabel(\"FCE\")\nplt.xlabel(\"Date\")\nplt.show()\n```\n\n**代码清单 3-4**  \n\
+  美国最终消费支出（现价美元）\n\n图 3-4 显示了美国最终消费支出数据极度上升的趋势，该趋势在 2012 年略有中断。接下来，你将探索一个理论框架，以便对该现象有所了解。\n\
+  \n## 理论框架\n\n本章应用多元回归方法来确定一组预测变量（美国社会缴款、贷款利率和 `GDP` 增长）是否会影响响应变量（美国最终消费支出）。图 3-5\
+  \ 展示了当前问题的理论框架。\n\n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig5_HTML.png](img/516940_1_En_3_Fig5_HTML.png)\n\
+  \n**图 3-5**  \n理论框架\n\n基于图 3-5，本章检验了以下假设。\n\n**假设 1**  \n`H[0]`：美国社会缴款与最终消费支出之间无显著差异。\
+  \  \n`H[A]`：美国社会缴款与最终消费支出之间存在显著差异。\n\n**假设 2**  \n`H[0]`：美国贷款利率与最终消费支出之间无显著差异。 \
+  \ \n`H[A]`：美国贷款利率与最终消费支出之间存在显著差异。\n\n**假设 3**  \n`H[0]`：美国 GDP 增长与最终消费支出之间无显著差异。\
+  \  \n`H[A]`：美国 GDP 增长与最终消费支出之间存在显著差异。\n\n本章应用普通最小二乘回归模型来研究以下三个因素的变化是否会影响美国家庭的消费模式：\n\
+  \n*   美国金融机构向客户收取的贷款利率\n*   考虑通货膨胀后的美国经济活动年度增长\n*   美国组织和公民向社会保障体系缴纳的缴款\n\n代码清单\
+  \ 3-5 应用 `wbdata` 获取与美国社会缴款、贷款利率、`GDP` 增长以及最终消费支出相关的数据（见表 3-2）。\n\n**表 3-2**  \n\
+  加载美国宏观经济数据\n\n| 日期 | social_contri | lending_rate | gdp_growth | fin_cons |\n| ---\
+  \ | --- | --- | --- | --- |\n| 2020-01-01 | 1.420776e+12 | 3.544167 | -3.486140\
+  \ | NaN |\n| 2019-01-01 | 1.402228e+12 | 5.282500 | 2.161177 | 1.753966e+13 |\n\
+  | 2018-01-01 | 1.344612e+12 | 4.904167 | 2.996464 | 1.688457e+13 |\n| 2017-01-01\
+  \ | 1.283672e+12 | 4.096667 | 2.332679 | 1.608306e+13 |\n| 2016-01-01 | 1.224603e+12\
+  \ | 3.511667 | 1.711427 | 1.543082e+13 |\n\n```\ncountry = [\"USA\"]\nindicator\
+  \ = {\"GC.REV.SOCL.CN\":\"social_contri\",\n\"FR.INR.LEND\":\"lending_rate\",\n\"\
+  NY.GDP.MKTP.KD.ZG\":\"gdp_growth\",\n\"NE.CON.TOTL.CD\":\"fin_cons\"}\ndf = wbdata.get_dataframe(indicator,\
+  \ country=country, convert_date=True)\ndf.head()\n```\n\n**代码清单 3-5**  \n加载美国宏观经济数据\n\
+  \n\n\n## 描述性统计\n\n绝大多数机器学习模型对缺失数据点（某个列或行中的空白数据点）极其敏感。因此，您必须用一个中心值（均值或中位数）来替换它们。当使用`pandas`库时，您可以使用`fillna()`方法，并为其提供一个中心值，该值将用于替换某一列中的每个缺失值。清单\
+  \ 3-6 用均值替换了缺失的数据点，清单 3-7 展示了美国社保缴款的分布情况。\n\n```\ndf[\"social_contri\"] = df[\"\
+  social_contri\"].fillna(df[\"social_contri\"].mean())\ndf[\"lending_rate\"] = df[\"\
+  lending_rate\"].fillna(df[\"lending_rate\"].mean())\ndf[\"gdp_growth\"] = df[\"\
+  gdp_growth\"].fillna(df[\"gdp_growth\"].mean())\ndf[\"fin_cons\"] = df[\"fin_cons\"\
+  ].fillna(df[\"fin_cons\"].mean())\n清单 3-6\n用均值替换缺失值\n```\n\n图 3-6 展示了美国社保缴款的分布情况。\n\
+  \n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig6_HTML.jpg](img/516940_1_En_3_Fig6_HTML.jpg)\n\
+  \n图 3-6\n美国社保缴款分布\n\n```\ndf[\"social_contri\"] .plot(kind=\"box\",color=\"green\"\
+  )\nplt.title(\"The U.S. social contributions' distribution\")\nplt.ylabel(\"Values\"\
+  )\nplt.show()\n清单 3-7\n美国社保缴款分布\n```\n\n图 3-6 显示美国社保缴款数据没有异常值。图 3-7 展示了美国的贷款利率。请参见清单\
+  \ 3-8。\n\n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig7_HTML.png](img/516940_1_En_3_Fig7_HTML.png)\n\
+  \n图 3-7\n美国贷款利率分布\n\n```\ndf[\"lending_rate\"] .plot(kind=\"box\",color=\"orange\"\
+  )\nplt.title(\"US lending interest rate (%) distribution\")\nplt.ylabel(\"Values\"\
+  )\nplt.show()\n清单 3-8\n美国贷款利率分布\n```\n\n图 3-7 表明美国贷款利率数据中有三个异常值。清单 3-9 用均值替换了这些异常值。清单\
+  \ 3-10 展示了 GDP 增长的分布。\n\n```\ndf['lending_rate'] = np.where((df[\"lending_rate\"\
+  ] > 13),df[\"lending_rate\"].mean(),df[\"lending_rate\"])\n清单 3-9\n用均值替换美国贷款利率异常值\n\
+  ```\n\n图 3-8 展示了美国 GDP 增长的分布。\n\n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig8_HTML.png](img/516940_1_En_3_Fig8_HTML.png)\n\
+  \n图 3-8\n美国 GDP 增长分布\n\n```\ndf[\"gdp_growth\"] .plot(kind=\"box\",color=\"navy\"\
+  )\nplt.title(\"The U.S. GDP growth (annual %) distribution\")\nplt.ylabel(\"Values\"\
+  )\nplt.show()\n清单 3-10\n美国 GDP 增长分布\n```\n\n图 3-8 表明美国 GDP 增长数据中有两个异常值。清单 3-11 用均值替换了这些异常值。清单\
+  \ 3-12 展示了最终消费支出。\n\n```\ndf['gdp_growth'] = np.where((df[\"gdp_growth\"] < 0),df[\"\
+  gdp_growth\"].mean(),df[\"gdp_growth\"])\n清单 3-11\n用均值替换美国 GDP 增长异常值\n```\n\n图 3-9\
+  \ 展示了美国的最终消费支出（按现价美元计）。\n\n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig9_HTML.png](img/516940_1_En_3_Fig9_HTML.png)\n\
+  \n图 3-9\n美国最终消费支出\n\n```\ndf[\"fin_cons\"] .plot(kind=\"box\",color=\"red\")\nplt.title(\"\
+  The U.S. FCE distribution\")\nplt.ylabel(\"Values\")\nplt.show()\n清单 3-12\n美国最终消费支出\n\
+  ```\n\n图 3-9 表明该数据中没有异常值。表 3-3 概述了数据的集中趋势和离散程度，您可通过清单 3-13 中的命令查看。\n\n表 3-3\n描述性汇总\n\
+  \n|   | 计数 | 均值 | 标准差 | 最小值 | 25%分位数 | 50%分位数 | 75%分位数 | 最大值 |\n|---|---|---|---|---|---|---|---|---|\n\
+  | `social_contri` | 61.0 | 5.977005e+11 | 3.687861e+11 | 5.048000e+10 | 2.985900e+11\
+  \ | 5.977005e+11 | 8.533970e+11 | 1.420776e+12 |\n| `lending_rate` | 61.0 | 6.639908e+00\
+  \ | 2.436502e+00 | 3.250000e+00 | 4.500000e+00 | 6.824167e+00 | 8.270833e+00 | 1.266583e+01\
+  \ |\n| `gdp_growth` | 61.0 | 3.516580e+00 | 1.349463e+00 | 9.983408e-01 | 2.684287e+00\
+  \ | 3.075515e+00 | 4.400000e+00 | 7.236620e+00 |\n| `fin_cons` | 61.0 | 7.173358e+12\
+  \ | 4.580756e+12 | 8.395100e+11 | 3.403470e+12 | 7.173358e+12 | 1.006535e+13 | 1.753966e+13\
+  \ |\n\n```\ndf.describe().transpose()\n清单 3-13\n描述性汇总\n```\n\n表 3-3 显示：\n\n*   美国社保缴款的均值是\
+  \ 5.977005e+11。\n*   贷款利率的均值是 6.639908e+00。\n*   GDP 增长的均值是 3.516580e+00。\n*   最终消费支出的均值是\
+  \ 7.173358e+12。\n*   美国社保缴款偏离均值的幅度是 3.687861e+11，贷款利率偏离均值的幅度是 2.436502e+00，GDP 增长偏离均值的幅度是\
+  \ 1.349463e+00，最终消费支出偏离均值的幅度是 4.580756e+12。\n\n## 协方差分析\n\n清单 3-14 确定了变量如何共同变化以及每个变量如何与自身变化（参见表\
+  \ 3-4）。\n\n表 3-4\n协方差矩阵\n\n|   | **social_contri** | **lending_rate** | **gdp_growth**\
+  \ | **fin_cons** |\n|---|---|---|---|---|\n| `social_contri` | 1.360032e+23 | -6.000783e+11\
+  \ | -2.202567e+11 | 1.553786e+24 |\n| `lending_rate` | -6.000783e+11 | 5.936544e+00\
+  \ | 8.538603e-01 | -7.092189e+12 |\n| `gdp_growth` | -2.202567e+11 | 8.538603e-01\
+  \ | 1.821052e+00 | -2.659879e+12 |\n| `fin_cons` | 1.553786e+24 | -7.092189e+12\
+  \ | -2.659879e+12 | 2.098332e+25 |\n\n```\ndfcov = df.cov()\ndfcov\n清单 3-14\n协方差矩阵\n\
+  ```\n\n表 3-4 概述了您所检索的变量集的估计协方差。\n\n\n\n## 相关性分析\n\n清单 3-15 应用了之前的协方差估计值，并将其除以预测变量的标准差和响应变量的标准差，以计算皮尔逊相关系数（见图\
+  \ 3-10）。\n\n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig10_HTML.png](img/516940_1_En_3_Fig10_HTML.png)\n\
+  \n**图 3-10**  \n皮尔逊相关矩阵\n\n```python\ndfcorr = df.corr(method=\"pearson\")\nsns.heatmap(dfcorr,\
+  \ annot=True, annot_kws={\"size\":12},cmap=\"Blues\")\nplt.title(\"Pearson correlation\
+  \ matrix\")\nplt.show()\n```\n\n**清单 3-15**  \n皮尔逊相关矩阵\n\n表 3-5 对图 3-10 中的皮尔逊相关系数进行了解释。\n\
+  \n**表 3-5**  \n皮尔逊相关系数解释\n\n| 变量 | 皮尔逊相关系数 | 发现 |\n| --- | --- | --- |\n| 美国社会缴款（本币）与最终消费支出（现价美元）\
+  \ | 0.92 | 美国社会缴款与最终消费之间存在极强的正相关关系。这表明，平均而言，当美国组织和个人增加其社会保障缴款时，美国的最终消费支出往往会急剧增加。\
+  \ |\n| 美国银行贷款利率与最终消费支出（现价美元） | -0.64 | 美国银行贷款利率与最终消费之间存在中等程度的负相关关系。这表明，平均而言，随着借贷成本上升，美国的最终消费支出往往会适度下降。\
+  \ |\n| 美国 GDP 增长率与最终消费支出（现价美元） | -0.43 | 美国 GDP 增长率与最终消费之间存在中等程度的负相关关系。这表明，平均而言，随着经通胀调整后的经济活动增加，美国的最终消费支出往往会适度减少。\
+  \ |\n\n图 3-11 展示了美国社会缴款、银行贷款利率和最终消费支出的分布情况，包括这些变量之间的统计相关性。使用清单 3-16 中的命令查看这些散点图矩阵。\n\
+  \n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig11_HTML.png](img/516940_1_En_3_Fig11_HTML.png)\n\
+  \n**图 3-11**  \n散点图矩阵\n\n```python\nsns.pairplot(df)\n```\n\n**清单 3-16**  \n散点图矩阵\n\
+  \n## 相关性严重程度检测\n\n清单 3-17 使用特征值法检测相关性严重程度。它纳入了*特征值*，即在线性变换后我们考虑的向量，以及特征向量，也称为特征负荷（见表\
+  \ 3-6）。\n\n**表 3-6**  \n特征矩阵\n\n| | 特征值 | `social_contri` | `lending_rate` | `gdp_growth`\
+  \ | `fin_cons` |\n| --- | --- | --- | --- | --- | --- |\n| `social_contri` | 2.741814\
+  \ | 0.571562 | -0.727660 | -0.363008 | -0.109782 |\n| `lending_rate` | 0.078913\
+  \ | -0.477992 | -0.051401 | -0.774123 | 0.411844 |\n| `gdp_growth` | 0.403418 |\
+  \ -0.355849 | -0.015693 | -0.257158 | -0.898329 |\n| `fin_cons` | 0.775854 | 0.564103\
+  \ | 0.683829 | -0.450365 | -0.106477 |\n\n```python\neigenvalues, eigenvectors =\
+  \ np.linalg.eig(dfcorr)\neigenvalues = pd.DataFrame(eigenvalues)\neigenvalues.columns\
+  \ = [\"Eigen values\"]\neigenvectors = pd.DataFrame(eigenvectors)\neigenvectors.columns\
+  \ = df.columns\neigenvectors = pd.DataFrame(eigenvectors)\neigenmatrix = pd.concat([eigenvalues,\
+  \ eigenvectors],axis=1)\neigenmatrix.index = df.columns\neigenmatrix\n```\n\n**清单\
+  \ 3-17**  \n确定相关性严重程度\n\n表 3-7 解释了如何解读特征矩阵。\n\n**表 3-7**  \n特征矩阵解读\n\n| 特征值分数 |\
+  \ 描述 |\n| --- | --- |\n| > 100 | 存在极端的多重共线性。 |\n| 10 - 100 | 存在中等程度的多重共线性。 |\n|\
+  \ 0 - 10 | 存在轻微的多重共线性。 |\n\n基于表 3-6，数据中存在多重共线性。因此，你需要进行降维。\n\n### 降维\n\n当变量众多时，逐一研究每个变量之间的关系非常耗时。清单\
+  \ 3-18 对数据进行了降维，图 3-12 展示了每个主成分的方差比率。\n\n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig12_HTML.png](img/516940_1_En_3_Fig12_HTML.png)\n\
+  \n**图 3-12**  \n个体方差\n\n```python\nfrom sklearn.decomposition import PCA\nfrom sklearn.preprocessing\
+  \ import StandardScaler\nscaler = StandardScaler()\nstd_df = scaler.fit_transform(df)\n\
+  pca = PCA()\npca.fit_transform(std_df)\npca_variance = pca.explained_variance_\n\
+  plt.figure(figsize=(8, 6))\nplt.bar(range(4), pca_variance, align=\"center\", label=\"\
+  Individual variance\")\nplt.legend()\nplt.ylabel(\"Variance ratio\")\nplt.xlabel(\"\
+  Principal components\")\nplt.title(\"Individual variance\")\nplt.show()\n```\n\n\
+  **清单 3-18**  \n降维\n\n图 3-12 显示第一个主成分的方差超过 2.5。清单 3-19 对数据进行降维，使其变为二维（见图 3-13）。然后，你可以应用主成分分析，该分析确定潜变量（也称为*成分*）如何最佳地解释模型。\n\
+  \n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig13_HTML.png](img/516940_1_En_3_Fig13_HTML.png)\n\
+  \n**图 3-13**  \n二维数据\n\n```python\npca2 = PCA(n_components=2)\npca2.fit(std_df)\n\
+  x_3d = pca2.transform(std_df)\nplt.figure(figsize=(8,6))\nplt.scatter(x_3d[:,0],\
+  \ x_3d[:,1], c=df['gdp_growth'],cmap=\"viridis\",s=350)\nplt.xlabel(\"y\")\nplt.title(\"\
+  2 dimensional data\")\nplt.show()\n```\n\n**清单 3-19**  \n降维\n\n图 3-13 以二维散点图展示了降维后的数据。清单\
+  \ 3-20 生成 `X` 和 `Y` 数组，然后按照 80:20 的分割比例将数据拆分为训练集和测试集。最后，对这些数组进行标准化处理。\n\n```python\n\
+  x = df.iloc[::,0:3]\ny = df.iloc[::,-1]\nfrom sklearn.model_selection import train_test_split\n\
+  from sklearn.preprocessing import StandardScaler\nx_train, x_test, y_train, y_test\
+  \ = train_test_split(x,y,test_size=0.2,random_state=0)\nscaler = StandardScaler()\n\
+  x_train = scaler.fit_transform(x_train)\nx_test = scaler.transform(x_test)\n```\n\
+  \n**清单 3-20**  \n数据预处理\n\n\n\n## 使用 Statsmodels 开发普通最小二乘法回归模型\n\n清单 3-21 通过应用 `statsmodels`\
+  \ 库开发了一个多元普通最小二乘法回归模型，用于确定美国社会缴款、贷款利率与最终消费支出之间的关系是否存在显著差异。表 3-8 突出显示了该模型预测的美国最终消费支出值。\n\
+  \n表 3-8\n\n预测值（Statsmodels）\n\n|   | 预测的 FCE |\n|---|---|\n| 0 | 1.785433e+12 |\n\
+  | 1 | 3.810297e+12 |\n| 2 | 1.727029e+12 |\n| 3 | 7.169544e+12 |\n| 4 | 1.272881e+13\
+  \ |\n\n```\nimport statsmodels.api as sm\nx_constant = sm.add_constant(x_train)\n\
+  x_test = sm.add_constant(x_test)\nmodel = sm.OLS(y_train,x_constant).fit()\npd.DataFrame(model.predict(x_constant),\
+  \ columns = [\"Predicted FCE\"]).head()\n清单 3-21\n应用 Statsmodels 开发多元模型\n```\n\n\
+  表 3-8 展示了普通最小二乘法回归模型预测的数据点。清单 3-22 返回了表 3-9。（此摘要表提供了关于模型性能的充分信息。）\n\n表 3-9\n\nOLS\
+  \ 模型结果\n\n| 因变量 | fin_cons | R 方 | 0.810 |\n|---|---|---|---|\n| 模型 | OLS | 调整后\
+  \ R 方: | 0.797 |\n| 方法 | 最小二乘法 | F 统计量: | 62.48 |\n| 日期 | 2021 年 8 月 4 日 星期三 | 概率\
+  \ (F 统计量): | 6.70e-16 |\n| 时间 | 04:14:27 | 对数似然: | -1426.8 |\n| 观测数 | 48 | AIC:\
+  \ | 2862. |\n| 残差自由度 | 44 | BIC: | 2869. |\n| 模型自由度 | 3 |   |   |\n| 协方差类型 | 非稳健\
+  \ |   |   |\n\n|   | 系数 | 标准误 | t | P>&#124;t&#124; | [0.025 | 0.975] |\n|---|---|---|---|---|---|---|\n\
+  | `const` | 6.953e+12 | 2.96e+11 | 23.471 | 0.000 | 6.36e+12 | 7.55e+12 |\n| `x1`\
+  \ | 3.858e+12 | 4.28e+11 | 9.015 | 0.000 | 3e+12 | 4.72e+12 |\n| `x2` | -1.845e+11\
+  \ | 3.91e+11 | -0.472 | 0.639 | -9.72e+11 | 6.03e+11 |\n| `x3` | -1.617e+11 | 3.35e+11\
+  \ | -0.483 | 0.631 | -8.36e+11 | 5.13e+11 |\n\n| 综合检验 | 55.713 | 德宾-沃森统计量 | 2.186\
+  \ |\n|---|---|---|---|\n| 综合检验概率 | 0.000 | Jarque-Bera (JB) | 278.920 |\n| 偏度 |\
+  \ -3.119 | JB 概率 | 2.71e-61 |\n| 峰度 | 13.027 | 条件数 | 2.51 |\n\n```\nmodel.summary()\n\
+  清单 3-22\n模型评估\n```\n\n表 3-9 显示，该普通最小二乘法回归模型解释了模型中 81.0% 的变异性。这意味着该模型是一个优秀的学习器。该表还显示，只有美国社会缴款与最终消费支出之间的关系是显著的。\n\
+  \n该表还表明：\n\n-   美国社会缴款每变化一个单位，美国最终消费支出增加 `3.858e+12`。\n-   美国贷款利率每变化一个单位，美国最终消费支出减少\
+  \ `1.845e+11`。\n-   美国 GDP 增长每变化一个单位，美国最终消费支出减少 `-1.617e+11`。\n\n最后，该普通最小二乘法模型解释了数据中\
+  \ 90% 的变异性。这意味着该模型在预测美国最终消费支出方面表现优异。\n\n### 残差分析\n\n图 3-14 展示了残差的分布；代码见清单 3-23。\n\
+  \n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig14_HTML.png](img/516940_1_En_3_Fig14_HTML.png)\n\
+  \n图 3-14\n\n模型残差分布\n\n```\npd.DataFrame(model.resid,columns=[\"Residuals\"]).plot(kind=\"\
+  box\")\nplt.title(\"Model 1 residuals distribution\")\nplt.ylabel(\"Values\")\n\
+  plt.show()\n清单 3-23\n残差分析\n```\n\n图 3-14 表明残差的均值接近 0，但残差中存在异常值。\n\n#### 残差自相关\n\n\
+  清单 3-24 确定了残差之间的序列相关性（见图 3-15）。\n\n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig15_HTML.png](img/516940_1_En_3_Fig15_HTML.png)\n\
+  \n图 3-15\n\n模型残差自相关\n\n```\nfrom statsmodels.graphics.tsaplots import plot_acf\n\
+  plot_acf(model.resid)\nplt.title(\"Model 1 residuals autocorrelation\")\nplt.ylabel(\"\
+  ACF\")\nplt.show()\nplt.show()\n清单 3-24\n残差自相关\n```\n\n图 3-15 表明没有自相关系数超出统计边界。\n\
+  \n## 使用 Scikit-Learn 开发普通最小二乘法回归模型\n\n本节讨论使用 `scikit-learn` 库的多元普通最小二乘法回归模型。参见清单\
+  \ 3-25。\n\n```\nx = df.iloc[::,0:3]\ny = df.iloc[::,-1]\nfrom sklearn.model_selection\
+  \ import train_test_split\nfrom sklearn.preprocessing import StandardScaler\nx_train,\
+  \ x_test, y_train, y_test = train_test_split(x,y,test_size=0.2,random_state=0)\n\
+  scaler = StandardScaler()\nx_train = scaler.fit_transform(x_train)\nx_test = scaler.transform(x_test)\n\
+  清单 3-25\n数据预处理\n```\n\n清单 3-26 训练了该多元普通最小二乘法回归模型。\n\n```\nfrom sklearn.linear_model\
+  \ import LinearRegression\nlm = LinearRegression()\nlm.fit(x_train,y_train)\n清单\
+  \ 3-26\n训练默认模型\n```\n\n### 交叉验证\n\n清单 3-27 使用 `cross_val_score()` 方法找到了交叉验证分数。\n\
+  \n```\nfrom sklearn.model_selection import train_test_split, cross_val_score\ndef\
+  \ get_val_score(scores):\nscores = cross_val_score(scores, x_train, y_train, scoring=\"\
+  r2\")\nprint(\"CV mean: \", np.mean(scores))\nprint(\"CV std: \", np.std(scores))\n\
+  get_val_score(lm)\nCV mean:  0.7815577376481077\nCV std:  0.1706291983493402\n清单\
+  \ 3-27\n交叉验证\n```\n\n这些结果表明，交叉验证分数的均值为 `0.7816`，交叉验证分数的独立数据点与均值的偏差为 `0.1706`。\n\n\
+  \n\n### 超参数优化\n\n`清单 3-28` 使用 `GridSearchCV()` 方法优化了超参数。参见`清单 3-29`和`3-30`。\n\n\
+  ```\nlm.intercept_\n6952809734166.666\n清单 3-30\n估计截距\n```\n\n```\nlm = LinearRegression(copy_X=False,\
+  \ fit_intercept=True, n_jobs=-5, normalize=False)\nlm.fit(x_train, y_train)\n清单\
+  \ 3-29\n普通最小二乘回归模型开发\n```\n\n```\nfrom sklearn.model_selection import GridSearchCV\n\
+  param_grid = {\"copy_X\": [False, True], \"fit_intercept\": [False, True], \"n_jobs\"\
+  : [-5, -3, 3, 5], \"normalize\": [False, True]}\ngrid_model = GridSearchCV(estimator=lm,\
+  \ param_grid=param_grid)\ngrid_model.fit(x_train, y_train)\nprint(\"Best scores:\
+  \ \", grid_model.best_score_, \"Best parameters: \", grid_model.best_params_)\n\
+  Best scores: 0.7815577376481078 Best parameters: {'copy_X': False, 'fit_intercept':\
+  \ True, 'n_jobs': -5, 'normalize': True}\n清单 3-28\n超参数优化\n```\n\n当美国社会缴款、贷款利率和 GDP\
+  \ 增长保持不变时，美国最终消费支出的预测均值为 `6952809734166.667`。`清单 3-31` 估算了系数。\n\n```\nlm.coef_\n\
+  array([ 3.85798531e+12, -1.84542533e+11, -1.61721467e+11])\n清单 3-31\n估算系数\n```\n\
+  \n这表明：\n\n-   美国社会缴款每变动一个单位，美国最终消费支出增加 `3.85798531e+12`。\n-   美国贷款利率每变动一个单位，美国最终消费支出减少\
+  \ `1.84542533e+11`。\n-   美国 GDP 增长每变动一个单位，美国最终消费支出减少 `1.61721467e+11`。\n\n### 残差分析\n\
+  \n`清单 3-32` 并排比较了美国最终消费支出的实际数据点和预测数据点（参见`表 3-10`）。\n\n**表 3-10**  \n美国实际与预测最终消费支出\n\
+  \n| 日期 | 实际最终消费支出 | 预测最终消费支出 |\n| --- | --- | --- |\n| 2020-01-01 | 5.829066e+12\
+  \ | 5.596803e+12 |\n| 2019-01-01 | 3.403470e+12 | 3.196027e+12 |\n| 2018-01-01 |\
+  \ 7.173358e+12 | 7.279473e+12 |\n| 2017-01-01 | 5.245942e+12 | 5.214464e+12 |\n\
+  | 2016-01-01 | 1.227281e+13 | 1.111828e+13 |\n| 2015-01-01 | 1.688457e+13 | 1.513641e+13\
+  \ |\n| 2014-01-01 | 3.624267e+12 | 3.595279e+12 |\n| 2013-01-01 | 7.173358e+12 |\
+  \ 7.375272e+12 |\n| 2012-01-01 | 2.204317e+12 | 2.431846e+12 |\n| 2011-01-01 | 7.144856e+12\
+  \ | 6.626573e+12 |\n| 2010-01-01 | 1.543082e+13 | 1.412346e+13 |\n| 2009-01-01 |\
+  \ 1.269598e+13 | 1.137305e+13 |\n| 2008-01-01 | 4.757180e+12 | 4.747595e+12 |\n\n\
+  ```\nactual_values = pd.DataFrame(df[\"fin_cons\"][:13])\nactual_values.columns\
+  \ = [\"Actual FCE\"]\npredicted_values = pd.DataFrame(lm.predict(x_test))\npredicted_values.columns\
+  \ = [\"Predicted FCE\"]\npredicted_values.index = actual_values.index\nactual_and_predicted_values\
+  \ = pd.concat([actual_values, predicted_values], axis=1)\nactual_and_predicted_values.index\
+  \ = actual_values.index\nactual_and_predicted_values\n清单 3-32\n美国实际与预测最终消费支出\n```\n\
+  \n`清单 3-33` 确定了以当前美元计价的美国最终消费支出的实际数据点和预测数据点（参见`图 3-16`）。\n\n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig16_HTML.png](img/516940_1_En_3_Fig16_HTML.png)\n\
+  \n**图 3-16**  \n美国实际与预测最终消费支出\n\n```\nactual_and_predicted_values.plot(lw=4)\nplt.xlabel(\"\
+  Date\")\nplt.title(\"The U.S. actual and predicted FCE\")\nplt.ylabel(\"FCE\")\n\
+  plt.legend(loc=\"best\")\nplt.show()\n清单 3-33\n绘制美国实际与预测最终消费支出图\n```\n\n`图 3-16`\
+  \ 绘制了实际数据点以及普通最小二乘回归模型预测的数据点。参见`清单 3-34`。`图 3-17` 显示了残差的分布。\n\n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig17_HTML.png](img/516940_1_En_3_Fig17_HTML.png)\n\
+  \n**图 3-17**  \n普通最小二乘回归模型残差分布\n\n```\ny_pred = lm.predict(x_test)\nresiduals =\
+  \ y_test - y_pred\nresiduals = pd.DataFrame(residuals)\nresiduals.columns = [\"\
+  Residuals\"]\nresiduals.plot(kind=\"box\", color=\"navy\")\nplt.title(\"Model 2\
+  \ residuals distribution\")\nplt.ylabel(\"Values\")\nplt.show()\n清单 3-34\n普通最小二乘回归模型残差分布\n\
+  ```\n\n`图 3-17` 表明残差的均值接近于 0。因此，你观察到了残差中的自相关。自相关指的是序列相关性（参见`清单 3-35`）。`图 3-18` 显示了不同滞后阶数下残差的自相关系数。\n\
+  \n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig18_HTML.png](img/516940_1_En_3_Fig18_HTML.png)\n\
+  \n**图 3-18**  \n普通最小二乘回归模型残差自相关\n\n```\nfrom statsmodels.graphics.tsaplots import\
+  \ plot_acf\nplot_acf(residuals)\nplt.title(\"Model 2 residuals autocorrelation\"\
+  )\nplt.ylabel(\"ACF\")\nplt.show()\n清单 3-35\n普通最小二乘回归模型残差自相关\n```\n\n`图 3-18` 表明残差自相关系数未超出统计控制范围。该普通最小二乘回归模型在预测响应变量方面表现优异。参见`清单\
+  \ 3-36`。`表 3-11` 列出了其他普通最小二乘回归模型性能指标，如平均绝对误差、均方误差、均方根误差、解释方差和 R²。\n\n**表 3-11**\
+  \  \n普通最小二乘回归模型评估\n\n| | 平均绝对误差 | 均方误差 | 均方根误差 | 解释方差得分 | R² |\n| --- | --- | ---\
+  \ | --- | --- | --- |\n| 数值 | 5.458896e+11 | 6.399711e+23 | 7.999819e+11 | 0.979773\
+  \ | 0.969552 |\n\n```\nfrom sklearn import metrics\nMAE = metrics.mean_absolute_error(y_test,\
+  \ y_pred)\nMSE = metrics.mean_squared_error(y_test, y_pred)\nRMSE = np.sqrt(MSE)\n\
+  EV = metrics.explained_variance_score(y_test, y_pred)\nR2 = metrics.r2_score(y_test,\
+  \ y_pred)\nlmmodelevation = [[MAE, MSE, RMSE, EV, R2]]\nlmmodelevationdata = pd.DataFrame(lmmodelevation,\
+  \ index=[\"Values\"], columns=(\"Mean absolute error\", \"Mean squared error\",\
+  \ \"Root mean squared error\", \"Explained variance score\", \"R-squared\"))\nlmmodelevationdata\n\
+  清单 3-36\n关键模型性能结果\n```\n\n`表 3-11` 显示，该普通最小二乘回归模型解释了数据中 97%的变异性。平均绝对误差为 `5.458896e+11`，均方误差为\
+  \ `6.399711e+23`。\n\n\n\n## 普通最小二乘回归模型学习曲线\n\n图 3-19 展示了普通最小二乘模型如何学习解释美国社会缴款、贷款利率、GDP\
+  \ 增长以及最终消费支出增减之间关系的变异性。请参阅列表 3-37。\n\n![../images/516940_1_En_3_Chapter/516940_1_En_3_Fig19_HTML.png](img/516940_1_En_3_Fig19_HTML.png)\n\
+  \n**图 3-19**  \n普通最小二乘回归模型学习曲线\n\n```python\nfrom sklearn.model_selection import\
+  \ learning_curve\ntrainsizelogreg, trainscorelogreg, testscorelogreg = learning_curve(lm,\
+  \ x,y,cv=5, n_jobs=-1, scoring=\"r2\", train_sizes=np.linspace(0.1,1.0,50))\ntrainscorelogreg_mean\
+  \ = np.mean(trainscorelogreg,axis=1)\ntrainscorelogreg_std = np.std(trainscorelogreg,axis=1)\n\
+  testscorelogreg_mean = np.mean(testscorelogreg,axis=1)\ntestscorelogreg_std = np.std(testscorelogreg,axis=1)\n\
+  fig, ax = plt.subplots()\nplt.plot(trainsizelogreg,trainscorelogreg_mean, label=\"\
+  Training R2 score\", color=\"red\",lw=4)\nplt.plot(trainsizelogreg,testscorelogreg_mean,\
+  \ label=\"Validation R2 score\",color=\"navy\",lw=4)\nplt.title(\"OLS learning curve\"\
+  )\nplt.xlabel(\"Training set size\")\nplt.ylabel(\"R2 score\")\nplt.legend(loc=4)\n\
+  plt.show()\n```\n\n**列表 3-37**  \n普通最小二乘回归模型学习曲线\n\n图 3-19 显示，交叉验证 R²分数保持恒定，而训练\
+  \ R²分数在第一个数据点处较低，但此后有所上升。\n\n### 结论\n\n本章使用普通最小二乘回归模型研究了美国社会缴款（现价本币单位）、贷款利率（百分比）、GDP\
+  \ 增长（年百分比）与最终消费支出（现价美元）之间是否存在显著差异。模型发现，美国社会缴款与最终消费之间存在极强的正相关，美国贷款利率与最终消费之间存在中等程度的负相关，美国\
+  \ GDP 增长与最终消费之间也存在中等程度的负相关。`statsmodels`模型和`scikit-learn`模型均未违反回归假设，且在预测美国最终消费支出方面都表现出色，但`scikit-learn`模型具有更强的预测能力。\n\
+  \n"
+- "# 4. 预测增长\n\n时间序列分析涉及检查序列数据中的模式和趋势，以预测序列的未来值。时间序列模型种类繁多，包括自回归移动平均模型（ARIMA）（p, d,\
+  \ q），该模型在前值与当前值之间应用线性变换（自回归）、积分（随机游走）和移动平均。有一种包含季节性的 ARIMA 模型，称为季节性 ARIMA (P, D,\
+  \ Q) x (p, d, q)。本章考虑加法模型，该模型通过平滑参数识别非线性。就本书而言，您可以将时间序列分析视为线性回归的扩展，因为它研究的是序列数据。主要区别在于，在时间序列分析中，您需要按时间对数据进行排序，这使得其假设比线性回归模型严格得多。在训练模型之前，您必须使用增强迪基-富勒检验来检验*平稳性*，检验是否存在白噪声，并检验自相关性。\n\
+  \n本章研究美国每年生产的最终商品和服务市场价值的这些趋势（见公式 4-1）：\n\n- 方向性运动——持续向上的运动是上升趋势，持续向下的运动是下降趋势\n\
+  - 季节性——持续的逐年运动（向上或向下）\n- 不规则成分——也称为残差成分\n\n最后，该模型预测未来的经济活动。请注意，它并非描述数据的集中趋势，因为前一章已完成该工作。\n\
+  \n本章使用由 Facebook 开发的名为 Prophet 的 Python 库。该库基于加法模型。\n\n在继续之前，请确保您的环境中已安装`fbprophet`库。要在\
+  \ Python 环境中安装`fbprophet`库，请使用`pip install fbprophet`。同样地，要在 Conda 环境中安装该库，请使用`conda\
+  \ install -c conda-forge fbprophet`。您还需要安装`pystan`库。在 Python 环境中执行此操作，请使用`pip install\
+  \ pystan`，在 Conda 环境中，请使用`conda install -c conda-forge pystan`。\n\n列表 4-1 提取了美国\
+  \ GDP 增长数据（年百分比）并绘制了该序列（见图 4-1）。\n\n![../images/516940_1_En_4_Chapter/516940_1_En_4_Fig1_HTML.png](img/516940_1_En_4_Fig1_HTML.png)\n\
+  \n**图 4-1**  \n美国 GDP 增长折线图\n\n```python\nimport wbdata\nimport matplotlib.pyplot\
+  \ as plt\n%matplotlib inline\ncountry = [\"USA\"]\nindicator = {\"FI.RES.TOTL.CD\"\
+  :\"gdp_growth\"}\ndf = wbdata.get_dataframe(indicator, country=country, convert_date=True)\n\
+  df.plot(kind=\"line\",color=\"green\",lw=4)\nplt.title(\"The U.S. GDP growth (annual\
+  \ %)\")\nplt.xlabel(\"Dates\")\nplt.ylabel(\"GDP growth (annual %)\")\nplt.legend(loc=\"\
+  best\")\nplt.show()\n```\n\n**列表 4-1**  \n美国 GDP 增长（年百分比）折线图\n\n图 4-1 显示，自 20 世纪\
+  \ 60 年代初以来，美国 GDP 增长呈上升趋势。2012 年初，美国 GDP 增长有所下降，随后在 2015 年恢复增长势头。列表 4-2 用平均值替代了任何缺失值。\n\
+  \n```python\ndf[\"gdp_growth\"] = df[\"gdp_growth\"].fillna(df[\"gdp_growth\"].mean())\n\
+  ```\n\n**列表 4-2**  \n用平均值替换缺失值\n\n## 描述性统计\n\n列表 4-3 检索了表 4-1，该表概述了描述性统计。\n\n**表\
+  \ 4-1**  \n描述性统计\n\n| | gdp_growth |\n| --- | --- |\n| 计数 | 6.100000e+01 |\n| 平均值\
+  \ | 1.822831e+11 |\n| 标准差 | 1.646309e+11 |\n| 最小值 | 1.483107e+10 |\n| 25% 分位数 |\
+  \ 4.416213e+10 |\n| 50% 分位数 | 1.441768e+11 |\n| 75% 分位数 | 1.904648e+11 |\n| 最大值\
+  \ | 6.283697e+11 |\n\n```python\ndf.describe()\n```\n\n**列表 4-3**  \n描述性统计\n\n表\
+  \ 4-1 显示：\n\n- 美国 GDP 增长的平均值为 6.000000e+01。\n- 美国 GDP 增长的独立数据点与平均值的偏差为 1.748483e+11。请参阅列表\
+  \ 4-4。\n\n```python\ndf.plot(kind=\"box\",color=\"green\")\nplt.title(\"The U.S.\
+  \ GDP growth (annual %) distribution\")\nplt.ylabel(\"Values\")\nplt.show()\n```\n\
+  \n**列表 4-4**  \n美国 GDP 增长分布\n\n![../images/516940_1_En_4_Chapter/516940_1_En_4_Fig2_HTML.jpg](img/516940_1_En_4_Fig2_HTML.jpg)\n\
+  \n**图 4-2**  \n美国 GDP 增长分布\n\n图 4-2 显示，美国 GDP 增长数据中存在异常值。列表 4-5 用缺失值替代了异常值，并检查了新的分布。\n\
+  \n```python\ndf['gdp_growth'] = np.where((df[\"gdp_growth\"] > 2.999999e+11),df[\"\
+  gdp_growth\"].mean(),df[\"gdp_growth\"])\ndf.plot(kind=\"box\",color=\"green\")\n\
+  plt.title(\"The U.S. GDP growth (annual %) distribution\")\nplt.ylabel(\"Values\"\
+  )\nplt.show()\n```\n\n**列表 4-5**  \n替换异常值\n\n![../images/516940_1_En_4_Chapter/516940_1_En_4_Fig3_HTML.jpg](img/516940_1_En_4_Fig3_HTML.jpg)\n\
+  \n**图 4-3**  \n美国 GDP 增长箱线图\n\n图 4-3 显示不再有异常值。\n\n\n\n### 平稳性检测\n\n如果序列数据中存在随机性（单位根），则表示该数据是平稳的，这意味着变量的均值几乎是恒定的或接近均值。大多数时间序列分析模型都假设序列具有单位根。最常见的平稳性检验是增广迪基-福勒检验（见列表\
+  \ 4-6），它扩展了迪基-福勒检验。应用增广迪基-福勒检验时，请确保 `p-value` 是显著的。表 4-2 定义了滞后数、F 统计量百分比和 `p-value`。\n\
+  \n**表 4-2** 增广迪基-福勒检验结果\n\n| 变量 | 值 |\n| --- | --- |\n| `ADF F% Statistics` | -0.962163\
+  \ |\n| `P-value` | 0.766813 |\n| `No. of Lags Used` | 0.000000 |\n| `No. of Observations`\
+  \ | 60.000000 |\n\n```\nfrom statsmodels.tsa.stattools import adfuller\nadfullerreport\
+  \ = adfuller(df[\"gdp_growth\"])\nadfullerreportdata = pd.DataFrame(adfullerreport[0:4],\n\
+  columns = [\"Values\"],\nindex=[\"ADF F% statistics\",\n\"P-value\",\n\"No. of lags\
+  \ used\",\n\"No. of observations\"])\nadfullerreportdata\n列表 4-6\n增广迪基-福勒检验结果\n\
+  ```\n\n表 4-2 显示该序列不存在平稳性，因为 `p-value` 大于 0.5。通常，您需要在建模前对序列进行差分。请注意，该检验有一个原假设，认为序列非平稳；同时还有一个备择假设，认为序列是平稳的。\n\
+  \n### 随机白噪声检测\n\n列表 4-7 生成一组随机变量，并检查数据的均值是否接近 0（见图 4-4）。\n\n![../images/516940_1_En_4_Chapter/516940_1_En_4_Fig4_HTML.png](img/516940_1_En_4_Fig4_HTML.png)\n\
+  \n**图 4-4** 随机白噪声\n\n```\nfrom pandas.plotting import autocorrelation_plot\nrandval\
+  \ = np.random.randn(1000)\nautocorrelation_plot(randval)\nplt.title(\"Random white\
+  \ noise\")\nplt.show()\n列表 4-7\n随机白噪声\n```\n\n图 4-4 显示均值在 0 附近。这表明序列在不同滞后期上的模式是相似的。\n\
+  \n## 自相关检测\n\n在简单线性回归中，相关分析在模型开发中起着至关重要的作用。然而，时间序列分析关注的是独立观测值（`y`）与随时间变化的独立观测值（`y[t]`）之间的序列统计依赖性。列表\
+  \ 4-8 是一个自相关函数，用于理解不同滞后期的自相关性（见图 4-5）。当自相关系数落于图 4-5 中的蓝色区域时，它们是显著的。\n\n![../images/516940_1_En_4_Chapter/516940_1_En_4_Fig5_HTML.png](img/516940_1_En_4_Fig5_HTML.png)\n\
+  \n**图 4-5** 美国 GDP 增长率（年百分比）ACF\n\n```\nfrom statsmodels.graphics.tsaplots import\
+  \ plot_acf\nplot_acf(df[\"gdp_growth\"])\nplt.title(\"\")\nplt.xlabel(\"Lag\")\n\
+  plt.ylabel(\"ACF\")\nplt.title(\"The U.S. GDP growth (annual %) autocorrelation\"\
+  )\nplt.show()\n列表 4-8\n美国 GDP 增长率（年百分比）ACF\n```\n\n列表 4-9 展示了 `lag1` 中的独立观测值（见图\
+  \ 4-6）。滞后图有助于解释任何滞后（`y[t]` 之间的间隔）与相关性之间的关系。\n\n![../images/516940_1_En_4_Chapter/516940_1_En_4_Fig6_HTML.png](img/516940_1_En_4_Fig6_HTML.png)\n\
+  \n**图 4-6** 美国 GDP 增长率滞后图\n\n```\nfrom pandas.plotting import lag_plot\nlag_plot(df[\"\
+  gdp_growth\"])\nplt.title(\"The U.S. GDP growth (annual %) lag 1\")\nplt.show()\n\
+  列表 4-9\n美国 GDP 增长率（年百分比）滞后图\n```\n\n图 4-6 显示，在 `lag1` 中，`y[t]` 和 `y[(t+1)]` 之间存在相关关系。\n\
+  \n## 不同的单变量时间序列模型\n\n本章将时间序列分析应用于一个连续变量。以下各节概述了不同的时间序列分析模型。\n\n### 自回归积分滑动平均模型\n\
+  \n自回归积分滑动平均模型（ARIMA）意味着它对前向值和当前值（自回归）、整合（随机游走）以及滑动平均（前向值和当前值的权重）应用线性变换。它是最常见的时间序列模型。该模型假设前向值之间存在线性关系，并且序列是平稳的。不仅如此，它还考虑了当前权重与前向加权值之间的差异。\n\
+  \n### 季节性自回归积分滑动平均模型\n\n季节性自回归积分滑动平均模型（SARIMA）扩展了 ARIMA 模型，它考虑了季节性（一种持续的逐年变动——上升或下降）。公式\
+  \ 4-1 是 SARIMA 的公式。\n\n![$$ {Y}_t={S}_t+{T}_t+{I}_t+\\varepsilon i $$](img/516940_1_En_4_Chapter_TeX_Equ1.png)\n\
+  \n（公式 4-1）\n\n其中，`S[t]` 表示季节性，`T[t]` 表示趋势，`I[t]` 表示不规则性，`ε[i]` 是误差项。SARIMA 考虑了季节性，但没有考虑公共假日等事件的影响。为了解决这个问题，开发人员经常使用加法模型。\n\
+  \n## 加法模型\n\n加法模型考虑了公共假日等事件的影响。它通过包含平滑参数和添加非线性，调整函数中的非线性属性，并将预测范围缩小到特定的置信区间。开发加法模型最可靠的库是\
+  \ FB Prophet。列表 4-10 对数据进行了重新整理（见表 4-3）。\n\n**表 4-3** 美国 GDP 增长率（年百分比）重新整理后的数据\n\
+  \n| 日期 | `gdp_growth` | `ds` | `y` |\n| --- | --- | --- | --- |\n| 2020-01-01 |\
+  \ 1.822831e+11 | 1.822831e+11 | 2020-01-01 |\n| 2019-01-01 | 1.822831e+11 | 1.822831e+11\
+  \ | 2019-01-01 |\n| 2018-01-01 | 1.822831e+11 | 1.822831e+11 | 2018-01-01 |\n| 2017-01-01\
+  \ | 1.822831e+11 | 1.822831e+11 | 2017-01-01 |\n| 2016-01-01 | 1.822831e+11 | 1.822831e+11\
+  \ | 2016-01-01 |\n| ... | ... | ... | ... |\n| 1964-01-01 | 1.672549e+10 | 1.672549e+10\
+  \ | 1964-01-01 |\n| 1963-01-01 | 1.687865e+10 | 1.687865e+10 | 1963-01-01 |\n| 1962-01-01\
+  \ | 1.725246e+10 | 1.725246e+10 | 1962-01-01 |\n| 1961-01-01 | 1.882553e+10 | 1.882553e+10\
+  \ | 1961-01-01 |\n| 1960-01-01 | 1.966416e+10 | 1.966416e+10 | 1960-01-01 |\n\n\
+  ```\ndf = df.reset_index()\ndf[\"ds\"] = df[\"gdp_growth\"]\ndf[\"y\"] = df[\"date\"\
+  ]\ndf.set_index(\"date\")\n列表 4-10\n重新整理美国 GDP 增长率（年百分比）数据\n```\n\n## 加法模型开发\n\n\
+  使用 FB Prophet 库开发加法模型相当简单。列表 4-11 调用了 `Prophet()` 并训练了模型。\n\n```\nfrom fbprophet\
+  \ import Prophet\nm = Prophet()\nm.fit(df)\n列表 4-11\n训练加法模型\n```\n\n\n\n## 加法模型预测\n\
+  \n清单 4-12 构建了一个未来三年的数据框，并绘制了加法模型预测的数据点。\n\n```\nfuture = m.make_future_dataframe(periods=3)\n\
+  forecast = m.predict(future)\nm.plot(forecast)\nplt.title(\"The U.S. GDP growth\
+  \ (annual %) forecast\")\nplt.xlabel(\"Date\")\nplt.ylabel(\"GDP growth (annual\
+  \ %)\")\nplt.show()\nListing 4-12\nPlot U.S. GDP Growth Forecast\n```\n\n![../images/516940_1_En_4_Chapter/516940_1_En_4_Fig7_HTML.png](img/516940_1_En_4_Fig7_HTML.png)\n\
+  \n图 4-7\n\n美国 GDP 增长预测\n\n图 4-7 显示美国 GDP 增长将出现激增。下一节将讨论季节性分解——时间序列分析的一个重要方面。然而，考虑到该数据的结构，我们不会提供示例。显而易见，该图没有正确显示日期。\n\
+  \n### 季节性分解\n\n季节性分解涉及将序列数据分解为几个组成部分，以便开发者能更好地理解该序列。这些组成部分包括：\n\n- 季节性，代表随时间变化的永久性模式。\n\
+  - 趋势，代表序列中随时间变化的暂时性持续模式。\n- 不规则波动，代表美国 GDP 增长数据的变异性。\n\n鉴于数据收集的频率以及美国 GDP 增长的数据点较少，本章不涉及季节性分解。这些数据是每年收集的，我们无法将季节性分解为每日和每周的季节性。然而，理解季节性分解的工作原理仍然很重要。\n\
+  \n### 结论\n\n本章介绍了一种名为加法模型的时间序列分析模型。在拟合模型之前，您学习了如何通过检验平稳性、白噪声、自相关和正态性来确认时间序列分析的假设。此后，本章涵盖了趋势、季节性和残差。该模型预测美国年度\
+  \ GDP 增长将出现主导性的上升趋势。下一章将介绍一种名为*逻辑回归*的分类方法。当您想操作预测变量以生成二元输出值时，可以使用此模型。\n\n"
+- "# 5. 应用逻辑回归对经济数据进行分类\n\n本章应用逻辑回归来研究在响应变量为分类变量（即仅限于少数几个类别）时变量之间关系的性质。该模型是最常见的非线性模型，通常被称为*分类*。它使用\
+  \ Sigmoid 函数对数据进行建模。\n\n图 5-1 展示了分类器如何操作预测变量以生成二元输出值。方程 5-1 显示了 sigmoid 方程。\n\n\
+  ![$$ s(x)=\\frac{1}{}1+e-x $$](img/516940_1_En_5_Chapter_TeX_Equ1.png)\n\n（方程 5-1）\n\
+  \n您可能已经注意到宏观经济数据通常是连续的。不必担心，您仍然可以对这类数据执行逻辑回归。您需要做的只是根据方向（上升或下降）对响应变量进行分类。这可以基于一个\
+  \ S 形公式，即所谓的 *sigmoid 形状*（参见图 5-1）。\n\n![../images/516940_1_En_5_Chapter/516940_1_En_5_Fig1_HTML.png](img/516940_1_En_5_Fig1_HTML.png)\n\
+  \n图 5-1\n\nSigmoid 函数\n\n![$$ \\left(\\right)\\frac{}{}1+-x $$](img/516940_1_En_5_Chapter_TeX_Equa.png)\n\
+  \n在线性回归中，响应变量是连续的。另一方面，在逻辑回归中，响应变量是二元的，并且可以应用于多类分类。此外，分类器不对数据的线性关系和正态性做出极端假设。\n\n\
+  ## 本章背景\n\n本章通过应用一组其他经济指标——城市人口、人均国民总收入（Atlas 法，现价美元）和 GDP 增长（年百分比）——来预测南非出生时预期寿命（总年数）的增减。*人均国民总收入*是一个国家公民的平均国民收入，此处指南非的情况。表\
+  \ 5-1 概述了本章研究的南非宏观经济指标。\n\n表 5-1\n\n本章涉及的宏观经济指标\n\n| 代码 | 指标 |\n| --- | --- |\n\
+  | `SP.URB.TOTL` | 南非城市人口 |\n| `NY.GNP.PCAP.CD` | 南非人均国民总收入，Atlas 法（现价美元） |\n| `NY.GDP.MKTP.KD.ZG`\
+  \ | 南非 GDP 增长（年百分比） |\n| `SP.DYN.LE00.IN` | 南非出生时预期寿命，总计（年） |\n\n## 理论框架\n\n图 5-2\
+  \ 提供了本问题的框架。\n\n![../images/516940_1_En_5_Chapter/516940_1_En_5_Fig2_HTML.png](img/516940_1_En_5_Fig2_HTML.png)\n\
+  \n图 5-2\n\n框架\n\n### 城市人口\n\n城市人口代表人口密度高的区域（即城市）中的人口。清单 5-1 和图 5-3 展示了南非的城市人口。\n\
+  \n![../images/516940_1_En_5_Chapter/516940_1_En_5_Fig3_HTML.png](img/516940_1_En_5_Fig3_HTML.png)\n\
+  \n图 5-3\n\n南非城市人口\n\n```\nimport wbdata\ncountry  = [\"ZAF\"]\nindicators = {\"\
+  SP.URB.TOTL\":\"urban_pop\"}\nurban_pop = wbdata.get_dataframe(indicators, country=country,\
+  \ convert_date=True)\nurban_pop.plot(kind=\"line\",color=\"green\",lw=4)\nplt.title(\"\
+  S.A. urban population\")\nplt.ylabel(\"Urban population\")\nplt.xlabel(\"Date\"\
+  )\nplt.show()\nListing 5-1\nSouth Africa’s Urban Population\n```\n\n图 5-3 显示自 1960\
+  \ 年以来南非城市人口强劲增长。\n\n### 人均国民总收入，Atlas 法\n\n人均国民总收入代表一个国家公民的平均收入。在此示例中，我们应用 Atlas\
+  \ 法。清单 5-2 和图 5-4 展示了南非的人均国民总收入。\n\n![../images/516940_1_En_5_Chapter/516940_1_En_5_Fig4_HTML.png](img/516940_1_En_5_Fig4_HTML.png)\n\
+  \n图 5-4\n\n南非人均国民总收入\n\n```\ncountry  = [\"ZAF\"]\nindicators = {\"NY.GNP.PCAP.CD\"\
+  :\"gni_per_capita\"}\ngni_per_capita = wbdata.get_dataframe(indicators, country=country,\
+  \ convert_date=True)\ngni_per_capita.plot(kind=\"line\",color=\"orange\",lw=4)\n\
+  plt.title(\"S.A. GNI per capita\")\nplt.ylabel(\"GNI per capita\")\nplt.xlabel(\"\
+  Date\")\nplt.show()\nListing 5-2\nSouth Africa’s GNI per Capita\n```\n\n图 5-4 显示南非公民的平均收入总体呈极端上升趋势。该趋势在\
+  \ 2012 年有所下降，但随后在 2015 年再次飙升。\n\n\n好的，作为一名高级文档工程师和翻译员，我将严格按照您提供的注意事项和示例，将给定的英文文本翻译成中文。\n\
+  \n\n### 国内生产总值（GDP）增长\n\n`GDP` 估算了一个国家居民每年消费的最终商品和服务的市场价值。它用于诊断经济的健康状况，因为它反映了一个国家的经济产出。清单\
+  \ 5-3 和图 5-5 展示了南非的 GDP 增长（年度百分比）。\n\n![../images/516940_1_En_5_Chapter/516940_1_En_5_Fig5_HTML.png](img/516940_1_En_5_Fig5_HTML.png)\n\
+  \n*图 5-5* – 南非的 GDP 增长\n\n```\ncountry  = [\"ZAF\"]\nindicators = {\"NY.GDP.MKTP.KD.ZG\"\
+  :\"gdp_growth\"}\ngdp_growth = wbdata.get_dataframe(indicators, country=country,\
+  \ convert_date=True)\ngdp_growth.plot(kind=\"line\",color=\"navy\",lw=4)\nplt.title(\"\
+  S.A. GDP growth (annual %)\")\nplt.ylabel(\"GDP growth (annual %)\")\nplt.xlabel(\"\
+  Date\")\nplt.show()\n```\n\n*清单 5-3* – 南非的 GDP 增长\n\n图 5-5 显示，南非生产的一般商品和服务的市场价值随时间推移而不稳定。在\
+  \ 1960 年至 2020 年间，其 GDP 增长经历了急剧下降，并在几年后趋于平稳。GDP 增长在 20 世纪 60 年代中期达到顶峰。它在 20 世纪 90\
+  \ 年代初出现了负增长，随后呈现上升趋势，但在 2008 年又出现了回调。\n\n### 出生时预期寿命，总计（年）\n\n预期寿命是指，在当前死亡率模式保持不变的情况下，一名新生儿预期能够生存的平均年数。清单\
+  \ 5-4 和图 5-6 展示了南非的出生时预期寿命（年）。\n\n![../images/516940_1_En_5_Chapter/516940_1_En_5_Fig6_HTML.png](img/516940_1_En_5_Fig6_HTML.png)\n\
+  \n*图 5-6* – 南非出生时预期寿命线图\n\n```\ncountry  = [\"ZAF\"]\nindicators = {\"SP.DYN.LE00.IN\"\
+  :\"life_exp\"}\nlife_exp = wbdata.get_dataframe(indicators, country=country, convert_date=True)\n\
+  life_exp.plot(kind=\"line\",color=\"red\",lw=4)\nplt.title(\"S.A. life expectancy\
+  \ at birth, total (years)\")\nplt.ylabel(\"Life expectancy at birth, total (years)\"\
+  )\nplt.xlabel(\"Date\")\nplt.show()\n```\n\n*清单 5-4* – 南非出生时预期寿命线图\n\n现在您已经理解了问题，可以继续将感兴趣的经济指标加载到\
+  \ `pandas` 数据框中了。清单 5-5 检索了表 5-2，其中列出了数据的前五行。\n\n*表 5-2* – 南非宏观经济数据\n\n| 日期 | urban_pop\
+  \ | gni_per_capita | gdp_growth | life_exp |\n| --- | --- | --- | --- | --- |\n\
+  | 2020-01-01 | 39946775.0 | 5410.0 | -6.959604 | NaN |\n| 2019-01-01 | 39149715.0\
+  \ | 6040.0 | 0.152583 | 64.131 |\n| 2018-01-01 | 38348227.0 | 5750.0 | 0.787056\
+  \ | 63.857 |\n| 2017-01-01 | 37540921.0 | 5410.0 | 1.414513 | 63.538 |\n| 2016-01-01\
+  \ | 36726640.0 | 5470.0 | 0.399088 | 63.153 |\n\n```\ncountry = [\"ZAF\"]\nindicator\
+  \ = {\"SP.URB.TOTL\":\"urban_pop\",\n\"NY.GNP.PCAP.CD\":\"gni_per_capita\",\n\"\
+  NY.GDP.MKTP.KD.ZG\":\"gdp_growth\",\n\"SP.DYN.LE00.IN\":\"life_exp\"}\ndf = wbdata.get_dataframe(indicator,\
+  \ country=country, convert_date=True)\ndf.head()\n```\n\n*清单 5-5* – 加载数据\n\n表 5-2\
+  \ 显示数据中存在缺失值。清单 5-6 用平均值替换了这些缺失值（数据中的每个变量都执行此操作）。\n\n```\ndf[\"urban_pop\"] = df[\"\
+  urban_pop\"].fillna(df[\"urban_pop\"].mean())\ndf[\"gni_per_capita\"] = df[\"gni_per_capita\"\
+  ].fillna(df[\"gni_per_capita\"].mean())\ndf[\"gdp_growth\"] = df[\"gdp_growth\"\
+  ].fillna(df[\"gdp_growth\"].mean())\ndf[\"life_exp\"] = df[\"life_exp\"].fillna(df[\"\
+  life_exp\"].mean())\n```\n\n*清单 5-6* – 用平均值替换缺失值\n\n## 描述性统计\n\n清单 5-7 检测了南非城市人口数据中是否存在异常值。它还调查了数据的分布情况（见图\
+  \ 5-7）。\n\n![../images/516940_1_En_5_Chapter/516940_1_En_5_Fig7_HTML.png](img/516940_1_En_5_Fig7_HTML.png)\n\
+  \n*图 5-7* – 南非城市人口分布\n\n```\ndf[\"urban_pop\"].plot(kind=\"box\",color=\"green\"\
+  )\nplt.title(\"S.A. urban population distribution\")\nplt.ylabel(\"Values\")\nplt.show()\n\
+  ```\n\n*清单 5-7* – 南非城市人口分布\n\n图 5-7 显示，南非的城市人口数据接近正态分布。清单 5-8 检测了南非人均国民总收入（GNI）数据中是否存在异常值。它还调查了数据的分布情况（见图\
+  \ 5-8）。\n\n![../images/516940_1_En_5_Chapter/516940_1_En_5_Fig8_HTML.png](img/516940_1_En_5_Fig8_HTML.png)\n\
+  \n*图 5-8* – 南非人均国民总收入（GNI）分布\n\n```\ndf[\"gni_per_capita\"].plot(kind=\"box\",color=\"\
+  orange\")\nplt.title(\"S.A. GNI per capita distribution\")\nplt.ylabel(\"Values\"\
+  )\nplt.show()\n```\n\n*清单 5-8* – 南非人均国民总收入（GNI）分布\n\n图 5-8 显示，南非的人均国民总收入（GNI）数据呈正偏态分布。在\
+  \ 5000 数值之上有三个异常值。清单 5-9 用平均值替换了南非人均国民总收入（GNI）数据中的异常值（见图 5-9）。除了使用平均值替换数据外，您还可以应用其他技术，例如通过\
+  \ k-最近邻（k-Nearest Neighbor）技术使用中位数值或缺失值附近的值。\n\n![../images/516940_1_En_5_Chapter/516940_1_En_5_Fig9_HTML.png](img/516940_1_En_5_Fig9_HTML.png)\n\
+  \n*图 5-9* – 南非人均国民总收入（GNI）分布\n\n```\ndf['gni_per_capita'] = np.where((df[\"gni_per_capita\"\
+  ] > 5000),df[\"gni_per_capita\"].mean(),df[\"gni_per_capita\"])\ndf[\"gni_per_capita\"\
+  ].plot(kind=\"box\",color=\"orange\")\nplt.title(\"S.A. GNI per capita distribution\"\
+  )\nplt.ylabel(\"Values\")\nplt.show()\n```\n\n*清单 5-9* – 用平均值替换异常值\n\n清单 5-10 确定了南非\
+  \ GDP 增长数据中是否存在异常值。它还调查了数据的分布情况（见图 5-10）。\n\n![../images/516940_1_En_5_Chapter/516940_1_En_5_Fig10_HTML.png](img/516940_1_En_5_Fig10_HTML.png)\n\
+  \n*图 5-10* – 南非 GDP 增长分布\n\n```\ndf[\"gdp_growth\"].plot(kind=\"box\",color=\"navy\"\
+  )\nplt.title(\"S.A. GDP growth (annual %) distribution\")\nplt.ylabel(\"Values\"\
+  )\nplt.show()\n```\n\n*清单 5-10* – 南非 GDP 增长分布\n\n图 5-10 显示，南非的 GDP 增长数据呈正态分布，且没有异常值。清单\
+  \ 5-11 检测了南非出生时预期寿命数据中是否存在异常值。它还展示了数据的分布情况（见图 5-11）。\n\n![../images/516940_1_En_5_Chapter/516940_1_En_5_Fig11_HTML.png](img/516940_1_En_5_Fig11_HTML.png)\n\
+  \n*图 5-11* – 南非出生时预期寿命分布\n\n```\ndf[\"life_exp\"].plot(kind=\"box\",color=\"red\"\
+  )\nplt.title(\"S.A. life expectancy at birth, total (years) distribution\")\nplt.ylabel(\"\
+  Values\")\nplt.show()\n```\n\n*清单 5-11* – 南非出生时预期寿命分布\n\n\n\n图[5-11]显示，南非出生时预期寿命数据近似正态分布，仅存在轻微偏斜。代码清单[5-12]生成的表格（见表[5-3]）为我们提供了数据集中趋势和离散程度的信息。\n\
+  \n**表 5-3：描述性统计摘要**\n\n|   | 计数 | 均值 | 标准差 | 最小值 | 25%分位 | 50%分位 | 75%分位 | 最大值 |\n\
+  |---|---|---|---|---|---|---|---|---|\n| `urban_pop` | 61.0 | 2.081471e+07 | 9.698996e+06\
+  \ | 7.971773e+06 | 1.212115e+07 | 1.914988e+07 | 2.850619e+07 | 3.994678e+07 |\n\
+  | `gni_per_capita` | 61.0 | 2.473420e+03 | 1.074740e+03 | 4.600000e+02 | 1.610000e+03\
+  \ | 2.880000e+03 | 3.200508e+03 | 4.990000e+03 |\n| `gdp_growth` | 61.0 | 2.775881e+00\
+  \ | 2.708735e+00 | -6.959604e+00 | 1.233520e+00 | 3.014549e+00 | 4.554553e+00 |\
+  \ 7.939782e+00 |\n| `life_exp` | 61.0 | 5.724278e+01 | 4.571705e+00 | 4.840600e+01\
+  \ | 5.374900e+01 | 5.724278e+01 | 6.154000e+01 | 6.413100e+01 |\n\n```\ndf.describe().transpose()\n\
+  代码清单 5-12：描述性统计摘要\n```\n\n表[5-3]显示：\n\n-   南非城市人口的平均值为 2.081471e+07。\n-   按 Atlas\
+  \ 方法计算的人均国民总收入（GNI）为 2.473420e+03 美元。\n-   GDP 增长率为 2.775881e+00。\n-   出生时预期寿命为\
+  \ 5.724278e+01 年。\n-   南非城市人口与均值的偏差为 9.698996e+06。\n-   按 Atlas 方法计算的人均国民总收入与均值的偏差为\
+  \ 1.074740e+03。\n-   GDP 增长率与均值的偏差为 2.708735e+00。\n-   预期寿命与均值的偏差为 4.571705e+00。\n\
+  \n## 协方差分析\n\n代码清单[5-13]和表[5-4]展示了这些变量如何协同变化及其自身的变化情况。\n\n**表 5-4：协方差矩阵**\n\n| \
+  \  | `urban_pop` | `gni_per_capita` | `gdp_growth` | `life_exp` |\n|---|---|---|---|---|\n\
+  | `urban_pop` | 9.407052e+13 | 7.610470e+09 | -1.099442e+07 | 2.381877e+07 |\n|\
+  \ `gni_per_capita` | 7.610470e+09 | 1.155065e+06 | -1.089449e+03 | 2.658211e+03\
+  \ |\n| `gdp_growth` | -1.099442e+07 | -1.089449e+03 | 7.337248e+00 | -6.957400e+00\
+  \ |\n| `life_exp` | 2.381877e+07 | 2.658211e+03 | -6.957400e+00 | 2.090049e+01 |\n\
+  \n```\ndfcov = df.cov()\ndfcov\n代码清单 5-13：协方差矩阵\n```\n\n## 相关性分析\n\n代码清单[5-14]使用皮尔逊相关系数法（见图[5-12]）计算相关系数。此方法适用于连续型数值。如果数值是分类数据，则必须应用肯德尔或斯皮尔曼相关方法。\n\
+  \n![图 5-12：皮尔逊相关矩阵](img/516940_1_En_5_Fig12_HTML.png)\n\n```\ndfcorr = df.corr(method=\"\
+  pearson\")\nsns.heatmap(dfcorr, annot=True, annot_kws={\"size\":12},cmap=\"Blues\"\
+  )\nplt.title(\"Pearson correlation matrix\")\nplt.show()\n代码清单 5-14：皮尔逊相关矩阵\n```\n\
+  \n表[5-5]展示了图[5-12]中绘制的皮尔逊相关系数。\n\n**表 5-5：皮尔逊相关矩阵解释**\n\n| 变量 | 皮尔逊相关系数 | 发现 |\n\
+  |---|---|---|\n| 南非的城市人口与出生时预期寿命（年） | 0.54 | 南非城市人口与出生时预期寿命之间存在中等程度的正相关。 |\n| 南非按\
+  \ Atlas 方法计算的人均国民总收入与出生时预期寿命（年） | 0.54 | 南非按 Atlas 方法计算的人均国民总收入与出生时预期寿命之间存在中等程度的正相关。\
+  \ |\n| 南非的 GDP 增长率与出生时预期寿命（年） | -0.56 | 南非的 GDP 增长率与出生时预期寿命（年）之间存在中等程度的负相关。 |\n\n\
+  图[5-13]绘制了这些变量之间的统计关联（见代码清单[5-15]）。\n\n![图 5-13：配对图](img/516940_1_En_5_Fig13_HTML.png)\n\
+  \n```\nsns.pairplot(df)\n代码清单 5-15：配对图\n```\n\n图[5-13]展示了数据中所有变量的直方图。与南非城市人口相关的数据略微左偏。按\
+  \ Atlas 方法计算的人均国民总收入数据呈正态分布，但存在一个异常值。GDP 增长率数据呈正态分布，而预期寿命数据略微右偏。\n\n## 相关程度检测\n\n\
+  代码清单[5-16]和表[5-6]展示了变量之间相关性的严重程度。\n\n**表 5-6：特征矩阵**\n\n|   | 特征值 | `urban_pop` |\
+  \ `gni_per_capita` | `gdp_growth` | `life_exp` |\n|---|---|---|---|---|---|\n| `urban_pop`\
+  \ | 2.590423 | 0.526233 | 0.412356 | -0.693983 | -0.267261 |\n| `gni_per_capita`\
+  \ | 0.738154 | 0.518674 | 0.477948 | 0.705191 | -0.072449 |\n| `gdp_growth` | 0.266181\
+  \ | -0.440609 | 0.719198 | -0.109331 | 0.525989 |\n| `life_exp` | 0.405242 | 0.509823\
+  \ | -0.290315 | -0.095601 | 0.804151 |\n\n```\neigenvalues, eigenvectors = np.linalg.eig(dfcorr)\n\
+  eigenvalues = pd.DataFrame(eigenvalues)\neigenvalues.columns = [\"Eigen values\"\
+  ]\neigenvectors = pd.DataFrame(eigenvectors)\neigenvectors.columns = df.columns\n\
+  eigenvectors = pd.DataFrame(eigenvectors)\neigenmatrix = pd.concat([eigenvalues,\
+  \ eigenvectors],axis=1)\neigenmatrix.index = df.columns\neigenmatrix\n代码清单 5-16：特征矩阵\n\
+  ```\n\n表[5-6]显示不存在多重共线性。我们将使用相应方法处理多重共线性问题。\n\n### 降维\n\n代码清单[5-17]和图[5-14]显示，第一个主成分的方差比率高于\
+  \ 2.5。数据中的大部分变异性，以及其他主成分的变异性，均低于 1.0。\n\n![图 5-14：个体方差](img/516940_1_En_5_Fig14_HTML.png)\n\
+  \n```\nfrom sklearn.decomposition import PCA\nfrom sklearn.preprocessing import\
+  \ StandardScaler\nscaler = StandardScaler()\nstd_df = scaler.fit_transform(df)\n\
+  pca = PCA()\npca.fit_transform(std_df)\npca_variance = pca.explained_variance_\n\
+  plt.figure(figsize=(8, 6))\nplt.bar(range(4), pca_variance, align=\"center\", label=\"\
+  Individual variance\")\nplt.legend()\nplt.ylabel(\"Variance ratio\")\nplt.xlabel(\"\
+  Principal components\")\nplt.title(\"Individual variance\")\nplt.show()\n代码清单 5-17：个体方差\n\
+  ```\n\n代码清单[5-18]应用主成分分析，对数据进行降维，使其能够绘制成二维散点图（见图[5-15]）。\n\n![图 5-15：二维数据](img/516940_1_En_5_Fig15_HTML.png)\n\
+  \n```\npca2 = PCA(n_components=2)\npca2.fit(std_df)\nx_3d = pca2.transform(std_df)\n\
+  plt.figure(figsize=(8,6))\nplt.scatter(x_3d[:,0], x_3d[:,1], c=df['gdp_growth'],cmap=\"\
+  viridis\",s=350)\nplt.xlabel(\"y\")\nplt.title(\"2 dimensional data\")\nplt.show()\n\
+  代码清单 5-18：降维\n```\n\n图[5-15]展示了数据降维后在二维散点图中的分布情况。\n\n\n\n## 将连续变量转换为二值变量\n\n清单 5-19\
+  \ 获取了南非出生时预期寿命的年度变化。接着，它确定了序列的方向。最后，它通过应用 `get_dummies()` 方法*对*响应变量进行了二值化处理。二值化一个方法意味着将其转换为分类变量（即“否”或“是”，其中将“否”编码为\
+  \ `0`，“是”编码为 `1`）。\n\n```\ndf['pct_change'] = df[\"life_exp\"].pct_change()\ndf\
+  \ = df.dropna()\ndf['direction'] = np.sign(df['pct_change']).astype(int)\ndf[\"\
+  direction\"] = pd.get_dummies(df[\"direction\"])\ndf.head()\n清单 5-19\n对响应变量进行二值化处理\n\
+  ```\n\n表 5-7 包含了两个新列：`pct_change` 和 `Direction`。在本章中，我们将 `Direction` 用作响应变量。我们不打算在此模型中涉及预期寿命和\
+  \ `pct_change`，因此你可以删除这些列。\n\n**表 5-7**  \n新数据框\n\n| 日期 | urban_pop | gni_per_capita\
+  \ | gdp_growth | life_exp | pct_chage | Direction |\n| --- | --- | --- | --- | ---\
+  \ | --- | --- |\n| 2019-01-01 | 39149715.0 | 3200.508475 | 0.152583 | 64.131 | 0.120333\
+  \ | 0 |\n| 2018-01-01 | 38348227.0 | 3200.508475 | 0.787056 | 63.857 | -0.004273\
+  \ | 1 |\n| 2017-01-01 | 37540921.0 | 3200.508475 | 1.414513 | 63.538 | -0.004996\
+  \ | 1 |\n| 2016-01-01 | 36726640.0 | 3200.508475 | 0.399088 | 63.153 | -0.006059\
+  \ | 1 |\n| 2015-01-01 | 35905875.0 | 3200.508475 | 1.193733 | 62.649 | -0.007981\
+  \ | 1 |\n\n## 使用 Scikit-Learn 开发逻辑回归模型\n\n本节通过应用 `scikit-learn` 库来训练逻辑分类器。清单 5-20\
+  \ 首先创建了 `X` 和 `Y` 数组，然后将数据拆分为训练数据和测试数据。接着，它对数据进行了标准化处理。\n\n```\nfrom sklearn.preprocessing\
+  \ import StandardScaler\nfrom sklearn.model_selection import train_test_split\n\
+  x = df.iloc[::,0:3]\nscaler = StandardScaler()\nx= scaler.fit_transform(x)\ny =\
+  \ df.iloc[::,-1]\nx_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.2,random_state=0)\n\
+  清单 5-20\n数据预处理\n```\n\n清单 5-21 训练了逻辑分类器。\n\n```\nfrom sklearn.linear_model import\
+  \ LogisticRegression\nlogregclassifier = LogisticRegression()\nlogregclassifier.fit(x_train,y_train)\n\
+  清单 5-21\n通过应用 Statsmodels 训练逻辑分类器\n```\n\n清单 5-22 和 5-23 估计了逻辑回归模型的截距和系数。\n\n```\n\
+  logregclassifier.coef_\narray([[-0.09342681, -1.02609323,  0.35329756]])\n清单 5-23\n\
+  系数\n```\n\n```\nlogregclassifier.intercept_\narray([1.47270205])\n清单 5-22\n截距\n\
+  ```\n\n## 逻辑回归混淆矩阵\n\n为了研究逻辑回归模型的性能，清单 5-24 创建了一个*混淆*矩阵（见表 5-8）。要评估一个分类模型，你需要应用与线性回归模型不同的评估指标。在分类问题中，你分析模型的准确率和精确度（见表\
+  \ 5-10）。初始步骤涉及构建混淆矩阵（见表 5-8）。\n\n**表 5-8**  \n逻辑分类器混淆矩阵\n\n|                 | **预测：预期寿命下降**\
+  \ | **预测：预期寿命上升** |\n|-----------------|-------------------------------------------|-------------------------------------------|\n\
+  | **实际：预期寿命下降** | 0                                         | 3                \
+  \                         |\n| **实际：预期寿命上升** | 1                               \
+  \          | 8                                         |\n\n```\nfrom sklearn import\
+  \ metrics\ny_predlogregclassifier = logregclassifier.predict(x_test)\ncmatlogregclassifier\
+  \ = pd.DataFrame(metrics.confusion_matrix(y_test,y_predlogregclassifier), index=[\"\
+  实际：预期寿命下降\",\n\"实际：预期寿命上升\"],\ncolumns = (\"预测：预期寿命下降\",\n\"预测：预期寿命上升\"))\ncmatlogregclassifier\n\
+  清单 5-24\n逻辑分类器混淆矩阵\n```\n\n## 逻辑回归混淆矩阵解读\n\n表 5-9 解读了表 5-8 的结果。\n\n**表 5-9**  \n\
+  逻辑分类器混淆矩阵解读\n\n| 指标 | 解读 |\n|--------|----------------|\n| 真正例 | 当南非的出生时预期寿命实际上在下降时，逻辑分类器未预测到下降。\
+  \ |\n| 真负例 | 逻辑分类器预测了出生时预期寿命上升，且实际上的确上升了（三次）。 |\n| 假正例 | 当南非的出生时预期寿命实际在上升时，逻辑分类器预测了下降（一次）。\
+  \ |\n| 假负例 | 当南非的出生时预期寿命实际在下降时，逻辑分类器预测了上升（八次）。 |\n\n## 逻辑回归分类报告\n\n为了进一步研究逻辑回归模型的性能，清单\
+  \ 5-25 构建了一个分类报告（见表 5-10）。它概述了模型进行准确和精确估计的能力。\n\n**表 5-10**  \n逻辑回归分类报告\n\n|   \
+  \        | 0         | 1         | 准确率 | 宏平均 | 加权平均 |\n|-----------|-----------|-----------|----------|-----------|--------------|\n\
+  | 精确率 | 0.0       | 0.727273  | 0.666667 | 0.363636  | 0.545455     |\n| 召回率   \
+  \ | 0.0       | 0.888889  | 0.666667 | 0.444444  | 0.666667     |\n| F1 分数  | 0.0\
+  \       | 0.800000  | 0.666667 | 0.400000  | 0.600000     |\n| 支持度   | 3.0     \
+  \  | 9.000000  | 0.666667 | 12.000000| 12.000000    |\n\n```\ncreportlogregclassifier\
+  \ = pd.DataFrame(metrics.classification_report(y_test,y_predlogregclassifier,output_dict=True))\n\
+  creportlogregclassifier\n清单 5-25\n逻辑回归分类报告\n```\n\n表 5-10 显示，逻辑分类器的准确率为 66.67%，而在预测预期寿命下降时，其最高精确率为\
+  \ 0%。在预测出生时预期寿命上升时，其精确率为 67%。\n\n\n\n## 逻辑回归 ROC 曲线\n\n清单 5-26 评估了逻辑回归分类器在区分南非出生时预期寿命的递增与递减时，灵敏度（FPR）与特异性（TPR）之间的权衡（见图\
+  \ 5-16）。\n\n公式 5-2 定义了真阳性率：\n\n![$$ TPR=\\frac{TP}{} TP+ FN $$](img/516940_1_En_5_Chapter_TeX_Equ2.png)\n\
+  \n（公式 5-2）\n\n其中`TP`是真阳性（分类器在事件发生时做出正确预测的倾向），`FP`是假阳性（分类器在事件未发生时做出错误预测的倾向）。\n\n\
+  公式 5-3 定义了真阳性率：\n\n![$$ FPR=\\frac{FP}{} TN+ FP $$](img/516940_1_En_5_Chapter_TeX_Equ3.png)\n\
+  \n（公式 5-3）\n\n```\ny_predlogregclassifier_proba = logregclassifier.predict_proba(x_test)[::,1]\n\
+  fprlogregclassifier, tprlogregclassifier, _ = metrics.roc_curve(y_test,y_predlogregclassifier_proba)\n\
+  auclogregclassifier = metrics.roc_auc_score(y_test,y_predlogregclassifier_proba)\n\
+  fig, ax = plt.subplots()\nplt.plot(fprlogregclassifier, tprlogregclassifier,label=\"\
+  auc: \"+str(auclogregclassifier),color=\"navy\",lw=4)\nplt.plot([0,1],[0,1],color=\"\
+  red\",lw=4)\nplt.xlim([0.00,1.01])\nplt.ylim([0.00,1.01])\nplt.title(\"Logistic\
+  \ ROC curve\")\nplt.xlabel(\"Sensitivity\")\nplt.ylabel(\"Specificity\")\nplt.legend(loc=4)\n\
+  plt.show()\n清单 5-26\n逻辑回归 ROC 曲线\n```\n\n![../images/516940_1_En_5_Chapter/516940_1_En_5_Fig16_HTML.png](img/516940_1_En_5_Fig16_HTML.png)\n\
+  \n图 5-16\n\n逻辑回归 ROC 曲线\n\n为了检测逻辑回归是否是一个合适的类别预测器，需要研究曲线下面积（AUC）分数。如果该值超过 0.81，则该模型被认为是典范。图\
+  \ 5-16 显示，平均而言，逻辑回归分类器在预测南非预期寿命时准确率为 88.88%。\n\n## 逻辑回归精确率-召回率曲线\n\n清单 5-27 评估了逻辑回归分类器在区分南非预期寿命递增与递减时，精确率与阈值之间的权衡（见图\
+  \ 5-17）。\n\n![../images/516940_1_En_5_Chapter/516940_1_En_5_Fig17_HTML.jpg](img/516940_1_En_5_Fig17_HTML.jpg)\n\
+  \n图 5-17\n\n逻辑回归分类器精确率-召回率曲线\n\n```\nprecisionlogregclassifier, recalllogregclassifier,\
+  \ thresholdlogregclassifier = metrics.precision_recall_curve(y_test,y_predlogregclassifier)\n\
+  apslogregclassifier = metrics.average_precision_score(y_test,y_predlogregclassifier)\n\
+  fig, ax = plt.subplots()\nplt.plot(precisionlogregclassifier, recalllogregclassifier,label=\"\
+  aps: \" +str(apslogregclassifier),color=\"navy\",lw=4)\nplt.axhline(y=0.5, color=\"\
+  red\",lw=4)\nplt.title(\"Logistic precision-recall curve\")\nplt.xlabel(\"Precision\"\
+  )\nplt.ylabel(\"Recall\")\nplt.legend(loc=4)\nplt.show()\n清单 5-27\n逻辑回归分类器精确率-召回率曲线\n\
+  ```\n\n图 5-17 显示，平均而言，逻辑回归分类器在区分南非预期寿命递增与递减时，精确率为 69.44%。\n\n## 逻辑回归学习曲线\n\n清单 5-28\
+  \ 展示了逻辑回归分类器在区分南非出生时预期寿命递增与递减时，如何随着训练集大小的增加而学习正确区分（见图 5-18）。\n\n![../images/516940_1_En_5_Chapter/516940_1_En_5_Fig18_HTML.jpg](img/516940_1_En_5_Fig18_HTML.jpg)\n\
+  \n图 5-18\n\n逻辑回归学习曲线\n\n```\nfrom sklearn.model_selection import learning_curve\n\
+  trainsizelogregclassifier, trainscorelogregclassifier, testscorelogregclassifier\
+  \ = learning_curve(logregclassifier, x, y, cv=5, n_jobs=-1, scoring=\"accuracy\"\
+  , train_sizes=np.linspace(0.1,1.0,50))\ntrainscorelogregclassifier_mean = np.mean(trainscorelogregclassifier,axis=1)\n\
+  trainscorelogregclassifier_std = np.std(trainscorelogregclassifier,axis=1)\ntestscorelogregclassifier_mean\
+  \ = np.mean(testscorelogregclassifier,axis=1)\ntestscorelogregclassifier_std = np.std(testscorelogregclassifier,axis=1)\n\
+  fig, ax = plt.subplots()\nplt.plot(trainsizelogregclassifier, trainscorelogregclassifier_mean,\
+  \ color=\"red\", label=\"Training accuracy score\",lw=4)\nplt.plot(trainsizelogregclassifier,\
+  \ testscorelogregclassifier_mean,color=\"navy\",label=\"Cross validation accuracy\
+  \ score\",lw=4)\nplt.title(\"Logistic classifier learning curve\")\nplt.xlabel(\"\
+  Training set size\")\nplt.ylabel(\"Accuracy\")\nplt.legend(loc=\"best\")\nplt.show()\n\
+  清单 5-28\n逻辑回归学习曲线\n```\n\n图 5-18 显示，在前十个数据点之后，交叉验证准确率分数下降——在第 20 个数据点处达到最低点——之后又急剧上升。此外，它还显示，在前十个数据点之后，训练准确率分数普遍高于交叉验证准确率分数。\n\
+  \n### 结论\n\n本章将响应变量二值化，其中 0 表示预期寿命下降，`1`表示预期寿命上升。它使用逻辑回归分类器对一组预测变量（南非城市人口、人均 GNI（阿特拉斯法）和\
+  \ GDP 增长）进行操作，以预测预期寿命的未来类别。\n\n在研究了该模型的结果后，我们发现它在预测响应变量（南非预期寿命）的未来类别方面表现卓越。第 8 章通过应用深度学习模型来处理相同的问题。第\
+  \ 6 章涵盖了通过应用无监督模型来解决计量经济学中的序列问题。\n\n"
+- "# 6. 发现世界经济与增长中的隐藏模式\n\n本章介绍使用隐马尔可夫模型（HMM）进行决策制定。具体来说，它侧重于高斯混合模型，这是一种用于时间序列数据的无监督机器学习隐马尔可夫模型。该模型的美妙之处在于它对非平稳数据不敏感。阅读完本章后，您将更好地理解高斯混合模型的工作原理，并知道如何开发一个模型。请注意，HMM\
+  \ 是一个无监督学习器，这意味着您可以在没有任何预设研究假设的情况下进行研究。\n\n本章假设有两个类别，在马尔可夫决策中称为*状态*。一个序列包含连续值，有时您会对序列进行分类。例如，您可以将一个序列归类为“上升趋势”或“下降趋势”，其中状态`0`代表上升趋势，状态`1`代表下降趋势。这就是马尔可夫建模的用武之地。马尔可夫建模涉及对当前状态和先前状态的顺序识别，然后对未来的状态进行建模预测。尽管它是发现序列中隐藏状态的一种有用方法，但用于评估模型的指标不足——您最多只能得到每个状态的均值和协方差。\n\
+  \n在继续之前，请确保您的环境中安装了`hmmlearn`库。要在 Python 环境中安装`hmmlearn`库，请使用`pip install hmmlearn`。同样，要在\
+  \ Conda 环境中安装该库，请使用`conda install -c conda-forge hmmlearn`。\n\n\n\n## 应用隐马尔可夫模型\n\
+  \n隐马尔可夫模型能确定序列中的前一个隐藏状态，并预测未来的隐藏状态。在本书中，我们将隐藏状态视为类别。前一章介绍了使用时序数据解决序列问题的方法，此外还简要涵盖了二分类和线性回归。本章将开发一个高斯混合模型来预测两种状态（全球\
+  \ GDP 增长下降和全球 GDP 增长上升）。高斯混合模型会默认对数据做出一些假设。当你看到“高斯”这个词时，请联想到*正态性*（变量围绕真实均值分布）。该方法将高斯分布分成两半，然后确定某个值落入特定状态的概率。这个过程是逐步进行的。\n\
+  \n总之，本例研究全球 GDP 增长（年度百分比）中的隐藏模式，即其是下降还是上升。然后应用该模型来预测特定年份全球 GDP 增长是下降还是上升。参见代码清单\
+  \ 6-1 和表 6-1。\n\n表 6-1\n\n世界经济增长数据\n\n| 日期 | `gdp_growth` |\n| --- | --- |\n| 2020-01-01\
+  \ | -3.593456 |\n| 2019-01-01 | 2.335558 |\n| 2018-01-01 | 3.034061 |\n| 2017-01-01\
+  \ | 3.281329 |\n| 2016-01-01 | 2.605572 |\n\n```\nimport wbdata\ncountry  = [\"\
+  WLD\"]\nindicators = {\"NY.GDP.MKTP.KD.ZG\":\"gdp_growth\"}\ndf = wbdata.get_dataframe(indicators,\
+  \ country=country, convert_date=True)\ndf[\"gdp_growth\"] = df[\"gdp_growth\"].fillna(df[\"\
+  gdp_growth\"].mean())\ndf.head()\n代码清单 6-1\n加载全球 GDP 增长数据\n```\n\n## 描述性统计\n\n图\
+  \ 6-1 使用代码清单 6-2 中的代码展示了全球 GDP 增长数据的分布。\n\n![../images/516940_1_En_6_Chapter/516940_1_En_6_Fig1_HTML.png](img/516940_1_En_6_Fig1_HTML.png)\n\
+  \n图 6-1\n\n全球 GDP 增长分布与异常值检测\n\n```\ndf.plot(kind=\"box\",color=\"green\")\nplt.title(\"\
+  World GDP growth (annual %) distribution\")\nplt.ylabel(\"Values\")\nplt.show()\n\
+  代码清单 6-2\n世界经济增长分布与异常值检测\n```\n\n图 6-1 显示，全球 GDP 增长数据（年度百分比）的分布呈正态分布，但在负轴方向上存在异常值。代码清单\
+  \ 6-3 返回了同样展示该分布的图 6-2。另请参见代码清单 6-4。\n\n![../images/516940_1_En_6_Chapter/516940_1_En_6_Fig2_HTML.png](img/516940_1_En_6_Fig2_HTML.png)\n\
+  \n图 6-2\n\n全球 GDP 增长分布\n\n```\ndf.plot(kind=\"hist\", color=\"green\")\nplt.title(\"\
+  World GDP growth (annual %)\")\nplt.xlabel(\"GDP growth (annual %)\")\nplt.show()\n\
+  代码清单 6-4\n全球 GDP 增长分布\n```\n\n```\nimport numpy as np\ndf['gdp_growth'] = np.where((df[\"\
+  gdp_growth\"] < -1),df[\"gdp_growth\"].mean(),df[\"gdp_growth\"])\n代码清单 6-3\n异常值移除\n\
+  ```\n\n图 6-2 证实了这种正态分布。表 6-2 使用代码清单 6-5 中的命令概述了集中趋势和离散程度的估计值。\n\n表 6-2\n\n全球 GDP\
+  \ 增长描述性统计\n\n| 变量 | `gdp_growth` |\n| --- | --- |\n| 计数 | 61.000000 |\n| 均值 | 3.566094\
+  \ |\n| 标准差 | 1.410267 |\n| 最小值 | 0.532137 |\n| 25% 分位数 | 2.605572 |\n| 50% 分位数 |\
+  \ 3.430696 |\n| 75% 分位数 | 4.367087 |\n| 最大值 | 6.710726 |\n\n```\ndf.describe()\n\
+  代码清单 6-5\n全球 GDP 增长描述性统计\n```\n\n表 6-2 显示，全球 GDP 增长的均值是 3.566094，独立观测值与均值的偏差为 1.410267。同样，全球经济产出的最小变化是\
+  \ 0.532137，最大值是 6.710726。图 6-3 根据代码清单 6-6 中的代码绘制了全球 GDP 增长的折线图。\n\n![../images/516940_1_En_6_Chapter/516940_1_En_6_Fig3_HTML.png](img/516940_1_En_6_Fig3_HTML.png)\n\
+  \n图 6-3\n\n全球 GDP 增长折线图\n\n```\ndf.plot(color=\"green\",lw=4)\nplt.title(\"World\
+  \ GDP growth (annual %) line plot\")\nplt.xlabel(\"Date\")\nplt.ylabel(\"GDP growth\
+  \ (annual %)\")\nplt.show()\n代码清单 6-6\n全球 GDP 增长折线图\n```\n\n图 6-3 展示了全球 GDP 增长的不稳定性。我们经历了\
+  \ 1963 年最高的 GDP 增长（6.713557）和 1982 年最低的增长（0.423812）。图 6-4 使用代码清单 6-7 中的代码显示了对数 GDP\
+  \ 增长。\n\n![../images/516940_1_En_6_Chapter/516940_1_En_6_Fig4_HTML.png](img/516940_1_En_6_Fig4_HTML.png)\n\
+  \n图 6-4\n\n全球对数 GDP 增长折线图\n\n```\nimport pandas as pd\nlog_df = np.log(df)\nlog_df\
+  \ = pd.DataFrame(log_df)\nlog_df.plot(color=\"green\",lw=4)\nplt.title(\"World log\
+  \ GDP growth (annual %) line plot\")\nplt.xlabel(\"Date\")\nplt.ylabel(\"GDP growth\
+  \ (annual %)\")\nplt.show()\n代码清单 6-7\n全球对数 GDP 增长折线图\n```\n\n## 高斯混合模型开发\n\n代码清单\
+  \ 6-8 编写了高斯混合模型的代码。该模型假设数据来自正态分布。\n\n```\nold_log_df= pd.DataFrame(log_df)\nlog_df\
+  \ = log_df.values\nx = np.column_stack([log_df])\nfrom hmmlearn import hmm\nmodel\
+  \ = hmm.GaussianHMM(n_components=2, tol=0.0001, n_iter=10)\nmodel.fit(x)\n代码清单 6-8\n\
+  模型开发\n```\n\n代码清单 6-9 中的代码生成了序列中的隐藏状态（见表 6-3）。\n\n表 6-3\n\n隐藏状态\n\n| 日期 | `hidden_states`\
+  \ |\n| --- | --- |\n| 2020-01-01 | 1 |\n| 2019-01-01 | 1 |\n| 2018-01-01 | 1 |\n\
+  | 2017-01-01 | 1 |\n| 2016-01-01 | 1 |\n\n```\nhidden_states = pd.DataFrame(model.predict(x),\
+  \ columns = [\"hidden_states\"])\nhidden_states.index = old_log_df.index\nhidden_states.head()\n\
+  代码清单 6-9\n生成隐藏状态\n```\n\n\n\n## 以图形化方式表示隐状态\n\n要理解表 6-3，请参考图 6-5。该过程的代码如代码清单 6-10\
+  \ 所示。\n\n![../images/516940_1_En_6_Chapter/516940_1_En_6_Fig5_HTML.png](img/516940_1_En_6_Fig5_HTML.png)\n\
+  \n图 6-5  \n世界 GDP 增长的隐状态\n\n```\nincreasing_gdp = hidden_states.loc[hidden_states.values\
+  \ == 0]\ndecreasing_gdp = hidden_states.loc[hidden_states.values == 1]\nfig, ax\
+  \ = plt.subplots()\nplt.plot(increasing_gdp.index,increasing_gdp.values,\".\",linestyle=\"\
+  none\",color= \"navy\",label = \"Increasing GDP growth\")\nplt.plot(decreasing_gdp.index,\
+  \ decreasing_gdp.values,\".\",linestyle=\"none\",color = \"red\",label = \"Decreasing\
+  \ GDP growth\")\nplt.title(\"World GDP growth (annual %) states\")\nplt.xlabel(\"\
+  Date\")\nplt.ylabel(\"State\")\nplt.legend(loc=\"best\")\nplt.show()\n```\n\n代码清单\
+  \ 6-10  \n世界 GDP 增长状态\n\n代码清单 6-11 返回一个散点图，展示了隐状态的分布情况（见图 6-6）。\n\n![../images/516940_1_En_6_Chapter/516940_1_En_6_Fig6_HTML.png](img/516940_1_En_6_Fig6_HTML.png)\n\
+  \n图 6-6  \n世界 GDP 增长状态散点图\n\n```\nmk_data = old_log_df.join(hidden_states,how =\
+  \ \"inner\")\nmk_data = mk_data[[\"gdp_growth\",\"hidden_states\"]]\nup = pd.Series()\n\
+  down = pd.Series()\nmid = pd.Series()\nfor tuple in mk_data.itertuples():\nif tuple.hidden_states\
+  \ == 0:\nx = pd.Series(tuple.gdp_growth,index = [tuple.Index])\nup = up.append(x)\n\
+  else:\nx = pd.Series(tuple.gdp_growth,index = [tuple.Index])\ndown = down.append(x)\n\
+  up = up.sort_index()\ndown = down.sort_index()\nfig, ax = plt.subplots()\nplt.plot(up.index,\
+  \ up.values, \".\", c = \"navy\",label = \"Increasing GDP growth\")\nplt.plot(down.index,\
+  \ down.values,\".\",c = \"red\",label = \"Decreasing GDP growth\")\nplt.title(\"\
+  World GDP growth (annual %) overall\")\nplt.xlabel(\"Date\")\nplt.ylabel(\"State\"\
+  )\nplt.legend(loc=\"best\")\nplt.show()\n```\n\n代码清单 6-11  \n世界 GDP 增长状态散点图\n\n\
+  代码清单 6-12 统计了序列中的隐状态数量，并以饼图形式展示（见图 6-7）。\n\n![../images/516940_1_En_6_Chapter/516940_1_En_6_Fig7_HTML.png](img/516940_1_En_6_Fig7_HTML.png)\n\
+  \n图 6-7  \n世界 GDP 增长隐状态饼图\n\n```\nbinarized_markov = pd.DataFrame(mk_data[\"hidden_states\"\
+  ])\nbinarized_markov[\"hidden_states\"]\nbinarized_markov_data = binarized_markov.replace({0:\
+  \ \"Increasing GDP\",1: \"Decreasing GDP\"})\nbinarized_markov_data = binarized_markov_data.reset_index()\n\
+  class_series = binarized_markov_data.groupby(\"hidden_states\").size()\nclass_series.name\
+  \ = \"Count\"\nclass_series.plot.pie(autopct=\"%2.f\",cmap=\"RdBu\")\nplt.title(\"\
+  Hidden states pie chart\")\nplt.show()\n```\n\n代码清单 6-12  \n隐状态计数\n\n图 6-7 显示，预测值中\
+  \ 15%为 GDP 增长上升，85%为下降。代码清单 6-13 绘制了随机生成样本中的隐状态分布（图 6-8）。\n\n![../images/516940_1_En_6_Chapter/516940_1_En_6_Fig8_HTML.png](img/516940_1_En_6_Fig8_HTML.png)\n\
+  \n图 6-8  \n各样本中的隐状态\n\n```\nnum_sample = 1000\nsample, _ = model.sample(num_sample)\n\
+  plt.plot(np.arange(num_sample), sample[:,0],color=\"green\")\nplt.title(\"Hidden\
+  \ states across samples\")\nplt.xlabel(\"Samples\")\nplt.ylabel(\"States\")\nplt.show()\n\
+  ```\n\n代码清单 6-13  \n各样本中的隐状态\n\n要理解这些结果，你需要更仔细地审视各个组成部分。代码清单 6-14 研究了每个阶数的均值和方差。\n\
+  \n### 阶数隐状态\n\n```\nfor i in range(model.n_components):\nprint(\"{0} order hidden\
+  \ state\".format(i))\nprint\"mean =\", model.means_[i])\nprint\"var =\", np.diag(model.covars_[i]))\n\
+  print()\n0 order hidden state\n0 order hidden state\nmean =  [0.58952373]\nvar =\
+  \  [0.30547955]\n1 order hidden state\nmean =  [1.33696442]\nvar =  [0.0882703]\n\
+  ```\n\n代码清单 6-14  \n马尔可夫分量\n\n在`0`阶隐状态中，均值为`0.58952373`，方差为`0.30547955`。在`1`阶隐状态中，均值为`1.33696442`，方差为`0.0882703`。\n\
+  \n### 结论\n\n本章介绍了高斯混合模型，这是一种隐马尔可夫模型（HMM）。鉴于状态数量是预定义的（其中`0`代表第一种状态，`1`代表第二种状态），我们使用两个分量来探索该模型。然后，我们将该模型应用于世界\
+  \ GDP 增长（年百分比）的序列数据，以预测未来状态。\n\n"
+- "# 7. 按大洲层级对人均国民总收入进行聚类\n\n本章介绍无监督机器学习。在无监督机器学习中，你不会分割数据，而是将整个数据集呈现给模型，让模型自行发现数据中的模式，无需任何监督。鉴于本章涵盖聚类分析，因此将介绍最简单的无监督机器学习模型，称为*k-means*。`k-means`方法易于理解。在进行聚类分析时，没有真正的响应变量——你以同样的方式处理所有变量。也没有预测变量，因此不存在预测/预报的情况。你仅需分析数据中的模式。\n\
+  \n`k-means`模型根据值的相似性对其进行分组。首先，模型找出彼此接近的值，并估计它们之间的距离。然后，确定这组值的中心，并以某种方式拉伸这些值，使它们都落在同一个簇内。它通过实施距离估计来寻找组内的相似性。最常见的距离估计方法是欧几里得距离估计。公式\
+  \ 7-1 展示了欧几里得方程。\n\n![$$ J={\\sum}_{i=1}^k{\\sum}_{i=1}^c{\\left|\\left|{x}_i^J-{C}_j\\\
+  right|\\right|}² $$](img/516940_1_En_7_Chapter_TeX_Equ1.png)\n\n（公式 7-1）\n\n其中，`J`代表目标函数，`k`代表聚类数量，`n`代表案例数量，`x_i^J`代表*案例*[*j*]，`C[j]`代表`j`的质心。\n\
+  \n该模型与其他模型的不同之处在于，它假设你是基于数据分析来确定聚类数量。要确定聚类数量，你可以应用肘部曲线或碎石图。\n\n\n\n## 本章背景\n\n本章基于数据中存在三个簇的假设来探讨问题。它通过应用以下三个标签对非洲国家进行分组：\n\
+  \n- 低人均国民总收入（GNI）\n- 中等人均国民总收入\n- 高人均国民总收入\n\n本章运用肘部曲线来判断关于数据的这一假设是否正确，然后对非洲国家的全部人均国民总收入数据使用\
+  \ k-means 模型。由于存在众多变量，因此并未描述全部数据。\n\n要进行聚类分析，首先需要执行描述性分析，然后进行降维处理，将高维数据降至少数几个维度。前面的章节介绍了名为主成分分析（PCA）的降维技术。该技术能缩减数据，使你能够通过应用散点图以二维形式呈现数据。清单\
+  \ 7-1 获取了本章所需的人均国民总收入数据（见表 7-1）。\n\n**表 7-1** 非洲人均国民总收入数据\n\n| 国家 | 年份 | `gni_per_capita`\
+  \ |\n| --- | --- | --- |\n| 安哥拉 | 2020 | 2230.0 |\n| | 2019 | 2970.0 |\n| | 2018\
+  \ | 3210.0 |\n| | 2017 | 3450.0 |\n| | 2016 | 3770.0 |\n\n```python\nimport wbdata\n\
+  countries = [\"AGO\", \"BDI\", \"BEN\", \"BWA\", \"CAF\", \"CIV\",\n\"COD\", \"\
+  DZA\", \"EGY\", \"ETH\", \"GAB\", \"GHA\",\n\"GIN\", \"GMB\", \"GNQ\", \"KEN\",\
+  \ \"LBR\", \"LBY\",\n\"LSO\", \"MAR\", \"MLI\", \"MOZ\", \"MWI\", \"NAM\",\n\"NER\"\
+  , \"NGA\", \"RWA\", \"SDN\", \"SEN\",\"SOM\",\n\"SWZ\", \"TCD\", \"TUN\", \"TZA\"\
+  , \"UGA\", \"ZAF\",\n\"ZMB\", \"ZWE\"]\nindicators = {\"NY.GNP.PCAP.CD\":\"gni_per_capita\"\
+  }\ndf = wbdata.get_dataframe(indicators, country=countries, convert_date=False)\n\
+  df.head()\n```\n\n*清单 7-1 加载非洲人均国民总收入数据*\n\n清单 7-2 对数据进行了解堆叠操作——将索引从多重索引变为单一索引。\n\
+  \n```python\ndf = df[\"gni_per_capita\"]\ndf = df.unstack(level=0)\n```\n\n*清单 7-2\
+  \ 解堆叠数据*\n\n清单 7-3 用平均值替换了缺失值。请注意，本示例并未处理异常值。鉴于变量众多，在此简单示例中处理异常值会相当繁琐。在现实世界中，处理异常值至关重要，因为它们可能会对结论产生负面影响。\n\
+  \n```python\ndf[\"Algeria\"] = df[\"Algeria\"].fillna(df[\"Algeria\"].mean())\n\
+  df[\"Angola\"] = df[\"Angola\"].fillna(df[\"Angola\"].mean())\ndf[\"Benin\"] = df[\"\
+  Benin\"].fillna(df[\"Benin\"].mean())\ndf[\"Botswana\"] = df[\"Botswana\"] .fillna(df[\"\
+  Botswana\"] .mean())\ndf[\"Burundi\"] = df[\"Burundi\"].fillna(df[\"Burundi\"] .mean())\n\
+  df[\"Central African Republic\"] = df[\"Central African Republic\"].fillna(df[\"\
+  Central African Republic\"].mean())\ndf[\"Chad\"] = df[\"Chad\"].fillna(df[\"Chad\"\
+  ].mean())\ndf[\"Congo, Dem. Rep.\"] = df[\"Congo, Dem. Rep.\"].fillna(df[\"Congo,\
+  \ Dem. Rep.\"].mean())\ndf[\"Cote d'Ivoire\"] = df[\"Cote d'Ivoire\"].fillna(df[\"\
+  Cote d'Ivoire\"].mean())\ndf[\"Egypt, Arab Rep.\"] = df[\"Egypt, Arab Rep.\"].fillna(df[\"\
+  Egypt, Arab Rep.\"].mean())\ndf[\"Equatorial Guinea\"] = df[\"Equatorial Guinea\"\
+  ].fillna(df[\"Equatorial Guinea\"].mean())\ndf[\"Eswatini\"] = df[\"Eswatini\"].fillna(df[\"\
+  Eswatini\"].mean())\ndf[\"Ethiopia\"] = df[\"Ethiopia\"].fillna(df[\"Ethiopia\"\
+  ].mean())\ndf[\"Gabon\"] = df[\"Gabon\"].fillna(df[\"Gabon\"].mean())\ndf[\"Gambia,\
+  \ The\"] = df[\"Gambia, The\"].fillna(df[\"Gambia, The\"].mean())\ndf[\"Ghana\"\
+  ] = df[\"Ghana\"].fillna(df[\"Ghana\"].mean())\ndf[\"Guinea\"] = df[\"Guinea\"].fillna(df[\"\
+  Guinea\"].mean())\ndf[\"Kenya\"] = df[\"Kenya\"].fillna(df[\"Kenya\"].mean())\n\
+  df[\"Lesotho\"] = df[\"Lesotho\"].fillna(df[\"Lesotho\"].mean())\ndf[\"Liberia\"\
+  ] = df[\"Liberia\"].fillna(df[\"Liberia\"].mean())\ndf[\"Libya\"] = df[\"Libya\"\
+  ].fillna(df[\"Libya\"].mean())\ndf[\"Malawi\"] = df[\"Malawi\"].fillna(df[\"Malawi\"\
+  ].mean())\ndf[\"Mali\"] = df[\"Mali\"].fillna(df[\"Mali\"].mean())\ndf[\"Morocco\"\
+  ] = df[\"Morocco\"].fillna(df[\"Morocco\"].mean())\ndf[\"Mozambique\"] = df[\"Mozambique\"\
+  ] .fillna(df[\"Mozambique\"].mean())\ndf[\"Namibia\"] = df[\"Namibia\"].fillna(df[\"\
+  Namibia\"].mean())\ndf[\"Niger\"] = df[\"Niger\"].fillna(df[\"Niger\"].mean())\n\
+  df[\"Nigeria\"] = df[\"Nigeria\"].fillna(df[\"Nigeria\"].mean())\ndf[\"Rwanda\"\
+  ] = df[\"Rwanda\"].fillna(df[\"Rwanda\"].mean())\ndf[\"Senegal\"] = df[\"Senegal\"\
+  ].fillna(df[\"Senegal\"].mean())\ndf[\"Somalia\"] = df[\"Somalia\"].fillna(df[\"\
+  Somalia\"].mean())\ndf[\"South Africa\"] = df[\"South Africa\"].fillna(df[\"South\
+  \ Africa\"].mean())\ndf[\"Sudan\"] = df[\"Sudan\"].fillna(df[\"Sudan\"].mean())\n\
+  df[\"Tanzania\"] = df[\"Tanzania\"].fillna(df[\"Tanzania\"].mean())\ndf[\"Tunisia\"\
+  ] = df[\"Tunisia\"].fillna(df[\"Tunisia\"].mean())\ndf[\"Uganda\"] = df[\"Uganda\"\
+  ].fillna(df[\"Uganda\"].mean())\ndf[\"Zambia\"] = df[\"Zambia\"].fillna(df[\"Zambia\"\
+  ].mean())\ndf[\"Zimbabwe\"] = df[\"Zimbabwe\"].fillna(df[\"Zimbabwe\"].mean())\n\
+  ```\n\n*清单 7-3 用平均值替换异常值*\n\n## 描述性统计\n\n清单 7-4 中的命令获取了表 7-2，该表展示了数据的集中趋势和离散程度。\n\
+  \n**表 7-2** 描述性统计\n\n\n\n| 国家 | 计数 | 均值 | 标准差 | 最小值 | 25% 分位数 | 50% 分位数 | 75% 分位数\
+  \ | 最大值 |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 阿尔及利亚 | 61.0\
+  \ | 2180.169492 | 1482.758119 | 190.0 | 1100.000000 | 1980.000000 | 2810.000000\
+  \ | 5510.0 |\n| 安哥拉 | 61.0 | 1848.857143 | 1141.479700 | 320.0 | 860.000000 | 1848.857143\
+  \ | 1848.857143 | 5010.0 |\n| 贝宁 | 61.0 | 512.542373 | 383.386633 | 90.0 | 230.000000\
+  \ | 370.000000 | 820.000000 | 1280.0 |\n| 博茨瓦纳 | 61.0 | 2896.271186 | 2466.075086\
+  \ | 80.0 | 580.000000 | 2896.271186 | 4930.000000 | 7660.0 |\n| 布隆迪 | 61.0 | 170.338983\
+  \ | 71.483474 | 50.0 | 120.000000 | 170.000000 | 230.000000 | 280.0 |\n| 中非共和国 |\
+  \ 61.0 | 312.542373 | 138.631324 | 80.0 | 240.000000 | 312.542373 | 420.000000 |\
+  \ 570.0 |\n| 乍得 | 61.0 | 352.203390 | 263.527783 | 110.0 | 190.000000 | 220.000000\
+  \ | 470.000000 | 980.0 |\n| 刚果民主共和国 | 61.0 | 287.037037 | 96.191039 | 110.0 | 287.037037\
+  \ | 287.037037 | 287.037037 | 550.0 |\n| 科特迪瓦 | 61.0 | 856.779661 | 504.435132 |\
+  \ 160.0 | 600.000000 | 760.000000 | 1070.000000 | 2290.0 |\n| 埃及阿拉伯共和国 | 61.0 |\
+  \ 1236.666667 | 919.878615 | 170.0 | 550.000000 | 1130.000000 | 1420.000000 | 3440.0\
+  \ |\n| 赤道几内亚 | 61.0 | 4340.256410 | 4072.093027 | 130.0 | 700.000000 | 4340.256410\
+  \ | 4340.256410 | 14250.0 |\n| 斯威士兰 | 61.0 | 2491.470588 | 884.784592 | 300.0 |\
+  \ 1930.000000 | 2491.470588 | 3080.000000 | 4420.0 |\n| 埃塞俄比亚 | 61.0 | 315.526316\
+  \ | 174.754088 | 110.0 | 210.000000 | 315.526316 | 315.526316 | 890.0 |\n| 加蓬 |\
+  \ 61.0 | 4226.610169 | 2482.096298 | 330.0 | 3100.000000 | 4226.610169 | 5520.000000\
+  \ | 9330.0 |\n| 冈比亚 | 61.0 | 477.924528 | 215.919418 | 110.0 | 300.000000 | 477.924528\
+  \ | 660.000000 | 890.0 |\n| 加纳 | 61.0 | 652.203390 | 599.905736 | 190.0 | 300.000000\
+  \ | 390.000000 | 652.203390 | 2230.0 |\n| 几内亚 | 61.0 | 562.121212 | 137.837556 |\
+  \ 340.0 | 490.000000 | 562.121212 | 562.121212 | 1020.0 |\n| 肯尼亚 | 61.0 | 518.983051\
+  \ | 427.316022 | 100.0 | 260.000000 | 390.000000 | 518.983051 | 1760.0 |\n| 莱索托\
+  \ | 61.0 | 678.909091 | 406.061049 | 80.0 | 410.000000 | 640.000000 | 1020.000000\
+  \ | 1500.0 |\n| 利比里亚 | 61.0 | 458.947368 | 88.879970 | 180.0 | 458.947368 | 458.947368\
+  \ | 458.947368 | 630.0 |\n| 利比亚 | 61.0 | 7765.263158 | 1585.829298 | 4550.0 | 7765.263158\
+  \ | 7765.263158 | 7765.263158 | 12380.0 |\n| 马拉维 | 61.0 | 214.067797 | 133.542985\
+  \ | 50.0 | 130.000000 | 170.000000 | 300.000000 | 580.0 |\n| 马里 | 61.0 | 373.653846\
+  \ | 229.876988 | 60.0 | 220.000000 | 300.000000 | 460.000000 | 870.0 |\n| 摩洛哥 |\
+  \ 61.0 | 1517.169811 | 900.271028 | 220.0 | 790.000000 | 1400.000000 | 2070.000000\
+  \ | 3200.0 |\n| 莫桑比克 | 61.0 | 416.785714 | 98.675454 | 190.0 | 416.785714 | 416.785714\
+  \ | 416.785714 | 690.0 |\n| 纳米比亚 | 61.0 | 3194.358974 | 1155.231283 | 1320.0 | 2270.000000\
+  \ | 3194.358974 | 3530.000000 | 5950.0 |\n| 尼日尔 | 61.0 | 318.135593 | 136.802468\
+  \ | 150.0 | 220.000000 | 280.000000 | 390.000000 | 600.0 |\n| 尼日利亚 | 61.0 | 934.237288\
+  \ | 801.430395 | 100.0 | 360.000000 | 630.000000 | 1350.000000 | 2940.0 |\n| 卢旺达\
+  \ | 61.0 | 314.576271 | 228.752574 | 40.0 | 150.000000 | 270.000000 | 350.000000\
+  \ | 830.0 |\n| 塞内加尔 | 61.0 | 851.509434 | 312.396096 | 310.0 | 640.000000 | 851.509434\
+  \ | 990.000000 | 1430.0 |\n| 索马里 | 61.0 | 147.428571 | 58.090242 | 70.0 | 110.000000\
+  \ | 147.428571 | 147.428571 | 320.0 |\n| 南非 | 61.0 | 3200.508475 | 1997.563869 |\
+  \ 460.0 | 1610.000000 | 2880.000000 | 4990.000000 | 7570.0 |\n| 苏丹 | 61.0 | 578.305085\
+  \ | 407.770984 | 140.0 | 330.000000 | 450.000000 | 720.000000 | 1540.0 |\n| 坦桑尼亚\
+  \ | 61.0 | 559.354839 | 226.501917 | 160.0 | 500.000000 | 559.354839 | 559.354839\
+  \ | 1100.0 |\n| 突尼斯 | 61.0 | 2032.962963 | 1196.525010 | 220.0 | 1160.000000 | 2032.962963\
+  \ | 3100.000000 | 4160.0 |\n| 乌干达 | 61.0 | 439.459459 | 187.988882 | 180.0 | 290.000000\
+  \ | 439.459459 | 439.459459 | 850.0 |\n| 赞比亚 | 61.0 | 650.000000 | 445.985799 |\
+  \ 190.0 | 360.000000 | 450.000000 | 690.000000 | 1800.0 |\n| 津巴布韦 | 61.0 | 694.406780\
+  \ | 306.688067 | 260.0 | 450.000000 | 670.000000 | 850.000000 | 1410.0 |\n\n```python\n\
+  df.describe().transpose()\n代码清单 7-4\n描述性汇总\n```\n\n代码清单 7-5 确定了前五个国家在时间序列上的人均国民总收入（参见图\
+  \ 7-1）。\n\n![../images/516940_1_En_7_Chapter/516940_1_En_7_Fig1_HTML.png](img/516940_1_En_7_Fig1_HTML.png)\n\
+  \n**图 7-1**  \n非洲人均国民总收入折线图\n\n```python\ndf.iloc[::,0:5].plot()\nplt.title(\"人均国民总收入（按图集法计算，现价美元）折线图\"\
+  )\nplt.xlabel(\"日期\")\nplt.ylabel(\"人均国民总收入（按图集法计算，现价美元）\")\nplt.show()\n代码清单 7-5\n\
+  非洲人均国民总收入折线图\n```\n\n图 7-1 显示，从 1960 年到 2020 年，布隆迪是这五个国家中人均国民总收入最低的国家。同时，图表也显示，阿尔及利亚、安哥拉、贝宁和博茨瓦纳的人均国民总收入在\
+  \ 21 世纪初出现了急剧上升。\n\n### 降维\n\n代码清单 7-6 应用主成分分析将数据降维至两个维度，然后代码清单 7-7 使用二维散点图（参见图\
+  \ 7-2）以图形方式呈现降维后的数据。在执行降维分析之前，您需要*标准化*数据（对数据中心化，使均值为 `0`，标准差为 `1`）。\n\n![../images/516940_1_En_7_Chapter/516940_1_En_7_Fig2_HTML.png](img/516940_1_En_7_Fig2_HTML.png)\n\
+  \n**图 7-2**  \n二维数据\n\n```python\nfrom sklearn.decomposition import PCA\npca2 =\
+  \ PCA(n_components=3)\npca2.fit(std_df)\nx_3d = pca2.transform(std_df)\nplt.scatter(x_3d[:,0],\
+  \ x_3d[:,2], c=df['南非'],cmap=\"viridis\",s=200)\nplt.title(\"非洲不平等性二维数据\")\nplt.xlabel(\"\
+  y\")\nplt.show()\n代码清单 7-7\n数据降维\n```\n\n```python\nfrom sklearn.preprocessing import\
+  \ StandardScaler\nscaler = StandardScaler()\nstd_df = scaler.fit_transform(df)\n\
+  代码清单 7-6\n标准化数据\n```\n\n图 7-2 以二维散点图的形式展示了非洲各国的人均国民总收入。\n\n### 聚类数量检测\n\n代码清单 7-8\
+  \ 使用肘部曲线来确定在训练 k-means 模型之前应包含的聚类数量。肘部曲线以*特征值*（线性变换后的标量向量）为 y 轴，以 *k* 值为 x 轴。\n\n\
+  ```python\npca = PCA(n_components=3).fit(std_df)\npca_df = pca.transform(std_df)\n\
+  pca_df = pca.transform(std_df)\nfrom sklearn.cluster import KMeans\nNc = range(1,20)\n\
+  kmeans = [KMeans(n_clusters=i) for i in Nc]\nscores = [kmeans[i].fit(pca_df).score(pca_df)\
+  \ for i in range(len(kmeans))]\nfig, ax = plt.subplots()\nplt.plot(Nc, scores,color=\"\
+  navy\",lw=4)\nplt.xlabel(\"聚类数量\")\nplt.title(\"肘部曲线\")\nplt.ylabel(\"得分\")\nplt.show()\n\
+  代码清单 7-8\n肘部曲线\n```\n\n![../images/516940_1_En_7_Chapter/516940_1_En_7_Fig3_HTML.png](img/516940_1_En_7_Fig3_HTML.png)\n\
+  \n**图 7-3**  \n肘部曲线\n\n图 7-3 展示了肘部曲线。x 轴为 k 值（代表聚类数量），y 轴为畸变程度（代表特征值——线性变换后得到的标量）。y\
+  \ 轴在很大程度上反映了该数据中变量之间相关性的严重程度，也称为 WSS（组内平方和）。要确定应包含多少个聚类，您需要确定*临界点*。要选择临界点，您需要识别肘部曲线开始急剧弯曲的那个点。在本例中，聚类数量为三个。\n\
+  \n\n\n## K-Means 模型开发\n\n清单 7-9 通过应用所有数据和聚类数量（三个）来训练 K-Means 模型。\n\n```\nkmeans\
+  \ = KMeans(n_clusters=3,\ncopy_x=False,\nmax_iter= 1,\nn_init= 10,\ntol= 1.0)\n\
+  kmeans_output = kmeans.fit(pca_df)\nkmeans_output\nListing 7-9\nK-Means Model Development\n\
+  ```\n\n### 预测\n\n清单 7-10 预测标签（见表 7-3）\n\n表 7-3\n\n预测标签\n\n|   | 聚类 |\n| --- | ---\
+  \ |\n| **0** | 0 |\n| **1** | 0 |\n| **2** | 2 |\n| **3** | 2 |\n| **4** | 2 |\n\
+  | **...** | ... |\n| **56** | 1 |\n| **57** | 1 |\n| **58** | 1 |\n| **59** | 1\
+  \ |\n| **60** | 1 |\n\n```\ny_predkmeans = pd.DataFrame(kmeans_output.labels_, columns\
+  \ = [\"Clusters\"])\ny_predkmeans\nListing 7-10\nPredictions\n```\n\n清单 7-10 并未揭示\
+  \ K-Means 模型如何估计标签的太多信息。\n\n### 聚类中心检测\n\n清单 7-11 检索出表 7-4，该表显示了每个聚类的平均值。\n\n表 7-4\n\
+  \n聚类中心\n\n|   | 聚类 1 | 聚类 2 | 聚类 3 |\n| --- | --- | --- | --- |\n| **0** | -1.600930\
+  \ | 9.258221 | -4.160474 |\n| **1** | -1.429737 | 0.508989 | 2.217940 |\n| **2**\
+  \ | -0.587821 | 0.273357 | 0.862871 |\n\n```\ncenters = kmeans_output.cluster_centers_\n\
+  centroids = pd.DataFrame(centers).transpose()\ncentroids.columns = [\"Cluster 1\"\
+  ,\"Cluster 2\", \"Cluster 3\"]\ncentroids\nListing 7-11\nFind Cluster Centers\n\
+  ```\n\n清单 7-12 绘制了图 7-4，该图展示了估计的标签。\n\n![../images/516940_1_En_7_Chapter/516940_1_En_7_Fig4_HTML.png](img/516940_1_En_7_Fig4_HTML.png)\n\
+  \n图 7-4\n\n非洲人均国民总收入 K-Means 模型\n\n```\nfig, ax = plt.subplots()\nplt.scatter(pca_df[:,0],pca_df[:,1],c=kmeans_output.labels_,cmap=\"\
+  viridis\",s=200)\nplt.scatter(centers[:,0], centers[:,1], color=\"red\")\nplt.title(\"\
+  Africa GNI per capita, Atlas method (current US$) clusters\")\nplt.xlabel(\"y\"\
+  )\nplt.show()\nListing 7-12\nAfrica’s GNI Per Capita Scatter\n```\n\n图 7-4 展示了各自聚类（红点）中的数据点（以黄色、紫色和绿色高亮显示）。\n\
+  \n### 聚类结果分析\n\n为了更好地理解清单 7-13 中的预测标签，请参见表 7-5。\n\n表 7-5\n\n非洲人均国民总收入聚类表\n\n|  \
+  \ | 国家 | 聚类 |\n| --- | --- | --- |\n| **0** | 阿尔及利亚 | 低人均国民总收入 |\n| **1** | 安哥拉\
+  \ | 低人均国民总收入 |\n| **2** | 贝宁 | 高人均国民总收入 |\n| **3** | 博茨瓦纳 | 高人均国民总收入 |\n| **4**\
+  \ | 布隆迪 | 高人均国民总收入 |\n| **5** | 中非共和国 | 高人均国民总收入 |\n| **6** | 乍得 | 高人均国民总收入 |\n\
+  | **7** | 刚果民主共和国 | 高人均国民总收入 |\n| **8** | 科特迪瓦 | 高人均国民总收入 |\n| **9** | 埃及阿拉伯共和国\
+  \ | 高人均国民总收入 |\n| **10** | 赤道几内亚 | 高人均国民总收入 |\n| **11** | 埃斯瓦蒂尼 | 高人均国民总收入 |\n|\
+  \ **12** | 埃塞俄比亚 | 高人均国民总收入 |\n| **13** | 加蓬 | 高人均国民总收入 |\n| **14** | 冈比亚 | 高人均国民总收入\
+  \ |\n| **15** | 加纳 | 高人均国民总收入 |\n| **16** | 几内亚 | 高人均国民总收入 |\n| **17** | 肯尼亚 | 高人均国民总收入\
+  \ |\n| **18** | 莱索托 | 高人均国民总收入 |\n| **19** | 利比里亚 | 低人均国民总收入 |\n\n```\nstocks =\
+  \ pd.DataFrame(df.columns)\ncluster_labels = pd.DataFrame(kmeans.labels_)\nstockClusters\
+  \ = pd.concat([stocks, cluster_labels],axis = 1)\nstockClusters.columns = [\"Country\"\
+  ,\"Clusters\"]\nstockClusters = stockClusters.replace({0: \"Low GNI per capita\"\
+  ,1: \"Moderate GNI per capita\",2: \"High GNI per capita\"})\nstockClusters.head(20)\n\
+  Listing 7-13\nAfrica GNI Per Capita Cluster Table\n```\n\n清单 7-14 简化了表 7-5 中的数据（见图\
+  \ 7-5）。\n\n![../images/516940_1_En_7_Chapter/516940_1_En_7_Fig5_HTML.jpg](img/516940_1_En_7_Fig5_HTML.jpg)\n\
+  \n图 7-5\n\n非洲人均国民总收入聚类计数\n\n```\nclass_series = stockClusters.groupby(\"Clusters\"\
+  ).size()\nclass_series.name = \"Count\"\nclass_series.plot.pie(autopct=\"%2.f\"\
+  ,cmap=\"Blues_r\")\nplt.title(\"Clusters pie chart\")\nplt.show()\nListing 7-14\n\
+  Africa’s GNI Per Capita Cluster Count\n```\n\n图 7-5 显示，28% 的国家属于高人均国民总收入，51% 的国家属于低人均国民总收入，而\
+  \ 21% 的国家属于中等人均国民总收入。\n\n## K-Means 模型评估\n\nK-Means 模型不对数据做出极端假设。你可以在没有任何预设假设的情况下应用它——它建立关于数据的真相，而不是检验论断。它也没有强大的模型评估矩阵。\n\
+  \n### 轮廓系数法\n\n你可以依赖轮廓系数法来确定模型在多大程度上做出了合理的推测（见清单 7-15）。它估计了平均最近聚类距离与类内距离之间的差值，以及最大平均最近聚类距离与类内距离。它返回一个从\
+  \ -1 到 1 的值，其中 -1 表示模型很差，0 表示模型一般，1 表示模型在推测方面表现优异。\n\n```\nfrom sklearn import metrics\n\
+  metrics.silhouette_score(df, y_predkmeans)\n0.43409785393807543\nListing 7-15\n\
+  Find Silhouette Score\n```\n\n轮廓系数得分为 0.43401。这意味着该分类器在估计非洲国家的人均国民总收入标签方面表现一般。\n\
+  \n### 结论\n\n本章介绍了一种用于聚类的无监督机器学习模型，即 *K-Means 模型*。我们使用默认超参数开发了一个模型，并估计了非洲国家人均国民总收入值之间的距离。随后，根据人均国民总收入将这些国家分组到不同的聚类中。本章以对无监督机器学习的讨论作为结束。\n\
+  \n\n\n"
+- '# 8. 应用人工神经网络解决经济问题
+
+
+  深度学习通过使用人工神经网络来操作一组预测变量并预测未来的响应变量，从而扩展了机器学习。人工神经网络是一组节点，它们在输入层接收输入值，并在随后的隐藏层（介于输入层和输出层之间的层）中对这些值进行转换。这个隐藏层会转换节点，并分配不同的*权重*（决定输入值对输出值影响程度的向量参数）和*偏置*（一个始终为
+  1 的平衡值）。之后，它们通过应用激活函数在输出层生成一组输出值。人工神经网络是深度学习的一部分，它通过构建模型并以复制人类神经活动为基础，推动了机器学习的发展。*传播*是训练网络的过程（通常通过反向传播，即从输出层开始反向更新权重）。
+
+
+  传统的机器学习模型最适合处理小规模数据。增加数据量会带来新的问题，因为传统模型的计算成本很高。大多数集成模型（用于解决回归和分类问题的模型）在训练的初始阶段过于乐观，并且大部分预测都是正确的。例如，梯度开始时看起来很小，然后随着数据量的增加而扩大——这种现象被称为*梯度消失问题*。梯度下降算法应对了这个问题，这是构建网络的基础。
+
+
+  在继续之前，请确保你的环境中已安装 `tensorflow` 库。要在 Python 环境中安装 `tensorflow` 库，请使用 `pip install
+  tensorflow`。同样，要在 Conda 环境中安装该库，请使用 `conda install -c conda-forge tensorflow`。同时安装
+  Keras 库。在 Python 环境中，使用 `pip install keras`；在 Conda 环境中，使用 `conda install -c conda-forge
+  keras`。
+
+
+  ## 本章背景
+
+
+  本章通过应用一组经济指标——城市人口、人均 GNI（ Atlas 方法，以当前美元计）和 GDP 增长率（年百分比），来预测南非出生时预期寿命的变化。表 8-1
+  列出了本章研究的南非宏观经济指标。
+
+
+  表 8-1
+
+
+  本章使用的南非宏观经济指标
+
+
+  | 标识符 | 指标 |
+
+  | --- | --- |
+
+  | `SP.URB.TOTL` | 南非城市人口 |
+
+  | `NY.GNP.PCAP.CD` | 南非人均 GNI，Atlas 方法（以当前美元计） |
+
+  | `NY.GDP.MKTP.KD.ZG` | 南非 GDP 增长率（年百分比） |
+
+  | `SP.DYN.LE00.IN` | 南非出生时预期寿命（年） |
+
+
+  ## 理论框架
+
+
+  图 8-1 展示了本章的假设框架。
+
+
+  ![../images/516940_1_En_8_Chapter/516940_1_En_8_Fig1_HTML.png](img/516940_1_En_8_Fig1_HTML.png)
+
+
+  图 8-1
+
+
+  理论框架
+
+
+  清单 8-1 中的代码执行数据操作任务。
+
+
+  ```
+
+  country = ["ZAF"]
+
+  indicator = {"SP.URB.TOTL":"urban_pop",
+
+  "NY.GNP.PCAP.CD":"gni_per_capita",
+
+  "NY.GDP.MKTP.KD.ZG":"gdp_growth",
+
+  "SP.DYN.LE00.IN":"life_exp"}
+
+  df = wbdata.get_dataframe(indicator, country=country, convert_date=True)
+
+  df["urban_pop"] = df["urban_pop"].fillna(df["urban_pop"].mean())
+
+  df["gni_per_capita"] = df["gni_per_capita"].fillna(df["gni_per_capita"].mean())
+
+  df["gdp_growth"] = df["gdp_growth"].fillna(df["gdp_growth"].mean())
+
+  df["life_exp"] = df["life_exp"].fillna(df["life_exp"].mean())
+
+  df[''gni_per_capita''] = np.where((df["gni_per_capita"] > 5000),df["gni_per_capita"].mean(),df["gni_per_capita"])
+
+  df[''pct_change''] = df["life_exp"].pct_change()
+
+  df = df.dropna()
+
+  df[''direction''] = np.sign(df[''pct_change'']).astype(int)
+
+  df["direction"] = pd.get_dummies(df["direction"])
+
+  df[''pct_change''] = df["life_exp"].pct_change()
+
+  df = df.dropna()
+
+  df[''direction''] = np.sign(df[''pct_change'']).astype(int)
+
+  df["direction"] = pd.get_dummies(df["direction"])
+
+  del df["pct_change"]
+
+  del df["life_exp"]
+
+  from sklearn.preprocessing import StandardScaler
+
+  x = df.iloc[::,0:3]
+
+  scaler = StandardScaler()
+
+  x= scaler.fit_transform(x)
+
+  y = df.iloc[::,-1]
+
+  from sklearn.model_selection import train_test_split
+
+  x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.2,random_state=0)
+
+  清单 8-1
+
+  数据预处理
+
+  ```
+
+
+  ## 受限玻尔兹曼机分类器
+
+
+  受限玻尔兹曼机分类器是一种简单的人工神经网络，它由一个隐藏层和一个可见层组成。图 8-2 展示了受限玻尔兹曼机分类器的结构。
+
+
+  ![../images/516940_1_En_8_Chapter/516940_1_En_8_Fig2_HTML.png](img/516940_1_En_8_Fig2_HTML.png)
+
+
+  图 8-2
+
+
+  受限玻尔兹曼机结构
+
+
+  图 8-2 显示，隐藏层中的每个节点自动获取输入值，通过应用激活函数转换获取的输入数据，然后将数据传输到可见层。受限玻尔兹曼机分类器从左到右估计梯度——这个学习过程被称为*前向传播*过程。
+
+
+  ## 受限玻尔兹曼机分类器开发
+
+
+  清单 8-2 是使用默认超参数的受限玻尔兹曼机分类器开发。注意，它使用 `Pipeline()` 方法来设置最终分类器的参数，包括受限玻尔兹曼机和逻辑回归分类器的参数。
+
+
+  ```
+
+  from sklearn.neural_network import BernoulliRBM
+
+  from sklearn.linear_model import LogisticRegression
+
+  rbm = BernoulliRBM()
+
+  logreg = LogisticRegression()
+
+  from sklearn.pipeline import Pipeline
+
+  rbmclassifier = Pipeline(steps=[("rbm",rbm),("logreg",logreg)])
+
+  rbmclassifier.fit(x_train,y_train)
+
+  清单 8-2
+
+  受限玻尔兹曼机分类器开发
+
+  ```
+
+
+
+
+  ### 受限玻尔兹曼机混淆矩阵
+
+
+  清单 8-3 探讨了受限玻尔兹曼机分类器的性能（见表 8-2）。
+
+
+  **表 8-2** 受限玻尔兹曼机分类器混淆矩阵
+
+
+  | | **预测值：预期寿命下降** | **预测值：预期寿命上升** |
+
+  |---|---|---|
+
+  | **实际值：预期寿命下降** | 0 | 2 |
+
+  | **实际值：预期寿命上升** | 0 | 10 |
+
+
+  ```
+
+  from sklearn import metrics
+
+  y_predrbmclassifier = rbmclassifier.predict(x_test)
+
+  cmatrbmclassifier = pd.DataFrame(metrics.confusion_matrix(y_test,y_predrbmclassifier),
+
+  index=["Actual: Decreasing life expectancy",
+
+  "Actual: Increasing life expectancy"],
+
+  columns = ("Predicted: Decreasing life expectancy",
+
+  Predicted: Increasing life expectancy"))
+
+  cmatrbmclassifier
+
+  Listing 8-3
+
+  Restricted Boltzmann Machine Confusion Matrix
+
+  ```
+
+
+  表 8-3 对受限玻尔兹曼机分类器的混淆矩阵进行了解释（见表 8-2）。
+
+
+  **表 8-3** 受限玻尔兹曼机分类器混淆矩阵解释
+
+
+  | 指标 | 解释 |
+
+  |---|---|
+
+  | 真阳性 | 当南非实际预期寿命下降时，受限玻尔兹曼机分类器未预测为下降。 |
+
+  | 真阴性 | 当南非预期寿命实际上升时，受限玻尔兹曼机分类器预测为上升（两次）。 |
+
+  | 真阳性 | 当南非预期寿命实际上升时，受限玻尔兹曼机分类器未预测为下降。 |
+
+  | 假阴性 | 当南非预期寿命实际下降时，受限玻尔兹曼机分类器预测为上升（十次）。 |
+
+
+  ### 受限玻尔兹曼机分类报告
+
+
+  清单 8-4 中的代码获取了关于受限玻尔兹曼机分类器性能的详细报告（见表 8-4）。
+
+
+  ```
+
+  creportrbmclassifier = pd.DataFrame(metrics.classification_report(y_test,y_predrbmclassifier,output_dict=True))
+
+  creportrbmclassifier
+
+  Listing 8-4
+
+  Restricted Boltzmann Machine Classification Report
+
+  ```
+
+
+  表 8-4 显示，RBM 分类器的准确率为 83%，并且在预测南非预期寿命上升和下降时的精确率也为 83%。
+
+
+  **表 8-4** 受限玻尔兹曼机分类报告
+
+
+  | | 0 | 1 | 准确率 | 宏平均 | 加权平均 |
+
+  |---|---|---|---|---|---|
+
+  | 精确率 | 0.0 | 0.833333 | 0.833333 | 0.416667 | 0.694444 |
+
+  | 召回率 | 0.0 | 1.000000 | 0.833333 | 0.500000 | 0.833333 |
+
+  | F1 分数 | 0.0 | 0.909091 | 0.833333 | 0.454545 | 0.757576 |
+
+  | 支撑值 | 2.0 | 10.000000 | 0.833333 | 12.000000 | 12.000000 |
+
+
+  ### 受限玻尔兹曼机分类器 ROC 曲线
+
+
+  清单 8-5 评估了当受限玻尔兹曼机分类器区分南非预期寿命上升和下降时，敏感度（FPR）与特异度（TPR）之间的权衡（见图 8-3）。
+
+
+  ![../images/516940_1_En_8_Chapter/516940_1_En_8_Fig3_HTML.png](img/516940_1_En_8_Fig3_HTML.png)
+
+
+  **图 8-3** 受限玻尔兹曼机分类器 ROC 曲线
+
+
+  ```
+
+  y_predrbmclassifier_proba = rbmclassifier.predict_proba(x_test)[::,1]
+
+  fprrbmclassifier, tprrbmclassifier, _ = metrics.roc_curve(y_test,y_predrbmclassifier_proba)
+
+  aucrbmclassifier = metrics.roc_auc_score(y_test,y_predrbmclassifier_proba)
+
+  fig, ax = plt.subplots()
+
+  plt.plot(fprrbmclassifier, tprrbmclassifier,label="auc: "+str(aucrbmclassifier),color="navy",lw=4)
+
+  plt.plot([0,1],[0,1],color="red",lw=4)
+
+  plt.xlim([0.00,1.01])
+
+  plt.ylim([0.00,1.01])
+
+  plt.title("RBM classifier ROC curve")
+
+  plt.xlabel("Sensitivity")
+
+  plt.ylabel("Specificity")
+
+  plt.legend(loc=4)
+
+  plt.show()
+
+  Listing 8-5
+
+  Restricted Boltzmann Machine Classifier ROC Curve
+
+  ```
+
+
+  图 8-3 显示，平均而言，受限玻尔兹曼机分类器在区分南非出生时预期寿命上升和下降时的准确率为 60%。
+
+
+  ### 受限玻尔兹曼机分类器精确率-召回率曲线
+
+
+  清单 8-6 评估了当受限玻尔兹曼机分类器区分南非预期寿命上升和下降时，在某些阈值下精确率与召回率之间的权衡（见图 8-4）。
+
+
+  ![../images/516940_1_En_8_Chapter/516940_1_En_8_Fig4_HTML.png](img/516940_1_En_8_Fig4_HTML.png)
+
+
+  **图 8-4** 受限玻尔兹曼机分类器精确率-召回率曲线
+
+
+  ```
+
+  precisionrbmclassifier, recallrbmclassifier, thresholdrbmclassifier = metrics.precision_recall_curve(y_test,y_predrbmclassifier)
+
+  apsrbmclassifier = metrics.average_precision_score(y_test,y_predrbmclassifier)
+
+  fig, ax = plt.subplots()
+
+  plt.plot(precisionrbmclassifier, recallrbmclassifier,label="aps: " +str(apsrbmclassifier),color="navy",lw=4)
+
+  plt.axhline(y=0.5, color="red",lw=4)
+
+  plt.title("RBM classifier precision-recall curve")
+
+  plt.ylabel("Precision")
+
+  plt.xlabel("Recall")
+
+  plt.legend(loc=4)
+
+  plt.show()
+
+  Listing 8-6
+
+  Restricted Boltzmann Machine Classifier Precision-Recall Curve
+
+  ```
+
+
+  图 8-4 显示，平均而言，受限玻尔兹曼机分类器在区分南非预期寿命上升和下降时的精确率为 83%。
+
+
+  ### 受限玻尔兹曼机分类器学习曲线
+
+
+  清单 8-7 展示了受限玻尔兹曼机分类器如何学习正确区分南非出生时预期寿命的上升和下降（见图 8-5）。
+
+
+  ![../images/516940_1_En_8_Chapter/516940_1_En_8_Fig5_HTML.png](img/516940_1_En_8_Fig5_HTML.png)
+
+
+  **图 8-5** 受限玻尔兹曼机分类器学习曲线
+
+
+  ```
+
+  from sklearn.model_selection import learning_curve
+
+  from sklearn.model_selection import learning_curve
+
+  trainsizerbmclassifier, trainscorerbmclassifier, testscorerbmclassifier = learning_curve(rbmclassifier,
+  x, y, cv=5, n_jobs=-1, scoring="accuracy", train_sizes=np.linspace(0.1,1.0,50))
+
+  trainscorerbmclassifier_mean = np.mean(trainscorerbmclassifier,axis=1)
+
+  trainscorerbmclassifier_std = np.std(trainscorerbmclassifier,axis=1)
+
+  testscorerbmclassifier_mean = np.mean(testscorerbmclassifier,axis=1)
+
+  testscorerbmclassifier_std = np.std(testscorerbmclassifier,axis=1)
+
+  fig, ax = plt.subplots()
+
+  plt.plot(trainsizerbmclassifier, trainscorerbmclassifier_mean, color="red", label="Training
+  accuracy score",lw=4)
+
+  plt.plot(trainsizerbmclassifier, testscorerbmclassifier_mean,color="navy",label="Cross
+  validation accuracy score",lw=4)
+
+  plt.title("RBM classifier learning curve")
+
+  plt.xlabel("Training set size")
+
+  plt.ylabel("Accuracy")
+
+  plt.legend(loc="best")
+
+  plt.show()
+
+  Listing 8-7
+
+  Restricted Boltzmann Machine Classifier Learning Curve
+
+  ```
+
+
+  图 8-5 显示，对于前十个数据点，交叉验证准确率分数高于训练分数。此后，训练分数超过了交叉验证准确率分数，并持续到第 30 个数据点。在第 36 个数据点，交叉验证分数急剧下降。
+
+
+
+
+  ## 多层感知器（MLP）分类器
+
+
+  本节将介绍多层感知器分类器——它是受限玻尔兹曼机分类器的一种扩展，也被称为*原始模型*。它是指具有多个隐藏层的受限玻尔兹曼机分类器。该模型包含三个层（见图 8-6）。
+
+
+  ![../images/516940_1_En_8_Chapter/516940_1_En_8_Fig6_HTML.png](img/516940_1_En_8_Fig6_HTML.png)
+
+
+  图 8-6
+
+
+  多层感知器分类器示例
+
+
+  图 8-6 显示，该模型包含输入层，它负责获取输入值并将其传输到第一个隐藏层。第一个隐藏层接收这些值，并通过应用一个函数（此处为 Sigmoid 函数）对其进行转换。转换后的输出值被传输到第二个隐藏层，第二个隐藏层接收这些值并进一步处理（它转换这些值，然后将结果传输到输出层）。
+
+
+  ### 多层感知器（MLP）分类器模型开发
+
+
+  代码清单 8-8 通过应用默认超参数来开发多层感知器分类器。
+
+
+  ```
+
+  from sklearn.neural_network import MLPClassifier
+
+  mlp = MLPClassifier()
+
+  mlp.fit(x_train,y_train)
+
+  ```
+
+
+  代码清单 8-8
+
+  多层感知器分类器模型开发
+
+
+  代码清单 8-9 获取多层感知器分类器的混淆矩阵（见表 8-5）。
+
+
+  表 8-5
+
+
+  多层感知器混淆矩阵
+
+
+  |   | 预测：预期寿命降低 | 预测：预期寿命提高 |
+
+  | --- | --- | --- |
+
+  | **实际：预期寿命降低** | 0 | 2 |
+
+  | **实际：预期寿命提高** | 0 | 10 |
+
+
+  ```
+
+  y_predmlp = mlp.predict(x_test)
+
+  cmatmlp = pd.DataFrame(metrics.confusion_matrix(y_test,y_predmlp), index=["实际：预期寿命降低",
+  "实际：预期寿命提高"],
+
+  columns = ("预测：预期寿命降低",
+
+  "预测：预期寿命提高"))
+
+  cmatmlp
+
+  ```
+
+
+  代码清单 8-9
+
+  构建多层感知器混淆矩阵
+
+
+  表 8-6 解释多层感知器分类器的混淆矩阵（见表 8-5）。
+
+
+  表 8-6
+
+
+  多层感知器混淆矩阵解释
+
+
+  | 指标 | 解释 |
+
+  | --- | --- |
+
+  | 真正例 | 当南非的预期寿命实际降低时，多层感知器分类器没有预测出预期寿命降低。 |
+
+  | 真负例 | 当南非的预期寿命实际提高时，多层感知器分类器预测出了出生时预期寿命提高（发生了两次）。 |
+
+  | 真正例 | 当南非的出生时预期寿命实际提高时，多层感知器分类器没有预测出预期寿命降低。 |
+
+  | 假负例 | 当南非的预期寿命实际降低时，多层感知器分类器预测出了预期寿命提高（发生了十次）。 |
+
+
+  ### 多层感知器分类报告
+
+
+  表 8-7 概述了由代码清单 8-10 生成的多层感知器分类报告。
+
+
+  表 8-7
+
+
+  多层感知器分类报告
+
+
+  |   | 0 | 1 | 准确率 | 宏平均 | 加权平均 |
+
+  | --- | --- | --- | --- | --- | --- |
+
+  | 精确率 | 0.0 | 0.833333 | 0.833333 | 0.416667 | 0.694444 |
+
+  | 召回率 | 0.0 | 1.000000 | 0.833333 | 0.500000 | 0.833333 |
+
+  | F1 分数 | 0.0 | 0.909091 | 0.833333 | 0.454545 | 0.757576 |
+
+  | 支持度 | 2.0 | 10.000000 | 0.833333 | 12.000000 | 12.000000 |
+
+
+  ```
+
+  creportmlp = pd.DataFrame(metrics.classification_report(y_test,y_predmlp,output_dict=True))
+
+  creportmlp
+
+  ```
+
+
+  代码清单 8-10
+
+  多层感知器分类报告
+
+
+  表 8-7 显示，当预测南非出生时预期寿命降低时，多层感知器分类器的准确率为 83%；当预测预期寿命降低时，其精确率为 83%。此外，它在区分南非预期寿命提高与降低时，准确率为
+  92%。
+
+
+  ### 多层感知器 ROC 曲线
+
+
+  代码清单 8-11 估算了当多层感知器分类器区分南非预期寿命提高与降低时，敏感性（FPR）与特异性（TPR）之间的权衡关系（见图 8-7）。
+
+
+  ![../images/516940_1_En_8_Chapter/516940_1_En_8_Fig7_HTML.png](img/516940_1_En_8_Fig7_HTML.png)
+
+
+  图 8-7
+
+
+  多层感知器分类器 ROC 曲线
+
+
+  ```
+
+  y_predmlp_proba = mlp.predict_proba(x_test)[::,1]
+
+  fprmlp, tprmlp, _ = metrics.roc_curve(y_test,y_predmlp_proba)
+
+  aucmlp = metrics.roc_auc_score(y_test,y_predmlp_proba)
+
+  fig, ax = plt.subplots()
+
+  plt.plot(fprmlp, tprmlp,label="auc: "+str(aucmlp),color="navy",lw=4)
+
+  plt.plot([0,1],[0,1],color="red",lw=4)
+
+  plt.xlim([0.00,1.01])
+
+  plt.ylim([0.00,1.01])
+
+  plt.title("MLP classifier ROC curve")
+
+  plt.xlabel("Sensitivity")
+
+  plt.ylabel("Specificity")
+
+  plt.legend(loc=4)
+
+  plt.show()
+
+  ```
+
+
+  代码清单 8-11
+
+  多层感知器 ROC 曲线
+
+
+  图 8-7 显示，在区分南非预期寿命提高与降低时，多层感知器分类器的平均准确率为 100%。
+
+
+  ### 多层感知器分类器精确率-召回率曲线
+
+
+  代码清单 8-12 估算了当多层感知器分类器区分南非预期寿命提高与降低时，在不同阈值下精确率与召回率之间的权衡关系（见图 8-8）。
+
+
+  ![../images/516940_1_En_8_Chapter/516940_1_En_8_Fig8_HTML.png](img/516940_1_En_8_Fig8_HTML.png)
+
+
+  图 8-8
+
+
+  多层感知器分类器精确率-召回率曲线
+
+
+  ```
+
+  precisionmlp, recallmlp, thresholdmlp = metrics.precision_recall_curve(y_test,y_predmlp)
+
+  apsmlp = metrics.average_precision_score(y_test,y_predmlp)
+
+  fig, ax = plt.subplots()
+
+  plt.plot(precisionmlp, recallmlp,label="aps: " +str(apsmlp),color="navy",lw=4)
+
+  plt.axhline(y=0.5, color="red",lw=4)
+
+  plt.title("MLP classifier precision-recall curve")
+
+  plt.ylabel("Precision")
+
+  plt.xlabel("Recall")
+
+  plt.legend(loc=4)
+
+  plt.show()
+
+  ```
+
+
+  代码清单 8-12
+
+  多层感知器分类器精确率-召回率曲线
+
+
+  图 8-8 显示，在区分南非预期寿命提高与降低时，多层感知器分类器的平均精确率为 83%。
+
+
+
+
+  ### 多层感知机分类器学习曲线
+
+
+  列表 8-13 展示了多层感知机分类器如何随着训练测试集规模增大，学会正确区分南非出生时预期寿命的上升与下降趋势（参见图 8-9）。
+
+
+  ![../images/516940_1_En_8_Chapter/516940_1_En_8_Fig9_HTML.png](img/516940_1_En_8_Fig9_HTML.png)
+
+
+  **图 8-9** 多层感知机分类器学习曲线
+
+
+  ```
+
+  trainsizemlp, trainscoremlp, testscoremlp = learning_curve(mlp, x, y, cv=5, n_jobs=-1,
+  scoring="accuracy", train_sizes=np.linspace(0.1,1.0,50))
+
+  trainscoremlp_mean = np.mean(trainscoremlp,axis=1)
+
+  trainscoremlp_std = np.std(trainscoremlp,axis=1)
+
+  testscoremlp_mean = np.mean(testscoremlp,axis=1)
+
+  testscoremlp_std = np.std(testscoremlp,axis=1)
+
+  fig, ax = plt.subplots()
+
+  plt.plot(trainsizemlp, trainscoremlp_mean, color="red",lw=4,label="训练准确率分数")
+
+  plt.plot(trainsizemlp, testscoremlp_mean,color="navy",lw=4,label="交叉验证准确率分数")
+
+  plt.title("MLP 分类器学习曲线")
+
+  plt.xlabel("训练集规模")
+
+  plt.ylabel("准确率")
+
+  plt.legend(loc="最佳位置")
+
+  plt.show()
+
+  列表 8-13
+
+  MLP 分类器学习曲线
+
+  ```
+
+
+  图 8-9 显示，在整个训练过程中，训练准确率分数一直高于交叉验证准确率分数。交叉验证分数在第 12 个数据点后急剧下降，并在第 20 个数据点处回升。
+
+
+  ## 基于 Keras 的人工神经网络原型设计
+
+
+  列表 8-14 对数据进行了重新处理。此过程与上一节中的步骤类似，区别在于本过程进一步将数据拆分为验证数据。
+
+
+  ```
+
+  from sklearn.preprocessing import StandardScaler
+
+  x = df.iloc[::,0:3]
+
+  scaler = StandardScaler()
+
+  x= scaler.fit_transform(x)
+
+  y = df.iloc[::,-1]
+
+  from sklearn.model_selection import train_test_split
+
+  x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.2,random_state=0)
+
+  x_train, x_val, y_train, y_val = train_test_split(x_train,y_train,test_size=0.1,random_state=0)
+
+  列表 8-14
+
+  数据重新处理
+
+  ```
+
+
+  列表 8-15 训练神经网络。它首先从 `keras` 库中导入 `Sequential`、`Dense` 和 `KerasClassifier`（参见列表 8-15）。
+
+
+  ```
+
+  from keras import Sequential
+
+  from keras.layers import Dense
+
+  from keras.wrappers.scikit_learn import KerasClassifier
+
+  列表 8-15
+
+  导入依赖项
+
+  ```
+
+
+  ## 人工神经网络结构构建
+
+
+  列表 8-16 构建了一个函数来创建神经网络的架构。输入层的激活函数是 ReLu。这意味着模型将作用于变量——城市人口、人均 GNI（按 Atlas 方法计算，以当前美元计）以及
+  GDP 增长率（年百分比）——并生成输出。列表 8-16 在输入层中包含了一个额外节点。在输出层，网络应用 sigmoid 函数（它作用于这些预测变量并生成南非预期寿命的下降或上升）。用于训练的损失函数是
+  `binary_crossentropy`。指定此损失函数告知神经网络它将处理一个分类变量。用于评估神经网络的指标是 `accuracy`，我们应用 `adam`
+  优化器随机选择变量。我们还处理了梯度消失问题并加快了训练过程。
+
+
+  ```
+
+  def create_dnn_model():
+
+  model = Sequential()
+
+  model.add(Dense(4, input_dim=3, activation="relu"))
+
+  model.add(Dense(1, activation="sigmoid"))
+
+  model.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
+
+  return model
+
+  列表 8-16
+
+  构建网络架构
+
+  ```
+
+
+  ### 网络封装
+
+
+  列表 8-17 封装了分类器，以便我们应用 `scikit-learn` 库的功能。
+
+
+  ```
+
+  model = KerasClassifier(build_fn=create_dnn_model)
+
+  列表 8-17
+
+  封装 Keras 分类器
+
+  ```
+
+
+  列表 8-18 在 64 个训练周期（epochs）上训练神经网络，并使用批次大小为 15。请注意，你可以通过尝试其他批次大小和训练周期数来调整设置（它们通常会带来不同的模型性能结果）。
+
+
+  ```
+
+  history = model.fit(x_train, y_train, validation_data=(x_val, y_val), epochs=64,
+  batch_size=15)
+
+  history
+
+  列表 8-18
+
+  训练神经网络
+
+  ```
+
+
+  ### Keras 分类器混淆矩阵
+
+
+  列表 8-19 创建了一个混淆矩阵（参见表 8-8）。
+
+
+  **表 8-8** Keras 分类器混淆矩阵
+
+
+  | | **预测：预期寿命下降** | **预测：预期寿命上升** |
+
+  |---|---|---|
+
+  | **实际：预期寿命下降** | 0 | 2 |
+
+  | **实际：预期寿命上升** | 1 | 9 |
+
+
+  ```
+
+  y_predkeras = model.predict(x_test)
+
+  cmatkeras = pd.DataFrame(metrics.confusion_matrix(y_test,y_predkeras),
+
+  index=["实际：预期寿命下降",
+
+  "实际：预期寿命上升"],
+
+  columns = ("预测：预期寿命下降",
+
+  "预测：预期寿命上升"))
+
+  cmatkeras
+
+  列表 8-19
+
+  Keras 分类器混淆矩阵
+
+  ```
+
+
+  表 8-9 解释了 Keras 分类器的混淆矩阵（参见表 8-8）。
+
+
+  **表 8-9** Keras 分类器混淆矩阵解读
+
+
+  | 指标 | 解读 |
+
+  |---|---|
+
+  | 真正例 | 当南非实际出现预期寿命下降时，Keras 分类器未预测到下降的次数。 |
+
+  | 真负例 | 当南非实际出现预期寿命上升时，Keras 分类器预测到上升的次数（两次）。 |
+
+  | 假正例 | 当南非实际出现预期寿命上升时，Keras 分类器预测为下降的次数（一次）。 |
+
+  | 假负例 | 当南非实际出现预期寿命下降时，Keras 分类器预测为上升的次数（九次）。 |
+
+
+  ### Keras 分类报告
+
+
+  列表 8-20 生成了一个分类报告（参见表 8-10）。
+
+
+  **表 8-10** Keras 分类报告
+
+
+  | | 0 | 1 | 准确率 | 宏平均 | 加权平均 |
+
+  |---|---|---|---|---|---|
+
+  | 精确率 | 0.0 | 0.818182 | 0.75 | 0.409091 | 0.681818 |
+
+  | 召回率 | 0.0 | 0.900000 | 0.75 | 0.450000 | 0.750000 |
+
+  | F1 分数 | 0.0 | 0.857143 | 0.75 | 0.428571 | 0.714286 |
+
+  | 支持数 | 2.0 | 10.000000 | 0.75 | 12.000000 | 12.000000 |
+
+
+  ```
+
+  creportkeras = pd.DataFrame(metrics.classification_report(y_test,y_predkeras,output_dict=True))
+
+  creportkeras
+
+  列表 8-20
+
+  Keras 分类报告
+
+  ```
+
+
+  表 8-10 显示，Keras 分类器预测南非预期寿命下降时的准确率为 41.33%，预测预期寿命上升时的精确率为 81.0%。此外，它在区分预期寿命上升与下降时，准确率为
+  0%。
+
+
+
+
+  ### Keras 分类器 ROC 曲线
+
+
+  清单 8-21 确定了当 Keras 分类器区分南非预期寿命的增减时，不同阈值下精确率与召回率之间的权衡（见图 8-10）。
+
+
+  ![../images/516940_1_En_8_Chapter/516940_1_En_8_Fig10_HTML.png](img/516940_1_En_8_Fig10_HTML.png)
+
+
+  图 8-10
+
+  Keras 分类器 ROC 曲线
+
+
+  ```
+
+  y_predkeras_proba = model.predict_proba(x_test)[::,1]
+
+  fprkeras, tprkeras, _ = metrics.roc_curve(y_test,y_predkeras_proba)
+
+  auckeras = metrics.roc_auc_score(y_test,y_predkeras_proba)
+
+  fig, ax = plt.subplots()
+
+  plt.plot(fprkeras, tprkeras,label="auc: "+str(auckeras),color="navy",lw=4)
+
+  plt.plot([0,1],[0,1],color="red",lw=4)
+
+  plt.xlim([0.00,1.01])
+
+  plt.ylim([0.00,1.01])
+
+  plt.title("Keras classifier ROC curve")
+
+  plt.xlabel("Sensitivity")
+
+  plt.ylabel("Specificity")
+
+  plt.legend(loc=4)
+
+  plt.show()
+
+  清单 8-21
+
+  Keras 分类器 ROC 曲线
+
+  ```
+
+
+  图 8-10 显示，在区分南非预期寿命的增减时，Keras 分类器的平均准确率为 55%。
+
+
+  ### Keras 分类器 精确率-召回率曲线
+
+
+  清单 8-22 估计了当 Keras 分类器区分南非预期寿命的增减时，不同阈值下精确率与召回率之间的权衡（见图 8-11）。
+
+
+  ![../images/516940_1_En_8_Chapter/516940_1_En_8_Fig11_HTML.png](img/516940_1_En_8_Fig11_HTML.png)
+
+
+  图 8-11
+
+  Keras 分类器 精确率-召回率曲线
+
+
+  ```
+
+  precisionkeras, recallkeras, thresholdkeras = metrics.precision_recall_curve(y_test,y_predkeras)
+
+  apskeras = metrics.average_precision_score(y_test,y_predkeras)
+
+  fig, ax = plt.subplots()
+
+  plt.plot(precisionkeras, recallkeras,label="aps: " +str(apskeras),color="navy",lw=4)
+
+  plt.axhline(y=0.5, color="red",lw=4)
+
+  plt.title("Keras classifier precision-recall curve")
+
+  plt.ylabel("Precision")
+
+  plt.xlabel("Recall")
+
+  plt.legend(loc=4)
+
+  plt.show()
+
+  清单 8-22
+
+  Keras 分类器 精确率-召回率曲线
+
+  ```
+
+
+  图 8-11 显示，在区分南非预期寿命的增减时，Keras 分类器的平均精确率为 83%。
+
+
+  ## 跨周期的训练损失和交叉验证损失
+
+
+  清单 8-23 确定了跨周期的损失，其中周期在 x 轴，损失在 y 轴（见图 8-12）。
+
+
+  ![../images/516940_1_En_8_Chapter/516940_1_En_8_Fig12_HTML.png](img/516940_1_En_8_Fig12_HTML.png)
+
+
+  图 8-12
+
+  跨周期的训练损失和交叉验证损失
+
+
+  ```
+
+  plt.plot(history.history["loss"], color="red",lw=4, label="Training loss")
+
+  plt.plot(history.history["val_loss"], color="navy",lw=4, label="Cross validation
+  loss")
+
+  plt.title("Training loss and cross validation loss across epochs")
+
+  plt.xlabel("Loss")
+
+  plt.ylabel("Epochs")
+
+  plt.legend(loc="best")
+
+  plt.show()
+
+  清单 8-23
+
+  跨周期的训练损失和交叉验证损失
+
+  ```
+
+
+  图 8-12 展示了，从第一个周期开始，训练损失和交叉验证损失都逐渐下降，直到在第 65 个周期达到最低点。
+
+
+  ## 跨周期的训练损失和交叉验证损失准确率
+
+
+  清单 8-24 估计了跨周期的准确率（见图 8-13）。
+
+
+  ![../images/516940_1_En_8_Chapter/516940_1_En_8_Fig13_HTML.png](img/516940_1_En_8_Fig13_HTML.png)
+
+
+  图 8-13
+
+  跨周期的训练损失和交叉验证损失准确率
+
+
+  ```
+
+  plt.plot(history.history["accuracy"], color="red",lw=4, label="Training accuracy")
+
+  plt.plot(history.history["val_accuracy"], color="navy",lw=4,label="Cross validation
+  accuracy")
+
+  plt.title("Training loss and cross validation loss accuracy epochs")
+
+  plt.xlabel("Loss")
+
+  plt.ylabel("Epochs")
+
+  plt.legend(loc="best")
+
+  plt.show()
+
+  清单 8-24
+
+  跨周期的训练损失和交叉验证损失准确率
+
+  ```
+
+
+  图 8-13 展示了，从第一个周期开始，交叉验证准确率高于训练准确率。此外，在第 45 个周期之前，交叉验证准确率急剧下降，然后变得低于训练准确率。
+
+
+  ### 结论
+
+
+  本章涵盖了深度学习。它解析了基本的深度学习概念。它介绍了使用 `scikit-learn` 库开发人工神经网络的技术。您学习了如何开发和评估一种浅层人工神经网络——受限玻尔兹曼机，包括多层感知器。基于研究结果，通过应用
+  `scikit-learn` 库开发的多层感知器分类器表现优于所有其他网络。此外，它还展示了通过应用 `keras` 库为序贯模型开发基本网络架构的方法。
+
+
+  '
+- '# 9. 通货膨胀模拟
+
+
+  本章使用蒙特卡洛模拟模型，研究不同情景对英国通货膨胀和消费者价格（以年百分比计）的影响。具体而言，它运用该模型来确定该国中央政府债务在多次试验中发生变化的概率。此方法在处理序列数据时非常有用。
+
+
+
+
+  ## 理解模拟
+
+
+  本章将介绍蒙特卡洛模拟模型。这是一种无监督模型，因为它不分割数据——模型会探索整个数据集。它在多次试验中学习全部数据，以考虑事件发生的可能性。此外，它还通过应用蒙特卡洛模型来研究英国中央政府债务在不同情景下的影响——该模型可确定十个情景（模拟次数）下中央政府债务变化的概率。该模型用于金融领域，以确定投资于特定资产类别的风险和不确定性。
+
+
+  该方法在不同迭代中重现变量中的数值。通过这种方式，您可以多次检查数据的变化。模拟方法有很多种（例如，基于主体的模拟、离散事件模拟、系统动力学模拟和蒙特卡洛模拟）。本章仅向您介绍最常见的模拟方法——蒙特卡洛模拟法。它会模拟变化并识别序列过去发生事件和预测值的模式，从而使开发人员能够复现现实世界中的事件。
+
+
+  与前几章介绍的模型（*k-means* 除外）不同，该模型不需要您分割数据。此外，它还允许重复检查数据，从而清晰呈现变化。而且，它不包含复杂的评估指标；您可以做的只是最大回撤（极端负峰值），包括模拟结果的均值和标准差。在金融领域，使用模拟方法在无需亲身暴露风险的情况下理解风险*非常普遍*（在此处了解更多^(⁴)）。
+
+
+  该模型适合政策制定者，因为它可以帮助他们在考虑经济事件的不确定性时获得清晰的思路。它可以帮助他们决定何时制定和修订影响借贷活动的政策。该模型非常直观，您可以将其应用于多个试验中的某个变量，以生成输出（模拟结果）。
+
+
+  在继续之前，请确保您的环境中安装了 `pandas_montecarlo` 库。要在 Python 环境中安装 `pandas_montecarlo` 库，请使用
+  `pip install pandas-montecarlo`。同样，要在 Conda 环境中安装该库，请使用 `conda install pandas_montecarlo`。
+
+
+  ## 本章背景
+
+
+  本章将展示如何通过应用蒙特卡洛模型，在多次试验中预测英国的通货膨胀和消费者价格（年度百分比）。表 9-1 概述了本章研究的宏观经济指标。
+
+
+  **表 9-1** 本章使用的英国指标
+
+
+  | ID^(**1**) | 指标 |
+
+  | --- | --- |
+
+  | `FP.CPI.TOTL.ZG` | 通货膨胀和消费者价格（年度百分比） |
+
+
+  代码清单 9-1 提取了英国的通货膨胀和消费者价格数据（见表 9-2）。
+
+
+  **表 9-2** 英国的通货膨胀和消费者价格
+
+
+  | 日期 | `inflation_cpi` |
+
+  | --- | --- |
+
+  | 2020-01-01 | 0.989487 |
+
+  | 2019-01-01 | 1.738105 |
+
+  | 2018-01-01 | 2.292840 |
+
+  | 2017-01-01 | 2.557756 |
+
+  | 2016-01-01 | 1.008417 |
+
+
+  ```
+
+  import wbdata
+
+  country  = ["GBR"]
+
+  indicator = {"FP.CPI.TOTL.ZG":"inflation_cpi"}
+
+  df = wbdata.get_dataframe(indicator, country=country,convert_date=True)
+
+  df.head()
+
+  代码清单 9-1
+
+  英国的通货膨胀和消费者价格
+
+  ```
+
+
+  代码清单 9-2 用均值替换了缺失值。
+
+
+  ```
+
+  df["inflation_cpi"] = df["inflation_cpi"].fillna(df["inflation_cpi"].mean())
+
+  代码清单 9-2
+
+  用均值替换缺失值
+
+  ```
+
+
+  ## 描述性统计
+
+
+  代码清单 9-3 计算了英国 1960 年至 2020 年的通货膨胀和消费者价格。图 9-1 展示了这些数据的折线图。
+
+
+  ![../images/516940_1_En_9_Chapter/516940_1_En_9_Fig1_HTML.png](img/516940_1_En_9_Fig1_HTML.png)
+
+
+  **图 9-1** 英国通货膨胀和消费者价格折线图
+
+
+  ```
+
+  df["inflation_cpi"].plot(kind="line",color="green",lw=4)
+
+  plt.title("Great Britain''s inflation, consumer prices (annual %)")
+
+  plt.ylabel("Inflation, consumer prices (annual %)")
+
+  plt.xlabel("Date")
+
+  plt.legend(loc="best")
+
+  plt.show()
+
+  代码清单 9-3
+
+  英国通货膨胀和消费者价格折线图
+
+  ```
+
+
+  图 9-1 显示，在 1970 年代初期（当时英国的通货膨胀率达到 24.207288）急剧上升。然而，在 1970 年代中期，出现了明显下降。2015 年，英国的通货膨胀率降至
+  0.368047 的低点。代码清单 9-4 计算了英国通货膨胀和消费者价格的分布情况（见图 9-2）。
+
+
+  ![../images/516940_1_En_9_Chapter/516940_1_En_9_Fig2_HTML.png](img/516940_1_En_9_Fig2_HTML.png)
+
+
+  **图 9-2** 英国通货膨胀和消费者价格分布加载图
+
+
+  ```
+
+  df["inflation_cpi"].plot(kind="hist",color="green")
+
+  plt.title("Great Britain''s inflation, consumer prices (annual %)")
+
+  plt.ylabel("Inflation, consumer prices (annual %)")
+
+  plt.xlabel("Date")
+
+  plt.legend(loc="best")
+
+  plt.show()
+
+  代码清单 9-4
+
+  英国通货膨胀和消费者价格分布
+
+  ```
+
+
+  图 9-2 显示这些数据呈正偏态分布。请注意，该模型不需要对数据结构做任何假设（模型假定变量是未知的）。代码清单 9-5 中的命令生成了一个表格，该表格提供了有关英国通货膨胀和消费者价格数据集中趋势和离散程度的更多详细信息（见表
+  9-3）。
+
+
+  **表 9-3** 描述性统计摘要
+
+
+  | 变量 | `inflation_cpi` |
+
+  | --- | --- |
+
+  | 计数 | 61.000000 |
+
+  | 均值 | 5.090183 |
+
+  | 标准差 | 4.858125 |
+
+  | 最小值 | 0.368047 |
+
+  | 25% 分位数 | 2.089136 |
+
+  | 50% 分位数 | 3.427609 |
+
+  | 75% 分位数 | 6.071394 |
+
+  | 最大值 | 24.207288 |
+
+
+  ```
+
+  df.describe()
+
+  代码清单 9-5
+
+  英国通货膨胀和消费者价格描述性统计摘要
+
+  ```
+
+
+  表 9-3 显示，英国通货膨胀和消费者价格的均值是 5.090183%。同时显示，各个数据点与均值的标准差为 4.858125。最小值为 0.368047，最大值为
+  24.207288。
+
+
+  ## 蒙特卡洛模拟模型开发
+
+
+  应用模拟器的好处在于计算成本低——它们可以更快地训练大样本。代码清单 9-6 使用 `pandas_montecarlo` 库开发了蒙特卡洛模拟模型。
+
+
+  ```
+
+  import pandas_montecarlo
+
+  mc = df[''inflation_cpi''].montecarlo(sims=10, bust=-0.1, goal=1)
+
+  代码清单 9-6
+
+  英国通货膨胀和消费者价格的蒙特卡洛模型
+
+  ```
+
+
+  代码清单 9-6 指定了 *bust*（破产概率）为 0.1，以及 *goal*（实现 100% 目标的概率）。
+
+
+
+
+  ## 模拟结果
+
+
+  图 9-3 显示了基于代码清单 9-7 在多轮实验中预测的英国通胀率和消费价格输出值。
+
+
+  ![../images/516940_1_En_9_Chapter/516940_1_En_9_Fig3_HTML.png](img/516940_1_En_9_Fig3_HTML.png)
+
+
+  图 9-3
+
+
+  英国通胀率和消费价格的蒙特卡洛模拟结果
+
+
+  ```
+
+  mc.plot(title="Great Britain''s inflation, consumer prices (annual %) simulation
+  results")
+
+  代码清单 9-7
+
+  英国通胀率与消费价格：蒙特卡洛模拟结果
+
+  ```
+
+
+  图 9-3 显示，在多次试验中，英国的通胀率和消费价格均呈急剧上升趋势。
+
+
+  ## 模拟分布
+
+
+  表 9-4 基于代码清单 9-8 概述了英国通胀率和消费价格模拟结果的集中趋势与离散程度。
+
+
+  表 9-4
+
+
+  英国通胀率与消费价格：蒙特卡洛模拟描述性统计摘要
+
+
+  | | 原始值 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+
+  | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+
+  | 计数 | 61.000000 | 61.000000 | 61.000000 | 61.000000 | 61.000000 | 61.000000 | 61.000000
+  | 61.000000 | 61.000000 | 61.000000 |
+
+  | 均值 | 5.090183 | 5.090183 | 5.090183 | 5.090183 | 5.090183 | 5.090183 | 5.090183
+  | 5.090183 | 5.090183 | 5.090183 |
+
+  | 标准差 | 4.858125 | 4.858125 | 4.858125 | 4.858125 | 4.858125 | 4.858125 | 4.858125
+  | 4.858125 | 4.858125 | 4.858125 |
+
+  | 最小值 | 0.368047 | 0.368047 | 0.368047 | 0.368047 | 0.368047 | 0.368047 | 0.368047
+  | 0.368047 | 0.368047 | 0.368047 |
+
+  | 25% 分位数 | 2.089136 | 2.089136 | 2.089136 | 2.089136 | 2.089136 | 2.089136 | 2.089136
+  | 2.089136 | 2.089136 | 2.089136 |
+
+  | 50% 分位数 | 3.427609 | 3.427609 | 3.427609 | 3.427609 | 3.427609 | 3.427609 | 3.427609
+  | 3.427609 | 3.427609 | 3.427609 |
+
+  | 75% 分位数 | 6.071394 | 6.071394 | 6.071394 | 6.071394 | 6.071394 | 6.071394 | 6.071394
+  | 6.071394 | 6.071394 | 6.071394 |
+
+  | 最大值 | 24.207288 | 24.207288 | 24.207288 | 24.207288 | 24.207288 | 24.207288 |
+  24.207288 | 24.207288 | 24.207288 | 24.207288 |
+
+
+  ```
+
+  simulation_results = pd.DataFrame(mc.data)
+
+  simulation_results.describe()
+
+  代码清单 9-8
+
+  英国通胀率与消费价格：蒙特卡洛模拟描述性统计摘要
+
+  ```
+
+
+  为了更好地理解英国通胀率和消费价格模拟结果的分布，请参见图 9-4 和图 9-5。代码清单 9-9 确定了前五次模拟结果。
+
+
+  ![../images/516940_1_En_9_Chapter/516940_1_En_9_Fig4_HTML.png](img/516940_1_En_9_Fig4_HTML.png)
+
+
+  图 9-4
+
+
+  前五次模拟结果分布
+
+
+  ```
+
+  simulation_results.iloc[::,1:6].plot(kind="box",color="green")
+
+  plt.title("1st 5 simulation results distribution")
+
+  plt.ylabel("Values")
+
+  plt.show()
+
+  代码清单 9-9
+
+  前五次模拟结果分布
+
+  ```
+
+
+  图 9-4 和图 9-5 显示，所有模拟结果的分布都接近正态分布，并且每个分布中都有六个异常值。请参见代码清单 9-10。
+
+
+  ```
+
+  simulation_results.iloc[::,6:10].plot(kind="box",color="green")
+
+  plt.title("Other simulation results distribution")
+
+  plt.ylabel("Values")
+
+  plt.show()
+
+  代码清单 9-10
+
+  其他英国通胀率与消费价格：模拟结果分布
+
+  ```
+
+
+  ![../images/516940_1_En_9_Chapter/516940_1_En_9_Fig5_HTML.png](img/516940_1_En_9_Fig5_HTML.png)
+
+
+  图 9-5
+
+
+  其他模拟结果分布
+
+
+  图 9-4 和图 9-5 显示，模拟结果饱和于较低层级，并且明显存在六个异常值。在开发蒙特卡洛模拟模型之前，务必替换这些异常值。代码清单 9-11 返回了表 9-5，该表展示了一种直接获取蒙特卡洛模拟结果统计信息的方法。这些统计信息包括：*最大回撤*，即英国通胀率和消费价格指数在恢复之前从峰值下跌的幅度；*破产概率*，即破产的可能性；以及目标达成率，即达到
+  100%目标的概率。
+
+
+  表 9-5
+
+
+  测试结果
+
+
+  | | 0 |
+
+  | --- | --- |
+
+  | 最小值 | 3.105012e+02 |
+
+  | 最大值 | 3.105012e+02 |
+
+  | 均值 | 3.105012e+02 |
+
+  | 中位数 | 3.105012e+02 |
+
+  | 标准差 | 9.087049e-14 |
+
+  | 最大回撤 | NaN |
+
+  | 破产概率 | 0.000000e+00 |
+
+  | 目标达成率 | 1.000000e+00 |
+
+
+  ```
+
+  pd.DataFrame(pd.Series(mc.stats))
+
+  代码清单 9-11
+
+  测试结果
+
+  ```
+
+
+  脚注 1
+
+
+  '
+- '# 10. 应用结构方程模型的经济因果分析
+
+
+  本书的最后一章介绍了如何运用各种定量技术来处理经济问题。本章涵盖了结构方程模型（SEM）。请注意，这并不是单一的方法，而是一个包含多种方法的框架。该方法用途广泛。它应用协方差分析来研究联合变异性，相关分析来研究统计依赖性，因子分析来研究模型所解释的数据变异性，以及多元回归分析来研究各种预测变量如何影响响应变量。它还使用路径分析来研究没有测量模型的结构模型。
+
+
+  结构方程模型包含一组用于确定变量集之间因果关系的模型。它包括因子分析、路径分析和回归分析。它帮助开发者研究中介关系，从而能够检测其他变量的存在如何削弱或增强预测变量与响应变量之间结构性关系的性质。
+
+
+  与之前介绍的模型相比，SEM 具有一个优势，即它可以同时研究多个关系以预测多个响应变量。图 10-1 展示了前几章介绍的模型是如何工作的。大多数模型侧重于预测变量对响应变量的直接影响。
+
+
+  ![../images/516940_1_En_10_Chapter/516940_1_En_10_Fig1_HTML.png](img/516940_1_En_10_Fig1_HTML.png)
+
+
+  图 10-1
+
+
+  机器学习模型
+
+
+  图 10-1 显示 `x` 对 `y` 有直接影响。可以使用一个函数对预测变量（`x`）进行操作并生成输出值（`y`）。当存在多个响应变量时，模型会遇到问题。分别估计多个方程也很繁琐。这时
+  SEM 就派上了用场。SEM 不仅能处理预测变量。此外，它还使开发者能够考虑其他变量的中介效应。
+
+
+
+
+  ## 构建结构关系
+
+
+  SEM 使您能够研究直接效应和间接效应。图 10-2 显示变量 *m* 在 *x* 和 *y* 之间的结构关系中起中介作用。该中介变量有助于确定 *m* 是削弱还是加强了这种关系。
+
+
+  ![../images/516940_1_En_10_Chapter/516940_1_En_10_Fig2_HTML.png](img/516940_1_En_10_Fig2_HTML.png)
+
+
+  图 10-2
+
+
+  结构方程模型
+
+
+  在图 10-2 中，*x* 代表预测变量，*y* 代表响应变量，而 *m* 代表中介变量。SEM 将同时研究 *x* 对 *y* 的直接效应，以及 *m* 对
+  *x* 与 *y* 之间关系的间接效应。这将使您能够建立多个方程。
+
+
+  ## 本章背景
+
+
+  图 10-3 展示了本章所探讨的假设框架。
+
+
+  主要研究问题是：
+
+
+  - 瑞典的人均 GDP 增长率（年百分比）在多大程度上影响最终消费支出（现价美元）？
+
+  - 瑞典的通货膨胀率/消费者价格指数（百分比）如何影响最终消费支出（现价美元）？
+
+
+  次要研究问题包括：
+
+
+  - 瑞典的出生时预期寿命（年）是否影响人均 GDP 增长率（年百分比）与最终消费支出（现价美元）之间的关系？
+
+
+  基于这些研究问题，提出以下研究假设：
+
+
+  - H[0]：瑞典的通货膨胀率/消费者价格指数（百分比）不影响最终消费支出（现价美元）。
+
+  - H[A]：瑞典的通货膨胀率/消费者价格指数（百分比）影响最终消费支出（现价美元）。
+
+  - H[0]：瑞典的人均 GDP 增长率（年百分比）不影响最终消费支出（现价美元）。
+
+  - H[A]：瑞典的人均 GDP 增长率（年百分比）影响最终消费支出（现价美元）。
+
+  - H[0]：瑞典的预期寿命不影响人均 GDP 增长率（年百分比）与最终消费支出（现价美元）之间的关系。
+
+  - H[A]：瑞典的预期寿命确实影响人均 GDP 增长率（年百分比）与最终消费支出（现价美元）之间的关系。
+
+
+  表 10-1 概述了本章的宏观经济指标。
+
+
+  表 10-1
+
+
+  本章所用瑞典宏观经济指标
+
+
+  | 代码 | 标题 |
+
+  | --- | --- |
+
+  | `FP.CPI.TOTL.ZG` | 瑞典通货膨胀率/消费者价格指数（百分比） |
+
+  | `NY.GDP.PCAP.KD.ZG` | 瑞典人均 GDP 增长率（年百分比） |
+
+  | `SP.DYN.LE00.IN` | 瑞典预期寿命（年） |
+
+  | `NE.CON.TOTL.CD` | 瑞典最终消费支出（现价美元） |
+
+
+  ## 理论框架
+
+
+  图 10-3 提供了该问题的框架。
+
+
+  在继续之前，请确保您的环境中已安装 `semopy` 库。要在 Python 环境中安装 `semopy`，请使用 `pip install semopy`。
+
+
+  ![../images/516940_1_En_10_Chapter/516940_1_En_10_Fig3_HTML.png](img/516940_1_En_10_Fig3_HTML.png)
+
+
+  图 10-3
+
+
+  假设框架
+
+
+  ### 最终消费支出
+
+
+  图 10-4 展示了瑞典家庭购买的所有商品和服务的市场价值。这包括汽车和个人电脑等耐用品。请参阅代码清单 10-1。
+
+
+  ![../images/516940_1_En_10_Chapter/516940_1_En_10_Fig4_HTML.jpg](img/516940_1_En_10_Fig4_HTML.jpg)
+
+
+  图 10-4
+
+
+  瑞典最终消费支出折线图
+
+
+  ```
+
+  country = ["SWE"]
+
+  indicator = {"NE.CON.TOTL.CD":"final_con"}
+
+  final_con = wbdata.get_dataframe(indicator, country=country, convert_date=True)
+
+  final_con.plot(kind="line",color="green",lw=4)
+
+  plt.title("Swedish final consumption expenditure")
+
+  plt.ylabel("Final consumption expenditure")
+
+  plt.xlabel("Date")
+
+  plt.show()
+
+  代码清单 10-1
+
+  瑞典最终消费支出折线图
+
+  ```
+
+
+  图 10-4 显示自 1960 年以来，瑞典最终消费支出持续增长。它在 1960 年处于最低水平，并于 2015 年达到峰值。
+
+
+  ### 通货膨胀与消费者价格
+
+
+  通货膨胀与消费者价格指标共同用于估算通胀率。部分估算基于消费者价格指数（即普通消费者为商品或服务支付的平均成本）的年度变化。这是判断特定国家生活成本的一个典型指标。代码清单
+  10-2 和图 10-5 展示了瑞典的年度通货膨胀与消费者价格数据。
+
+
+  ![../images/516940_1_En_10_Chapter/516940_1_En_10_Fig5_HTML.png](img/516940_1_En_10_Fig5_HTML.png)
+
+
+  图 10-5
+
+
+  瑞典通货膨胀与消费者价格（年百分比）
+
+
+  ```
+
+  country = ["SWE"]
+
+  indicator = {"FP.CPI.TOTL.ZG":"inflation"}
+
+  inflation = wbdata.get_dataframe(indicator, country=country, convert_date=True)
+
+  inflation.plot(kind="line",color="orange",lw=4)
+
+  plt.title("Swedish inflation, consumer prices (annual %)")
+
+  plt.ylabel("Inflation, consumer prices (annual %)")
+
+  plt.xlabel("Date")
+
+  plt.show()
+
+  代码清单 10-2
+
+  瑞典通货膨胀与消费者价格
+
+  ```
+
+
+  图 10-5 显示，从 1960 年代末到 1980 年代初，瑞典的通货膨胀与消费者价格翻了近两倍。该指标于 1982 年达到最高峰值（15%）。
+
+
+  ### 瑞典的预期寿命
+
+
+  图 10-6 显示了假设当前死亡率模式在未来保持不变的情况下，瑞典新生婴儿预计的平均生存年数。请参阅代码清单 10-3。
+
+
+  ![../images/516940_1_En_10_Chapter/516940_1_En_10_Fig6_HTML.png](img/516940_1_En_10_Fig6_HTML.png)
+
+
+  图 10-6
+
+
+  瑞典出生时预期寿命（年）
+
+
+  ```
+
+  country = ["SWE"]
+
+  indicator = {"SP.DYN.LE00.IN":"life_exp"}
+
+  life_exp = wbdata.get_dataframe(indicator, country=country, convert_date=True)
+
+  life_exp.plot(kind="line",color="navy",lw=4)
+
+  plt.title("Swedish life expectancy at birth, total (years)")
+
+  plt.ylabel("Life expectancy at birth, total (years)")
+
+  plt.xlabel("Date")
+
+  plt.show()
+
+  代码清单 10-3
+
+  瑞典预期寿命（年）
+
+  ```
+
+
+  图 10-6 显示瑞典预期寿命呈显著上升趋势。1960 年，平均预期寿命为 74 岁。截至 2020 年，这一数字已超过 82 岁。
+
+
+
+
+  ### 人均 GDP 增长
+
+
+  人均 GDP 增长是指年度 GDP 除以经济体人口。图 10-7 展示了瑞典人均 GDP 增长（年度百分比）。参见代码清单 10-4。
+
+
+  ![../images/516940_1_En_10_Chapter/516940_1_En_10_Fig7_HTML.png](img/516940_1_En_10_Fig7_HTML.png)
+
+
+  **图 10-7** 瑞典人均 GDP 增长（年度百分比）
+
+
+  ```
+
+  country = ["SWE"]
+
+  indicator = {"NY.GDP.PCAP.KD.ZG":"gdp"}
+
+  gdp = wbdata.get_dataframe(indicator, country=country, convert_date=True)
+
+  gdp.plot(kind="line",color="red",lw=4)
+
+  plt.title("Swedish GDP per capita growth (annual %)")
+
+  plt.ylabel("GDP per capita growth (annual %)")
+
+  plt.xlabel("Date")
+
+  plt.show()
+
+  ```
+
+
+  **代码清单 10-4** 瑞典人均 GDP 增长（年度百分比）
+
+
+  图 10-7 显示，瑞典的人均 GDP 增长并不稳定。它在 2019 年达到最低点（`5.151263`），并在 1970 年达到最高点（`6.292338`）。代码清单
+  10-5 检索了本章所需的所有瑞典宏观经济数据，代码清单 10-6 则显示了描述性统计摘要（参见表 10-2）。
+
+
+  **表 10-2** 描述性统计摘要
+
+
+  | | 计数 | 均值 | 标准差 | 最小值 | 25%分位数 | 50%分位数 | 75%分位数 | 最大值 |
+
+  | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+
+  | `final_con` | 61.0 | 48.881491 | 2.647688 | 44.307210 | 46.935678 | 48.399953
+  | 50.415939 | 55.829462 |
+
+  | `inflation` | 61.0 | 4.297861 | 3.673401 | -0.494461 | 1.360215 | 2.961151 | 7.016359
+  | 13.706322 |
+
+  | `life_exp` | 60.0 | 77.766451 | 3.015892 | 73.005610 | 74.977683 | 77.601829 |
+  80.509756 | 82.958537 |
+
+  | `gdp_per_capita` | 60.0 | 1.931304 | 2.285016 | -5.151263 | 0.790254 | 2.040267
+  | 3.446864 | 6.292338 |
+
+
+  ```
+
+  df.describe().transpose()
+
+  ```
+
+
+  **代码清单 10-6** 描述性统计摘要
+
+
+  ```
+
+  country = ["SWE"]
+
+  indicator = {"NE.CON.PRVT.ZS":"final_con",
+
+  "FP.CPI.TOTL.ZG":"inflation",
+
+  "SP.DYN.LE00.IN":"life_exp",
+
+  "NY.GDP.PCAP.KD.ZG":"gdp"}
+
+  df = wbdata.get_dataframe(indicator, country=country, convert_date=True)
+
+  ```
+
+
+  **代码清单 10-5** 加载瑞典宏观经济指标
+
+
+  表 10-2 显示，对于瑞典而言：
+
+
+  *   最终消费支出的均值为`48.881491`。
+
+  *   通货膨胀率/消费者价格指数的均值为`4.297861%`。
+
+  *   预期寿命的均值为`77.766451`年。
+
+  *   人均 GDP 增长的均值为`1.931304%`。
+
+  *   最终消费支出的独立数据点与均值相差`2.647688`。
+
+  *   通货膨胀率/消费者价格指数与均值相差`3.673401`。
+
+  *   预期寿命与均值相差`3.015892`年。
+
+  *   人均 GDP 增长与均值相差`2.285016%`。
+
+
+  ## 协方差分析
+
+
+  代码清单 10-7 研究了变量之间的联合变异性（参见表 10-3）。
+
+
+  **表 10-3** 协方差矩阵
+
+
+  | | `final_con` | `inflation` | `life_exp` | `gdp_per_capita` |
+
+  | --- | --- | --- | --- | --- |
+
+  | `final_con` | 7.010251 | 3.467993 | -7.010302 | 1.559997 |
+
+  | `inflation` | 3.467993 | 13.493871 | -6.615968 | -0.905779 |
+
+  | `life_exp` | -7.010302 | -6.615968 | 9.095604 | -1.771163 |
+
+  | `gdp_per_capita` | 1.559997 | -0.905779 | -1.771163 | 5.221296 |
+
+
+  ```
+
+  dfcov = df.cov()
+
+  dfcov
+
+  ```
+
+
+  **代码清单 10-7** 协方差矩阵
+
+
+  表 10-3 概述了您所检索的变量集的估计协方差。
+
+
+  ## 相关性分析
+
+
+  图 10-8 显示了变量之间的统计依赖关系，该图由代码清单 10-8 生成。
+
+
+  ![../images/516940_1_En_10_Chapter/516940_1_En_10_Fig8_HTML.png](img/516940_1_En_10_Fig8_HTML.png)
+
+
+  **图 10-8** 皮尔逊相关矩阵
+
+
+  ```
+
+  import seaborn as sns
+
+  dfcorr = df.corr(method="pearson")
+
+  sns.heatmap(dfcorr, annot=True, annot_kws={"size":12},cmap="Blues")
+
+  plt.title("Pearson correlation matrix")
+
+  plt.show()
+
+  ```
+
+
+  **代码清单 10-8** 皮尔逊相关矩阵
+
+
+  表 10-4 解释了图 10-8 中的结果。
+
+
+  **表 10-4** 皮尔逊相关系数解释
+
+
+  | 变量 | 皮尔逊相关系数 | 发现 |
+
+  | --- | --- | --- |
+
+  | 瑞典通货膨胀率/消费者价格指数与最终消费支出 | 0.36 | 瑞典通货膨胀率/消费者价格指数与最终消费支出之间存在弱正相关。 |
+
+  | 瑞典贷款利率与最终消费支出 | -0.89 | 瑞典贷款利率与最终消费支出之间存在极端负相关。 |
+
+  | 瑞典预期寿命与通货膨胀率/消费者价格指数 | -0.6 | 瑞典预期寿命与通货膨胀率/消费者价格指数之间存在中等程度负相关。 |
+
+  | 瑞典人均 GDP 增长与预期寿命（年） | -0.27 | 瑞典人均 GDP 增长与预期寿命之间存在弱负相关。 |
+
+  | 瑞典人均 GDP 增长与通货膨胀率/消费者价格指数 | -0.11 | 瑞典人均 GDP 增长与通货膨胀率/消费者价格指数之间存在弱负相关。 |
+
+  | 瑞典人均 GDP 增长与最终消费支出 | 0.27 | 瑞典人均 GDP 增长与最终消费支出之间存在弱正相关。 |
+
+
+  在发现这些变量之间的相关性后，您可以创建一个图表来直观表示这些相关关系（使用代码清单 10-9 中的命令）。图 10-9 显示了生成的配对图。
+
+
+  ![../images/516940_1_En_10_Chapter/516940_1_En_10_Fig9_HTML.png](img/516940_1_En_10_Fig9_HTML.png)
+
+
+  **图 10-9** 配对图
+
+
+  ```
+
+  sns.pairplot(df)
+
+  ```
+
+
+  **代码清单 10-9** 配对图
+
+
+  图 10-9 展示了所有变量的直方图以及数据中变量之间关系的散点图。
+
+
+  ## 相关严重程度分析
+
+
+  代码清单 10-10 通过应用特征矩阵来确定每个依赖关系的严重程度（参见表 10-5）。特征值是度量最大方差的一种方式。
+
+
+  **表 10-5** 特征矩阵
+
+
+  | | 特征值 | `final_con` | `inflation` | `life_exp` | `gdp_per_capita` |
+
+  | --- | --- | --- | --- | --- | --- |
+
+  | `final_con` | 2.323484 | 0.594607 | 0.595973 | 0.527068 | 0.116012 |
+
+  | `inflation` | 0.059704 | 0.432198 | 0.262541 | -0.662923 | -0.552096 |
+
+  | `life_exp` | 0.512778 | -0.641591 | 0.755077 | -0.133840 | 0.017516 |
+
+  | `gdp_per_capita` | 1.104034 | 0.219109 | 0.075813 | -0.514606 | 0.825484 |
+
+
+  ```
+
+  eigenvalues, eigenvectors = np.linalg.eig(dfcorr)
+
+  eigenvalues = pd.DataFrame(eigenvalues)
+
+  eigenvalues.columns = ["Eigen values"]
+
+  eigenvectors = pd.DataFrame(eigenvectors)
+
+  eigenvectors.columns = df.columns
+
+  eigenvectors = pd.DataFrame(eigenvectors)
+
+  eigenmatrix = pd.concat([eigenvalues, eigenvectors],axis=1)
+
+  eigenmatrix.index = df.columns
+
+  eigenmatrix
+
+  ```
+
+
+  **代码清单 10-10** 特征矩阵
+
+
+  基于表 3-4，数据中不存在多重共线性。所有特征值均低于 3。
+
+
+
+
+  ## 结构方程模型估计
+
+
+  SEM 通过应用最大似然法或广义最小二乘法对变量进行操作。当回归的隐式假设不满足时，最大似然法仍然有效，它能确定最适合数据的参数。广义最小二乘法则对变量进行回归。代码清单
+  10-11 构建了模型的假设框架。
+
+
+  ```
+
+  import semopy
+
+  import wbdata
+
+  from semopy import Model
+
+  import semopy
+
+  import wbdata
+
+  from semopy import Model
+
+  mod = """   life_exp ~ gdp_per_capita
+
+  final_con ~ inflation + life_exp + gdp_per_capita
+
+  """
+
+  代码清单 10-11
+
+  构建假设结构
+
+  ```
+
+
+  ## 结构方程模型开发
+
+
+  代码清单 10-12 使用默认超参数训练 SEM。
+
+
+  ```
+
+  m = Model(mod)
+
+  m.fit(df)
+
+  SolverResult(fun=0.549063553713184, success=True, n_it=18, x=array([-0.33778359,
+  -0.19991271, -0.92551867, -0.04842324,  8.35819007,
+
+  1.2715286 ]), message=''Optimization terminated successfully'', name_method=''SLSQP'',
+  name_obj=''MLW'')
+
+  代码清单 10-12
+
+  结构方程模型
+
+  ```
+
+
+  这些结果表明 SEM 应用了最大似然法，并包含了目标函数。
+
+
+  ## 结构方程模型信息
+
+
+  代码清单 10-13 检索 SEM 的相关信息，包括目标名称、优化方法、目标值和迭代次数。
+
+
+  ```
+
+  print(m.fit(df))
+
+  Name of objective: MLW
+
+  Optimization method: SLSQP
+
+  Optimization successful.
+
+  Optimization terminated successfully
+
+  Objective value: 0.549
+
+  Number of iterations: 1
+
+  Params: -0.338 -0.200 -0.926 -0.048 8.358 1.272
+
+  代码清单 10-13
+
+  模型信息
+
+  ```
+
+
+  代码清单 10-14 返回 SEM 预测的值，然后将这些值制成表格（见表 10-6）。
+
+
+  表 10-6
+
+
+  瑞典实际与预测的最终消费支出
+
+
+  | 日期 | final_con | gdp_per_capita | Inflation | life_exp |
+
+  | --- | --- | --- | --- | --- |
+
+  | 2020-01-01 | 44.307210 | -3.517627 | 0.497367 | -40.408627 |
+
+  | 2019-01-01 | 45.287253 | 0.347439 | 1.784151 | 82.958537 |
+
+  | 2018-01-01 | 45.697290 | 0.772577 | 1.953535 | 82.558537 |
+
+  | 2017-01-01 | 45.718184 | 1.195148 | 1.794499 | 82.409756 |
+
+  | 2016-01-01 | 45.856915 | 0.796146 | 0.984269 | 82.307317 |
+
+  | ... | ... | ... | ... | ... |
+
+  | 1964-01-01 | 52.543020 | 6.026059 | 3.387662 | 73.733171 |
+
+  | 1963-01-01 | 54.398699 | 4.735940 | 2.871740 | 73.555366 |
+
+  | 1962-01-01 | 54.746401 | 3.685605 | 4.766197 | 73.350488 |
+
+  | 1961-01-01 | 55.275500 | 5.184619 | 2.157973 | 73.474390 |
+
+  | 1960-01-01 | 55.829462 | -36.394777 | 4.141779 | 73.005610 |
+
+
+  ```
+
+  preds = m.predict(df)
+
+  preds
+
+  代码清单 10-14
+
+  进行预测
+
+  ```
+
+
+  图 10-10 展示了瑞典最终消费支出的实际值与预测值。详见代码清单 10-15。
+
+
+  ![../images/516940_1_En_10_Chapter/516940_1_En_10_Fig10_HTML.png](img/516940_1_En_10_Fig10_HTML.png)
+
+
+  图 10-10
+
+
+  瑞典实际与预测的最终消费支出
+
+
+  ```
+
+  preds["final_con"].plot(lw=4)
+
+  df["final_con"].plot(lw=4)
+
+  plt.title("Swedish actual and predicted FCE")
+
+  plt.xlabel("Date")
+
+  plt.ylabel("FCE")
+
+  plt.show()
+
+  代码清单 10-15
+
+  瑞典实际与预测的最终消费支出
+
+  ```
+
+
+  图 10-10 表明 SEM 在预测瑞典最终消费支出方面表现良好。
+
+
+  ## 结构方程模型检查
+
+
+  代码清单 10-16 检索估计值、标准误差、z 值和 p 值，并将这些信息制成表格，即表 10-7。你可以应用 p 值来确定本章前面提出的假设声明的显著性。此外，使用标准误差来确定误差的大小。
+
+
+  表 10-7
+
+
+  结构方程模型概况表
+
+
+  |   | lval | op | rval | Estimate | Std. Err | z-value | p-value |
+
+  | --- | --- | --- | --- | --- | --- | --- | --- |
+
+  | **0** | life_exp | ~ | gdp_per_capita | -0.337784 | 0.163362 | -2.067697 | 3.866852e-02
+  |
+
+  | **1** | final_con | ~ | inflation | -0.199913 | 0.039862 | -5.015087 | 5.300940e-07
+  |
+
+  | **2** | final_con | ~ | life_exp | -0.925519 | 0.049939 | -18.532890 | 0.000000e+00
+  |
+
+  | **3** | final_con | ~ | gdp_per_capita | -0.048423 | 0.066274 | -0.730648 | 4.649940e-01
+  |
+
+  | **4** | life_exp | ~~ | life_exp | 8.358190 | 1.513430 | 5.522681 | 3.338665e-08
+  |
+
+  | **5** | final_con | ~~ | final_con | 1.271529 | 0.230238 | 5.522681 | 3.338665e-08
+  |
+
+
+  ```
+
+  m.inspect()
+
+  代码清单 10-16
+
+  结构方程模型检查
+
+  ```
+
+
+  表 10-7 显示所有关系都是显著的（请参考“可视化结构关系”部分以更好地解释这些结果）。为了进一步研究 SEM 的表现，可以使用以下指标之一：
+
+
+  *   绝对拟合指数 (AFI)：通过应用似然比检验等测试来确定模型是否拟合数据。应用这些指数时，应重点关注 χ²（卡方）值。
+
+  *   增量拟合指数：包括规范拟合指数 (NFI)，它比较模型的 χ2 值与空模型的 χ2 值；以及比较拟合指数 (CFI)，它在考虑样本量的情况下比较模型的
+  χ2 值与空模型的 χ2 值。
+
+
+  ### 报告指数
+
+
+  代码清单 10-17 检索报告指数（见表 10-8）。
+
+
+  表 10-8
+
+
+  报告指数
+
+
+  |   | DoF | DoF Baseline | chi2 | chi2 p-value | chi2 Baseline | CFI | GFI | AGFI
+  | NFI | TLI | RMSEA | AIC | BIC | LogLik |
+
+  | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+  --- | --- |
+
+  | **Value** | 4 | 8 | 36.813532 | 1.967869e-07 | 172.658646 | 0.800718 | 0.786784
+  | 0.573569 | 0.786784 | 0.601436 | 0.369761 | 10.792999 | 23.458242 | 0.603501 |
+
+
+  ```
+
+  stats = semopy.calc_stats(m)
+
+  stats.transpose()
+
+  代码清单 10-17
+
+  报告指数
+
+  ```
+
+
+  表 10-8 显示，SEM 在解释数据生成过程时损失了约 11% 的信息（参考 AIC，它能很好地反映模型质量）。自由度为 4，χ2 为 36.813532。最重要的指数是
+  χ2 的 p 值。我们用它来决定是接受还是拒绝以下假设：
+
+
+  *   H0：结果在统计上不显著。
+
+  *   HA：结果在统计上显著。
+
+
+  表 10-8 显示 χ2 的 p 值为 0.0000001967869，小于 0.05。这意味着我们拒绝零假设，接受备择假设。结果*确实*在统计上显著。
+
+
+
+
+  ### 可视化结构关系
+
+
+  图 10-11 展示了变量之间的关系，同时也绘制了协方差估计值和 p 值。使用清单 10-18 中的命令来绘制此信息。
+
+
+  ![../images/516940_1_En_10_Chapter/516940_1_En_10_Fig11_HTML.png](img/516940_1_En_10_Fig11_HTML.png)
+
+
+  图 10-11
+
+  结构方程模型图
+
+
+  ```
+
+  g = semopy.semplot(m, "semplot.png", plot_covs=True)
+
+  g
+
+  清单 10-18
+
+  可视化结构关系
+
+  ```
+
+
+  图 10-11 显示：
+
+
+  -   瑞典通货膨胀/消费者价格指数影响最终消费支出，两者之间变化量为 -0.200。
+
+  -   瑞典人均 GDP 增长率影响最终消费支出，两者之间变化量为 -0.048。
+
+  -   瑞典预期寿命增强了人均 GDP 增长率与最终消费支出之间的关系。
+
+  -   通货膨胀/消费者价格指数与预期寿命的变化量为 -0.338，预期寿命与最终消费支出的变化量为 -0.926。
+
+
+  ### 结论
+
+
+  本章介绍了结构方程模型（SEM），探讨了瑞典人均 GDP 增长率、通货膨胀/消费者价格指数和最终消费支出之间的结构关系。此外，还探讨了瑞典预期寿命对人均 GDP
+  增长率与最终消费支出之间关系的中介效应。
+
+
+  首先，本章解释了如何开发一个可通过应用该方法进行检验的理论框架。其次，涵盖了如何通过应用协方差来确定联合变异性，如何通过应用皮尔逊相关来确定关联性，以及如何通过应用特征矩阵来确定相关性强度。您还了解了如何通过应用主成分分析来减少数据。最后，您开发了结构方程模型（SEM），并发现结果是显著的。
+
+
+  索引 A
+
+  - 绝对拟合指数 (AFI)
+
+  - 实际数据点
+
+  - 加法模型开发预测
+
+  - 曲线下面积 (AUC)
+
+  - 人工神经网络
+
+  - 数据再处理
+
+  - 数据结构化
+
+  - 数据封装
+
+  - 地图集法
+
+  - 增广迪基-福勒检验
+
+  - 自相关函数
+
+  - 自回归积分滑动平均模型
+
+  - 自回归滑动平均模型 (ARIMA)
+
+
+  B
+
+  - 玻尔兹曼机分类器
+
+  - 箱线图
+
+
+  C
+
+  - 分类报告
+
+  - 比较拟合指数 (CFI)
+
+  - Conda 环境
+
+  - 混淆矩阵
+
+  - 混淆矩阵解读
+
+  - 消费者价格
+
+  - 传统定量模型
+
+  - 卷积神经网络
+
+  - 相关分析
+
+  - 协方差分析
+
+  - 协方差矩阵
+
+  - 交叉验证损失
+
+  - `cross_val_score()` 方法
+
+  - 切分点
+
+
+  D
+
+  - 数据生成过程
+
+  - 数据操作
+
+  - 数据预处理
+
+  - 数据来源
+
+  - 深度学习
+
+  - 降维技术
+
+  - 下降趋势
+
+
+  E
+
+  - 计量经济学
+
+  - 经济设计
+
+  - 特征载荷
+
+  - 特征矩阵
+
+  - 特征方法
+
+  - 特征值
+
+  - 肘部曲线
+
+  - 估计截距
+
+
+  F
+
+  - `fillna()` 方法
+
+  - 最终消费支出
+
+  - 前向传播过程
+
+
+  G
+
+  - 高斯分布
+
+  - 高斯混合模型
+
+  - GDP 增长
+
+  - 数据分布
+
+  - 隐藏状态
+
+  - 线图
+
+  - 南非
+
+  - 人均 GDP 增长率
+
+  - `get_dummies()` 方法
+
+  - 人均 GNI
+
+  - 人均 GNI 聚类计数
+
+  - 人均 GNI 聚类表
+
+  - 人均 GNI 散点图
+
+  - 英国通货膨胀
+
+  - `GridSearchCV()` 方法
+
+  - 国内生产总值 (GDP)
+
+
+  H
+
+  - 隐马尔可夫模型
+
+  - 跨样本隐藏状态
+
+  - 隐藏状态计数
+
+  - `hmmlearn` 库
+
+  - 超参数
+
+
+  I, J
+
+  - 个体方差
+
+  - 通货膨胀
+
+
+  K
+
+  - 肯德尔方法
+
+  - `Keras` 分类报告
+
+  - `Keras` 分类器混淆矩阵
+
+  - `Keras` 分类器精确率-召回率曲线
+
+  - `Keras` 分类器 ROC 曲线
+
+  - `k-means` 模型
+
+  - `k-Nearest Neighbor` 技术
+
+
+  L
+
+  - 学习曲线
+
+  - 贷款利率
+
+  - 预期寿命
+
+  - 对数 GDP 增长
+
+  - 逻辑回归
+
+  - 逻辑回归分类器
+
+
+  M
+
+  - 机器学习方法
+
+  - 机器学习模型
+
+  - 宏观经济数据，南非
+
+  - 宏观经济指标
+
+  - 马尔可夫成分
+
+  - 最大似然法
+
+  - 模型评估
+
+  - 模型残差自相关
+
+  - 模型残差分布
+
+  - 蒙特卡洛模拟模型
+
+  - 多重共线性
+
+  - 多层感知器
+
+  - 多层感知器分类器 (MLP)
+
+  - 分类报告
+
+  - 分类器模型开发
+
+  - 混淆矩阵
+
+  - 混淆矩阵解读
+
+  - 学习曲线
+
+  - 召回率曲线
+
+  - ROC 曲线
+
+
+  N
+
+  - 负相关
+
+  - 正态性
+
+  - 规范拟合指数 (NFI)
+
+  - 零假设
+
+  - `NumPy` 库
+
+
+  O
+
+  - 普通最小二乘法模型
+
+  - 普通最小二乘法回归模型
+
+  - 异常值移除
+
+  - 异常值
+
+
+  P, Q
+
+  - 配对图
+
+  - `pandas_montecarlo` 库
+
+  - 皮尔逊相关系数
+
+  - 皮尔逊相关矩阵
+
+  - 皮尔逊相关方法
+
+  - 人均分布
+
+  - 性能指标
+
+  - `Pipeline()` 方法
+
+  - 政策制定者
+
+  - 总体回归函数
+
+  - 精确率-召回率曲线
+
+  - 预测数据点
+
+  - 预测值
+
+  - 主成分分析 (PCA)
+
+  - Python 环境
+
+
+  R
+
+  - 随机白噪声
+
+  - 循环神经网络
+
+  - 报告索引
+
+  - 残差分析
+
+  - 残差自相关
+
+  - 受限玻尔兹曼机
+
+  - 受限玻尔兹曼机分类器报告
+
+  - 受限玻尔兹曼机混淆矩阵
+
+  - ROC 曲线
+
+
+  S
+
+  - 样本回归函数
+
+  - `scikit-learn` 库
+
+  - `scikit-learn` 模型
+
+  - `seaborn` 库
+
+  - 季节性 ARIMA
+
+  - 季节性自回归积分滑动平均模型 (SARIMA)
+
+  - 季节性分解
+
+  - `semopy` 库
+
+  - 序列数据
+
+  - Sigmoid 函数
+
+  - Sigmoid 形状
+
+  - 轮廓系数法
+
+  - 模拟结果
+
+  - 社会贡献
+
+  - 社会贡献分布
+
+  - 斯皮尔曼方法
+
+  - 标准化数据
+
+  - `statsmodels` 库
+
+  - `statsmodels` 模型
+
+  - 结构方程模型 (SEM)
+
+  - 模型开发
+
+  - 模型估计
+
+  - 最终消费支出
+
+  - 信息检验
+
+  - 结构关系
+
+  - 瑞典最终消费支出
+
+  - 瑞典通货膨胀
+
+  - 瑞典预期寿命
+
+  - 瑞典宏观经济指标
+
+
+  T
+
+  - `tensorflow` 库
+
+  - 理论框架
+
+  - 时间序列分析模型
+
+  - 训练损失
+
+  - 二维散点图
+
+
+  U
+
+  - 取消堆叠数据
+
+  - 上升趋势
+
+  - 城市人口
+
+  - 城市人口分布
+
+
+  V
+
+  - 梯度消失问题
+
+  - 可视化结构关系
+
+
+  W, X, Y, Z
+
+  - `wbdata` 库
+
+  - 组内平方和 (WSS)
+
+  '
