@@ -1,0 +1,15 @@
+
+# Python 个人理财指南
+
+- [引言](personal-finance-with-python_01.md)
+- [1. 环境设置](personal-finance-with-python_02.md)
+- [2. 利润](personal-finance-with-python_03.md)
+- [3. 转换](personal-finance-with-python_04.md)
+- [秘钥](personal-finance-with-python_05.md)
+- [4. 摊销](personal-finance-with-python_06.md)
+- [循环 A](personal-finance-with-python_07.md)
+- [度假 II](personal-finance-with-python_08.md)
+- [加载 YAML](personal-finance-with-python_09.md)
+- [6. 投资](personal-finance-with-python_10.md)
+- [7. 消费](personal-finance-with-python_11.md)
+- [索引](personal-finance-with-python_12.md)
