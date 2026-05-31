@@ -1,2 +1,0 @@
-# `IntRateEngine` 类
-

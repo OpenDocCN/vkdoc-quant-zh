@@ -1,2 +1,0 @@
-# `MathFunction` 类
-

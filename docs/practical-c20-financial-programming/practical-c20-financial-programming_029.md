@@ -1,2 +1,0 @@
-# Gnu Common Lisp (GCL)
-

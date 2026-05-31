@@ -1,2 +1,0 @@
-# `ModifiedCAP` 类
-
